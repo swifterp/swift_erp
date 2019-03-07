@@ -1,20 +1,25 @@
 package controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import logic.pay.InsertAllowanceItem;
 
 @Controller
 @RequestMapping("/pay")
 public class Pay_Controller {
+
+	@Autowired
+	private InsertAllowanceItem iai;
 	
 	@RequestMapping("/allowance")
-	public String pay_Main(Model model, @RequestParam(value = "req") String paytest) {
+	public String pay_Allowance(Model model) {
+				
+		model.addAttribute("list", iai.callAllowanceItemDao());
 		
-		model.addAttribute("res", paytest);
-		
-		return "pay/pay_mainpage";
+		return "pay/pay_allowanceItem";
 		
 	}
 	
