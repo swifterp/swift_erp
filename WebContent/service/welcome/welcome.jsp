@@ -10,7 +10,7 @@
 
 	function goPay(){
 
-		location.href = "../service/pay/pay_mainpage.jsp";
+		location.href = "../pay/pay_mainpage.jsp";
 		
 	}
 

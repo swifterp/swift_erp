@@ -14,13 +14,28 @@
 		
 	}
 
+	function deduction(){
+
+		location.href = "../../pay/deduction";
+		
+	}
+
+	function payroll(){
+
+		location.href = "../../pay/payroll";
+		
+	}
+
 </script>
 
 </head>
 <body>
 This is pay page.
-
+<br>
 <input type="button" onclick="javascript:allowance()" value="수당항목등록">
-
+<br>
+<input type="button" onclick="javascript:deduction()" value="공제항목등록">
+<br>
+<input type="button" onclick="javascript:payroll()"   value="급여대장등록">
 </body>
 </html>
