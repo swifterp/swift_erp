@@ -21,11 +21,11 @@
 	
 	</select>
 	
-	<select id="getPersonalPayList" parameterType="int" resultType="hashmap">
+	<select id="getPersonalPayList" parameterType="String" resultType="hashmap">
 	
 		select allowance_name, personalPay_pay from personalPayList
 		<where>
-			empno = #{salaryCalc_no}
+			personalPay_report = #{report}
 		</where>
 	
 	</select>

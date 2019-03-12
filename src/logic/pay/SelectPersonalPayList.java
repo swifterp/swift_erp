@@ -14,9 +14,9 @@ public class SelectPersonalPayList {
 	@Autowired
 	private PersonalPayDao ppd;
 	
-	public List<Map<String, String>> callPersonalPayDao(Integer salaryCalc_no) {
+	public List<Map<String, String>> callPersonalPayDao(String report) {
 		
-		return ppd.selectPersonalPayList(salaryCalc_no);
+		return ppd.selectPersonalPayList(report);
 		
 	}
 	

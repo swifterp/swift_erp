@@ -55,9 +55,9 @@ public class Pay_Controller {
 	private SelectPersonalPayList spl;
 	
 	@RequestMapping("/personalPay")
-	public String pay_PersonalPay(Model model, @RequestParam(value="salaryCalc_no", defaultValue="0") Integer salaryCalc_no) {
-				
-		model.addAttribute("list", spl.callPersonalPayDao(salaryCalc_no));
+	public String pay_PersonalPay(Model model, @RequestParam(value="report", defaultValue="0") String report) {
+		System.out.println(report);
+		model.addAttribute("list", spl.callPersonalPayDao(report));
 		
 		return "pay/pay_personalPayList";
 		
