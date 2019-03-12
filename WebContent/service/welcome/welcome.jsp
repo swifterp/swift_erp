@@ -10,7 +10,12 @@
 
 	function goPay(){
 
-		location.href = "../service/pay/pay_mainpage.jsp";
+		location.href = "../pay/pay_mainpage.jsp";
+		
+	}
+	function goApproval(){
+
+		location.href = "../approval/approval_mainpage.jsp";
 		
 	}
 
@@ -21,6 +26,10 @@
 Welcome! This is Swift Corporation.
 
 <input type="button" onclick="javascript:goPay()" value="급여관리">
+<p>
+<input type="button" onclick="javascript:goApproval()" value="결재">
+
+
 
 </body>
 </html>

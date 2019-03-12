@@ -25,5 +25,5 @@ public class Emp_Controller {
 		
 		return "emp/emp_mainpage";
 	}
-	
+
 }
