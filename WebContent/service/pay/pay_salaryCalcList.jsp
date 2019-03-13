@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ page import="java.util.List, java.util.HashMap" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,13 +9,20 @@
 
 <script type="text/javascript">
 
-	function personalPay(salaryCalc_no){
-
-		location.href = "../pay/personalPay?salaryCalc_no="+salaryCalc_no;
+	function personalPay(report){
+		location.href = "../pay/personalPay?report="+report;
 		
 	}
 
 </script>
+
+<%
+
+	List list = (List)request.getAttribute("list");
+	HashMap map0 = (HashMap)list.get(0);
+	String report0 = (String)map0.get("SALARYCALC_REPORT");
+
+%>
 
 </head>
 <body>
@@ -29,13 +37,13 @@
 	<tr>
 		<td>${list.get(0).get("SALARYCALC_REPORT") }</td>
 		<td>${list.get(0).get("SALARYCALC_NAME") }</td>
-		<td><input type="button" onclick="javascript:personalPay(${list.get(0).get('SALARYCALC_NO') })" value="개인별급여내역"></td>
+		<td><input type="button" onclick="javascript:personalPay('<%= report0 %>')" value="개인별급여내역"></td>
 		<td>${list.get(0).get("SALARYCALC_TOTAL") }</td>
 	</tr>
 	<tr>
 		<td>${list.get(1).get("SALARYCALC_REPORT") }</td>
 		<td>${list.get(1).get("SALARYCALC_NAME") }</td>
-		<td><input type="button" onclick="javascript:personalPay(${list.get(1).get('SALARYCALC_NO') })" value="개인별급여내역"></td>
+		<td><input type="button" onclick="javascript:personalPay('${list.get(1).get('SALARYCALC_REPORT') }')" value="개인별급여내역"></td>
 		<td>${list.get(1).get("SALARYCALC_TOTAL") }</td>
 	</tr>
 </table>

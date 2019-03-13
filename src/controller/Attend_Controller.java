@@ -4,10 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import logic.attend.InsertAttendData;
 import logic.attend.SelectAttendCodeT;
 import logic.attend.SelectAttendManagerT;
 import logic.attend.SelectHolidayCodeT;
+import logic.pay.SelectSpecsList;
 
 @Controller
 @RequestMapping("/attend")
@@ -44,6 +47,18 @@ public class Attend_Controller {
 		model.addAttribute("list", shct.callHolidayCodeDao());
 		
 		return "attend/attend_holidaycode";
+	}
+	
+	@Autowired
+	private InsertAttendData iad;
+	
+	@RequestMapping("/attend_add")
+	public String pay_Specs(Model model, @RequestParam(value="report", defaultValue="0") String report) {
+
+		model.addAttribute("list", iad.callSpecsDao(report));
+		
+		return "attend/attend_add";
+		
 	}
 	
 }

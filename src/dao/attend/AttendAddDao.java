@@ -1,4 +1,4 @@
-package dao.pay;
+package dao.attend;
 
 import java.util.List;
 import java.util.Map;
@@ -8,15 +8,15 @@ import org.springframework.stereotype.Repository;
 
 import resources.mapper.selectListMapper;
 
-@Repository("PersonalPayDao")
-public class PersonalPayDao {
+@Repository("AttendAddDao")
+public class AttendAddDao {
 	
 	@Autowired
 	private selectListMapper slm;
 	
-	public List<Map<String, String>> selectPersonalPayList(String report) {
+	public List<Map<String, String>> insertAttendAddData(String report) {
 		
-		return slm.getPersonalPayList(report);
+		return slm.
+		
 	}
-	
 }
