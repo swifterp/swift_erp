@@ -7,25 +7,17 @@
 <title>pay_mainpage</title>
 
 <script type="text/javascript">
-
 	function allowance(){
-
-		location.href = "../../pay/allowance";
-		
+		location.href = "../../pay/allowance";		
 	}
 
 	function deduction(){
-
-		location.href = "../../pay/deduction";
-		
+		location.href = "../../pay/deduction";	
 	}
 
 	function payroll(){
-
-		location.href = "../../pay/payroll";
-		
+		location.href = "../../pay/payroll";	
 	}
-
 </script>
 
 </head>

@@ -7,7 +7,6 @@
 <title>급여계산현황 페이지</title>
 </head>
 <body>
-
 <table>
 	<tr>
 		<td>신고귀속</td>
@@ -25,6 +24,5 @@
 		<td>${list.get(0).get("PERSONALPAY_PAY") + list.get(1).get("PERSONALPAY_PAY")}</td>
 	</tr>
 </table>
-
 </body>
 </html>

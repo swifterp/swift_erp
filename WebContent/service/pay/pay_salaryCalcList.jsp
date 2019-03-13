@@ -9,9 +9,7 @@
 <script type="text/javascript">
 
 	function personalPay(salaryCalc_no){
-
 		location.href = "../pay/personalPay?salaryCalc_no="+salaryCalc_no;
-		
 	}
 
 </script>

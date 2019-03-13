@@ -7,20 +7,18 @@
 <title>Welcome Page</title>
 
 <script type="text/javascript">
-
-	function goPay(){
-
-		location.href = "../pay/pay_mainpage.jsp";
-		
+	function empList(){
+		location.href = "../../emp/read";	
 	}
-
+	function goPay(){
+		location.href = "../pay/pay_mainpage.jsp";
+	}
 </script>
 
 </head>
 <body>
 Welcome! This is Swift Corporation.
-
+<input type="button" onclick="javascript:empList()" value="牢荤包府">
 <input type="button" onclick="javascript:goPay()" value="鞭咯包府">
-
 </body>
 </html>

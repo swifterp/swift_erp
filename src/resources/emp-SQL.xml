@@ -3,10 +3,7 @@
 
 <mapper namespace="resources.mapper.selectListMapper">
 
-	<select id="getList" resultType="hashmap">
-	
-		select empno, ename from emp_test
-	
-	</select>
-
+	<insert id="EmpAdd" parameterType="hashmap">		
+        insert into employee(emp_name,emp_email) values (#{emp_name}, #{emp_email})
+	</insert>
 </mapper>
