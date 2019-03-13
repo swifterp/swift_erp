@@ -10,7 +10,6 @@
 <script type="text/javascript">
 
 	function personalPay(report){
-		alert(report);
 		location.href = "../pay/personalPay?report="+report;
 		
 	}

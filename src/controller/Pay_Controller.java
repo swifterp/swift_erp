@@ -10,6 +10,7 @@ import logic.pay.SelectAllowanceItem;
 import logic.pay.SelectDeductionItem;
 import logic.pay.SelectPersonalPayList;
 import logic.pay.SelectSalaryCalcList;
+import logic.pay.SelectSpecsList;
 
 @Controller
 @RequestMapping("/pay")
@@ -56,10 +57,22 @@ public class Pay_Controller {
 	
 	@RequestMapping("/personalPay")
 	public String pay_PersonalPay(Model model, @RequestParam(value="report", defaultValue="0") String report) {
-		System.out.println(report);
+
 		model.addAttribute("list", spl.callPersonalPayDao(report));
 		
 		return "pay/pay_personalPayList";
+		
+	}
+	
+	@Autowired
+	private SelectSpecsList sspl;
+	
+	@RequestMapping("/specs")
+	public String pay_Specs(Model model, @RequestParam(value="empno", defaultValue="0") Integer empno) {
+
+		model.addAttribute("list", sspl.callSpecsDao(empno));
+		
+		return "pay/pay_specsList";
 		
 	}
 	

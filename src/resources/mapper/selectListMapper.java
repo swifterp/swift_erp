@@ -10,4 +10,5 @@ public interface selectListMapper {
 	public List<Map<String, String>> getDeductionList();
 	public List<Map<String, String>> getSalaryCalcList();
 	public List<Map<String, String>> getPersonalPayList(String report);
+	public List<Map<String, String>> getSpecsList(Integer empno);
 }
