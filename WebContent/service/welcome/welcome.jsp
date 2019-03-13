@@ -14,6 +14,10 @@
 		
 	}
 
+	function goAttend(){
+		location.href = "../attend/attend_mainpage.jsp";
+	}
+
 </script>
 
 </head>
@@ -21,6 +25,8 @@
 Welcome! This is Swift Corporation.
 
 <input type="button" onclick="javascript:goPay()" value="鞭咯包府">
+<td>
+<input type="button" onclick="javascript:goAttend()" value="辟怕包府">
 
 </body>
 </html>
