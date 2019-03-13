@@ -30,6 +30,5 @@ Welcome! This is Swift Corporation.
 <input type="button" onclick="javascript:goApproval()" value="°áÀç">
 
 
-
 </body>
 </html>
