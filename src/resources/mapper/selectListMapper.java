@@ -16,4 +16,9 @@ public interface selectListMapper {
 
 	public List<Map<String, String>> getMyApprovalList();
 	
+	public List<Map<String, String>> getBusinessLogList();
+	
+	public List<Map<String, String>> getMonthWorkList();
+
+	
 }
