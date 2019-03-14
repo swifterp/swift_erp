@@ -20,16 +20,11 @@
 		location.href = "./pay_specsSearch.jsp";
 	}
 	function underyear(){
-		location.href = "./pay_underyearSearch.jsp";
-		
+		location.href = "./pay_underyearSearch.jsp";	
 	}
-
 	function monthlyemp(){
-
-		location.href = "./pay_monthlyempSearch.jsp";
-		
+		location.href = "./pay_monthlyempSearch.jsp";	
 	}
-
 </script>
 
 </head>
