@@ -17,7 +17,13 @@
 	
 	<select id="getAttendManagerList" resultType="hashmap">
 	
-		select attend_date, empno, attend_time, attend_m_etc, attend_code, attend_no from ATTEND_MANAGER_T
+		select to_char(attend_date,'YYYY-MM-DD') as attend_date, empno, attend_time, attend_m_etc, attend_code, attend_no from ATTEND_MANAGER_T
+	
+	</select>
+	
+	<select id="getAttendAddList" resultType="hashmap">
+	
+		select attend_code, attend_name, attend_code_state, attend_c_etc from ATTEND_CODE_T
 	
 	</select>
 

@@ -1,5 +1,6 @@
 package logic.attend;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,9 +15,9 @@ public class InsertAttendData {
 	@Autowired
 	private AttendAddDao aad;
 	
-	public List<Map<String, String>> callAttendAddDao(String report) {
+	public List<Map<String, String>> callAttendAddDao(HashMap<String, Integer> attendplus) {
 		
-		return aad.insertAttendAddData(report);
+		return aad.insertAttendAddList(attendplus);
 		
 	}
 	

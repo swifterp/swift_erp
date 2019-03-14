@@ -1,16 +1,18 @@
 package controller;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import logic.attend.DeleteAttendData;
 import logic.attend.InsertAttendData;
 import logic.attend.SelectAttendCodeT;
 import logic.attend.SelectAttendManagerT;
 import logic.attend.SelectHolidayCodeT;
-import logic.pay.SelectSpecsList;
 
 @Controller
 @RequestMapping("/attend")
@@ -52,13 +54,22 @@ public class Attend_Controller {
 	@Autowired
 	private InsertAttendData iad;
 	
-	@RequestMapping("/attend_add")
-	public String pay_Specs(Model model, @RequestParam(value="report", defaultValue="0") String report) {
+	@RequestMapping("/attendpass")
+	public String attend_pass(Model model, @RequestParam HashMap<String, Integer> attendplus) {
 
-		model.addAttribute("list", iad.callSpecsDao(report));
+		model.addAttribute("list", iad.callAttendAddDao(attendplus));
 		
-		return "attend/attend_add";
+		return "attend/attend_attendpass";
 		
+	}
+	
+	@Autowired
+	private DeleteAttendData dad;
+	@RequestMapping("/attenddelete")
+	public String attend_delete(Model model, @RequestParam Integer attend_no) {
+		System.out.println(attend_no);
+		model.addAttribute("list", dad.callAttendDeleteDao(attend_no));
+		return "attend/attend_attenddelete";
 	}
 	
 }
