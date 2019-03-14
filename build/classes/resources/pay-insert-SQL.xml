@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="resources.mapper.insertListMapper">
+
+	<insert id="setUnderyearList" parameterType="HashMap">
+	
+		insert into underoneyear(jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, deb)
+		values(#{jan, jdbcType=INTEGER}, #{feb, jdbcType=INTEGER}, #{mar, jdbcType=INTEGER},
+		       #{apr, jdbcType=INTEGER}, #{may, jdbcType=INTEGER}, #{jun, jdbcType=INTEGER},
+		       #{jul, jdbcType=INTEGER}, #{aug, jdbcType=INTEGER}, #{sep, jdbcType=INTEGER},
+		       #{oct, jdbcType=INTEGER}, #{nov, jdbcType=INTEGER}, #{deb, jdbcType=INTEGER})
+	
+	</insert>
+
+</mapper>
