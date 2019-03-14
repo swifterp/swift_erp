@@ -1,17 +1,18 @@
 package controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import logic.emp.EmpLogic;
-import logic.pay.SelectAllowanceItem;
-import logic.pay.SelectSalaryCalcList;
+import vo.empVO;
 
 @Controller
 @RequestMapping("/emp")
@@ -26,8 +27,9 @@ public class Emp_Controller {
 	}
 	
 	@RequestMapping("/add")
-	public String addEmp(Model model) {
-		model.addAttribute("list", el.EmpAddDao());
+	public String addEmp(Model model
+			,@ModelAttribute List<Map<String,String>> EmpList) {
+		model.addAttribute("list", el.empAddDao(EmpList));
 		return "emp/emp_add";
 	}
 }

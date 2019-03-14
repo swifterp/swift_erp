@@ -7,7 +7,7 @@
 <title>emp_mainpage</title>
 <script type="text/javascript">
 	function goEmpAdd(){
-		location.href = "../emp/emp_add";	
+		location.href = "../../../swift_erp/service/emp/emp_add.jsp";	
 	}
 </script>
 </head>

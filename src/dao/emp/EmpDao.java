@@ -19,7 +19,10 @@ public class EmpDao {
 	public List<Map<String, String>> selectEmpList() {
 		return slm.getEmpList();
 	}
-	public List<Map<String, String>> selectEmpAdd() {
-		return slm.EmpAdd();
+	
+	@Autowired
+	private insertListMapper ilm;
+	public void empAdd(List<Map<String, String>> empList) {
+		ilm.empAdd(empList);
 	}
 }

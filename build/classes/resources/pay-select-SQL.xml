@@ -21,12 +21,24 @@
 	
 	</select>
 	
-	<select id="getPersonalPayList" parameterType="int" resultType="hashmap">
+	<select id="getPersonalPayList" parameterType="String" resultType="hashmap">
 	
 		select allowance_name, personalPay_pay from personalPayList
 		<where>
-			empno = #{salaryCalc_no}
+			personalPay_report = #{report}
 		</where>
+	
+	</select>
+	
+	<select id="getSpecsList" parameterType="Integer" resultType="hashmap">
+	
+		select specsList.specs_report, specsList.empno, sum(personalpaylist.personalpay_pay) as total from specsList, personalpaylist
+		<where>
+			specsList.empno = personalpaylist.empno
+			and specsList.specs_report = personalpaylist.personalpay_report
+			and specsList.empno = #{empno}
+		</where>
+		group by specsList.specs_report, specsList.empno
 	
 	</select>
 

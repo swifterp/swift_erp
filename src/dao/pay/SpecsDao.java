@@ -8,15 +8,15 @@ import org.springframework.stereotype.Repository;
 
 import resources.mapper.selectListMapper;
 
-@Repository("PersonalPayDao")
-public class PersonalPayDao {
+@Repository("SpecsDao")
+public class SpecsDao {
 	
 	@Autowired
 	private selectListMapper slm;
 	
-	public List<Map<String, String>> selectPersonalPayList(String report) {
+	public List<Map<String, String>> selectSpecsList(Integer empno) {
 		
-		return slm.getPersonalPayList(report);
+		return slm.getSpecsList(empno);
 	}
 	
 }

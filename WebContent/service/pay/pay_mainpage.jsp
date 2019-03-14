@@ -10,13 +10,14 @@
 	function allowance(){
 		location.href = "../../pay/allowance";		
 	}
-
 	function deduction(){
 		location.href = "../../pay/deduction";	
 	}
-
 	function payroll(){
 		location.href = "../../pay/payroll";	
+	}
+	function specs(){
+		location.href = "./pay_specsSearch.jsp";
 	}
 </script>
 
@@ -24,10 +25,12 @@
 <body>
 This is pay page.
 <br>
-<input type="button" onclick="javascript:allowance()" value="수당항목등록">
+<input type="button" onclick="javascript:allowance()" value="수당항목 조회">
 <br>
-<input type="button" onclick="javascript:deduction()" value="공제항목등록">
+<input type="button" onclick="javascript:deduction()" value="공제항목 조회">
 <br>
-<input type="button" onclick="javascript:payroll()"   value="급여대장등록">
+<input type="button" onclick="javascript:payroll()"   value="급여계산/대장 조회">
+<br>
+<input type="button" onclick="javascript:specs()"   value="명세서 조회">
 </body>
 </html>

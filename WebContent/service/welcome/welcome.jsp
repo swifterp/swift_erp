@@ -9,7 +9,7 @@
 <script type="text/javascript">
 	function empList(){
 		location.href = "../../emp/read";	
-	}
+	}	
 	function goPay(){
 		location.href = "../pay/pay_mainpage.jsp";
 	}

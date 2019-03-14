@@ -20,7 +20,7 @@ public class EmpLogic {
 		return ed.selectEmpList();
 	}
 	
-	public List<Map<String, String>> EmpAddDao() {
-		return ed.selectEmpAdd();
+	public void empAddDao(List<Map<String,String>> empList) {
+		ed.empAdd(empList);
 	}
 }
