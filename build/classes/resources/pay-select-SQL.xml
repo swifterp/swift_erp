@@ -47,5 +47,14 @@
 		select jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, deb from underoneyear
 	
 	</select>
+	
+	<select id="getMonthlyempList" parameterType="String" resultType="hashmap">
+	
+		select monthly_date, monthly_join, monthly_leave, monthly_total from monthlyemp
+		<where>
+			monthly_date = #{selectedDate}
+		</where>
+
+	</select>
 
 </mapper>

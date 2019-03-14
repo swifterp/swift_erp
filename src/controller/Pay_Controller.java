@@ -8,9 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import logic.pay.DeleteAllowanceItem;
 import logic.pay.InsertUnderyearList;
 import logic.pay.SelectAllowanceItem;
 import logic.pay.SelectDeductionItem;
+import logic.pay.SelectMonthlyempList;
 import logic.pay.SelectPersonalPayList;
 import logic.pay.SelectSalaryCalcList;
 import logic.pay.SelectSpecsList;
@@ -28,6 +30,18 @@ public class Pay_Controller {
 		model.addAttribute("list", sai.callAllowanceItemDao());
 		
 		return "pay/pay_allowanceItem";
+		
+	}
+	
+	@Autowired
+	private DeleteAllowanceItem dai;
+	
+	@RequestMapping("/deleteAllowance")
+	public String pay_deleteAllowance(Model model, @RequestParam(value="allowance_no", defaultValue="0") Integer allowance_no) {
+				
+		model.addAttribute("yesoryes", dai.callDeleteAllowanceDao(allowance_no));
+		
+		return "pay/pay_deleteAllowance";
 		
 	}
 	
@@ -95,5 +109,18 @@ public class Pay_Controller {
 
 	
 	
+	
+	@Autowired
+	private SelectMonthlyempList sml;
+	
+	@RequestMapping("/monthlyemp")
+	public String pay_monthlyemp(Model model, @RequestParam(value="year", defaultValue="error") String year
+											, @RequestParam(value="month", defaultValue="error") String month) {
+		
+		model.addAttribute("list", sml.callMonthlyempDao(year, month));
+		
+		return "pay/pay_monthlyempList";
+		
+	}
 	
 }
