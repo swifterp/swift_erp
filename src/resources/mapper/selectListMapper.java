@@ -19,5 +19,9 @@ public interface selectListMapper {
 
 	public List<Map<String, String>> getPersonalPayList(String report);
 	public List<Map<String, String>> getSpecsList(Integer empno);
+<<<<<<< HEAD
 
+=======
+	public List<Map<String, String>> getUnderyearList();
+>>>>>>> refs/remotes/origin/mino_branch
 }

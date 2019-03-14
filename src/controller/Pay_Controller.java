@@ -1,11 +1,14 @@
 package controller;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import logic.pay.InsertUnderyearList;
 import logic.pay.SelectAllowanceItem;
 import logic.pay.SelectDeductionItem;
 import logic.pay.SelectPersonalPayList;
@@ -73,6 +76,18 @@ public class Pay_Controller {
 		model.addAttribute("list", sspl.callSpecsDao(empno));
 		
 		return "pay/pay_specsList";
+		
+	}
+	
+	@Autowired
+	private InsertUnderyearList iul;
+	
+	@RequestMapping("/underyear")
+	public String pay_underyear(Model model, @RequestParam HashMap<String, Integer> percentage) {
+		
+		model.addAttribute("list", iul.callUnderyearDao(percentage));
+		
+		return "pay/pay_underyearList";
 		
 	}
 	

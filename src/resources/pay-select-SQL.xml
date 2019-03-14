@@ -39,6 +39,12 @@
 			and specsList.empno = #{empno}
 		</where>
 		group by specsList.specs_report, specsList.empno
+
+	</select>
+	
+	<select id="getUnderyearList" resultType="hashmap">
+	
+		select jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, deb from underoneyear
 	
 	</select>
 
