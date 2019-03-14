@@ -7,7 +7,7 @@ import java.util.Map;
 public interface selectListMapper {
 	/*인사*/
 	public List<Map<String, String>> getEmpList();
-
+	public List<Map<String, String>> getEmpView(String empno);
 	
     /*급여*/
 	public List<Map<String, String>> getAllowanceList();
@@ -15,4 +15,5 @@ public interface selectListMapper {
 	public List<Map<String, String>> getSalaryCalcList();
 	public List<Map<String, String>> getPersonalPayList(String report);
 	public List<Map<String, String>> getSpecsList(Integer empno);
+	public List<Map<String, String>> getUnderyearList();
 }

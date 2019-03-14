@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="resources.mapper.insertListMapper">
-	<insert id="empAdd">		
-        insert into employee(emp_name,emp_email) values (#{emp_name}, #{emp_email})
+	<insert id="empAdd" parameterType="HashMap">		
+        insert into employee(empno,emp_name,emp_email) values (#{empno, jdbcType=VARCHAR},#{emp_name, jdbcType=VARCHAR}, #{emp_email, jdbcType=VARCHAR})
 	</insert>
 </mapper>

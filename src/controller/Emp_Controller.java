@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import logic.emp.EmpLogic;
+import logic.pay.SelectPersonalPayList;
 import vo.empVO;
 
 @Controller
@@ -28,8 +29,22 @@ public class Emp_Controller {
 	
 	@RequestMapping("/add")
 	public String addEmp(Model model
-			,@ModelAttribute List<Map<String,String>> EmpList) {
-		model.addAttribute("list", el.empAddDao(EmpList));
-		return "emp/emp_add";
+			 ,@RequestParam HashMap<String, Integer> empPlus) {
+		model.addAttribute("list", el.empAddDao(empPlus));
+		return "emp/emp_mainpage";
 	}
+	
+	@RequestMapping("/view")
+	public String viewEmp(Model model, @RequestParam(value="empno", defaultValue="0") String empno) {
+		model.addAttribute("list", el.empViewDao(empno));
+		return "emp/emp_view";
+	}
+	
+	@RequestMapping("/delete")
+	public String delEmp(Model model, @RequestParam(value="empno", defaultValue="0") String empno) {
+		model.addAttribute("list", el.empDelDao(empno));	
+		return "emp/emp_mainpage";
+
+	}
+	
 }

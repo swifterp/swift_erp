@@ -19,6 +19,9 @@
 	function specs(){
 		location.href = "./pay_specsSearch.jsp";
 	}
+	function underyear(){
+		location.href = "./pay_underyearSearch.jsp";
+	}
 </script>
 
 </head>
@@ -29,8 +32,10 @@ This is pay page.
 <br>
 <input type="button" onclick="javascript:deduction()" value="공제항목 조회">
 <br>
-<input type="button" onclick="javascript:payroll()"   value="급여계산/대장 조회">
+<input type="button" onclick="javascript:payroll()" value="급여계산/대장 조회">
 <br>
-<input type="button" onclick="javascript:specs()"   value="명세서 조회">
+<input type="button" onclick="javascript:specs()" value="명세서 조회">
+<br>
+<input type="button" onclick="javascript:underyear()" value="1년미만자상여지급률등록">
 </body>
 </html>

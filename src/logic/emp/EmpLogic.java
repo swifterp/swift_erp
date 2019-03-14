@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import controller.Emp_Controller;
 import dao.emp.EmpDao;
@@ -20,7 +21,16 @@ public class EmpLogic {
 		return ed.selectEmpList();
 	}
 	
-	public void empAddDao(List<Map<String,String>> empList) {
-		ed.empAdd(empList);
+	public List<Map<String,String>> empAddDao(HashMap<String, Integer> empPlus) {
+		ed.empAdd(empPlus);
+		return ed.selectEmpList();
+	}
+	
+	public List<Map<String, String>> empViewDao(String empno) {		
+		return ed.empView(empno);	
+	}
+	
+	public List<Map<String, String>> empDelDao(String empno) {		
+		return ed.empDel(empno);	
 	}
 }

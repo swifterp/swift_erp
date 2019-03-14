@@ -38,17 +38,11 @@ $(function() {
 	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
 	  });
 	});
-
-	function EmpAdd(){
-		$("#f_empAdd").attr("method","get");
-		$("#f_empAdd").attr("action","../../emp/add");
-		$("#f_empAdd").submit();
-	}
 </script> 
   <title>SWIFT ERP</title>
 </head>
 <body>
-	<form id="f_empAdd">
+	<form action="../../emp/add">
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -59,14 +53,14 @@ $(function() {
 			</thead>
 			<tbody>
 				<tr> 
-					<td><input type="text" id="empno" name="empno" class="form-control" placeholder="사원번호"></td>
-					<td><input type="text" id="emp_name" name="emp_name" class="form-control" placeholder="사원이름"></td>
-					<td><input type="text" id="emp_email" name="emp_email" class="form-control" placeholder="사원이메일"></td>		
+					<td><input type="text" name="empno" class="form-control" placeholder="사원번호"></td>
+					<td><input type="text" name="emp_name" class="form-control" placeholder="사원이름"></td>
+					<td><input type="text" name="emp_email" class="form-control" placeholder="사원이메일"></td>		
 				</tr>
 			</tbody>
 		</table>
 		<a href="emp_mainpage.jsp" class="btn btn-primary">목록</a>
-		<input type="submit" class="btn btn-primary pull-right" onclick="javascript:EmpAdd()" value="등록완료">
+		<input type="submit" class="btn btn-primary pull-right" value="등록완료">
 	</form>
 </body>
 </html>
