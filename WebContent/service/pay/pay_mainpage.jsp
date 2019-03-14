@@ -38,6 +38,12 @@
 		
 	}
 
+	function monthlyemp(){
+
+		location.href = "./pay_monthlyempSearch.jsp";
+		
+	}
+
 </script>
 
 </head>
@@ -53,5 +59,7 @@ This is pay page.
 <input type="button" onclick="javascript:specs()" value="명세서 조회">
 <br>
 <input type="button" onclick="javascript:underyear()" value="1년미만자상여지급률등록">
+<br>
+<input type="button" onclick="javascript:monthlyemp()" value="월별인원현황 조회">
 </body>
 </html>
