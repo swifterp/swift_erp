@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>customer_mainpage</title>
+<title>출퇴근/근태/일정 조회</title>
 </head>
 <body>
-This is customer page. Welcome ${res}
+
+${list.get(0) }<p>
+${list.get(1) }<p>
+${list.get(2) }<p>
+
 </body>
 </html>

@@ -20,5 +20,15 @@ public interface selectListMapper {
 	
 	public List<Map<String, String>> getMonthWorkList();
 
+	public List<Map<String, String>> getWorkStateList();
+	
+	public List<Map<String, String>> getWorkTimeList();
+
+	public List<Map<String, String>> getWorkEtcList();
+
+	public List<Map<String, String>> getClientInfoList();
+
+	public List<Map<String, String>> getNameCardInfoList();
+
 	
 }

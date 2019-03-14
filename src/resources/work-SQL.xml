@@ -11,6 +11,24 @@
 
 	<select id="getMonthWorkList" resultType="hashmap">
 	
+		select attend_date,empno,attend_open,attend_close from attend_manager_t
+	
+	</select>
+	
+	<select id="getWorkStateList" resultType="hashmap">
+	
+		select attend_date, empno, attend_code from attend_manager_t
+	
+	</select>
+	
+	<select id="getWorkTimeList" resultType="hashmap">
+	
+		select attend_date, empno, attend_time from attend_manager_t
+	
+	</select>
+	
+	<select id="getWorkEtcList" resultType="hashmap">
+	
 		select * from attend_manager_t
 	
 	</select>
