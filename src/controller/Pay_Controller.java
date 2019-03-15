@@ -80,7 +80,7 @@ public class Pay_Controller {
 		model.addAttribute("list", spl.callPersonalPayDao(report));
 		
 		return "pay/pay_personalPayList";
-		
+
 	}
 	
 	@Autowired
@@ -106,6 +106,11 @@ public class Pay_Controller {
 		return "pay/pay_underyearList";
 		
 	}
+
+	
+
+	
+	
 	
 	@Autowired
 	private SelectMonthlyempList sml;

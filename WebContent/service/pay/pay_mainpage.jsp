@@ -7,37 +7,21 @@
 <title>pay_mainpage</title>
 
 <script type="text/javascript">
-
 	function allowance(){
-
-		location.href = "../../pay/allowance";
-		
+		location.href = "../../pay/allowance";		
 	}
-
 	function deduction(){
-
-		location.href = "../../pay/deduction";
-		
+		location.href = "../../pay/deduction";	
 	}
-
 	function payroll(){
-
-		location.href = "../../pay/payroll";
-		
+		location.href = "../../pay/payroll";	
 	}
-
 	function specs(){
-
 		location.href = "./pay_specsSearch.jsp";
-		
 	}
-
 	function underyear(){
-
-		location.href = "./pay_underyearSearch.jsp";
-		
+		location.href = "./pay_underyearSearch.jsp";	
 	}
-
 	function monthlyemp(){
 
 		location.href = "./pay_monthlyempSearch.jsp";
@@ -51,6 +35,8 @@
 		
 	}
 
+		location.href = "./pay_monthlyempSearch.jsp";	
+	}
 </script>
 
 </head>

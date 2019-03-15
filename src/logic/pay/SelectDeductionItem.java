@@ -13,9 +13,7 @@ public class SelectDeductionItem {
 	
 	@Autowired
 	private DeductionItemDao did;
-	
-	public List<Map<String, String>> callDeductionItemDao() {
-		
+	public List<Map<String, String>> callDeductionItemDao() {		
 		return did.selectDeductionList();
 		
 	}

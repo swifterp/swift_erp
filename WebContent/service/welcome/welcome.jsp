@@ -8,12 +8,15 @@
 
 <script type="text/javascript">
 
+	function empList(){
+		location.href = "../../emp/read";	
+	}	
+	
 	function goPay(){
-
 		location.href = "../pay/pay_mainpage.jsp";
 
-		
 	}
+
 	function goApproval(){
 
 		location.href = "../approval/approval_mainpage.jsp";
@@ -41,7 +44,10 @@
 
 </head>
 <body>
+
 Welcome! This is Swift Corporation.<p>
+
+<input type="button" onclick="javascript:empList()" value="牢荤包府">
 
 <input type="button" onclick="javascript:goPay()" value="鞭咯包府">
 
@@ -52,9 +58,7 @@ Welcome! This is Swift Corporation.<p>
 <p>
 <input type="button" onclick="javascript:goClient()" value="芭贰贸沥焊包府">
 
-<td>
 <input type="button" onclick="javascript:goAttend()" value="辟怕包府">
-
 
 </body>
 </html>

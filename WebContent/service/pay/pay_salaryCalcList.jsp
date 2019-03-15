@@ -8,22 +8,18 @@
 <title>급여계산현황 페이지</title>
 
 <script type="text/javascript">
-
+	function personalPay(salaryCalc_no){
+		location.href = "../pay/personalPay?salaryCalc_no="+salaryCalc_no;
+	}
 	function personalPay(report){
 		location.href = "../pay/personalPay?report="+report;
-		
 	}
-
 </script>
-
 <%
-
 	List list = (List)request.getAttribute("list");
 	HashMap map0 = (HashMap)list.get(0);
 	String report0 = (String)map0.get("SALARYCALC_REPORT");
-
 %>
-
 </head>
 <body>
 

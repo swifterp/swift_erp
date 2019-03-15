@@ -8,12 +8,9 @@
 <title>명세서 조회 페이지</title>
 
 <script type="text/javascript">
-
 	function specs(){
-		location.href = "../../pay/specs?empno="+document.getElementById("empno").value;
-		
+		location.href = "../../pay/specs?empno="+document.getElementById("empno").value;	
 	}
-
 </script>
 
 </head>
