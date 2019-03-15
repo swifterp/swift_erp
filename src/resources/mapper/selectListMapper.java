@@ -37,11 +37,25 @@ public interface selectListMapper {
 
 	public List<Map<String, String>> getDeductionList();
 	public List<Map<String, String>> getSalaryCalcList();
+
+	public List<Map<String, String>> getPersonalPayList(Integer salaryCalc_no);
+	
+	public List<Map<String, String>> getAttendCodeList();
+	public List<Map<String, String>> getHolidayCodeList();
+	public List<Map<String, String>> getAttendManagerList();
+	public List<Map<String, String>> getAttendAddList();
+
 	public List<Map<String, String>> getPersonalPayList(String report);
 	public List<Map<String, String>> getSpecsList(Integer empno);
+
 	public List<Map<String, String>> getUnderyearList();
+
 	public List<Map<String, String>> getMonthlyempList(String selectedDate);
 
 	public List<Map<String, String>> getDailyworkList(String selectedDate);
+
+
+	
+	public List<Map<String, String>> getAttendLow(Integer attendno); // 근태번호로 근태정보 조회함
 
 }

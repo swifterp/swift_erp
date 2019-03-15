@@ -11,4 +11,6 @@ public interface insertListMapper {
 	
 	
 	
+	public void setAttendAddList(HashMap<String, Integer> attendplus);
+	
 }
