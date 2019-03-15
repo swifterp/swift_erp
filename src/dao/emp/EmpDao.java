@@ -12,6 +12,7 @@ import controller.Emp_Controller;
 import resources.mapper.deleteListMapper;
 import resources.mapper.insertListMapper;
 import resources.mapper.selectListMapper;
+import resources.mapper.updateListMapper;
 
 @Repository("EmpDao")
 public class EmpDao {
@@ -22,10 +23,9 @@ public class EmpDao {
 		return slm.getEmpList();
 	}
 	/*사원상세보기*/
-	public List<Map<String, String>> empView(String empno) {
-		return slm.getEmpView(empno);
+	public List<Map<String, String>> empView(String emp_number) {
+		return slm.getEmpView(emp_number);
 	}
-
 	/*사원등록*/
 	@Autowired
 	private insertListMapper ilm;
@@ -33,11 +33,18 @@ public class EmpDao {
 		ilm.empAdd(empPlus);
 		return slm.getEmpList();
 	}
+	/*사원수정*/
+	@Autowired
+	private updateListMapper ulm;
+	public List<Map<String, String>> empUpd(HashMap<String, String> empUpd) {
+		ulm.getEmpUpd(empUpd);
+		return slm.getEmpList();
+	}
 	
 	/*사원삭제*/
 	@Autowired
 	private deleteListMapper dlm;
-	public List<Map<String, String>> empDel(String empno) {
-		return dlm.getEmpDel(empno);
+	public List<Map<String, String>> empDel(String emp_number) {
+		return dlm.getEmpDel(emp_number);
 	}
 }

@@ -1,52 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, java.util.Map" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>emp_mainpage</title>
-<script type="text/javascript">
-	function empDel(empno){
-		location.href = "../../emp/delete?empno="+empno;	
-	}
-</script>
 </head>
 <body>
-<h2>»ç¿ø ¸ñ·Ï</h2>
+<h2>ì‚¬ì› ëª©ë¡</h2>
+<form  action="../emp/update">
 <table style="border:1px solid #ccc">
 	<thead>
 		<tr>
-			<td>»ç¹ø</td>
-			<td>¼º¸í</td>
-			<td>ÁÖ¹Îµî·Ï¹øÈ£</td>
-			<td>ºÎ¼­</td>
-			<td>Á÷±Ş</td>
-			<td>ÀÔ»çÀÏÀÚ</td>
+			<td>ì›ë˜ì‚¬ë²ˆ</td>
+			<td>ì‚¬ë²ˆ</td>
+			<td>ì„±ëª…</td>
+			<td>ì´ë©”ì¼</td>
 		</tr>
 	</thead>
     <tbody>
-    	<%
-		List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
-	
-		if(lst != null){
-			for(int i=0;i<lst.size();i++){
-	%>
 		<tr>
-			<td>${list.get(0).get("EMPNO") }</td>
-			<td>${list.get(0).get("EMP_NAME") }</td>
-			<td>${list.get(0).get("EMP_RESIDENT_NUMBER")}</td>
-			<td>${list.get(0).get("DNAME")}</td>
-			<td>${list.get(0).get("RANK_NAME")}</td>
-			<td>${list.get(0).get("EMP_JOIN_DATE")}</td>
+			<td><input type="text" name="emp_number_0" value="${list.get(0).get("EMP_NUMBER")}"></td>
+			<td><input type="text" name="emp_number" value="ìˆ˜ì •í•  ì‚¬ë²ˆì…ë ¥"></td>
+			<td><input type="text" name="emp_name" value="${list.get(0).get("EMP_NAME")}"></td>
+			<td><input type="email" name="emp_email" value="${list.get(0).get("EMP_EMAIL")}"></td>
 		</tr>
-	 <%
-			}
-		}
-	 %>
     </tbody>
 </table>
-<input type="button" onclick="javascript:empDel()" value="»èÁ¦">
-<input type="button" onclick="javascript:goPay()" value="¼öÁ¤">
+<input type="submit" value="ìˆ˜ì • ">
+</form>
 </body>
 </html>

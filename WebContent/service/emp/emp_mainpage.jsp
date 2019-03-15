@@ -1,27 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ page import="java.util.List, java.util.HashMap" %>
+<%@ page import="java.util.List, java.util.Map, java.util.HashMap" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
 <title>emp_mainpage</title>
 <script type="text/javascript">
+	<!--사원등록-->
 	function goEmpAdd(){
 		location.href = "../service/emp/emp_add.jsp";	
 	}
-</script>
-
-<script type="text/javascript">
-	function empView(empno){
-		location.href = "../emp/view?empno="+empno;
+	<!--사원상세보기-->
+	function empView(emp_number){
+		location.href = "../emp/view?emp_number="+emp_number;
+	}
+	<!--사원수정-->
+	function empUpd(emp_number){
+		location.href = "../emp/update?emp_number="+emp_number;	
+	}
+	<!--사원삭제-->
+	function empDel(emp_number){
+		location.href = "../emp/delete?emp_number="+emp_number;	
 	}
 </script>
-<%
-	List list = (List)request.getAttribute("list");
-	HashMap map0 = (HashMap)list.get(0);
-	String empno0 = (String)map0.get("EMPNO");
-%>
 </head>
 <body>
 <h2>사원 목록</h2>
@@ -37,45 +39,32 @@
 			<td>Email</td>
 			<td>인쇄</td>
 			<td>상세보기</td>
+			<td>삭제</td>
 		</tr>
 	</thead>
     <tbody>
-
+		<%
+			List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
+			if(lst != null){
+				for(int i=0;i<lst.size();i++){
+		%>
 		<tr>
-			<td>${list.get(0).get("EMPNO") }</td>
-			<td>${list.get(0).get("EMP_NAME") }</td>
-			<td>${list.get(0).get("EMP_RESIDENT_NUMBER")}</td>
-			<td>${list.get(0).get("DNAME")}</td>
-			<td>${list.get(0).get("RANK_NAME")}</td>
-			<td>${list.get(0).get("EMP_JOIN_DATE")}</td>
+			<td><%= lst.get(i).get("EMP_NUMBER") %> </td>
+			<td><%= lst.get(i).get("EMP_NAME") %></td>
+			<td><%= lst.get(i).get("EMP_RESIDENT_NUMBER") %></td>
+			<td><%= lst.get(i).get("DNAME") %></td>
+			<td><%= lst.get(i).get("RANK_NAME") %></td>
+			<td><%= lst.get(i).get("EMP_JOIN_DATE") %></td>
 			<td><input type="button" value="이메일"></td>
 			<td><input type="button" value="인쇄"></td>
-			<td><input type="button" onclick="javascript:empView('<%= empno0 %>')" value="상세보기"></td>
+			<td><input type="button" onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" value="상세보기"></td>
+			<td><input type="button" value="삭제" onclick="javascript:empDel(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)"></td>
 		</tr>
-		<tr>
-			<td>${list.get(1).get("EMPNO") }</td>
-			<td>${list.get(1).get("EMP_NAME") }</td>
-			<td>${list.get(1).get("EMP_RESIDENT_NUMBER")}</td>
-			<td>${list.get(1).get("DNAME")}</td>
-			<td>${list.get(1).get("RANK_NAME")}</td>
-			<td>${list.get(1).get("EMP_JOIN_DATE")}</td>
-			<td><input type="button" value="이메일"></td>
-			<td><input type="button" value="인쇄"></td>
-			<td><input type="button" onclick="javascript:empView('${list.get(1).get('EMPNO') }')" value="상세보기"></td>
-		</tr>
-		<tr>
-			<td>${list.get(2).get("EMPNO") }</td>
-			<td>${list.get(2).get("EMP_NAME") }</td>
-			<td>${list.get(2).get("EMP_RESIDENT_NUMBER")}</td>
-			<td>${list.get(2).get("DNAME")}</td>
-			<td>${list.get(2).get("RANK_NAME")}</td>
-			<td>${list.get(2).get("EMP_JOIN_DATE")}</td>
-			<td><input type="button" value="이메일"></td>
-			<td><input type="button" value="인쇄"></td>
-			<td><input type="button" onclick="javascript:empView('${list.get(2).get('EMPNO') }')" value="상세보기"></td>
-		</tr>
+		<%
+				}
+			}
+	 	%>
     </tbody>
-
 </table>
 <input type="button" onclick="javascript:goEmpAdd()" value="사원등록">
 </body>

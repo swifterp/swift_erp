@@ -42,6 +42,7 @@ $(function() {
   <title>SWIFT ERP</title>
 </head>
 <body>
+
 	<form action="../../emp/add">
 		<table class="table table-striped">
 			<thead>
@@ -53,12 +54,13 @@ $(function() {
 			</thead>
 			<tbody>
 				<tr> 
-					<td><input type="text" name="empno" class="form-control" placeholder="사원번호"></td>
+					<td><input type="text" name="emp_number" class="form-control" placeholder="사원번호"></td>
 					<td><input type="text" name="emp_name" class="form-control" placeholder="사원이름"></td>
-					<td><input type="text" name="emp_email" class="form-control" placeholder="사원이메일"></td>		
+					<td><input type="email" name="emp_email" class="form-control" placeholder="사원이메일"></td>		
 				</tr>
 			</tbody>
 		</table>
+		
 		<a href="emp_mainpage.jsp" class="btn btn-primary">목록</a>
 		<input type="submit" class="btn btn-primary pull-right" value="등록완료">
 	</form>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import controller.Emp_Controller;
 import dao.emp.EmpDao;
+import resources.mapper.updateListMapper;
 
 @Service("EmpLogic")
 public class EmpLogic {
@@ -26,11 +27,15 @@ public class EmpLogic {
 		return ed.selectEmpList();
 	}
 	
-	public List<Map<String, String>> empViewDao(String empno) {		
-		return ed.empView(empno);	
+	public List<Map<String, String>> empViewDao(String emp_number) {		
+		return ed.empView(emp_number);	
+	}
+
+	public List<Map<String, String>> empUpdDao(HashMap<String, String> empUpd) {		
+		return ed.empUpd(empUpd);	
 	}
 	
-	public List<Map<String, String>> empDelDao(String empno) {		
-		return ed.empDel(empno);	
+	public List<Map<String, String>> empDelDao(String emp_number) {		
+		return ed.empDel(emp_number);	
 	}
 }

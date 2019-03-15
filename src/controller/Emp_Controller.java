@@ -35,14 +35,22 @@ public class Emp_Controller {
 	}
 	
 	@RequestMapping("/view")
-	public String viewEmp(Model model, @RequestParam(value="empno", defaultValue="0") String empno) {
-		model.addAttribute("list", el.empViewDao(empno));
+	public String viewEmp(Model model, @RequestParam(value="emp_number", defaultValue="0") String emp_number) {
+		List<Map<String, String>> tmp = el.empViewDao(emp_number);
+		System.out.println(tmp);
+		model.addAttribute("list", tmp);
 		return "emp/emp_view";
 	}
 	
+	@RequestMapping("/update")
+	public String updEmp(Model model, @RequestParam HashMap<String,String> empUpd) {
+		model.addAttribute("list", el.empUpdDao(empUpd));	
+		return "emp/emp_mainpage";
+	}	
+	
 	@RequestMapping("/delete")
-	public String delEmp(Model model, @RequestParam(value="empno", defaultValue="0") String empno) {
-		model.addAttribute("list", el.empDelDao(empno));	
+	public String delEmp(Model model, @RequestParam(value="emp_number", defaultValue="0") String emp_number) {
+		model.addAttribute("list", el.empDelDao(emp_number));	
 		return "emp/emp_mainpage";
 
 	}

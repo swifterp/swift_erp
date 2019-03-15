@@ -3,6 +3,6 @@
 
 <mapper namespace="resources.mapper.insertListMapper">
 	<insert id="empAdd" parameterType="HashMap">		
-        insert into employee(empno,emp_name,emp_email) values (#{empno, jdbcType=VARCHAR},#{emp_name, jdbcType=VARCHAR}, #{emp_email, jdbcType=VARCHAR})
+        insert into employee(emp_number,emp_name,emp_email) values (#{emp_number, jdbcType=VARCHAR},#{emp_name, jdbcType=VARCHAR}, #{emp_email, jdbcType=VARCHAR})
 	</insert>
 </mapper>

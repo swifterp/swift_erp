@@ -3,6 +3,6 @@
 
 <mapper namespace="resources.mapper.deleteListMapper">
 	<delete id="getEmpDel" parameterType="String">		
-        delete from employee where empno = #{empno}
+        delete from employee where emp_number = #{emp_number}
     </delete>
 </mapper>
