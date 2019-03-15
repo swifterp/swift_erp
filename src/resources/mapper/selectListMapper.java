@@ -6,11 +6,11 @@ import java.util.Map;
 public interface selectListMapper {
 
 	public List<Map<String, String>> getEmpList();
+	
 	public List<Map<String, String>> getEmpView(String emp_number);
 	
 	public List<Map<String, String>> getAllowanceList();
 
-	
 	public List<Map<String, String>> getDraftList();
 	
 	public List<Map<String, String>> getDraftDetailList(Integer draft_num);
@@ -58,9 +58,7 @@ public interface selectListMapper {
 	public List<Map<String, String>> getMonthlyempList(String selectedDate);
 
 	public List<Map<String, String>> getDailyworkList(String selectedDate);
-
-
 	
-	public List<Map<String, String>> getAttendLow(Integer attendno); // 근태번호로 근태정보 조회함
+	public List<Map<String, String>> getAttendLow(Integer attendno); 
 
 }

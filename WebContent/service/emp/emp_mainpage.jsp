@@ -46,6 +46,7 @@
 		<%
 			List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
 			if(lst != null){
+				out.print(lst.size());
 				for(int i=0;i<lst.size();i++){
 		%>
 		<tr>
@@ -66,6 +67,6 @@
 	 	%>
     </tbody>
 </table>
-<input type="button" onclick="javascript:goEmpAdd()" value="사원등록">
+<input type="button" onclick="javascript:goEmpAdd()" value="사원등록" />
 </body>
 </html>

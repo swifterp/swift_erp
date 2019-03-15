@@ -23,7 +23,9 @@ public class Emp_Controller {
 
 	@RequestMapping("/read")
 	public String readEmp(Model model) {
+
 		model.addAttribute("list", el.callEmpListDao());
+		
 		return "emp/emp_mainpage";
 	}
 

@@ -50,13 +50,59 @@ $(function() {
 					<td>사원번호</td>
 					<td>사원명</td>
 					<td>이메일</td>
+					<td>주민등록번호</td>
+					<td>전화번호</td>
+				</tr>
+				<tr>
+					<td>모바일</td>
+					<td>우편번호</td>
+					<td>상세주소</td>
+					<td>입사일자</td>
+					<td>퇴사일자</td>
+				</tr>
+				<tr>
+					<td>퇴사사유</td>
+					<td>부서</td>
+					<td>직급</td>
+					<td>직책</td>
+					<td>은행명</td>
+				</tr>
+				<tr>
+					<td>계좌번호</td>
+					<td>예금주</td>
+					<td>사진선택</td>
+					<td>첨부파일선택</td>
+					<td>비고</td>
 				</tr>
 			</thead>
 			<tbody>
 				<tr> 
 					<td><input type="text" name="emp_number" class="form-control" placeholder="사원번호"></td>
 					<td><input type="text" name="emp_name" class="form-control" placeholder="사원이름"></td>
-					<td><input type="email" name="emp_email" class="form-control" placeholder="사원이메일"></td>		
+					<td><input type="email" name="emp_email" class="form-control" placeholder="사원이메일"></td>
+					<td><input type="text" name="emp_resident_number" class="form-control" placeholder="주민등록번호"></td>		
+					<td><input type="text" name="emp_tel" class="form-control" placeholder="전화번호"></td>				
+				</tr>
+				<tr>
+					<td><input type="text" name="emp_mobile" class="form-control" placeholder="모바일"></td>
+					<td><input type="text" name="emp_address" class="form-control" placeholder="우편번호"></td>
+					<td><input type="text" name="emp_address_detail" class="form-control" placeholder="상세주소"></td>				
+					<td><input type="text" name="emp_join_date" class="form-control" placeholder="입사일자"></td>
+					<td><input type="text" name="emp_retire_date" class="form-control" placeholder="퇴사일자"></td>	
+				</tr>
+				<tr>
+					<td><input type="text" name="emp_retire_reason" class="form-control" placeholder="퇴사사유"></td>
+					<td><input type="text" name="deptno" class="form-control" placeholder="부서"></td>
+					<td><input type="text" name="rank_no" class="form-control" placeholder="직급"></td>				
+					<td><input type="text" name="duty_no" class="form-control" placeholder="직책"></td>
+					<td><input type="text" name="bank_no" class="form-control" placeholder="은행명"></td>	
+				</tr>
+				<tr>
+					<td><input type="text" name="emp_account_num" class="form-control" placeholder="계좌번호"></td>
+					<td><input type="text" name="emp_account_holder" class="form-control" placeholder="예금주"></td>
+					<td><input type="text" name="emp_profile" class="form-control" placeholder="사진선택"></td>				
+					<td><input type="text" name="emp_attach_file" class="form-control" placeholder="첨부파일선택"></td>
+					<td><input type="text" name="emp_etc" class="form-control" placeholder="비고"></td>	
 				</tr>
 			</tbody>
 		</table>
