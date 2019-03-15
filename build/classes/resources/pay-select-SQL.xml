@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="resources.mapper.selectListMapper">
+
+	<select id="getAllowanceList" resultType="hashmap">
+	
+		select allowance_no, allowance_name from allowanceItem
+	
+	</select>
+	
+	<select id="getDeductionList" resultType="hashmap">
+	
+		select deduction_no, deduction_name from deductionItem
+	
+	</select>
+	
+	<select id="getSalaryCalcList" resultType="hashmap">
+	
+		select salaryCalc_no, salaryCalc_name, salaryCalc_report, salaryCalc_total from salaryCalcList
+	
+	</select>
+	
+	<select id="getPersonalPayList" parameterType="String" resultType="hashmap">
+	
+		select allowance_name, personalPay_pay from personalPayList
+		<where>
+			personalPay_report = #{report}
+		</where>
+	
+	</select>
+	
+	<select id="getSpecsList" parameterType="Integer" resultType="hashmap">
+	
+		select specsList.specs_report, specsList.empno, sum(personalpaylist.personalpay_pay) as total from specsList, personalpaylist
+		<where>
+			specsList.empno = personalpaylist.empno
+			and specsList.specs_report = personalpaylist.personalpay_report
+			and specsList.empno = #{empno}
+		</where>
+		group by specsList.specs_report, specsList.empno
+
+	</select>
+	
+	<select id="getUnderyearList" resultType="hashmap">
+	
+		select jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, deb from underoneyear
+	
+	</select>
+	
+	<select id="getMonthlyempList" parameterType="String" resultType="hashmap">
+	
+		select monthly_date, monthly_join, monthly_leave, monthly_total from monthlyemp
+		<where>
+			monthly_date = #{selectedDate}
+		</where>
+
+	</select>
+
+</mapper>

@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import dao.pay.AllowanceItemDao;
 
-@Service("InsertAllowanceItem")
-public class InsertAllowanceItem {
+@Service("SelectAllowanceItem")
+public class SelectAllowanceItem {
 	
 	@Autowired
 	private AllowanceItemDao aid;

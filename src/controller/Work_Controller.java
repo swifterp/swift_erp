@@ -1,10 +1,14 @@
 package controller;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import logic.work.InsertBusinessLog;
 import logic.work.SelectBusinessLog;
 import logic.work.SelectMonthWork;
 import logic.work.SelectWorkEtc;
@@ -17,19 +21,7 @@ public class Work_Controller {
 
 	@Autowired
 	private SelectBusinessLog sbl;
-	
-	@Autowired
-	private SelectMonthWork smw;
-	
-	@Autowired
-	private SelectWorkState sws;
-	
-	@Autowired
-	private SelectWorkTime swt;
-	
-	@Autowired
-	private SelectWorkEtc swe;
-	
+
 	@RequestMapping("/selectBusinessLog")
 	public String readBusinessLog(Model model) {
 		
@@ -38,6 +30,21 @@ public class Work_Controller {
 		return "work/work_businesslog";
 	}
 	
+	@Autowired
+	private InsertBusinessLog ibl;
+	
+	@RequestMapping("/insertBusinessLog")
+	public String writeBusinessLog(Model model, @RequestParam HashMap<String, String> businesslog){
+		
+		model.addAttribute("list", ibl.writeBusinessLog(businesslog));
+		
+		return "work/work_businesslog";
+//		return "work/work_businesslogwrite";
+	}
+
+	@Autowired
+	private SelectMonthWork smw;
+	
 	@RequestMapping("/selectMonthWork")
 	public String readMonthWork(Model model) {
 		
@@ -45,7 +52,8 @@ public class Work_Controller {
 		
 		return "work/work_monthwork";
 	}
-	
+	@Autowired
+	private SelectWorkState sws;
 	@RequestMapping("/selectWorkState")
 	public String readWorkState(Model model) {
 		
@@ -53,7 +61,10 @@ public class Work_Controller {
 		
 		return "work/work_workstate";
 	}
+
 	
+	@Autowired
+	private SelectWorkTime swt;
 	@RequestMapping("/selectWorkTime")
 	public String readWorkTime(Model model) {
 		
@@ -61,7 +72,9 @@ public class Work_Controller {
 		
 		return "work/work_worktime";
 	}
-	
+
+	@Autowired
+	private SelectWorkEtc swe;
 	@RequestMapping("/selectWorkEtc")
 	public String readWorkEtc(Model model) {
 		

@@ -10,7 +10,17 @@
 
 ${list.get(0) }<p>
 ${list.get(1) }<p>
-${list.get(2) }<p>
+${list.get(2) }<p><p>
+
+
+<form action="../approval/selectDraftDetail">
+상세보기<p>
+기안서 번호 
+<input type="text" name="draft_num">
+<br>
+
+<input type="submit" value="검색">
+</form> 
 
 </body>
 </html>

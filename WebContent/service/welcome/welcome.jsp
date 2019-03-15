@@ -11,6 +11,7 @@
 	function goPay(){
 
 		location.href = "../pay/pay_mainpage.jsp";
+
 		
 	}
 	function goApproval(){
@@ -28,6 +29,7 @@
 	function goClient(){
 
 		location.href = "../client/client_mainpage.jsp";
+
 		
 	}
 

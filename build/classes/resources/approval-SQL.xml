@@ -5,8 +5,17 @@
 
 	<select id="getDraftList" resultType="hashmap">
 	
+		select DRAFT_NO, DRAFT_TITLE, DRAFT_DATE from draft
+	
+	</select>
+	
+	<select id="getDraftDetailList" parameterType="Integer" resultType="hashmap">
+	
 		select DRAFT_NO, DRAFT_TITLE, DRAFT_DATE, DRAFT_WRITER, DRAFT_REFERENCE ,DRAFT_OWNER
 				,DRAFT_STYLE, DRAFT_DIVISION, DRAFT_CONTENT  from draft
+			<where>
+			DRAFT_NO = #{draft_num}
+			</where>
 	
 	</select>
 	
