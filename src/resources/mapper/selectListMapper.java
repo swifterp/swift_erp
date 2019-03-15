@@ -13,4 +13,5 @@ public interface selectListMapper {
 	public List<Map<String, String>> getSpecsList(Integer empno);
 	public List<Map<String, String>> getUnderyearList();
 	public List<Map<String, String>> getMonthlyempList(String selectedDate);
+	public List<Map<String, String>> getDailyworkList(String selectedDate);
 }

@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import logic.pay.DeleteAllowanceItem;
+import logic.pay.InsertDailyworkList;
 import logic.pay.InsertUnderyearList;
 import logic.pay.SelectAllowanceItem;
+import logic.pay.SelectDailyworkList;
 import logic.pay.SelectDeductionItem;
 import logic.pay.SelectMonthlyempList;
 import logic.pay.SelectPersonalPayList;
@@ -118,4 +120,36 @@ public class Pay_Controller {
 		
 	}
 	
+	@Autowired
+	private SelectDailyworkList sdl;
+	
+	@RequestMapping("/dailyworkList")
+	public String pay_Dailywork(Model model, @RequestParam(value="year", defaultValue="error") String year
+											, @RequestParam(value="month", defaultValue="error") String month
+											, @RequestParam(value="day", defaultValue="error") String day) {
+		
+		model.addAttribute("list", sdl.callDailyworkListDao(year, month, day));
+		
+		return "pay/pay_dailyworkList";
+		
+	}
+	
+	@Autowired
+	private InsertDailyworkList idl;
+	
+	@RequestMapping("/dailyworkInsert")
+	public String pay_Dailywork(Model model, @RequestParam(value="year", defaultValue="error") String year
+											, @RequestParam(value="month", defaultValue="error") String month
+											, @RequestParam(value="day", defaultValue="error") String day
+											, @RequestParam(value="empno", defaultValue="error") String empno
+											, @RequestParam(value="night", defaultValue="error") String night
+											, @RequestParam(value="weekend", defaultValue="error") String weekend
+											, @RequestParam(value="annualAllowance", defaultValue="error") String annualAllowance) {
+		
+		model.addAttribute("list", idl.callDailyworkInsertDao(year, month, day, empno, night, weekend, annualAllowance));
+		
+		return "pay/pay_dailyworkList";
+		
+	}
+
 }

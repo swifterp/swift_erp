@@ -44,6 +44,13 @@
 		
 	}
 
+	function dailywork(){
+		
+		var d = new Date();
+		location.href = "../../pay/dailyworkList?year="+ d.getFullYear() +"&month="+ (parseInt(d.getMonth())+1).toString() +"&day="+d.getDate();
+		
+	}
+
 </script>
 
 </head>
@@ -58,8 +65,10 @@ This is pay page.
 <br>
 <input type="button" onclick="javascript:specs()" value="명세서 조회">
 <br>
-<input type="button" onclick="javascript:underyear()" value="1년미만자상여지급률등록">
+<input type="button" onclick="javascript:underyear()" value="1년미만자상여지급률 등록">
 <br>
 <input type="button" onclick="javascript:monthlyemp()" value="월별인원현황 조회">
+<br>
+<input type="button" onclick="javascript:dailywork()" value="일별근무기록 조회">
 </body>
 </html>

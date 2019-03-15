@@ -17,7 +17,7 @@ public class InsertUnderyearList {
 	
 	public List<Map<String, String>> callUnderyearDao(HashMap<String, Integer> percentage) {
 		
-		return ud.selectUnderyearList(percentage);
+		return ud.insertUnderyearList(percentage);
 		
 	}
 	

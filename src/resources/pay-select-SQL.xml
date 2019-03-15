@@ -56,5 +56,14 @@
 		</where>
 
 	</select>
+	
+	<select id="getDailyworkList" parameterType="String" resultType="hashmap">
+	
+		select to_char(dailywork_date, 'YYYY/MM/DD') as dailywork_date, empno, dailywork_night, dailywork_weekend, dailywork_annualAllowance from dailyworklist
+		<where>
+			to_char(dailywork_date, 'YYYY/MM/DD') = #{selectedDate}
+		</where>
+
+	</select>
 
 </mapper>

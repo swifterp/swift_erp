@@ -12,5 +12,12 @@
 		       #{oct, jdbcType=INTEGER}, #{nov, jdbcType=INTEGER}, #{deb, jdbcType=INTEGER})
 	
 	</insert>
+	
+	<insert id="setDailyworkList" parameterType="HashMap">
+	
+		insert into dailyworklist
+		values(99, #{empno, jdbcType=VARCHAR}, to_date(#{selectedDate, jdbcType=VARCHAR}, 'YYYY/MM/DD'), #{night, jdbcType=VARCHAR}, #{weekend, jdbcType=VARCHAR}, #{annualAllowance, jdbcType=VARCHAR})
+	
+	</insert>
 
 </mapper>

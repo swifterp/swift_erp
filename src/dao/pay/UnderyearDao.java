@@ -19,7 +19,7 @@ public class UnderyearDao {
 	@Autowired
 	private selectListMapper slm;
 	
-	public List<Map<String, String>> selectUnderyearList(HashMap<String, Integer> percentage) {
+	public List<Map<String, String>> insertUnderyearList(HashMap<String, Integer> percentage) {
 		
 		ulm.resetUnderyearList(percentage);
 		
