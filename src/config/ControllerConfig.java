@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 import controller.Approval_Controller;
 import controller.Attend_Controller;
-import controller.Customer_Controller;
+import controller.Client_Controller;
 import controller.Emp_Controller;
 import controller.Pay_Controller;
 import controller.Welcome_Controller;
@@ -30,8 +30,8 @@ public class ControllerConfig {
 	}
 	
 	@Bean
-	public Customer_Controller customer_Controller() {
-		return new Customer_Controller();
+	public Client_Controller customer_Controller() {
+		return new Client_Controller();
 	}
 	
 	@Bean

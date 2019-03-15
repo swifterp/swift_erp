@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="resources.mapper.updateListMapper">
+
+	<update id="resetAttendList" parameterType="HashMap">
+		update ATTEND_MANAGER_T set
+			empno = #{empno, jdbcType=INTEGER}, 
+			attend_date = to_date(#{attend_date, jdbcType=DATE},'YYYY-MM-DD'),
+			attend_code = #{attend_code, jdbcType=INTEGER}, 
+			attend_time = #{attend_time, jdbcType=INTEGER}, 
+			attend_m_etc = #{attend_m_etc, jdbcType=VARCHAR},
+			attend_open = #{attend_open, jdbcType=VARCHAR}, 
+			attend_close = #{attend_close, jdbcType=VARCHAR}
+			where attend_no = #{attend_no, jdbcType=INTEGER}
+	</update>
+
+</mapper>
