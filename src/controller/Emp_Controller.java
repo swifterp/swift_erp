@@ -36,8 +36,8 @@ public class Emp_Controller {
 	}
 	
 	@RequestMapping("/view")
-	public String viewEmp(Model model, @RequestParam(value="empno", defaultValue="0") String empno) {
-		model.addAttribute("list", el.empViewDao(empno));
+	public String viewEmp(Model model, @RequestParam(value="emp_number", defaultValue="0") String emp_number) {
+		model.addAttribute("list", el.empViewDao(emp_number));
 		return "emp/emp_view";
 	}
 	

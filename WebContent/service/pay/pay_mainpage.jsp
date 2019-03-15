@@ -7,34 +7,37 @@
 <title>pay_mainpage</title>
 
 <script type="text/javascript">
+
 	function allowance(){
 		location.href = "../../pay/allowance";		
 	}
+	
 	function deduction(){
 		location.href = "../../pay/deduction";	
 	}
+	
 	function payroll(){
 		location.href = "../../pay/payroll";	
 	}
+	
 	function specs(){
 		location.href = "./pay_specsSearch.jsp";
 	}
+	
 	function underyear(){
 		location.href = "./pay_underyearSearch.jsp";	
 	}
+	
 	function monthlyemp(){
-
 		location.href = "./pay_monthlyempSearch.jsp";
-		
 	}
 
 	function dailywork(){
-		
 		var d = new Date();
 		location.href = "../../pay/dailyworkList?year="+ d.getFullYear() +"&month="+ (parseInt(d.getMonth())+1).toString() +"&day="+d.getDate();
-		
 	}
 
+	function monthlyemp(){
 		location.href = "./pay_monthlyempSearch.jsp";	
 	}
 </script>

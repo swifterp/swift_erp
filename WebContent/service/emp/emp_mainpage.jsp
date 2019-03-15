@@ -49,7 +49,7 @@
 				for(int i=0;i<lst.size();i++){
 		%>
 		<tr>
-			<td><%= lst.get(i).get("EMP_NUMBER") %> </td>
+			<td><%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %> </td>
 			<td><%= lst.get(i).get("EMP_NAME") %></td>
 			<td><%= lst.get(i).get("EMP_RESIDENT_NUMBER") %></td>
 			<td><%= lst.get(i).get("DNAME") %></td>

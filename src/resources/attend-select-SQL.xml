@@ -30,11 +30,11 @@
 	
 	</select>
 	
-	<select id="getAttendLow" resultType="hashmap">
+	<select id="getAttendLow" parameterType="Integer" resultType="HashMap">
 		select to_char(attend_date, 'YYYY-MM-DD') as attend_date, empno, attend_time, attend_m_etc, 
 		attend_code, attend_no, attend_open, attend_close 
 		from attend_manager_T 
-		where attend_no = #{attend_no, jdbcType=INTEGER}
+		where attend_no = #{attendno, jdbcType=INTEGER}
 	</select>
 
 </mapper>

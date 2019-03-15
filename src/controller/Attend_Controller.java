@@ -35,6 +35,7 @@ public class Attend_Controller {
 	//attendno 받아서 조회한뒤 attend_attendupdate 페이지로 전송
 	@RequestMapping("/attend_manager_low")
 	public String attend_manager_low(Model model, @RequestParam Integer attendno) {
+
 		model.addAttribute("list", samt.callAttendManagerLowTDao(attendno));
 		return "attend/attend_attendupdate";
 	}

@@ -55,12 +55,12 @@
 <input type="button" onclick="javascript:attendadd()" value="등록">
 
 <form action="../attend/attenddelete">
-<input type="text" id="attend_no" name="attend_no" value="7">
+<input type="text" id="attend_no" name="attend_no">
 <input type="submit" value="삭제">
 </form>
 
 <form action="../attend/attend_manager_low">
-<input type="text" id="attendno" name="attendno" value="1">
+<input type="text" id="attendno" name="attendno">
 <input type="submit" value="수정">
 </form>
 

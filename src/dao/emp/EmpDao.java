@@ -18,22 +18,22 @@ import resources.mapper.updateListMapper;
 public class EmpDao {
 	@Autowired
 	private selectListMapper slm;
-	/*사원조회*/
+
 	public List<Map<String, String>> selectEmpList() {
 		return slm.getEmpList();
 	}
-	/*사원상세보기*/
+
 	public List<Map<String, String>> empView(String emp_number) {
 		return slm.getEmpView(emp_number);
 	}
-	/*사원등록*/
+
 	@Autowired
 	private insertListMapper ilm;
 	public List<Map<String, String>> empAdd(HashMap<String, Integer> empPlus) {
 		ilm.empAdd(empPlus);
 		return slm.getEmpList();
 	}
-	/*사원수정*/
+
 	@Autowired
 	private updateListMapper ulm;
 	public List<Map<String, String>> empUpd(HashMap<String, String> empUpd) {
@@ -41,7 +41,7 @@ public class EmpDao {
 		return slm.getEmpList();
 	}
 	
-	/*사원삭제*/
+
 	@Autowired
 	private deleteListMapper dlm;
 	public List<Map<String, String>> empDel(String emp_number) {
