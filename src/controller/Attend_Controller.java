@@ -13,6 +13,8 @@ import logic.attend.InsertAttendData;
 import logic.attend.SelectAttendCodeT;
 import logic.attend.SelectAttendManagerT;
 import logic.attend.SelectHolidayCodeT;
+import logic.attend.UpdateAttendLow;
+import resources.mapper.updateListMapper;
 
 @Controller
 @RequestMapping("/attend")
@@ -21,11 +23,27 @@ public class Attend_Controller {
 	@Autowired
 	private SelectAttendManagerT samt;
 	
+	//attend Manager 테이블 전체 조회하는 페이지 처리
 	@RequestMapping("/attend_manager")
 	public String attend_manager(Model model) {
 		
 		model.addAttribute("list", samt.callAttendManagerTDao());
 		
+		return "attend/attend_attendmanager";
+	}
+	
+	//attendno 받아서 조회한뒤 attend_attendupdate 페이지로 전송
+	@RequestMapping("/attend_manager_low")
+	public String attend_manager_low(Model model, @RequestParam Integer attendno) {
+		model.addAttribute("list", samt.callAttendManagerLowTDao(attendno));
+		return "attend/attend_attendupdate";
+	}
+	
+	@Autowired
+	private UpdateAttendLow ual;
+	@RequestMapping("/attendupdate")
+	public String attend_update(Model model, @RequestParam HashMap<String, String> attendInsert) {
+		model.addAttribute("list", ual.callAttendManagerLowup(attendInsert));
 		return "attend/attend_attendmanager";
 	}
 	
@@ -39,6 +57,7 @@ public class Attend_Controller {
 		
 		return "attend/attend_attendcode";
 	}
+
 
 	@Autowired
 	private SelectHolidayCodeT shct;
