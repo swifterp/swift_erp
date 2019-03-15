@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="resources.mapper.selectListMapper">
+	<select id="getEmpList" resultType="hashmap">		
+        select e.emp_number, e.emp_name, e.emp_email, e.emp_resident_number, d.dname, r.rank_name, e.emp_join_date 
+        from employee e, dept d, rank r
+        where d.deptno=e.deptno and r.rank_no=e.rank_no
+	</select>
+		<select id="getEmpView" parameterType="String" resultType="hashmap">		
+        select e.emp_number, e.emp_name, e.emp_email, e.emp_resident_number, d.dname, r.rank_name, e.emp_join_date 
+        from employee e, dept d, rank r
+        where d.deptno=e.deptno and r.rank_no=e.rank_no and e.emp_number = #{emp_number}
+	</select>
+</mapper>
