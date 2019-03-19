@@ -23,13 +23,10 @@ public class Emp_Controller {
 
 	@RequestMapping("/read")
 	public String readEmp(Model model) {
-
 		model.addAttribute("list", el.callEmpListDao());
-		
 		return "emp/emp_mainpage";
 	}
 
-	
 	@RequestMapping("/add")
 	public String addEmp(Model model
 			 ,@RequestParam HashMap<String, Integer> empPlus) {
@@ -55,5 +52,13 @@ public class Emp_Controller {
 		return "emp/emp_mainpage";
 
 	}
+	
+	@RequestMapping("/deptRead")
+	public String readDept(Model model) {
+		model.addAttribute("list", el.deptListDao());	
+		return "";
+	}
+	
+	
 
 }

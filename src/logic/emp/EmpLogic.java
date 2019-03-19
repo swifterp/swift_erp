@@ -38,4 +38,8 @@ public class EmpLogic {
 	public List<Map<String, String>> empDelDao(String emp_number) {		
 		return ed.empDel(emp_number);	
 	}
+	
+	public List<Map<String, String>> deptListDao() {		
+		return ed.selectDeptList();	
+	}
 }

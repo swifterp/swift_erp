@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>emp_mainpage</title>
+
 </head>
 <body>
 <h2>사원 목록</h2>

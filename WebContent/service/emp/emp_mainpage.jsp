@@ -6,6 +6,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>emp_mainpage</title>
+
 <script type="text/javascript">
 	<!--사원등록-->
 	function goEmpAdd(){
@@ -27,6 +28,9 @@
 </head>
 <body>
 <h2>사원 목록</h2>
+<input type="text" value="사원 또는 이름 검색">
+<button type="submit">검색</button>
+
 <table style="border:1px solid #ccc">
 	<thead>
 		<tr>

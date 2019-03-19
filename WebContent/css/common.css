@@ -69,7 +69,5 @@ nav.nav-left .depth2 li a {padding-left:30px;}
 
 .contents {margin:92px 0 50px 220px;}
 
-table {text-align: center; border: 1px solid #dddddd}
+table {text-align:left; border: 1px solid #dddddd}
 table th {background-color:#eeeeee; text-align: center;}
-
-.main_bg {background-color:red;}

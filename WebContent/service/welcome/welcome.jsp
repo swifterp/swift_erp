@@ -32,7 +32,6 @@
 	function goClient(){
 
 		location.href = "../client/client_mainpage.jsp";
-
 		
 	}
 
@@ -60,5 +59,9 @@ Welcome! This is Swift Corporation.<p>
 
 <input type="button" onclick="javascript:goAttend()" value="근태관리">
 
+
+<c:if test="${member !=null}">
+	<h2>${member.mem_name}님 환영합니다.</h2>
+</c:if>
 </body>
 </html>

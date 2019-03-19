@@ -1,10 +1,15 @@
 package resources.mapper;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public interface insertListMapper {
 	
-	public void empAdd(HashMap<String, Integer> empList);
+	public void memAdd(HashMap<String, String> memPlus);
+	
+	public void empAdd(HashMap<String, Integer> empPlus);
+	
 	public void setUnderyearList(HashMap<String, Integer> percentage);
 
 	public void setDailyworkList(HashMap<String, String> info);

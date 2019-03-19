@@ -26,6 +26,10 @@ public class EmpDao {
 	public List<Map<String, String>> empView(String emp_number) {
 		return slm.getEmpView(emp_number);
 	}
+	
+	public List<Map<String, String>> selectDeptList() {
+		return slm.getDeptList();
+	}
 
 	@Autowired
 	private insertListMapper ilm;

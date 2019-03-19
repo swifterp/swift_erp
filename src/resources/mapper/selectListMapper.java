@@ -1,13 +1,18 @@
 package resources.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public interface selectListMapper {
+	
+	public String login(HashMap<String, String> memLogin);
 
 	public List<Map<String, String>> getEmpList();
 	
 	public List<Map<String, String>> getEmpView(String emp_number);
+	
+	public List<Map<String, String>> getDeptList();
 	
 	public List<Map<String, String>> getAllowanceList();
 
