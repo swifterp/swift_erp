@@ -13,6 +13,17 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+<style>
+  table {
+    width: 100%;
+    border: 1px solid #444444;
+    border-collapse: collapse;
+    border-color: black;
+  }
+  th, td {
+    border: 1px solid #444444;
+  }
+</style>
 <title>SWIFT ERP</title>
 </head>
 <body>
@@ -90,6 +101,51 @@
 			</ul>
 		</nav>
 	</div>
-
+	<div style="width: 65%;"  class="contents">
+		<table class="table" style=" text-align:center;">
+			<thead >
+				<tr	style="background-color: #eee">
+					<td style="width: 50px;" >
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" id="jb-checkbox"
+								class="custom-control-input">
+						</div>
+					</td>
+					<td style="width: 150px"> 근태일자
+					</td>
+					<td style="width: 80px"> 사원
+					</td>
+					<td style="width: 200px"> 근태
+					</td>
+					<td style="width: 150px"> 휴가
+					</td>
+					<td style="width: 80px"> 근무시간
+					</td>
+					<td style="width: 80px"> 적요
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<button type="button" class="btn btn-primary pull-left" id="Delete">선택삭제</button>
+		<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#New_Update">근태상신</button>
+	</div>
 </body>
 </html>

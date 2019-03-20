@@ -90,6 +90,51 @@
 			</ul>
 		</nav>
 	</div>
-
+	<div style="width: 65%;"  class="contents">
+		<a style="width: 200px" class="btn btn-default" href="Attend_Search(All).jsp" >전체</a>
+		<a style="width: 200px" class="btn btn-primary" href="#" >결제중</a>
+		<a style="width: 200px" class="btn btn-default" href="Attend_Search(Complete).jsp" >결제완료</a>
+		<p/>
+		<table class="table" style=" text-align:center;">
+			<thead >
+				<tr	style="background-color: #eee">
+					<td style="width: 50px;" >
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" id="jb-checkbox"
+								class="custom-control-input">
+						</div>
+					</td>
+					<td> 근태번호
+					</td>
+					<td> 사원명
+					</td>
+					<td> 근태코드
+					</td>
+					<td> 휴가명
+					</td>
+					<td> 비고
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<button type="button" class="btn btn-primary pull-left" id="Delete">선택삭제</button>
+		<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#New_Update">근태상신</button>
+	</div>
 </body>
 </html>

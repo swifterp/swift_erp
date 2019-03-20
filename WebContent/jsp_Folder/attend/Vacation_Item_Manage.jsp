@@ -43,6 +43,7 @@
 	 	 });
 	});
 </script>
+
 <script>
 jQuery(function($){
 	$('#modal-New_Update').footable({
@@ -179,7 +180,7 @@ input {
 		</nav>
 	</div>
 		<div style="width: 65%;"  class="contents">
-		<table class="table" style=" text-align:center;">
+		<table id="Vacation_item_macage" class="table" style=" text-align:center;">
 			<thead >
 				<tr	style="background-color: #eee">
 					<td style="width: 50px;" >
@@ -251,39 +252,6 @@ input {
 							</tr>
 						</tbody>
 					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" id="Working_attitude" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-body">
-					<table id="modal-project" class="table table-striped" data-paging="true" data-filtering="true" data-sorting="true">
-						<thead class="thead-dark">
-							<tr>
-								<td scope="col">근태 코드</td>
-								<td scope="col">근태 코드 명</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>&nbsp</td>
-								<td>&nbsp</td>
-							</tr>
-							<tr>
-								<td>&nbsp</td>
-								<td>&nbsp</td>
-							</tr>
-							<tr>
-								<td>&nbsp</td>
-								<td>&nbsp</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
 				</div>
 			</div>
 		</div>

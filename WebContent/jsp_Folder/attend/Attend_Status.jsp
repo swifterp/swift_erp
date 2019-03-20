@@ -12,7 +12,28 @@
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+<style>
+  table {
+    width: 100%;
+    border: 1px solid #444444;
+    border-collapse: collapse;
+    border-color: black;
+  }
+  th, td {
+    border: 1px solid #444444;
+  }
+</style>
+<style>
+input {
+    vertical-align: middle;
+  }
+  input.img-button {
+    background: url("../../images/btn_print.png") no-repeat;
+    border: none;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+</style>
 <title>SWIFT ERP</title>
 </head>
 <body>
@@ -90,6 +111,73 @@
 			</ul>
 		</nav>
 	</div>
-
+	<hr >
+	<div style="width: 60%;"  class="contents">
+		<span style="float:right">
+			<input style="text-align: right;" type="button" class="img-button" data-toggle="modal" data-target="#copy">
+		</span>
+		<table class="table">
+			<thead>
+				<tr>
+					<td colspan="2" style="text-align: center; font-size: 24pt;">
+						근태현황
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align: left;">
+						회사명 : (주)SWIFT
+					</td>
+					<td style="text-align: right;">
+						<input type="text" style="width: 80px">
+						~
+						<input type="text" style="width: 80px">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table" style="margin: auto; text-align: center;">
+			<thead>
+				<tr>
+					<td style="width: 100px"> 전표일자
+					</td>
+					<td> 부서명
+					</td>
+					<td> 직급
+					</td>
+					<td> 사원번호
+					</td>
+					<td> 사원명
+					</td>
+					<td style="width: 120px"> 근태종류
+					</td>
+					<td style="width: 120px"> 근태시간
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br> 
+		<input type="submit" id="Work_Search" class="btn btn-primary pull-right"
+			value="검색">
+	</div>
 </body>
 </html>

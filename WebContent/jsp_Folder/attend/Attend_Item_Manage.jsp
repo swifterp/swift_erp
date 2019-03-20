@@ -59,17 +59,7 @@ input {
           vertical-align: middle;
         }
 </style>
-<style>
-  table {
-    width: 100%;
-    border: 1px solid #444444;
-    border-collapse: collapse;
-    border-color: black;
-  }
-  th, td {
-    border: 1px solid #444444;
-  }
-</style>
+
 <title>SWIFT ERP</title>
 </head>
 <body>
