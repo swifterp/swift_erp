@@ -23,12 +23,17 @@ public class EmpDao {
 		return slm.getEmpList();
 	}
 
-	public List<Map<String, String>> empView(String emp_number) {
+	public List<Map<String, String>> empView(Integer emp_number) {
 		return slm.getEmpView(emp_number);
 	}
 	
 	public List<Map<String, String>> selectDeptList() {
 		return slm.getDeptList();
+	}
+	
+	public List<Map<String, String>> empNumList() {
+		slm.getEmpNumList();
+		return slm.getEmpNumList();
 	}
 
 	@Autowired
@@ -36,6 +41,11 @@ public class EmpDao {
 	public List<Map<String, String>> empAdd(HashMap<String, Integer> empPlus) {
 		ilm.empAdd(empPlus);
 		return slm.getEmpList();
+	}
+	
+	public List<Map<String, String>> deptAdd(HashMap<String, String> deptPlus) {
+		ilm.deptAdd(deptPlus);
+		return slm.getDeptList();
 	}
 
 	@Autowired
@@ -45,10 +55,25 @@ public class EmpDao {
 		return slm.getEmpList();
 	}
 	
+	public List<Map<String, String>> empNumUpd(Integer emp_number) {
+		ulm.getEmpNumUpd(emp_number);
+		return slm.getEmpNumList();
+	}
 
+	public List<Map<String, String>> deptUpd(Integer deptno) {
+		ulm.getDeptUpd(deptno);
+		return slm.getEmpList();
+	}
+	
 	@Autowired
 	private deleteListMapper dlm;
-	public List<Map<String, String>> empDel(String emp_number) {
+	public int empDel(Integer emp_number) {
 		return dlm.getEmpDel(emp_number);
+	}
+
+	
+	public List<Map<String, String>> deptDel(Integer deptno) {
+		dlm.getDeptDel(deptno);
+		return slm.getDeptList();
 	}
 }

@@ -10,7 +10,9 @@ public interface selectListMapper {
 
 	public List<Map<String, String>> getEmpList();
 	
-	public List<Map<String, String>> getEmpView(String emp_number);
+	public List<Map<String, String>> getEmpView(Integer emp_number);
+	
+	public List<Map<String, String>> getEmpNumList();
 	
 	public List<Map<String, String>> getDeptList();
 	

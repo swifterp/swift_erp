@@ -2,7 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="resources.mapper.deleteListMapper">
-	<delete id="getEmpDel" parameterType="String">		
+	<delete id="getEmpDel" parameterType="Integer">		
         delete from employee where emp_number = #{emp_number}
+    </delete>
+    <delete id="getDeptDel" parameterType="Integer">		
+        delete from dept where deptno = #{deptno}
     </delete>
 </mapper>

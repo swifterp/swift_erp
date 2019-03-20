@@ -5,4 +5,7 @@
 	<insert id="empAdd" parameterType="HashMap">		
         insert into employee(empno,emp_number,emp_name,emp_email,emp_resident_number,emp_tel,emp_mobile,emp_addr1,emp_addr2,emp_join_date,emp_retire_date,emp_retire_reason,deptno,rank_no,duty_no,bank_no,emp_account_num,emp_account_holder,emp_profile,emp_attach_file,emp_etc) values (SEQ_EMPNO.NEXTVAL,#{emp_number, jdbcType=VARCHAR},#{emp_name, jdbcType=VARCHAR}, #{emp_email, jdbcType=VARCHAR}, #{emp_resident_number, jdbcType=VARCHAR}, #{emp_tel, jdbcType=VARCHAR}, #{emp_mobile, jdbcType=VARCHAR}, #{emp_addr1, jdbcType=VARCHAR}, #{emp_addr2, jdbcType=VARCHAR}, #{emp_join_date, jdbcType=VARCHAR}, #{emp_retire_date, jdbcType=VARCHAR}, #{emp_retire_reason, jdbcType=VARCHAR}, #{deptno, jdbcType=VARCHAR}, #{rank_no, jdbcType=VARCHAR}, #{duty_no, jdbcType=VARCHAR}, #{bank_no, jdbcType=VARCHAR}, #{emp_account_num, jdbcType=VARCHAR}, #{emp_account_holder, jdbcType=VARCHAR}, #{emp_profile, jdbcType=VARCHAR}, #{emp_attach_file, jdbcType=VARCHAR}, #{emp_etc, jdbcType=VARCHAR})
 	</insert>
+	<insert id="deptAdd" parameterType="HashMap">		
+        insert into dept(deptno,dname) values (#{deptno, jdbcType=INTEGER},#{dname, jdbcType=VARCHAR})
+	</insert>
 </mapper>

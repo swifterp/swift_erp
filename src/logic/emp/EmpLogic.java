@@ -27,7 +27,7 @@ public class EmpLogic {
 		return ed.selectEmpList();
 	}
 	
-	public List<Map<String, String>> empViewDao(String emp_number) {		
+	public List<Map<String, String>> empViewDao(Integer emp_number) {		
 		return ed.empView(emp_number);	
 	}
 
@@ -35,11 +35,31 @@ public class EmpLogic {
 		return ed.empUpd(empUpd);	
 	}
 	
-	public List<Map<String, String>> empDelDao(String emp_number) {		
+	public int empDelDao(Integer emp_number) {		
 		return ed.empDel(emp_number);	
 	}
 	
-	public List<Map<String, String>> deptListDao() {		
+	public List<Map<String, String>> empNumListDao() {		
+		return ed.empNumList();	
+	}
+	
+	public List<Map<String, String>> empNumUpdDao(Integer emp_number) {		
+		return ed.empNumUpd(emp_number);	
+	}
+	
+	public List<Map<String, String>> callDeptListDao() {		
 		return ed.selectDeptList();	
+	}
+	
+	public List<Map<String, String>> deptAddDao(HashMap<String, String> deptPlus) {		
+		return ed.deptAdd(deptPlus);
+	}
+	
+	public List<Map<String, String>> deptUpdDao(Integer deptno) {		
+		return ed.deptUpd(deptno);
+	}
+	
+	public List<Map<String, String>> deptDelDao(Integer deptno) {		
+		return ed.deptDel(deptno);
 	}
 }

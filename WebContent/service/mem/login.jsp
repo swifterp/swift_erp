@@ -30,14 +30,14 @@
 				  <label for="mem_pw" class="sr-only">Password</label>
 				  <input type="password" id="mem_pw" name="mem_pw" class="form-control input_pw" placeholder="비밀번호" required="">
 				  <c:if test="${msg == false}">
-		          <div style="color: red">
-		          		아이디 또는 비밀번호가 일치하지 않습니다.
-		          </div>
+			          <div style="color: red">
+			          		아이디 또는 비밀번호가 일치하지 않습니다.
+			          </div>
 		          </c:if>
 		          <c:if test="${msg == logout}">
-		          	<div style="color: red">
-		          		로그아웃되었습니다.
-		          	</div>
+			          <div style="color: red">
+			          		로그아웃되었습니다.
+			          </div>
 		          </c:if>
 				  <div class="checkbox">
 				    <label>

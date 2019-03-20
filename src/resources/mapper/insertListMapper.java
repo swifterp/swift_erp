@@ -10,6 +10,8 @@ public interface insertListMapper {
 	
 	public void empAdd(HashMap<String, Integer> empPlus);
 	
+	public void deptAdd(HashMap<String, String> deptPlus);
+	
 	public void setUnderyearList(HashMap<String, Integer> percentage);
 
 	public void setDailyworkList(HashMap<String, String> info);

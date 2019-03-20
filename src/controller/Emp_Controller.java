@@ -35,7 +35,7 @@ public class Emp_Controller {
 	}
 	
 	@RequestMapping("/view")
-	public String viewEmp(Model model, @RequestParam(value="emp_number", defaultValue="0") String emp_number) {
+	public String viewEmp(Model model, @RequestParam(value="emp_number", defaultValue="0") Integer emp_number) {
 		model.addAttribute("list", el.empViewDao(emp_number));
 		return "emp/emp_view";
 	}
@@ -47,16 +47,46 @@ public class Emp_Controller {
 	}	
 	
 	@RequestMapping("/delete")
-	public String delEmp(Model model, @RequestParam(value="empno", defaultValue="0") String empno) {
-		model.addAttribute("list", el.empDelDao(empno));	
+	public String delEmp(Model model, @RequestParam(value="emp_number", defaultValue="0") Integer emp_number) {
+		model.addAttribute("list", el.empDelDao(emp_number));	
 		return "emp/emp_mainpage";
 
 	}
 	
 	@RequestMapping("/deptRead")
 	public String readDept(Model model) {
-		model.addAttribute("list", el.deptListDao());	
-		return "";
+		model.addAttribute("list", el.callDeptListDao());	
+		return "emp/emp_deptList";
+	}
+	
+	@RequestMapping("/deptAdd")
+	public String addDept(Model model, @RequestParam HashMap<String,String> deptPlus) {
+		model.addAttribute("list", el.deptAddDao(deptPlus));	
+		return "emp/emp_deptList";
+	}
+	
+	@RequestMapping("/deptUpd")
+	public String updDept(Model model, @RequestParam(value="deptno", defaultValue="0") Integer deptno) {
+		model.addAttribute("list", el.deptUpdDao(deptno));	
+		return "emp/emp_deptList";
+	}
+	
+	@RequestMapping("/deptDel")
+	public String delDept(Model model, @RequestParam(value="deptno", defaultValue="0") Integer deptno) {
+		model.addAttribute("list", el.deptDelDao(deptno));	
+		return "emp/emp_deptList";
+	}
+	
+	@RequestMapping("/empNumRead")
+	public String readEmpNum(Model model) {
+		model.addAttribute("list", el.empNumListDao());	
+		return "emp/emp_empNumUpd";
+	}
+	
+	@RequestMapping("/empNumUpd")
+	public String updEmpNum(Model model, @RequestParam(value="emp_number", defaultValue="0") Integer emp_number) {
+		model.addAttribute("list", el.empNumUpdDao(emp_number));	
+		return "emp/emp_empNumUpd";
 	}
 	
 	

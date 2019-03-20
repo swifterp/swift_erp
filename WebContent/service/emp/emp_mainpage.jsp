@@ -1,56 +1,55 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, java.util.Map, java.util.HashMap" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>emp_mainpage</title>
 
 <script type="text/javascript">
-	<!--»ç¿øµî·Ï-->
+	<!--ì‚¬ì›ë“±ë¡-->
 	function goEmpAdd(){
 		location.href = "../service/emp/emp_add.jsp";	
 	}
-	<!--»ç¿ø»ó¼¼º¸±â-->
+	<!--ì‚¬ì›ìƒì„¸ë³´ê¸°-->
 	function empView(emp_number){
 		location.href = "../emp/view?emp_number="+emp_number;
 	}
-	<!--»ç¿ø¼öÁ¤-->
+	<!--ì‚¬ì›ìˆ˜ì •-->
 	function empUpd(emp_number){
 		location.href = "../emp/update?emp_number="+emp_number;	
 	}
-	<!--»ç¿ø»èÁ¦-->
+	<!--ì‚¬ì›ì‚­ì œ-->
 	function empDel(emp_number){
 		location.href = "../emp/delete?emp_number="+emp_number;	
 	}
 </script>
 </head>
 <body>
-<h2>»ç¿ø ¸ñ·Ï</h2>
-<input type="text" value="»ç¿ø ¶Ç´Â ÀÌ¸§ °Ë»ö">
-<button type="submit">°Ë»ö</button>
+<h2>ì‚¬ì› ëª©ë¡</h2>
+<input type="text" value="ì‚¬ì› ë˜ëŠ” ì´ë¦„ ê²€ìƒ‰">
+<button type="submit">ê²€ìƒ‰</button>
 
 <table style="border:1px solid #ccc">
 	<thead>
 		<tr>
-			<td>»ç¹ø</td>
-			<td>¼º¸í</td>
-			<td>ÁÖ¹Îµî·Ï¹øÈ£</td>
-			<td>ºÎ¼­</td>
-			<td>Á÷±Ş</td>
-			<td>ÀÔ»çÀÏÀÚ</td>
+			<td>ì‚¬ë²ˆ</td>
+			<td>ì„±ëª…</td>
+			<td>ì£¼ë¯¼ë“±ë¡ë²ˆí˜¸</td>
+			<td>ë¶€ì„œ</td>
+			<td>ì§ê¸‰</td>
+			<td>ì…ì‚¬ì¼ì</td>
 			<td>Email</td>
-			<td>ÀÎ¼â</td>
-			<td>»ó¼¼º¸±â</td>
-			<td>»èÁ¦</td>
+			<td>ì¸ì‡„</td>
+			<td>ìƒì„¸ë³´ê¸°</td>
+			<td>ì‚­ì œ</td>
 		</tr>
 	</thead>
     <tbody>
 		<%
 			List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
 			if(lst != null){
-				out.print(lst.size());
 				for(int i=0;i<lst.size();i++){
 		%>
 		<tr>
@@ -60,10 +59,10 @@
 			<td><%= lst.get(i).get("DNAME") %></td>
 			<td><%= lst.get(i).get("RANK_NAME") %></td>
 			<td><%= lst.get(i).get("EMP_JOIN_DATE") %></td>
-			<td><input type="button" value="ÀÌ¸ŞÀÏ"></td>
-			<td><input type="button" value="ÀÎ¼â"></td>
-			<td><input type="button" onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" value="»ó¼¼º¸±â"></td>
-			<td><input type="button" value="»èÁ¦" onclick="javascript:empDel(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)"></td>
+			<td><input type="button" value="ì´ë©”ì¼"></td>
+			<td><input type="button" value="ì¸ì‡„"></td>
+			<td><input type="button" onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" value="ìƒì„¸ë³´ê¸°"></td>
+			<td><input type="button" value="ì‚­ì œ" onclick="javascript:empDel(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)"></td>
 		</tr>
 		<%
 				}
@@ -71,6 +70,6 @@
 	 	%>
     </tbody>
 </table>
-<input type="button" onclick="javascript:goEmpAdd()" value="»ç¿øµî·Ï" />
+<input type="button" onclick="javascript:goEmpAdd()" value="ì‚¬ì›ë“±ë¡" />
 </body>
 </html>

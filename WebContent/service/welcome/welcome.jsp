@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Welcome Page</title>
 
 <script type="text/javascript">
@@ -11,6 +11,18 @@
 	function empList(){
 		location.href = "../../emp/read";	
 	}	
+
+	function empList(){
+		location.href = "../../emp/read";	
+	}	
+	
+	function empNumRead(){
+		location.href = "../../emp/empNumRead";	
+	}	
+
+	function deptList(){
+		location.href ="../../emp/deptRead";
+	}
 	
 	function goPay(){
 		location.href = "../pay/pay_mainpage.jsp";
@@ -44,24 +56,25 @@
 </head>
 <body>
 
-Welcome! This is Swift Corporation.<p>
+	Welcome! This is Swift Corporation.<p>
+	
+	<input type="button" onclick="javascript:empList()" value="ì¸ì‚¬ê´€ë¦¬">
+	
+	<input type="button" onclick="javascript:empNumRead()" value="ì‚¬ì›ë²ˆí˜¸ë³€ê²½">
+	
+	<input type="button" onclick="javascript:deptList()" value="ì¸ì‚¬ê´€ë¦¬_ë¶€ì„œë“±ë¡">
+	
+	<input type="button" onclick="javascript:goPay()" value="ê¸‰ì—¬ê´€ë¦¬">
+	
+	<p>
+	<input type="button" onclick="javascript:goApproval()" value="ê²°ì¬">
+	<p>
+	<input type="button" onclick="javascript:goWork()" value="ì—…ë¬´">
+	<p>
+	<input type="button" onclick="javascript:goClient()" value="ê±°ë˜ì²˜ì •ë³´ê´€ë¦¬">
+	
+	<input type="button" onclick="javascript:goAttend()" value="ê·¼íƒœê´€ë¦¬">
 
-<input type="button" onclick="javascript:empList()" value="ÀÎ»ç°ü¸®">
-
-<input type="button" onclick="javascript:goPay()" value="±Ş¿©°ü¸®">
-
-<p>
-<input type="button" onclick="javascript:goApproval()" value="°áÀç">
-<p>
-<input type="button" onclick="javascript:goWork()" value="¾÷¹«">
-<p>
-<input type="button" onclick="javascript:goClient()" value="°Å·¡Ã³Á¤º¸°ü¸®">
-
-<input type="button" onclick="javascript:goAttend()" value="±ÙÅÂ°ü¸®">
-
-
-<c:if test="${member !=null}">
-	<h2>${member.mem_name}´Ô È¯¿µÇÕ´Ï´Ù.</h2>
-</c:if>
+	<h2>${member}ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤.</h2>
 </body>
 </html>

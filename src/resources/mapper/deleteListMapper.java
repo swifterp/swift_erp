@@ -8,8 +8,10 @@ public interface deleteListMapper {
 	public int getList();
 	public int setList();
 
-	public List<Map<String, String>> getEmpDel(String emp_number);
+	public int getEmpDel(Integer emp_number);
 
+	public List<Map<String, String>> getDeptDel(Integer deptno);
+	
 	public Integer killAllowanceList(Integer allowance_no);
 	
 	public int setAttendDeleteData(Integer attend_no);

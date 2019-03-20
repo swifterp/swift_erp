@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,39 +9,39 @@
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
 <script type = "text/javascript" src ="../../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
-<!-- ÁÖ¼Òapi -->
+<!-- ì£¼ì†Œapi -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 <script>
 	function execPostCode() {
 		    new daum.Postcode({
 		        oncomplete: function(data) {
-		           // ÆË¾÷¿¡¼­ °Ë»ö°á°ú Ç×¸ñÀ» Å¬¸¯ÇßÀ»¶§ ½ÇÇàÇÒ ÄÚµå¸¦ ÀÛ¼ºÇÏ´Â ºÎºĞ.
+		           // íŒì—…ì—ì„œ ê²€ìƒ‰ê²°ê³¼ í•­ëª©ì„ í´ë¦­í–ˆì„ë•Œ ì‹¤í–‰í•  ì½”ë“œë¥¼ ì‘ì„±í•˜ëŠ” ë¶€ë¶„.
 		
-		           // µµ·Î¸í ÁÖ¼ÒÀÇ ³ëÃâ ±ÔÄ¢¿¡ µû¶ó ÁÖ¼Ò¸¦ Á¶ÇÕÇÑ´Ù.
-		           // ³»·Á¿À´Â º¯¼ö°¡ °ªÀÌ ¾ø´Â °æ¿ì¿£ °ø¹é('')°ªÀ» °¡Áö¹Ç·Î, ÀÌ¸¦ Âü°íÇÏ¿© ºĞ±â ÇÑ´Ù.
-		           var fullRoadAddr = data.roadAddress; // µµ·Î¸í ÁÖ¼Ò º¯¼ö
-		           var extraRoadAddr = ''; // µµ·Î¸í Á¶ÇÕÇü ÁÖ¼Ò º¯¼ö
+		           // ë„ë¡œëª… ì£¼ì†Œì˜ ë…¸ì¶œ ê·œì¹™ì— ë”°ë¼ ì£¼ì†Œë¥¼ ì¡°í•©í•œë‹¤.
+		           // ë‚´ë ¤ì˜¤ëŠ” ë³€ìˆ˜ê°€ ê°’ì´ ì—†ëŠ” ê²½ìš°ì—” ê³µë°±('')ê°’ì„ ê°€ì§€ë¯€ë¡œ, ì´ë¥¼ ì°¸ê³ í•˜ì—¬ ë¶„ê¸° í•œë‹¤.
+		           var fullRoadAddr = data.roadAddress; // ë„ë¡œëª… ì£¼ì†Œ ë³€ìˆ˜
+		           var extraRoadAddr = ''; // ë„ë¡œëª… ì¡°í•©í˜• ì£¼ì†Œ ë³€ìˆ˜
 		
-		           // ¹ıÁ¤µ¿¸íÀÌ ÀÖÀ» °æ¿ì Ãß°¡ÇÑ´Ù. (¹ıÁ¤¸®´Â Á¦¿Ü)
-		           // ¹ıÁ¤µ¿ÀÇ °æ¿ì ¸¶Áö¸· ¹®ÀÚ°¡ "µ¿/·Î/°¡"·Î ³¡³­´Ù.
-		           if(data.bname !== '' && /[µ¿|·Î|°¡]$/g.test(data.bname)){
+		           // ë²•ì •ë™ëª…ì´ ìˆì„ ê²½ìš° ì¶”ê°€í•œë‹¤. (ë²•ì •ë¦¬ëŠ” ì œì™¸)
+		           // ë²•ì •ë™ì˜ ê²½ìš° ë§ˆì§€ë§‰ ë¬¸ìê°€ "ë™/ë¡œ/ê°€"ë¡œ ëë‚œë‹¤.
+		           if(data.bname !== '' && /[ë™|ë¡œ|ê°€]$/g.test(data.bname)){
 		               extraRoadAddr += data.bname;
 		           }
-		           // °Ç¹°¸íÀÌ ÀÖ°í, °øµ¿ÁÖÅÃÀÏ °æ¿ì Ãß°¡ÇÑ´Ù.
+		           // ê±´ë¬¼ëª…ì´ ìˆê³ , ê³µë™ì£¼íƒì¼ ê²½ìš° ì¶”ê°€í•œë‹¤.
 		           if(data.buildingName !== '' && data.apartment === 'Y'){
 		              extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
 		           }
-		           // µµ·Î¸í, Áö¹ø Á¶ÇÕÇü ÁÖ¼Ò°¡ ÀÖÀ» °æ¿ì, °ıÈ£±îÁö Ãß°¡ÇÑ ÃÖÁ¾ ¹®ÀÚ¿­À» ¸¸µç´Ù.
+		           // ë„ë¡œëª…, ì§€ë²ˆ ì¡°í•©í˜• ì£¼ì†Œê°€ ìˆì„ ê²½ìš°, ê´„í˜¸ê¹Œì§€ ì¶”ê°€í•œ ìµœì¢… ë¬¸ìì—´ì„ ë§Œë“ ë‹¤.
 		           if(extraRoadAddr !== ''){
 		               extraRoadAddr = ' (' + extraRoadAddr + ')';
 		           }
-		           // µµ·Î¸í, Áö¹ø ÁÖ¼ÒÀÇ À¯¹«¿¡ µû¶ó ÇØ´ç Á¶ÇÕÇü ÁÖ¼Ò¸¦ Ãß°¡ÇÑ´Ù.
+		           // ë„ë¡œëª…, ì§€ë²ˆ ì£¼ì†Œì˜ ìœ ë¬´ì— ë”°ë¼ í•´ë‹¹ ì¡°í•©í˜• ì£¼ì†Œë¥¼ ì¶”ê°€í•œë‹¤.
 		           if(fullRoadAddr !== ''){
 		               fullRoadAddr += extraRoadAddr;
 		           }
 		
-		           // ¿ìÆí¹øÈ£¿Í ÁÖ¼Ò Á¤º¸¸¦ ÇØ´ç ÇÊµå¿¡ ³Ö´Â´Ù.
+		           // ìš°í¸ë²ˆí˜¸ì™€ ì£¼ì†Œ ì •ë³´ë¥¼ í•´ë‹¹ í•„ë“œì— ë„£ëŠ”ë‹¤.
 		           console.log(data.zonecode);
 		           console.log(fullRoadAddr);
 		           
@@ -49,7 +49,7 @@
 		           $("[name=mem_addr1]").val(data.zonecode);
 		           $("[name=mem_addr2]").val(fullRoadAddr);
 		           
-		           /* document.getElementById('signUpUserPostNo').value = data.zonecode; //5ÀÚ¸® »õ¿ìÆí¹øÈ£ »ç¿ë
+		           /* document.getElementById('signUpUserPostNo').value = data.zonecode; //5ìë¦¬ ìƒˆìš°í¸ë²ˆí˜¸ ì‚¬ìš©
 		           document.getElementById('signUpUserCompanyAddress').value = fullRoadAddr;
 		           document.getElementById('signUpUserCompanyAddressDetail').value = data.jibunAddress; */
 		       }
@@ -72,54 +72,54 @@
 				</colgroup>
 				<tbody>
 					<tr>
-						<td>ÀÌ¸ŞÀÏ *</td>
+						<td>ì´ë©”ì¼ *</td>
 						<td class="input-group">
-							<input type="text" name="mem_email_id" class="form-control" placeholder="ÀÌ¸ŞÀÏ¾ÆÀÌµğ">
+							<input type="text" name="mem_email_id" class="form-control" placeholder="ì´ë©”ì¼ì•„ì´ë””">
 							<span class="input-group-btn">
-								<button type="button" class="btn btn-info">¸ŞÀÏÀÎÁõ</button> 
+								<button type="button" class="btn btn-info">ë©”ì¼ì¸ì¦</button> 
 							</span>
 						</td>
 					</tr>
 					<tr>
-						<td rowspan="2">ºñ¹Ğ¹øÈ£ *</td>
-						<td><input type="text" name="mem_pw" class="form-control" placeholder="ºñ¹Ğ¹øÈ£"></td>
+						<td rowspan="2">ë¹„ë°€ë²ˆí˜¸ *</td>
+						<td><input type="text" name="mem_pw" class="form-control" placeholder="ë¹„ë°€ë²ˆí˜¸"></td>
 					</tr>
 					<tr>
-						<td><input type="text" name="mem_pw_check" class="form-control" placeholder="ºñ¹Ğ¹øÈ£ È®ÀÎ"></td>
+						<td><input type="text" name="mem_pw_check" class="form-control" placeholder="ë¹„ë°€ë²ˆí˜¸ í™•ì¸"></td>
 					</tr>
 					<tr>	
-						<td>ÀÌ¸§ *</td>
-						<td><input type="text" name="mem_name" class="form-control" placeholder="ÀÌ¸§"></td>
+						<td>ì´ë¦„ *</td>
+						<td><input type="text" name="mem_name" class="form-control" placeholder="ì´ë¦„"></td>
 					</tr>
 					<tr>
-						<td>ÈŞ´ëÆù¹øÈ£ *</td>
+						<td>íœ´ëŒ€í°ë²ˆí˜¸ *</td>
 						<td class="input-group">
-							<input type="text" name="mem_mobile" class="form-control" placeholder="-¾øÀÌ ÀÔ·Â">
+							<input type="text" name="mem_mobile" class="form-control" placeholder="-ì—†ì´ ì…ë ¥">
 							<span class="input-group-btn">
-								<button type="button" class="btn btn-info">ÀÎÁõ¹øÈ£ ¹Ş±â</button> 
+								<button type="button" class="btn btn-info">ì¸ì¦ë²ˆí˜¸ ë°›ê¸°</button> 
 							</span>
 						</td>
 					</tr>
 					<tr>	
-						<td rowspan="2">ÁÖ¼Ò</td>
+						<td rowspan="2">ì£¼ì†Œ</td>
 						<td class="input-group">
-							<input class="form-control" placeholder="¿ìÆí¹øÈ£" name="mem_addr1" id="mem_addr1" type="text" readonly="readonly" style="display:inline-block; width:" >
+							<input class="form-control" placeholder="ìš°í¸ë²ˆí˜¸" name="mem_addr1" id="mem_addr1" type="text" readonly="readonly" style="display:inline-block; width:" >
 							<span class="input-group-btn">
-								<button type="button" class="btn btn-info" onclick="execPostCode();">ÁÖ¼Ò°Ë»ö</button> 
+								<button type="button" class="btn btn-info" onclick="execPostCode();">ì£¼ì†Œê²€ìƒ‰</button> 
 							</span>
 						</td>
 					</tr>
 					<tr>
-						<td><input class="form-control" placeholder="µµ·Î¸í ÁÖ¼Ò" name="mem_addr2" id="mem_addr2" type="text" readonly="readonly" /></td>
+						<td><input class="form-control" placeholder="ë„ë¡œëª… ì£¼ì†Œ" name="mem_addr2" id="mem_addr2" type="text" readonly="readonly" /></td>
 					</tr>
 					<tr>
-						<td>ÀüÈ­</td>
-						<td><input type="text" name="mem_tel" class="form-control" placeholder="ÀüÈ­¹øÈ£"></td>
+						<td>ì „í™”</td>
+						<td><input type="text" name="mem_tel" class="form-control" placeholder="ì „í™”ë²ˆí˜¸"></td>
 					</tr>
 				</tbody>
 			</table>
-			<a href="login.jsp" class="btn btn-default">¸ñ·Ï</a>
-			<input type="submit" class="btn btn-primary" value="µî·Ï¿Ï·á">
+			<a href="login.jsp" class="btn btn-default">ëª©ë¡</a>
+			<input type="submit" class="btn btn-primary" value="ë“±ë¡ì™„ë£Œ">
 		</form>
 	</div>
 </body>

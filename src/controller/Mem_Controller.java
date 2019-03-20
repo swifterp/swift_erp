@@ -47,7 +47,7 @@ public class Mem_Controller {
     	String mem_name = ml.login(memLogin);
         if (mem_name == null) { // 로그인 실패
             session.setAttribute("member", null);
-            rttr.addFlashAttribute("msg",false);
+            rttr.addFlashAttribute("msg","false");
         } else { // 로그인 성공
             session.setAttribute("member", mem_name);
         }

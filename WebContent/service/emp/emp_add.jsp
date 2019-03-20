@@ -95,75 +95,7 @@
 
 </head>
 <body>
-	<!-- 네비게이션 -->
-	<nav class="navbar navbar-default" style="z-index: 1">
-		<!-- 네비게이션 헤더 -->
-		<div class="navbar-header">
-			<!-- 네비게이션 오른쪽 헤더 -->
-			<button type="button" class="navbar-toggle collapsed"
-			data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-			aria-expanded="false">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-			</button>
-			<!-- 네비게이션 왼쪽 헤더(로고) -->
-			<a class="navbar-brand" href="welcome.jsp"><img class="logo" src="../../images/logo.png"></a>
-		</div>
-		
-		<!-- 네비게이션 본메뉴 -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<!-- 네비게이션 본메뉴 엘리먼트 -->
-			<ul class="nav navbar-nav">
-				<li><a href="#">인사관리</a></li>
-				<li><a href="Pay.jsp">급여관리</a></li>		
-				<li><a href="Attend.jsp">근태관리</a></li>
-				<li><a href="Approval.jsp">결재관리</a></li>
-				<li><a href="Work_taskUpdate.jsp">업무관리</a></li>
-				<li><a href="Customer_List.jsp">고객관리</a></li>
-			</ul>
-				<!-- 드롭다운 기능 -->
-				<ul class="nav navbar-nav navbar-right">
-					<!-- 드롭다운 -->
-					<li class="dropdown">
-						<!-- 누르기 전 이미지 -->
-						<a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">회원관리<span class="caret"></span></a>
-					<!-- 눌렀을 때 -->
-					<ul class="dropdown-menu">
-							<li><a href="logoutAction.jsp">로그아웃</a></li>
-						</ul>
-					</li>
-				</ul>			
-		</div>
-	</nav>
 	<div class="container">
-		<!-- 왼쪽 네비게이션 -->
-		<nav class="nav-left">	
-			<ul class="bg-primary">
-				<li>
-					<a class="active" data-toggle="collapse" data-target="#group1"
-					aria-expanded="false" href="#">기본사항등록</a>
-					<ul class="collapse in depth2" id="group1">
-						<li><a class="active" href="Emp_memList.jsp">인사카드등록</a></li>
-						<li><a href="#">인사발령등록</a></li>		
-						<li><a href="#">사원번호변경</a></li>
-						<li><a href="#">부서등록</a></li>
-					</ul>
-				</li>
-				<li>
-					<a data-toggle="collapse" data-target="#group2"
-					aria-expanded="false" href="#">조회/인쇄</a>
-					<ul class="collapse depth2" id="group2">
-						<li><a href="#">각종증명서인쇄</a></li>
-						<li><a href="#">사원명부</a></li>
-						<li><a href="#">인원현황</a></li>
-						<li><a href="#">인사카드인쇄</a></li>
-					</ul>
-				</li>
-			</ul>
-		</nav>
 		<div class="contents">
 			<form action="../../emp/add">
 			<table class="table table-striped">
@@ -286,12 +218,14 @@
 					</tr>
 				</tbody>
 			</table>
-			<a  href="emp_mainpage.jsp" class="btn btn-primary">목록</a>
-			<input type="submit" class="btn btn-primary pull-right" value="등록완료">
+			<div class="btn_group">
+				<a href="emp_mainpage.jsp" class="btn btn-primary pull-left">목록</a>
+				<input type="submit" class="btn btn-primary pull-right" value="등록완료">
+			</div>
 		</form>
 			<!-- Button trigger modal -->
+		</div>
 	</div>
-
 	<!-- Modal -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">

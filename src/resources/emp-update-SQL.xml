@@ -6,4 +6,12 @@
         update employee set emp_number = #{emp_number, jdbcType=VARCHAR},emp_name = #{emp_name, jdbcType=VARCHAR},emp_email = #{emp_email, jdbcType=VARCHAR} 
    		where emp_number = #{emp_number_0}
     </update>
+    <update id="getEmpNumUpd" parameterType="String">		
+        update employee set emp_number = #{emp_number_1, jdbcType=VARCHAR}
+   		where emp_number = #{emp_number_0}
+    </update>
+    <update id="getDeptUpd" parameterType="Integer">		
+        update dept set dname = #{dname, jdbcType=VARCHAR}
+   		where deptno = #{deptno, jdbcType=INTEGER}
+    </update>
 </mapper>
