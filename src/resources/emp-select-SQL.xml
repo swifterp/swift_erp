@@ -7,6 +7,12 @@
         where d.deptno=e.deptno and r.rank_no=e.rank_no
         order by e.emp_number
 	</select>
+	<!-- 사원번호중복 확인 -->
+	<select id="empNumCheck" resultType="hashmap">
+	 select emp_number from employee
+	     where emp_number = #{emp_number}
+	</select>
+	
 	<select id="getEmpView" parameterType="Integer" resultType="hashmap">		
         select e.emp_number, e.emp_name, e.emp_email, e.emp_resident_number, d.dname, r.rank_name, e.emp_join_date 
         from employee e, dept d, rank r
@@ -19,6 +25,7 @@
 	<select id="getDeptList" resultType="hashmap">		
         select deptno,dname
         from dept
+        order by deptno
 	</select>
 		<select id="getDeptView" parameterType="Integer" resultType="hashmap">		
         select deptno

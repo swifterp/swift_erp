@@ -8,9 +8,9 @@ public interface deleteListMapper {
 	public int getList();
 	public int setList();
 
-	public Integer getEmpDel(Integer emp_number);
+	public int getEmpDel(Integer emp_number);
 
-	public Integer getDeptDel(Integer deptno);
+	public int getDeptDel(Integer deptno);
 	
 	public Integer killAllowanceList(Integer allowance_no);
 	

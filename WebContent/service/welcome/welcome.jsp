@@ -11,10 +11,6 @@
 	function empList(){
 		location.href = "../../emp/read";	
 	}	
-
-	function empList(){
-		location.href = "../../emp/read";	
-	}	
 	
 	function empNumRead(){
 		location.href = "../../emp/empNumRead";	

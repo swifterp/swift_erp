@@ -14,9 +14,11 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 <!-- 날짜선택 관련 -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="../../css/datepicker.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 <script>
 	$(function() {
 	  $( "#datepicker" ).datepicker({
@@ -29,7 +31,7 @@
 	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
 	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
 	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
-	  });
+		  });
 	});
 	$(function() {
 		  $( "#datepicker2" ).datepicker({
@@ -92,6 +94,11 @@
 		location.href = "../../emp/deptRead";	
 	}	
 </script> 
+	
+
+<style>
+	.essential {color:red;}
+</style>
 
 </head>
 <body>
@@ -111,9 +118,14 @@
 						<td rowspan="4">
 							<img style="width:140px; heigth:auto;" src="../../images/profile_0.png"/>
 						</td>	
-						<td>사원번호</td>
-						<td><input type="text" name="emp_number" class="form-control" placeholder="사원번호"></td>
-						<td>사원명</td>
+						<td>사원번호 <span class="essential">*</span></td>
+						<td class="input-group">
+							<input type="text" id="emp_number" name="emp_number" class="form-control" placeholder="사원번호">
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-info empNumCheck">중복확인</button> 
+							</span>
+						</td>
+						<td>사원명 <span class="essential">*</span></td>
 						<td><input type="text" name="emp_name" class="form-control" placeholder="사원이름"></td>
 					</tr>
 					<tr>	
@@ -162,14 +174,14 @@
 									<td><input type="text" name="emp_retire_reason" class="form-control" placeholder="퇴사사유"></td>
 								</tr>
 								<tr>
-									<td>부서</td>
+									<td>부서 <span class="essential">*</span></td>
 									<td class="input-group">
 										<input type="text" name="deptno" class="form-control" placeholder="부서">
 										<span class="input-group-btn">
 											 <button class="btn btn-default" type="button" data-toggle="modal" data-target="#exampleModal">Go!</button>
 										</span>
 									</td>
-									<td>직급</td>
+									<td>직급 <span class="essential">*</span></td>
 									<td class="input-group">
 										<input type="text" name="rank_no" class="form-control" placeholder="직급">
 										<span class="input-group-btn">
@@ -220,7 +232,7 @@
 			</table>
 			<div class="btn_group">
 				<a href="emp_mainpage.jsp" class="btn btn-primary pull-left">목록</a>
-				<input type="submit" class="btn btn-primary pull-right" value="등록완료">
+				<input type="submit" id="submit" class="btn btn-primary pull-right" value="등록완료" disabled="disabled">
 			</div>
 		</form>
 			<!-- Button trigger modal -->
@@ -269,5 +281,38 @@
     		</div>
 		</div>
 	</div>
+	<script> 
+		$(".empNumCheck").click(function(){
+		 var query = {emp_number : $("#emp_number").val()};
+		 
+		 $.ajax({
+		  url : "../../emp/empNumCheck",
+		  type : "post",
+		  data : query,
+		  success : function(data) {
+		  
+		   if(data == 1) {
+		    $(".result .msg").text("사용 불가");
+		    $(".result .msg").attr("style", "color:#f00"); 
+
+		    $("#submit").attr("disabled","disabled");    
+		   } else {
+		    $(".result .msg").text("사용 가능");
+		    $(".result .msg").attr("style", "color:#00f");
+
+		    $("#submit").removeAttr("disabled"); 
+		   }
+		  }
+		 });  // ajax 끝
+		});
+
+		$("#emp_number").keyup(function(){
+			 $(".result .msg").text("아이디를 확인해주십시오.");
+			 $(".result .msg").attr("style", "color:#000");
+			 
+			 $("#submit").attr("disabled", "disabled");
+			 
+			});
+	</script>
 </body>
 </html>

@@ -72,4 +72,6 @@ public interface selectListMapper {
 	
 	public List<Map<String, String>> getEmpData(String empInfo);
 
+	public List<Map<String, Integer>> empNumCheck(String emp_number);
+
 }

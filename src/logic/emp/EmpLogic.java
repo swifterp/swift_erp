@@ -35,7 +35,7 @@ public class EmpLogic {
 		return ed.empUpd(empUpd);	
 	}
 	
-	public Integer empDelDao(Integer emp_number) {		
+	public int empDelDao(Integer emp_number) {		
 		return ed.empDel(emp_number);	
 	}
 	
@@ -63,11 +63,17 @@ public class EmpLogic {
 		return ed.deptUpd(deptUpd);
 	}
 	
-	public List<Map<String, String>> deptDelDao(Integer deptno) {		
-		return ed.selectDeptList();
+	public int deptDelDao(Integer deptno) {		
+		return ed.deptDel(deptno);
 	}
 	
 	public List<Map<String, String>> empInfoSearch(String empInfo){
 		return ed.selectEmpData(empInfo);
 	}
+
+	// 사원번호 중복확인
+	public List<Map<String, Integer>> empNumCheck(String emp_number) {
+		return ed.empNumCheck(emp_number);
+	}
+	
 }

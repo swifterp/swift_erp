@@ -4,16 +4,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import logic.emp.EmpLogic;
-import logic.pay.SelectPersonalPayList;
-import vo.empVO;
 
 @Controller
 @RequestMapping("/emp")
@@ -49,7 +50,7 @@ public class Emp_Controller {
 	@RequestMapping("/delete")
 	public String delEmp(Model model, @RequestParam(value="emp_number", defaultValue="0") Integer emp_number) {
 		model.addAttribute("list", el.empDelDao(emp_number));	
-		return "emp/emp_mainpage";
+		return "emp/emp_empDelete";
 
 	}
 	
@@ -79,8 +80,8 @@ public class Emp_Controller {
 	
 	@RequestMapping("/deptDel")
 	public String delDept(Model model, @RequestParam(value="deptno", defaultValue="0") Integer deptno) {
-		model.addAttribute("list", el.callDeptListDao());	
-		return "emp/emp_deptList";
+		model.addAttribute("list", el.deptDelDao(deptno));	
+		return "emp/emp_deptDelete";
 	}
 	
 	@RequestMapping("/empNumRead")
@@ -102,6 +103,16 @@ public class Emp_Controller {
 		return "emp/emp_mainpage";
 	}
 	
-	
-
+	//사원번호 중복확인
+	@ResponseBody
+	@RequestMapping(value = "/idCheck", method = RequestMethod.POST)
+	public int empNumCheck(HttpServletRequest req) throws Exception {
+	 String emp_number = req.getParameter("emp_number");
+	 List<Map<String, Integer>> empNumCheck =  el.empNumCheck(emp_number); 
+	 int result = 0;
+	 if(empNumCheck != null) {
+	  result = 1;
+	 } 
+	 return result;
+	}
 }

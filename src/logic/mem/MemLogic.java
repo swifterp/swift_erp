@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import dao.mem.MemDao;
@@ -33,4 +34,6 @@ public class MemLogic {
     public void logout(HttpSession session) {
         session.invalidate();
     }
+    
+
 }
