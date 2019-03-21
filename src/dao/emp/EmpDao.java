@@ -79,4 +79,8 @@ public class EmpDao {
 		dlm.getDeptDel(deptno);
 		return slm.getDeptList();
 	}
+	
+	public List<Map<String, String>> selectEmpData(String empInfo){
+		return slm.getEmpData(empInfo);
+	}
 }

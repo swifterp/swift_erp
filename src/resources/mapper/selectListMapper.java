@@ -69,5 +69,7 @@ public interface selectListMapper {
 	public List<Map<String, String>> getDailyworkList(String selectedDate);
 	
 	public List<Map<String, String>> getAttendLow(Integer attendno); 
+	
+	public List<Map<String, String>> getEmpData(String empInfo);
 
 }

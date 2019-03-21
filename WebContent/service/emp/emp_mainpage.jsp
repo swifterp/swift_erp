@@ -28,8 +28,11 @@
 </head>
 <body>
 <h2>사원 목록</h2>
-<input type="text" value="사원 또는 이름 검색">
+
+<form action="../emp/empSearchNumName">
+<input type="text" id="empinfo" name="empinfo" value="성명 또는 부서">
 <button type="submit">검색</button>
+</form>
 
 <table style="border:1px solid #ccc">
 	<thead>

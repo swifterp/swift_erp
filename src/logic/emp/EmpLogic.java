@@ -66,4 +66,8 @@ public class EmpLogic {
 	public List<Map<String, String>> deptDelDao(Integer deptno) {		
 		return ed.selectDeptList();
 	}
+	
+	public List<Map<String, String>> empInfoSearch(String empInfo){
+		return ed.selectEmpData(empInfo);
+	}
 }

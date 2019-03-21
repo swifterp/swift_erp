@@ -95,6 +95,13 @@ public class Emp_Controller {
 		return "emp/emp_empNumUpd";
 	}
 	
+	@RequestMapping("/empSearchNumName")
+	public String selectEmpInfoSearch(Model model, @RequestParam String empinfo) {
+		System.out.println(empinfo);
+		model.addAttribute("list", el.empInfoSearch(empinfo));
+		return "emp/emp_mainpage";
+	}
+	
 	
 
 }
