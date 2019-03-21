@@ -10,7 +10,7 @@
         update employee set emp_number = #{emp_number_1, jdbcType=VARCHAR}
    		where emp_number = #{emp_number_0}
     </update>
-    <update id="getDeptUpd" parameterType="Integer">		
+    <update id="getDeptUpd" parameterType="HashMap">		
         update dept set dname = #{dname, jdbcType=VARCHAR}
    		where deptno = #{deptno, jdbcType=INTEGER}
     </update>

@@ -11,5 +11,5 @@ public interface updateListMapper {
 	
 	public void getEmpNumUpd(Integer emp_number);
 	
-	public void getDeptUpd(Integer deptno);
+	public void getDeptUpd(HashMap<String, String> deptno);
 }

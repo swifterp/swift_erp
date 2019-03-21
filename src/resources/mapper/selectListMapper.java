@@ -16,6 +16,8 @@ public interface selectListMapper {
 	
 	public List<Map<String, String>> getDeptList();
 	
+	public List<Map<String, Integer>> getDeptView(Integer deptno);
+	
 	public List<Map<String, String>> getAllowanceList();
 
 	public List<Map<String, String>> getDraftList();

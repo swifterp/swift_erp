@@ -59,6 +59,12 @@ public class Emp_Controller {
 		return "emp/emp_deptList";
 	}
 	
+	@RequestMapping("/deptView")
+	public String viewDept(Model model, @RequestParam(value="deptno", defaultValue="0") Integer deptno) {
+		model.addAttribute("list", el.callDeptViewDao(deptno));	
+		return "emp/emp_deptUpd";
+	}
+	
 	@RequestMapping("/deptAdd")
 	public String addDept(Model model, @RequestParam HashMap<String,String> deptPlus) {
 		model.addAttribute("list", el.deptAddDao(deptPlus));	
@@ -66,14 +72,14 @@ public class Emp_Controller {
 	}
 	
 	@RequestMapping("/deptUpd")
-	public String updDept(Model model, @RequestParam(value="deptno", defaultValue="0") Integer deptno) {
-		model.addAttribute("list", el.deptUpdDao(deptno));	
+	public String updDept(Model model, @RequestParam HashMap<String,String> deptUpd) {
+		model.addAttribute("list", el.deptUpdDao(deptUpd));	
 		return "emp/emp_deptList";
 	}
 	
 	@RequestMapping("/deptDel")
 	public String delDept(Model model, @RequestParam(value="deptno", defaultValue="0") Integer deptno) {
-		model.addAttribute("list", el.deptDelDao(deptno));	
+		model.addAttribute("list", el.callDeptListDao());	
 		return "emp/emp_deptList";
 	}
 	

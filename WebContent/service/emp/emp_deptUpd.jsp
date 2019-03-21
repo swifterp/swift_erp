@@ -13,11 +13,11 @@
 <body>
 	<div class="container">
 		<div class="contents">
-			<form action="../../emp/deptUpd">
+			<form action="../emp/deptUpd">
 				<table class="table">
 					<tr>
 						<th>부서코드</th>
-						<td><input type="text" name="deptno" value="${list.get(0).get("DEPTNO")}" class="form-control" readonly="readonly"></td>
+						<td><input type="text" name="deptno" value="${list.get(0).get("DEPTNO")}" class="form-control" readonly="readonly" style="background-color:#eee;"></td>
 					</tr>
 					<tr>
 						<th>부서명</th>
@@ -25,7 +25,7 @@
 					</tr>
 				</table>
 				<div class="btn_group">
-					<a class="btn btn-primary" href="emp_deptList.jsp">목록</a>
+					<a class="btn btn-primary" href="../emp/deptRead">목록</a>
 					<button class="btn btn-primary pull-right" type="submit">수정완료</button>
 				</div>
 			</form>

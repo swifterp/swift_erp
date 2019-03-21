@@ -20,4 +20,9 @@
         select deptno,dname
         from dept
 	</select>
+		<select id="getDeptView" parameterType="Integer" resultType="hashmap">		
+        select deptno
+        from dept
+        where deptno = #{deptno}
+	</select>
 </mapper>

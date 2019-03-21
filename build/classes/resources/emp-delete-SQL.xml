@@ -3,9 +3,9 @@
 
 <mapper namespace="resources.mapper.deleteListMapper">
 	<delete id="getEmpDel" parameterType="Integer">		
-        delete from employee where emp_number = #{emp_number}
+        delete from employee where emp_number = #{emp_number, jdbcType=INTEGER}
     </delete>
     <delete id="getDeptDel" parameterType="Integer">		
-        delete from dept where deptno = #{deptno}
+        delete from dept where deptno = #{deptno, jdbcType=INTEGER}
     </delete>
 </mapper>

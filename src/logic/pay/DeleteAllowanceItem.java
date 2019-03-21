@@ -12,7 +12,7 @@ public class DeleteAllowanceItem {
 	private DeleteAllowanceDao dad;
 	
 	public Integer callDeleteAllowanceDao(Integer allowance_no) {
-		
+
 		return dad.deleteAllowanceList(allowance_no);
 		
 	}
