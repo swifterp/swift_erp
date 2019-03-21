@@ -165,8 +165,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td>시간</td>
-					<td style="width: 120px">
+					<td style="vertical-align: middle;">시간</td>
+					<td style="width: 120px;">
 						<p id="realTimer2"></p> 
 						<script type="text/javascript">
 							var tag1 = document.getElementById("realTimer2");

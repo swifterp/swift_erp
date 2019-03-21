@@ -101,6 +101,9 @@ jQuery(function($){
 	});
 });
 </script>
+<script>
+	var result = 20px + 85%;
+</script>
 <style>
 input {
     vertical-align: middle;
@@ -111,6 +114,13 @@ input {
     width: 20px;
     height: 20px;
     cursor: pointer;
+    }
+  input.not_img {
+    border: none;
+    width: 20px;
+    height: 20px;
+    cursor: default;
+    opacity: 0;
 </style>
 <style>/* modal 중앙에 띄우기  */
   .modal {
@@ -354,8 +364,9 @@ input {
 				<tr>
 					<td>적요</td>
 					<td colspan="7">
+						<input class="not_img">
 						<input type="text" class="form-control input-sm"
-							   style="width:80%; height: 50%; display: inline-block">
+							   style="width:80%; height: 50%; display: inline-block;">
 					</td>
 				</tr>
 				<tr>
