@@ -79,8 +79,8 @@ public class Emp_Controller {
 	
 	@RequestMapping("/deptDel")
 	public String delDept(Model model, @RequestParam(value="deptno", defaultValue="0") Integer deptno) {
-		model.addAttribute("list", el.callDeptListDao());	
-		return "emp/emp_deptList";
+		model.addAttribute("list", el.deptDelDao(deptno));	
+		return "emp/emp_deptDelete";
 	}
 	
 	@RequestMapping("/empNumRead")

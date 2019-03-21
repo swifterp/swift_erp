@@ -35,7 +35,7 @@ public class EmpLogic {
 		return ed.empUpd(empUpd);	
 	}
 	
-	public Integer empDelDao(Integer emp_number) {		
+	public int empDelDao(Integer emp_number) {		
 		return ed.empDel(emp_number);	
 	}
 	
@@ -63,7 +63,7 @@ public class EmpLogic {
 		return ed.deptUpd(deptUpd);
 	}
 	
-	public List<Map<String, String>> deptDelDao(Integer deptno) {		
-		return ed.selectDeptList();
+	public int deptDelDao(Integer deptno) {		
+		return ed.deptDel(deptno);
 	}
 }

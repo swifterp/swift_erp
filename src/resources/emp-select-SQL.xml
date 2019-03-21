@@ -19,6 +19,7 @@
 	<select id="getDeptList" resultType="hashmap">		
         select deptno,dname
         from dept
+        order by deptno
 	</select>
 		<select id="getDeptView" parameterType="Integer" resultType="hashmap">		
         select deptno

@@ -70,13 +70,13 @@ public class EmpDao {
 	
 	@Autowired
 	private deleteListMapper dlm;
-	public Integer empDel(Integer emp_number) {
+	public int empDel(Integer emp_number) {
 		return dlm.getEmpDel(emp_number);
 	}
 
 
-	public List<Map<String, String>> deptDel(Integer deptno) {
+	public int deptDel(Integer deptno) {
 		dlm.getDeptDel(deptno);
-		return slm.getDeptList();
+		return dlm.getDeptDel(deptno);
 	}
 }

@@ -140,48 +140,5 @@
 			<!-- Button trigger modal -->
 		</div>
 	</div>
-	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-    		<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">부서선택</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<td>부서코드</td>
-								<td>부서명</td>
-							</tr>
-						</thead>
-					    <tbody>
-							<%
-								List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
-								if(lst != null){
-									out.print(lst.size());
-									for(int i=0;i<lst.size();i++){
-							%>
-							<tr>
-								<td><%= String.valueOf(lst.get(i).get("DEPTNO")) %> </td>
-								<td><%= lst.get(i).get("DNAME") %></td>
-							</tr>
-							<%
-									}
-								}
-						 	%>
-					    </tbody>
-					</table>
-	      		</div>
-		      	<div class="modal-footer">
-		        	<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-		        	<button type="button" class="btn btn-primary">선택</button>
-				</div>
-    		</div>
-		</div>
-	</div>
 </body>
 </html>

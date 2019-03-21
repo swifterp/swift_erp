@@ -16,32 +16,20 @@
 		<div class="contents">
 			<form action="../../emp/deptAdd">					
 				<table class="table">
-					<%
-						List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
-						if(lst != null){
-							out.print(lst.size());
-							for(int i=0;i<lst.size();i++){
-					%>
 					<tr>
 						<th>부서코드</th>
-						<td><input type="text" value="<%= String.valueOf(lst.get(i).get("DEPTNO")) %>" class="form-control"></td>
+						<td><input type="text" name="deptno" class="form-control"></td>
 					</tr>
 					<tr>
 						<th>부서명</th>
 						<td><input type="text" name="dname" class="form-control"></td>
 					</tr>
-					<%
-							}
-						}
-				 	%>
 				</table>
 				<div class="btn_group">
-					<a class="btn btn-primary" href="emp_deptList.jsp">목록</a>
+					<a class="btn btn-primary" href="../../emp/deptRead">목록</a>
 					<button class="btn btn-primary pull-right" type="submit">등록완료</button>
 				</div>
-
-			</form>
-			
+			</form>	
 		</div>
 	</div>
 </body>
