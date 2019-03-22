@@ -6,10 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>emp_mainpage</title>
-<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../../css/common.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
-<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/css/common.css">
+<script type = "text/javascript" src ="/js/jquery.min.js"></script>
+<script type = "text/javascript" src ="/js/bootstrap.js"></script>
 <script type="text/javascript">
 	<!--사원등록-->
 	function goEmpAdd(){

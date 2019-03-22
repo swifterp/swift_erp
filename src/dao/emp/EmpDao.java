@@ -57,11 +57,6 @@ public class EmpDao {
 		ulm.getEmpUpd(empUpd);
 		return slm.getEmpList();
 	}
-	
-	public List<Map<String, String>> empNumUpd(Integer emp_number) {
-		ulm.getEmpNumUpd(emp_number);
-		return slm.getEmpNumList();
-	}
 
 	public List<Map<String, String>> deptUpd(HashMap<String, String> deptUpd) {
 		ulm.getDeptUpd(deptUpd);
@@ -85,7 +80,7 @@ public class EmpDao {
 	}
 
 	//사원번호 중복확인
-	public List<Map<String, Integer>> empNumCheck(String emp_number) {
+	public List<Map<String, Integer>> empNumCheck(Integer emp_number) {
 		return slm.empNumCheck(emp_number);
 	}
 }

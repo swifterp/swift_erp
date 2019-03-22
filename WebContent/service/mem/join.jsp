@@ -72,7 +72,7 @@
 				</colgroup>
 				<tbody>
 					<tr>
-						<td>이메일 *</td>
+						<td>이메일 <span class="essential">*</span></td>
 						<td class="input-group">
 							<input type="text" name="mem_email_id" class="form-control" placeholder="이메일아이디">
 							<span class="input-group-btn">
@@ -81,23 +81,20 @@
 						</td>
 					</tr>
 					<tr>
-						<td rowspan="2">비밀번호 *</td>
+						<td rowspan="2">비밀번호 <span class="essential">*</span></td>
 						<td><input type="text" name="mem_pw" class="form-control" placeholder="비밀번호"></td>
 					</tr>
 					<tr>
 						<td><input type="text" name="mem_pw_check" class="form-control" placeholder="비밀번호 확인"></td>
 					</tr>
 					<tr>	
-						<td>이름 *</td>
+						<td>이름 <span class="essential">*</span></td>
 						<td><input type="text" name="mem_name" class="form-control" placeholder="이름"></td>
 					</tr>
 					<tr>
-						<td>휴대폰번호 *</td>
-						<td class="input-group">
+						<td>휴대폰번호 <span class="essential">*</span></td>
+						<td>
 							<input type="text" name="mem_mobile" class="form-control" placeholder="-없이 입력">
-							<span class="input-group-btn">
-								<button type="button" class="btn btn-info">인증번호 받기</button> 
-							</span>
 						</td>
 					</tr>
 					<tr>	

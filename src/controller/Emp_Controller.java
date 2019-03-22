@@ -90,12 +90,6 @@ public class Emp_Controller {
 		return "emp/emp_empNumUpd";
 	}
 	
-	@RequestMapping("/empNumUpd")
-	public String updEmpNum(Model model, @RequestParam(value="emp_number", defaultValue="0") Integer emp_number) {
-		model.addAttribute("list", el.empNumUpdDao(emp_number));	
-		return "emp/emp_empNumUpd";
-	}
-	
 	@RequestMapping("/empSearchNumName")
 	public String selectEmpInfoSearch(Model model, @RequestParam String empinfo) {
 		System.out.println(empinfo);
@@ -105,10 +99,11 @@ public class Emp_Controller {
 	
 	//사원번호 중복확인
 	@ResponseBody
-	@RequestMapping(value = "/idCheck", method = RequestMethod.POST)
+	@RequestMapping(value = "/empNumCheck", method = RequestMethod.POST)
 	public int empNumCheck(HttpServletRequest req) throws Exception {
 	 String emp_number = req.getParameter("emp_number");
-	 List<Map<String, Integer>> empNumCheck =  el.empNumCheck(emp_number); 
+	 int emp_num = Integer.parseInt(emp_number);
+	 List<Map<String, Integer>> empNumCheck =  el.empNumCheck(emp_num); 
 	 int result = 0;
 	 if(empNumCheck != null) {
 	  result = 1;

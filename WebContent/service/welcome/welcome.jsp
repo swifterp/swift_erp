@@ -11,10 +11,6 @@
 	function empList(){
 		location.href = "../../emp/read";	
 	}	
-	
-	function empNumRead(){
-		location.href = "../../emp/empNumRead";	
-	}	
 
 	function deptList(){
 		location.href ="../../emp/deptRead";
@@ -55,8 +51,6 @@
 	Welcome! This is Swift Corporation.<p>
 	
 	<input type="button" onclick="javascript:empList()" value="인사관리">
-	
-	<input type="button" onclick="javascript:empNumRead()" value="사원번호변경">
 	
 	<input type="button" onclick="javascript:deptList()" value="인사관리_부서등록">
 	

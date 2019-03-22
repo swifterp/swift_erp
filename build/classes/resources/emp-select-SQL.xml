@@ -8,9 +8,9 @@
         order by e.emp_number
 	</select>
 	<!-- 사원번호중복 확인 -->
-	<select id="empNumCheck" resultType="hashmap">
+	<select id="empNumCheck" parameterType="Integer" resultType="INTEGER">
 	 select emp_number from employee
-	     where emp_number = #{emp_number}
+	     where emp_number = #{emp_number, jdbcType=INTEGER}
 	</select>
 	
 	<select id="getEmpView" parameterType="Integer" resultType="hashmap">		

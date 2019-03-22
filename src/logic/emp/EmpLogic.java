@@ -43,10 +43,6 @@ public class EmpLogic {
 		return ed.empNumList();	
 	}
 	
-	public List<Map<String, String>> empNumUpdDao(Integer emp_number) {		
-		return ed.empNumUpd(emp_number);	
-	}
-	
 	public List<Map<String, String>> callDeptListDao() {		
 		return ed.selectDeptList();	
 	}
@@ -72,7 +68,7 @@ public class EmpLogic {
 	}
 
 	// 사원번호 중복확인
-	public List<Map<String, Integer>> empNumCheck(String emp_number) {
+	public List<Map<String, Integer>> empNumCheck(Integer emp_number) {
 		return ed.empNumCheck(emp_number);
 	}
 	
