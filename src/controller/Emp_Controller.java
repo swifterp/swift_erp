@@ -38,7 +38,7 @@ public class Emp_Controller {
 	@RequestMapping("/view")
 	public String viewEmp(Model model, @RequestParam(value="emp_number", defaultValue="0") Integer emp_number) {
 		model.addAttribute("list", el.empViewDao(emp_number));
-		return "emp/emp_view";
+		return "emp/emp_empView";
 	}
 	
 	@RequestMapping("/update")
@@ -63,7 +63,7 @@ public class Emp_Controller {
 	@RequestMapping("/deptView")
 	public String viewDept(Model model, @RequestParam(value="deptno", defaultValue="0") Integer deptno) {
 		model.addAttribute("list", el.callDeptViewDao(deptno));	
-		return "emp/emp_deptUpd";
+		return "emp/emp_deptView";
 	}
 	
 	@RequestMapping("/deptAdd")
@@ -97,17 +97,29 @@ public class Emp_Controller {
 		return "emp/emp_mainpage";
 	}
 	
-	//사원번호 중복확인
-	@ResponseBody
-	@RequestMapping(value = "/empNumCheck", method = RequestMethod.POST)
-	public int empNumCheck(HttpServletRequest req) throws Exception {
-	 String emp_number = req.getParameter("emp_number");
-	 int emp_num = Integer.parseInt(emp_number);
-	 List<Map<String, Integer>> empNumCheck =  el.empNumCheck(emp_num); 
-	 int result = 0;
-	 if(empNumCheck != null) {
-	  result = 1;
-	 } 
-	 return result;
+	@RequestMapping("/pop_deptRead")
+	public String pop_readDept(Model model) {
+		model.addAttribute("list", el.callDeptListDao());	
+		return "emp/pop_dept";
 	}
+	
+	@RequestMapping("/pop_rankRead")
+	public String pop_readRank(Model model) {
+		model.addAttribute("list", el.callRankListDao());	
+		return "emp/pop_rank";
+	}
+	
+	@RequestMapping("/pop_dutyRead")
+	public String pop_readDuty(Model model) {
+		model.addAttribute("list", el.callDutyListDao());	
+		return "emp/pop_duty";
+	}
+	
+	@RequestMapping("/pop_bankRead")
+	public String pop_readBank(Model model) {
+		model.addAttribute("list", el.callBankListDao());	
+		return "emp/pop_bank";
+	}
+	
+	
 }

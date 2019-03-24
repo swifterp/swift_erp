@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.List, java.util.Map, java.util.HashMap" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,16 +9,6 @@
 <link rel="stylesheet" type="text/css" href="../css/common.css">
 <script type = "text/javascript" src ="../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../js/bootstrap.js"></script>
-<script>
-	<!--부서수정-->
-	function deptView(deptno){
-		location.href = "../emp/deptView?deptno="+deptno;	
-	}
-	<!--부서삭제-->
-	function deptDel(deptno){
-		location.href = "../emp/deptDel?deptno="+deptno;	
-	}
-</script>
 </head>
 <body>
 	<!-- 네비게이션 -->
@@ -80,38 +69,23 @@
 			</ul>
 		</nav>
 		<div class="contents">
-			<form action="../emp/deptDel">
+			<form action="../emp/deptUpd">
 				<table class="table">
-					<thead>
-						<tr>
-							<th>부서코드</th>
-							<th>부서명</th>
-							<th>수정</th>
-							<th>삭제</th>
-						</tr>
-					</thead>
-					<%
-						List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
-						if(lst != null){
-							for(int i=0;i<lst.size();i++){
-					%>
-					<tbody>
-						<tr>
-							<td><%= String.valueOf(lst.get(i).get("DEPTNO")) %></td>
-							<td><%= lst.get(i).get("DNAME") %></td>
-							<td><a class="btn btn-default" onclick="javascript:deptView(<%= String.valueOf(lst.get(i).get("DEPTNO")) %>)">수정</a></td>
-							<td><a class="btn btn-default" onclick="javascript:deptDel(<%= String.valueOf(lst.get(i).get("DEPTNO")) %>)">삭제</a></td>
-						</tr>
-					</tbody>
-					<%
-							}
-						} 
-					%>
+					<tr>
+						<th>부서코드</th>
+						<td><input type="text" name="deptno" value="${list.get(0).get("DEPTNO")}" class="form-control" readonly="readonly" style="background-color:#eee;"></td>
+					</tr>
+					<tr>
+						<th>부서명</th>
+						<td><input type="text" name="dname" value="${list.get(0).get("DNAME")}" class="form-control"></td>
+					</tr>
 				</table>
 				<div class="btn_group">
-					<a class="btn btn-primary pull-right" href="../service/emp/emp_deptAdd.jsp">등록</a>
+					<a class="btn btn-default" href="../emp/deptRead">목록</a>
+					<button class="btn btn-primary pull-right" type="submit" >수정완료</button>
 				</div>
 			</form>
+			
 		</div>
 	</div>
 </body>

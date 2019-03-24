@@ -6,6 +6,8 @@ import java.util.Map;
 
 public interface selectListMapper {
 	
+	//employee
+	
 	public String login(HashMap<String, String> memLogin);
 
 	public List<Map<String, String>> getEmpList();
@@ -16,7 +18,15 @@ public interface selectListMapper {
 	
 	public List<Map<String, String>> getDeptList();
 	
-	public List<Map<String, Integer>> getDeptView(Integer deptno);
+	public List<Map<String, String>> getDeptView(Integer deptno);
+	
+	public List<Map<String, String>> getRankList();
+	
+	public List<Map<String, String>> getDutyList();
+	
+	public List<Map<String, String>> getBankList();
+	
+	//
 	
 	public List<Map<String, String>> getAllowanceList();
 
@@ -73,5 +83,7 @@ public interface selectListMapper {
 	public List<Map<String, String>> getEmpData(String empInfo);
 
 	public List<Map<String, Integer>> empNumCheck(Integer emp_number);
+
+	public int idCheck(String mem_email_id);
 
 }

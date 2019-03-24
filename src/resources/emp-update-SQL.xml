@@ -3,8 +3,26 @@
 
 <mapper namespace="resources.mapper.updateListMapper">
 	<update id="getEmpUpd" parameterType="HashMap">		
-        update employee set emp_number = #{emp_number, jdbcType=VARCHAR},emp_name = #{emp_name, jdbcType=VARCHAR},emp_email = #{emp_email, jdbcType=VARCHAR} 
-   		where emp_number = #{emp_number_0}
+        update employee set emp_name = #{emp_name, jdbcType=VARCHAR}
+      						,emp_email = #{emp_email, jdbcType=VARCHAR}
+        					,emp_resident_number = #{emp_resident_number, jdbcType=VARCHAR}
+							,emp_tel = #{emp_tel, jdbcType=VARCHAR}
+							,emp_mobile = #{emp_mobile, jdbcType=VARCHAR}
+							,emp_addr1 = #{emp_addr1, jdbcType=VARCHAR}
+							,emp_addr2 = #{emp_addr2, jdbcType=VARCHAR}
+							,emp_join_date = #{emp_join_date, jdbcType=VARCHAR}
+							,emp_retire_date = #{emp_retire_date, jdbcType=VARCHAR}
+							,emp_retire_reason = #{emp_retire_reason, jdbcType=VARCHAR}
+							,deptno = #{deptno, jdbcType=INTEGER}
+							,rank_no = #{rank_no, jdbcType=INTEGER}
+							,duty_no = #{duty_no, jdbcType=INTEGER}
+							,bank_no = #{bank_no, jdbcType=INTEGER}
+							,emp_account_num = #{emp_account_num, jdbcType=VARCHAR}
+							,emp_account_holder = #{emp_account_holder, jdbcType=VARCHAR}
+							,emp_profile = #{emp_profile, jdbcType=VARCHAR}
+							,emp_attach_file = #{emp_attach_file, jdbcType=VARCHAR}
+							,emp_etc = #{emp_etc, jdbcType=VARCHAR} 
+   		where emp_number = #{emp_number, jdbcType=INTEGER}
     </update>
     <update id="getDeptUpd" parameterType="HashMap">		
         update dept set dname = #{dname, jdbcType=VARCHAR}

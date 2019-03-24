@@ -31,7 +31,7 @@ public class EmpDao {
 		return slm.getDeptList();
 	}
 	
-	public List<Map<String, Integer>> deptView(Integer deptno) {
+	public List<Map<String, String>> deptView(Integer deptno) {
 		return slm.getDeptView(deptno);
 	}
 	public List<Map<String, String>> empNumList() {
@@ -79,8 +79,19 @@ public class EmpDao {
 		return slm.getEmpData(empInfo);
 	}
 
-	//사원번호 중복확인
 	public List<Map<String, Integer>> empNumCheck(Integer emp_number) {
 		return slm.empNumCheck(emp_number);
+	}
+	
+	public List<Map<String, String>> selectRankList() {
+		return slm.getRankList();
+	}
+	
+	public List<Map<String, String>> selectDutyList() {
+		return slm.getDutyList();
+	}
+	
+	public List<Map<String, String>> selectBankList() {
+		return slm.getBankList();
 	}
 }

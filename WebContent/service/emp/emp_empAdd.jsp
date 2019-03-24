@@ -12,52 +12,7 @@
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <!-- 주소api -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-
-<!-- 날짜선택 관련 -->
-<link rel="stylesheet" href="../../css/datepicker.css">
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 <script>
-	$(function() {
-	  $( "#datepicker" ).datepicker({
-	        showOn: "both", 
-	        buttonImage: "../../images/btn_calendar.png", 
-	        buttonImageOnly: true, 
-	        dateFormat: "yy/mm/dd",
-	       	changeMonth: true, 
-	        dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
-	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
-	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
-	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
-		  });
-	});
-	$(function() {
-	  $( "#datepicker2" ).datepicker({
-	        showOn: "both", 
-	        buttonImage: "../../images/btn_calendar.png", 
-	        buttonImageOnly: true, 
-	        dateFormat: "yy/mm/dd",
-	       	changeMonth: true, 
-	        dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
-	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
-	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
-	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
-	  });
-	});
-	$(function() {
-	  $( "#datepicker3" ).datepicker({
-	        showOn: "both", 
-	        buttonImage: "../../images/btn_calendar.png", 
-	        buttonImageOnly: true, 
-	        dateFormat: "yy/mm/dd",
-	       	changeMonth: true, 
-	        dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
-	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
-	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
-	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
-	  });
-	});
-	
 	function execPostCode() {
 	    new daum.Postcode({
 	        oncomplete: function(data) {
@@ -100,15 +55,166 @@
 	       }
 	    }).open();
 	}
-	
-	function deptList(){
-		location.href = "../../emp/deptRead";	
-	}	
-</script> 
+</script>
+<!-- 날짜선택 관련 -->
+<link rel="stylesheet" href="../../css/datepicker.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+	$(function() {
+	  $( "#datepicker" ).datepicker({
+	        showOn: "both", 
+	        buttonImage: "../../images/btn_calendar.png", 
+	        buttonImageOnly: true, 
+	        dateFormat: "yy/mm/dd",
+	       	changeMonth: true, 
+	        dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+		  });
+	});
+	$(function() {
+	  $( "#datepicker2" ).datepicker({
+	        showOn: "both", 
+	        buttonImage: "../../images/btn_calendar.png", 
+	        buttonImageOnly: true, 
+	        dateFormat: "yy/mm/dd",
+	       	changeMonth: true, 
+	        dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+	  });
+	});
+	$(function() {
+	  $( "#datepicker3" ).datepicker({
+	        showOn: "both", 
+	        buttonImage: "../../images/btn_calendar.png", 
+	        buttonImageOnly: true, 
+	        dateFormat: "yy/mm/dd",
+	       	changeMonth: true, 
+	        dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+	  });
+	});
+	$(function() {
+		  $( "#datepicker4" ).datepicker({
+		        showOn: "both", 
+		        buttonImage: "../../images/btn_calendar.png", 
+		        buttonImageOnly: true, 
+		        dateFormat: "yy/mm/dd",
+		       	changeMonth: true, 
+		        dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+		        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+		        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+		        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+		  });
+		});
+</script>
+<!-- 팝업창 -->
+<script>
+$(document).ready(function() {
+    $('#pop_dept').on("click", function() {	
+    	var url="../../emp/pop_deptRead";
+    	var windowW = 300;  // 창의 가로 길이
+        var windowH = 300;  // 창의 세로 길이
+        var left = Math.ceil((window.screen.width - windowW)/2);
+        var top = Math.ceil((window.screen.height - windowH)/2);
+  window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+    });
+});$(document).ready(function() {
+    $('#pop_rank').on("click", function() {	
+    	var url="../../emp/pop_rankRead";
+    	var windowW = 300;  // 창의 가로 길이
+        var windowH = 300;  // 창의 세로 길이
+        var left = Math.ceil((window.screen.width - windowW)/2);
+        var top = Math.ceil((window.screen.height - windowH)/2);
+  window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+    });
+});
+$(document).ready(function() {
+    $('#pop_duty').on("click", function() {	
+    	var url="../../emp/pop_dutyRead";
+    	var windowW = 300;  // 창의 가로 길이
+        var windowH = 300;  // 창의 세로 길이
+        var left = Math.ceil((window.screen.width - windowW)/2);
+        var top = Math.ceil((window.screen.height - windowH)/2);
+  window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+    });
+});
+$(document).ready(function() {
+    $('#pop_bank').on("click", function() {	
+    	var url="../../emp/pop_bankRead";
+    	var windowW = 300;  // 창의 가로 길이
+        var windowH = 300;  // 창의 세로 길이
+        var left = Math.ceil((window.screen.width - windowW)/2);
+        var top = Math.ceil((window.screen.height - windowH)/2);
+  window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+    });
+});
 
+</script>
 </head>
 <body>
+	<!-- 네비게이션 -->
+	<nav class="navbar navbar-default" style="z-index:9999">
+		<!-- 네비게이션 헤더 -->
+		<div class="navbar-header">
+			<!-- 네비게이션 왼쪽 헤더(로고) -->
+			<a class="navbar-brand" href="../welcome/welcome.jsp"><img class="logo" src="../../images/logo.png"></a>
+		</div>
+		
+		<!-- 네비게이션 본메뉴 -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<!-- 네비게이션 본메뉴 엘리먼트 -->
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="../../emp/read">인사관리</a></li>
+				<li><a href="Pay.jsp">급여관리</a></li>		
+				<li><a href="Attend.jsp">근태관리</a></li>
+				<li><a href="Approval.jsp">결재관리</a></li>
+				<li><a href="Work_taskUpdate.jsp">업무관리</a></li>
+				<li><a href="Customer_List.jsp">고객관리</a></li>
+			</ul>
+			<!-- 드롭다운 기능 -->
+			<ul class="nav navbar-nav navbar-right">
+				<!-- 드롭다운 -->
+				<li class="dropdown">
+					<!-- 누르기 전 이미지 -->
+					<a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">설정<span class="caret"></span></a>
+				<!-- 눌렀을 때 -->
+				<ul class="dropdown-menu">
+						<li><a href="login.jsp">로그아웃</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</nav>
 	<div class="container">
+		<!-- 왼쪽 네비게이션 -->
+		<nav class="nav-left">	
+			<ul class="bg-primary">
+				<li>
+					<a class="active" data-toggle="collapse" data-target="#group1"
+					aria-expanded="false" href="#">기본사항등록</a>
+					<ul class="collapse in depth2" id="group1">
+						<li><a class="active" href="../../emp/read">인사카드등록</a></li>
+						<li><a href="../../emp/deptRead">부서등록</a></li>
+					</ul>
+				</li>
+				<li>
+					<a data-toggle="collapse" data-target="#group2"
+					aria-expanded="false" href="#">조회/인쇄</a>
+					<ul class="collapse depth2" id="group2">
+						<li><a href="#">각종증명서인쇄</a></li>
+						<li><a href="#">사원명부</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
 		<div class="contents">
 			<ul class="nav nav-tabs">
 			  <li class="active"><a data-toggle="tab" href="#menu1">사원등록</a></li>
@@ -134,35 +240,35 @@
 								</td>	
 								<th>사원번호 <span class="essential">*</span></th>
 								<td class="input-group">
-									<input type="text" id="emp_number" name="emp_number" class="form-control" placeholder="사원번호">
+									<input type="text" id="emp_number" name="emp_number" class="form-control">
 									<span class="input-group-btn">
 										<button type="button" class="btn btn-info empNumCheck">중복확인</button> 
 									</span>
 								</td>
 								<th>사원명 <span class="essential">*</span></th>
-								<td><input type="text" name="emp_name" class="form-control" placeholder="사원이름"></td>
+								<td><input type="text" name="emp_name" class="form-control"></td>
 							</tr>
 							<tr>	
 								<th>주민번호</th>
-								<td><input type="text" name="emp_resident_number" class="form-control" placeholder="주민등록번호"></td>
+								<td><input type="text" name="emp_resident_number" class="form-control"></td>
 								<th>이메일</th>
-								<td><input type="email" name="emp_email" class="form-control" placeholder="사원이메일"></td>
+								<td><input type="email" name="emp_email" class="form-control"></td>
 							</tr>
 							<tr>	
 								<th>전화번호</th>
-								<td><input type="text" name="emp_tel" class="form-control" placeholder="전화번호"></td>
+								<td><input type="text" name="emp_tel" class="form-control"></td>
 								<th>모바일</th>
-								<td><input type="text" name="emp_mobile" class="form-control" placeholder="모바일"></td>
+								<td><input type="text" name="emp_mobile" class="form-control"></td>
 							</tr>
 							<tr>	
 								<th>주소</th>
 								<td class="input-group">
-									<input class="form-control" placeholder="우편번호" name="emp_addr1" id="emp_addr1" type="text" readonly="readonly" style="display:inline-block; width:" >
+									<input class="form-control" name="emp_addr1" id="emp_addr1" type="text" readonly="readonly" style="display:inline-block;" placeholder="우편번호" />
 									<span class="input-group-btn">
 										<button type="button" class="btn btn-default" onclick="execPostCode();">검색</button> 
 									</span>
 								</td>
-								<td colspan="2"><input class="form-control" placeholder="도로명 주소" name="emp_addr2" id="emp_addr2" type="text" readonly="readonly" /></td>
+								<td colspan="2"><input class="form-control" name="emp_addr2" id="emp_addr2" type="text" readonly="readonly" placeholder="도로명주소" /></td>
 							</tr>
 							<tr>
 								<table class="table table-striped">
@@ -178,33 +284,36 @@
 										<tr>
 											<th>입사일자</th>
 											<td>	
-												<input type="text" name="emp_join_date" class="form-control" id="datepicker" placeholder="입사일자" style="width:80%; display:inline-block; margin-right:5px;">
+												<input type="text" name="emp_join_date" class="form-control" id="datepicker" style="width:80%; display:inline-block; margin-right:5px;">
 											</td>
 											<th>퇴사일자</th>
 											<td>		
-												<input type="text" name="emp_retire_date" class="form-control" id="datepicker2" placeholder="퇴사일자" style="width:80%; display:inline-block; margin-right:5px;">
+												<input type="text" name="emp_retire_date" class="form-control" id="datepicker2" style="width:80%; display:inline-block; margin-right:5px;">
 											</td>
 											<th>퇴사사유</th>
-											<td><input type="text" name="emp_retire_reason" class="form-control" placeholder="퇴사사유"></td>
+											<td><input type="text" name="emp_retire_reason" class="form-control"></td>
 										</tr>
 										<tr>
 											<th>부서 <span class="essential">*</span></th>
-											<td class="input-group">
-												<input type="text" name="deptno" class="form-control" placeholder="부서">
+											<td id="pop_dept" class="input-group">
+												<input type="hidden" id="p_dept_no" name="deptno" class="form-control">
+												<input type="text" id="p_dept_name" class="form-control">
 												<span class="input-group-btn">
 													 <button class="btn btn-default" type="button" data-toggle="modal" data-target="#exampleModal">Go!</button>
 												</span>
 											</td>
 											<th>직급 <span class="essential">*</span></th>
-											<td class="input-group">
-												<input type="text" name="rank_no" class="form-control" placeholder="직급">
+											<td id="pop_rank" class="input-group">
+												<input type="hidden" id="p_rank_no" name="rank_no" class="form-control">
+												<input type="text" id="p_rank_name" class="form-control">
 												<span class="input-group-btn">
 													 <button class="btn btn-default" type="button">Go!</button>
 												</span>
 											</td>
 											<th>직책</th>
-											<td class="input-group">
-												<input type="text" name="duty_no" class="form-control" placeholder="직책">
+											<td id="pop_duty" class="input-group">
+												<input type="hidden" id="p_duty_no" name="duty_no" class="form-control">
+												<input type="text" id="p_duty_name" class="form-control">
 												<span class="input-group-btn">
 													 <button class="btn btn-default" type="button">Go!</button>
 												</span>
@@ -212,27 +321,28 @@
 										</tr>
 										<tr>
 											<th>은행명</th>
-											<td class="input-group">
-												<input type="text" name="bank_no" class="form-control" placeholder="은행명">
+											<td id="pop_bank" class="input-group">
+												<input type="hidden" id="p_bank_no" name="bank_no" class="form-control">
+												<input type="text" id="p_bank_name" class="form-control">
 												<span class="input-group-btn">
 													 <button class="btn btn-default" type="button">Go!</button>
 												</span>
 											</td>
 											<th>계좌번호</th>
-											<td><input type="text" name="emp_account_num" class="form-control" placeholder="계좌번호"></td>
+											<td><input type="text" name="emp_account_num" class="form-control"></td>
 											<th>예금주</th>
-											<td><input type="text" name="emp_account_holder" class="form-control" placeholder="예금주"></td>
+											<td><input type="text" name="emp_account_holder" class="form-control"></td>
 										</tr>
 										<tr>
 											<th>사진첨부</th>		
 											<td colspan="5">
-												<input type="file" name="emp_profile" class="form-control" placeholder="사진선택">
+												<input type="file" name="emp_profile" class="form-control">
 											</td>
 										</tr>
 										<tr>
 											<th>첨부파일</th>
 											<td colspan="5">
-												<input type="file" name="emp_attach_file" class="form-control" placeholder="첨부파일선택">
+												<input type="file" name="emp_attach_file" class="form-control">
 											</td>
 										</tr>
 										<tr>
@@ -244,14 +354,12 @@
 							</tr>
 						</tbody>
 					</table>
-				
 					<div class="btn_group">
-						<a href="emp_mainpage.jsp" class="btn btn-primary pull-left">목록</a>
+						<a  href="../../emp/read" class="btn btn-default pull-left">목록</a>
 						<input type="submit" id="submit" class="btn btn-primary pull-right" value="등록완료">
 					</div>
 				</form>
-			  </div>
-			  
+			  </div>	  
 			  <div id="menu2" class="tab-pane fade">
 			    <h3>급여지급사항등록</h3>
 			    <form action="../../emp/paySalaryAdd">
@@ -293,7 +401,7 @@
 							<td colspan="5"><input type="text" class="form-control" /></td>
 					</table>
 					<div class="btn_group">
-						<a href="emp_mainpage.jsp" class="btn btn-primary pull-left">목록</a>
+						<a href="../../emp/read" class="btn btn-default pull-left">목록</a>
 						<input type="submit" id="submit" class="btn btn-primary pull-right" value="등록완료">
 					</div>
 				</form>
@@ -366,7 +474,7 @@
 						</tr>
 					</table>
 					<div class="btn_group">
-						<a href="emp_mainpage.jsp" class="btn btn-primary pull-left">목록</a>
+						<a href="../../emp/read" class="btn btn-default pull-left">목록</a>
 						<input type="submit" id="submit" class="btn btn-primary pull-right" value="등록완료">
 					</div>
 				</form>

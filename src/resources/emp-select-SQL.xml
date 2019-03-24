@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="resources.mapper.selectListMapper">
+
+	
 	<select id="getEmpList" resultType="hashmap">		
         select e.emp_number, e.emp_name, e.emp_email, e.emp_resident_number, d.dname, r.rank_name, e.emp_join_date 
         from employee e, dept d, rank r
@@ -8,7 +10,7 @@
         order by e.emp_number
 	</select>
 	<!-- 사원번호중복 확인 -->
-	<select id="empNumCheck" parameterType="Integer" resultType="INTEGER">
+	<select id="empNumCheck" parameterType="Integer" resultType="Integer">
 	 select emp_number from employee
 	     where emp_number = #{emp_number, jdbcType=INTEGER}
 	</select>
@@ -28,7 +30,7 @@
         order by deptno
 	</select>
 		<select id="getDeptView" parameterType="Integer" resultType="hashmap">		
-        select deptno
+        select deptno, dname
         from dept
         where deptno = #{deptno}
 	</select>
@@ -39,5 +41,20 @@
         and r.rank_no=e.rank_no
         and (e.emp_name like '%'||#{empinfo, jdbcType=VARCHAR}||'%' or d.dname like '%'||#{empinfo, jdbcType=VARCHAR}||'%')
         order by e.emp_number
+	</select>
+	<select id="getRankList" resultType="hashmap">		
+        select rank_no,rank_name
+        from rank
+        order by rank_no
+	</select>
+	<select id="getDutyList" resultType="hashmap">		
+        select duty_no,duty_name
+        from duty
+        order by duty_no
+	</select>
+	<select id="getBankList" resultType="hashmap">		
+        select bank_no,bank_name
+        from bank
+        order by bank_no
 	</select>
 </mapper>

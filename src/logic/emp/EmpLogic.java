@@ -47,7 +47,7 @@ public class EmpLogic {
 		return ed.selectDeptList();	
 	}
 	
-	public List<Map<String,  Integer>> callDeptViewDao(Integer deptno) {		
+	public List<Map<String, String>> callDeptViewDao(Integer deptno) {		
 		return ed.deptView(deptno);	
 	}
 
@@ -67,9 +67,20 @@ public class EmpLogic {
 		return ed.selectEmpData(empInfo);
 	}
 
-	// 사원번호 중복확인
 	public List<Map<String, Integer>> empNumCheck(Integer emp_number) {
 		return ed.empNumCheck(emp_number);
+	}
+	
+	public List<Map<String, String>> callRankListDao() {		
+		return ed.selectRankList();	
+	}
+	
+	public List<Map<String, String>> callDutyListDao() {		
+		return ed.selectDutyList();	
+	}
+	
+	public List<Map<String, String>> callBankListDao() {		
+		return ed.selectBankList();	
 	}
 	
 }

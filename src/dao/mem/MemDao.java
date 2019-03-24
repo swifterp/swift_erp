@@ -32,12 +32,16 @@ public class MemDao {
 	
 	@Autowired
 	SqlSession sql;
-	//로그인
+	//濡쒓렇�씤
     public String login(HashMap<String, String> memLogin) {
         return slm.login(memLogin);
     }
-    //로그아웃
+    //濡쒓렇�븘�썐
     public void logout(HttpSession session) {
     }
+    
+	public int idCheck(String mem_email_id) {
+		return slm.idCheck(mem_email_id);
+	}
 
 }
