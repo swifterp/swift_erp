@@ -12,6 +12,12 @@
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+<style type="text/css"> /* 테이블 선에 색상주기  */
+  .line{border-bottom: 1px solid #AAA;}
+</style>
+
 <script>
 jQuery(function($){
 	$('#modal-New_Update').footable({
@@ -23,7 +29,7 @@ jQuery(function($){
 </script>
 <script>
 jQuery(function($){
-	$('#modal-Working_attitude').footable({
+	$('#modal-vacation').footable({
 		"useParentWidth": true,
 		"columns": $.get('columns.json'),
 		"rows": $.get('rows.json')
@@ -31,16 +37,18 @@ jQuery(function($){
 });
 </script>
 <style>
-input {
-    vertical-align: middle;
-  }
-  input.img-button {
-    background: url("../../images/btn_Searc.png" ) no-repeat;
+button {
+	vertical-align: middle;
+}
+	button.img-button_Searc {
+	background: url("../../images/btn_Searc.png" ) no-repeat;
     border: none;
     width: 20px;
     height: 20px;
     cursor: pointer;
+    }
 </style>
+
 <style>/* modal 중앙에 띄우기  */
   .modal {
           text-align: center;
@@ -138,6 +146,81 @@ input {
 		</nav>
 	</div>
 	<div style="width: 65%;"  class="contents">
+		<table class="table" style=" text-align: left;  background-color: #e0e0e0">
+			<thead>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="line" style="width:150px;">
+					근태코드
+					</td>
+					<td class="line">
+						<input type="text" class="form-control input-sm"
+							   style="width:85%; height: 50%; display: inline-block">
+					</td>
+				</tr>
+				<tr>
+					<td class="line">근태명칭</td>
+					<td class="line">
+						<input type="text" class="form-control input-sm"
+							   style="width:85%; height: 50%; display: inline-block">
+					</td>
+				</tr>
+				<tr>
+					<td class="line">
+						휴가코드
+					</td>
+					<td class="line">
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#vacation"></button>
+							</span>
+							<input type="text" class="form-control input-sm"
+								   style="width:85%; height: 50%; display: inline-block">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="line">
+						사용여부
+					</td>
+					<td class="line">
+						<div class="radio">
+							<label> <input type="radio" name="optionsRadios"
+								id="optionsRadios1" value="option1" checked>
+								전체
+							</label>
+							&nbsp;&nbsp;
+							<label> <input type="radio" name="optionsRadios"
+								id="optionsRadios2" value="option2" checked>
+								사용중
+							</label>
+							&nbsp;&nbsp;
+							<label> <input type="radio" name="optionsRadios"
+								id="optionsRadios3" value="option3" checked>
+								사용안함
+							</label>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="line">
+						적요
+					</td>
+					<td class="line">
+						<input type="text" class="form-control input-sm"
+							   style="width:85%; height: 50%; display: inline-block">
+					</td>
+				</tr>
+				<tr>
+					<td class="line"></td>
+					<td class="line" style="text-align: right;">
+						<input type="submit" class="btn btn-primary" value="조회">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	<hr style="border:solid 1px #888;"> <!-- 중간 가로선  -->
 		<table class="table" style=" text-align:center;">
 			<thead >
 				<tr	style="background-color: #eee">
@@ -196,7 +279,7 @@ input {
 							<tr>
 								<td style="vertical-align: middle;">휴가코드</td>
 								<td>
-								<input type="button" class="img-button" data-toggle="modal" data-target="#Working_attitude">
+								<input type="button" class="img-button" data-toggle="modal" data-target="#vacation">
 								<input type="text" class="form-control input-sm" style="width: 95%; display: inline-block"></td>
 							</tr>
 							<tr>
@@ -214,15 +297,15 @@ input {
 			</div>
 		</div>
 	</div>
-	<div class="modal fade" id="Working_attitude" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal fade" id="vacation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-body">
 					<table id="modal-project" class="table table-striped" data-paging="true" data-filtering="true" data-sorting="true">
 						<thead class="thead-dark">
 							<tr>
-								<td scope="col">근태 코드</td>
-								<td scope="col">근태 코드 명</td>
+								<td scope="col">휴가 코드</td>
+								<td scope="col">휴가 명</td>
 							</tr>
 						</thead>
 						<tbody>

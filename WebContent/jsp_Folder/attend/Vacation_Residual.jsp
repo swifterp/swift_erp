@@ -12,9 +12,22 @@
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<style >
 
+<style type="text/css"> /* 테이블 선에 색상주기  */
+  .line{border-bottom: 1px solid #AAA;}
 </style>
+
+<style> /* 테이블 선에 투명도 주기  */
+  .Transparency{border-right: none;
+   				border-left:none;
+				border-top:none;
+				border-bottom:none;
+  				}
+</style>
+<style>
+  .line2{border-bottom: 1px solid #fff;}
+</style>
+
 <script>
 jQuery(function($){
 	$('#modal-user_name').footable({
@@ -61,20 +74,17 @@ input {
     width: 20px;
     height: 20px;
     cursor: pointer;
-   }
-  input.img-button_Searc {
+</style>
+<style>
+button {
+    vertical-align: middle;
+  }
+  button.img-button_Searc {
     background: url("../../images/btn_Searc.png") no-repeat;
     border: none;
     width: 20px;
     height: 20px;
     cursor: pointer;
-   }
-  input.not_img{
-    border: none;
-    width: 20px;
-    height: 20px;
-    cursor: default;
-    opacity: 0;
    }
 </style>
 <style>/* modal 중앙에 띄우기  */
@@ -173,61 +183,76 @@ input {
 		</nav>
 	</div>
 	<div style="width: 65%;"  class="contents">
-		<table class="table" style=" text-align: left; background-color: #e0e0e0">
+		<table class="table" style=" text-align: left; background-color: #e0e0e0;">
 			<thead>
 			</thead>
 			<tbody>
 				<tr>
-					<td style="width:150px;">
+					<td  class="line" style="width:150px;">
 						휴가항목
 					</td>
-					<td colspan="2">
-						<input type="button" class="img-button_Searc" data-toggle="modal" data-target="#vacation">
-						<input type="text" class="form-control input-sm"
-							   style="width:85%; height: 50%; display: inline-block">
+					<td  class="line" >
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#vacation"></button>
+							</span>
+							<input type="text" class="form-control input-sm"
+							   	style="width:85%; height: 50%; display: inline-block">
+						</div>
 					</td>
 				</tr>
 				<tr>
-					<td>사원</td>
-					<td colspan="2">
-						<input type="button" class="img-button_Searc" data-toggle="modal" data-target="#user_name">
-						<input type="text" class="form-control input-sm"
-							   style="width:85%; height: 50%; display: inline-block">
+					<td class="line">사원</td>
+					<td  class="line" >
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#user_name"></button>
+								</span>
+							<input type="text" class="form-control input-sm"
+							 	  style="width:85%; height: 50%; display: inline-block">
+						</div>
 					</td>
 				</tr>
 				<tr>
-					<td>부서</td>
-					<td colspan="2">
-						<input type="button" class="img-button_Searc" data-toggle="modal" data-target="#dept_name">
-						<input type="text" class="form-control input-sm"
-							   style="width:85%; height: 50%; display: inline-block">
+					<td  class="line" >부서</td>
+					<td  class="line" >
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#dept_name"></button>
+							</span>
+							<input type="text" class="form-control input-sm"
+								   style="width:85%; height: 50%; display: inline-block">
+						</div>
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td  class="line">
 						프로젝트
 					</td>
-					<td colspan="2">
-						<input type="button" class="img-button_Searc" data-toggle="modal" data-target="#project">
-						<input type="text" class="form-control input-sm"
-							   style="width:85%; height: 50%; display: inline-block">
+					<td  class="line" >
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#project"></button>
+							</span>
+							<input type="text" class="form-control input-sm"
+								   style="width:85%; height: 50%; display: inline-block">
+						</div>
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td  class="line">
 						적요
 					</td>
-					<td colspan="2">
-						<input class="not_img">
+					<td  class="line" >
 						<input type="text" class="form-control input-sm"
 							   style=" width:85%; height: 50%; display: inline-block">
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td  class="line">
 						기타
 					</td>
-					<td colspan="2">
+					<td  class="line" >
 						<div class="custom-control custom-checkbox">
 							<input type="checkbox" id="jb-All_checkbox"
 								class="custom-control-input">
@@ -244,31 +269,30 @@ input {
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"></td>
-					<td style="width: 75px">
+					<td class="line" style="width: 75px" colspan="2">
 						<input type="submit" class="btn btn-primary pull-right" value="조회">
 					</td>
 				</tr>
 			</tbody>
 		</table>
-	<hr style="border:solid 1px black;">
+	<hr style="border:solid 1px #888;"> <!-- 중간 가로선  -->
 		<span style="float:right">
 			<input style="text-align: right;" type="button" class="img-button_print" data-toggle="modal" data-target="#copy">
 		</span>
-		<table class="table">
+		<table class="table Transparency">
 			<thead>
 				<tr>
-					<td colspan="2" style="text-align: center; font-size: 20pt;">
-						근태현황
+					<td  class="line2" colspan="2" style="text-align: center; font-size: 20pt;">
+						휴가잔여일수현황
 					</td>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody >
 				<tr>
-					<td style="text-align: left;">
+					<td class="line2" style="text-align: left;">
 						회사명 : (주)SWIFT
 					</td>
-					<td style="text-align: right;">
+					<td class="line2" style="text-align: right;">
 						<input type="text" style="width: 80px">
 						~
 						<input type="text" style="width: 80px">
@@ -315,8 +339,6 @@ input {
 			</tbody>
 		</table>
 		<br> 
-		<input type="submit" id="Work_Search" class="btn btn-primary pull-right"
-			value="검색">
 	</div>
 	<!-- 모달코드  -->
 	<div class="modal fade" id="user_name" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

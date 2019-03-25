@@ -13,17 +13,6 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<style>
-  table {
-    width: 100%;
-    border: 1px solid #444444;
-    border-collapse: collapse;
-    border-color: black;
-  }
-  th, td {
-    border: 1px solid #444444;
-  }
-</style>
 <title>SWIFT ERP</title>
 </head>
 <body>
@@ -102,6 +91,10 @@
 		</nav>
 	</div>
 	<div style="width: 65%;"  class="contents">
+		<div style="margin: auto;">
+			<a type="button" class="btn btn-primary" data-toggle="modal" data-target="#New_All_Update">일괄등록</a>
+		</div>
+		<p/>
 		<table class="table" style=" text-align:center;">
 			<thead >
 				<tr	style="background-color: #eee">

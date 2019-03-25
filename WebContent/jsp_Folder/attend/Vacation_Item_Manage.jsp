@@ -13,6 +13,11 @@
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<style type="text/css"> /* 테이블 선에 색상주기  */
+  .line{border-bottom: 1px solid #AAA;}
+</style>
+
 <script>
 	$(function() {
 		$("#datepicker").datepicker({
@@ -44,35 +49,19 @@
 	});
 </script>
 
-<script>
-jQuery(function($){
-	$('#modal-New_Update').footable({
-		"useParentWidth": true,
-		"columns": $.get('columns.json'),
-		"rows": $.get('rows.json')
-	});
-});
-</script>
-<script>
-jQuery(function($){
-	$('#modal-Working_attitude').footable({
-		"useParentWidth": true,
-		"columns": $.get('columns.json'),
-		"rows": $.get('rows.json')
-	});
-});
-</script>
 <style>
-input {
-    vertical-align: middle;
-  }
-  input.img-button {
-    background: url("../../images/btn_Searc.png" ) no-repeat;
+button {
+	vertical-align: middle;
+}
+	button.img-button_Searc {
+	background: url("../../images/btn_Searc.png" ) no-repeat;
     border: none;
     width: 20px;
     height: 20px;
     cursor: pointer;
+    }
 </style>
+
 <style>/* modal 중앙에 띄우기  */
   .modal {
           text-align: center;
@@ -91,17 +80,7 @@ input {
           vertical-align: middle;
         }
 </style>
-<style>
-  table {
-    width: 100%;
-    border: 1px solid #444444;
-    border-collapse: collapse;
-    border-color: black;
-  }
-  th, td {
-    border: 1px solid #444444;
-  }
-</style>
+
 <title>SWIFT ERP</title>
 </head>
 <body>
@@ -179,8 +158,78 @@ input {
 			</ul>
 		</nav>
 	</div>
-		<div style="width: 65%;"  class="contents">
-		<table id="Vacation_item_macage" class="table" style=" text-align:center;">
+	<div style="width: 65%;"  class="contents">
+		<table class="table" style=" text-align: left;  background-color: #e0e0e0">
+			<thead>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="line" style="width:150px;">
+						기준일자
+					</td>
+					<td class="line" style="text-align: left;">
+						<input type="text" id="datepicker" class="form-control input-sm"
+						style="width: 200px; height: 50%; display: inline-block">
+						&nbsp;~&nbsp;
+						<input type="text" id="datepicker2" class="form-control input-sm"
+						style="width: 200px; height: 50%; display: inline-block">
+					</td>
+				</tr>
+				<tr>
+					<td class="line">휴가코드</td>
+					<td class="line">
+							<input type="text" class="form-control input-sm"
+								   style="width:85%; height: 50%; display: inline-block">
+					</td>
+				</tr>
+				<tr>
+					<td class="line">휴가명</td>
+					<td class="line">
+							<input type="text" class="form-control input-sm"
+								   style="width:85%; height: 50%; display: inline-block">
+					</td>
+				</tr>
+				<tr>
+					<td class="line">
+						사용구분
+					</td>
+					<td class="line">
+						<div class="radio">
+							<label> <input type="radio" name="optionsRadios"
+								id="optionsRadios1" value="option1" checked>
+								전체
+							</label>
+							&nbsp;&nbsp;
+							<label> <input type="radio" name="optionsRadios"
+								id="optionsRadios2" value="option2" checked>
+								사용
+							</label>
+							&nbsp;&nbsp;
+							<label> <input type="radio" name="optionsRadios"
+								id="optionsRadios3" value="option3" checked>
+								사용안함
+							</label>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="line">
+						적요
+					</td>
+					<td class="line">
+						<input type="text" class="form-control input-sm"
+							   style="width:85%; height: 50%; display: inline-block">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="line" style="text-align: right;">
+						<input type="submit" class="btn btn-primary" value="조회">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr style="border:solid 1px #888;"> <!-- 중간 가로선  -->
+		<table class="table" style=" text-align:center;">
 			<thead >
 				<tr	style="background-color: #eee">
 					<td style="width: 50px;" >

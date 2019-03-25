@@ -12,7 +12,106 @@
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style type="text/css"> /* 테이블 선에 색상주기  */
+  .line{border-bottom: 1px solid #AAA;}
+</style>
 
+<script>
+	$(function() {
+		$("#datepicker").datepicker({
+			showOn:"both",
+			buttonImage: "../../images/btn_calendar.png", 
+	        buttonImageOnly: true, 
+	        dateFormat: "yy/mm/dd",
+	       	changeMonth: true, 
+	        dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+	 	 });
+	});
+</script>
+<script>
+	$(function() {
+		$("#datepicker2").datepicker({
+			showOn:"both",
+			buttonImage: "../../images/btn_calendar.png", 
+	        buttonImageOnly: true, 
+	        dateFormat: "yy/mm/dd",
+	       	changeMonth: true, 
+	        dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+	 	 });
+	});
+</script>
+<script>
+jQuery(function($){
+	$('#modal-user_name').footable({
+		"useParentWidth": true,
+		"columns": $.get('columns.json'),
+		"rows": $.get('rows.json')
+	});
+});
+</script>
+<script>
+jQuery(function($){
+	$('#modal-dept_name').footable({
+		"useParentWidth": true,
+		"columns": $.get('columns.json'),
+		"rows": $.get('rows.json')
+	});
+});
+</script>
+<script>
+jQuery(function($){
+	$('#modal-Working_attitude').footable({
+		"useParentWidth": true,
+		"columns": $.get('columns.json'),
+		"rows": $.get('rows.json')
+	});
+});
+</script>
+<script>
+jQuery(function($){
+	$('#modal-vacation').footable({
+		"useParentWidth": true,
+		"columns": $.get('columns.json'),
+		"rows": $.get('rows.json')
+	});
+});
+</script>
+<style>
+button {
+	vertical-align: middle;
+}
+	button.img-button_Searc {
+	background: url("../../images/btn_Searc.png" ) no-repeat;
+    border: none;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    }
+</style>
+<style>/* modal 중앙에 띄우기  */
+  .modal {
+          text-align: center;
+        }
+        @media screen and (min-width: 768px) {
+          .modal:before {
+            display: inline-block;
+            vertical-align: middle;
+            content: " ";
+            height: 100%;
+          }
+        }
+        .modal-dialog {
+          display: inline-block;
+          text-align: left;
+          vertical-align: middle;
+        }
+</style>
 <title>SWIFT ERP</title>
 </head>
 <body>
@@ -91,10 +190,117 @@
 		</nav>
 	</div>
 	<div style="width: 65%;"  class="contents">
-		<a style="width: 200px" class="btn btn-default" href="Attend_Search(All).jsp" >전체</a>
-		<a style="width: 200px" class="btn btn-primary" href="#" >결제중</a>
-		<a style="width: 200px" class="btn btn-default" href="Attend_Search(Complete).jsp" >결제완료</a>
+		<div class="input-group" style="margin: auto;">
+			<a style="width: 300px;" class="btn btn-default" href="Attend_Search(All).jsp" >전체</a>
+			&nbsp;
+			<a style="width: 300px;" class="btn btn-primary" href="#" >결제중</a>
+			&nbsp;
+			<a style="width: 300px;" class="btn btn-default" href="Attend_Search(Complete).jsp" >결제완료</a>
+		</div>
 		<p/>
+		<table class="table" style=" text-align: left;  background-color: #e0e0e0">
+			<thead>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="line" style="width:150px;">
+						기준일자
+					</td>
+					<td class="line" style="text-align: left;">
+						<input type="text" id="datepicker" class="form-control input-sm"
+						style="width: 200px; height: 50%; display: inline-block">
+						&nbsp;~&nbsp;
+						<input type="text" id="datepicker2" class="form-control input-sm"
+						style="width: 200px; height: 50%; display: inline-block">
+					</td>
+				</tr>
+				<tr>
+					<td class="line">사원명</td>
+					<td class="line">
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#user_name"></button>
+							</span>
+							<input type="text" class="form-control input-sm"
+								   style="width:85%; height: 50%; display: inline-block">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="line">부서</td>
+					<td class="line">
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#dept_name"></button>
+							</span>
+							<input type="text" class="form-control input-sm"
+								   style="width:85%; height: 50%; display: inline-block">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="line">
+						프로젝트
+					</td>
+					<td class="line">
+						<div class="radio">
+							<label> <input type="radio" name="optionsRadios"
+								id="optionsRadios1" value="option1" checked>
+								전체
+							</label>
+							&nbsp;&nbsp;
+							<label> <input type="radio" name="optionsRadios"
+								id="optionsRadios2" value="option2" checked>
+								사용
+							</label>
+							&nbsp;&nbsp;
+							<label> <input type="radio" name="optionsRadios"
+								id="optionsRadios3" value="option3" checked>
+								사용안함
+							</label>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="line">
+						근태항목
+					</td>
+					<td class="line">
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#Working_attitude"></button>
+							</span>
+							<input type="text" class="form-control input-sm"
+								   style="width:85%; height: 50%; display: inline-block">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="line">
+						휴가항목
+					</td>
+					<td class="line">
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#vacation"></button>
+							</span>
+							<input type="text" class="form-control input-sm"
+								   style="width:85%; height: 50%; display: inline-block">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="line" style="width: 155px" colspan="2">
+						<div class="input-group pull-right" >
+							<input type="submit" class="btn btn-primary" value="전체조회">
+							&nbsp;
+							<input type="submit" class="btn btn-primary" value="조회">
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr style="border:solid 1px #888;"> <!-- 중간 가로선  -->
 		<table class="table" style=" text-align:center;">
 			<thead >
 				<tr	style="background-color: #eee">
@@ -133,8 +339,145 @@
 				</tr>
 			</tbody>
 		</table>
-		<button type="button" class="btn btn-primary pull-left" id="Delete">선택삭제</button>
-		<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#New_Update">근태상신</button>
+		<button type="button" class="btn btn-primary pull-left" id="Delete">반려</button>
+		<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#New_Update">승인</button>
+	</div>
+		<!-- modal 소스코드 -->
+	<div class="modal fade" id="user_name" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<table id="modal-user_name" class="table table-striped" data-paging="true" data-filtering="true" data-sorting="true">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">소속부서</th>
+								<th scope="col">성명</th>
+								<th scope="col">ID</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>&nbsp</td>
+								<td>&nbsp</td>
+								<td>&nbsp</td>
+							</tr>
+							<tr>
+								<td>&nbsp</td>
+								<td>&nbsp</td>
+								<td>&nbsp</td>
+							</tr>
+							<tr>
+								<td>&nbsp</td>
+								<td>&nbsp</td>
+								<td>&nbsp</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="dept_name" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<table id="modal-dept_name" class="table table-striped" data-paging="true" data-filtering="true" data-sorting="true">
+						<thead class="thead-dark">
+							<tr>
+								<td scope="col">부서코드</td>
+								<td scope="col">부서 명</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>&nbsp</td>
+								<td>&nbsp</td>
+							</tr>
+							<tr>
+								<td>&nbsp</td>
+								<td>&nbsp</td>
+							</tr>
+							<tr>
+								<td>&nbsp</td>
+								<td>&nbsp</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="Working_attitude" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<table id="modal-project" class="table table-striped" data-paging="true" data-filtering="true" data-sorting="true">
+						<thead class="thead-dark">
+							<tr>
+								<td scope="col">근태 코드</td>
+								<td scope="col">근태 코드 명</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>&nbsp</td>
+								<td>&nbsp</td>
+							</tr>
+							<tr>
+								<td>&nbsp</td>
+								<td>&nbsp</td>
+							</tr>
+							<tr>
+								<td>&nbsp</td>
+								<td>&nbsp</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="vacation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<table id="modal-project" class="table table-striped" data-paging="true" data-filtering="true" data-sorting="true">
+						<thead class="thead-dark">
+							<tr>
+								<td scope="col">휴가 코드</td>
+								<td scope="col">휴가 명</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>&nbsp</td>
+								<td>&nbsp</td>
+							</tr>
+							<tr>
+								<td>&nbsp</td>
+								<td>&nbsp</td>
+							</tr>
+							<tr>
+								<td>&nbsp</td>
+								<td>&nbsp</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

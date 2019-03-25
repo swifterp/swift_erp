@@ -127,7 +127,7 @@ input {
 			<ul class="nav navbar-nav">
 				<li><a href="../emp/Emp_memList.jsp">인사관리</a></li>
 				<li><a href="../Pay/Pay.jsp">급여관리</a></li>		
-				<li><a href="../attend/Attend.jsp">근태관리</a></li>
+				<li><a href="../attend/Attend_Item_Manage.jsp">근태관리</a></li>
 				<li><a href="../approval/Approval.jsp">결재관리</a></li>
 				<li><a href="#">업무관리</a></li>
 				<li><a href="../customer/Customer_List.jsp">고객관리</a></li>
@@ -178,13 +178,12 @@ input {
 						<td style="width:90px; vertical-align: middle;">기간</td>
 						<td  colspan="2">
 						<input type="text" id="datepicker" class="form-control input-sm"
-							style="width:170px; height: 50%; display: inline-block"></td>
-						<td style="width: 15px; vertical-align: middle; padding: 0px;">~</td>
-						<td colspan="2">
+							style="width:170px; height: 50%; display: inline-block">
+						&nbsp;&nbsp;~&nbsp;&nbsp;
 						<input type="text" id="datepicker2"	class="form-control input-sm"
 							style="width:170px; height: 50%; display: inline-block"></td>
 						<td style="width:220px;"></td>
-						<td></td>
+						<td colspan="4"></td>
 					<tr>
 						<td style="vertical-align: middle;">사원명</td>
 						<td colspan="7">

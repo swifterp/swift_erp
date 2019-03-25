@@ -14,6 +14,22 @@
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<style type="text/css"> /* 테이블 선에 색상주기  */
+  .line{border-bottom: 1px solid #AAA;}
+</style>
+
+<style> /* 테이블 선에 투명도 주기  */
+  .Transparency{border-right: none;
+   				border-left:none;
+				border-top:none;
+				border-bottom:none;
+  				}
+</style>
+<style>
+  .line2{border-bottom: 1px solid #fff;}
+</style>
+
 <script>
 	$(function() {
 		$("#datepicker").datepicker(
@@ -112,14 +128,6 @@ input {
     width: 20px;
     height: 20px;
     cursor: pointer;
-    }
-  input.img-button_Searc {
-    background: url("../../images/btn_Searc.png") no-repeat;
-    border: none;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-   }
 </style>
 <title>SWIFT ERP</title>
 </head>
@@ -198,16 +206,16 @@ input {
 			</ul>
 		</nav>
 	</div>
-<div style="width: 65%;"  class="contents">
-		<table class="table" style=" text-align: left;">
+	<div style="width: 65%;"  class="contents">
+		<table class="table" style=" text-align: left; background-color: #e0e0e0;" >
 			<thead>
 			</thead>
 			<tbody>
 				<tr>
-					<td style="width:150px;">
+					<td class="line" style="width:150px;">
 						기준일자
 					</td>
-					<td style="text-align: left;" colspan="2">
+					<td class="line" style="text-align: left;" colspan="2">
 						<input type="text" id="datepicker" class="form-control input-sm"
 						style="width: 200px; height: 50%; display: inline-block">
 						&nbsp; ~ &nbsp;
@@ -216,10 +224,10 @@ input {
 					</td>
 				</tr>
 				<tr>
-					<td style="width:150px;">
+					<td class="line" style="width:150px;">
 						근태일자
 					</td>
-					<td style="text-align: left;" colspan="2">
+					<td class="line" style="text-align: left;" colspan="2">
 						<input type="text" id="datepicker3" class="form-control input-sm"
 						style="width: 200px; height: 50%; display: inline-block">
 						&nbsp; ~ &nbsp;
@@ -228,27 +236,8 @@ input {
 					</td>
 				</tr>
 				<tr>
-					<td>검색조건1</td>
-						<td style="width: 100px">
-							<div class="input-group" style="width: 100px">
-								<select class="custom-select" id=".">
-									<option id="not_used" value="#">사용안함</option>
-									<option id="user" value="#">사원</option>
-									<option id="dept" value="#">부서명</option>
-								</select>
-							</div>
-						</td>
-					<td>
-						<input type="text" class="form-control input-sm"
-							   style="width:150px; height: 50%; display: inline-block">
-						<input type="button" class="img-button_Searc" data-toggle="modal" data-target="#vacation">
-						<input type="text" class="form-control input-sm"
-							   style="width:150px; height: 50%; display: inline-block">
-					</td>
-				</tr>
-				<tr>
-					<td>검색조건2</td>
-					<td>
+					<td class="line">검색조건1</td>
+					<td class="line" style="width: 100px">
 						<div class="input-group" style="width: 100px">
 							<select class="custom-select" id=".">
 								<option id="not_used" value="#">사용안함</option>
@@ -257,7 +246,7 @@ input {
 							</select>
 						</div>
 					</td>
-					<td>
+					<td class="line">
 						<input type="text" class="form-control input-sm"
 							   style="width:150px; height: 50%; display: inline-block">
 						<input type="button" class="img-button_Searc" data-toggle="modal" data-target="#vacation">
@@ -266,17 +255,17 @@ input {
 					</td>
 				</tr>
 				<tr>
-					<td>검색조건3</td>
-						<td>
-							<div class="input-group" style="width: 100px">
-								<select class="custom-select" id=".">
-									<option id="not_used" value="#">사용안함</option>
-									<option id="user" value="#">사원</option>
-									<option id="dept" value="#">부서명</option>
-								</select>
-							</div>
-						</td>
-					<td>
+					<td class="line">검색조건2</td>
+					<td class="line">
+						<div class="input-group" style="width: 100px">
+							<select class="custom-select" id=".">
+								<option id="not_used" value="#">사용안함</option>
+								<option id="user" value="#">사원</option>
+								<option id="dept" value="#">부서명</option>
+							</select>
+						</div>
+					</td>
+					<td class="line">
 						<input type="text" class="form-control input-sm"
 							   style="width:150px; height: 50%; display: inline-block">
 						<input type="button" class="img-button_Searc" data-toggle="modal" data-target="#vacation">
@@ -285,21 +274,40 @@ input {
 					</td>
 				</tr>
 				<tr>
-					<td style="width: 155px" colspan="3">
+					<td class="line">검색조건3</td>
+					<td class="line">
+						<div class="input-group" style="width: 100px">
+							<select class="custom-select" id=".">
+								<option id="not_used" value="#">사용안함</option>
+								<option id="user" value="#">사원</option>
+								<option id="dept" value="#">부서명</option>
+							</select>
+						</div>
+					</td>
+					<td class="line">
+						<input type="text" class="form-control input-sm"
+							   style="width:150px; height: 50%; display: inline-block">
+						<input type="button" class="img-button_Searc" data-toggle="modal" data-target="#vacation">
+						<input type="text" class="form-control input-sm"
+							   style="width:150px; height: 50%; display: inline-block">
+					</td>
+				</tr>
+				<tr>
+					<td class="line" style="width: 155px" colspan="3">
 						<input type="submit" class="btn btn-primary pull-right" value="조회">
 					</td>
 				</tr>
 			</tbody>
 		</table>
-	<hr style="border:solid 1px black;">
-		<span style="float:right">
+	<hr style="border:solid 1px #888;"> <!-- 중간 가로선  -->
+		<span  style="float:right">
 			<input style="text-align: right;" type="button" class="img-button_print" data-toggle="modal" data-target="#copy">
 		</span>
-		<table class="table">
+		<table class="table Transparency">
 			<thead>
 				<tr>
-					<td colspan="2" style="text-align: center; font-size: 24pt;">
-						근태현황
+					<td  class="line2" colspan="2" style="text-align: center; font-size: 20pt;">
+						근태집계표
 					</td>
 				</tr>
 			</thead>
@@ -318,7 +326,7 @@ input {
 		</table>
 		<table class="table" style="margin: auto; text-align: center;">
 			<thead>
-				<tr>
+				<tr style="background-color: #eee">
 					<td> 사원
 					</td>
 					<td> 근태수
@@ -335,8 +343,6 @@ input {
 			</tbody>
 		</table>
 		<br> 
-		<input type="submit" id="Work_Search" class="btn btn-primary pull-right"
-			value="검색">
 	</div>
 <!-- modal 소스코드 -->
 	<div class="modal fade" id="user_name" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
