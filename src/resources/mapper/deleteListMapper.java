@@ -8,7 +8,9 @@ public interface deleteListMapper {
 	public int getList();
 	public int setList();
 
-	public int getEmpDel(Integer emp_number);
+	public int getEmpDel(Integer emp_appoint_num);
+	
+	public void getAppointDel(Integer emp_appoint_num);
 
 	public int getDeptDel(Integer deptno);
 	

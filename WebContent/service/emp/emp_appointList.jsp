@@ -11,21 +11,17 @@
 <script type = "text/javascript" src ="../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../js/bootstrap.js"></script>
 <script type="text/javascript">
-	<!--사원등록-->
-	function goEmpAdd(){
-		location.href = "../service/emp/emp_empAdd.jsp";	
+	<!--인사발령등록 페이지로 이동-->
+	function goAppointAdd(){
+		location.href = "../service/emp/emp_appointAdd.jsp";	
 	}
-	<!--사원상세보기-->
-	function empView(emp_number){
-		location.href = "../emp/view?emp_number="+emp_number;
+	<!--인사발령상세보기-->
+	function appointView(emp_appoint_no){
+		location.href = "../emp/appointView?emp_appoint_no="+emp_appoint_no;
 	}
-	<!--사원수정-->
-	function empUpd(emp_number){
-		location.href = "../emp/update?emp_number="+emp_number;	
-	}
-	<!--사원삭제-->
-	function empDel(emp_number){
-		location.href = "../emp/delete?emp_number="+emp_number;	
+	<!--인사발령삭제-->
+	function appointDel(emp_appoint_no){
+		location.href = "../emp/appointDel?emp_appoint_no="+emp_appoint_no;	
 	}
 </script>
 </head>
@@ -75,7 +71,6 @@
 					aria-expanded="false" href="#">기본사항등록</a>
 					<ul class="collapse in depth2" id="group1">
 						<li><a class="active" href="./read">인사카드등록</a></li>
-						<li><a href="../emp/appointRead">인사발령등록</a></li>
 						<li><a href="../emp/deptRead">부서등록</a></li>
 					</ul>
 				</li>
@@ -90,7 +85,7 @@
 			</ul>
 		</nav>		
 		<div class="contents">
-			<h3>사원목록</h3>
+			<h3>인사발령목록</h3>
 			<form action="../emp/empSearchNumName">
 				<div class="input-group">
 					<input type="text" class="form-control" id="empinfo" name="empinfo" placeholder="성명 또는 부서">
@@ -102,14 +97,10 @@
 			<table class="table">
 				<thead>
 					<tr>
+						<th>발령일자</th>
 						<th>사번</th>
 						<th>성명</th>
-						<th>주민등록번호</th>
-						<th>부서</th>
-						<th>직급</th>
-						<th>입사일자</th>
-						<th>Email</th>
-						<th>인쇄</th>
+						<th>입사구분</th>
 						<th>수정</th>
 						<th>삭제</th>
 					</tr>
@@ -121,16 +112,12 @@
 							for(int i=0;i<lst.size();i++){
 					%>
 					<tr>
-						<td><a onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)"><%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %></a></td>
-						<td><a onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)"><%= lst.get(i).get("EMP_NAME") %></a></td>
-						<td><%= lst.get(i).get("EMP_RESIDENT_NUMBER") %></td>
-						<td><%= lst.get(i).get("DNAME") %></td>
-						<td><%= lst.get(i).get("RANK_NAME") %></td>
-						<td><%= lst.get(i).get("EMP_JOIN_DATE") %></td>
-						<td><a class="btn btn-default">이메일</a></td>
-						<td><a class="btn btn-default">인쇄</a></td>
-						<td><a class="btn btn-default" onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)">수정</a></td>
-						<td><a class="btn btn-default" onclick="javascript:empDel(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)">삭제</a></td>
+						<td><%= String.valueOf(lst.get(i).get("EMP_APPOINT_DATE")) %></td>
+						<td><%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %></td>
+						<td><%= lst.get(i).get("EMP_NAME") %></td>
+						<td><%= lst.get(i).get("EMP_JOIN_DIVIDE") %></td>
+						<td><button class="btn btn-default" name="emp_appoint_no" value="<%= String.valueOf(lst.get(i).get("EMP_APPOINT_NO")) %>" onclick="javascript:appointView(<%= String.valueOf(lst.get(i).get("EMP_APPOINT_NO")) %>)">수정</button ></td>
+						<td><a class="btn btn-default" onclick="javascript:appointDel(<%= String.valueOf(lst.get(i).get("EMP_APPOINT_NO")) %>)">삭제</a></td>
 					</tr>
 					<%
 							}
@@ -139,7 +126,7 @@
 			    </tbody>
 			</table>
 			<div class="btn_group">
-				<a class="btn btn-primary pull-right" onclick="javascript:goEmpAdd()">사원등록</a>
+				<a class="btn btn-primary pull-right" onclick="javascript:goAppointAdd()">등록</a>
 			</div>
 		</div>
 	</div>

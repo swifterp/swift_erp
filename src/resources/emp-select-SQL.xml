@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="resources.mapper.selectListMapper">
 
-	
 	<select id="getEmpList" resultType="hashmap">		
         select e.emp_number, e.emp_name, e.emp_email, e.emp_resident_number, d.dname, r.rank_name, e.emp_join_date 
         from employee e, dept d, rank r
@@ -23,6 +22,20 @@
 	<select id="getEmpNumList" resultType="hashmap">		
         select e.emp_number, e.emp_name, d.dname
         from employee e, dept d
+	</select>
+	<select id="getAppointList" parameterType="Integer" resultType="hashmap">		
+        select a.emp_appoint_no, to_char(a.emp_appoint_date,'YYYY-MM-DD') as emp_appoint_date,e.emp_number,e.emp_name,a.emp_join_divide
+       		  ,a.prev_rank,a.next_rank,a.prev_dept,a.next_dept
+        from emp_appoint a, employee e
+        where a.empno = e.empno
+        order by a.emp_appoint_date
+	</select>
+	<select id="getAppointView" parameterType="Integer" resultType="hashmap">		
+        select a.emp_appoint_no, to_char(a.emp_appoint_date,'YYYY-MM-DD') as emp_appoint_date,e.emp_number,e.emp_name,a.emp_join_divide
+       		  ,a.prev_rank,a.next_rank,a.prev_dept,a.next_dept
+        from emp_appoint a, employee e
+        where a.empno = e.empno and a.empno = #{emp_appoint_no, jdbcType=INTEGER}
+        order by a.emp_appoint_date
 	</select>
 	<select id="getDeptList" resultType="hashmap">		
         select deptno,dname

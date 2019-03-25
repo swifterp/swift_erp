@@ -54,6 +54,36 @@ public class Emp_Controller {
 
 	}
 	
+	@RequestMapping("/appointRead")
+	public String readAppoint(Model model) {
+		model.addAttribute("list", el.callAppointListDao());	
+		return "emp/emp_appointList";
+	}
+	
+	@RequestMapping("/appointView")
+	public String viewAppoint(Model model, @RequestParam(value="emp_appoint_no", defaultValue="0") Integer emp_appoint_no) {
+		model.addAttribute("list", el.appointViewDao(emp_appoint_no));	
+		return "emp/emp_appointView";
+	}
+	
+	@RequestMapping("/appointAdd")
+	public String addAppoint(Model model, @RequestParam HashMap<String, String> appointPlus) {
+		model.addAttribute("list", el.appointAddDao(appointPlus));	
+		return "emp/emp_appointList";
+	}
+	
+	@RequestMapping("/appointUpd")
+	public String updAppoint(Model model, @RequestParam HashMap<String, String> appointUpd) {
+		model.addAttribute("list", el.appointUpdDao(appointUpd));	
+		return "emp/emp_appointList";
+	}
+	
+	@RequestMapping("/appointDel")
+	public String delAppoint(Model model, @RequestParam(value="emp_appoint_no", defaultValue="0") Integer emp_appoint_no) {
+		model.addAttribute("list", el.appointDelDao(emp_appoint_no));	
+		return "emp/emp_appointList";
+	}
+	
 	@RequestMapping("/deptRead")
 	public String readDept(Model model) {
 		model.addAttribute("list", el.callDeptListDao());	

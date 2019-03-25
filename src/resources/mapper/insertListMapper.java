@@ -10,6 +10,8 @@ public interface insertListMapper {
 	
 	public void empAdd(HashMap<String, Integer> empPlus);
 	
+	public void appointAdd(HashMap<String, String> appointAdd);
+	
 	public void deptAdd(HashMap<String, String> deptPlus);
 	
 	public void setUnderyearList(HashMap<String, Integer> percentage);
@@ -20,6 +22,8 @@ public interface insertListMapper {
 	
 	
 	public void setAttendAddList(HashMap<String, Integer> attendplus);
+
+
 
 }
 

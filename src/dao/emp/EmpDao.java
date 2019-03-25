@@ -94,4 +94,28 @@ public class EmpDao {
 	public List<Map<String, String>> selectBankList() {
 		return slm.getBankList();
 	}
+
+	public List<Map<String, String>> selectAppointList() {
+		return slm.getAppointList();
+	}
+
+	public List<Map<String, String>> appointAdd(HashMap<String, String> appointAdd) {
+		ilm.appointAdd(appointAdd);
+		return slm.getAppointList();
+	}
+
+	public List<Map<String, String>> appointUpd(HashMap<String, String> appointUpd) {
+		ulm.getAppointUpd(appointUpd);
+		return slm.getAppointList();
+	}
+
+	public List<Map<String, String>> appointDel(Integer emp_appoint_no) {
+		dlm.getAppointDel(emp_appoint_no);
+		return slm.getAppointList();
+	}
+
+	public List<Map<String, String>> appointView(Integer emp_appoint_no) {
+		slm.getAppointView(emp_appoint_no);
+		return slm.getAppointList();
+	}
 }

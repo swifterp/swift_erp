@@ -24,6 +24,17 @@
 							,emp_etc = #{emp_etc, jdbcType=VARCHAR} 
    		where emp_number = #{emp_number, jdbcType=INTEGER}
     </update>
+    <update id="getAppointUpd" parameterType="HashMap">		
+        update emp_appoint set emp_appoint_date = #{emp_appoint_date, jdbcType=DATE}
+      						,emp_number = #{emp_number, jdbcType=INTEGER}
+        					,emp_name = #{emp_name, jdbcType=VARCHAR}
+							,emp_join_divide = #{emp_join_divide, jdbcType=VARCHAR}
+							,prev_rank = #{prev_rank, jdbcType=VARCHAR}
+							,next_rank = #{next_rank, jdbcType=VARCHAR}
+							,prev_dept = #{prev_dept, jdbcType=VARCHAR}
+							,next_dept = #{next_dept, jdbcType=VARCHAR}
+   		where emp_appoint_no = #{emp_appoint_no, jdbcType=INTEGER}
+    </update>
     <update id="getDeptUpd" parameterType="HashMap">		
         update dept set dname = #{dname, jdbcType=VARCHAR}
    		where deptno = #{deptno, jdbcType=INTEGER}

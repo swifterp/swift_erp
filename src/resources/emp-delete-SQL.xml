@@ -5,6 +5,9 @@
 	<delete id="getEmpDel" parameterType="Integer">		
         delete from employee where emp_number = #{emp_number, jdbcType=INTEGER}
     </delete>
+    <delete id="getAppointDel" parameterType="Integer">		
+        delete from emp_appoint where emp_appoint_no = #{emp_appoint_no, jdbcType=INTEGER}
+    </delete>
     <delete id="getDeptDel" parameterType="Integer">		
         delete from dept where deptno = #{deptno, jdbcType=INTEGER}
     </delete>

@@ -71,9 +71,9 @@ nav.nav-left .depth2 li a {padding-left:30px;}
 
 .contents {margin:92px 0 50px 220px;}
 
-table {text-align:left; border: 1px solid #dddddd;}
+table {border: 1px solid #dddddd;}
 table th {background-color:#eeeeee; text-align: center;}
-table td {text-align:center; line-height:}
+table td {text-align:center;}
 
 .btn_group {margin:20px 0;}
 

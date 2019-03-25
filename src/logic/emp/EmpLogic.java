@@ -42,6 +42,10 @@ public class EmpLogic {
 	public List<Map<String, String>> empNumListDao() {		
 		return ed.empNumList();	
 	}
+
+	public List<Map<String, String>> callAppointListDao() {
+		return ed.selectAppointList();	
+	}
 	
 	public List<Map<String, String>> callDeptListDao() {		
 		return ed.selectDeptList();	
@@ -82,5 +86,26 @@ public class EmpLogic {
 	public List<Map<String, String>> callBankListDao() {		
 		return ed.selectBankList();	
 	}
+
+	public List<Map<String, String>> appointAddDao(HashMap<String, String> appointPlus) {
+		ed.appointAdd(appointPlus);
+		return ed.selectAppointList();	
+	}
+
+	public List<Map<String, String>> appointUpdDao(HashMap<String, String> appointUpd) {
+		ed.appointUpd(appointUpd);
+		return ed.selectAppointList();	
+	}
+
+	public List<Map<String, String>> appointDelDao(Integer emp_appoint_no) {
+		ed.appointDel(emp_appoint_no);
+		return ed.selectAppointList();	
+	}
+
+	public  List<Map<String, String>> appointViewDao(Integer emp_appoint_no) {
+		ed.appointView(emp_appoint_no);
+		return ed.selectAppointList();
+	}
+
 	
 }
