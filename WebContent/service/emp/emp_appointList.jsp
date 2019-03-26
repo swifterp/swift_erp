@@ -100,7 +100,8 @@
 						<th>발령일자</th>
 						<th>사번</th>
 						<th>성명</th>
-						<th>입사구분</th>
+						<th>발령직급</th>
+						<th>발령부서</th>
 						<th>수정</th>
 						<th>삭제</th>
 					</tr>
@@ -115,7 +116,8 @@
 						<td><%= String.valueOf(lst.get(i).get("EMP_APPOINT_DATE")) %></td>
 						<td><%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %></td>
 						<td><%= lst.get(i).get("EMP_NAME") %></td>
-						<td><%= lst.get(i).get("EMP_JOIN_DIVIDE") %></td>
+						<td><%= lst.get(i).get("NEXT_RANK") %></td>
+						<td><%= lst.get(i).get("NEXT_DEPT") %></td>
 						<td><button class="btn btn-default" name="emp_appoint_no" value="<%= String.valueOf(lst.get(i).get("EMP_APPOINT_NO")) %>" onclick="javascript:appointView(<%= String.valueOf(lst.get(i).get("EMP_APPOINT_NO")) %>)">수정</button ></td>
 						<td><a class="btn btn-default" onclick="javascript:appointDel(<%= String.valueOf(lst.get(i).get("EMP_APPOINT_NO")) %>)">삭제</a></td>
 					</tr>

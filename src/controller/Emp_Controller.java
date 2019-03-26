@@ -151,5 +151,10 @@ public class Emp_Controller {
 		return "emp/pop_bank";
 	}
 	
+	@RequestMapping("/pop_empRead")
+	public String pop_readEmp(Model model) {
+		model.addAttribute("list", el.callEmpListDao());	
+		return "emp/pop_emp";
+	}
 	
 }

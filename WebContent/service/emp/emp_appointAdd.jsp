@@ -91,39 +91,45 @@
 		<div class="contents">
 			<h3>인사발령등록</h3>
 			<form action="../../emp/appointAdd">
-			<table class="table">
-				<thead>
-					<tr>
-						<th rowspan="2">발령일자</th>
-						<th rowspan="2">사번</th>
-						<th rowspan="2">성명</th>
-						<th rowspan="2">입사구분</th>
-						<th colspan="4">발령사항</th>				
-					</tr>
-					<tr>
-						<th>이전직급</th>
-						<th>발령직급</th>
-						<th>이전부서</th>
-						<th>발령부서</th>
-					</tr>
-				</thead>
-			    <tbody>
-					<tr>
-						<td><input type="text" class="form-control" name="emp_appoint_date" id="datepicker" style="width:80%; display:inline-block; margin-right:5px;"/></td>
-						<td><input type="text" class="form-control" name="emp_number"/></td>
-						<td><input type="text" class="form-control" name="emp_name"/></td>
-						<td><input type="text" class="form-control" name="emp_join_divide"/></td>
-						<td><input type="text" class="form-control" name="prev_rank"/></td>
-						<td><input type="text" class="form-control" name="next_rank"/></td>
-						<td><input type="text" class="form-control" name="prev_dept"/></td>
-						<td><input type="text" class="form-control" name="next_dept"/></td>
-					</tr>
-			    </tbody>
-			</table>
-			<div class="btn_group">
-			<a class="btn btn-default pull-left" href="../../emp/appointRead">목록</a>
-				<button type="submit" class="btn btn-primary pull-right" >등록완료</button>
-			</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th rowspan="2">발령일자</th>
+							<th rowspan="2">사번</th>
+							<th rowspan="2">성명</th>
+							<th rowspan="2">입사구분</th>
+							<th colspan="4">발령사항</th>				
+						</tr>
+						<tr>
+							<th>이전직급</th>
+							<th>발령직급</th>
+							<th>이전부서</th>
+							<th>발령부서</th>
+						</tr>
+					</thead>
+				    <tbody>
+						<tr>
+							<td><input type="text" class="form-control" name="emp_appoint_date" id="datepicker" style="width:80%; display:inline-block; margin-right:5px;"/></td>
+							<td class="input-group"  id="pop_emp">
+								<input type="hidden" name="empno">
+								<input type="text" class="form-control" readonly />
+								<span id="p_emp_number" name="emp_number" class="input-group-btn">
+									<button type="button" class="btn btn-default empCheck">조회</button> 
+								</span>
+							</td>
+							<td><input type="text" class="form-control" name="emp_name" readonly /></td>
+							<td><input type="text" class="form-control" name="emp_join_divide" readonly /></td>
+							<td><input type="text" class="form-control" name="prev_rank" readonly /></td>
+							<td><input type="text" class="form-control" name="next_rank"/></td>
+							<td><input type="text" class="form-control" name="prev_dept" readonly /></td>
+							<td><input type="text" class="form-control" name="next_dept"/></td>
+						</tr>
+				    </tbody>
+				</table>
+				<div class="btn_group">
+					<a class="btn btn-default pull-left" href="../../emp/appointRead">목록</a>
+					<button type="submit" class="btn btn-primary pull-right" >등록완료</button>
+				</div>
 			 </form>
 		</div>
 	</div>

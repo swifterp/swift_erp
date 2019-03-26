@@ -25,9 +25,7 @@
 	</select>
 	
 	<select id="getAttendAddList" resultType="hashmap">
-	
 		select attend_code, attend_name, attend_code_state, attend_c_etc from ATTEND_CODE_T
-	
 	</select>
 	
 	<select id="getAttendLow" parameterType="Integer" resultType="HashMap">

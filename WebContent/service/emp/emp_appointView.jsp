@@ -10,11 +10,36 @@
 <link rel="stylesheet" type="text/css" href="../css/common.css">
 <script type = "text/javascript" src ="../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../js/bootstrap.js"></script>
-<script type="text/javascript">
-	<!--인사발령삭제-->
-	function emp_appointDel(emp_number){
-		location.href = "../emp/appointDelete?emp_number="+emp_number;	
-	}
+<!-- 날짜선택 관련 -->
+<link rel="stylesheet" href="../css/datepicker.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+	$(function() {
+	  $( "#datepicker" ).datepicker({
+	        showOn: "both", 
+	        buttonImage: "../images/btn_calendar.png", 
+	        buttonImageOnly: true, 
+	        dateFormat: "yy/mm/dd",
+	       	changeMonth: true, 
+	        dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+		  });
+	});
+</script>
+<!-- 팝업창 -->
+<script>
+$(document).ready(function() {
+    $('#pop_emp').on("click", function() {	
+    	var url="../emp/pop_empRead";
+    	var windowW = 300;  // 창의 가로 길이
+        var windowH = 300;  // 창의 세로 길이
+        var left = Math.ceil((window.screen.width - windowW)/2);
+        var top = Math.ceil((window.screen.height - windowH)/2);
+  window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+    });
+});
 </script>
 </head>
 <body>
@@ -105,20 +130,26 @@
 				</thead>
 			    <tbody>
 					<tr>
-						<td><input type="text" value="${list.get(0).get('EMP_APPOINT_DATE')}" name="emp_appoint_date"/></td>
-						<td><input type="text" value="${list.get(0).get('EMP_NUMBER')}" name="emp_number"/></td>
-						<td><input type="text" value="${list.get(0).get('EMP_NAME')}" name="emp_name"/></td>
-						<td><input type="text" value="${list.get(0).get('EMP_JOIN_DIVIDE')}" name="emp_join_divide"/></td>
-						<td><input type="text" value="${list.get(0).get('PREV_RANK')}" name="prev_rank"/></td>
-						<td><input type="text" value="${list.get(0).get('NEXT_RANK')}" name="next_rank"/></td>
-						<td><input type="text" value="${list.get(0).get('PREV_DEPT')}" name="prev_dept"/></td>
-						<td><input type="text" value="${list.get(0).get('NEXT_DEPT')}" name="next_dept"/></td>
+						<td><input type="text" class="form-control" value="${list.get(0).get('EMP_APPOINT_DATE')}" name="emp_appoint_date" name="emp_appoint_date" id="datepicker" style="width:80%; display:inline-block; margin-right:5px;"/></td>
+						<td class="input-group"  id="pop_emp">
+							<input type="hidden" id="p_empno" name="empno" value="${list.get(0).get('EMPNO')}" />
+							<input type="text" id="p_emp_number" class="form-control" value="${list.get(0).get('EMP_NUMBER')}" readonly />
+							<span name="emp_number" class="input-group-btn">
+								<button type="button" class="btn btn-default empCheck">조회</button> 
+							</span>
+						</td>
+						<td><input type="text" id="p_emp_join_divide"  class="form-control" value="${list.get(0).get('EMP_NAME')}" readonly /></td>
+						<td><input type="text" class="form-control" value="${list.get(0).get('EMP_JOIN_DIVIDE')}" readonly /></td>
+						<td><input type="text" class="form-control" value="${list.get(0).get('PREV_RANK')}" name="prev_rank"/></td>
+						<td><input type="text" class="form-control" value="${list.get(0).get('NEXT_RANK')}" name="next_rank"/></td>
+						<td><input type="text" class="form-control" value="${list.get(0).get('PREV_DEPT')}" name="prev_dept"/></td>
+						<td><input type="text" class="form-control" value="${list.get(0).get('NEXT_DEPT')}" name="next_dept"/></td>
 					</tr>
 			    </tbody>
 			</table>
 			<div class="btn_group">
 			<a class="btn btn-default pull-left" href="../emp/appointRead">목록</a>
-				<a class="btn btn-primary pull-right" onclick="javascript:emp_appointAdd()">수정완료</a>
+				<button type="submit" class="btn btn-primary pull-right">수정완료</button>
 			</div>
 			</form>
 		</div>
