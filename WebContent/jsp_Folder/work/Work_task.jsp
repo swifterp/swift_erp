@@ -78,7 +78,7 @@
 			<ul class="bg-primary">
 				<li>
 					<a class="active" data-toggle="collapse" data-target="#group1"
-					aria-expanded="false" href="#">업무일지</a>
+					aria-expanded="false" href="#" >업무일지</a>
 					<ul class="collapse in depth2" id="group1">
 						<li><a href="Work_taskUpdate.jsp">업무일지 작성</a></li>
 						<li><a class="active" href="Work_task.jsp">업무일지 조회</a></li>
@@ -97,8 +97,8 @@
 			</ul>	
 		</nav>
 		<div class="contents">
-			<a class="btn btn-primary" href="#" >업무일지 조회</a>
-			<a class="btn btn-default" href="Work_taskSearch.jsp" >상세조회</a>
+			<a class="btn btn-primary" href="#" style="width: 150px">업무일지 조회</a>
+			<a class="btn btn-default" href="Work_taskSearch.jsp" style="width: 150px">상세조회</a>
 			<p></p> 
 			<table class="table table-striped" style="margin: auto; text-align: left;">
 				<thead>

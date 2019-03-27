@@ -51,6 +51,39 @@
 	});
 </script>
 <script>
+	$(function location.href{
+
+			var InputGroup = select.value;  
+			
+			if(InputGroup == Work_on_time){
+				location.href='Work_Search(on)'
+			}
+			else if(InputGroup == Work_off_time){
+				location.href='Work_Search(off)'
+			}
+			else if(InputGroup == Work_on_off_time){
+				location.href='Work_Search(on_off)'
+			}
+			
+			
+		}
+</script>
+<script>
+	$(function() {
+		$("#setWorkOnOffTime") {
+		var InputGroup = select.value;
+
+		if(InputGroup == Work_on_time){
+		}
+		else if(InputGroup == Work_off_time){
+		}
+		else if(InputGroup == Work_on_off_time){
+		}
+		
+	})
+</script>
+
+<script>
 jQuery(function($){
 	$('#modal-user_name').footable({
 		"useParentWidth": true,
@@ -241,9 +274,9 @@ input {
 					<td colspan="2" style="vertical-align: middle;">
 						<div class="input-group" style="width: 100px">
 							<select class="custom-select" id="WorkOnOffTime">
-								<option id="Work_on_time" value="Work_on_time">출근시간현황</option>
-								<option id="Work_off_time" value="Work_off_time">퇴근시간현황</option>
-								<option id="Work_on_off_time" value="Work_on_off_time">출/퇴근시간 현황</option>
+								<option value="Work_on_time">출근시간현황</option>
+								<option value="Work_off_time">퇴근시간현황</option>
+								<option value="Work_on_off_time">출/퇴근시간 현황</option>
 							</select>
 						</div>
 					</td>
@@ -268,7 +301,8 @@ input {
 			</tbody>
 		</table>
 		<br> 
-		<button type="button" class="btn btn-primary pull-right" id="WorkOnOff">검색</button>
+		<input type="button" class="btn btn-primary pull-right"
+				onclick="location.href;" value="검색">
 	</div>
 <!-- Modal 소스코드  -->	
 <div class="modal fade" id="user_name" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

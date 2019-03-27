@@ -180,8 +180,8 @@ input {
 			</ul>	
 		</nav>
 		<div class="contents">
-			<a class="btn btn-default" href="Work_task.jsp" >업무일지 조회</a>
-			<a class="btn btn-primary" href="#" >상세조회</a>
+			<a class="btn btn-default" href="Work_task.jsp" style="width: 150px">업무일지 조회</a>
+			<a class="btn btn-primary" href="#" style="width: 150px">상세조회</a>
 			<p/> 
 			<table class="table table-striped" style="margin: auto; text-align: left;">
 				<tbody>

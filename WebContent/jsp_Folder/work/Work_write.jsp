@@ -124,9 +124,9 @@
 			</ul>
 		</nav>
 	</div>
-	<div style="width: 70%" class="contents">
-		<a class="btn btn-default" href="Work_on_off.jsp">출/퇴근 기록부</a> <a
-			class="btn btn-primary" href="#">출/퇴근 작성</a>
+	<div style="width: 600px" class="contents">
+		<a class="btn btn-default" href="Work_on_off.jsp" style="width: 150px">출/퇴근 기록부</a> <a
+			class="btn btn-primary" href="#" style="width: 150px">출/퇴근 작성</a>
 		<p/>
 		<br>
 		<table class="table" style="margin: auto; text-align: left;">
@@ -144,17 +144,17 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td style="width: 10%">사용자</td>
+					<td style="width: 120px">사용자</td>
 					<td colspan="3">
 					<input type="text" class="form-control input-sm"
-						style="width: 250px; height: 50%; display: inline-block"/>
+						style="width: 300px; height: 50%; display: inline-block"/>
 					</td>
 				</tr>
 				<tr>
-					<td>장소</td>
+					<td style="vertical-align: middle;">장소</td>
 					<td colspan="2"  style="width: 150px">
 					<input type="text" class="form-control input-sm"
-						style="width: 250px; height: 50%; display: inline-block" />
+						style="width: 300px; height: 50%; display: inline-block" />
 					</td>
 					<td>
 						<div class="custom-control custom-checkbox">
@@ -278,11 +278,12 @@
 					<td>사유</td>
 					<td colspan="3"><input type="text"
 						class="form-control input-sm"
-						style="width: 250px; height: 50%; display: inline-block" /></td>
+						style="width: 300px; height: 50%; display: inline-block" /></td>
 				</tr>
 			</tbody>
 		</table>
-		<br> <input type="submit" class="btn btn-primary pull-left"
+		<br> 
+		<input type="button" class="btn btn-primary pull-left"
 			value="출근">
 	</div>
 </body>
