@@ -38,12 +38,12 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<!-- 네비게이션 본메뉴 엘리먼트 -->
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">인사관리</a></li>
-				<li><a href="Pay.jsp">급여관리</a></li>		
-				<li><a href="Attend.jsp">근태관리</a></li>
-				<li><a href="Approval.jsp">결재관리</a></li>
-				<li><a href="Work_taskUpdate.jsp">업무관리</a></li>
-				<li><a href="Customer_List.jsp">고객관리</a></li>
+				<li class="active"><a href="./read">인사관리</a></li>
+				<li><a href="#">급여관리</a></li>		
+				<li><a href="#">근태관리</a></li>
+				<li><a href="#">결재관리</a></li>
+				<li><a href="#">업무관리</a></li>
+				<li><a href="#">고객관리</a></li>
 			</ul>
 			<!-- 드롭다운 기능 -->
 			<ul class="nav navbar-nav navbar-right">
@@ -70,7 +70,8 @@
 					<a class="active" data-toggle="collapse" data-target="#group1"
 					aria-expanded="false" href="#">기본사항등록</a>
 					<ul class="collapse in depth2" id="group1">
-						<li><a class="active" href="./read">인사카드등록</a></li>
+						<li><a href="./read">인사카드등록</a></li>
+						<li><a class="active" href="./appointRead">인사발령등록</a></li>
 						<li><a href="../emp/deptRead">부서등록</a></li>
 					</ul>
 				</li>
@@ -86,14 +87,6 @@
 		</nav>		
 		<div class="contents">
 			<h3>인사발령목록</h3>
-			<form action="../emp/empSearchNumName">
-				<div class="input-group">
-					<input type="text" class="form-control" id="empinfo" name="empinfo" placeholder="성명 또는 부서">
-					<span class="input-group-btn" style="width:100px;">
-						<button type="submit" class="btn btn-default" style="margin-bottom:20px;">검색</button>
-					</span>
-				</div>
-			</form>
 			<table class="table">
 				<thead>
 					<tr>
@@ -118,7 +111,7 @@
 						<td><%= lst.get(i).get("EMP_NAME") %></td>
 						<td><%= lst.get(i).get("NEXT_RANK") %></td>
 						<td><%= lst.get(i).get("NEXT_DEPT") %></td>
-						<td><button class="btn btn-default" name="emp_appoint_no" value="<%= String.valueOf(lst.get(i).get("EMP_APPOINT_NO")) %>" onclick="javascript:appointView(<%= String.valueOf(lst.get(i).get("EMP_APPOINT_NO")) %>)">수정</button ></td>
+						<td><button class="btn btn-default" onclick="javascript:appointView(<%= String.valueOf(lst.get(i).get("EMP_APPOINT_NO")) %>)">수정</button></td>
 						<td><a class="btn btn-default" onclick="javascript:appointDel(<%= String.valueOf(lst.get(i).get("EMP_APPOINT_NO")) %>)">삭제</a></td>
 					</tr>
 					<%

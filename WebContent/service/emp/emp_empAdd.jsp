@@ -202,6 +202,7 @@ $(document).ready(function() {
 					aria-expanded="false" href="#">기본사항등록</a>
 					<ul class="collapse in depth2" id="group1">
 						<li><a class="active" href="../../emp/read">인사카드등록</a></li>
+						<li><a href="../../emp/appointRead">인사발령등록</a></li>
 						<li><a href="../../emp/deptRead">부서등록</a></li>
 					</ul>
 				</li>
@@ -221,10 +222,10 @@ $(document).ready(function() {
 			  <li><a data-toggle="tab" href="#menu2">급여지급사항등록</a></li>
 			  <li><a data-toggle="tab" href="#menu3">세무정보등록</a></li>
 			</ul>
+			<form action="../../emp/add">
 			<div class="tab-content">
 			  <div id="menu1" class="tab-pane fade in active">
 				<h3>사원등록</h3>
-			    <form action="../../emp/add">
 					<table class="table">
 						<colgroup>
 							<col width="20%" />
@@ -354,15 +355,9 @@ $(document).ready(function() {
 							</tr>
 						</tbody>
 					</table>
-					<div class="btn_group">
-						<a  href="../../emp/read" class="btn btn-default pull-left">목록</a>
-						<input type="submit" id="submit" class="btn btn-primary pull-right" value="등록완료">
-					</div>
-				</form>
 			  </div>	  
 			  <div id="menu2" class="tab-pane fade">
 			    <h3>급여지급사항등록</h3>
-			    <form action="../../emp/paySalaryAdd">
 				    <table class="table">
 						<tr>
 							<th>적용일</th>
@@ -400,11 +395,6 @@ $(document).ready(function() {
 							<th>지급총액</th>
 							<td colspan="5"><input type="text" class="form-control" /></td>
 					</table>
-					<div class="btn_group">
-						<a href="../../emp/read" class="btn btn-default pull-left">목록</a>
-						<input type="submit" id="submit" class="btn btn-primary pull-right" value="등록완료">
-					</div>
-				</form>
 			  </div>
 			  <div id="menu3" class="tab-pane fade">
 			    <h3>세무정보등록</h3>
@@ -473,12 +463,12 @@ $(document).ready(function() {
 							<td><input type="text" class="form-control" /></td>
 						</tr>
 					</table>
-					<div class="btn_group">
-						<a href="../../emp/read" class="btn btn-default pull-left">목록</a>
-						<input type="submit" id="submit" class="btn btn-primary pull-right" value="등록완료">
-					</div>
-				</form>
-			  </div>
 			</div>
+			<div class="btn_group">
+				<a href="../../emp/read" class="btn btn-default pull-left">목록</a>
+				<input type="submit" id="submit" class="btn btn-primary pull-right" value="등록완료라능">
+			</div>
+		</form>
+	</div>
 </body>
 </html>

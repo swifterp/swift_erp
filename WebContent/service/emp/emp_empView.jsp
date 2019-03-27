@@ -200,7 +200,8 @@ $(document).ready(function() {
 					<a class="active" data-toggle="collapse" data-target="#group1"
 					aria-expanded="false" href="#">기본사항등록</a>
 					<ul class="collapse in depth2" id="group1">
-						<li><a class="active" href="../emp/read">인사카드등록</a></li>
+						<li><a class="active" href="./read">인사카드등록</a></li>
+						<li><a href="./appointRead">인사발령등록</a></li>
 						<li><a href="../emp/deptRead">부서등록</a></li>
 					</ul>
 				</li>
@@ -216,138 +217,254 @@ $(document).ready(function() {
 		</nav>
 		<div class="contents">
 			<h3>사원정보</h3>
+			<ul class="nav nav-tabs">
+			  <li class="active"><a data-toggle="tab" href="#menu1">사원등록</a></li>
+			  <li><a data-toggle="tab" href="#menu2">급여지급사항등록</a></li>
+			  <li><a data-toggle="tab" href="#menu3">세무정보등록</a></li>
+			</ul>
 			<form  action="../emp/update">
-			<table class="table table-striped">
-				<colgroup>
-					<col width="20%" />
-					<col width="10%" />
-					<col width="25%" />
-					<col width="10%" />
-					<col width="35%" />
-				</colgroup>
-				<tbody>
-					<tr>
-						<td rowspan="4">
-							<img style="width:140px; heigth:auto;" src="../images/profile_0.png"/>
-						</td>	
-						<td>사원번호<span class="essential">*</span></td>
-						<td><input type="text" name="emp_number" class="form-control" value="${list.get(0).get("EMP_NUMBER")}" readonly="readonly"></td>
-						<td>사원명<span class="essential">*</span></td>
-						<td><input type="text" name="emp_name" class="form-control" value="${list.get(0).get("EMP_NAME")}" ></td>
-					</tr>
-					<tr>	
-						<td>주민번호</td>
-						<td><input type="text" name="emp_resident_number" class="form-control" value="${list.get(0).get("EMP_RESIDENT_NUMBER")}"></td>
-						<td>이메일</td>
-						<td><input type="email" name="emp_email" class="form-control" value="${list.get(0).get("EMP_EMAIL")}"></td>
-					</tr>
-					<tr>	
-						<td>전화번호</td>
-						<td><input type="text" name="emp_tel" class="form-control" value="${list.get(0).get("EMP_TEL")}"></td>
-						<td>모바일</td>
-						<td><input type="text" name="emp_mobile" class="form-control" value="${list.get(0).get("EMP_MOBILE")}"></td>
-					</tr>
-					<tr>	
-						<td>주소</td>
-						<td class="input-group">
-							<input class="form-control" value="${list.get(0).get("EMP_ADDR1")}" name="emp_addr1" id="emp_addr1" type="text" readonly="readonly" style="display:inline-block;" placeholder="우편번호" />
-							<span class="input-group-btn">
-								<button type="button" class="btn btn-primary" onclick="execPostCode();">검색</button> 
-							</span>
+			<div class="tab-content">
+			  <div id="menu1" class="tab-pane fade in active">
+				<h3>사원등록</h3>
+				<table class="table table-striped">
+					<colgroup>
+						<col width="20%" />
+						<col width="10%" />
+						<col width="25%" />
+						<col width="10%" />
+						<col width="35%" />
+					</colgroup>
+					<tbody>
+						<tr>
+							<td rowspan="4">
+								<img style="width:140px; heigth:auto;" src="../images/profile_0.png"/>
+							</td>	
+							<td>사원번호<span class="essential">*</span></td>
+							<td><input type="text" name="emp_number" class="form-control" value="${list.get(0).get("EMP_NUMBER")}" readonly="readonly"></td>
+							<td>사원명<span class="essential">*</span></td>
+							<td><input type="text" name="emp_name" class="form-control" value="${list.get(0).get("EMP_NAME")}" ></td>
+						</tr>
+						<tr>	
+							<td>주민번호</td>
+							<td><input type="text" name="emp_resident_number" class="form-control" value="${list.get(0).get("EMP_RESIDENT_NUMBER")}"></td>
+							<td>이메일</td>
+							<td><input type="email" name="emp_email" class="form-control" value="${list.get(0).get("EMP_EMAIL")}"></td>
+						</tr>
+						<tr>	
+							<td>전화번호</td>
+							<td><input type="text" name="emp_tel" class="form-control" value="${list.get(0).get("EMP_TEL")}"></td>
+							<td>모바일</td>
+							<td><input type="text" name="emp_mobile" class="form-control" value="${list.get(0).get("EMP_MOBILE")}"></td>
+						</tr>
+						<tr>	
+							<td>주소</td>
+							<td class="input-group">
+								<input class="form-control" value="${list.get(0).get("EMP_ADDR1")}" name="emp_addr1" id="emp_addr1" type="text" readonly="readonly" style="display:inline-block;" placeholder="우편번호" />
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-primary" onclick="execPostCode();">검색</button> 
+								</span>
+							</td>
+							<td colspan="2"><input class="form-control" value="${list.get(0).get("EMP_ADDR2")}" name="emp_addr2" id="emp_addr2" type="text" readonly="readonly" placeholder="도로명주소" /></td>
+						</tr>
+						<tr>
+							<table class="table table-striped">
+								<colgroup>
+									<col width="50px" />
+									<col width="120px" />
+									<col width="50px" />
+									<col width="120px" />
+									<col width="50px" />
+									<col width="120px" />
+								</colgroup>
+								<tbody>
+									<tr>
+										<td>입사일자</td>
+										<td>	
+											<input type="text" name="emp_join_date" class="form-control" id="datepicker" value="${list.get(0).get("EMP_JOIN_DATE")}" style="width:80%; display:inline-block; margin-right:5px;">
+										</td>
+										<td>퇴사일자</td>
+										<td>		
+											<input type="text" name="emp_retire_date" class="form-control" id="datepicker2" value="${list.get(0).get("EMP_RETIRE_DATE")}" style="width:80%; display:inline-block; margin-right:5px;">
+										</td>
+										<td>퇴사사유</td>
+										<td><input type="text" name="emp_retire_reason" class="form-control" value="${list.get(0).get("EMP_RETIRE_REASON")}"></td>
+									</tr>
+									<tr>
+										<td>부서<span class="essential">*</span></td>
+										<td id="pop_dept" class="input-group">
+											<input type="hidden" id="p_dept_no" name="deptno" class="form-control">
+											<input type="text" id="p_dept_name" class="form-control" value="${list.get(0).get("DNAME")}">
+											<span class="input-group-btn">
+												 <button class="btn btn-default" type="button" data-toggle="modal" data-target="#exampleModal">Go!</button>
+											</span>
+										</td>
+										<td>직급<span class="essential">*</span></td>
+										<td id="pop_rank" class="input-group">
+											<input type="hidden" id="p_rank_no" name="rank_no" class="form-control">
+											<input type="text" id="p_rank_name" class="form-control" value="${list.get(0).get("RANK_NAME")}">
+											<span class="input-group-btn">
+												 <button class="btn btn-default" type="button">Go!</button>
+											</span>
+										</td>
+										<td>직책</td>
+										<td id="pop_duty" class="input-group">
+											<input type="hidden" id="p_duty_no" name="duty_no" class="form-control">
+											<input type="text" id="p_duty_name" class="form-control" value="${list.get(0).get("DUTY_NAME")}">
+											<span class="input-group-btn">
+												 <button class="btn btn-default" type="button">Go!</button>
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<td>은행명</td>
+										<td id="pop_bank" class="input-group">
+											<input type="hidden" id="p_bank_no" name="bank_no" class="form-control">
+											<input type="text" id="p_bank_name" class="form-control" value="${list.get(0).get("BANK_NAME")}">
+											<span class="input-group-btn">
+												 <button class="btn btn-default" type="button">Go!</button>
+											</span>
+										</td>
+										<td>계좌번호</td>
+										<td><input type="text" name="emp_account_num" class="form-control" value="${list.get(0).get("EMP_ACCOUNT_NUM")}"></td>
+										<td>예금주</td>
+										<td><input type="text" name="emp_account_holder" class="form-control" value="${list.get(0).get("EMP_ACOUNT_HOLDER")}"></td>
+									</tr>
+									<tr>
+										<td>사진첨부</td>		
+										<td colspan="5">
+											<input type="file" name="emp_profile" class="form-control" value="${list.get(0).get("EMP_PROFILE")}">
+										</td>
+									</tr>
+									<tr>
+										<td>첨부파일</td>
+										<td colspan="5">
+											<input type="file" name="emp_attach_file" class="form-control" value="${list.get(0).get("EMP_ATTACH_FILE")}">
+										</td>
+									</tr>
+									<tr>
+										<td>비고</td>
+										<td colspan="5"><textarea class="form-control" name="emp_etc" value="${list.get(0).get("EMP_ETC")}"></textarea></td>
+									</tr>
+								</tbody>
+							</table>
+						</tr>
+					</tbody>
+				</table>
+			  </div>	  
+			  <div id="menu2" class="tab-pane fade">
+			    <h3>급여지급사항등록</h3>
+				    <table class="table">
+						<tr>
+							<th>적용일</th>
+							<td>	
+								<input type="text" name="emp_join_date" class="form-control" id="datepicker3" placeholder="적용일" style="width:80%; display:inline-block; margin-right:5px;">
+							</td>
+							<th>급여구분</th>
+							<td>
+								<span><input type="checkbox" />고정급</span>
+								<span><input type="checkbox" />변동급</span>
+							</td>
+							<th>급여차수</th>
+							<td>
+								<select>
+					  				<option value="one">1차</option>
+					  				<option value="two">2차</option>
+					 				<option value="three">3차</option>
+					  				<option value="four">4차</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th>기본급</th>
+							<td><input type="text" class="form-control" /></td>
+							<th>법정수당</th>
+							<td colspan="3"><input type="text" class="form-control" /></td>
+						</tr>
+						<tr>
+							<th>차량유지비</th>
+							<td><input type="text" class="form-control" /></td>
+							<th>식대</th>
+							<td colspan="3"><input type="text" class="form-control" /></td>
+						</tr>
+						<tr>
+							<th>지급총액</th>
+							<td colspan="5"><input type="text" class="form-control" /></td>
+					</table>
+			  </div>
+			  <div id="menu3" class="tab-pane fade">
+			    <h3>세무정보등록</h3>
+			    <form action="../../emp/taxInfoAdd">
+				    <table class="table">
+				    	<colgroup>
+							<col width="15%" />
+							<col width="35%" />
+							<col width="15%" />
+							<col width="35%" />
+						</colgroup>
+						<th>적용일</th>
+						<td colspan="3">	
+							<input type="text" name="emp_join_date" class="form-control" id="datepicker4" placeholder="적용일" style="width:80%; display:inline-block; margin-right:5px;">
 						</td>
-						<td colspan="2"><input class="form-control" value="${list.get(0).get("EMP_ADDR2")}" name="emp_addr2" id="emp_addr2" type="text" readonly="readonly" placeholder="도로명주소" /></td>
-					</tr>
-					<tr>
-						<table class="table table-striped">
-							<colgroup>
-								<col width="50px" />
-								<col width="120px" />
-								<col width="50px" />
-								<col width="120px" />
-								<col width="50px" />
-								<col width="120px" />
-							</colgroup>
-							<tbody>
-								<tr>
-									<td>입사일자</td>
-									<td>	
-										<input type="text" name="emp_join_date" class="form-control" id="datepicker" value="${list.get(0).get("EMP_JOIN_DATE")}" style="width:80%; display:inline-block; margin-right:5px;">
-									</td>
-									<td>퇴사일자</td>
-									<td>		
-										<input type="text" name="emp_retire_date" class="form-control" id="datepicker2" value="${list.get(0).get("EMP_RETIRE_DATE")}" style="width:80%; display:inline-block; margin-right:5px;">
-									</td>
-									<td>퇴사사유</td>
-									<td><input type="text" name="emp_retire_reason" class="form-control" value="${list.get(0).get("EMP_RETIRE_REASON")}"></td>
-								</tr>
-								<tr>
-									<td>부서<span class="essential">*</span></td>
-									<td id="pop_dept" class="input-group">
-										<input type="hidden" id="p_dept_no" name="deptno" class="form-control">
-										<input type="text" id="p_dept_name" class="form-control" value="${list.get(0).get("DNAME")}">
-										<span class="input-group-btn">
-											 <button class="btn btn-default" type="button" data-toggle="modal" data-target="#exampleModal">Go!</button>
-										</span>
-									</td>
-									<td>직급<span class="essential">*</span></td>
-									<td id="pop_rank" class="input-group">
-										<input type="hidden" id="p_rank_no" name="rank_no" class="form-control">
-										<input type="text" id="p_rank_name" class="form-control" value="${list.get(0).get("RANK_NAME")}">
-										<span class="input-group-btn">
-											 <button class="btn btn-default" type="button">Go!</button>
-										</span>
-									</td>
-									<td>직책</td>
-									<td id="pop_duty" class="input-group">
-										<input type="hidden" id="p_duty_no" name="duty_no" class="form-control">
-										<input type="text" id="p_duty_name" class="form-control" value="${list.get(0).get("DUTY_NAME")}">
-										<span class="input-group-btn">
-											 <button class="btn btn-default" type="button">Go!</button>
-										</span>
-									</td>
-								</tr>
-								<tr>
-									<td>은행명</td>
-									<td id="pop_bank" class="input-group">
-										<input type="hidden" id="p_bank_no" name="bank_no" class="form-control">
-										<input type="text" id="p_bank_name" class="form-control" value="${list.get(0).get("BANK_NAME")}">
-										<span class="input-group-btn">
-											 <button class="btn btn-default" type="button">Go!</button>
-										</span>
-									</td>
-									<td>계좌번호</td>
-									<td><input type="text" name="emp_account_num" class="form-control" value="${list.get(0).get("EMP_ACCOUNT_NUM")}"></td>
-									<td>예금주</td>
-									<td><input type="text" name="emp_account_holder" class="form-control" value="${list.get(0).get("EMP_ACOUNT_HOLDER")}"></td>
-								</tr>
-								<tr>
-									<td>사진첨부</td>		
-									<td colspan="5">
-										<input type="file" name="emp_profile" class="form-control" value="${list.get(0).get("EMP_PROFILE")}">
-									</td>
-								</tr>
-								<tr>
-									<td>첨부파일</td>
-									<td colspan="5">
-										<input type="file" name="emp_attach_file" class="form-control" value="${list.get(0).get("EMP_ATTACH_FILE")}">
-									</td>
-								</tr>
-								<tr>
-									<td>비고</td>
-									<td colspan="5"><textarea class="form-control" name="emp_etc" value="${list.get(0).get("EMP_ETC")}"></textarea></td>
-								</tr>
-							</tbody>
-						</table>
-					</tr>
-				</tbody>
-			</table>
-			<div class="btn_group">
-				<a href="../emp/read" class="btn btn-default pull-left">목록</a>
-				<input type="submit" class="btn btn-primary pull-right" value="수정완료">
+						<tr>
+							<th>국민연금</th>
+							<td>
+								<select>
+					  				<option value="autoSum">자동계산</option>
+					  				<option value="Income">기준소득기준</option>
+					 				<option value="none">안함</option>
+								</select>
+							</td>
+							<th>기준소득월액</th>
+							<td><input type="text" class="form-control" /></td>
+						</tr>
+						<tr>
+							<th>건강보험</th>
+							<td>
+								<select>
+					  				<option value="autoSum">자동계산</option>
+					  				<option value="Income">기준소득기준</option>
+					 				<option value="none">안함</option>
+								</select>
+							</td>
+							<th>기준소득월액</th>
+							<td><input type="text" class="form-control" /></td>
+						</tr>
+						<tr>
+							<th>고용보험</th>
+							<td>
+								<select>
+					  				<option value="autoSum">자동계산</option>
+					  				<option value="Income">기준소득기준</option>
+					 				<option value="none">안함</option>
+								</select>
+							</td>
+							<th>기준소득월액</th>
+							<td><input type="text" class="form-control" /></td>
+						</tr>
+						<tr>
+							<th>배우자공제</th>
+							<td colspan="3">
+								<select>
+					  				<option value="autoSum">자동계산</option>
+					  				<option value="Income">기준소득기준</option>
+					 				<option value="none">안함</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th>부양가족수(본인 및 배우자 제외)</th>
+							<td><input type="text" class="form-control" /></td>
+							<th>부양가족중 20세 미만 수</th>
+							<td><input type="text" class="form-control" /></td>
+						</tr>
+					</table>
+				</div>
+				<div class="btn_group">
+					<a href="../emp/read" class="btn btn-default pull-left">목록</a>
+					<input type="submit" class="btn btn-primary pull-right" value="수정완료라능">
+				</div>
 			</div>
 		</form>
-			<!-- Button trigger modal -->
-		</div>
 	</div>
 </body>
 </html>

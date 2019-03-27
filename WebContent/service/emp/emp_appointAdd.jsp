@@ -28,6 +28,19 @@
 		  });
 	});
 </script>
+<!-- 팝업창 -->
+<script>
+$(document).ready(function() {
+    $('#pop_emp').on("click", function() {	
+    	var url="../../emp/pop_empRead";
+    	var windowW = 300;  // 창의 가로 길이
+        var windowH = 300;  // 창의 세로 길이
+        var left = Math.ceil((window.screen.width - windowW)/2);
+        var top = Math.ceil((window.screen.height - windowH)/2);
+  window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+    });
+});
+</script>
 </head>
 <body>
 	<!-- 네비게이션 -->
@@ -74,8 +87,9 @@
 					<a class="active" data-toggle="collapse" data-target="#group1"
 					aria-expanded="false" href="#">기본사항등록</a>
 					<ul class="collapse in depth2" id="group1">
-						<li><a class="active" href="./read">인사카드등록</a></li>
-						<li><a href="../emp/deptRead">부서등록</a></li>
+						<li><a href="../../emp/read">인사카드등록</a></li>
+						<li><a class="active" href="../../emp/appointRead">인사발령등록</a></li>
+						<li><a href="../../emp/deptRead">부서등록</a></li>
 					</ul>
 				</li>
 				<li>
@@ -92,6 +106,17 @@
 			<h3>인사발령등록</h3>
 			<form action="../../emp/appointAdd">
 				<table class="table">
+					<colgroup>
+						<col width="15%">
+						<col width="12%">
+						<col width="12%">
+						<col width="12%">
+						<col width="10%">
+						<col width="10%">
+						<col width="10%">
+						<col width="10%">
+						<col width="10%">
+					</colgroup>
 					<thead>
 						<tr>
 							<th rowspan="2">발령일자</th>
@@ -111,17 +136,17 @@
 						<tr>
 							<td><input type="text" class="form-control" name="emp_appoint_date" id="datepicker" style="width:80%; display:inline-block; margin-right:5px;"/></td>
 							<td class="input-group"  id="pop_emp">
-								<input type="hidden" name="empno">
-								<input type="text" class="form-control" readonly />
-								<span id="p_emp_number" name="emp_number" class="input-group-btn">
-									<button type="button" class="btn btn-default empCheck">조회</button> 
+								<input type="hidden" id="p_emp_no" name="empno" />
+								<input type="text" id="p_emp_number" class="form-control" readonly />
+								<span name="emp_number" class="input-group-btn">
+									<button type="button" class="btn btn-default">조회</button> 
 								</span>
 							</td>
-							<td><input type="text" class="form-control" name="emp_name" readonly /></td>
-							<td><input type="text" class="form-control" name="emp_join_divide" readonly /></td>
-							<td><input type="text" class="form-control" name="prev_rank" readonly /></td>
+							<td><input type="text" id="p_emp_name" class="form-control" name="emp_name" readonly /></td>
+							<td><input type="text" id="p_emp_join_divide" class="form-control" name="emp_join_divide" readonly /></td>
+							<td><input type="text" id="p_rank_name" class="form-control" name="prev_rank" readonly /></td>
 							<td><input type="text" class="form-control" name="next_rank"/></td>
-							<td><input type="text" class="form-control" name="prev_dept" readonly /></td>
+							<td><input type="text" id="p_dept_name" class="form-control" name="prev_dept" readonly /></td>
 							<td><input type="text" class="form-control" name="next_dept"/></td>
 						</tr>
 				    </tbody>
