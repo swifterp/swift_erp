@@ -157,4 +157,12 @@ public class Emp_Controller {
 		return "emp/pop_emp";
 	}
 	
+    @ResponseBody
+    @RequestMapping(value = "/checkEmpNum", method = RequestMethod.POST)
+    public String checkEmpNum(HttpServletRequest request, Model model) {
+        String emp_number = request.getParameter("emp_number");
+        int rowcount = el.checkEmpNum(emp_number);
+        return String.valueOf(rowcount);
+    }
+	
 }

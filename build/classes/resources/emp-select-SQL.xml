@@ -68,4 +68,9 @@
         from bank
         order by bank_no
 	</select>
+	<select id="checkEmpNum" parameterType="String" resultType="Integer">		
+        select COUNT(*) from employee
+        where emp_number = #{emp_number}
+	</select>
+	
 </mapper>

@@ -89,6 +89,8 @@ public interface selectListMapper {
 	
 	public List<Map<String, String>> getEmpData(String empInfo);
 
+	public int checkEmpNum(String emp_number);
+
 	
 
 }

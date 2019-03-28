@@ -226,7 +226,7 @@ $(document).ready(function() {
 			<div class="tab-content">
 			  <div id="menu1" class="tab-pane fade in active">
 				<h3>사원등록</h3>
-				<table class="table table-striped">
+				<table class="table">
 					<colgroup>
 						<col width="20%" />
 						<col width="10%" />
@@ -239,25 +239,30 @@ $(document).ready(function() {
 							<td rowspan="4">
 								<img style="width:140px; heigth:auto;" src="../images/profile_0.png"/>
 							</td>	
-							<td>사원번호<span class="essential">*</span></td>
-							<td><input type="text" name="emp_number" class="form-control" value="${list.get(0).get("EMP_NUMBER")}" readonly="readonly"></td>
-							<td>사원명<span class="essential">*</span></td>
+							<th>사원번호<span class="essential">*</span></th>
+							<td class="input-group">
+								<input type="text" id="emp_number" name="emp_number" class="form-control" value="${list.get(0).get("EMP_NUMBER")}" readonly="readonly">
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-info empNumCheck">중복확인</button> 
+								</span>
+							</td>
+							<th>사원명<span class="essential">*</span></th>
 							<td><input type="text" name="emp_name" class="form-control" value="${list.get(0).get("EMP_NAME")}" ></td>
 						</tr>
 						<tr>	
-							<td>주민번호</td>
+							<th>주민번호</th>
 							<td><input type="text" name="emp_resident_number" class="form-control" value="${list.get(0).get("EMP_RESIDENT_NUMBER")}"></td>
-							<td>이메일</td>
+							<th>이메일</th>
 							<td><input type="email" name="emp_email" class="form-control" value="${list.get(0).get("EMP_EMAIL")}"></td>
 						</tr>
 						<tr>	
-							<td>전화번호</td>
+							<th>전화번호</th>
 							<td><input type="text" name="emp_tel" class="form-control" value="${list.get(0).get("EMP_TEL")}"></td>
-							<td>모바일</td>
+							<th>모바일</th>
 							<td><input type="text" name="emp_mobile" class="form-control" value="${list.get(0).get("EMP_MOBILE")}"></td>
 						</tr>
 						<tr>	
-							<td>주소</td>
+							<th>주소</th>
 							<td class="input-group">
 								<input class="form-control" value="${list.get(0).get("EMP_ADDR1")}" name="emp_addr1" id="emp_addr1" type="text" readonly="readonly" style="display:inline-block;" placeholder="우편번호" />
 								<span class="input-group-btn">
@@ -267,7 +272,7 @@ $(document).ready(function() {
 							<td colspan="2"><input class="form-control" value="${list.get(0).get("EMP_ADDR2")}" name="emp_addr2" id="emp_addr2" type="text" readonly="readonly" placeholder="도로명주소" /></td>
 						</tr>
 						<tr>
-							<table class="table table-striped">
+							<table class="table">
 								<colgroup>
 									<col width="50px" />
 									<col width="120px" />
@@ -278,19 +283,19 @@ $(document).ready(function() {
 								</colgroup>
 								<tbody>
 									<tr>
-										<td>입사일자</td>
+										<th>입사일자</th>
 										<td>	
 											<input type="text" name="emp_join_date" class="form-control" id="datepicker" value="${list.get(0).get("EMP_JOIN_DATE")}" style="width:80%; display:inline-block; margin-right:5px;">
 										</td>
-										<td>퇴사일자</td>
+										<th>퇴사일자</th>
 										<td>		
 											<input type="text" name="emp_retire_date" class="form-control" id="datepicker2" value="${list.get(0).get("EMP_RETIRE_DATE")}" style="width:80%; display:inline-block; margin-right:5px;">
 										</td>
-										<td>퇴사사유</td>
+										<th>퇴사사유</th>
 										<td><input type="text" name="emp_retire_reason" class="form-control" value="${list.get(0).get("EMP_RETIRE_REASON")}"></td>
 									</tr>
 									<tr>
-										<td>부서<span class="essential">*</span></td>
+										<th>부서<span class="essential">*</span></th>
 										<td id="pop_dept" class="input-group">
 											<input type="hidden" id="p_dept_no" name="deptno" class="form-control">
 											<input type="text" id="p_dept_name" class="form-control" value="${list.get(0).get("DNAME")}">
@@ -306,7 +311,7 @@ $(document).ready(function() {
 												 <button class="btn btn-default" type="button">Go!</button>
 											</span>
 										</td>
-										<td>직책</td>
+										<th>직책</th>
 										<td id="pop_duty" class="input-group">
 											<input type="hidden" id="p_duty_no" name="duty_no" class="form-control">
 											<input type="text" id="p_duty_name" class="form-control" value="${list.get(0).get("DUTY_NAME")}">
@@ -316,7 +321,7 @@ $(document).ready(function() {
 										</td>
 									</tr>
 									<tr>
-										<td>은행명</td>
+										<th>은행명</th>
 										<td id="pop_bank" class="input-group">
 											<input type="hidden" id="p_bank_no" name="bank_no" class="form-control">
 											<input type="text" id="p_bank_name" class="form-control" value="${list.get(0).get("BANK_NAME")}">
@@ -324,25 +329,25 @@ $(document).ready(function() {
 												 <button class="btn btn-default" type="button">Go!</button>
 											</span>
 										</td>
-										<td>계좌번호</td>
+										<th>계좌번호</th>
 										<td><input type="text" name="emp_account_num" class="form-control" value="${list.get(0).get("EMP_ACCOUNT_NUM")}"></td>
-										<td>예금주</td>
+										<th>예금주</th>
 										<td><input type="text" name="emp_account_holder" class="form-control" value="${list.get(0).get("EMP_ACOUNT_HOLDER")}"></td>
 									</tr>
 									<tr>
-										<td>사진첨부</td>		
+										<th>사진첨부</th>		
 										<td colspan="5">
 											<input type="file" name="emp_profile" class="form-control" value="${list.get(0).get("EMP_PROFILE")}">
 										</td>
 									</tr>
 									<tr>
-										<td>첨부파일</td>
+										<th>첨부파일</th>
 										<td colspan="5">
 											<input type="file" name="emp_attach_file" class="form-control" value="${list.get(0).get("EMP_ATTACH_FILE")}">
 										</td>
 									</tr>
 									<tr>
-										<td>비고</td>
+										<th>비고</th>
 										<td colspan="5"><textarea class="form-control" name="emp_etc" value="${list.get(0).get("EMP_ETC")}"></textarea></td>
 									</tr>
 								</tbody>

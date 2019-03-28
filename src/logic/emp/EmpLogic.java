@@ -103,8 +103,11 @@ public class EmpLogic {
 	}
 
 	public  List<Map<String, String>> appointViewDao(Integer emp_appoint_no) {
-		ed.appointView(emp_appoint_no);
-		return ed.selectAppointList();
+		return ed.appointView(emp_appoint_no);
+	}
+
+	public int checkEmpNum(String emp_number) {
+		return ed.checkEmpNum(emp_number);
 	}
 
 	

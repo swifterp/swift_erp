@@ -11,7 +11,7 @@
 <script type = "text/javascript" src ="../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../js/bootstrap.js"></script>
 <script>
-	function deptSelect(){
+	function deptSelect(deptno,dname){
             opener.document.getElementById("p_dept_no").value = document.getElementById("c_dept_no").value
             opener.document.getElementById("p_dept_name").value = document.getElementById("c_dept_name").value
             window.close();
@@ -39,7 +39,7 @@
 				<td>
 					<input id="c_dept_no" type="hidden" value="<%= String.valueOf(lst.get(i).get("DEPTNO")) %>"/>
 					<input id="c_dept_name" type="hidden" value="<%= String.valueOf(lst.get(i).get("DNAME")) %>"/>
-					<a class="btn btn-primary" onclick="javascript:deptSelect()">선택</a>
+					<a class="btn btn-primary" onclick="javascript:deptSelect(<%= String.valueOf(lst.get(i).get("DEPTNO")) %>,<%= String.valueOf(lst.get(i).get("DNAME")) %>)">선택</a>
 				</td>
 			</tr>
 		</tbody>

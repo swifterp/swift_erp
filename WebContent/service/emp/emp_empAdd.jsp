@@ -156,6 +156,29 @@ $(document).ready(function() {
 });
 
 </script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+      $('#check').on('click', function(){
+          $.ajax({
+              type: 'POST',
+              url: '../../emp/checkEmpNum',
+              data: {
+                  "emp_number" : $('#emp_number').val()
+              },
+              success: function(data){
+                  if($.trim(data) == 0){
+                	  alert("사용가능한 사원번호입니다.");
+                  }
+                  else{
+                	  alert("중복된 사원번호입니다.");
+                  }
+              }
+          });    //end ajax    
+      });    //end on    
+  });
+  </script>
+
 </head>
 <body>
 	<!-- 네비게이션 -->
@@ -243,7 +266,7 @@ $(document).ready(function() {
 								<td class="input-group">
 									<input type="text" id="emp_number" name="emp_number" class="form-control">
 									<span class="input-group-btn">
-										<button type="button" class="btn btn-info empNumCheck">중복확인</button> 
+										<button type="button" id="check" class="btn btn-info">중복확인</button> 
 									</span>
 								</td>
 								<th>사원명 <span class="essential">*</span></th>

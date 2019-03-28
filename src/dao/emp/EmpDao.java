@@ -115,7 +115,10 @@ public class EmpDao {
 	}
 
 	public List<Map<String, String>> appointView(Integer emp_appoint_no) {
-		slm.getAppointView(emp_appoint_no);
-		return slm.getAppointList();
+		return slm.getAppointView(emp_appoint_no);
+	}
+
+	public int checkEmpNum(String emp_number) {
+		return slm.checkEmpNum(emp_number);
 	}
 }
