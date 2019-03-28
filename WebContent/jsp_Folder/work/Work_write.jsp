@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
 <script type = "text/javascript" src ="../../js/jquery.min.js"></script>
@@ -11,6 +12,28 @@
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<style>
+	.wrap {
+		overflow: hidden;
+		background-color: #d55;
+		
+	}
+	
+	.d1 {
+	    float: left;
+	    width: 49%;
+	    margin-right: 2%;
+	    background-color: #ee7;
+	}
+	
+	.d2 {
+		float: left;
+	    width: 49%;
+	    padding: 20px 0;
+	    background-color: #eda;
+	}
+</style>
 
 <script type="text/javascript">
 	function timer() {
@@ -30,7 +53,12 @@
 		return timeString;
 	}
 </script>
-
+<style>
+	#width {
+		width: 600px;
+		
+	}
+</style>
 <script type="text/javascript">
 	function timer2() {
 		var date = new Date();
@@ -55,6 +83,70 @@
 		font-size: 15px;
 	}
 </style>
+<script language="javascript">
+	function ShowTable(wtable) {
+	eval(wtable).style.display="";
+	}
+	function HideTable(wtable) {
+	eval(wtable).style.display="none";
+	}
+</script>
+<script>
+	var jbAry = Array();
+	jbAry[0] = '사용자';
+	jbAry[1] = '장소';
+	jbAry[2] = '시간';
+	jbAry[3] = '사유';
+</script>
+<script type="text/javascript">
+	var cnt = 1;
+	 $(function () {
+       // $('#lblDisplay').empty();
+
+        $('#btnCreate').click(function () {
+        	var str1 = "<input id='width' type='button' class='btn btn-primary ' value='테이블 숨기기' onclick='HideTable(a_table);'>";
+        	var str2 = "<input id='width' type='button' class='btn btn-primary ' value='테이블 펼치기' onclick='ShowTable(a_table);'>";
+            $('#Table').append(str1);
+        	$('#Table').click(function () {
+				if(cnt%2 == 1){
+					$('#Table *').remove();
+					$('#Table').append(str2);
+				} else {
+					$('#Table *').remove();
+	                $('#Table').append(str1);
+				}
+                cnt++;
+        	})
+            $('#lblTable').empty();
+            var row = 4;
+            var col = 4;
+            
+            var strTable = "<table id='a_table' display='none' border='1px' width = '600px'>";
+
+            for (var i = 0; i < row; i++) {
+                strTable += "<tr>";
+            for (var j = 0; j < col; j++) {
+					if(j == 0){
+                   		strTable += "<td width = '120px'>" + (jbAry[i]) + "</td>";
+					}
+					if(j == 1){
+                   		strTable += "<td>" + (i) + (j) + "</td>";
+					}
+					if(j == 2){
+                   		strTable += "<td>" + (i) + (j) + "</td>";
+					}
+					if(j == 3){
+                   		strTable += "<td>" + (i) + (j) + "</td>";
+					}
+                }
+                strTable += "</tr>";
+	            strTable += "</tbody>"
+	        }
+	        strTable += "</table>";
+	        $('#lblTable').append(strTable);
+	    });
+	});
+</script>
 
 <title>SWIFT ERP</title>
 </head>
@@ -124,11 +216,12 @@
 			</ul>
 		</nav>
 	</div>
-	<div style="width: 600px" class="contents">
+	<div style="width: 1400px" class="contents wrap">
 		<a class="btn btn-default" href="Work_on_off.jsp" style="width: 150px">출/퇴근 기록부</a> <a
 			class="btn btn-primary" href="#" style="width: 150px">출/퇴근 작성</a>
 		<p/>
 		<br>
+		<div class="d1">
 		<table class="table" style="margin: auto; text-align: left;">
 			<thead style="vertical-align: middle;">
 				<tr>
@@ -278,13 +371,21 @@
 					<td>사유</td>
 					<td colspan="3"><input type="text"
 						class="form-control input-sm"
-						style="width: 300px; height: 50%; display: inline-block" /></td>
+						style="width: 300px; height: 50%; display: inline-block" />
+					</td>
 				</tr>
 			</tbody>
 		</table>
+		</div>
+		<form name=form class="d2">
+			<div id= "Table">
+	    	</div>
+			<div id="lblTable">
+		    </div>
+    	</form>
 		<br> 
-		<input type="button" class="btn btn-primary pull-left"
-			value="출근">
+	<input id="btnCreate" type="button" class="btn btn-primary pull-left"
+	       style="vertical-align: middle;" value="출근">
 	</div>
 </body>
 </html>
