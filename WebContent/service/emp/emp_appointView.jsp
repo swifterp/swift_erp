@@ -104,7 +104,7 @@ $(document).ready(function() {
 		</nav>		
 		<div class="contents">
 			<h3>인사발령 조회/수정</h3>
-			<form action="../emp/appointUpd">
+			<form action="./appointUpd">
 			<table class="table">
 				<colgroup>
 					<col width="15%">
@@ -136,6 +136,7 @@ $(document).ready(function() {
 					<tr>
 						<td><input type="text" class="form-control" value="${list.get(0).get('EMP_APPOINT_DATE')}"  name="emp_appoint_date" id="datepicker" style="width:80%; display:inline-block; margin-right:5px;"/></td>
 						<td class="input-group"  id="pop_emp">
+							<input type="hidden" name="emp_appoint_no" value="${list.get(0).get('EMP_APPOINT_NO')}" />
 							<input type="hidden" id="p_emp_no" name="empno" value="${list.get(0).get('EMPNO')}" />
 							<input type="text" id="p_emp_number" class="form-control" value="${list.get(0).get('EMP_NUMBER')}" readonly />
 							<span name="emp_number" class="input-group-btn">

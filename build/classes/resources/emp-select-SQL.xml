@@ -30,7 +30,7 @@
         order by a.emp_appoint_date desc
 	</select>
 	<select id="getAppointView" parameterType="Integer" resultType="hashmap">		
-        select a.empno, to_char(a.emp_appoint_date,'YYYY-MM-DD') as emp_appoint_date,e.emp_number,e.emp_name,e.emp_join_divide
+        select a.emp_appoint_no, a.empno, to_char(a.emp_appoint_date,'YYYY-MM-DD') as emp_appoint_date,e.emp_number,e.emp_name,e.emp_join_divide
        		  ,a.prev_rank,a.next_rank,a.prev_dept,a.next_dept
         from emp_appoint a, employee e
         where a.empno = e.empno and a.emp_appoint_no = #{emp_appoint_no, jdbcType=INTEGER}
