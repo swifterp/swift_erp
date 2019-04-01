@@ -22,23 +22,11 @@
 </head>
 	<body class="text-center">
 	   <div class="container">
-		    <form class="form-signin" name="f_login" action="../../mem/login">
+		    <form action="../../mem/login">
 				  <img src="../../images/login_bg.png" alt="" width="120" height="auto">
 				  <h1 class="h3 font-weight-normal">로그인</h1>
-				  <label for="mem_email_id" class="sr-only">Email address</label>
-				  <input type="email" id="mem_email_id" name="mem_email_id" class="form-control input_email" placeholder="이메일아이디" required="" autofocus="">
-				  <label for="mem_pw" class="sr-only">Password</label>
-				  <input type="password" id="mem_pw" name="mem_pw" class="form-control input_pw" placeholder="비밀번호" required="">
-				  <c:if test="${msg == false}">
-			          <div style="color: red">
-			          		아이디 또는 비밀번호가 일치하지 않습니다.
-			          </div>
-		          </c:if>
-		          <c:if test="${msg == logout}">
-			          <div style="color: red">
-			          		로그아웃되었습니다.
-			          </div>
-		          </c:if>
+				  <input type="email" id="mem_email_id" name="mem_email_id" class="form-control" placeholder="이메일아이디" required="" autofocus="">
+				  <input type="password" id="mem_pw" name="mem_pw" class="form-control" placeholder="비밀번호" required="">
 				  <div class="checkbox">
 				    <label>
 				      <input type="checkbox" value="아이디저장"> 아이디저장

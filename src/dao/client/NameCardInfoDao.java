@@ -14,9 +14,14 @@ public class NameCardInfoDao {
 	@Autowired
 	private selectListMapper slm;
 	
-	public List<Map<String,String>> selectClientInfo(){
+	public List<Map<String,String>> selectNameCardInfo(){
 		
 		return slm.getNameCardInfoList();
+	}
+
+	public Map<String, String> selectNameCardInfo(int NAMECARD_CODE) {
+		// TODO Auto-generated method stub
+		return slm.getNameCardInfoDetail(NAMECARD_CODE);
 	}
 
 }

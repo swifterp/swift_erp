@@ -14,5 +14,13 @@
 			attend_close = #{attend_close, jdbcType=VARCHAR}
 			where attend_no = #{attend_no, jdbcType=INTEGER}
 	</update>
+	
+	<update id="resetAttendCodeList" parameterType="HashMap">
+		update ATTEND_CODE_T  set
+            attend_name = #{attend_name, jdbcType=VARCHAR},
+            attend_code_state = #{attend_code_state,  jdbcType=VARCHAR},
+            attend_c_etc = #{attend_c_etc,  jdbcType=VARCHAR}
+            where attend_code= #{attend_code,  jdbcType=INTEGER}
+	</update>
 
 </mapper>

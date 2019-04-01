@@ -35,9 +35,4 @@ public class MemLogic {
         session.invalidate();
     }
 
-	public int idCheck(String mem_email_id) {
-		return md.idCheck(mem_email_id);
-	}
-    
-
 }

@@ -6,36 +6,49 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import resources.mapper.deleteListMapper;
+import resources.mapper.insertListMapper;
 import resources.mapper.selectListMapper;
 import resources.mapper.updateListMapper;
 
 @Repository("AttendManagerTDao")
 public class AttendManagerTDao {
-	
 	@Autowired
 	private selectListMapper slm;
-
 	@Autowired
 	private updateListMapper ulm;
+	@Autowired
+	private deleteListMapper dlm;
+	@Autowired
+	private insertListMapper ilm;
 	
-	//Attend Manager 페이지에서 테이블 전체 출력
+//View Attend Data List
 	public List<Map<String, String>> selectAttendManagerList(){
-		
-		return slm.getAttendManagerList();
+		return slm.getAttendDataList();
 	}
-	
-	//Attend Manager에서 Attend_no 값 받아서 Attend Update에서 조회하고 싶을때 
-	public List<Map<String, String>> selectAttendManagerLow(Integer attendno){
-		
+//Call Attend Data One Low
+	public List<Map<String, String>> selectAttendDataLow(Integer attendno){
 		return slm.getAttendLow(attendno);
 	}
-	
-	//근태기록 수정후 근태리스트페이지로 반환
-	public List<Map<String, String>> updateAttendManagerLowup(HashMap<String, String> attendInsert){
-		//System.out.println(attendInsert);
+//Update Attend Data
+	public List<Map<String, String>> updateAttendData(HashMap<String, String> attendInsert){
 		ulm.resetAttendList(attendInsert);
-		return slm.getAttendManagerList();
+		return slm.getAttendDataList();
+	}
+//Insert Attend Data
+	public List<Map<String, String>> insertAttendData(HashMap<String, String> attenDPlus) {
+		ilm.InsertAttendData(attenDPlus);
+		return slm.getAttendDataList();
+	}
+//Delete Attend Data
+	public int deleteAttendData(Integer attend_no){
+		return dlm.setAttendDeleteData(attend_no);
+	}
+//Call Attend Data Details
+	public List<Map<String, String>> selectAttendDetailList(HashMap<String, String> DetailInfo){
+		return slm.getAttendDetailList(DetailInfo);
 	}
 	
 }

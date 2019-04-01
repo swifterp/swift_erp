@@ -42,22 +42,22 @@ public class Mem_Controller {
 		return "welcome/welcome";
 	}
 	*/
-	//濡쒓렇�씤 泥섎━
+
     @RequestMapping("/login")
     public String login(@RequestParam HashMap<String,String> memLogin,
     		HttpServletRequest req, RedirectAttributes rttr){
     	HttpSession session = req.getSession();
     	String mem_name = ml.login(memLogin);
-        if (mem_name == null) { // 濡쒓렇�씤 �떎�뙣
+        if (mem_name == null) { 
             session.setAttribute("member", null);
             rttr.addFlashAttribute("msg","false");
-        } else { // 濡쒓렇�씤 �꽦怨�
+        } else { 
             session.setAttribute("member", mem_name);
         }
         return "welcome/welcome";
     }
     
-    //濡쒓렇�븘�썐 泥섎━
+
     @RequestMapping("/logout")
     public ModelAndView logout(HttpSession session){
         ml.logout(session);
@@ -65,19 +65,6 @@ public class Mem_Controller {
         mav.setViewName("mem/login");
         mav.addObject("msg", "logout");
         return mav;
-    }
-    
-    @RequestMapping("/idCheck")
-    @ResponseBody
-    public Map<Object, Object> idCheck(@RequestBody String mem_email_id) {
-        
-        int count = 0;
-        Map<Object, Object> map = new HashMap<Object, Object>();
- 
-        count = ml.idCheck(mem_email_id);
-        map.put("cnt", count);
-     
-        return map;
     }
 
 }

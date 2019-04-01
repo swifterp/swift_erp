@@ -20,10 +20,13 @@ public interface insertListMapper {
 	
 	public void InsertBusinessLog(HashMap<String, String> businesslog);
 	
+///////Attend Start
+	public void InsertAttendData(HashMap<String, String> attendDPlus);//Insert Attend Data
+	public void InsertAttendCode(HashMap<String, String> attendCPlus);//Insert Attend Code
+///////Attend End
 	
-	public void setAttendAddList(HashMap<String, Integer> attendplus);
-
-
+	public void InsertClientInfo(HashMap<String, String> CLIENT_INFO);
+	public void InsertNameCardInfo(HashMap<String, String> NAMECARD_INFO);
 
 }
 

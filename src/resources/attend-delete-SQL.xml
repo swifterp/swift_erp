@@ -8,4 +8,8 @@
 		delete from attend_manager_t where attend_no=#{attend_no, jdbcType=INTEGER}
 	</delete>
 	
+	<delete id="setDeleteAttendCode" parameterType="Integer">
+		delete from ATTEND_CODE_T where attend_code=#{attend_code, jdbcType=INTEGER}
+	</delete>
+	
 </mapper>

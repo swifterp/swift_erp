@@ -11,9 +11,9 @@
 <script type = "text/javascript" src ="../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../js/bootstrap.js"></script>
 <script>
-	function dutySelect(){
-            opener.document.getElementById("p_duty_no").value = document.getElementById("c_duty_no").value
-            opener.document.getElementById("p_duty_name").value = document.getElementById("c_duty_name").value
+	function dutySelect(duty_no,duty_name){
+            opener.document.getElementById("p_duty_no").value = duty_no;
+            opener.document.getElementById("p_duty_name").value = duty_name;
             window.close();
 	}
 </script>
@@ -37,9 +37,7 @@
 				<td><%= String.valueOf(lst.get(i).get("DUTY_NO")) %></td>
 				<td><%= lst.get(i).get("DUTY_NAME") %></td>
 				<td>
-					<input id="c_duty_no" type="hidden" value="<%= String.valueOf(lst.get(i).get("DUTY_NO")) %>"/>
-					<input id="c_duty_name" type="hidden" value="<%= String.valueOf(lst.get(i).get("DUTY_NAME")) %>"/>
-					<a class="btn btn-primary" onclick="javascript:dutySelect()">선택</a>
+					<a class="btn btn-primary" onclick="javascript:dutySelect('<%= String.valueOf(lst.get(i).get("DUTY_NO")) %>','<%= String.valueOf(lst.get(i).get("DUTY_NAME")) %>')">선택</a>
 				</td>
 			</tr>
 		</tbody>

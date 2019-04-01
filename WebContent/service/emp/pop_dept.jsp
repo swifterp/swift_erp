@@ -37,8 +37,6 @@
 				<td><%= String.valueOf(lst.get(i).get("DEPTNO")) %></td>
 				<td><%= lst.get(i).get("DNAME") %></td>
 				<td>
-					<input id="c_dept_no" type="hidden" value="<%= String.valueOf(lst.get(i).get("DEPTNO")) %>"/>
-					<input id="c_dept_name" type="hidden" value="<%= String.valueOf(lst.get(i).get("DNAME")) %>"/>
 					<a class="btn btn-primary" onclick="javascript:deptSelect('<%= String.valueOf(lst.get(i).get("DEPTNO")) %>','<%= String.valueOf(lst.get(i).get("DNAME")) %>')">선택</a>
 				</td>
 			</tr>

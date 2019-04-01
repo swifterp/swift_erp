@@ -65,7 +65,7 @@ public class Approval_Controller {
 	@RequestMapping("/selectMyApproval")
 	public String readMyApproval(Model model) {
 		
-		model.addAttribute("list", sma);
+		model.addAttribute("list", sma.callMyApproval());
 		
 		return "approval/approval_myApproval";
 	}

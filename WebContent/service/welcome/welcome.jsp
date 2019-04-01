@@ -65,6 +65,7 @@
 	
 	<input type="button" onclick="javascript:goAttend()" value="근태관리">
 
+	<a href="../mem/logout">로그아웃</a>
 	<h2>${member}님 환영합니다.</h2>
 </body>
 </html>

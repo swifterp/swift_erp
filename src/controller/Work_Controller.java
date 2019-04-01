@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import logic.work.InsertBusinessLog;
 import logic.work.SelectBusinessLog;
+import logic.work.SelectClientList;
+import logic.work.SelectDeptList;
+import logic.work.SelectDeptStateList;
+import logic.work.SelectEmpStateList;
 import logic.work.SelectMonthWork;
 import logic.work.SelectWorkEtc;
 import logic.work.SelectWorkState;
@@ -46,9 +50,9 @@ public class Work_Controller {
 	private SelectMonthWork smw;
 	
 	@RequestMapping("/selectMonthWork")
-	public String readMonthWork(Model model) {
+	public String readMonthWork(Model model,@RequestParam String search_month) {
 		
-		model.addAttribute("list", smw.callMonthWorkDao());
+		model.addAttribute("list", smw.callMonthWorkDao(search_month));
 		
 		return "work/work_monthwork";
 	}
@@ -66,9 +70,9 @@ public class Work_Controller {
 	@Autowired
 	private SelectWorkTime swt;
 	@RequestMapping("/selectWorkTime")
-	public String readWorkTime(Model model) {
+	public String readWorkTime(Model model, @RequestParam String search_day) {
 		
-		model.addAttribute("list", swt.callWorkTimeDao());
+		model.addAttribute("list", swt.callWorkTimeDao(search_day));
 		
 		return "work/work_worktime";
 	}
@@ -82,5 +86,45 @@ public class Work_Controller {
 		
 		return "work/work_worketc";
 	}
+	
+	@Autowired
+	private SelectClientList scl;
+	@RequestMapping("/selectClientList")
+	public String readClientList(Model model, @RequestParam String clientName) {
+		
+		model.addAttribute("list",scl.CallClientListDao(clientName));
+	
+		return "work/work_clientlist";
+	}
+	@Autowired
+	private SelectDeptList sdl;
+	@RequestMapping("/selectDeptList")
+	public String readDeptList(Model model, @RequestParam String deptName) {
+		
+		model.addAttribute("list",sdl.CallDeptListDao(deptName));
+		
+		return "work/work_deptlist";
+	}
+	
+	@Autowired
+	private SelectDeptStateList sds;
+	@RequestMapping("/selectDeptStateList")
+	public String readDeptStateList(Model model, @RequestParam String DEPT_NAME) {
+		
+		model.addAttribute("list",sds.callDeptStateDao(DEPT_NAME));
+		
+		return "work/work_workdeptstate";
+	}
+	
+	@Autowired
+	private SelectEmpStateList ses;
+	@RequestMapping("/selectEmpStateList")
+	public String readEmpStateList(Model model, @RequestParam String EMP_NAME) {
+		
+		model.addAttribute("list",ses.callEmpStateDao(EMP_NAME));
+		
+		return "work/work_workempstate";
+	}
+	
 	
 }

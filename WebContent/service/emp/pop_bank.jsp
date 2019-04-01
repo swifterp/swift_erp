@@ -11,9 +11,9 @@
 <script type = "text/javascript" src ="../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../js/bootstrap.js"></script>
 <script>
-	function bankSelect(){
-            opener.document.getElementById("p_bank_no").value = document.getElementById("c_bank_no").value
-            opener.document.getElementById("p_bank_name").value = document.getElementById("c_bank_name").value
+	function bankSelect(bank_no,bank_name){
+            opener.document.getElementById("p_bank_no").value = bank_no;
+            opener.document.getElementById("p_bank_name").value = bank_name;
             window.close();
 	}
 </script>
@@ -37,9 +37,7 @@
 				<td><%= String.valueOf(lst.get(i).get("BANK_NO")) %></td>
 				<td><%= lst.get(i).get("BANK_NAME") %></td>
 				<td>
-					<input id="c_bank_no" type="hidden" value="<%= String.valueOf(lst.get(i).get("BANK_NO")) %>"/>
-					<input id="c_bank_name" type="hidden" value="<%= String.valueOf(lst.get(i).get("BANK_NAME")) %>"/>
-					<a class="btn btn-primary" onclick="javascript:bankSelect()">선택</a>
+					<a class="btn btn-primary" onclick="javascript:bankSelect('<%= String.valueOf(lst.get(i).get("BANK_NO")) %>','<%= String.valueOf(lst.get(i).get("BANK_NAME")) %>')">선택</a>
 				</td>
 			</tr>
 		</tbody>

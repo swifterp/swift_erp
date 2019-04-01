@@ -14,7 +14,7 @@ public class WorkStateDao {
 	@Autowired
 	private selectListMapper slm;
 	
-	public List<Map<String,String>> selectWorkState(){
+	public List<Map<String,String>> selectWorkState( ){
 		
 		return slm.getWorkStateList();
 	}

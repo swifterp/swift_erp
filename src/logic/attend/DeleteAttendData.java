@@ -3,13 +3,15 @@ package logic.attend;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dao.attend.AttendDeleteDao;
+import dao.attend.AttendManagerTDao;
 
 @Service("DeleteAttendData")
 public class DeleteAttendData {
 	@Autowired
-	private AttendDeleteDao add;
-	public int callAttendDeleteDao(Integer attend_no) {
-		return add.deleteAttendData(attend_no);
+	private AttendManagerTDao amtd;
+
+//Delete Attend Data
+	public int callDeleteAttendDataDao(Integer attend_no) {
+		return amtd.deleteAttendData(attend_no);
 	}
 }

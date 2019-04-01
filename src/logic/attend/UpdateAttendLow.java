@@ -11,14 +11,12 @@ import dao.attend.AttendManagerTDao;
 
 @Service("UpdateAttendLow")
 public class UpdateAttendLow {
-	
 	@Autowired
 	private AttendManagerTDao amt;
 
-	//Attend Manager에서 Attend_no 값 받아서 Attend Update에서 조회하고 싶을때 
-	public List<Map<String, String>> callAttendManagerLowup(HashMap<String, String> attendInsert){
+//Update Attend Data
+	public List<Map<String, String>> callUpdateAttendDataDao(HashMap<String, String> attendInsert){
 		//System.out.println(attendInsert);
-		return amt.updateAttendManagerLowup(attendInsert);
+		return amt.updateAttendData(attendInsert);
 	}
-	
 }

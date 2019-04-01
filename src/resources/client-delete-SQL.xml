@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="resources.mapper.deleteListMapper">
+
+	
+	<delete id="DeleteNameCardInfo" parameterType="Integer">
+	
+	delete namecard where NAMECARD_CODE = #{NAMECARD_CODE,jdbcType=INTEGER}		
+	
+	</delete>
+	
+	
+	<delete id="DeleteClientInfo" parameterType="Integer">
+	
+	delete client where CLIENT_CODE = #{CLIENT_CODE,jdbcType=INTEGER}		
+	
+	</delete>
+</mapper>
+

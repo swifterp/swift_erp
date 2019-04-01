@@ -19,4 +19,11 @@ public class SelectClientInfo {
 		return csd.selectClientInfo();
 		
 	}
+	
+	public Map<String,String> callClientInfoDao(int CLIENT_CODE){
+		
+		return csd.selectClientInfoDetail(CLIENT_CODE);
+		
+	}
+	
 }

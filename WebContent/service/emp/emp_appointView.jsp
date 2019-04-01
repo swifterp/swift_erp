@@ -40,6 +40,26 @@ $(document).ready(function() {
   window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
     });
 });
+$(document).ready(function() {
+    $('#pop_rank').on("click", function() {	
+    	var url="./pop_rankRead";
+    	var windowW = 300;  // 창의 가로 길이
+        var windowH = 300;  // 창의 세로 길이
+        var left = Math.ceil((window.screen.width - windowW)/2);
+        var top = Math.ceil((window.screen.height - windowH)/2);
+  window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+    });
+});
+$(document).ready(function() {
+    $('#pop_dept').on("click", function() {	
+    	var url="./pop_deptRead";
+    	var windowW = 300;  // 창의 가로 길이
+        var windowH = 300;  // 창의 세로 길이
+        var left = Math.ceil((window.screen.width - windowW)/2);
+        var top = Math.ceil((window.screen.height - windowH)/2);
+  window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+    });
+});
 </script>
 </head>
 <body>
@@ -108,21 +128,18 @@ $(document).ready(function() {
 			<table class="table">
 				<colgroup>
 					<col width="15%">
-					<col width="12%">
-					<col width="12%">
-					<col width="12%">
+					<col width="15%">
 					<col width="10%">
-					<col width="10%">
-					<col width="10%">
-					<col width="10%">
-					<col width="10%">
+					<col width="15%">
+					<col width="15%">
+					<col width="15%">
+					<col width="15%">
 				</colgroup>
 				<thead>
 					<tr>
 						<th rowspan="2">발령일자</th>
 						<th rowspan="2">사번</th>
 						<th rowspan="2">성명</th>
-						<th rowspan="2">입사구분</th>
 						<th colspan="4">발령사항</th>
 					</tr>
 					<tr>
@@ -144,11 +161,15 @@ $(document).ready(function() {
 							</span>
 						</td>
 						<td><input type="text" class="form-control" value="${list.get(0).get('EMP_NAME')}" id="p_emp_name" readonly /></td>
-						<td><input type="text" class="form-control" value="${list.get(0).get('EMP_JOIN_DIVIDE')}" id="p_emp_join_divide" readonly /></td>
-						<td><input type="text" class="form-control" value="${list.get(0).get('PREV_RANK')}" name="prev_rank" id="p_rank_name"/></td>
-						<td><input type="text" class="form-control" value="${list.get(0).get('NEXT_RANK')}" name="next_rank"/></td>
-						<td><input type="text" class="form-control" value="${list.get(0).get('PREV_DEPT')}" name="prev_dept" id="p_dept_name"/></td>
-						<td><input type="text" class="form-control" value="${list.get(0).get('NEXT_DEPT')}" name="next_dept"/></td>
+						<td><input type="text" class="form-control" value="${list.get(0).get('PREV_RANK')}" name="prev_rank" id="p_emp_rank_name"/></td>
+						<td id="pop_rank">
+							<input type="hidden" id="p_rank_no" name="next_rank_no"/>
+							<input type="text" id="p_rank_name" class="form-control" value="${list.get(0).get('NEXT_RANK')}" name="next_rank" readonly />
+						</td>
+						<td><input type="text" class="form-control" value="${list.get(0).get('PREV_DEPT')}" name="prev_dept" id="p_emp_dept_name"/></td>
+						<td id="pop_dept">
+							<input type="hidden" id="p_dept_no" name="next_dept_no" />
+							<input type="text" id="p_dept_name" class="form-control" value="${list.get(0).get('NEXT_DEPT')}" name="next_dept" readonly /></td>
 					</tr>
 			    </tbody>
 			</table>

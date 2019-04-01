@@ -11,13 +11,12 @@
 <script type = "text/javascript" src ="../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../js/bootstrap.js"></script>
 <script>
-	function empSelect(){
-	    opener.document.getElementById("p_emp_no").value = document.getElementById("c_emp_no").value
-	    opener.document.getElementById("p_emp_number").value = document.getElementById("c_emp_number").value
-	    opener.document.getElementById("p_emp_name").value = document.getElementById("c_emp_name").value
-	    opener.document.getElementById("p_emp_join_divide").value = document.getElementById("c_emp_join_divide").value
-	    opener.document.getElementById("p_rank_name").value = document.getElementById("c_rank_name").value
-	    opener.document.getElementById("p_dept_name").value = document.getElementById("c_dept_name").value
+	function empSelect(emp_no,emp_number,emp_name,rank_name,dept_name){
+	    opener.document.getElementById("p_emp_no").value = emp_no;
+	    opener.document.getElementById("p_emp_number").value = emp_number;
+	    opener.document.getElementById("p_emp_name").value = emp_name;
+	    opener.document.getElementById("p_emp_rank_name").value = rank_name;
+	    opener.document.getElementById("p_emp_dept_name").value = dept_name;
 	    window.close();
 	}
 </script>
@@ -41,13 +40,7 @@
 				<td><%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %></td>
 				<td><%= lst.get(i).get("EMP_NAME") %></td>
 				<td>
-					<input id="c_emp_no" type="hidden" value="<%= String.valueOf(lst.get(i).get("EMPNO")) %>"/>
-					<input id="c_emp_number" type="hidden" value="<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>"/>
-					<input id="c_emp_name" type="hidden" value="<%= lst.get(i).get("EMP_NAME") %>"/>
-					<input id="c_emp_join_divide" type="hidden" value="<%= lst.get(i).get("EMP_JOIN_DIVIDE") %>"/>
-					<input id="c_rank_name" type="hidden" value="<%= lst.get(i).get("RANK_NAME") %>"/>
-					<input id="c_dept_name" type="hidden" value="<%= lst.get(i).get("DNAME") %>"/>
-					<a class="btn btn-primary" onclick="javascript:empSelect()">선택</a>
+					<a class="btn btn-primary" onclick="javascript:empSelect('<%= String.valueOf(lst.get(i).get("EMPNO")) %>','<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>','<%= lst.get(i).get("EMP_NAME") %>','<%= lst.get(i).get("RANK_NAME") %>','<%= lst.get(i).get("DNAME") %>')">선택</a>
 				</td>
 			</tr>
 		</tbody>

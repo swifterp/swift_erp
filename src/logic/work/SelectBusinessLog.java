@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import dao.work.BusinessLogDao;
 
-
 @Service("SelectBusinessLog")
 public class SelectBusinessLog {
 	

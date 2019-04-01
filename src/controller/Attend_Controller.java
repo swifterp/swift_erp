@@ -8,88 +8,121 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import logic.attend.DeleteAttendCodeT;
 import logic.attend.DeleteAttendData;
+import logic.attend.InsertAttendCodeT;
 import logic.attend.InsertAttendData;
 import logic.attend.SelectAttendCodeT;
 import logic.attend.SelectAttendManagerT;
-import logic.attend.SelectHolidayCodeT;
+import logic.attend.UpdateAttendCodeT;
 import logic.attend.UpdateAttendLow;
-import resources.mapper.updateListMapper;
 
 @Controller
 @RequestMapping("/attend")
 public class Attend_Controller {
 	
+//////////////////////attend_manager start///////////////////////////
 	@Autowired
 	private SelectAttendManagerT samt;
-	
-	//attend Manager 테이블 전체 조회하는 페이지 처리
-	@RequestMapping("/attend_manager")
-	public String attend_manager(Model model) {
-		
-		model.addAttribute("list", samt.callAttendManagerTDao());
-		
-		return "attend/attend_attendmanager";
-	}
-	
-	//attendno 받아서 조회한뒤 attend_attendupdate 페이지로 전송
-	@RequestMapping("/attend_manager_low")
-	public String attend_manager_low(Model model, @RequestParam Integer attendno) {
-
-		model.addAttribute("list", samt.callAttendManagerLowTDao(attendno));
-		return "attend/attend_attendupdate";
-	}
-	
 	@Autowired
 	private UpdateAttendLow ual;
-	@RequestMapping("/attendupdate")
-	public String attend_update(Model model, @RequestParam HashMap<String, String> attendInsert) {
-		model.addAttribute("list", ual.callAttendManagerLowup(attendInsert));
-		return "attend/attend_attendmanager";
-	}
-	
-	@Autowired
-	private SelectAttendCodeT sact;
-	
-	@RequestMapping("/attend_code")
-	public String attend_code(Model model) {
-		
-		model.addAttribute("list", sact.callAttendCodeTDao());
-		
-		return "attend/attend_attendcode";
-	}
-
-
-	@Autowired
-	private SelectHolidayCodeT shct;
-	
-	@RequestMapping("/holiday_code")
-	public String holiday_code(Model model) {
-		
-		model.addAttribute("list", shct.callHolidayCodeDao());
-		
-		return "attend/attend_holidaycode";
-	}
-	
 	@Autowired
 	private InsertAttendData iad;
-	
-	@RequestMapping("/attendpass")
-	public String attend_pass(Model model, @RequestParam HashMap<String, Integer> attendplus) {
-
-		model.addAttribute("list", iad.callAttendAddDao(attendplus));
-		
-		return "attend/attend_attendpass";
-		
-	}
-	
 	@Autowired
 	private DeleteAttendData dad;
-	@RequestMapping("/attenddelete")
-	public String attend_delete(Model model, @RequestParam Integer attend_no) {
+	
+//View Attend Data List
+	@RequestMapping("/attend_DataList")
+	public String attend_DataList(Model model) {
+		model.addAttribute("list", samt.callAttendManagerTDao());
+		return "attend/attend_DataList";
+	}
+//Call Attend Data One Low
+	@RequestMapping("/attend_DataListLow")
+	public String attend_DataListLow(Model model, @RequestParam Integer attendno) {
+		model.addAttribute("list", samt.callAttendDataLowDao(attendno));
+		return "attend/attend_DataUpdate";
+	}
+//Update Attend Data
+	@RequestMapping("/attend_DataUpdate")
+	public String attend_DataUpdate(Model model, @RequestParam HashMap<String, String> attendInsert) {
+		model.addAttribute("list", ual.callUpdateAttendDataDao(attendInsert));
+		return "attend/attend_DataList";
+	}
+//Insert Attend Data
+	@RequestMapping("/attend_DataInsert")
+	public String attendDataInsert(Model model, @RequestParam HashMap<String, String> attendDPlus) {
+		model.addAttribute("list", iad.callInsertAttendDataDao(attendDPlus));
+		return "attend/attend_DataList";
+	}
+//Delete Attend Data
+	@RequestMapping("/attend_DataDelete")
+	public String attend_DataDelete(Model model, @RequestParam Integer attend_no) {
 		System.out.println(attend_no);
-		model.addAttribute("list", dad.callAttendDeleteDao(attend_no));
-		return "attend/attend_attenddelete";
+		model.addAttribute("list", dad.callDeleteAttendDataDao(attend_no));
+		return "attend/attend_DataDelete";
+	}
+//Call Attend Data Details
+	@RequestMapping("/attend_DetailData")
+	public String attend_DetailData(Model model, @RequestParam HashMap<String, String> DetailInfo) {
+		model.addAttribute("list", samt.callAttendDetailListDao(DetailInfo));
+		return "attend/attend_DetailData";
 	}
 	
+//////////////////////attend_manager end///////////////////////////
+	
+//////////////////////////attend code start/////////////////////
+	@Autowired
+	private SelectAttendCodeT sact;
+	@Autowired
+	private InsertAttendCodeT iact;
+	@Autowired
+	private DeleteAttendCodeT dact;
+	@Autowired
+	private UpdateAttendCodeT uact;
+	
+//View Attend Code List
+	@RequestMapping("/attend_CodeList")
+	public String attend_CodeList(Model model) {
+		model.addAttribute("list", sact.callAttendCodeTDao());
+		return "attend/attend_CodeList";
+	}
+	
+//Call Attend Code One Low
+	@RequestMapping("/attend_CodeLow")
+	public String attend_CodeLow(Model model, @RequestParam Integer attend_code) {
+		model.addAttribute("list", sact.callAttendCodeLowDao(attend_code));
+		return "attend/attend_CodeUpdate";
+	}
+
+//Insert Attend Code
+	@RequestMapping("/attend_CodeInsert")
+	public String attend_CodeInsert(Model model, @RequestParam HashMap<String, String> attendCPlus) {
+		model.addAttribute("list", iact.callInsertAttendCodeDao(attendCPlus));
+		return "attend/attend_CodeList";
+	}
+	
+//Delete Attend Code
+	@RequestMapping("/attend_CodeDelete")
+	public String attend_CodeDelete(Model model, @RequestParam Integer attend_code) {
+		model.addAttribute("list", dact.callDeleteAttendCodeDao(attend_code));
+		return "attend/attend_CodeDelete";
+	}
+	
+//Update Attend Code
+	@RequestMapping("/attend_CodeUpdate")
+	public String attend_CodeUpdate(Model model,  @RequestParam HashMap<String, String> attendCInsert) {
+		model.addAttribute("list", uact.callUpdateAttendCodeDao(attendCInsert));
+		return "attend/attend_CodeList";
+	}
+//Call Attend Code Details	
+	@RequestMapping("/attend_DetailCode")
+	public String attend_DetailCode(Model model, @RequestParam HashMap<String, String> DetailCodeInfo) {
+		System.out.println(DetailCodeInfo);
+		model.addAttribute("list", sact.callAttendCodeDetailListDao(DetailCodeInfo));
+		return "attend/attend_DetailCode";
+	}
+	
+//////////////////////////attend code end/////////////////////
+
 }

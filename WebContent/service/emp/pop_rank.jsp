@@ -11,9 +11,9 @@
 <script type = "text/javascript" src ="../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../js/bootstrap.js"></script>
 <script>
-	function rankSelect(){
-            opener.document.getElementById("p_rank_no").value = document.getElementById("c_rank_no").value
-            opener.document.getElementById("p_rank_name").value = document.getElementById("c_rank_name").value
+	function rankSelect(rank_no,rank_name){
+            opener.document.getElementById("p_rank_no").value = rank_no;
+            opener.document.getElementById("p_rank_name").value = rank_name;
             window.close();
 	}
 </script>
@@ -37,9 +37,7 @@
 				<td><%= String.valueOf(lst.get(i).get("RANK_NO")) %></td>
 				<td><%= lst.get(i).get("RANK_NAME") %></td>
 				<td>
-					<input id="c_rank_no" type="hidden" value="<%= String.valueOf(lst.get(i).get("RANK_NO")) %>"/>
-					<input id="c_rank_name" type="hidden" value="<%= String.valueOf(lst.get(i).get("RANK_NAME")) %>"/>
-					<a class="btn btn-primary" onclick="javascript:rankSelect()">선택</a>
+					<a class="btn btn-primary" onclick="javascript:rankSelect('<%= String.valueOf(lst.get(i).get("RANK_NO")) %>','<%= String.valueOf(lst.get(i).get("RANK_NAME")) %>')">선택</a>
 				</td>
 			</tr>
 		</tbody>

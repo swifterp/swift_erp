@@ -11,42 +11,17 @@
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <!-- 주소api -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<!-- 에러메시지 -->
 <script type="text/javascript">
-//아이디 체크여부 확인 (아이디 중복일 경우 = 0 , 중복이 아닐경우 = 1 )
-var idck = 0;
-$(function() {
-    //idCheck버튼을 클릭했을 때
-    $("#idCheck").click(function() {
-        //mem_email_id 를 param.
-        var mem_email_id =  $("#mem_email_id").val(); 
-        
-        $.ajax({
-            async: true,
-            type : 'POST',
-            data : mem_email_id,
-            url : "../../mem/idCheck",
-            dataType : "json",
-            contentType: "application/json; charset=UTF-8",
-            success : function(data) {
-                if (data.cnt > 0) {
-                    
-                    alert("아이디가 존재합니다. 다른 아이디를 입력해주세요.");
-                    $("#mem_email_id").focus();   
-                } else {
-                    alert("사용가능한 아이디입니다.");
-                    $("#mem_email_id").focus();
-                    //아이디가 중복하지 않으면  idck = 1 
-                    idck = 1;
-                }
-            },
-            error : function(error) {
-                alert("error : " + error);
-            }
-        });
-    });
-});
+	function errorMsg() {
+        if (mem_pw.value != mem_pw_check.value) {
+            alert("비밀번호가 일치하지 않습니다")
+            mem_pw_check.value = ""
+            mem_pw_check.focus();
+            return false;
+        }   
+	}
 </script>
-
 <script>
 	function execPostCode() {
 		    new daum.Postcode({
@@ -99,7 +74,7 @@ $(function() {
 </head>
 <body class="text-center">
 	<div class="container">
-		<form action="../../mem/add" name="frm" id="frm">
+		<form action="../../mem/add" onsubmit="return errorMsg();">
 			<table class="table table-striped">
 				<colgroup>
 					<col width="30%" />
@@ -109,27 +84,27 @@ $(function() {
 					<tr>
 						<td>이메일ID <span class="essential">*</span></td>
 						<td class="input-group">
-							<input type="text" id="mem_email_id" name="mem_email_id" class="form-control" placeholder="이메일아이디">
+							<input type="email" id="mem_email_id" name="mem_email_id" class="form-control" placeholder="이메일아이디" required="">
 							<span class="input-group-btn">
-								<button type="button" id="idCheck" name="idCheck" class="btn btn-info">중복확인</button> 
+								<button type="button" id="idCheck" name="idCheck" class="btn btn-info">메일인증</button> 
 							</span>
 						</td>
 					</tr>
 					<tr>
 						<td rowspan="2">비밀번호 <span class="essential">*</span></td>
-						<td><input type="text" name="mem_pw" class="form-control" placeholder="비밀번호"></td>
+						<td><input type="text" id="mem_pw" name="mem_pw" class="form-control" placeholder="비밀번호" required=""></td>
 					</tr>
 					<tr>
-						<td><input type="text" name="mem_pw_check" class="form-control" placeholder="비밀번호 확인"></td>
+						<td><input type="text" id="mem_pw_check" name="mem_pw_check" class="form-control" placeholder="비밀번호 확인" required=""></td>
 					</tr>
 					<tr>	
 						<td>이름 <span class="essential">*</span></td>
-						<td><input type="text" name="mem_name" class="form-control" placeholder="이름"></td>
+						<td><input type="text" id="mem_name" name="mem_name" class="form-control" placeholder="이름" required=""></td>
 					</tr>
 					<tr>
 						<td>휴대폰번호 <span class="essential">*</span></td>
 						<td>
-							<input type="text" name="mem_mobile" class="form-control" placeholder="-없이 입력">
+							<input type="text" id="mem_mobile" name="mem_mobile" class="form-control" placeholder="-없이 입력" required="">
 						</td>
 					</tr>
 					<tr>	
@@ -151,7 +126,7 @@ $(function() {
 				</tbody>
 			</table>
 			<a href="login.jsp" class="btn btn-default">로그인화면</a>
-			<input type="button" name="frm" id="frm" class="btn btn-primary" value="등록완료">
+			<input type="submit" name="frm" id="frm" class="btn btn-primary" value="등록완료">
 		</form>
 	</div>
 </body>

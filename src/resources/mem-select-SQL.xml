@@ -6,10 +6,5 @@
         from member
         where mem_email_id = #{mem_email_id} and mem_pw = #{mem_pw}
 	</select>
-	
-	<!-- 이메일아이디 중복 확인 -->
-	<select id="idCheck" parameterType="String" resultType="Integer">
-	 select count(*) from member
-	     where mem_email_id = #{mem_email_id}
-	</select>
+
 </mapper>
