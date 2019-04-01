@@ -113,21 +113,22 @@
 		<div class="contents">
 			<form action="../attend/attend_DetailData">
 				<table class="table" style="text-align:left; margin-bottom:20px; background:#eee;">
-					<thead>
-					</thead>
+					<colgroup>
+						<col width="20%">
+						<col width="80%">
+					</colgroup>
 					<tbody>
 						<tr>
 							<th class="line">사원번호</th>
 							<td class="line">
-								<input type="text" id="empno" name="empno" class="form-control input-sm"
-									   style="width:85%; height:50%; display:inline-block">
+								<input type="text" id="empno" name="empno" class="form-control" style="width:200px;">
 							</td>
 						</tr>
 						<tr>
 							<th class="line">근무시간</th>
 							<td class="line">
 								<div class="input-group">
-									<input type="text" class="form-control input-sm" style="width:85%; height: 50%; display: inline-block" id="attend_time" name="attend_time" placeholder="근무시간 입력">
+									<input type="text" class="form-control" id="attend_time" name="attend_time" placeholder="근무시간 입력" style="width:200px;">
 								</div>
 							</td>
 						</tr>
@@ -136,11 +137,11 @@
 								근태날짜
 							</th>
 							<td class="line" style="text-align: left;">
-							<input type="text" id="datepicker" name="attend_date" class="form-control input-sm"
-								style="width:200px; height:50%; display:inline-block">
+							<input type="text" id="datepicker" name="attend_date" class="form-control"
+								style="width:200px; display:inline-block">
 							&nbsp;~&nbsp;
-							<input type="text" id="datepicker2" name="attend_date2" class="form-control input-sm"
-								style="width:200px; height:50%; display:inline-block">
+							<input type="text" id="datepicker2" name="attend_date2" class="form-control"
+								style="width:200px; display:inline-block">
 							</td>
 						</tr>
 						<tr>
@@ -149,8 +150,8 @@
 							</th>
 							<td class="line">
 								<div class="input-group">
-									<input type="text" id="attend_name" name="attend_name" class="form-control input-sm"
-										   style="width:85%; height:50%; display:inline-block">
+									<input type="text" id="attend_name" name="attend_name" class="form-control"
+										   style="width:200px; display:inline-block">
 								</div>
 							</td>
 						</tr>
@@ -175,8 +176,8 @@
 						<th> 비고 </th>	
 						<th> 출근시간 </th>	
 						<th> 퇴근시간 </th>	
-						<th>    </th>
-						<th>    </th>
+						<th> 수정</th>
+						<th> 삭제</th>
 					</tr>
 				</thead>	
 				<tbody>
@@ -196,16 +197,17 @@
 			               <td><%= lst.get(i).get("ATTEND_M_ETC") %> </td>
 			               <td><%= lst.get(i).get("ATTEND_OPEN") %> </td>
 			               <td><%= lst.get(i).get("ATTEND_CLOSE") %> </td>
+			               <td>
+				               <form action="../attend/attend_DataListLow">
+				               		<input class="form-control" type="hidden" id="attendno" name="attendno" value="<%= String.valueOf(lst.get(i).get("ATTEND_NO")) %>">
+				               		<input class="form-control btn btn-default" type="submit" value="수정">
+				               </form>
+			               </td>
 			               <td> 
-			               	<form action="../attend/attend_DataDelete">
-			              	 <input class="form-control" type="hidden" id="attend_no" name="attend_no" value="<%= String.valueOf(lst.get(i).get("ATTEND_NO")) %>">
-			              	 <input class="form-control btn btn-default" type="submit" value="삭제">
-			               	</form>
-			               </td><td>
-			               <form action="../attend/attend_DataListLow">
-			               		<input class="form-control" type="hidden" id="attendno" name="attendno" value="<%= String.valueOf(lst.get(i).get("ATTEND_NO")) %>">
-			               		<input class="form-control btn btn-default" type="submit" value="수정">
-			               </form>
+				               <form action="../attend/attend_DataDelete">
+				              	 <input class="form-control" type="hidden" id="attend_no" name="attend_no" value="<%= String.valueOf(lst.get(i).get("ATTEND_NO")) %>">
+				             	  <input class="form-control btn btn-default" type="submit" value="삭제">
+				               </form>
 			               </td>
 			            </tr>
 			   <%

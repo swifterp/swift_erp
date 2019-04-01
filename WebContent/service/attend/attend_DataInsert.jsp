@@ -28,6 +28,9 @@
 		});
 	});
 </script>
+<style>
+ table td {text-align:left;}
+</style>
 </head>
 <body>
 	<!-- 네비게이션 -->
@@ -118,11 +121,11 @@
 						<th>출근시간</th>
 						<td>
 							<span>출발시간</span>
-							<select id="si">
+							<select id="si" class="form-control" style="width:50px; display:inline-block;">
 								<option>1</option>				
 							</select>	
 							<span>시</span>	
-							<select id="bun">
+							<select id="bun" class="form-control" style="width:50px; display:inline-block;">
 								<c:set var="n" value="0" />
 								<c:forEach begin="0" end="59">
 								<option value="" >${n }</option>

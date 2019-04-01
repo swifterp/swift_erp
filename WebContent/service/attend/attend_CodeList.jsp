@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>근태 코드 페이지</title>
-
 <script type="text/javascript">
 	function attendCodeInsert(){
 		location.href = "../service/attend/attend_CodeInsert.jsp";
@@ -42,7 +41,7 @@
 		<!-- 네비게이션 헤더 -->
 		<div class="navbar-header">
 			<!-- 네비게이션 왼쪽 헤더(로고) -->
-			<a class="navbar-brand" href="../welcome/welcome.jsp"><img class="logo" src="../images/logo.png"></a>
+			<a class="navbar-brand" href="../service/welcome/welcome.jsp"><img class="logo" src="../images/logo.png"></a>
 		</div>
 		
 		<!-- 네비게이션 본메뉴 -->
@@ -98,20 +97,24 @@
 			</ul>
 		</nav>		
 		<div class="contents">
-			<form action="../attend/attend_DetailCode" style="text-align:left; margin-bottom:20px; background:#eee;">
-				<table>
+			<form action="../attend/attend_DetailCode">
+				<table class="table" style="text-align:left; margin-bottom:20px; background:#eee;">
+					<colgroup>
+						<col width="20%">
+						<col width="80%">
+					</colgroup>
 					<tr>
 						<th>근태코드</th>
-						<td><input type="text" id="attend_code" name="attend_code"></td>
+						<td><input type="text" id="attend_code" name="attend_code" class="form-control" style="width:200px;"></td>
 					</tr>
 					<tr>
 						<th>근태명</th>
-						<td><input type="text" id="attend_name" name="attend_name"></td>
+						<td><input type="text" id="attend_name" name="attend_name" class="form-control" style="width:200px;"></td>
 					</tr>
 					<tr>
 						<th>근태코드상태</th>
 						<td>
-							<select id="attend_code_state" name="attend_code_state">
+							<select id="attend_code_state" name="attend_code_state" class="form-control" style="width:200px;">
 								<option value="">전체</option>			  
 								<option value="사용">사용</option>
 								<option value="중지">중지</option>
@@ -120,7 +123,7 @@
 					</tr>
 					<tr>
 						<th>비고</th>
-						<td><input type="text" id="attend_c_etc" name="attend_c_etc"></td>
+						<td><input type="text" id="attend_c_etc" name="attend_c_etc" class="form-control" style="width:200px;"></td>
 					</tr>
 					<tr>
 						<td class="line" style="width:155px" colspan="2">
@@ -138,8 +141,8 @@
 						<th>근태명</th>
 						<th>근태코드상태</th>
 						<th>비고</th>
-						<th>    </th>
-						<th>    </th>
+						<th>수정</th>
+						<th>삭제</th>
 					</tr>
 				</thead>	
 				<tbody>
@@ -154,16 +157,17 @@
 			               <td><%= lst.get(i).get("ATTEND_NAME") %> </td>
 			               <td><%= lst.get(i).get("ATTEND_CODE_STATE") %> </td>
 			               <td><%= lst.get(i).get("ATTEND_C_ETC") %> </td>
+			               <td>
+				               <form action="../attend/attend_CodeLow">
+				               <input type="hidden" id="attend_code" name="attend_code" value="<%= String.valueOf(lst.get(i).get("ATTEND_CODE")) %>">
+				               <input type="submit" class="btn btn-default" value="수정">
+				               </form>
+			               </td>
 			               <td> 
-			               <form action="../attend/attend_CodeDelete">
-			               <input type="hidden" id="attend_code" name="attend_code" value="<%= String.valueOf(lst.get(i).get("ATTEND_CODE")) %>">
-			               <input type="submit" class="btn btn-default" value="삭제">
-			               </form>
-			               </td><td>
-			               <form action="../attend/attend_CodeLow">
-			               <input type="hidden" id="attend_code" name="attend_code" value="<%= String.valueOf(lst.get(i).get("ATTEND_CODE")) %>">
-			               <input type="submit" class="btn btn-default" value="수정">
-			               </form>
+				               <form action="../attend/attend_CodeDelete">
+				               <input type="hidden" id="attend_code" name="attend_code" value="<%= String.valueOf(lst.get(i).get("ATTEND_CODE")) %>">
+				               <input type="submit" class="btn btn-default" value="삭제">
+				               </form>
 			               </td>
 			            </tr>
 			   <%

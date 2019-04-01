@@ -203,6 +203,7 @@ $(document).ready(function() {
 						<li><a class="active" href="./read">인사카드등록</a></li>
 						<li><a href="./appointRead">인사발령등록</a></li>
 						<li><a href="../emp/deptRead">부서등록</a></li>
+						<li><a href="../service/emp/emp_etcCodeAdd.jsp">기타코드등록</a></li>
 					</ul>
 				</li>
 				<li>
@@ -241,13 +242,13 @@ $(document).ready(function() {
 							</td>	
 							<th>사원번호<span class="essential">*</span></th>
 							<td class="input-group">
-								<input type="text" id="emp_number" name="emp_number" class="form-control" value="${list.get(0).get("EMP_NUMBER")}" readonly="readonly">
+								<input type="text" id="emp_number" name="emp_number" class="form-control" value="${list.get(0).get("EMP_NUMBER")}" required="">
 								<span class="input-group-btn">
 									<button type="button" class="btn btn-info empNumCheck">중복확인</button> 
 								</span>
 							</td>
 							<th>사원명<span class="essential">*</span></th>
-							<td><input type="text" name="emp_name" class="form-control" value="${list.get(0).get("EMP_NAME")}" ></td>
+							<td><input type="text" name="emp_name" class="form-control" value="${list.get(0).get("EMP_NAME")}" required=""></td>
 						</tr>
 						<tr>	
 							<th>주민번호</th>
@@ -297,23 +298,23 @@ $(document).ready(function() {
 									<tr>
 										<th>부서<span class="essential">*</span></th>
 										<td id="pop_dept" class="input-group">
-											<input type="hidden" id="p_dept_no" name="deptno" class="form-control">
-											<input type="text" id="p_dept_name" class="form-control" value="${list.get(0).get("DNAME")}">
+											<input type="hidden" id="p_dept_no" name="deptno" value="${list.get(0).get("DEPTNO")}" class="form-control">
+											<input type="text" id="p_dept_name" class="form-control" value="${list.get(0).get("DNAME")}" required="">
 											<span class="input-group-btn">
 												 <button class="btn btn-default" type="button" data-toggle="modal" data-target="#exampleModal">Go!</button>
 											</span>
 										</td>
-										<td>직급<span class="essential">*</span></td>
+										<th>직급<span class="essential">*</span></th>
 										<td id="pop_rank" class="input-group">
-											<input type="hidden" id="p_rank_no" name="rank_no" class="form-control">
-											<input type="text" id="p_rank_name" class="form-control" value="${list.get(0).get("RANK_NAME")}">
+											<input type="hidden" id="p_rank_no" name="rank_no" class="form-control" value="${list.get(0).get("RANK_NO")}">
+											<input type="text" id="p_rank_name" class="form-control" value="${list.get(0).get("RANK_NAME")}" required="">
 											<span class="input-group-btn">
 												 <button class="btn btn-default" type="button">Go!</button>
 											</span>
 										</td>
 										<th>직책</th>
 										<td id="pop_duty" class="input-group">
-											<input type="hidden" id="p_duty_no" name="duty_no" class="form-control">
+											<input type="hidden" id="p_duty_no" name="duty_no" class="form-control" value="${list.get(0).get("DUTY_NO")}">
 											<input type="text" id="p_duty_name" class="form-control" value="${list.get(0).get("DUTY_NAME")}">
 											<span class="input-group-btn">
 												 <button class="btn btn-default" type="button">Go!</button>
@@ -323,7 +324,7 @@ $(document).ready(function() {
 									<tr>
 										<th>은행명</th>
 										<td id="pop_bank" class="input-group">
-											<input type="hidden" id="p_bank_no" name="bank_no" class="form-control">
+											<input type="hidden" id="p_bank_no" name="bank_no" class="form-control" value="${list.get(0).get("BANK_NO")}">
 											<input type="text" id="p_bank_name" class="form-control" value="${list.get(0).get("BANK_NAME")}">
 											<span class="input-group-btn">
 												 <button class="btn btn-default" type="button">Go!</button>

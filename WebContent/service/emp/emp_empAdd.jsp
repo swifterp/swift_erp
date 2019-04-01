@@ -193,7 +193,7 @@ $(document).ready(function() {
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<!-- 네비게이션 본메뉴 엘리먼트 -->
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="../emp/read">인사관리</a></li>
+				<li class="active"><a href="../../emp/read">인사관리</a></li>
 				<li><a href="#">급여관리</a></li>		
 				<li><a href="../../attend/attend_DataList">근태관리</a></li>
 				<li><a href="../../approval/selectDraft">결재관리</a></li>
@@ -227,6 +227,7 @@ $(document).ready(function() {
 						<li><a class="active" href="../../emp/read">인사카드등록</a></li>
 						<li><a href="../../emp/appointRead">인사발령등록</a></li>
 						<li><a href="../../emp/deptRead">부서등록</a></li>
+						<li><a href="../emp/emp_etcCodeAdd.jsp">기타코드등록</a></li>
 					</ul>
 				</li>
 				<li>
@@ -264,13 +265,13 @@ $(document).ready(function() {
 								</td>	
 								<th>사원번호 <span class="essential">*</span></th>
 								<td class="input-group">
-									<input type="text" id="emp_number" name="emp_number" class="form-control">
+									<input type="text" id="emp_number" name="emp_number" class="form-control" required="">
 									<span class="input-group-btn">
 										<button type="button" id="check" class="btn btn-info">중복확인</button> 
 									</span>
 								</td>
 								<th>사원명 <span class="essential">*</span></th>
-								<td><input type="text" name="emp_name" class="form-control"></td>
+								<td><input type="text" name="emp_name" class="form-control" required=""></td>
 							</tr>
 							<tr>	
 								<th>주민번호</th>
@@ -321,15 +322,15 @@ $(document).ready(function() {
 											<th>부서 <span class="essential">*</span></th>
 											<td id="pop_dept" class="input-group">
 												<input type="hidden" id="p_dept_no" name="deptno" class="form-control">
-												<input type="text" id="p_dept_name" class="form-control">
+												<input type="text" id="p_dept_name" class="form-control" required="">
 												<span class="input-group-btn">
 													 <button class="btn btn-default" type="button" data-toggle="modal" data-target="#exampleModal">Go!</button>
 												</span>
 											</td>
 											<th>직급 <span class="essential">*</span></th>
 											<td id="pop_rank" class="input-group">
-												<input type="hidden" id="p_rank_no" name="rank_no" class="form-control">
-												<input type="text" id="p_rank_name" class="form-control">
+												<input type="hidden" id="p_rank_no" name="rank_no" class="form-control" required="">
+												<input type="text" id="p_rank_name" class="form-control" required="">
 												<span class="input-group-btn">
 													 <button class="btn btn-default" type="button">Go!</button>
 												</span>

@@ -66,7 +66,7 @@ public class Attend_Controller {
 	@RequestMapping("/attend_DetailData")
 	public String attend_DetailData(Model model, @RequestParam HashMap<String, String> DetailInfo) {
 		model.addAttribute("list", samt.callAttendDetailListDao(DetailInfo));
-		return "attend/attend_DetailData";
+		return "attend/attend_DataList";
 	}
 	
 //////////////////////attend_manager end///////////////////////////
@@ -120,7 +120,7 @@ public class Attend_Controller {
 	public String attend_DetailCode(Model model, @RequestParam HashMap<String, String> DetailCodeInfo) {
 		System.out.println(DetailCodeInfo);
 		model.addAttribute("list", sact.callAttendCodeDetailListDao(DetailCodeInfo));
-		return "attend/attend_DetailCode";
+		return "attend/attend_CodeList";
 	}
 	
 //////////////////////////attend code end/////////////////////

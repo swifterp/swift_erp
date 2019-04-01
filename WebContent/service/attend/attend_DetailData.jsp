@@ -18,8 +18,8 @@
 		<td>출근시간</td>	
 		<td>퇴근시간</td>	
 		<td>비고</td>	
-		<td>    </td>
-		<td>    </td>
+		<td>수정</td>
+		<td>삭제</td>
 	</tr>
 </thead>	
 	<tbody>
@@ -37,15 +37,16 @@
                <td><%= lst.get(i).get("ATTEND_OPEN") %> </td>
                <td><%= lst.get(i).get("ATTEND_CLOSE") %> </td>
                <td><%= lst.get(i).get("ATTEND_M_ETC") %> </td>
+               <td>
+               <form action="../attend/attend_DataListLow">
+               <input type="hidden" id="attendno" name="attendno" value="<%= String.valueOf(lst.get(i).get("ATTEND_NO")) %>">
+               <input type="submit" value="수정">
+               </form>
+               </td>
                <td> 
                <form action="../attend/attend_DataDelete">
                <input type="hidden" id="attend_no" name="attend_no" value="<%= String.valueOf(lst.get(i).get("ATTEND_NO")) %>">
                <input type="submit" value="삭제">
-               </form>
-               </td><td>
-               <form action="../attend/attend_DataListLow">
-               <input type="hidden" id="attendno" name="attendno" value="<%= String.valueOf(lst.get(i).get("ATTEND_NO")) %>">
-               <input type="submit" value="수정">
                </form>
                </td>
             </tr>

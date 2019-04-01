@@ -36,7 +36,6 @@ public interface selectListMapper {
 	//
 	public List<Map<String, String>> getAllowanceList();
 
-	
 	public List<Map<String, String>> getDraftList();
 	
 	public List<Map<String, String>> getDraftDetailList(Integer draft_num);
@@ -91,7 +90,6 @@ public interface selectListMapper {
 	public List<Map<String, String>> getAttendDetailList(HashMap<String, String> DetailInfo);//Call Attend Data Details
 	public List<Map<String, String>> getAttendCodeDetailList(HashMap<String, String> DetailCodeInfo);//Call Attend Code Details
 ////Attend End
-
 	public List<Map<String, String>> getClientList(String clientName);
 	
 	public List<Map<String, String>> getDeptList(String deptName);

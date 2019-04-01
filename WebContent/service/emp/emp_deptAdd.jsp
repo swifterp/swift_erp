@@ -58,6 +58,7 @@
 						<li><a href="../../emp/read">인사카드등록</a></li>
 						<li><a href="../../emp/appointRead">인사발령등록</a></li>
 						<li><a class="active"  href="../../emp/deptRead">부서등록</a></li>
+						<li><a href="../../service/emp/emp_etcCodeAdd.jsp">기타코드등록</a></li>
 					</ul>
 				</li>
 				<li>

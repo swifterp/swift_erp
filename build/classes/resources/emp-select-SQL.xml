@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="resources.mapper.selectListMapper">
-
 	<select id="getEmpList" resultType="hashmap">		
         select e.empno, e.emp_number, e.emp_name, e.emp_email, e.emp_resident_number, d.dname, r.rank_name, e.emp_join_date 
         from employee e, dept d, rank r
@@ -15,9 +14,10 @@
 	</select>
 	
 	<select id="getEmpView" parameterType="Integer" resultType="hashmap">		
-        select e.emp_number, e.emp_name, e.emp_email, e.emp_resident_number, d.dname, r.rank_name, e.emp_join_date 
-        from employee e, dept d, rank r
-        where d.deptno=e.deptno and r.rank_no=e.rank_no and e.emp_number = #{emp_number}
+        select e.emp_number, e.emp_name, e.emp_email, e.emp_resident_number, e.emp_email, e.emp_tel, e.emp_mobile, e.emp_addr1, e.emp_addr2, e.emp_join_date, e.emp_retire_date, e.emp_retire_reason, d.deptno, d.dname, r.rank_no, r.rank_name, dt.duty_no, dt.duty_name, b.bank_no, b.bank_name
+        ,e.emp_account_num, e.emp_account_holder, e.emp_profile, e.emp_attach_file, e.emp_etc
+        from employee e, dept d, rank r, duty dt, bank b
+        where d.deptno=e.deptno and r.rank_no=e.rank_no and e.duty_no=dt.duty_no and e.bank_no=b.bank_no and e.emp_number = #{emp_number}
 	</select>
 	<select id="getEmpNumList" resultType="hashmap">		
         select e.emp_number, e.emp_name, d.dname

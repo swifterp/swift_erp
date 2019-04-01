@@ -65,9 +65,10 @@
 					<a class="active" data-toggle="collapse" data-target="#group1"
 					aria-expanded="false" href="#">기본사항등록</a>
 					<ul class="collapse in depth2" id="group1">
-						<li><a href="./read">인사카드등록</a></li>
-						<li><a href="./appointRead">인사발령등록</a></li>
-						<li><a class="active"  href="./deptRead">부서등록</a></li>
+						<li><a href="../emp/read">인사카드등록</a></li>
+						<li><a href="../emp/appointRead">인사발령등록</a></li>
+						<li><a class="active"  href="../emp/deptRead">부서등록</a></li>
+						<li><a href="../service/emp/emp_etcCodeAdd.jsp">기타코드등록</a></li>
 					</ul>
 				</li>
 				<li>
