@@ -26,10 +26,10 @@
 			<ul class="nav navbar-nav">
 				<li><a href="../emp/read">牢荤包府</a></li>
 				<li><a href="#">鞭咯包府</a></li>		
-				<li><a href="#">辟怕包府</a></li>
-				<li><a href="#">搬犁包府</a></li>
-				<li class="active"><a href="#">诀公包府</a></li>
-				<li><a href="#">绊按包府</a></li>
+				<li><a href="../attend/attend_DataList">辟怕包府</a></li>
+				<li><a href="../approval/selectDraft">搬犁包府</a></li>
+				<li class="active"><a href="../work/selectBusinessLog">诀公包府</a></li>
+				<li><a href="../client/selectClientInfo">绊按包府</a></li>
 			</ul>
 			<!-- 靛酚促款 扁瓷 -->
 			<ul class="nav navbar-nav navbar-right">
@@ -51,7 +51,7 @@
 		<!-- 哭率 匙厚霸捞记 -->
 		<nav class="nav-left">	
 			<ul class="bg-primary">
-				<li>
+				<li>	
 					<a href="../../work/selectBusinessLog">诀公老瘤炼雀</a>
 				</li>
 				<li>

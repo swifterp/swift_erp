@@ -33,11 +33,11 @@
 	
 	</select>
 	
-	<select id="getMyApprovalList" parameterType = "String" resultType="hashmap">
+	<select id="getMyApprovalList" parameterType = "Integer" resultType="hashmap">
 		select   DRAFT_NO,DRAFT_TITLE,DRAFT_DATE,DRAFT_WRITER,DRAFT_REFERENCE ,DRAFT_OWNER
 				,DRAFT_STYLE, DRAFT_DIVISION, DRAFT_CONTENT  from draft
 				<where>
-					draft_writer = #{MY_NAME}
+					draft_writer = (select emp_name from employee) where empno=#{EMPNO,jdbcType=INTEGER})
 				</where>
 	</select>
 

@@ -94,7 +94,7 @@ public class Work_Controller {
 		
 		model.addAttribute("list",scl.CallClientListDao(clientName));
 	
-		return "work/work_clientlist";
+		return "work/work_businesslog";
 	}
 	@Autowired
 	private SelectDeptList sdl;
@@ -103,7 +103,7 @@ public class Work_Controller {
 		
 		model.addAttribute("list",sdl.CallDeptListDao(deptName));
 		
-		return "work/work_deptlist";
+		return "work/work_businesslog";
 	}
 	
 	@Autowired

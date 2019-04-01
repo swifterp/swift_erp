@@ -35,7 +35,7 @@
         from emp_appoint a, employee e
         where a.empno = e.empno and a.emp_appoint_no = #{emp_appoint_no, jdbcType=INTEGER}
 	</select>
-	<select id="getDeptList" resultType="hashmap">		
+	<select id="getEmpDeptList" resultType="hashmap">		
         select deptno,dname
         from dept
         order by deptno

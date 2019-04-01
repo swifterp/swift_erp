@@ -26,10 +26,10 @@
 			<ul class="nav navbar-nav">
 				<li><a href="../emp/read">인사관리</a></li>
 				<li><a href="#">급여관리</a></li>		
-				<li><a href="#">근태관리</a></li>
-				<li><a href="#">결재관리</a></li>
-				<li class="active"><a href="#">업무관리</a></li>
-				<li><a href="#">고객관리</a></li>
+				<li><a href="../attend/attend_DataList">근태관리</a></li>
+				<li><a href="../approval/selectDraft">결재관리</a></li>
+				<li class="active"><a href="../work/selectBusinessLog">업무관리</a></li>
+				<li><a href="../client/selectClientInfo">고객관리</a></li>
 			</ul>
 			<!-- 드롭다운 기능 -->
 			<ul class="nav navbar-nav navbar-right">
@@ -89,10 +89,10 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th>ATTEND_DATE</th>
-						<th>EMP_NAME</th>
-						<th>ATTEND_CODE</th>
-						<th>ATTEND_TIME</th>
+						<th>근무일자</th>
+						<th>사원이름</th>
+						<th>근무코드</th>
+						<th>근무시간</th>
 					</tr>
 				</thead>
 			    <tbody>

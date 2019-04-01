@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
 <script type = "text/javascript" src ="../../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
+
 </head>
 <body>
 	<!-- 네비게이션 -->
@@ -24,12 +25,12 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<!-- 네비게이션 본메뉴 엘리먼트 -->
 			<ul class="nav navbar-nav">
-				<li><a href="../emp/read">인사관리</a></li>
+				<li><a href="../../emp/read">인사관리</a></li>
 				<li><a href="#">급여관리</a></li>		
-				<li><a href="#">근태관리</a></li>
-				<li><a href="#">결재관리</a></li>
-				<li class="active"><a href="#">업무관리</a></li>
-				<li><a href="#">고객관리</a></li>
+				<li><a href="../../attend/attend_DataList">근태관리</a></li>
+				<li><a href="../../approval/selectDraft">결재관리</a></li>
+				<li class="active"><a href="../../work/selectBusinessLog">업무관리</a></li>
+				<li><a href="../../client/selectClientInfo">고객관리</a></li>
 			</ul>
 			<!-- 드롭다운 기능 -->
 			<ul class="nav navbar-nav navbar-right">
@@ -61,7 +62,7 @@
 					<a href="../../work/selectWorkState">출퇴근현황</a>
 				</li>
 				<li>
-					<a href="./work_worktime.jsp">일별근무시간조회</a>
+					<a href="../../service/work/work_worktime.jsp">일별근무시간조회</a>
 				</li>
 				<li>
 					<a href="../../work/selectWorkEtc">출퇴근/근태/일정 조회</a>
@@ -82,8 +83,8 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th>attend_date</th>
-						<th>emp_name</th>
+						<th>근무일자</th>
+						<th>사원이름</th>
 						<th>attend_open</th>
 						<th>attend_close</th>
 					</tr>

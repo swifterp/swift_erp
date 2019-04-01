@@ -27,8 +27,8 @@ public class EmpDao {
 		return slm.getEmpView(emp_number);
 	}
 	
-	public List<Map<String, String>> selectDeptList() {
-		return slm.getDeptList();
+	public List<Map<String, String>> selectEmpDeptList() {
+		return slm.getEmpDeptList();
 	}
 	
 	public List<Map<String, String>> deptView(Integer deptno) {
@@ -48,7 +48,7 @@ public class EmpDao {
 	
 	public List<Map<String, String>> deptAdd(HashMap<String, String> deptPlus) {
 		ilm.deptAdd(deptPlus);
-		return slm.getDeptList();
+		return slm.getEmpDeptList();
 	}
 
 	@Autowired
@@ -60,7 +60,7 @@ public class EmpDao {
 
 	public List<Map<String, String>> deptUpd(HashMap<String, String> deptUpd) {
 		ulm.getDeptUpd(deptUpd);
-		return slm.getDeptList();
+		return slm.getEmpDeptList();
 	}
 	
 	@Autowired

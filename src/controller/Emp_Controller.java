@@ -86,7 +86,7 @@ public class Emp_Controller {
 	
 	@RequestMapping("/deptRead")
 	public String readDept(Model model) {
-		model.addAttribute("list", el.callDeptListDao());	
+		model.addAttribute("list", el.callEmpDeptListDao());	
 		return "emp/emp_deptList";
 	}
 	
@@ -122,14 +122,13 @@ public class Emp_Controller {
 	
 	@RequestMapping("/empSearchNumName")
 	public String selectEmpInfoSearch(Model model, @RequestParam String empinfo) {
-		System.out.println(empinfo);
 		model.addAttribute("list", el.empInfoSearch(empinfo));
 		return "emp/emp_mainpage";
 	}
 	
 	@RequestMapping("/pop_deptRead")
 	public String pop_readDept(Model model) {
-		model.addAttribute("list", el.callDeptListDao());	
+		model.addAttribute("list", el.callEmpDeptListDao());	
 		return "emp/pop_dept";
 	}
 	

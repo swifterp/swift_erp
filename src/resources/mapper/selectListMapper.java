@@ -15,7 +15,7 @@ public interface selectListMapper {
 	
 	public List<Map<String, String>> getEmpNumList();
 	
-	public List<Map<String, String>> getDeptList();
+	public List<Map<String, String>> getEmpDeptList();
 	
 	public List<Map<String, String>> getDeptView(Integer deptno);
 	
@@ -45,7 +45,7 @@ public interface selectListMapper {
 
 	public List<Map<String, String>> getApprovalPathList();
 
-	public List<Map<String, String>> getMyApprovalList();
+	public List<Map<String, String>> getMyApprovalList(int EMPNO);
 	
 	public List<Map<String, String>> getBusinessLogList();
 	

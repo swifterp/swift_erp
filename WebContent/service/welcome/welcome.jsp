@@ -11,10 +11,6 @@
 	function empList(){
 		location.href = "../../emp/read";	
 	}	
-
-	function deptList(){
-		location.href ="../../emp/deptRead";
-	}
 	
 	function goPay(){
 		location.href = "../pay/pay_mainpage.jsp";
@@ -22,25 +18,22 @@
 	}
 
 	function goApproval(){
-
-		location.href = "../approval/approval_mainpage.jsp";
+		location.href = "../../approval/selectDraft";
 		
 	}
 	
 	function goWork(){
-
-		location.href = "../work/work_mainpage.jsp";
+		location.href = "../../work/selectBusinessLog";
 		
 	}
 	
 	function goClient(){
-
-		location.href = "../client/client_mainpage.jsp";
+		location.href = "../../client/selectClientInfo";
 		
 	}
 
 	function goAttend(){
-		location.href = "../attend/attend_mainpage.jsp";
+		location.href = "../../attend/attend_DataList";
 	}
 
 </script>
@@ -51,8 +44,6 @@
 	Welcome! This is Swift Corporation.<p>
 	
 	<input type="button" onclick="javascript:empList()" value="인사관리">
-	
-	<input type="button" onclick="javascript:deptList()" value="인사관리_부서등록">
 	
 	<input type="button" onclick="javascript:goPay()" value="급여관리">
 	

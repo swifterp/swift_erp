@@ -47,8 +47,8 @@ public class EmpLogic {
 		return ed.selectAppointList();	
 	}
 	
-	public List<Map<String, String>> callDeptListDao() {		
-		return ed.selectDeptList();	
+	public List<Map<String, String>> callEmpDeptListDao() {		
+		return ed.selectEmpDeptList();	
 	}
 	
 	public List<Map<String, String>> callDeptViewDao(Integer deptno) {		
