@@ -37,59 +37,14 @@
 					<!-- 누르기 전 이미지 -->
 					<a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">설정<span class="caret"></span></a>
-				<!-- 눌렀을 때 -->
-				<ul class="dropdown-menu">
+						aria-expanded="false">회원관리<span class="caret"></span></a>
+					<!-- 눌렀을 때 -->
+					<ul class="dropdown-menu">
 						<li><a href="login.jsp">로그아웃</a></li>
 					</ul>
 				</li>
 			</ul>
 		</div>
 	</nav>
-	<div class="container">
-		<!-- 왼쪽 네비게이션 -->
-		<nav class="nav-left">	
-			<ul class="bg-primary">
-				<li>
-					<a class="active" data-toggle="collapse" data-target="#group1"
-					aria-expanded="false" href="#">기본사항등록</a>
-					<ul class="collapse in depth2" id="group1">
-						<li><a href="../emp/read">인사카드등록</a></li>
-						<li><a href="../emp/appointRead">인사발령등록</a></li>
-						<li><a class="active"  href="../emp/deptRead">부서등록</a></li>
-						<li><a href="../emp/emp_etcCodeAdd.jsp">기타코드등록</a></li>
-					</ul>
-				</li>
-				<li>
-					<a data-toggle="collapse" data-target="#group2"
-					aria-expanded="false" href="#">조회/인쇄</a>
-					<ul class="collapse depth2" id="group2">
-						<li><a href="#">각종증명서인쇄</a></li>
-						<li><a href="#">사원명부</a></li>
-					</ul>
-				</li>
-			</ul>
-		</nav>
-		<div class="contents">
-			<h3>부서 조회/수정</h3>
-			<form action="../emp/deptUpd">
-				<table class="table">
-					<tr>
-						<th>부서코드</th>
-						<td><input type="text" name="deptno" value="${list.get(0).get("DEPTNO")}" class="form-control" readonly="readonly" style="background-color:#eee;"></td>
-					</tr>
-					<tr>
-						<th>부서명</th>
-						<td><input type="text" name="dname" value="${list.get(0).get("DNAME")}" class="form-control"></td>
-					</tr>
-				</table>
-				<div class="btn_group">
-					<a class="btn btn-default" href="../emp/deptRead">목록</a>
-					<button class="btn btn-primary pull-right" type="submit" >수정완료</button>
-				</div>
-			</form>
-			
-		</div>
-	</div>
 </body>
 </html>

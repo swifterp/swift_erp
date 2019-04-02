@@ -32,7 +32,7 @@
 <script>
 $(document).ready(function() {
     $('#pop_emp').on("click", function() {	
-    	var url="../../emp/pop_empRead";
+    	var url="../emp/pop_empRead";
     	var windowW = 300;  // 창의 가로 길이
         var windowH = 300;  // 창의 세로 길이
         var left = Math.ceil((window.screen.width - windowW)/2);
@@ -42,7 +42,7 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
     $('#pop_rank').on("click", function() {	
-    	var url="../../emp/pop_rankRead";
+    	var url="../emp/pop_rankRead";
     	var windowW = 300;  // 창의 가로 길이
         var windowH = 300;  // 창의 세로 길이
         var left = Math.ceil((window.screen.width - windowW)/2);
@@ -52,7 +52,7 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
     $('#pop_dept').on("click", function() {	
-    	var url="../../emp/pop_deptRead";
+    	var url="../emp/pop_deptRead";
     	var windowW = 300;  // 창의 가로 길이
         var windowH = 300;  // 창의 세로 길이
         var left = Math.ceil((window.screen.width - windowW)/2);
@@ -68,19 +68,19 @@ $(document).ready(function() {
 		<!-- 네비게이션 헤더 -->
 		<div class="navbar-header">
 			<!-- 네비게이션 왼쪽 헤더(로고) -->
-			<a class="navbar-brand" href="../service/welcome/welcome.jsp"><img class="logo" src="../../images/logo.png"></a>
+			<a class="navbar-brand" href="../welcome/welcome.jsp"><img class="logo" src="../../images/logo.png"></a>
 		</div>
 		
 		<!-- 네비게이션 본메뉴 -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<!-- 네비게이션 본메뉴 엘리먼트 -->
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="../../emp/read">인사관리</a></li>
+				<li class="active"><a href="../emp/read">인사관리</a></li>
 				<li><a href="#">급여관리</a></li>		
-				<li><a href="../../attend/attend_DataList">근태관리</a></li>
-				<li><a href="../../approval/selectDraft">결재관리</a></li>
-				<li><a href="../../work/selectBusinessLog">업무관리</a></li>
-				<li><a href="../../client/selectClientInfo">고객관리</a></li>
+				<li><a href="../attend/attend_DataList">근태관리</a></li>
+				<li><a href="../approval/selectDraft">결재관리</a></li>
+				<li><a href="../work/selectBusinessLog">업무관리</a></li>
+				<li><a href="../client/selectClientInfo">고객관리</a></li>
 			</ul>
 			<!-- 드롭다운 기능 -->
 			<ul class="nav navbar-nav navbar-right">
@@ -107,10 +107,10 @@ $(document).ready(function() {
 					<a class="active" data-toggle="collapse" data-target="#group1"
 					aria-expanded="false" href="#">기본사항등록</a>
 					<ul class="collapse in depth2" id="group1">
-						<li><a href="../../emp/read">인사카드등록</a></li>
-						<li><a class="active" href="../../emp/appointRead">인사발령등록</a></li>
-						<li><a href="../../emp/deptRead">부서등록</a></li>
-						<li><a href="../../service/emp/emp_etcCodeAdd.jsp">기타코드등록</a></li>
+						<li><a href="../emp/read">인사카드등록</a></li>
+						<li><a class="active" href="../emp/appointRead">인사발령등록</a></li>
+						<li><a href="../emp/deptRead">부서등록</a></li>
+						<li><a href="../emp/emp_etcCodeAdd.jsp">기타코드등록</a></li>
 					</ul>
 				</li>
 				<li>
@@ -125,16 +125,16 @@ $(document).ready(function() {
 		</nav>		
 		<div class="contents">
 			<h3>인사발령등록</h3>
-			<form action="../../emp/appointAdd">
+			<form action="../emp/appointAdd">
 				<table class="table">
 					<colgroup>
-						<col width="15%">
+						<col width="20%">
 						<col width="15%">
 						<col width="10%">
-						<col width="15%">
-						<col width="15%">
-						<col width="15%">
-						<col width="15%">
+						<col width="10%">
+						<col width="10%">
+						<col width="10%">
+						<col width="10%">
 					</colgroup>
 					<thead>
 						<tr>
@@ -152,30 +152,30 @@ $(document).ready(function() {
 					</thead>
 				    <tbody>
 						<tr>
-							<td><input type="text" class="form-control" name="emp_appoint_date" id="datepicker" style="width:80%; display:inline-block; margin-right:5px;"/></td>
+							<td><input type="text" class="form-control" name="emp_appoint_date" id="datepicker" style="width:80%; display:inline-block;"/></td>
 							<td class="input-group"  id="pop_emp">
 								<input type="hidden" id="p_emp_no" name="empno" />
 								<input type="text" id="p_emp_number" class="form-control" readonly />
 								<span name="emp_number" class="input-group-btn">
-									<button type="button" class="btn btn-default">조회</button> 
+									<button type="button" class="btn btn-primary" style="width:40px;"><img src="../../images/icon_plus.png"/></button> 
 								</span>
 							</td>
 							<td><input type="text" id="p_emp_name" class="form-control" name="emp_name" readonly /></td>
 							<td><input type="text" id="p_emp_rank_name" class="form-control" name="prev_rank" readonly /></td>
 							<td id="pop_rank">
-								<input type="hidden" id="p_rank_no" name="next_rank_no" />
+								<input type="hidden" id="p_rank_no" name="rank_no" />
 								<input type="text" id="p_rank_name" class="form-control" name="next_rank" readonly/>
 							</td>
 							<td><input type="text" id="p_emp_dept_name" class="form-control" name="prev_dept" readonly /></td>
 							<td id="pop_dept">
-								<input type="hidden" id="p_dept_no" name="next_dept_no" />
+								<input type="hidden" id="p_dept_no" name="deptno" />
 								<input type="text" id="p_dept_name" class="form-control" name="next_dept" readonly />
 							</td>
 						</tr>
 				    </tbody>
 				</table>
 				<div class="btn_group">
-					<a class="btn btn-default pull-left" href="../../emp/appointRead">목록</a>
+					<a class="btn btn-default pull-left" href="../emp/appointRead">목록</a>
 					<button type="submit" class="btn btn-primary pull-right" >등록완료</button>
 				</div>
 			 </form>

@@ -15,4 +15,13 @@
 	<insert id="deptAdd" parameterType="HashMap">		
         insert into dept(deptno,dname) values (#{deptno, jdbcType=INTEGER},#{dname, jdbcType=VARCHAR})
 	</insert>
+	<insert id="getRankAdd" parameterType="HashMap">		
+        insert into rank(rank_no,rank_name) values (#{rank_no, jdbcType=INTEGER},#{rank_name, jdbcType=VARCHAR})
+	</insert>
+	<insert id="getDutyAdd" parameterType="HashMap">		
+        insert into duty(duty_no,duty_name) values (#{duty_no, jdbcType=INTEGER},#{duty_name, jdbcType=VARCHAR})
+	</insert>
+	<insert id="getBankAdd" parameterType="HashMap">		
+        insert into bank(bank_no,bank_name) values (#{bank_no, jdbcType=INTEGER},#{bank_name, jdbcType=VARCHAR})
+	</insert>
 </mapper>

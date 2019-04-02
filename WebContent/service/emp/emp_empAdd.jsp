@@ -117,7 +117,7 @@
 <script>
 $(document).ready(function() {
     $('#pop_dept').on("click", function() {	
-    	var url="../../emp/pop_deptRead";
+    	var url="../emp/pop_deptRead";
     	var windowW = 300;  // 창의 가로 길이
         var windowH = 300;  // 창의 세로 길이
         var left = Math.ceil((window.screen.width - windowW)/2);
@@ -126,7 +126,7 @@ $(document).ready(function() {
     });
 });$(document).ready(function() {
     $('#pop_rank').on("click", function() {	
-    	var url="../../emp/pop_rankRead";
+    	var url="../emp/pop_rankRead";
     	var windowW = 300;  // 창의 가로 길이
         var windowH = 300;  // 창의 세로 길이
         var left = Math.ceil((window.screen.width - windowW)/2);
@@ -136,7 +136,7 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
     $('#pop_duty').on("click", function() {	
-    	var url="../../emp/pop_dutyRead";
+    	var url="../emp/pop_dutyRead";
     	var windowW = 300;  // 창의 가로 길이
         var windowH = 300;  // 창의 세로 길이
         var left = Math.ceil((window.screen.width - windowW)/2);
@@ -146,7 +146,7 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
     $('#pop_bank').on("click", function() {	
-    	var url="../../emp/pop_bankRead";
+    	var url="../emp/pop_bankRead";
     	var windowW = 300;  // 창의 가로 길이
         var windowH = 300;  // 창의 세로 길이
         var left = Math.ceil((window.screen.width - windowW)/2);
@@ -162,7 +162,7 @@ $(document).ready(function() {
       $('#check').on('click', function(){
           $.ajax({
               type: 'POST',
-              url: '../../emp/checkEmpNum',
+              url: '../emp/checkEmpNum',
               data: {
                   "emp_number" : $('#emp_number').val()
               },
@@ -193,12 +193,12 @@ $(document).ready(function() {
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<!-- 네비게이션 본메뉴 엘리먼트 -->
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="../../emp/read">인사관리</a></li>
+				<li class="active"><a href="../emp/read">인사관리</a></li>
 				<li><a href="#">급여관리</a></li>		
-				<li><a href="../../attend/attend_DataList">근태관리</a></li>
-				<li><a href="../../approval/selectDraft">결재관리</a></li>
-				<li><a href="../../work/selectBusinessLog">업무관리</a></li>
-				<li><a href="../../client/selectClientInfo">고객관리</a></li>
+				<li><a href="../attend/attend_DataList">근태관리</a></li>
+				<li><a href="../approval/selectDraft">결재관리</a></li>
+				<li><a href="../work/selectBusinessLog">업무관리</a></li>
+				<li><a href="../client/selectClientInfo">고객관리</a></li>
 			</ul>
 			<!-- 드롭다운 기능 -->
 			<ul class="nav navbar-nav navbar-right">
@@ -224,9 +224,9 @@ $(document).ready(function() {
 					<a class="active" data-toggle="collapse" data-target="#group1"
 					aria-expanded="false" href="#">기본사항등록</a>
 					<ul class="collapse in depth2" id="group1">
-						<li><a class="active" href="../../emp/read">인사카드등록</a></li>
-						<li><a href="../../emp/appointRead">인사발령등록</a></li>
-						<li><a href="../../emp/deptRead">부서등록</a></li>
+						<li><a class="active" href="../emp/read">인사카드등록</a></li>
+						<li><a href="../emp/appointRead">인사발령등록</a></li>
+						<li><a href="../emp/deptRead">부서등록</a></li>
 						<li><a href="../emp/emp_etcCodeAdd.jsp">기타코드등록</a></li>
 					</ul>
 				</li>
@@ -246,7 +246,7 @@ $(document).ready(function() {
 			  <li><a data-toggle="tab" href="#menu2">급여지급사항등록</a></li>
 			  <li><a data-toggle="tab" href="#menu3">세무정보등록</a></li>
 			</ul>
-			<form action="../../emp/add">
+			<form action="../emp/add">
 			<div class="tab-content">
 			  <div id="menu1" class="tab-pane fade in active">
 				<h3>사원등록</h3>
@@ -489,7 +489,7 @@ $(document).ready(function() {
 					</table>
 			</div>
 			<div class="btn_group">
-				<a href="../../emp/read" class="btn btn-default pull-left">목록</a>
+				<a href="../emp/read" class="btn btn-default pull-left">목록</a>
 				<input type="submit" id="submit" class="btn btn-primary pull-right" value="등록완료라능">
 			</div>
 		</form>

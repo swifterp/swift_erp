@@ -22,7 +22,7 @@
 </head>
 	<body class="text-center">
 	   <div class="container">
-		    <form action="../../mem/login">
+		    <form action="../mem/login">
 				  <img src="../../images/login_bg.png" alt="" width="120" height="auto">
 				  <h1 class="h3 font-weight-normal">로그인</h1>
 				  <input type="email" id="mem_email_id" name="mem_email_id" class="form-control" placeholder="이메일아이디" required="" autofocus="">
@@ -33,7 +33,7 @@
 				    </label>
 				  </div>
 				  <div class="mem_add">
-				  	<span><a href="join.jsp">사용자등록</a></span>
+				  	<span><a href="../mem/join.jsp">사용자등록</a></span>
 				  	<span><a href="#">비밀번호찾기</a></span>
 				  </div>
 				  <button class="btn btn-primary btn-block btn_login" type="submit">로그인</button>

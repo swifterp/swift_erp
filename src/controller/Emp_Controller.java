@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import logic.emp.EmpLogic;
 
 @Controller
-@RequestMapping("/emp")
+@RequestMapping("service/emp")
 public class Emp_Controller {
 	@Autowired
 	private EmpLogic el;
@@ -163,5 +163,22 @@ public class Emp_Controller {
         int rowcount = el.checkEmpNum(emp_number);
         return String.valueOf(rowcount);
     }
-	
+    
+	@RequestMapping("/rankAdd")
+	public String addRank(Model model, @RequestParam HashMap<String,String> rankPlus) {
+		model.addAttribute("list", el.rankAddDao(rankPlus));	
+		return "emp/emp_etcCodeAdd";
+	}
+    
+	@RequestMapping("/dutyAdd")
+	public String addDuty(Model model, @RequestParam HashMap<String,String> dutyPlus) {
+		model.addAttribute("list", el.dutyAddDao(dutyPlus));	
+		return "emp/emp_etcCodeAdd";
+	}
+    
+	@RequestMapping("/bankAdd")
+	public String addBank(Model model, @RequestParam HashMap<String,String> bankPlus) {
+		model.addAttribute("list", el.bankAddDao(bankPlus));	
+		return "emp/emp_etcCodeAdd";
+	}
 }

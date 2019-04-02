@@ -22,7 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import logic.mem.MemLogic;
 
 @Controller
-@RequestMapping("/mem")
+@RequestMapping("service/mem")
 public class Mem_Controller {
 	@Autowired
 	private MemLogic ml;

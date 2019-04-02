@@ -6,14 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>emp_mainpage</title>
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../css/common.css">
-<script type = "text/javascript" src ="../js/jquery.min.js"></script>
-<script type = "text/javascript" src ="../js/bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/common.css">
+<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
+<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script type="text/javascript">
 	<!--인사발령등록 페이지로 이동-->
 	function goAppointAdd(){
-		location.href = "../service/emp/emp_appointAdd.jsp";	
+		location.href = "../emp/emp_appointAdd.jsp";	
 	}
 	<!--인사발령상세보기-->
 	function appointView(emp_appoint_no){
@@ -31,7 +31,7 @@
 		<!-- 네비게이션 헤더 -->
 		<div class="navbar-header">
 			<!-- 네비게이션 왼쪽 헤더(로고) -->
-			<a class="navbar-brand" href="../service/welcome/welcome.jsp"><img class="logo" src="../images/logo.png"></a>
+			<a class="navbar-brand" href="../welcome/welcome.jsp"><img class="logo" src="../../images/logo.png"></a>
 		</div>
 		
 		<!-- 네비게이션 본메뉴 -->
@@ -71,9 +71,9 @@
 					aria-expanded="false" href="#">기본사항등록</a>
 					<ul class="collapse in depth2" id="group1">
 						<li><a href="../emp/read">인사카드등록</a></li>
-						<li><a class="active" href="./appointRead">인사발령등록</a></li>
+						<li><a class="active" href="../emp/appointRead">인사발령등록</a></li>
 						<li><a href="../emp/deptRead">부서등록</a></li>
-						<li><a href="../service/emp/emp_etcCodeAdd.jsp">기타코드등록</a></li>
+						<li><a href="../emp/emp_etcCodeAdd.jsp">기타코드등록</a></li>
 					</ul>
 				</li>
 				<li>

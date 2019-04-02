@@ -21,4 +21,6 @@ public interface updateListMapper {
 	public void resetAttendList(HashMap<String, String> attendInsert); //Update Attend Data
 	public void resetAttendCodeList(HashMap<String, String> attendCInsert);//Update Attend Code
 ///////Attend End
+
+	public void getDeptRankUpd(HashMap<String, String> appointUpd);
 }

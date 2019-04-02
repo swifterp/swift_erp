@@ -6,18 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title>emp_mainpage</title>
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../css/common.css">
-<script type = "text/javascript" src ="../js/jquery.min.js"></script>
-<script type = "text/javascript" src ="../js/bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/common.css">
+<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
+<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <!-- 날짜선택 관련 -->
-<link rel="stylesheet" href="../css/datepicker.css">
+<link rel="stylesheet" href="../../css/datepicker.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 	$(function() {
 	  $( "#datepicker" ).datepicker({
 	        showOn: "both", 
-	        buttonImage: "../images/btn_calendar.png", 
+	        buttonImage: "../../images/btn_calendar.png", 
 	        buttonImageOnly: true, 
 	        dateFormat: "yy/mm/dd",
 	       	changeMonth: true, 
@@ -42,7 +42,7 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
     $('#pop_rank').on("click", function() {	
-    	var url="./pop_rankRead";
+    	var url="../emp/pop_rankRead";
     	var windowW = 300;  // 창의 가로 길이
         var windowH = 300;  // 창의 세로 길이
         var left = Math.ceil((window.screen.width - windowW)/2);
@@ -52,7 +52,7 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
     $('#pop_dept').on("click", function() {	
-    	var url="./pop_deptRead";
+    	var url="../emp/pop_deptRead";
     	var windowW = 300;  // 창의 가로 길이
         var windowH = 300;  // 창의 세로 길이
         var left = Math.ceil((window.screen.width - windowW)/2);
@@ -68,7 +68,7 @@ $(document).ready(function() {
 		<!-- 네비게이션 헤더 -->
 		<div class="navbar-header">
 			<!-- 네비게이션 왼쪽 헤더(로고) -->
-			<a class="navbar-brand" href="../service/welcome/welcome.jsp"><img class="logo" src="../images/logo.png"></a>
+			<a class="navbar-brand" href="../welcome/welcome.jsp"><img class="logo" src="../images/logo.png"></a>
 		</div>
 		
 		<!-- 네비게이션 본메뉴 -->
@@ -110,7 +110,7 @@ $(document).ready(function() {
 						<li><a href="../emp/read">인사카드등록</a></li>
 						<li><a class="active" href="./appointRead">인사발령등록</a></li>
 						<li><a href="../emp/deptRead">부서등록</a></li>
-						<li><a href="../service/emp/emp_etcCodeAdd.jsp">기타코드등록</a></li>
+						<li><a href="../emp/emp_etcCodeAdd.jsp">기타코드등록</a></li>
 					</ul>
 				</li>
 				<li>
@@ -125,16 +125,16 @@ $(document).ready(function() {
 		</nav>		
 		<div class="contents">
 			<h3>인사발령 조회/수정</h3>
-			<form action="./appointUpd">
+			<form action="../emp/appointUpd">
 			<table class="table">
 				<colgroup>
-					<col width="15%">
+					<col width="20%">
 					<col width="15%">
 					<col width="10%">
-					<col width="15%">
-					<col width="15%">
-					<col width="15%">
-					<col width="15%">
+					<col width="10%">
+					<col width="10%">
+					<col width="10%">
+					<col width="10%">
 				</colgroup>
 				<thead>
 					<tr>
@@ -164,12 +164,12 @@ $(document).ready(function() {
 						<td><input type="text" class="form-control" value="${list.get(0).get('EMP_NAME')}" id="p_emp_name" readonly /></td>
 						<td><input type="text" class="form-control" value="${list.get(0).get('PREV_RANK')}" name="prev_rank" id="p_emp_rank_name"/></td>
 						<td id="pop_rank">
-							<input type="hidden" id="p_rank_no" name="next_rank_no"/>
+							<input type="hidden" id="p_rank_no" name="rank_no" value="${list.get(0).get('RANK_NO')}" />
 							<input type="text" id="p_rank_name" class="form-control" value="${list.get(0).get('NEXT_RANK')}" name="next_rank" readonly />
 						</td>
 						<td><input type="text" class="form-control" value="${list.get(0).get('PREV_DEPT')}" name="prev_dept" id="p_emp_dept_name"/></td>
 						<td id="pop_dept">
-							<input type="hidden" id="p_dept_no" name="next_dept_no" />
+							<input type="hidden" id="p_dept_no" name="deptno" value="${list.get(0).get('DEPTNO')}" />
 							<input type="text" id="p_dept_name" class="form-control" value="${list.get(0).get('NEXT_DEPT')}" name="next_dept" readonly /></td>
 					</tr>
 			    </tbody>

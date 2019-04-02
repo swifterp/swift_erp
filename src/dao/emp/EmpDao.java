@@ -101,11 +101,13 @@ public class EmpDao {
 
 	public List<Map<String, String>> appointAdd(HashMap<String, String> appointAdd) {
 		ilm.appointAdd(appointAdd);
+		ulm.getDeptRankUpd(appointAdd);
 		return slm.getAppointList();
 	}
 
 	public List<Map<String, String>> appointUpd(HashMap<String, String> appointUpd) {
 		ulm.getAppointUpd(appointUpd);
+		ulm.getDeptRankUpd(appointUpd);
 		return slm.getAppointList();
 	}
 
@@ -120,5 +122,17 @@ public class EmpDao {
 
 	public int checkEmpNum(String emp_number) {
 		return slm.checkEmpNum(emp_number);
+	}
+
+	public int rankAdd(HashMap<String, String> rankPlus) {
+		return ilm.getRankAdd(rankPlus);
+	}
+
+	public int dutyAdd(HashMap<String, String> dutyPlus) {
+		return ilm.getDutyAdd(dutyPlus);
+	}
+
+	public int bankAdd(HashMap<String, String> bankPlus) {
+		return ilm.getBankAdd(bankPlus);
 	}
 }

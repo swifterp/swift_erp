@@ -6,10 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>사원목록</title>
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../css/common.css">
-<script type = "text/javascript" src ="../js/jquery.min.js"></script>
-<script type = "text/javascript" src ="../js/bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/common.css">
+<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
+<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script>
 	function empSelect(emp_no,emp_number,emp_name,rank_name,dept_name){
 	    opener.document.getElementById("p_emp_no").value = emp_no;

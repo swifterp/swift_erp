@@ -74,7 +74,7 @@
 </head>
 <body class="text-center">
 	<div class="container">
-		<form action="../../mem/add" onsubmit="return errorMsg();">
+		<form action="../mem/add" onsubmit="return errorMsg();">
 			<table class="table table-striped">
 				<colgroup>
 					<col width="30%" />
@@ -125,8 +125,8 @@
 					</tr>
 				</tbody>
 			</table>
-			<a href="login.jsp" class="btn btn-default">로그인화면</a>
-			<input type="submit" name="frm" id="frm" class="btn btn-primary" value="등록완료">
+			<a href="../mem/login.jsp" class="btn btn-default">로그인화면</a>
+			<input type="submit" class="btn btn-primary" value="등록완료">
 		</form>
 	</div>
 </body>

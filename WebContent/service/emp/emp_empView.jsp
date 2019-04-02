@@ -6,10 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>emp_mainpage</title>
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../css/common.css">
-<script type = "text/javascript" src ="../js/jquery.min.js"></script>
-<script type = "text/javascript" src ="../js/bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/common.css">
+<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
+<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <!-- 주소api -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
@@ -57,13 +57,13 @@
 	}
 </script>
 <!-- 날짜선택 관련 -->
-<link rel="stylesheet" href="../css/datepicker.css">
+<link rel="stylesheet" href="../../css/datepicker.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 	$(function() {
 	  $( "#datepicker" ).datepicker({
 	        showOn: "both", 
-	        buttonImage: "../images/btn_calendar.png", 
+	        buttonImage: "../../images/btn_calendar.png", 
 	        buttonImageOnly: true, 
 	        dateFormat: "yy/mm/dd",
 	       	changeMonth: true, 
@@ -76,7 +76,7 @@
 	$(function() {
 	  $( "#datepicker2" ).datepicker({
 	        showOn: "both", 
-	        buttonImage: "../images/btn_calendar.png", 
+	        buttonImage: "../../images/btn_calendar.png", 
 	        buttonImageOnly: true, 
 	        dateFormat: "yy/mm/dd",
 	       	changeMonth: true, 
@@ -89,7 +89,7 @@
 	$(function() {
 	  $( "#datepicker3" ).datepicker({
 	        showOn: "both", 
-	        buttonImage: "../images/btn_calendar.png", 
+	        buttonImage: "../../images/btn_calendar.png", 
 	        buttonImageOnly: true, 
 	        dateFormat: "yy/mm/dd",
 	       	changeMonth: true, 
@@ -102,7 +102,7 @@
 	$(function() {
 		  $( "#datepicker4" ).datepicker({
 		        showOn: "both", 
-		        buttonImage: "../images/btn_calendar.png", 
+		        buttonImage: "../../images/btn_calendar.png", 
 		        buttonImageOnly: true, 
 		        dateFormat: "yy/mm/dd",
 		       	changeMonth: true, 
@@ -162,7 +162,7 @@ $(document).ready(function() {
 		<!-- 네비게이션 헤더 -->
 		<div class="navbar-header">
 			<!-- 네비게이션 왼쪽 헤더(로고) -->
-			<a class="navbar-brand" href="../service/welcome/welcome.jsp"><img class="logo" src="../images/logo.png"></a>
+			<a class="navbar-brand" href="../welcome/welcome.jsp"><img class="logo" src="../images/logo.png"></a>
 		</div>
 		
 		<!-- 네비게이션 본메뉴 -->
@@ -200,10 +200,10 @@ $(document).ready(function() {
 					<a class="active" data-toggle="collapse" data-target="#group1"
 					aria-expanded="false" href="#">기본사항등록</a>
 					<ul class="collapse in depth2" id="group1">
-						<li><a class="active" href="./read">인사카드등록</a></li>
-						<li><a href="./appointRead">인사발령등록</a></li>
+						<li><a class="active" href="../emp/read">인사카드등록</a></li>
+						<li><a href="../emp/appointRead">인사발령등록</a></li>
 						<li><a href="../emp/deptRead">부서등록</a></li>
-						<li><a href="../service/emp/emp_etcCodeAdd.jsp">기타코드등록</a></li>
+						<li><a href="../emp/emp_etcCodeAdd.jsp">기타코드등록</a></li>
 					</ul>
 				</li>
 				<li>
@@ -238,7 +238,7 @@ $(document).ready(function() {
 					<tbody>
 						<tr>
 							<td rowspan="4">
-								<img style="width:140px; heigth:auto;" src="../images/profile_0.png"/>
+								<img style="width:140px; heigth:auto;" src="../../images/profile_0.png"/>
 							</td>	
 							<th>사원번호<span class="essential">*</span></th>
 							<td class="input-group">
@@ -333,7 +333,7 @@ $(document).ready(function() {
 										<th>계좌번호</th>
 										<td><input type="text" name="emp_account_num" class="form-control" value="${list.get(0).get("EMP_ACCOUNT_NUM")}"></td>
 										<th>예금주</th>
-										<td><input type="text" name="emp_account_holder" class="form-control" value="${list.get(0).get("EMP_ACOUNT_HOLDER")}"></td>
+										<td><input type="text" name="emp_account_holder" class="form-control" value="${list.get(0).get("EMP_ACCOUNT_HOLDER")}"></td>
 									</tr>
 									<tr>
 										<th>사진첨부</th>		
@@ -349,7 +349,7 @@ $(document).ready(function() {
 									</tr>
 									<tr>
 										<th>비고</th>
-										<td colspan="5"><textarea class="form-control" name="emp_etc" value="${list.get(0).get("EMP_ETC")}"></textarea></td>
+										<td colspan="5"><input type="text" name="emp_etc" class="form-control" value="${list.get(0).get("EMP_ETC")}"></td>
 									</tr>
 								</tbody>
 							</table>

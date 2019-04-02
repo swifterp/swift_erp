@@ -33,8 +33,14 @@
 							,next_dept = #{next_dept, jdbcType=VARCHAR}
    		where emp_appoint_no = #{emp_appoint_no, jdbcType=INTEGER}
     </update>
+    <update id="getDeptRankUpd" parameterType="HashMap">
+    	update employee set deptno = #{deptno, jdbcType=INTEGER}
+    						,rank_no = #{rank_no, jdbcType=INTEGER}
+    	where empno = #{empno, jdbcType=INTEGER}
+    </update>
     <update id="getDeptUpd" parameterType="HashMap">		
         update dept set dname = #{dname, jdbcType=VARCHAR}
    		where deptno = #{deptno, jdbcType=INTEGER}
     </update>
+    
 </mapper>

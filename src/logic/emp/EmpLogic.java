@@ -102,7 +102,7 @@ public class EmpLogic {
 		return ed.selectAppointList();	
 	}
 
-	public  List<Map<String, String>> appointViewDao(Integer emp_appoint_no) {
+	public List<Map<String, String>> appointViewDao(Integer emp_appoint_no) {
 		return ed.appointView(emp_appoint_no);
 	}
 
@@ -110,5 +110,15 @@ public class EmpLogic {
 		return ed.checkEmpNum(emp_number);
 	}
 
-	
+	public int rankAddDao(HashMap<String, String> rankPlus) {
+		return ed.rankAdd(rankPlus);		
+	}
+
+	public int dutyAddDao(HashMap<String, String> dutyPlus) {
+		return ed.dutyAdd(dutyPlus);	
+	}
+
+	public int bankAddDao(HashMap<String, String> bankPlus) {
+		return ed.bankAdd(bankPlus);	
+	}
 }

@@ -28,5 +28,11 @@ public interface insertListMapper {
 	public void InsertClientInfo(HashMap<String, String> CLIENT_INFO);
 	public void InsertNameCardInfo(HashMap<String, String> NAMECARD_INFO);
 
+	public int getRankAdd(HashMap<String, String> rankPlus);
+
+	public int getDutyAdd(HashMap<String, String> dutyPlus);
+
+	public int getBankAdd(HashMap<String, String> bankPlus);
+
 }
 

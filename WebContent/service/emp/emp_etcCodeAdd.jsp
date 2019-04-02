@@ -11,7 +11,7 @@
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <style>
 	.etcCode li {float:left; width:120px; margin-left:4px;}
-</style>
+</style> 
 </head>
 <body>
 <!-- 네비게이션 -->
@@ -26,12 +26,12 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<!-- 네비게이션 본메뉴 엘리먼트 -->
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="../../emp/read">인사관리</a></li>
+				<li class="active"><a href="../emp/read">인사관리</a></li>
 				<li><a href="#">급여관리</a></li>		
-				<li><a href="../../attend/attend_DataList">근태관리</a></li>
-				<li><a href="../../approval/selectDraft">결재관리</a></li>
-				<li><a href="../../work/selectBusinessLog">업무관리</a></li>
-				<li><a href="../../client/selectClientInfo">고객관리</a></li>
+				<li><a href="../attend/attend_DataList">근태관리</a></li>
+				<li><a href="../approval/selectDraft">결재관리</a></li>
+				<li><a href="../work/selectBusinessLog">업무관리</a></li>
+				<li><a href="../client/selectClientInfo">고객관리</a></li>
 			</ul>
 			<!-- 드롭다운 기능 -->
 			<ul class="nav navbar-nav navbar-right">
@@ -57,10 +57,10 @@
 					<a class="active" data-toggle="collapse" data-target="#group1"
 					aria-expanded="false" href="#">기본사항등록</a>
 					<ul class="collapse in depth2" id="group1">
-						<li><a href="../../emp/read">인사카드등록</a></li>
-						<li><a href="../../emp/appointRead">인사발령등록</a></li>
-						<li><a  href="../../emp/deptRead">부서등록</a></li>
-						<li><a class="active" href="../../service/emp/emp_etcCodeAdd.jsp">기타코드등록</a></li>
+						<li><a href="../emp/read">인사카드등록</a></li>
+						<li><a href="../emp/appointRead">인사발령등록</a></li>
+						<li><a  href="../emp/deptRead">부서등록</a></li>
+						<li><a class="active" href="../emp/emp_etcCodeAdd.jsp">기타코드등록</a></li>
 					</ul>
 				</li>
 				<li>
@@ -77,18 +77,105 @@
 			<ul class="etcCode">
 				<li>
 					<span>직급</span>
-					<a class="btn btn-primary" href="#"><img src="../../images/icon_plus.png" /></a>
+					<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#rank"><img src="../../images/icon_plus.png" /></a>
 				</li>
 				<li>
 					<span>직책</span>
-					<a class="btn btn-primary" href="#"><img src="../../images/icon_plus.png" /></a>
+					<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#duty"><img src="../../images/icon_plus.png" /></a>
 				</li>
 				<li>
 					<span>은행명</span>
-					<a class="btn btn-primary" href="#"><img src="../../images/icon_plus.png" /></a>
+					<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#bank"><img src="../../images/icon_plus.png" /></a>
 				</li>
 			</ul>
 		</div>
 	</div>
+	<!-- rank Modal -->
+	 <form action="../emp/rankAdd">
+		<div class="modal fade" id="rank" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top:150px;">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">직급등록</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>   
+		      <div class="modal-body">
+		      	<div class="input-group">
+				  <span class="input-group-addon" id="basic-addon1">직급코드</span>
+				  <input type="text" class="form-control" name="rank_no" placeholder="직급코드를 입력하세요" aria-describedby="basic-addon1" required />
+				</div>
+				<div class="input-group">
+				  <span class="input-group-addon" id="basic-addon2">직급이름</span>
+				  <input type="text" class="form-control" name="rank_name" placeholder="직급이름을 입력하세요" aria-describedby="basic-addon2" required />
+				</div>
+		      </div>
+			  <div class="modal-footer">
+	          	<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+	         	<button type="submit" class="btn btn-primary">등록완료</button>
+	     	 </div>
+		    </div>
+		  </div>
+		</div>
+	</form>
+	<!-- duty Modal -->
+	 <form action="../emp/dutyAdd">
+		<div class="modal fade" id="duty" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top:150px;">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="dutyLabel">직책등록</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>   
+		      <div class="modal-body">
+		      	<div class="input-group">
+				  <span class="input-group-addon" id="basic-addon1">직책코드</span>
+				  <input type="text" class="form-control" name="duty_no" placeholder="직책코드를 입력하세요" aria-describedby="basic-addon1" required>
+				</div>
+				<div class="input-group">
+				  <span class="input-group-addon" id="basic-addon2">직책이름</span>
+				  <input type="text" class="form-control" name="duty_name" placeholder="직책이름을 입력하세요" aria-describedby="basic-addon2" required>
+				</div>
+		      </div>
+			  <div class="modal-footer">
+	          	<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+	         	<button type="submit" class="btn btn-primary">등록완료</button>
+	     	 </div>
+		    </div>
+		  </div>
+		</div>
+	</form>
+	<!-- bank Modal -->
+	 <form action="../emp/bankAdd">
+		<div class="modal fade" id="bank" tabindex="-1" role="dialog" aria-labelledby="bankLabel" aria-hidden="true" style="margin-top:150px;">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">직급등록</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>   
+		      <div class="modal-body">
+		      	<div class="input-group">
+				  <span class="input-group-addon" id="basic-addon1">은행코드</span>
+				  <input type="text" class="form-control" name="bank_no" placeholder="은행코드를 입력하세요" aria-describedby="basic-addon1" required>
+				</div>
+				<div class="input-group">
+				  <span class="input-group-addon" id="basic-addon2">은행이름</span>
+				  <input type="text" class="form-control" name="bank_name" placeholder="은행이름을 입력하세요" aria-describedby="basic-addon2" required>
+				</div>
+		      </div>
+			  <div class="modal-footer">
+	          	<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+	         	<button type="submit" class="btn btn-primary">등록완료</button>
+	     	 </div>
+		    </div>
+		  </div>
+		</div>
+	</form>
 </body>
 </html>
