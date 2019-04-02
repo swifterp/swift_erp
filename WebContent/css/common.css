@@ -10,26 +10,28 @@ a { text-decoration:none }
 a:hover, a:active, a:focus {text-decoration:none }
 
 *{
-	font-family: 'Nanum Gothic';
+   font-family: 'Nanum Gothic';
 }
 
 h1{
-	font-family: 'Hanna';
+   font-family: 'Hanna';
 }
 
 a{
-	color: black;
-	text-decoration: none;
+   color: black;
+   text-decoration: none;
 }
 a:hover{
-	color: black;
-	text-decoration: none;
+   color: black;
+   text-decoration: none;
 }
 
 .logo {
-	 width:120px; 
-	 height:auto;
+    width:120px; 
+    height:auto;
 }
+
+nav {z-index:999999;}
 
 nav.nav-left {
  position:fixed;
@@ -62,12 +64,21 @@ nav.nav-left a.active {
 }
 
 nav.nav-left a {
-	display:block;
+   display:block;
 }
 
 nav.nav-left .depth2 li a {padding-left:30px;}
 
-.contents {margin:92px 0 50px 220px;}
+.contents {padding:92px 0 80px 220px;}
 
-table {text-align: center; border: 1px solid #dddddd}
-table th {background-color:#eeeeee; text-align: center;}
+table {border: 1px solid #dddddd;}
+table th {background-color:#eeeeee; text-align: center; font-size:13px;}
+table td {text-align:center;}
+
+.btn_group {margin:20px 0;}
+
+.essential {color:red;}
+
+h3 {margin-bottom:20px;}
+
+.inpit-group {margin-bottom:10px;}
