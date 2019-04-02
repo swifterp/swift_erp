@@ -6,16 +6,17 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script type = "text/javascript" src ="../../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
-	$(function() {
-		$("#Work_Search").on('click')
-		
-	})
+	function Work_Search(){
+		var select = document.getElementById("Work_on_time").value;
+		location.href=select;
+	}
 </script>
 <script>
 	$(function() {
@@ -203,8 +204,8 @@ input {
 					<tr>
 						<td colspan="2" style="vertical-align: middle;">
 							<div class="input-group" >
-								<select class="custom-select">
-									<option value="Work_on_time">근무시간현황</option>
+								<select class="custom-select" id="Work_on_time">
+									<option value="Work_time(on).jsp">근무시간현황</option>
 								</select>
 							</div>
 						</td>
@@ -230,7 +231,7 @@ input {
 			</table>
 			<br> 
 			<input type="submit" id="Work_Search" class="btn btn-primary pull-right"
-				value="검색">
+				value="검색" onClick="Work_Search()">
 		</div>
 	</div>
 <!-- Modal 소스코드  -->	

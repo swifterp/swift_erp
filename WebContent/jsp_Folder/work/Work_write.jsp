@@ -12,29 +12,25 @@
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 <style>
 	.wrap {
 		overflow: hidden;
-		background-color: #d55;
 		
 	}
 	
 	.d1 {
 	    float: left;
-	    width: 49%;
+	    width: 48%;
 	    margin-right: 2%;
-	    background-color: #ee7;
 	}
 	
 	.d2 {
 		float: left;
-	    width: 49%;
-	    padding: 20px 0;
-	    background-color: #eda;
+	    width: 45%;
+	    padding: 0px;
 	}
 </style>
-
+			<!-- 출.퇴근 입력 창 해더부분의 실시간 표시하는 곳  -->
 <script type="text/javascript">
 	function timer() {
 		var date = new Date();
@@ -53,12 +49,7 @@
 		return timeString;
 	}
 </script>
-<style>
-	#width {
-		width: 600px;
-		
-	}
-</style>
+			<!-- 출.퇴근 입력 창 시간부분의 년.월.일 표시하는 곳  -->
 <script type="text/javascript">
 	function timer2() {
 		var date = new Date();
@@ -69,6 +60,44 @@
 		return dateString1
 	}
 </script>
+			<!-- 동적 테이블의 시간부분에 [시.분]을 표시하는 곳  -->
+<script type="text/javascript">
+	function timer3() {
+		var date = new Date();
+		var year = date.getFullYear();
+		var month = date.getMonth() + 1;
+		var day = date.getDate();
+		var dateString2 = year + ". " + month + ". " + day;
+		
+		var hour = date.getHours();
+		var ampm = (hour < 12 || hour == 24) ? " 오전" : " 오후";
+		hour = hour % 12 || 12;
+		var minute = date.getMinutes();
+		minute = (minute > 9) ? minute : "0" + minute;
+		var second = date.getSeconds();
+		second = (second > 9) ? second : "0" + second;
+		var timeString2 = ampm + " " + hour + ":" + minute;
+		
+		return dateString2 +" / "+ timeString2;
+	}
+</script>
+
+<style>
+	#width_on {
+		width: 600px;
+		height: 25px;
+		padding-top: inherit;
+		text-align: left;
+	}
+</style>
+<style>
+	#width_off {
+		width: 600PX;
+		height: 25px;
+		padding-top: inherit;
+		text-align: left;
+	}
+</style>
 
 <style type="text/css">
 	#realTimer {
@@ -76,79 +105,165 @@
 		font-size: 40px;
 	}
 </style>
-
 <style type="text/css">
 	#realTimer2 {
 		text-align: center;
 		font-size: 15px;
 	}
 </style>
+
 <script language="javascript">
 	function ShowTable(wtable) {
 	eval(wtable).style.display="";
 	}
+	Table++;
 	function HideTable(wtable) {
 	eval(wtable).style.display="none";
 	}
 </script>
 <script>
-	var jbAry = Array();
-	jbAry[0] = '사용자';
-	jbAry[1] = '장소';
-	jbAry[2] = '시간';
-	jbAry[3] = '사유';
-</script>
+		var jbAry = Array();
+		jbAry[0] = '사용자';
+		jbAry[1] = '장소';
+		jbAry[2] = '시간';
+		jbAry[3] = '사유';
+
+		var jbAry1 = Array();
+		jbAry1[0] = "사용자 Text에 들어간 값"
+		jbAry1[1] = "장소 Text에 들어간 값"
+		jbAry1[2] = timer3();
+		jbAry1[3] = "사유 Text에 들어간 값"
+			
+		var jbAry2 = Array();
+		jbAry2[0] = ""
+		jbAry2[1] =
+"<div class='custom-control custom-checkbox'><input type='checkbox' id='jb-checkbox'class='custom-control-input'><label class='custom-control-label' for='jb-checkbox'>외근</label></div>"
+		jbAry2[2] = ""
+		jbAry2[3] = ""
+
+		var jbAry3 = Array();
+		jbAry3[0] = ""
+		jbAry3[1] = ""
+		jbAry3[2] = ""
+		jbAry3[3] = ""
+    </script>
+
+
 <script type="text/javascript">
-	var cnt = 1;
-	 $(function () {
-       // $('#lblDisplay').empty();
-
-        $('#btnCreate').click(function () {
-        	var str1 = "<input id='width' type='button' class='btn btn-primary ' value='테이블 숨기기' onclick='HideTable(a_table);'>";
-        	var str2 = "<input id='width' type='button' class='btn btn-primary ' value='테이블 펼치기' onclick='ShowTable(a_table);'>";
-            $('#Table').append(str1);
-        	$('#Table').click(function () {
-				if(cnt%2 == 1){
-					$('#Table *').remove();
-					$('#Table').append(str2);
-				} else {
-					$('#Table *').remove();
-	                $('#Table').append(str1);
+var cnt = 1; 
+var seton = 0; 
+var setoff = 0;
+     $(function () {
+        // $('#lblDisplay').empty();
+         $('#btnCreate').click(function () {
+	/* input 출근 버튼을 눌렀을 때 - 출근을 퇴근으로 바꾸는 if문  */
+         	if ($(this).val() == '출근'){
+				$(this).val('퇴근');
+				/* input 출근 버튼에서 동적 버튼 & 테이블이 계속 생성되는 것을 방지하기 위해  seton이 0이면 생성,0이 아니면 넘기는 if문*/
+				if (seton == 0) {
+					/* str1,2는 테이블을 접기 & 펼치기를 위한 동적 버튼  HideTable = 접기 | ShowTable = 펼치기 */
+					var str1 = "<button id='width_on' type='button' class='btn btn-primary' onclick='HideTable(a_table);'><img src='../../images/button_D2.png'>&nbsp;출근</button>";
+		           	var str2 = "<button id='width_on' type='button' class='btn btn-primary' onclick='ShowTable(a_table);'><img src='../../images/button_R2.png'>&nbsp;출근</button>";
+		            $('#Table').append(str1);
+		           	$('#Table').click(function () {
+						if(cnt%2 == 1){
+							$('#Table *').remove();
+							$('#Table').append(str2);
+						} else {
+							$('#Table *').remove();
+			                $('#Table').append(str1);
+						}
+		                cnt++;
+		        	})
+			        
+		               $('#lblTable').empty();
+		               var row = 4;
+		               var col = 4;
+		               var strTable = "<table id='a_table' display='none' border='1px' width = '600px'>";
+		               
+		               for (var i = 0; i < row; i++) {
+		                    strTable += "<tr>";
+		                   for (var j = 0; j < col; j++) {
+							if(j == 0){
+		                   		strTable += "<td width = '100px'>" + (jbAry[i]) + "</td>";
+							}
+							if(j == 1){
+		                   		strTable += "<td width = '200px'>" + (jbAry1[i]) + "</td>";
+							}
+							if(j == 2){
+		                   		strTable += "<td width = '60px'>" + (jbAry2[i]) + "</td>";
+							}
+							if(j == 3){
+		                   		strTable += "<td>" + (jbAry3[i]) + "</td>";
+							}
+		                   }
+		                   strTable += "</tr>";
+		                   strTable += "</tbody>"
+		               }
+		               strTable += "</table>";
+		     
+		               $('#lblTable').append(strTable);
+		               seton++;
+				} /* if (set == 0) {}부분  */
+				else if(seton != 0){
 				}
-                cnt++;
-        	})
-            $('#lblTable').empty();
-            var row = 4;
-            var col = 4;
-            
-            var strTable = "<table id='a_table' display='none' border='1px' width = '600px'>";
-
-            for (var i = 0; i < row; i++) {
-                strTable += "<tr>";
-            for (var j = 0; j < col; j++) {
-					if(j == 0){
-                   		strTable += "<td width = '120px'>" + (jbAry[i]) + "</td>";
+		/* input 버튼이 퇴근이라면 출근으로 바뀌는 곳 */
+	       }else{
+			$(this).val('출근');
+			/* input 퇴근 버튼에서도 위와 동일하게 setoff가 0이면 생성, 0이 아니면 넘기는 if문*/
+			if(setoff == 0){
+				var str1 = "<button id='width_off' type='button' class='btn btn-primary' onclick='HideTable(b_table);'><img src='../../images/button_D2.png'>&nbsp; 퇴근</button>";
+	           	var str2 = "<button id='width_off' type='button' class='btn btn-primary' onclick='ShowTable(b_table);'><img src='../../images/button_R2.png'>&nbsp; 퇴근</button>";
+	            $('#Table2').append(str1);
+	           	$('#Table2').click(function () {
+					if(cnt%2 == 1){
+						$('#Table2 *').remove();
+						$('#Table2').append(str2);
+					} else {
+						$('#Table2 *').remove();
+		                $('#Table2').append(str1);
+					}
+	                cnt++;
+	        	})
+	        
+               $('#lblTable2').empty();
+               var row = 4;
+               var col = 4;
+               var strTable = "<table id='b_table' display='none' border='1px' width = '600px'>";
+               
+               for (var i = 0; i < row; i++) {
+                    strTable += "<tr>";
+                   for (var j = 0; j < col; j++) {
+                   	if(j == 0){
+                   		strTable += "<td width = '100px'>" + (jbAry[i]) + "</td>";
 					}
 					if(j == 1){
-                   		strTable += "<td>" + (i) + (j) + "</td>";
+                   		strTable += "<td width = '200px'>" + (jbAry1[i]) + "</td>";
 					}
 					if(j == 2){
-                   		strTable += "<td>" + (i) + (j) + "</td>";
+                   		strTable += "<td width = '60px'>" + (jbAry2[i]) + "</td>";
 					}
 					if(j == 3){
-                   		strTable += "<td>" + (i) + (j) + "</td>";
+                   		strTable += "<td>" + (jbAry3[i]) + "</td>";
 					}
                 }
                 strTable += "</tr>";
-	            strTable += "</tbody>"
-	        }
-	        strTable += "</table>";
-	        $('#lblTable').append(strTable);
-	    });
-	});
-</script>
-
+                   strTable += "</tbody>"
+               }
+               strTable += "</table>";
+     
+               $('#lblTable2').append(strTable);
+               setoff++;
+		}/* if(setoff == 0){}부분 */
+		else if(setoff != 0){
+		}
+       }
+         });
+     });
+ </script>
+ 
 <title>SWIFT ERP</title>
+
 </head>
 <body onload="printClock()">
 	<!-- 네비게이션 -->
@@ -216,9 +331,9 @@
 			</ul>
 		</nav>
 	</div>
-	<div style="width: 1400px" class="contents wrap">
-		<a class="btn btn-default" href="Work_on_off.jsp" style="width: 150px">출/퇴근 기록부</a> <a
-			class="btn btn-primary" href="#" style="width: 150px">출/퇴근 작성</a>
+	<div style="width: 1200px" class="contents wrap">
+		<a class="btn btn-default" href="Work_on_off.jsp" style="width: 150px">출/퇴근 기록부</a>
+		<a class="btn btn-primary" href="#" style="width: 150px">출/퇴근 작성</a>
 		<p/>
 		<br>
 		<div class="d1">
@@ -260,7 +375,7 @@
 				<tr>
 					<td style="vertical-align: middle;">시간</td>
 					<td style="width: 120px;">
-						<p id="realTimer2"></p> 
+						<a id="realTimer2"></a> 
 						<script type="text/javascript">
 							var tag1 = document.getElementById("realTimer2");
 							tag1.innerHTML = timer2();
@@ -273,7 +388,7 @@
 						<div class="btn-toolbar" role="toolbar"
 							aria-label="Toolbar with button groups">
 							<div class="input-group" aria-label="First group">
-								<select class="custom-select" id="inputGroupSelect01">
+								<select class="custom-select">
 									<option value="am00">오전 0</option>
 									<option value="am01">오전 1</option>
 									<option value="am02">오전 2</option>
@@ -301,7 +416,7 @@
 								</select>
 							</div>
 							<div class="input-group" aria-label="Second group">
-								<select class="custom-select" id="inputGroupSelect02">
+								<select class="custom-select" >
 									<option value="minute_00">00</option>
 									<option value="minute_01">01</option>
 									<option value="minute_02">02</option>
@@ -376,16 +491,24 @@
 				</tr>
 			</tbody>
 		</table>
+		<br>
+		<input id="btnCreate" type="button" class="btn btn-primary pull-left"
+	       style="vertical-align: middle;" value="출근">
 		</div>
 		<form name=form class="d2">
-			<div id= "Table">
-	    	</div>
-			<div id="lblTable">
+			<div id= "Table" >
 		    </div>
+			<div id="lblTable" >
+	    	</div>
+	    	<br>
+	    	<div id= "Table2">
+		    </div>
+			<div id="lblTable2">
+	    	</div>
     	</form>
 		<br> 
-	<input id="btnCreate" type="button" class="btn btn-primary pull-left"
-	       style="vertical-align: middle;" value="출근">
 	</div>
 </body>
 </html>
+
+

@@ -60,6 +60,104 @@
 			</ul>
 		</div>
 	</nav>
-
+	<div class="container">
+		<!-- 왼쪽 네비게이션 -->
+		<nav class="nav-left">
+			<ul class="bg-primary">
+				<li><a data-toggle="collapse" data-target="#group1"
+					aria-expanded="false" href="Attend_Item_Manage.jsp">기본 항목 관리</a>
+					<ul class="collapse depth2" id="group1">
+						<li><a href="#">근태 항목 관리</a></li>
+						<li><a href="#">휴가 항목 관리</a></li>
+					</ul>
+				</li>
+				<li><a data-toggle="collapse"
+					data-target="#group2" aria-expanded="false" href="Attend_Input.jsp">근태 관리</a>
+					<ul class="collapse depth2" id="group2">
+						<li><a href="#">근태 입력</a></li>
+						<li><a href="#">근태 조회</a></li>
+					</ul>
+				</li>
+				<li><a class="active" data-toggle="collapse"
+					data-target="#group3" aria-expanded="false" href="#">출력물</a>
+					<ul class="collapse in depth2" id="group3">
+						<li><a href="Attend_Status.jsp">근태 현황</a></li>
+						<li><a class="active" href="Attend_Table.jsp">근태 집계표</a></li>
+						<li><a href="Vacation_Residual.jsp">휴가 잔여일수 현황</a></li>
+						<li><a href="Vacation_Use_Status.jsp">휴가 사용일 현황</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	<div style="width: 65%; outline: 1px solid; padding: 20px 20px 400px 20px;"
+		  class="contents">
+		<table class="table Transparency">
+			<thead>
+				<tr>
+					<td  class="line2" colspan="2" style="text-align: center; font-size: 20pt;">
+						근태집계표
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align: left;">
+						회사명 : (주)SWIFT
+					</td>
+					<td style="text-align: right;">
+						<input type="text" style="width: 80px">
+						~
+						<input type="text" style="width: 80px">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table" style="margin: auto; text-align: center;">
+			<thead>
+				<tr style="background-color: #eee">
+					<td> 사원
+					</td>
+					<td> 근태수
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+					홍길동
+					</td>
+					<td>
+					8.0
+					</td>
+				</tr>
+				<tr>
+					<td>
+					홍길삼
+					</td>
+					<td>
+					8.0
+					</td>
+				</tr>
+				<tr>
+					<td>
+					홍길일
+					</td>
+					<td>
+					8.0
+					</td>
+				</tr>
+				<tr>
+					<td>
+					합계
+					</td>
+					<td>
+					24.0
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br> 
+	</div>
 </body>
 </html>

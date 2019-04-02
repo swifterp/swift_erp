@@ -39,7 +39,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href="../emp/Emp_memList.jsp">인사관리</a></li>
 				<li><a href="../Pay/Pay.jsp">급여관리</a></li>		
-				<li><a href="../attend/Attend.jsp">근태관리</a></li>
+				<li><a href="#">근태관리</a></li>
 				<li><a href="../approval/Approval.jsp">결재관리</a></li>
 				<li><a href="../work/Work_taskUpdate.jsp">업무관리</a></li>
 				<li><a href="../customer/Customer_List.jsp">고객관리</a></li>
@@ -60,6 +60,168 @@
 			</ul>
 		</div>
 	</nav>
+	<div class="container">
+		<!-- 왼쪽 네비게이션 -->
+		<nav class="nav-left">
+			<ul class="bg-primary">
+				<li><a data-toggle="collapse" data-target="#group1"
+					aria-expanded="false" href="Attend_Item_Manage.jsp">기본 항목 관리</a>
+					<ul class="collapse depth2" id="group1">
+						<li><a href="#">근태 항목 관리</a></li>
+						<li><a href="#">휴가 항목 관리</a></li>
+					</ul>
+				</li>
+				<li><a data-toggle="collapse"
+					data-target="#group2" aria-expanded="false" href="Attend_Input.jsp">근태 관리</a>
+					<ul class="collapse depth2" id="group2">
+						<li><a href="#">근태 입력</a></li>
+						<li><a href="#">근태 조회</a></li>
+					</ul>
+				</li>
+				<li><a class="active" data-toggle="collapse"
+					data-target="#group3" aria-expanded="false" href="#">출력물</a>
+					<ul class="collapse in depth2" id="group3">
+						<li><a href="Attend_Status.jsp">근태 현황</a></li>
+						<li><a href="Attend_Table.jsp">근태 집계표</a></li>
+						<li><a class="active" href="Vacation_Residual.jsp">휴가 잔여일수 현황</a></li>
+						<li><a href="Vacation_Use_Status.jsp">휴가 사용일 현황</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</div>
+	<div style="width: 65%; outline: 1px solid; padding: 20px 20px 400px 20px;"
+		  class="contents">
+		<table class="table Transparency">
+			<thead>
+				<tr>
+					<td  class="line2"  style="text-align: center; font-size: 20pt;">
+						휴가잔여일수현황
+					</td>
+				</tr>
+			</thead>
+			<tbody >
+				<tr>
+					<td class="line2" style="text-align: left;">
+						회사명 : (주)SWIFT
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table" style="margin: auto; text-align: center;">
+			<thead>
+				<tr style="background-color: #eee">
+					<td style="width: 100px"> 휴가코드
+					</td>
+					<td> 휴가명
+					</td>
+					<td> 부서명
+					</td>
+					<td> 사원번호
+					</td>
+					<td> 사원명
+					</td>
+					<td> 휴가일수
+					</td>
+					<td> 휴사사용일수
+					</td>
+					<td> 휴사잔여일수
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						20150
+					</td>
+					<td>
+						2015연차
+					</td>
+					<td>
+						영업교육팀
+					</td>
+					<td>
+						003
+					</td>
+					<td>
+						홍길순
+					</td>
+					<td>
+						6.00
+					</td>
+					<td>
+						2.00
+					</td>
+					<td>
+						4.00
+					</td>
+				</tr>
+				<tr>
+					<td>
+						20150
+					</td>
+					<td>
+						2015연차
+					</td>
+					<td>
+						영업교육팀
+					</td>
+					<td>
+						005
+					</td>
+					<td>
+						이현구
+					</td>
+					<td>
+						16.00
+					</td>
+					<td>
+						0.00
+					</td>
+					<td>
+						16.00
+					</td>
+				</tr>
+				<tr>
+					<td>
+						20160
+					</td>
+					<td>
+						2016연차
+					</td>
+					<td>
+						영업교육팀
+					</td>
+					<td>
+						003
+					</td>
+					<td>
+						홍길순
+					</td>
+					<td>
+						15.00
+					</td>
+					<td>
+						0.00
+					</td>
+					<td>
+						15.00
+					</td>
+				</tr>
+				<tr>
+					<td colspan="5">합계
+					</td>
+					<td>37.00
+					</td>
+					<td>2.00
+					</td>
+					<td>35.00
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br> 
+	</div>
 
 </body>
 </html>

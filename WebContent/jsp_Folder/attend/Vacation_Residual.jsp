@@ -64,6 +64,11 @@ jQuery(function($){
 	});
 });
 </script>
+<script>
+	function btn_print() { /* 휴가 잔여일수 현황 인쇄 페이지  */
+		location.href="Vacation_Residual(page).jsp";
+	}
+</script>
 <style>
 input {
     vertical-align: middle;
@@ -277,12 +282,13 @@ button {
 		</table>
 	<hr style="border:solid 1px #888;"> <!-- 중간 가로선  -->
 		<span style="float:right">
-			<input style="text-align: right;" type="button" class="img-button_print" data-toggle="modal" data-target="#copy">
+			<input style="text-align: right;" type="button" class="img-button_print"
+				   data-toggle="modal" data-target="#copy" onClick="btn_print()">
 		</span>
 		<table class="table Transparency">
 			<thead>
 				<tr>
-					<td  class="line2" colspan="2" style="text-align: center; font-size: 20pt;">
+					<td  class="line2" style="text-align: center; font-size: 20pt;">
 						휴가잔여일수현황
 					</td>
 				</tr>
@@ -292,48 +298,117 @@ button {
 					<td class="line2" style="text-align: left;">
 						회사명 : (주)SWIFT
 					</td>
-					<td class="line2" style="text-align: right;">
-						<input type="text" style="width: 80px">
-						~
-						<input type="text" style="width: 80px">
-					</td>
 				</tr>
 			</tbody>
 		</table>
 		<table class="table" style="margin: auto; text-align: center;">
 			<thead>
 				<tr style="background-color: #eee">
-					<td style="width: 100px"> 전표일자
+					<td style="width: 100px"> 휴가코드
+					</td>
+					<td> 휴가명
 					</td>
 					<td> 부서명
-					</td>
-					<td> 직급
 					</td>
 					<td> 사원번호
 					</td>
 					<td> 사원명
 					</td>
-					<td style="width: 120px"> 근태종류
+					<td> 휴가일수
 					</td>
-					<td style="width: 120px"> 근태시간
+					<td> 휴사사용일수
+					</td>
+					<td> 휴사잔여일수
 					</td>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td>
+						20150
 					</td>
 					<td>
+						2015연차
 					</td>
 					<td>
+						영업교육팀
 					</td>
 					<td>
+						003
 					</td>
 					<td>
+						홍길순
 					</td>
 					<td>
+						6.00
 					</td>
 					<td>
+						2.00
+					</td>
+					<td>
+						4.00
+					</td>
+				</tr>
+				<tr>
+					<td>
+						20150
+					</td>
+					<td>
+						2015연차
+					</td>
+					<td>
+						영업교육팀
+					</td>
+					<td>
+						005
+					</td>
+					<td>
+						이현구
+					</td>
+					<td>
+						16.00
+					</td>
+					<td>
+						0.00
+					</td>
+					<td>
+						16.00
+					</td>
+				</tr>
+				<tr>
+					<td>
+						20160
+					</td>
+					<td>
+						2016연차
+					</td>
+					<td>
+						영업교육팀
+					</td>
+					<td>
+						003
+					</td>
+					<td>
+						홍길순
+					</td>
+					<td>
+						15.00
+					</td>
+					<td>
+						0.00
+					</td>
+					<td>
+						15.00
+					</td>
+				</tr>
+				<tr>
+					<td colspan="5">합계
+					</td>
+					<td>37.00
+					</td>
+					<td>2.00
+					</td>
+					<td>35.00
 					</td>
 				</tr>
 			</tbody>

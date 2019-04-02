@@ -7,11 +7,58 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script type = "text/javascript" src ="../../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+	$(function() {
+		$("#datepicker").datepicker({
+			showOn:"both",
+			buttonImage: "../../images/btn_calendar.png", 
+	        buttonImageOnly: true, 
+	        dateFormat: "yy/mm/dd",
+	       	changeMonth: true, 
+	        dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+	 	 });
+	});
+</script>
+<script>
+	$(function() {
+		$("#datepicker1").datepicker({
+			showOn:"both",
+			buttonImage: "../../images/btn_calendar.png", 
+	        buttonImageOnly: true, 
+	        dateFormat: "yy/mm/dd",
+	       	changeMonth: true, 
+	        dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+	 	 });
+	});
+</script>
+<script>
+	$(function() {
+		$("#datepicker2").datepicker({
+			showOn:"both",
+			buttonImage: "../../images/btn_calendar.png", 
+	        buttonImageOnly: true, 
+	        dateFormat: "yy/mm/dd",
+	       	changeMonth: true, 
+	        dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+	 	 });
+	});
+</script>
 
 <title>SWIFT ERP</title>
 </head>
@@ -120,25 +167,104 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>
+					<td style="width: 50px;" >
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" id="jb-checkbox"
+								class="custom-control-input">
+						</div>
 					</td>
 					<td>
+						<input type="text" id="datepicker" class="form-control input-sm"
+						style="width: 100px; height: 50%; display: inline-block">
+					</td>
+					<td> 
+						<input type="text" class="form-control input-sm"
+						style="width: 60px; height: 50%; display: inline-block">
+					</td>
+					<td> 
+						<input type="text" class="form-control input-sm"
+						style="width: 150px; height: 50%; display: inline-block">
+					</td>
+					<td> 
+						<input type="text" class="form-control input-sm"
+						style="width: 100px; height: 50%; display: inline-block">
 					</td>
 					<td>
+						<input type="text" class="form-control input-sm"
+							style="width: 80px; height: 50%; display: inline-block">
+					</td>
+					<td> <input type="text" class="form-control input-sm"
+							style="width: 80px; height: 50%; display: inline-block">
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 50px;" >
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" id="jb-checkbox"
+								class="custom-control-input">
+						</div>
 					</td>
 					<td>
+						<input type="text" id="datepicker1" class="form-control input-sm"
+						style="width: 100px; height: 50%; display: inline-block">
+					</td>
+					<td> 
+						<input type="text" class="form-control input-sm"
+						style="width: 60px; height: 50%; display: inline-block">
+					</td>
+					<td> 
+						<input type="text" class="form-control input-sm"
+						style="width: 150px; height: 50%; display: inline-block">
+					</td>
+					<td> 
+						<input type="text" class="form-control input-sm"
+						style="width: 100px; height: 50%; display: inline-block">
 					</td>
 					<td>
+						<input type="text" class="form-control input-sm"
+							style="width: 80px; height: 50%; display: inline-block">
+					</td>
+					<td> <input type="text" class="form-control input-sm"
+							style="width: 80px; height: 50%; display: inline-block">
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 50px;" >
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" id="jb-checkbox"
+								class="custom-control-input">
+						</div>
 					</td>
 					<td>
+						<input type="text" id="datepicker2" class="form-control input-sm"
+						style="width: 100px; height: 50%; display: inline-block">
+					</td>
+					<td> 
+						<input type="text" class="form-control input-sm"
+						style="width: 60px; height: 50%; display: inline-block">
+					</td>
+					<td> 
+						<input type="text" class="form-control input-sm"
+						style="width: 150px; height: 50%; display: inline-block">
+					</td>
+					<td> 
+						<input type="text" class="form-control input-sm"
+						style="width: 100px; height: 50%; display: inline-block">
 					</td>
 					<td>
+						<input type="text" class="form-control input-sm"
+							style="width: 80px; height: 50%; display: inline-block">
+					</td>
+					<td> <input type="text" class="form-control input-sm"
+							style="width: 80px; height: 50%; display: inline-block">
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<button type="button" class="btn btn-primary pull-left" id="Delete">선택삭제</button>
-		<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#New_Update">근태상신</button>
+		<div class="pull-right">
+			<button type="button" class="btn btn-primary" id="Delete">선택삭제</button>
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#New_Update">근태상신</button>
+		</div>
 	</div>
 </body>
 </html>

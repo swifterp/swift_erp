@@ -48,6 +48,36 @@
 	 	 });
 	});
 </script>
+<script>
+	$(function() {
+		$("#datepicker3").datepicker({
+			showOn:"both",
+			buttonImage: "../../images/btn_calendar.png", 
+	        buttonImageOnly: true, 
+	        dateFormat: "yy/mm/dd",
+	       	changeMonth: true, 
+	        dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+	 	 });
+	});
+</script>
+<script>
+	$(function() {
+		$("#datepicker4").datepicker({
+			showOn:"both",
+			buttonImage: "../../images/btn_calendar.png", 
+	        buttonImageOnly: true, 
+	        dateFormat: "yy/mm/dd",
+	       	changeMonth: true, 
+	        dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+	 	 });
+	});
+</script>
 
 <style>
 button {
@@ -283,11 +313,11 @@ button {
 							<tr>
 								<td style="vertical-align: middle;">기간</td>
 								<td>
-								<input type="text" id="datepicker" class="form-control input-sm" 
-										style=" width: 200px; height:50%; display:inline-block">
-								
-								<input type="text" id="datepicker2" class="form-control input-sm" 
-										style=" width: 200px; height:50%; display:inline-block">
+									<input type="text" id="datepicker3" class="form-control input-sm"
+									style="width: 200px; height: 50%; display: inline-block">
+									&nbsp;&nbsp;~&nbsp;&nbsp;
+									<input type="text" id="datepicker4" class="form-control input-sm"
+									style="width: 200px; height: 50%; display: inline-block">
 								</td>
 							</tr>
 							<tr>

@@ -266,7 +266,7 @@ button {
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-body">
-					<table id="modal-New_Update" class="table table-striped" data-paging="true" data-filtering="true" data-sorting="true">
+					<table id="modal-New_Update" class="table table-striped " data-paging="true" data-filtering="true" data-sorting="true">
 						<tbody style=" text-align: left; ">
 							<tr>
 								<td style="width: 270px;vertical-align: middle;" >근태코드</td>
@@ -279,8 +279,12 @@ button {
 							<tr>
 								<td style="vertical-align: middle;">휴가코드</td>
 								<td>
-								<input type="button" class="img-button" data-toggle="modal" data-target="#vacation">
-								<input type="text" class="form-control input-sm" style="width: 95%; display: inline-block"></td>
+								<div class="input-group">
+									<span class="input-group-btn">
+										<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#vacation"></button>
+									</span>
+									<input type="text" class="form-control input-sm" style="width: 99%; display: inline-block"></td>
+								</div>
 							</tr>
 							<tr>
 								<td style="vertical-align: middle;">적요</td>

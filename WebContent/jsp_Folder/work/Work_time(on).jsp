@@ -1,27 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script type = "text/javascript" src ="../../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<title>Insert title here</title>
+<title>SWIFT ERP</title>
 <style type="text/css"> /* 테이블 선에 색상주기  */
   .line{border-bottom: 1px solid #fff;
   		border-left: 1px solid #fff;
   		border-right: 1px solid #fff;
   		border-top: 1px solid #fff;}
 </style>
-
 </head>
 <body>
-<!-- 네비게이션 -->
+	<!-- 네비게이션 -->
 	<nav class="navbar navbar-default" style="z-index: 1">
 		<!-- 네비게이션 헤더-->
 		<div class="navbar-header">
@@ -77,15 +77,14 @@
 					data-target="#group2" aria-expanded="false" href="#">출/퇴근</a>
 					<ul class="collapse in depth2" id="group2">
 						<li><a href="Work_on_off.jsp">출/퇴근 기록부</a></li>
-						<li><a class="active" href="Work_Search.jsp">출/퇴근현황 조회</a></li>
-						<li><a href="Work_time.jsp">근무시간 조회</a></li>
+						<li><a href="Work_Search.jsp">출/퇴근현황 조회</a></li>
+						<li><a class="active" href="Work_time.jsp">근무시간 조회</a></li>
 						<li><a href="Work_All_Search.jsp">출퇴근/근태/일정 조회</a></li>
 					</ul>
 				</li>
 			</ul>
 		</nav>
-	</div>
-	<div style="width: 60%;"  class="contents">
+		<div style="width: 75%;"  class="contents">
 		<table class="table line" style="margin: auto; text-align:center;">
 			<thead class="line">
 				<tr>
@@ -112,13 +111,34 @@
 						사원명
 					</td>
 					<td>
-						출근시간
+						근무시간
+						<br>
+						(시간 단위)
 					</td>
 					<td>
-						퇴근시간
+						근무시간
+						<br>
+						(분 단위)
 					</td>
 					<td>
-						근무시간(시간단위 X 출/퇴근)
+						표준근무시간
+						<br>
+						(시간 단위)
+					</td>
+					<td>
+						표준근무시간
+						<br>
+						(분 단위)
+					</td>
+					<td>
+						차이
+						<br>
+						(시간 단위)
+					</td>
+					<td>
+						차이
+						<br>
+						(분 단위)
 					</td>
 				</tr>
 				<tr>
@@ -129,13 +149,22 @@
 						사용자
 					</td>
 					<td>
-						2019/02/01 오전 9:30
+						9 시간 31 분
 					</td>
 					<td>
-						2019/02/01 오후 6:31
+						541
 					</td>
 					<td>
-						9시간 1분
+						9 시간 30 분
+					</td>
+					<td>
+						540
+					</td>
+					<td>
+					    0 시간  -1 분
+					</td>
+					<td>
+						-1
 					</td>
 					
 				</tr>
@@ -147,22 +176,62 @@
 						사용자
 					</td>
 					<td>
-						2019/02/01 오전 9:30
+						9 시간 35 분
 					</td>
 					<td>
-						2019/02/01 오후 6:35
+						545
 					</td>
 					<td>
-						9시간 5분
+						9 시간 30 분
+					</td>
+					<td>
+						540
+					</td>
+					<td>
+					    0 시간  -5 분
+					</td>
+					<td>
+						-5
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4">
-						합계
+					<td colspan="2">
+						2019/02 계
 					</td>
 					<td>
-						자동계산
 						18시간 6분
+					</td>
+					<td>
+						1,085
+					</td>
+					<td colspan="2">
+						
+					</td>
+					<td>
+						0시간 -6분
+					</td>
+					<td>
+						-6
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						합 계
+					</td>
+					<td>
+						18시간 6분
+					</td>
+					<td>
+						1,085
+					</td>
+					<td colspan="2">
+						
+					</td>
+					<td>
+						0시간 -6분
+					</td>
+					<td>
+						-6
 					</td>
 				</tr>
 			</tbody>
@@ -170,6 +239,7 @@
 		<br> 
 		<input type="button" class="btn btn-primary pull-list"
 			 value="인쇄" >
+		</div>
 	</div>
 </body>
 </html>

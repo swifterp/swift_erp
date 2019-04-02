@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +13,12 @@
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+	function search(){
+		var select = document.getElementById("Work_All_search").value;
+		location.href=select;
+	}
+</script>
 <script>
 	$(function() {
 		$("#datepicker").datepicker(
@@ -400,8 +407,8 @@ input {
 				<tr>
 					<td colspan="2" style="vertical-align: middle;">
 						<div class="input-group" style="width: 20%">
-							<select class="custom-select">
-								<option value="Work_on_time">출/퇴근,근태,일정 현황</option>
+							<select class="custom-select" id="Work_All_search">
+								<option value="Work_All_Serch(page).jsp">출/퇴근,근태,일정 현황</option>
 							</select>
 						</div>
 					</td>
@@ -427,7 +434,7 @@ input {
 			</tbody>
 		</table>
 		<br> 
-		<input type="submit" id="Work_Search" class="btn btn-primary pull-right"
+		<input type="submit" id="Work_Search" onClick="search()" class="btn btn-primary pull-right"
 			value="검색">
 	</div>
 <!-- modal 소스코드 -->

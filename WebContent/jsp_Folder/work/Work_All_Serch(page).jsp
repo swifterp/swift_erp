@@ -72,9 +72,124 @@
 						<li><a href="Work_on_off.jsp">출/퇴근 기록부</a></li>
 						<li><a href="Work_Search.jsp">출/퇴근현황 조회</a></li>
 						<li><a href="Work_time.jsp"  >근무시간 조회</a></li>
-						<li><a class="active" href="#">출퇴근/근태/일정 조회</a></li>
+						<li><a class="active" href="Work_All_Search.jsp">출퇴근/근태/일정 조회</a></li>
 					</ul>
 				</li>
 			</ul>
 		</nav>
 	</div>
+	<div style="width: 60%;"  class="contents">
+		<table class="table line" style="margin: auto; text-align:center;">
+			<thead class="line">
+				<tr>
+					<td style="width: 100px">
+					</td>
+					<td style="font-size: 24px">
+						출퇴근/근태/일정 현황
+					</td>
+					<td style="width: 100px; vertical-align: bottom; ">
+						시간
+					</td>
+				</tr>
+			</thead>
+		</table>
+		<table class="table" style="margin: auto; text-align:center;">
+			<thead>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="width: 100px">
+						일지
+					</td>
+					<td  style="width: 90px"> 
+						사원명
+					</td>
+					<td  style="width: 100px">
+						출근시간
+					</td>
+					<td  style="width: 100px">
+						퇴근시간
+					</td>
+					<td  style="width: 150px">
+						근무시간
+						<br>
+						(시간단위x출/퇴근)
+					</td>
+					<td>
+						근태내역
+					</td>
+					<td>
+						적요
+					</td>
+					<td>
+						일정
+					</td>
+				</tr>
+				<tr>
+					<td>
+						2019/02/01
+					</td>
+					<td> 
+						사용자
+					</td>
+					<td>
+						2019/02/01
+						<br>
+						오전 9:30
+					</td>
+					<td>
+						2019/02/01
+						<br>
+						오후 6:31
+					</td>
+					<td>
+						541
+					</td>
+					<td>
+						근태내역
+					</td>
+					<td>
+						적요
+					</td>
+					<td>
+						일정
+					</td>
+				</tr>
+				<tr>
+					<td>
+						2019/02/02
+					</td>
+					<td> 
+						사용자
+					</td>
+					<td>
+						2019/02/02
+						<br>
+						오전 9:30
+					</td>
+					<td>
+						2019/02/02
+						<br>
+						오후 6:35
+					</td>
+					<td>
+						545
+					</td>
+					<td>
+						근태내역
+					</td>
+					<td>
+						적요
+					</td>
+					<td>
+						일정
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br> 
+		<input type="button" class="btn btn-primary pull-list"
+			 value="인쇄" >
+	</div>
+</body>
+</html>

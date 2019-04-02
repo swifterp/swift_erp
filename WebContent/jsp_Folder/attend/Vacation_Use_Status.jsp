@@ -64,6 +64,11 @@ jQuery(function($){
 	});
 });
 </script>
+<script>
+	function btn_print() { /* 근태 집계표 인쇄 페이지  */
+		location.href="Vacation_Use_Status(page).jsp";
+	}
+</script>
 <style>
 input {
     vertical-align: middle;
@@ -271,12 +276,13 @@ button {
 		</table>
 		<hr style="border:solid 1px #888;"> <!-- 중간 가로선  -->
 		<span style="float:right">
-			<input style="text-align: right;" type="button" class="img-button_print" data-toggle="modal" data-target="#copy">
+			<input style="text-align: right;" type="button" class="img-button_print"
+				   data-toggle="modal" data-target="#copy" onClick="btn_print()">
 		</span>
 		<table class="table Transparency">
 			<thead>
 				<tr>
-					<td  class="line2" colspan="2" style="text-align: center; font-size: 20pt;">
+					<td  class="line2" style="text-align: center; font-size: 20pt;">
 						휴가사용일현황
 					</td>
 				</tr>
@@ -286,30 +292,21 @@ button {
 					<td class="line2" style="text-align: left;">
 						회사명 : (주)SWIFT
 					</td>
-					<td class="line2" style="text-align: right;">
-						<input type="text" style="width: 80px">
-						~
-						<input type="text" style="width: 80px">
-					</td>
 				</tr>
 			</tbody>
 		</table>
 		<table class="table" style="margin: auto; text-align: center;">
 			<thead>
 				<tr style="background-color: #eee">
-					<td style="width: 100px"> 전표일자
+					<td style="width: 200px"> 전표번호
 					</td>
-					<td> 부서명
+					<td> 적요
 					</td>
-					<td> 직급
+					<td> 휴가일수
 					</td>
-					<td> 사원번호
+					<td> 휴가사용일수
 					</td>
-					<td> 사원명
-					</td>
-					<td style="width: 120px"> 근태종류
-					</td>
-					<td style="width: 120px"> 근태시간
+					<td> 휴가 잔여일수
 					</td>
 				</tr>
 			</thead>
@@ -317,22 +314,84 @@ button {
 				<tr>
 					<td>
 					</td>
-					<td>
+					<td> [휴가]
 					</td>
-					<td>
+					<td> 6.00
 					</td>
-					<td>
-					</td>
-					<td>
-					</td>
-					<td>
+					<td> 
 					</td>
 					<td>
 					</td>
 				</tr>
+				<tr>
+					<td> 2015/05/15-1
+					</td>
+					<td> 연차
+					</td>
+					<td> 
+					</td>
+					<td> 1.00
+					</td>
+					<td> 5.00
+					</td>
+				</tr>
+				<tr>
+					<td> 2015/05/15-1
+					</td>
+					<td> 연차
+					</td>
+					<td> 
+					</td>
+					<td> 1.00
+					</td>
+					<td> 4.00
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4">합계
+					</td>
+					<td> 
+					</td>
+				</tr>
 			</tbody>
 		</table>
-		<br> 
+		<br>
+		<table class="table" style="margin: auto; text-align: center;">
+			<thead>
+				<tr style="background-color: #eee">
+					<td style="width: 200px"> 전표번호
+					</td>
+					<td> 적요
+					</td>
+					<td> 휴가일수
+					</td>
+					<td> 휴가사용일수
+					</td>
+					<td> 휴가 잔여일수
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+					</td>
+					<td> [휴가]
+					</td>
+					<td> 6.00
+					</td>
+					<td> 
+					</td>
+					<td>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4">합계
+					</td>
+					<td> 
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 	<!-- 모달코드  -->
 	<div class="modal fade" id="user_name" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

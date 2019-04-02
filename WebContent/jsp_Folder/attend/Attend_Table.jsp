@@ -9,7 +9,6 @@
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -29,6 +28,53 @@
 <style>
   .line2{border-bottom: 1px solid #fff;}
 </style>
+
+<script>
+	function Search1(){
+		var buttonSearch1 = document.getElementById('button_Search1');
+		var select = document.getElementById("Search_1").value;
+		if(select == "not_used"){
+			alert("검색조건을 선택해 주세요.");
+		}
+		else if(select == "user"){
+			buttonSearch1.dataset.target = "#user_name";
+		}
+		else if(select == "dept"){
+			buttonSearch1.dataset.target = "#user_name";
+		}
+	}
+	function Search2(){
+		var buttonSearch1 = document.getElementById('input_Search2');
+		var select = document.getElementById("Search_2").value;
+		if(select == "not_used"){
+			alert("검색조건을 선택해 주세요.");
+		}
+		else if(select == "user"){
+			buttonSearch1.dataset.target = "#user_name";
+		}
+		else if(select == "dept"){
+			buttonSearch1.dataset.target = "#user_name";
+		}
+	}
+	function Search3(){
+		var buttonSearch1 = document.getElementById('button_Search3');
+		var select = document.getElementById("Search_3").value;
+		if(select == "not_used"){
+			alert("검색조건을 선택해 주세요.");
+		}
+		else if(select == "user"){
+			buttonSearch1.dataset.target = "#user_name";
+		}
+		else if(select == "dept"){
+			buttonSearch1.dataset.target = "#user_name";
+		}
+	}
+</script>
+<script>
+	function btn_print() { /* 근태 집계표 인쇄 페이지  */
+		location.href="Attend_Table(page).jsp";
+	}
+</script>
 
 <script>
 	$(function() {
@@ -100,6 +146,7 @@
 			});
 	});
 </script>
+
 <script>
 jQuery(function($){
 	$('#modal-user_name').footable({
@@ -128,6 +175,14 @@ input {
     width: 20px;
     height: 20px;
     cursor: pointer;
+  }
+  input.img-button_Searc {
+    background: url("../../images/btn_Searc.png") no-repeat;
+    border: none;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
 </style>
 <title>SWIFT ERP</title>
 </head>
@@ -237,57 +292,66 @@ input {
 				</tr>
 				<tr>
 					<td class="line">검색조건1</td>
-					<td class="line" style="width: 100px">
+					<td class="line" style="width: 100px; vertical-align: middle;">
 						<div class="input-group" style="width: 100px">
-							<select class="custom-select" id=".">
-								<option id="not_used" value="#">사용안함</option>
-								<option id="user" value="#">사원</option>
-								<option id="dept" value="#">부서명</option>
+							<select class="custom-select" id="Search_1">
+								<option value="not_used">사용안함</option>
+								<option value="user">사원</option>
+								<option value="dept">부서명</option>
 							</select>
 						</div>
 					</td>
-					<td class="line">
+					<td class="line" >
 						<input type="text" class="form-control input-sm"
 							   style="width:150px; height: 50%; display: inline-block">
-						<input type="button" class="img-button_Searc" data-toggle="modal" data-target="#vacation">
+						<span>
+							<input id="button_Search1" type="button" class="img-button_Searc" data-toggle="modal"
+								   data-target="#" onClick="Search1()">
+						</span>
 						<input type="text" class="form-control input-sm"
 							   style="width:150px; height: 50%; display: inline-block">
 					</td>
 				</tr>
 				<tr>
 					<td class="line">검색조건2</td>
-					<td class="line">
-						<div class="input-group" style="width: 100px">
-							<select class="custom-select" id=".">
-								<option id="not_used" value="#">사용안함</option>
-								<option id="user" value="#">사원</option>
-								<option id="dept" value="#">부서명</option>
+					<td class="line" style="vertical-align: middle;">
+						<div class="input-group" style="width: 100px;">
+							<select class="custom-select" id="Search_2">
+								<option value="not_used">사용안함</option>
+								<option value="user">사원</option>
+								<option value="dept">부서명</option>
 							</select>
 						</div>
 					</td>
 					<td class="line">
 						<input type="text" class="form-control input-sm"
 							   style="width:150px; height: 50%; display: inline-block">
-						<input type="button" class="img-button_Searc" data-toggle="modal" data-target="#vacation">
+						<span>
+							<input id="input_Search2" type="button" class="img-button_Searc" data-toggle="modal"
+								   data-target="#" onClick="Search2()">
+						</span>
 						<input type="text" class="form-control input-sm"
 							   style="width:150px; height: 50%; display: inline-block">
 					</td>
 				</tr>
 				<tr>
 					<td class="line">검색조건3</td>
-					<td class="line">
+					<td class="line" style="vertical-align: middle;">
 						<div class="input-group" style="width: 100px">
-							<select class="custom-select" id=".">
-								<option id="not_used" value="#">사용안함</option>
-								<option id="user" value="#">사원</option>
-								<option id="dept" value="#">부서명</option>
+							<select class="custom-select" id="Search_3">
+								<option value="not_used">사용안함</option>
+								<option value="user">사원</option>
+								<option value="dept">부서명</option>
 							</select>
 						</div>
 					</td>
 					<td class="line">
 						<input type="text" class="form-control input-sm"
 							   style="width:150px; height: 50%; display: inline-block">
-						<input type="button" class="img-button_Searc" data-toggle="modal" data-target="#vacation">
+						<span>
+							<input id="input_Search3" type="button" class="img-button_Searc" data-toggle="modal"
+								   data-target="#" onClick="Search3()">
+						</span>
 						<input type="text" class="form-control input-sm"
 							   style="width:150px; height: 50%; display: inline-block">
 					</td>
@@ -301,7 +365,8 @@ input {
 		</table>
 	<hr style="border:solid 1px #888;"> <!-- 중간 가로선  -->
 		<span  style="float:right">
-			<input style="text-align: right;" type="button" class="img-button_print" data-toggle="modal" data-target="#copy">
+			<input style="text-align: right;" type="button" class="img-button_print" 
+				   data-toggle="modal" data-target="#copy" onClick="btn_print()">
 		</span>
 		<table class="table Transparency">
 			<thead>
@@ -336,13 +401,38 @@ input {
 			<tbody>
 				<tr>
 					<td>
+					홍길동
 					</td>
 					<td>
+					8.0
+					</td>
+				</tr>
+				<tr>
+					<td>
+					홍길삼
+					</td>
+					<td>
+					8.0
+					</td>
+				</tr>
+				<tr>
+					<td>
+					홍길일
+					</td>
+					<td>
+					8.0
+					</td>
+				</tr>
+				<tr>
+					<td>
+					합계
+					</td>
+					<td>
+					24.0
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<br> 
 	</div>
 <!-- modal 소스코드 -->
 	<div class="modal fade" id="user_name" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

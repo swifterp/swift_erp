@@ -30,6 +30,12 @@
 </style>
 
 <script>
+	function btn_print() {
+		location.href="Attend_Status(page).jsp";
+	}
+</script>
+
+<script>
 	$(function() {
 		$("#datepicker").datepicker(
 			{
@@ -64,6 +70,7 @@
 			});
 	});
 </script>
+
 <script>
 jQuery(function($){
 	$('#modal-user_name').footable({
@@ -227,9 +234,9 @@ button {
 					<td class="line" style="width:150px;">
 						기준일자
 					</td>
-					<td class="line" style="text-align: left;" >
+					<td class="line" style="text-align: left;">
 						<input type="text" id="datepicker" class="form-control input-sm"
-						style="width: 200px; height: 50%; display: inline-block">
+						style="width: 200px; height: 50%; display: inline-block;">
 						&nbsp;~&nbsp;
 						<input type="text" id="datepicker2" class="form-control input-sm"
 						style="width: 200px; height: 50%; display: inline-block">
@@ -323,7 +330,8 @@ button {
 		</table>
 	<hr style="border:solid 1px #888;"> <!-- 중간 가로선  -->
 		<span style="float:right">
-			<input style="text-align: right;" type="button" class="img-button_print" data-toggle="modal" data-target="#copy">
+			<input style="text-align: right;" type="button" class="img-button_print" 
+				   data-toggle="modal" data-target="#copy" onClick="btn_print()">
 		</span>
 		<table class="table Transparency">
 			<thead>
@@ -367,24 +375,30 @@ button {
 			</thead>
 			<tbody>
 				<tr>
-					<td>
+					<td style="color: blue; text-decoration:  underline;"> 
+						20190226-1
 					</td>
 					<td>
+						연구개발
 					</td>
 					<td>
+						사원
 					</td>
 					<td>
+						101
 					</td>
 					<td>
+						홍길동
 					</td>
 					<td>
+						예비군
 					</td>
 					<td>
+						0
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<br> 
 	</div>
 <!-- modal 소스코드 -->
 	<div class="modal fade" id="user_name" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

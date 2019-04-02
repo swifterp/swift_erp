@@ -6,12 +6,19 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script type = "text/javascript" src ="../../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+<script>
+	function search(){
+		var select = document.getElementById("WorkOnOffTime").value;
+		location.href=select;
+	}
+</script>
 <script>
 	$(function() {
 		$("#datepicker").datepicker(
@@ -49,38 +56,6 @@
 							'8월', '9월', '10월', '11월', '12월' ]
 				});
 	});
-</script>
-<script>
-	$(function location.href{
-
-			var InputGroup = select.value;  
-			
-			if(InputGroup == Work_on_time){
-				location.href='Work_Search(on)'
-			}
-			else if(InputGroup == Work_off_time){
-				location.href='Work_Search(off)'
-			}
-			else if(InputGroup == Work_on_off_time){
-				location.href='Work_Search(on_off)'
-			}
-			
-			
-		}
-</script>
-<script>
-	$(function() {
-		$("#setWorkOnOffTime") {
-		var InputGroup = select.value;
-
-		if(InputGroup == Work_on_time){
-		}
-		else if(InputGroup == Work_off_time){
-		}
-		else if(InputGroup == Work_on_off_time){
-		}
-		
-	})
 </script>
 
 <script>
@@ -206,8 +181,9 @@ input {
 				<tr>
 					<td style="width:90px; vertical-align: middle;">기간</td>
 					<td colspan="4">
-					<input type="text" id="datepicker" class="form-control input-sm"
-						style="width:170px; height: 50%; display: inline-block"></td>
+						<input type="text" id="datepicker" class="form-control input-sm"
+								style="width:170px; height: 50%; display: inline-block">
+					</td>
 					<td style="width: 15px; vertical-align: middle; padding: 0px;">~</td>
 					<td colspan="2">
 					<input type="text" id="datepicker2"	class="form-control input-sm"
@@ -273,10 +249,10 @@ input {
 				<tr>
 					<td colspan="2" style="vertical-align: middle;">
 						<div class="input-group" style="width: 100px">
-							<select class="custom-select" id="WorkOnOffTime">
-								<option value="Work_on_time">출근시간현황</option>
-								<option value="Work_off_time">퇴근시간현황</option>
-								<option value="Work_on_off_time">출/퇴근시간 현황</option>
+							<select name="WorkOnOffTime" id="WorkOnOffTime">
+								<option value="Work_Search(on).jsp">출근시간현황</option>
+								<option value="Work_Search(off).jsp">퇴근시간현황</option>
+								<option value="Work_Search(on_off).jsp">출/퇴근시간 현황</option>
 							</select>
 						</div>
 					</td>
@@ -302,7 +278,7 @@ input {
 		</table>
 		<br> 
 		<input type="button" class="btn btn-primary pull-right"
-				onclick="location.href;" value="검색">
+				id="btn_search" value="검색" onClick="search()">
 	</div>
 <!-- Modal 소스코드  -->	
 <div class="modal fade" id="user_name" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
