@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -63,21 +62,21 @@
 				<li><a class="active" data-toggle="collapse" data-target="#group1"
 					aria-expanded="false" href="#">기본사항등록</a>
 					<ul class="collapse in depth2" id="group1">
-						<li><a class="active" href="Allowance_Item.jsp">수당항목등록</a></li>
+						<li><a class="active" href="#">수당항목등록</a></li>
 						<li><a href="Deductible_Item.jsp">공제항목등록</a></li>
 						<li><a href="Bonus_payment.jsp">1년미만자<br>상여지급률등록</a></li>
 					</ul>
 				</li>
 				<li>
 					<a data-toggle="collapse"
-					data-target="#group2" aria-expanded="false" href="#">급여작업</a>
+					data-target="#group2" aria-expanded="false" href="Payroll.jsp">급여작업</a>
 					<ul class="collapse depth2" id="group2">
 						<li><a href="Payroll.jsp">급여계산/대장</a></li>
 						<li><a href="Daily_work.jsp">일별근무기록등록</a></li>
 					</ul>
 				</li>
 				<li><a data-toggle="collapse"
-					data-target="#group3" aria-expanded="false" href="#">출력물</a>
+					data-target="#group3" aria-expanded="false" href="Specification.jsp">출력물</a>
 					<ul class="collapse depth2" id="group3">
 						<li><a href="Specification.jsp ">명세서인쇄</a></li>
 						<li><a href="Individual_benefits.jsp ">개인별급여내역인쇄</a></li>
@@ -136,32 +135,106 @@
 						</div>
 					</td>
 					<td>
+						비과세 팝업창 생성
 					</td>
 					<td>
+						<div class="input-group" style="width: 100px;">
+							<select class="custom-select" id="Search_2">
+								<option value="Round">반올림</option>
+								<option value="Raising">절상</option>
+								<option value="Floor">절사</option>
+							</select>
+						</div>
 					</td>
 					<td>
+						<input type="radio" name="optionsRadios"
+							id="optionsRadios1" value="option1">
 					</td>
 					<td>
+						<input type="button" value="계산내역" >
 					</td>
 					<td>
+						근태코드 팝업창
 					</td>
 				</tr>
 				<tr>
 					<td>
+						야근수당
 					</td>
 					<td> 
+						2
 					</td>
 					<td>
+						<div class="input-group" style="width: 100px;">
+							<select class="custom-select" id="Search_1">
+								<option value="fixing">고정</option>
+								<option value="Variance_Day">변동(일)</option>
+								<option value="Variance_Time">변동(시간)</option>
+								<option value="Variance_Payments">변동(지급률)</option>
+							</select>
+						</div>
 					</td>
 					<td>
+						비과세 팝업창 생성
 					</td>
 					<td>
+						<div class="input-group" style="width: 100px;">
+							<select class="custom-select" id="Search_2">
+								<option value="Round">반올림</option>
+								<option value="Raising">절상</option>
+								<option value="Floor">절사</option>
+							</select>
+						</div>
 					</td>
 					<td>
+						<input type="radio" name="optionsRadios"
+							id="optionsRadios1" value="option1">
 					</td>
 					<td>
+						<input type="button" value="계산내역" >
 					</td>
 					<td>
+						근태코드 팝업창
+					</td>
+				</tr>
+				<tr>
+					<td>
+						주말근무수당
+					</td>
+					<td> 
+						3
+					</td>
+					<td>
+						<div class="input-group" style="width: 100px;">
+							<select class="custom-select" id="Search_1">
+								<option value="fixing">고정</option>
+								<option value="Variance_Day">변동(일)</option>
+								<option value="Variance_Time">변동(시간)</option>
+								<option value="Variance_Payments">변동(지급률)</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						비과세 팝업창 생성
+					</td>
+					<td>
+						<div class="input-group" style="width: 100px;">
+							<select class="custom-select" id="Search_2">
+								<option value="Round">반올림</option>
+								<option value="Raising">절상</option>
+								<option value="Floor">절사</option>
+							</select>
+						</div>
+					</td>
+					<td>
+						<input type="radio" name="optionsRadios"
+							id="optionsRadios1" value="option1">
+					</td>
+					<td>
+						<input type="button" value="계산내역" >
+					</td>
+					<td>
+						근태코드 팝업창
 					</td>
 				</tr>
 			</tbody>

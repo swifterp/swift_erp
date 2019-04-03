@@ -11,6 +11,8 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 조회 -->
+
 </head>
 <body>
 	<!-- 네비게이션 -->
@@ -68,17 +70,17 @@
 					</ul>
 				</li>
 				<li>
-					<a data-toggle="collapse"
-					data-target="#group2" aria-expanded="false" href="Payroll.jsp">급여작업</a>
-					<ul class="collapse depth2" id="group2">
-						<li><a href="Payroll.jsp">급여계산/대장</a></li>
+					<a  class="active" data-toggle="collapse"
+					data-target="#group2" aria-expanded="false" href="#">급여작업</a>
+					<ul class="collapse in depth2" id="group2">
+						<li><a class="active" href="#">급여계산/대장</a></li>
 						<li><a href="Daily_work.jsp">일별근무기록등록</a></li>
 					</ul>
 				</li>
-				<li><a class="active" data-toggle="collapse"
-					data-target="#group3" aria-expanded="false" href="#">출력물</a>
-					<ul class="collapse in depth2" id="group3">
-						<li><a class="active" href="# ">명세서인쇄</a></li>
+				<li><a data-toggle="collapse"
+					data-target="#group3" aria-expanded="false" href="Specification.jsp">출력물</a>
+					<ul class="collapse depth2" id="group3">
+						<li><a href="Specification.jsp ">명세서인쇄</a></li>
 						<li><a href="Individual_benefits.jsp ">개인별급여내역인쇄</a></li>
 						<li><a href="Work_record.jsp">근무기록확정현황인쇄</a></li>
 						<li><a href="Monthly_Personnel.jsp">월별인원현황인쇄</a></li>

@@ -179,7 +179,7 @@ var setoff = 0;
 		               $('#lblTable').empty();
 		               var row = 4;
 		               var col = 4;
-		               var strTable = "<table id='a_table' display='none' border='1px' width = '600px'>";
+		               var strTable = "<table id='a_table' display='none' border='1px' width='600px'>";
 		               
 		               for (var i = 0; i < row; i++) {
 		                    strTable += "<tr>";
