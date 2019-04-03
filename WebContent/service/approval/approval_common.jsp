@@ -1,15 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <%@ page import="java.util.Map, java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>°øÅë¾ç½Ä Á¶È¸ ÆäÀÌÁö ÀÔ´Ï´Ù</title>
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../css/common.css">
-<script type ="text/javascript" src ="../js/jquery.min.js"></script>
-<script type ="text/javascript" src ="../js/bootstrap.js"></script>
+<meta charset="UTF-8">
+<title>ê³µí†µì–‘ì‹ ì¡°íšŒ íŽ˜ì´ì§€ ìž…ë‹ˆë‹¤</title>
+<%@ include file="../common/ui_common.jsp" %>
 <script>
 function myApproval(3){
 		location.href = "../emp/delete?emp_number="+emp_number;	
@@ -17,71 +14,22 @@ function myApproval(3){
 </script>
 </head>
 <body>
-<!-- ³×ºñ°ÔÀÌ¼Ç -->
-	<nav class="navbar navbar-default" style="z-index:9999">
-		<!-- ³×ºñ°ÔÀÌ¼Ç Çì´õ -->
-		<div class="navbar-header">
-			<!-- ³×ºñ°ÔÀÌ¼Ç ¿ÞÂÊ Çì´õ(·Î°í) -->
-			<a class="navbar-brand" href="../service/welcome/welcome.jsp"><img class="logo" src="../images/logo.png"></a>
-		</div>
-		
-		<!-- ³×ºñ°ÔÀÌ¼Ç º»¸Þ´º -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<!-- ³×ºñ°ÔÀÌ¼Ç º»¸Þ´º ¿¤¸®¸ÕÆ® -->
-			<ul class="nav navbar-nav">
-				<li><a href="../emp/read">ÀÎ»ç°ü¸®</a></li>
-				<li><a href="#">±Þ¿©°ü¸®</a></li>		
-				<li><a href="../attend/attend_DataList">±ÙÅÂ°ü¸®</a></li>
-				<li class="active"><a href="./selectDraft">°áÀç°ü¸®</a></li>
-				<li><a href="../work/selectBusinessLog">¾÷¹«°ü¸®</a></li>
-				<li><a href="../client/selectClientInfo">°í°´°ü¸®</a></li>
-			</ul>
-			<!-- µå·Ó´Ù¿î ±â´É -->
-			<ul class="nav navbar-nav navbar-right">
-				<!-- µå·Ó´Ù¿î -->
-				<li class="dropdown">
-					<!-- ´©¸£±â Àü ÀÌ¹ÌÁö -->
-					<a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">¼³Á¤<span class="caret"></span></a>
-					<!-- ´­·¶À» ¶§ -->
-					<ul class="dropdown-menu">
-						<li><a href="#">·Î±×¾Æ¿ô</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</nav>
-	
+	<%@ include file="../common/top_menu.jsp" %>
 	<div class="container">
-		<!-- ¿ÞÂÊ ³×ºñ°ÔÀÌ¼Ç -->
-		<nav class="nav-left">	
-			<ul class="bg-primary">
-				<li>
-					<a class="active" data-toggle="collapse" data-target="#group1"
-					aria-expanded="false" href="#">Á¶È¸</a>
-					<ul class="collapse in depth2" id="group1">
-						<li><a href="./selectDraft">±â¾È¼­Á¶È¸</a></li>
-						<li><a href="./selectCommon" class="active">°øÅë¾ç½ÄÁ¶È¸</a></li>
-						<li><a href="./selectApprovalPath">°áÀç¶óÀÎÁ¶È¸</a></li>
-						<li><a href="./selectMyApproval" onclick="javascript:myApproval()">³» °áÀç ÀüÃ¼ Á¶È¸</a></li>
-					</ul>
-				</li>
-			</ul>
-		</nav>		
+		<%@ include file="../common/left_menu_approval.jsp" %>	
 		<div class="contents">
-			<h2>°øÅë¾ç½Ä Á¶È¸</h2>
+			<h2>ê³µí†µì–‘ì‹ ì¡°íšŒ</h2>
 			<table class="table">
 				<thead>
 					<tr> 
 						<th>No.</th>
-						<th>Á¦¸ñ</th>
-						<th>±â¾ÈÀÏÀÚ</th>
-						<th>±â¾ÈÀÚ</th>
+						<th>ì œëª©</th>
+						<th>ê¸°ì•ˆì¼ìž</th>
+						<th>ê¸°ì•ˆìž</th>
 						<th>DRAFT_REFERENCE</th>
-						<th>°áÀçÀÚ</th>
+						<th>ê²°ìž¬ìž</th>
 						<th>DRAFT_STYLE</th>
-						<th>±¸ºÐ</th>
+						<th>êµ¬ë¶„</th>
 						<th>DRAFT_CONTENT</th>
 						<th>DRAFT_NAME</th>
 						

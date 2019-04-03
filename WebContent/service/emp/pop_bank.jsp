@@ -6,10 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>은행목록</title>
-<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../../css/common.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
-<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
+<%@ include file="../common/ui_common.jsp" %>
 <script>
 	function bankSelect(bank_no,bank_name){
             opener.document.getElementById("p_bank_no").value = bank_no;

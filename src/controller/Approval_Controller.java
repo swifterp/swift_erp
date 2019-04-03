@@ -14,7 +14,7 @@ import logic.approval.SelectDraft;
 import logic.approval.SelectDraftDetail;
 import logic.approval.SelectMyApproval;
 @Controller
-@RequestMapping("/approval")
+@RequestMapping("service/approval")
 public class Approval_Controller {
 	
 	@Autowired

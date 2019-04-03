@@ -20,7 +20,7 @@ import logic.pay.SelectSalaryCalcList;
 import logic.pay.SelectSpecsList;
 
 @Controller
-@RequestMapping("/pay")
+@RequestMapping("service/pay")
 public class Pay_Controller {
 
 	@Autowired

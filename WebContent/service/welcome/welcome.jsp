@@ -7,9 +7,8 @@
 <title>Welcome Page</title>
 
 <script type="text/javascript">
-
 	function empList(){
-		location.href = "../../emp/read";	
+		location.href = "../emp/read";	
 	}	
 	
 	function goPay(){
@@ -18,17 +17,17 @@
 	}
 
 	function goApproval(){
-		location.href = "../../approval/selectDraft";
+		location.href = "../approval/selectDraft";
 		
 	}
 	
 	function goWork(){
-		location.href = "../../work/selectBusinessLog";
+		location.href = "../work/selectBusinessLog";
 		
 	}
 	
 	function goClient(){
-		location.href = "../../client/selectClientInfo";
+		location.href = "../client/selectClientInfo";
 		
 	}
 

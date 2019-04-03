@@ -6,10 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>SWIFT ERP</title>
-<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../../css/common.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
-<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
+<%@ include file="../common/ui_common.jsp" %>
 <!-- 주소api -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
@@ -57,8 +54,6 @@
 	}
 </script>
 <!-- 날짜선택 관련 -->
-<link rel="stylesheet" href="../../css/datepicker.css">
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 	$(function() {
 	  $( "#datepicker" ).datepicker({
@@ -178,68 +173,14 @@ $(document).ready(function() {
       });    //end on    
   });
   </script>
-
+<style>
+	table td {text-align:left;}
+</style>
 </head>
 <body>
-	<!-- 네비게이션 -->
-	<nav class="navbar navbar-default" style="z-index:9999">
-		<!-- 네비게이션 헤더 -->
-		<div class="navbar-header">
-			<!-- 네비게이션 왼쪽 헤더(로고) -->
-			<a class="navbar-brand" href="../welcome/welcome.jsp"><img class="logo" src="../../images/logo.png"></a>
-		</div>
-		
-		<!-- 네비게이션 본메뉴 -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<!-- 네비게이션 본메뉴 엘리먼트 -->
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="../emp/read">인사관리</a></li>
-				<li><a href="#">급여관리</a></li>		
-				<li><a href="../attend/attend_DataList">근태관리</a></li>
-				<li><a href="../approval/selectDraft">결재관리</a></li>
-				<li><a href="../work/selectBusinessLog">업무관리</a></li>
-				<li><a href="../client/selectClientInfo">고객관리</a></li>
-			</ul>
-			<!-- 드롭다운 기능 -->
-			<ul class="nav navbar-nav navbar-right">
-				<!-- 드롭다운 -->
-				<li class="dropdown">
-					<!-- 누르기 전 이미지 -->
-					<a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">설정<span class="caret"></span></a>
-				<!-- 눌렀을 때 -->
-				<ul class="dropdown-menu">
-						<li><a href="login.jsp">로그아웃</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</nav>
+	<%@ include file="../common/top_menu.jsp" %>
 	<div class="container">
-		<!-- 왼쪽 네비게이션 -->
-		<nav class="nav-left">	
-			<ul class="bg-primary">
-				<li>
-					<a class="active" data-toggle="collapse" data-target="#group1"
-					aria-expanded="false" href="#">기본사항등록</a>
-					<ul class="collapse in depth2" id="group1">
-						<li><a class="active" href="../emp/read">인사카드등록</a></li>
-						<li><a href="../emp/appointRead">인사발령등록</a></li>
-						<li><a href="../emp/deptRead">부서등록</a></li>
-						<li><a href="../emp/emp_etcCodeAdd.jsp">기타코드등록</a></li>
-					</ul>
-				</li>
-				<li>
-					<a data-toggle="collapse" data-target="#group2"
-					aria-expanded="false" href="#">조회/인쇄</a>
-					<ul class="collapse depth2" id="group2">
-						<li><a href="#">각종증명서인쇄</a></li>
-						<li><a href="#">사원명부</a></li>
-					</ul>
-				</li>
-			</ul>
-		</nav>
+		<%@ include file="../common/left_menu_emp.jsp" %>
 		<div class="contents">
 			<ul class="nav nav-tabs">
 			  <li class="active"><a data-toggle="tab" href="#menu1">사원등록</a></li>
@@ -260,7 +201,7 @@ $(document).ready(function() {
 						</colgroup>
 						<tbody>
 							<tr>
-								<td rowspan="4">
+								<td rowspan="4" style="text-align:center;">
 									<img style="width:140px; heigth:auto;" src="../../images/profile_0.png"/>
 								</td>	
 								<th>사원번호 <span class="essential">*</span></th>
@@ -395,7 +336,7 @@ $(document).ready(function() {
 							</td>
 							<th>급여차수</th>
 							<td>
-								<select>
+								<select class="form-control">
 					  				<option value="one">1차</option>
 					  				<option value="two">2차</option>
 					 				<option value="three">3차</option>
@@ -437,7 +378,7 @@ $(document).ready(function() {
 						<tr>
 							<th>국민연금</th>
 							<td>
-								<select>
+								<select class="form-control">
 					  				<option value="autoSum">자동계산</option>
 					  				<option value="Income">기준소득기준</option>
 					 				<option value="none">안함</option>
@@ -449,7 +390,7 @@ $(document).ready(function() {
 						<tr>
 							<th>건강보험</th>
 							<td>
-								<select>
+								<select class="form-control">
 					  				<option value="autoSum">자동계산</option>
 					  				<option value="Income">기준소득기준</option>
 					 				<option value="none">안함</option>
@@ -461,7 +402,7 @@ $(document).ready(function() {
 						<tr>
 							<th>고용보험</th>
 							<td>
-								<select>
+								<select class="form-control">
 					  				<option value="autoSum">자동계산</option>
 					  				<option value="Income">기준소득기준</option>
 					 				<option value="none">안함</option>
@@ -473,7 +414,7 @@ $(document).ready(function() {
 						<tr>
 							<th>배우자공제</th>
 							<td colspan="3">
-								<select>
+								<select class="form-control">
 					  				<option value="autoSum">자동계산</option>
 					  				<option value="Income">기준소득기준</option>
 					 				<option value="none">안함</option>

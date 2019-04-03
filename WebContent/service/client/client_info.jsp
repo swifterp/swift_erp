@@ -1,80 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <%@ page import = "java.util.List, java.util.Map" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>°Å·¡Ã³Á¤º¸Á¶È¸ ÆäÀÌÁö</title>
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../css/common.css">
-<script type = "text/javascript" src ="../js/jquery.min.js"></script>
-<script type = "text/javascript" src ="../js/bootstrap.js"></script>
+<title>ê±°ë˜ì²˜ì •ë³´ì¡°íšŒ í˜ì´ì§€</title>
+<%@ include file="../common/ui_common.jsp" %>
 <script type="text/javascript">
 	function goClientInfoWrite(){
-	location.href="../service/client/client_clientinfowrite.jsp"
+	location.href="../client/client_clientinfowrite.jsp"
 		}
 </script>
 </head>
 <body>
-	<!-- ³×ºñ°ÔÀÌ¼Ç -->
-	<nav class="navbar navbar-default" style="z-index:9999">
-		<!-- ³×ºñ°ÔÀÌ¼Ç Çì´õ -->
-		<div class="navbar-header">
-			<!-- ³×ºñ°ÔÀÌ¼Ç ¿ŞÂÊ Çì´õ(·Î°í) -->
-			<a class="navbar-brand" href="../service/welcome/welcome.jsp"><img class="logo" src="../images/logo.png"></a>
-		</div>
-		
-		<!-- ³×ºñ°ÔÀÌ¼Ç º»¸Ş´º -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<!-- ³×ºñ°ÔÀÌ¼Ç º»¸Ş´º ¿¤¸®¸ÕÆ® -->
-			<ul class="nav navbar-nav">
-				<li><a href="../emp/read">ÀÎ»ç°ü¸®</a></li>
-				<li><a href="#">±Ş¿©°ü¸®</a></li>		
-				<li><a href="../attend/attend_DataList">±ÙÅÂ°ü¸®</a></li>
-				<li><a href="../approval/selectDraft">°áÀç°ü¸®</a></li>
-				<li><a href="../work/selectBusinessLog">¾÷¹«°ü¸®</a></li>
-				<li class="active"><a href="../client/selectClientInfo">°í°´°ü¸®</a></li>
-			</ul>
-			<!-- µå·Ó´Ù¿î ±â´É -->
-			<ul class="nav navbar-nav navbar-right">
-				<!-- µå·Ó´Ù¿î -->
-				<li class="dropdown">
-					<!-- ´©¸£±â Àü ÀÌ¹ÌÁö -->
-					<a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">¼³Á¤<span class="caret"></span></a>
-				<!-- ´­·¶À» ¶§ -->
-				<ul class="dropdown-menu">
-						<li><a href="login.jsp">·Î±×¾Æ¿ô</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</nav>
+	<%@ include file="../common/top_menu.jsp" %>
 	<div class="container">
-		<!-- ¿ŞÂÊ ³×ºñ°ÔÀÌ¼Ç -->
-		<nav class="nav-left">	
-			<ul class="bg-primary">
-				<li>
-					<a class="active" href="#">°Å·¡Ã³Á¤º¸°ü¸®</a>
-				</li>
-				<li>
-					<a href="./selectNameCardInfo">¸íÇÔ°ü¸®</a>
-				</li>
-			</ul>
-		</nav>
+		<%@ include file="../common/left_menu_client.jsp" %>	
 		<div class="contents">
-			<h2>°Å·¡Ã³Á¤º¸¸ñ·Ï</h2>
+			<h2>ê±°ë˜ì²˜ì •ë³´ëª©ë¡</h2>
 			<table class="table">
 				<thead>
 					<tr>
-						<th>¾÷Ã¼±¸ºĞ</th>
-						<th>¾÷Ã¼¸í</th>
-						<th>ÀüÈ­¹øÈ£</th>
-						<th>ÀÌ¸ŞÀÏ</th>
-						<th>ÁÖ¼Ò</th>
-						<th>³»¿ë</th>
+						<th>ì—…ì²´êµ¬ë¶„</th>
+						<th>ì—…ì²´ëª…</th>
+						<th>ì „í™”ë²ˆí˜¸</th>
+						<th>ì´ë©”ì¼</th>
+						<th>ì£¼ì†Œ</th>
+						<th>ë‚´ìš©</th>
 						<th></th>
 						<th></th>						
 					</tr>
@@ -95,13 +48,13 @@
 						<td>
 							<form action="../client/selectClientInfoDetail">
 								<input type="hidden" id="CLIENT_CODE" name="CLIENT_CODE" class="form-control" value=<%= Integer.parseInt(String.valueOf(lst.get(i).get("CLIENT_CODE"))) %>>
-								<input type="submit" id="CLIENT_CODE" name="CLIENT_CODE" class="btn btn-default" value="¼öÁ¤">
+								<input type="submit" id="CLIENT_CODE" name="CLIENT_CODE" class="btn btn-default" value="ìˆ˜ì •">
 							</form> 
 						</td>
 						<td>
 							<form action="../client/deleteClientInfo">
 								<input type="hidden" id="CLIENT_CODE" name="CLIENT_CODE" class="form-control" value=<%= Integer.parseInt(String.valueOf(lst.get(i).get("CLIENT_CODE"))) %>>
-								<input type="submit" id="CLIENT_CODE" name="CLIENT_CODE" class="btn btn-default" value="»èÁ¦">
+								<input type="submit" id="CLIENT_CODE" name="CLIENT_CODE" class="btn btn-default" value="ì‚­ì œ">
 							</form>
 						</td>
 					</tr>
@@ -112,7 +65,7 @@
 			    </tbody>
 			</table>
 			<div class="btn_group">
-				<input type="button" class="btn btn-primary pull-right" onclick="javascript:goClientInfoWrite()" value="µî·Ï">
+				<input type="button" class="btn btn-primary pull-right" onclick="javascript:goClientInfoWrite()" value="ë“±ë¡">
 			</div>
 		</div>
 	</div>

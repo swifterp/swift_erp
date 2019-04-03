@@ -20,7 +20,7 @@ import logic.work.SelectWorkState;
 import logic.work.SelectWorkTime;
 
 @Controller
-@RequestMapping("/work")
+@RequestMapping("service/work")
 public class Work_Controller {
 
 	@Autowired

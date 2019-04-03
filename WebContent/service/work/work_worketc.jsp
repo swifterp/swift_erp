@@ -1,72 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>ÃâÅð±Ù/±ÙÅÂ/ÀÏÁ¤ Á¶È¸</title>
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../css/common.css">
-<script type = "text/javascript" src ="../js/jquery.min.js"></script>
-<script type = "text/javascript" src ="../js/bootstrap.js"></script>
+<meta charset="UTF-8">
+<title>ì¶œí‡´ê·¼/ê·¼íƒœ/ì¼ì • ì¡°íšŒ</title>
+<%@ include file="../common/ui_common.jsp" %>
 </head>
 <body>
-	<!-- ³×ºñ°ÔÀÌ¼Ç -->
-	<nav class="navbar navbar-default" style="z-index:9999">
-		<!-- ³×ºñ°ÔÀÌ¼Ç Çì´õ -->
-		<div class="navbar-header">
-			<!-- ³×ºñ°ÔÀÌ¼Ç ¿ÞÂÊ Çì´õ(·Î°í) -->
-			<a class="navbar-brand" href="../service/welcome/welcome.jsp"><img class="logo" src="../images/logo.png"></a>
-		</div>
-		
-		<!-- ³×ºñ°ÔÀÌ¼Ç º»¸Þ´º -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<!-- ³×ºñ°ÔÀÌ¼Ç º»¸Þ´º ¿¤¸®¸ÕÆ® -->
-			<ul class="nav navbar-nav">
-				<li><a href="../emp/read">ÀÎ»ç°ü¸®</a></li>
-				<li><a href="#">±Þ¿©°ü¸®</a></li>		
-				<li><a href="../attend/attend_DataList">±ÙÅÂ°ü¸®</a></li>
-				<li><a href="../approval/selectDraft">°áÀç°ü¸®</a></li>
-				<li class="active"><a href="../work/selectBusinessLog">¾÷¹«°ü¸®</a></li>
-				<li><a href="../client/selectClientInfo">°í°´°ü¸®</a></li>
-			</ul>
-			<!-- µå·Ó´Ù¿î ±â´É -->
-			<ul class="nav navbar-nav navbar-right">
-				<!-- µå·Ó´Ù¿î -->
-				<li class="dropdown">
-					<!-- ´©¸£±â Àü ÀÌ¹ÌÁö -->
-					<a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">¼³Á¤<span class="caret"></span></a>
-				<!-- ´­·¶À» ¶§ -->
-				<ul class="dropdown-menu">
-						<li><a href="../service/mem/login.jsp">·Î±×¾Æ¿ô</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</nav>
+	<%@ include file="../common/top_menu.jsp" %>
 	<div class="container">
-		<!-- ¿ÞÂÊ ³×ºñ°ÔÀÌ¼Ç -->
-		<nav class="nav-left">	
-			<ul class="bg-primary">
-				<li>
-					<a href="./selectBusinessLog">¾÷¹«ÀÏÁöÁ¶È¸</a>
-				</li>
-				<li>
-					<a href="../service/work/work_monthwork.jsp">¿ùº°ÃâÅð±Ù±â·Ï</a>
-				</li>
-				<li>
-					<a href="./selectWorkState">ÃâÅð±ÙÇöÈ²</a>
-				</li>
-				<li>
-					<a href="../service/work/work_worktime.jsp">ÀÏº°±Ù¹«½Ã°£Á¶È¸</a>
-				</li>
-				<li>
-					<a class="active" href="./selectWorkEtc">ÃâÅð±Ù/±ÙÅÂ/ÀÏÁ¤ Á¶È¸</a>
-				</li>
-			</ul>
-		</nav>
+		<%@ include file="../common/left_menu_work.jsp" %>
 		<div class="contents">
 			${list.get(0) }
 			${list.get(1) }

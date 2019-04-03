@@ -5,10 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../../css/common.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
-<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
+	<%@ include file="../common/ui_common.jsp" %>
+	<script type="text/javascript">
+	    $(document).ready(function () {
+	        $("li").each(function () {
+	            $(this).click(function () {
+	                $(this).addClass("active");  
+	            });
+	        });
+	    });
+	</script>
 </head>
 <body>
 	<!-- 네비게이션 -->
@@ -22,8 +28,8 @@
 		<!-- 네비게이션 본메뉴 -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<!-- 네비게이션 본메뉴 엘리먼트 -->
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="../emp/read">인사관리</a></li>
+			<ul class="nav navbar-nav main">
+				<li><a href="../emp/read">인사관리</a></li>
 				<li><a href="#">급여관리</a></li>		
 				<li><a href="../attend/attend_DataList">근태관리</a></li>
 				<li><a href="../approval/selectDraft">결재관리</a></li>

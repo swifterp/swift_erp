@@ -18,7 +18,7 @@ import logic.attend.UpdateAttendCodeT;
 import logic.attend.UpdateAttendLow;
 
 @Controller
-@RequestMapping("/attend")
+@RequestMapping("service/attend")
 public class Attend_Controller {
 	
 //////////////////////attend_manager start///////////////////////////

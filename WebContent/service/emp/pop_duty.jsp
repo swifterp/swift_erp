@@ -6,10 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>직책목록</title>
-<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../../css/common.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
-<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
+<%@ include file="../common/ui_common.jsp" %>
 <script>
 	function dutySelect(duty_no,duty_name){
             opener.document.getElementById("p_duty_no").value = duty_no;

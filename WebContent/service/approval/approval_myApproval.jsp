@@ -1,26 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <%@ page import="java.util.Map, java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>³» °áÁ¦ ÀüÃ¼ Á¶È¸</title>
+<meta charset="UTF-8">
+<title>ë‚´ ê²°ì œ ì „ì²´ ì¡°íšŒ</title>
 </head>
 <body>
 
-<h2>³» °áÁ¦ ³»¿ª Á¶È¸</h2>
+<h2>ë‚´ ê²°ì œ ë‚´ì—­ ì¡°íšŒ</h2>
 <table style="border:1px solid #ccc">
 	<thead>
 		<tr> 
 			<th>No.</th>
-			<th>Á¦¸ñ</th>
-			<th>±â¾ÈÀÏÀÚ</th>
-			<th>±â¾ÈÀÚ</th>
+			<th>ì œëª©</th>
+			<th>ê¸°ì•ˆì¼ìž</th>
+			<th>ê¸°ì•ˆìž</th>
 			<th>DRAFT_REFERENCE</th>
-			<th>°áÀçÀÚ</th>
+			<th>ê²°ìž¬ìž</th>
 			<th>DRAFT_STYLE</th>
-			<th>±¸ºÐ</th>
+			<th>êµ¬ë¶„</th>
 			<th>DRAFT_CONTENT</th>
 			<th>DRAFT_NAME</th>
 		</tr>

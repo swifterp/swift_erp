@@ -6,10 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>직급목록</title>
-<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../../css/common.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
-<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
+<%@ include file="../common/ui_common.jsp" %>
 <script>
 	function rankSelect(rank_no,rank_name){
             opener.document.getElementById("p_rank_no").value = rank_no;

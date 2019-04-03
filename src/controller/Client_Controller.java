@@ -18,7 +18,7 @@ import logic.client.UpdateClientInfo;
 import logic.client.UpdateNameCardInfo;
 
 @Controller
-@RequestMapping("/client")
+@RequestMapping("service/client")
 public class Client_Controller {
 	
 	@Autowired

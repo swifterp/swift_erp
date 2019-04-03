@@ -1,15 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <%@ page import = "java.util.List, java.util.Map" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>ºÎ¼­Á¶È¸</title>
+<meta charset="UTF-8">
+<title>ë¶€ì„œì¡°íšŒ</title>
 </head>
 <body>
 
-<h2>¾÷¹«ÀÏÁö¸ñ·Ï</h2>
+<h2>ì—…ë¬´ì¼ì§€ëª©ë¡</h2>
 <table style="border:1px solid #ccc">
 	<thead>
 		<tr>
