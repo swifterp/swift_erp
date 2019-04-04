@@ -23,10 +23,7 @@
 </script>
 </head>
 <body>
-	<%@ include file="../common/top_menu.jsp" %>
-	<div class="container">
-		<%@ include file="../common/left_menu_emp.jsp" %>	
-		<div class="contents">
+
 			<h3>인사발령목록</h3>
 			<table class="table">
 				<thead>
@@ -64,7 +61,6 @@
 			<div class="btn_group">
 				<a class="btn btn-primary pull-right" onclick="javascript:goAppointAdd()">등록</a>
 			</div>
-		</div>
-	</div>
+
 </body>
 </html>

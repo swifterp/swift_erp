@@ -11,27 +11,21 @@
 </style> 
 </head>
 <body>
-<%@ include file="../common/top_menu.jsp" %>
-	<div class="container">		
-		<%@ include file="../common/left_menu_emp.jsp" %>
-		<div class="contents">
-			<h2>기타코드등록</h2>
-			<ul class="etcCode">
-				<li>
-					<span>직급</span>
-					<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#rank"><img src="../../images/icon_plus.png" /></a>
-				</li>
-				<li>
-					<span>직책</span>
-					<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#duty"><img src="../../images/icon_plus.png" /></a>
-				</li>
-				<li>
-					<span>은행명</span>
-					<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#bank"><img src="../../images/icon_plus.png" /></a>
-				</li>
-			</ul>
-		</div>
-	</div>
+	<h2>기타코드등록</h2>
+	<ul class="etcCode">
+		<li>
+			<span>직급</span>
+			<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#rank"><img src="../../images/icon_plus.png" /></a>
+		</li>
+		<li>
+			<span>직책</span>
+			<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#duty"><img src="../../images/icon_plus.png" /></a>
+		</li>
+		<li>
+			<span>은행명</span>
+			<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#bank"><img src="../../images/icon_plus.png" /></a>
+		</li>
+	</ul>
 	<!-- rank Modal -->
 	 <form action="../emp/rankAdd">
 		<div class="modal fade" id="rank" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top:150px;">

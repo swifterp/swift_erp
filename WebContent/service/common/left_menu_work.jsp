@@ -18,7 +18,7 @@
 				<a href="../work/work_monthwork.jsp">월별출퇴근기록</a>
 			</li>
 			<li>
-				<a class="active" href="../work/selectWorkState">출퇴근현황</a>
+				<a href="../work/selectWorkState">출퇴근현황</a>
 			</li>
 			<li>
 				<a href="../work/work_worktime.jsp">일별근무시간조회</a>

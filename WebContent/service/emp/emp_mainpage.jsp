@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>emp_mainpage</title>
-<%@ include file="../common/ui_common.jsp" %>
 <script type="text/javascript">
 	<!--사원등록-->
 	function goEmpAdd(){
@@ -27,10 +26,6 @@
 </script>
 </head>
 <body>
-	<%@ include file="../common/top_menu.jsp" %>
-	<div class="container">		
-		<%@ include file="../common/left_menu_emp.jsp" %>
-		<div class="contents">
 			<h2>사원목록</h2>
 			<form action="../emp/empSearchNumName">
 				<div class="input-group">
@@ -94,7 +89,5 @@
 			<div class="btn_group">
 				<a class="btn btn-primary pull-right" onclick="javascript:goEmpAdd()">사원등록</a>
 			</div>
-		</div>
-	</div>
 </body>
 </html>

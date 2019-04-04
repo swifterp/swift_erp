@@ -19,44 +19,38 @@
 </script>
 </head>
 <body>
-	<%@ include file="../common/top_menu.jsp" %>
-	<div class="container">
-		<%@ include file="../common/left_menu_emp.jsp" %>
-		<div class="contents">
-			<h3>부서목록</h3>
-			<form action="../emp/deptDel">
-				<table class="table">
-					<thead>
-						<tr>
-							<th>부서코드</th>
-							<th>부서명</th>
-							<th>수정</th>
-							<th>삭제</th>
-						</tr>
-					</thead>
-					<%
-						List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
-						if(lst != null){
-							for(int i=0;i<lst.size();i++){
-					%>
-					<tbody>
-						<tr>
-							<td><%= String.valueOf(lst.get(i).get("DEPTNO")) %></td>
-							<td><%= lst.get(i).get("DNAME") %></td>
-							<td><a class="btn btn-default" onclick="javascript:deptView(<%= String.valueOf(lst.get(i).get("DEPTNO")) %>)">수정</a></td>
-							<td><a class="btn btn-default" onclick="javascript:deptDel(<%= String.valueOf(lst.get(i).get("DEPTNO")) %>)">삭제</a></td>
-						</tr>
-					</tbody>
-					<%
-							}
-						} 
-					%>
-				</table>
-				<div class="btn_group">
-					<a class="btn btn-primary pull-right" href="../emp/emp_deptAdd.jsp">등록</a>
-				</div>
-			</form>
+	<h2>부서목록</h2>
+	<form action="../emp/deptDel">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>부서코드</th>
+					<th>부서명</th>
+					<th>수정</th>
+					<th>삭제</th>
+				</tr>
+			</thead>
+			<%
+				List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
+				if(lst != null){
+					for(int i=0;i<lst.size();i++){
+			%>
+			<tbody>
+				<tr>
+					<td><%= String.valueOf(lst.get(i).get("DEPTNO")) %></td>
+					<td><%= lst.get(i).get("DNAME") %></td>
+					<td><a class="btn btn-default" onclick="javascript:deptView(<%= String.valueOf(lst.get(i).get("DEPTNO")) %>)">수정</a></td>
+					<td><a class="btn btn-default" onclick="javascript:deptDel(<%= String.valueOf(lst.get(i).get("DEPTNO")) %>)">삭제</a></td>
+				</tr>
+			</tbody>
+			<%
+					}
+				} 
+			%>
+		</table>
+		<div class="btn_group">
+			<a class="btn btn-primary pull-right" href="../emp/emp_deptAdd.jsp">등록</a>
 		</div>
-	</div>
+	</form>
 </body>
 </html>
