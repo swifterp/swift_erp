@@ -8,9 +8,16 @@
 <title>근태 관리 페이지</title>
 <%@ include file="../common/ui_common.jsp" %>
 <script type="text/javascript">
-	function attendDataInsert(){
-		location.href = "../attend/attend_DataInsert.jsp";
-	}
+function attendDataInsert(){
+	$(document).ready(function(){
+		$(".wrap").load("../attend/attend_DataInsert.jsp");
+	});
+}
+function attendDataInsert(){
+	$(document).ready(function(){
+		$(".wrap").load("../attend/attend_DataInsert.jsp");
+	});
+}
 </script>
 <!-- 날짜선택 관련 -->
 <script>
@@ -41,7 +48,6 @@
 	  });
 	});
 </script>
-
 </head>
 
 <body>

@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>emp_mainpage</title>
+<%@ include file="../common/ui_common.jsp" %>
 <script type="text/javascript">
 	<!--사원등록-->
 	function goEmpAdd(){
@@ -13,19 +14,32 @@
 	}
 	<!--사원상세보기-->
 	function empView(emp_number){
-		location.href = "../emp/view?emp_number="+emp_number;
-	}
-	<!--사원수정-->
-	function empUpd(emp_number){
-		location.href = "../emp/update?emp_number="+emp_number;	
+		location.href = "../emp/view?emp_number="+emp_number;	
 	}
 	<!--사원삭제-->
 	function empDel(emp_number){
 		location.href = "../emp/delete?emp_number="+emp_number;	
 	}
 </script>
+<!-- 팝업창 -->
+<script>
+$(document).ready(function() {
+    $('#pop_dept').on("click", function() {	
+    	var url="../emp/pop_deptRead";
+    	var windowW = 300;  // 창의 가로 길이
+        var windowH = 300;  // 창의 세로 길이
+        var left = Math.ceil((window.screen.width - windowW)/2);
+        var top = Math.ceil((window.screen.height - windowH)/2);
+  window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+    });
+</script>
+
 </head>
 <body>
+	<%@ include file="../common/top_menu.jsp" %>
+	<div class="container">		
+		<%@ include file="../common/left_menu_emp.jsp" %>
+		<div class="contents">
 			<h2>사원목록</h2>
 			<form action="../emp/empSearchNumName">
 				<div class="input-group">
@@ -77,8 +91,8 @@
 						<td><%= lst.get(i).get("EMP_JOIN_DATE") %></td>
 						<td><a class="btn btn-default">이메일</a></td>
 						<td><a class="btn btn-default">인쇄</a></td>
-						<td><a class="btn btn-default" onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)">수정</a></td>
-						<td><a class="btn btn-default" onclick="javascript:empDel(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)">삭제</a></td>
+						<td><a class="btn btn-default" onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" href="#">수정</a></td>
+						<td><a class="btn btn-default" onclick="javascript:empDel(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" href="#">삭제</a></td>
 					</tr>
 					<%
 							}
@@ -89,5 +103,7 @@
 			<div class="btn_group">
 				<a class="btn btn-primary pull-right" onclick="javascript:goEmpAdd()">사원등록</a>
 			</div>
+		</div>
+	</div>
 </body>
 </html>

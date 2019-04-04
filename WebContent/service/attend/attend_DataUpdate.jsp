@@ -49,7 +49,7 @@
 						<th>근태시간</th> 
 						<td><input type="text" id="attend_time" class="form-control" name="attend_time" value="${list.get(0).get("ATTEND_TIME")}"></td>
 					</tr>
-
+		
 					<tr>
 						<th>비고</th> 
 						<td><input type="text" id="attend_m_etc" class="form-control" name="attend_m_etc" value="${list.get(0).get("ATTEND_M_ETC")}"></td>

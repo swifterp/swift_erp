@@ -58,7 +58,7 @@ $(document).ready(function() {
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
-	<div class="container">
+	<div class="container">		
 		<%@ include file="../common/left_menu_emp.jsp" %>
 		<div class="contents">
 			<h3>인사발령등록</h3>

@@ -5,7 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@ include file="../common/ui_common.jsp" %>
+<script>
+$(function(){
+	  $("a").click(function(){ 
+	  	$("a").removeClass("active"); 
+	  	$(this).addClass("active");
+	  })
+	 })
+</script>
 </head>
 <body>
 	<!-- 왼쪽 네비게이션 -->
@@ -15,7 +22,7 @@
 				<a href="../client/selectClientInfo">거래처정보관리</a>
 			</li>
 			<li>
-				<a class="active" href="../client/selectNameCardInfo">명함관리</a>
+				<a href="../client/selectNameCardInfo">명함관리</a>
 			</li>
 		</ul>
 	</nav>

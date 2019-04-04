@@ -6,10 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>결재라인조회 페이지 입니다</title>
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../css/common.css">
-<script type ="text/javascript" src ="../js/jquery.min.js"></script>
-<script type ="text/javascript" src ="../js/bootstrap.js"></script>
+<%@ include file="../common/ui_common.jsp" %>
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>

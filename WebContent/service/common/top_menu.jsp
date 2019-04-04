@@ -5,45 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<%@ include file="../common/ui_common.jsp" %>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $(".tmenu").each(function () {
-                $(this).click(function () {
-                    $(this).addClass("active");                      //클릭된 부분을 상단에 정의된 CCS인 selected클래스로 적용
-                    $(this).siblings().removeClass("active");  //siblings:형제요소들,    removeClass:선택된 클래스의 특성을 없앰
-                });
-            });
-        });
-    </script> 
-    <script type="text/javascript">
-		$(document).ready(function(){
-			$(".tmenu_1").click(function () {
-				$(".container").load("../common/left_menu_emp.jsp");
-			});
-		});
-
-		$(document).ready(function(){
-			$(".tmenu_3").click(function () {
-				$(".container").load("../common/left_menu_attend.jsp");
-			});
-		});
-		$(document).ready(function(){
-			$(".tmenu_4").click(function () {
-				$(".container").load("../common/left_menu_approval.jsp");	
-			});
-		});
-		$(document).ready(function(){
-			$(".tmenu_5").click(function () {
-				$(".container").load("../common/left_menu_work.jsp");
-			});
-		});
-		$(document).ready(function(){
-			$(".tmenu_6").click(function () {
-				$(".container").load("../common/left_menu_client.jsp");
-			});
-		});
-	</script> 
+   <script>
+	$(function(){
+		$("li").click(function(){  
+	  		$("li").removeClass("active");
+	  		$(this).addClass("active"); 
+		})
+	})
+</script>
 </head>
 <body>
 	<!-- 네비게이션 -->
@@ -56,13 +25,13 @@
 		<!-- 네비게이션 본메뉴 -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<!-- 네비게이션 본메뉴 엘리먼트 -->
-			<ul class="nav navbar-nav fuck">
-				<li class="temnu tmenu_1"><a href="#">인사관리</a></li>
-				<li class="temnu tmenu_2"><a href="#">급여관리</a></li>		
-				<li class="temnu tmenu_3"><a href="#">근태관리</a></li>
-				<li class="temnu tmenu_4"><a href="#">결재관리</a></li>
-				<li class="temnu tmenu_5"><a href="#">업무관리</a></li>
-				<li class="temnu tmenu_6"><a href="#">고객관리</a></li>
+			<ul class="nav navbar-nav">
+				<li><a href="../emp/read">인사관리</a></li>
+				<li><a href="#">급여관리</a></li>		
+				<li><a href="../attend/attend_DataList">근태관리</a></li>
+				<li><a href="../approval/selectDraft">결재관리</a></li>
+				<li><a href="../work/selectBusinessLog">업무관리</a></li>
+				<li><a href="../client/selectClientInfo">고객관리</a></li>
 			</ul>
 			<!-- 드롭다운 기능 -->
 			<ul class="nav navbar-nav navbar-right">
@@ -80,7 +49,5 @@
 			</ul>
 		</div>
 	</nav>
-	<div class="container">
-	</div>
 </body>
 </html>

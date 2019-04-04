@@ -5,18 +5,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@ include file="../common/ui_common.jsp" %>
+<script>
+$(function(){
+	  $("a").click(function(){ 
+	  	$("a").removeClass("active"); 
+	  	$(this).addClass("active"); // 
+	  })
+	 })
+</script>
 </head>
 <body>
 	<!-- 왼쪽 네비게이션 -->
 	<nav class="nav-left">	
 		<ul class="bg-primary">
 			<li>
-				<a class="active" data-toggle="collapse" data-target="#group1"
+				<a data-toggle="collapse" data-target="#group1"
 				aria-expanded="false" href="#">기본사항관리</a>
 				<ul class="collapse in depth2" id="group1">
-					<li><a class="active" href="../attend/attend_CodeList">근태항목관리</a></li>
-					<li><a href="../attend/attend_DataList">근태관리</a></li>
+					<li><a class="lmenu_1" href="#">근태항목관리</a></li>
+					<li><a class="lmenu_2 active" href="#">근태관리</a></li>
 				</ul>
 			</li>
 			<li>

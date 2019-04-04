@@ -9,7 +9,7 @@
 </head>
 <body>	
 	<%@ include file="../common/top_menu.jsp" %>
-	<div class="container">
+	<div class="container">		
 		<%@ include file="../common/left_menu_emp.jsp" %>
 		<div class="contents">
 			<h3>부서 조회/수정</h3>
