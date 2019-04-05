@@ -189,4 +189,11 @@ public class Emp_Controller {
 		model.addAttribute("list", el.bankAddDao(bankPlus));	
 		return "emp/emp_etcCodeAdd";
 	}
+	
+    @ResponseBody
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
+    public List<Map<String, String>> test(Model model) {
+    	List<Map<String, String>> versionVO = el.test();
+        return versionVO;
+    }
 }

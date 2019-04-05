@@ -8,10 +8,6 @@
 <title>Insert title here</title>
 <%@ include file="../common/ui_common.jsp" %>
 <script>
-	<!--부서등록-->
-	function deptAdd(){
-		location.href = "../emp/deptAdd.jsp;	
-	}
 	<!--부서수정-->
 	function deptView(deptno){
 		location.href = "../emp/deptView?deptno="+deptno;	
@@ -24,10 +20,10 @@
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
-	<div class="container">		
+	<div class="container">
 		<%@ include file="../common/left_menu_emp.jsp" %>
 		<div class="contents">
-			<h2>부서목록</h2>
+			<h3>부서목록</h3>
 			<form action="../emp/deptDel">
 				<table class="table">
 					<thead>
@@ -57,7 +53,7 @@
 					%>
 				</table>
 				<div class="btn_group">
-					<a class="btn btn-primary pull-right" href="#">등록</a>
+					<a class="btn btn-primary pull-right" href="../emp/emp_deptAdd.jsp">등록</a>
 				</div>
 			</form>
 		</div>

@@ -56,15 +56,11 @@ public class Mem_Controller {
         }
         return "welcome/welcome";
     }
-    
 
     @RequestMapping("/logout")
-    public ModelAndView logout(HttpSession session){
+    public String logout(HttpSession session){
         ml.logout(session);
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("mem/login");
-        mav.addObject("msg", "logout");
-        return mav;
+        return "mem/login";
     }
 
 }

@@ -6,6 +6,14 @@
 <meta charset="UTF-8">
 <title>근태등록</title>
 <%@ include file="../common/ui_common.jsp" %>
+
+<!-- 시간선택 관련 -->
+<link rel="stylesheet" type="text/css" href="../../css/timepicki.css">
+<script type="text/javascript" src="../../js/timepicki.js"></script>
+
+<script type="text/javascript"> 
+	$('#timepicker').timepicki(); 
+</script>
 <!-- 날짜선택 관련 -->
 <script>
 	$(function() {
@@ -23,7 +31,7 @@
 	});
 </script>
 <style>
-	table td {text-align:left;}
+table td {text-align:left;}
 </style>
 </head>
 <body>
@@ -57,7 +65,7 @@
 					<tr>
 						<th>출근시간</th>
 						<td>
-							<input type="text" class="form-control" id="timepicker" name="attend_open"/>
+							<input type="text" class="form-control" id="platanusTime" name="platanusTime" onclick="javascript:fn_timePicker(this);" />
 						</td>
 					</tr>
 					<tr>

@@ -150,6 +150,41 @@ $(document).ready(function() {
     });
 });
 </script>
+<script type="text/javascript">
+  $(document).ready(function(){
+      $('#check').on('click', function(){
+          $.ajax({
+              type: 'POST',
+              url: '../emp/checkEmpNum',
+              data: {
+                  "emp_number" : $('#emp_number').val()
+              },
+              success: function(data){
+                  if($.trim(data) == 0){
+                	  alert("사용가능한 사원번호입니다.");
+                  }
+                  else{
+                	  alert("중복된 사원번호입니다.");
+                  }
+              }
+          });    //end ajax    
+      });    //end on    
+  });
+</script>
+ <script>
+  function fileUpload(fis) {
+      var str = fis.value;
+      var test = $('#file').value;
+      $('#span').text(fis.value.substring(str.lastIndexOf("\\")+1));
+      // 이미지를 변경한다.
+        var reader = new FileReader();
+ 	  	reader.onload = function(e){
+		$('#loadImg').attr('src',e.target.result);
+    }
+reader.readAsDataURL(fis.files[0]);
+reader.readAsDataURL(test);
+}
+</script>
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
@@ -177,13 +212,13 @@ $(document).ready(function() {
 				<tbody>
 					<tr>
 						<td rowspan="4">
-							<img style="width:140px; heigth:auto;" src="../../images/profile_0.png"/>
+							<img id="loadImg" style="width:140px; heigth:auto;" src=""/>
 						</td>	
 						<th>사원번호<span class="essential">*</span></th>
 						<td class="input-group">
 							<input type="text" id="emp_number" name="emp_number" class="form-control" value="${list.get(0).get("EMP_NUMBER")}" required="">
 							<span class="input-group-btn">
-								<button type="button" class="btn btn-info empNumCheck">중복확인</button> 
+								<button type="button" id="check" class="btn btn-info">중복확인</button> 
 							</span>
 						</td>
 						<th>사원명<span class="essential">*</span></th>
@@ -251,7 +286,7 @@ $(document).ready(function() {
 											 <button class="btn btn-default" type="button">Go!</button>
 										</span>
 									</td>
-									<th>직책</th>
+									<th>직책<span class="essential">*</span></th>
 									<td id="pop_duty" class="input-group">
 										<input type="hidden" id="p_duty_no" name="duty_no" class="form-control" value="${list.get(0).get("DUTY_NO")}">
 										<input type="text" id="p_duty_name" class="form-control" value="${list.get(0).get("DUTY_NAME")}">
@@ -261,7 +296,7 @@ $(document).ready(function() {
 									</td>
 								</tr>
 								<tr>
-									<th>은행명</th>
+									<th>은행명<span class="essential">*</span></th>
 									<td id="pop_bank" class="input-group">
 										<input type="hidden" id="p_bank_no" name="bank_no" class="form-control" value="${list.get(0).get("BANK_NO")}">
 										<input type="text" id="p_bank_name" class="form-control" value="${list.get(0).get("BANK_NAME")}">
@@ -277,7 +312,7 @@ $(document).ready(function() {
 								<tr>
 									<th>사진첨부</th>		
 									<td colspan="5">
-										<input type="file" name="emp_profile" class="form-control" value="${list.get(0).get("EMP_PROFILE")}">
+										<input type="file" id="file" class="form-control" name="emp_profile" value="${list.get(0).get("EMP_PROFILE")}" onchange="fileUpload(this);">
 									</td>
 								</tr>
 								<tr>

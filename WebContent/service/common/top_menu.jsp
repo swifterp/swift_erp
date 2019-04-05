@@ -43,7 +43,7 @@
 						aria-expanded="false">회원관리<span class="caret"></span></a>
 					<!-- 눌렀을 때 -->
 					<ul class="dropdown-menu">
-						<li><a href="login.jsp">로그아웃</a></li>
+						<li><a href="../mem/logout">로그아웃</a></li>
 					</ul>
 				</li>
 			</ul>

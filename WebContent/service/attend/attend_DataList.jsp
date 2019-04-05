@@ -9,14 +9,7 @@
 <%@ include file="../common/ui_common.jsp" %>
 <script type="text/javascript">
 function attendDataInsert(){
-	$(document).ready(function(){
-		$(".wrap").load("../attend/attend_DataInsert.jsp");
-	});
-}
-function attendDataInsert(){
-	$(document).ready(function(){
-		$(".wrap").load("../attend/attend_DataInsert.jsp");
-	});
+	location.href = "../attend/attend_DataInsert.jsp";
 }
 </script>
 <!-- 날짜선택 관련 -->

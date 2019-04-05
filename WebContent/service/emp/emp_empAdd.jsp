@@ -149,7 +149,6 @@ $(document).ready(function() {
   window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
     });
 });
-
 </script>
 
 <script type="text/javascript">
@@ -172,14 +171,26 @@ $(document).ready(function() {
           });    //end ajax    
       });    //end on    
   });
-</script>
+  </script>
+  <script>
+   function fileUpload(fis) {
+	      var str = fis.value;
+	      $('#span').text(fis.value.substring(str.lastIndexOf("\\")+1));
+	      // 이미지를 변경한다.
+	        var reader = new FileReader();
+	    reader.onload = function(e){
+		$('#loadImg').attr('src',e.target.result);
+	    }
+	reader.readAsDataURL(fis.files[0]);
+	}
+  </script>
 <style>
 	table td {text-align:left;}
 </style>
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
-	<div class="container">		
+	<div class="container">
 		<%@ include file="../common/left_menu_emp.jsp" %>
 		<div class="contents">
 			<ul class="nav nav-tabs">
@@ -202,7 +213,7 @@ $(document).ready(function() {
 							<tbody>
 								<tr>
 									<td rowspan="4" style="text-align:center;">
-										<img style="width:140px; heigth:auto;" src="../../images/profile_0.png"/>
+										<img id="loadImg" style="width:140px; heigth:auto;" />
 									</td>	
 									<th>사원번호 <span class="essential">*</span></th>
 									<td class="input-group">
@@ -276,7 +287,7 @@ $(document).ready(function() {
 														 <button class="btn btn-default" type="button">Go!</button>
 													</span>
 												</td>
-												<th>직책</th>
+												<th>직책<span class="essential">*</span></th>
 												<td id="pop_duty" class="input-group">
 													<input type="hidden" id="p_duty_no" name="duty_no" class="form-control">
 													<input type="text" id="p_duty_name" class="form-control">
@@ -286,7 +297,7 @@ $(document).ready(function() {
 												</td>
 											</tr>
 											<tr>
-												<th>은행명</th>
+												<th>은행명<span class="essential">*</span></th>
 												<td id="pop_bank" class="input-group">
 													<input type="hidden" id="p_bank_no" name="bank_no" class="form-control">
 													<input type="text" id="p_bank_name" class="form-control">
@@ -302,7 +313,9 @@ $(document).ready(function() {
 											<tr>
 												<th>사진첨부</th>		
 												<td colspan="5">
-													<input type="file" name="emp_profile" class="form-control">
+													<input type="file" id="file" class="form-control" name="emp_profile" onchange="fileUpload(this);" value="fileUpload(this);">
+													<span id="span">등록된 첨부파일이 없습니다.</span>
+													<span id="error_file" class="error_txt"></span>
 												</td>
 											</tr>
 											<tr>
@@ -363,77 +376,78 @@ $(document).ready(function() {
 				  </div>
 				  <div id="menu3" class="tab-pane fade">
 				    <h3>세무정보등록</h3>
-				    <table class="table">
-				    	<colgroup>
-							<col width="15%" />
-							<col width="35%" />
-							<col width="15%" />
-							<col width="35%" />
-						</colgroup>
-						<th>적용일</th>
-						<td colspan="3">	
-							<input type="text" name="emp_join_date" class="form-control" id="datepicker4" placeholder="적용일" style="width:80%; display:inline-block; margin-right:5px;">
-						</td>
-						<tr>
-							<th>국민연금</th>
-							<td>
-								<select class="form-control">
-					  				<option value="autoSum">자동계산</option>
-					  				<option value="Income">기준소득기준</option>
-					 				<option value="none">안함</option>
-								</select>
+				    <form action="../../emp/taxInfoAdd">
+					    <table class="table">
+					    	<colgroup>
+								<col width="15%" />
+								<col width="35%" />
+								<col width="15%" />
+								<col width="35%" />
+							</colgroup>
+							<th>적용일</th>
+							<td colspan="3">	
+								<input type="text" name="emp_join_date" class="form-control" id="datepicker4" placeholder="적용일" style="width:80%; display:inline-block; margin-right:5px;">
 							</td>
-							<th>기준소득월액</th>
-							<td><input type="text" class="form-control" /></td>
-						</tr>
-						<tr>
-							<th>건강보험</th>
-							<td>
-								<select class="form-control">
-					  				<option value="autoSum">자동계산</option>
-					  				<option value="Income">기준소득기준</option>
-					 				<option value="none">안함</option>
-								</select>
-							</td>
-							<th>기준소득월액</th>
-							<td><input type="text" class="form-control" /></td>
-						</tr>
-						<tr>
-							<th>고용보험</th>
-							<td>
-								<select class="form-control">
-					  				<option value="autoSum">자동계산</option>
-					  				<option value="Income">기준소득기준</option>
-					 				<option value="none">안함</option>
-								</select>
-							</td>
-							<th>기준소득월액</th>
-							<td><input type="text" class="form-control" /></td>
-						</tr>
-						<tr>
-							<th>배우자공제</th>
-							<td colspan="3">
-								<select class="form-control">
-					  				<option value="autoSum">자동계산</option>
-					  				<option value="Income">기준소득기준</option>
-					 				<option value="none">안함</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<th>부양가족수(본인 및 배우자 제외)</th>
-							<td><input type="text" class="form-control" /></td>
-							<th>부양가족중 20세 미만 수</th>
-							<td><input type="text" class="form-control" /></td>
-						</tr>
-					</table>
+							<tr>
+								<th>국민연금</th>
+								<td>
+									<select class="form-control">
+						  				<option value="autoSum">자동계산</option>
+						  				<option value="Income">기준소득기준</option>
+						 				<option value="none">안함</option>
+									</select>
+								</td>
+								<th>기준소득월액</th>
+								<td><input type="text" class="form-control" /></td>
+							</tr>
+							<tr>
+								<th>건강보험</th>
+								<td>
+									<select class="form-control">
+						  				<option value="autoSum">자동계산</option>
+						  				<option value="Income">기준소득기준</option>
+						 				<option value="none">안함</option>
+									</select>
+								</td>
+								<th>기준소득월액</th>
+								<td><input type="text" class="form-control" /></td>
+							</tr>
+							<tr>
+								<th>고용보험</th>
+								<td>
+									<select class="form-control">
+						  				<option value="autoSum">자동계산</option>
+						  				<option value="Income">기준소득기준</option>
+						 				<option value="none">안함</option>
+									</select>
+								</td>
+								<th>기준소득월액</th>
+								<td><input type="text" class="form-control" /></td>
+							</tr>
+							<tr>
+								<th>배우자공제</th>
+								<td colspan="3">
+									<select class="form-control">
+						  				<option value="autoSum">자동계산</option>
+						  				<option value="Income">기준소득기준</option>
+						 				<option value="none">안함</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<th>부양가족수(본인 및 배우자 제외)</th>
+								<td><input type="text" class="form-control" /></td>
+								<th>부양가족중 20세 미만 수</th>
+								<td><input type="text" class="form-control" /></td>
+							</tr>
+						</table>
 				</div>
 				<div class="btn_group">
 					<a href="../emp/read" class="btn btn-default pull-left">목록</a>
-					<input type="submit" class="btn btn-primary pull-right" value="등록완료라능" />
+					<input type="submit" id="submit" class="btn btn-primary pull-right" value="등록완료라능">
 				</div>
-			</form>
-		</div>
+			</div>
+		</form>
 	</div>
 </body>
 </html>

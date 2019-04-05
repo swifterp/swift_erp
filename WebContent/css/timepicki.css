@@ -1,90 +1,108 @@
-/* 
-Created on: 17 Sep, 2014, 4:29:37 PM
-Author: senthil
-*/
-
-.ti_tx,
-.mi_tx,
-.mer_tx {
-	width: 100%;
-	text-align: center;
-	margin: 10px 0;
+:root{
+    --picktim-container-width: 150px;
+    --picktim-container-height: 120px;
+}
+.picktim-container{
+    position: absolute;
+    width: var(--picktim-container-width);
+    height: var(--picktim-container-height);
+    border: 2px #DDD solid;
+    border-radius: 3px;
+    background: #EEE;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.42857143;
+    box-sizing: border-box;
+}
+.picktim-table{
+    text-align: center;
+    width: calc(var(--picktim-container-width) - 4px);
+    height: calc(var(--picktim-container-height) - 4px);
+    background-color: transparent;
 }
 
-.time,
-.mins,
-.meridian {
-	width: 60px;
-	float: left;
-	margin: 0 10px;
-	font-size: 20px;
-	color: #2d2e2e;
-	font-family: arial;
-	font-weight: 700;
+.picktim-hour{
+    width: 50px;
+    border: none;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    background: none;
 }
 
-.prev,
-.next {
-	cursor: pointer;
-	padding: 18px;
-	width: 28%;
-	border: 1px solid #ccc;
-	margin: auto;
-	background: url(../images/arrow.png) no-repeat;
-	border-radius: 5px;
+.picktim-mins{
+    width: 50px;
+    border: none;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    background: none;
+}
+.picktim-ampm{
+    width: 50px;
+    border: none;
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+    background: none;
+    cursor: pointer;
 }
 
-.prev:hover,
-.next:hover {
-	background-color: #ccc;
+.picktim-separator{
+    border: none;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-.next {
-	background-position: 50% 150%;
+.picktim-btn{
+    cursor: pointer;
+    width: 50px !important;
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid transparent;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
 }
-
-.prev {
-	background-position: 50% -50%;
+.picktim-btn:hover, .picktim-btn:focus{
+    background-color: rgba(255,255,255,0.5);
+    text-decoration: none;
 }
-
-.time_pick {
-	position: relative;
+.picktim-btn:active{
+    text-decoration: none;
 }
-
-.timepicker_wrap {
-	padding: 10px;
-	border-radius: 5px;
-	z-index: 998;
-	display: none;
-	box-shadow: 2px 2px 5px 0 rgba(50,50,50,0.35);
-	background: #f6f6f6;
-	border: 1px solid #ccc;
-	float: left;
-	position: absolute;
-	top: 27px;
-	left: 0;
+.picktim-btn:disabled{
+    cursor: default;
+    opacity: 0.65;
+    box-shadow: none;
 }
-
-.arrow_top {
-	position: absolute;
-	top: -10px;
-	left: 20px;
-	background: url(../images/top_arr.png) no-repeat;
-	width: 18px;
-	height: 10px;
-	z-index: 999;
+.picktim-clear{
+    position: relative;
+    top: 0px;
+    left: -40px;
 }
-input.timepicki-input {
-	background: none repeat scroll 0 0 #FFFFFF;
-    	border: 1px solid #CCCCCC;
-    	border-radius: 5px 5px 5px 5px;
-    	float: none;
-    	margin: 0;
-    	text-align: center;
-    	width: 70%;
-}
-a.reset_time {
-	float: left;
-	margin-top: 5px;
-	color: #000;
+.picktim-clear:active{
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    color: rgba(255,255,255,0.5);
+    outline: 0;
+    background-image: none;
 }

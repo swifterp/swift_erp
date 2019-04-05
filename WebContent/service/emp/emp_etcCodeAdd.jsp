@@ -10,24 +10,23 @@
 	.etcCode li {float:left; width:120px; margin-left:4px;}
 </style> 
 <script type="text/javascript">
-  $(document).ready(function(){
-      $('#ajax_rank').on('click', function(){
-          $.ajax({
-              type: 'POST',
-              url: '../emp/readRank',
-              data: "data:1",
-              success: function(data){
-                  if($.trim(data) == 0){
-                	  alert("사용가능한 사원번호입니다.");
-                  }
-                  else{
-                	  alert("중복된 사원번호입니다.");
-                  }
-              }
-          });    //end ajax    
-      });    //end on    
-  });
-  </script>
+$(document).ready(function(){
+    $('#ajax_rank').on('click', function(){
+	    $.ajax({
+	        url : "../emp/test",
+	        type : "POST",
+	        cache : false,
+	        success : function(response){
+	            var html = "";
+	            for(var i=0; i<response.length; i++){
+	                html += "<option value='"+response[i].versionInfo+"' label='"+response[i].versionInfo+"'/>";
+	            }
+	            $("#ff").html(html);
+	        }
+	    });
+	});
+});
+</script>
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
@@ -69,6 +68,7 @@
 						  <span class="input-group-addon" id="basic-addon2">직급이름</span>
 						  <input type="text" class="form-control" name="rank_name" placeholder="직급이름을 입력하세요" aria-describedby="basic-addon2" required />
 						</div>
+						<div id="ff"></div>
 				      </div>
 					  <div class="modal-footer">
 			          	<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>

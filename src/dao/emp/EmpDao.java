@@ -135,4 +135,9 @@ public class EmpDao {
 	public int bankAdd(HashMap<String, String> bankPlus) {
 		return ilm.getBankAdd(bankPlus);
 	}
+
+	public List<Map<String, String>> test() {
+		slm.getEmpDeptList();
+		return slm.getEmpDeptList();
+	}
 }

@@ -1,561 +1,650 @@
-/*
- * Author: @senthil2rajan
- * plugin: timepicker
- * website: senthilraj.github.io/Timepicki
+/**
+ * Basic Timepicker component for custom use
+ *
+ * @author JA Engelbrecht
+ *
+ * @license MIT <http://opensource.org/licenses/MIT>
  */
-(function($) {
 
-	$.fn.timepicki = function(options) {
-
-		var defaults = {
-			format_output: function(tim, mini, meri) {
-			    if (settings.show_meridian) {
-                    // limit hours between 1 and 12 - inculsive.
-			        tim = Math.min(Math.max(parseInt(tim), 1), 12);
-			        if (tim < 10)
-			            tim = "0" + tim;
-
-
-			        mini = Math.min(Math.max(parseInt(mini), 0), 59);
-			        if (mini < 10)
-			            mini = "0" + mini;
-
-					return tim + ":" + mini + " " + meri;
-			    } else {
-
-			        // limit hours between 0 and 23 - inculsive.
-			        tim = Math.min(Math.max(parseInt(tim), 0), 23);
-
-			        if (tim < 10)
-			            tim = "0" + tim;
-
-
-			        mini = Math.min(Math.max(parseInt(mini), 0), 59);
-			        if (mini < 10)
-			            mini = "0" + mini;
-
-			        //mini = Math.min(Math.max(parseInt(mini), 0), 59);
-
-					return tim + ":" + mini;
-				}
-			},
-			increase_direction: 'up',
-			custom_classes: '',
-			min_hour_value: 1,
-			max_hour_value: 12,
-			show_meridian: true,
-			step_size_hours: '1',
-			step_size_minutes: '1',
-			overflow_minutes: false,
-			disable_keyboard_mobile: false,
-			reset: false,
-			on_change: null,
-      			input_writable: false
-		};
-
-		var settings = $.extend({}, defaults, options);
-
-		return this.each(function() {
-
-			var ele = $(this);
-			var ele_hei = ele.outerHeight();
-			ele_hei += 10;
-			$(ele).wrap("<div class='time_pick'>");
-			var ele_par = $(this).parents(".time_pick");
-
-			// developer can specify which arrow makes the numbers go up or down
-			var top_arrow_button = (settings.increase_direction === 'down') ?
-				"<div class='prev action-prev'></div>" :
-				"<div class='prev action-next'></div>";
-			var bottom_arrow_button = (settings.increase_direction === 'down') ?
-				"<div class='next action-next'></div>" :
-				"<div class='next action-prev'></div>";
-
-			var new_ele = $(
-				"<div class='timepicker_wrap " + settings.custom_classes + "'>" +
-					"<div class='arrow_top'></div>" +
-					"<div class='time'>" +
-						top_arrow_button +
-						"<div class='ti_tx'><input type='text' class='timepicki-input'" + (settings.disable_keyboard_mobile ? "readonly" : "") + "></div>" +
-						bottom_arrow_button +
-					"</div>" +
-					"<div class='mins'>" +
-						top_arrow_button +
-						"<div class='mi_tx'><input type='text' class='timepicki-input'" + (settings.disable_keyboard_mobile ? "readonly" : "") + "></div>" +
-						bottom_arrow_button +
-					"</div>");
-			if(settings.show_meridian){
-				new_ele.append(
-					"<div class='meridian'>" +
-						top_arrow_button +
-						"<div class='mer_tx'><input type='text' class='timepicki-input' readonly></div>" +
-						bottom_arrow_button +
-					"</div>");
-			}
-			if(settings.reset){
-				new_ele.append(
-					"<div><a href='#' class='reset_time'>Reset</a></div>");
-			}
-			ele_par.append(new_ele);
-			var ele_next = $(this).next(".timepicker_wrap");
-			var ele_next_all_child = ele_next.find("div");
-			var inputs = ele_par.find('input');
-
-			$('.reset_time').on("click", function(event) {
-				ele.val("");
-				close_timepicki();
-			});
-
-			$(".timepicki-input").keydown(function (keyevent) {
-			    // our goal here is very simple.
-			    // no matter what the user presses
-			    // we must ensure that the values in our
-			    // timepicki inputs are valid, and that pressing
-			    // enter does not submit the form if the
-			    // input field on which timepicki is applied is a part of a form.
-
-
-			    // With that in mind. We proceed like this:
-			    // 1) If enter is pressed:
-			    //      i) Prevent default operations - form submission.
-                //      ii) close_timepicki().
-			    //      iii) return.
-                //
-			    // 2) For any other key presses:
-			    //      i) realize that we cannot check what the user has typed
-			    //         just yet, because this function is a handler
-			    //         that runs before any text is rendered in the input
-			    //         box.
-			    //      ii) So, register a function validate() that will execute right
-			    //          after the keypress character is rendered. All validation
-                //          is done inside validate().
-                //-----------------------------------------------------------------------------------
-			    //  NOTE:.change() event does not work here, as it is called when input looses focus|
-                //-----------------------------------------------------------------------------------
-
-                // (1)
-			    // prevent potential form submission, if enter is pressed.
-			    if (keyevent.keyCode == 13) {
-
-			        keyevent.preventDefault();
-
-			        set_value();
-			        close_timepicki();
-			        // nothing to do here.
-			        return;
-			    }
-
-
-
-			    // the grand father div specifies the type of
-			    // input that we are dealing with. if the grandFatherDiv
-			    // has a class "time", then its a time input, if it has a class
-			    // "mins", then its a minutes input, and if it has a class "meridian"
-                // then its a meridian input.
-			    var grandfatherDiv = $(this).parent().parent();
-
-                // aliasing for readability
-			    var input = $(this);
-
-			    // pick the value from the field,
-			    // because before change the field always has a
-                // valid value.
-			    var lastValue = input.val();
-
-                // (2)
-			    // validate() function validates the
-			    // user input.
-			    function validate() {
-
-			        var isValidNumber = /^\d+$/.test(input.val());
-			        var isEmpty = input.val() === "";
-
-
-			        if (grandfatherDiv.hasClass("time")) { /// HOUR
-
-
-			            // if its a valid number.
-                        // clip it and assign it.
-			            if (isValidNumber) {
-
-                            // clip number.
-			                var hours = (settings.show_meridian) ?
-                            Math.min(Math.max(parseInt(input.val()), 1), 12) : // for 12 hour date picker.
-			                Math.min(Math.max(parseInt(input.val()), 0), 23); // for 24 hours date picker.
-
-			                // assign number.
-			                input.val(hours);
-
-			            } else if(!isEmpty) {
-                            // else if the number is invalid and not empty
-                            // assign the lastValue
-			                input.val(lastValue);
-
-			            }
-
-
-
-			        } else if (grandfatherDiv.hasClass("mins")) { /// MINUTE
-
-
-			            // if its a valid number.
-			            // clip it and assign it.
-			            if (isValidNumber) {
-
-			                // clip number.
-			                var minutes = Math.min(Math.max(parseInt(input.val()), 0), 59);
-
-			                // assign number.
-			                input.val(minutes);
-
-			            } else if (!isEmpty) {
-			                // else if the number is invalid and not empty
-			                // assign the lastValue
-			                input.val(lastValue);
-
-			            }
-
-
-			        } else if (grandfatherDiv.hasClass("meridian")) { /// MERIDIAN
-			            // key presses should not affect
-			            // meridian - except up and down
-			            // which are handled else where
-                        // and will still work.
-			            keyevent.preventDefault();
-			        } else {
-                        // alert("This should not happen.");
-			        }
-
-			    }
-
-			    // wrapValidate() ensures that validate()
-			    // is not called more than once. 'done'
-                // is a flag used to ensure this.
-			    done = false;
-			    function wrapValidate() {
-			        if (!done) {
-
-
-                        validate();
-
-			            done = true;
-                    }
-			    }
-			    // enqueue wrapValidate function before any thing
-			    // else takes place. For this we use setTimeout()
-                // with 0
-			    setTimeout(wrapValidate, 0);
-			});
-
-			$(document).on('touchstart', function (event) {
-				if (!is_element_in_timepicki($(event.target))) {
-					close_timepicki();
-				}
-			});
-
-			// open or close time picker when clicking
-			$(document).on("click", function(event) {
-				if (!$(event.target).is(ele_next) && ele_next.css("display")=="block" && !$(event.target).is($('.reset_time'))) {
-					if (!$(event.target).is(ele)) {
-						set_value(event, !is_element_in_timepicki($(event.target)));
-					} else {
-						var ele_lef =  0;
-
-						ele_next.css({
-							"top": ele_hei + "px",
-							"left": ele_lef + "px"
-						});
-						open_timepicki();
-					}
-				}
-			});
-
-			// open the modal when the user focuses on the input
-			ele.on('focus', open_timepicki);
-
-			// select all text in input when user focuses on it
-			inputs.on('focus', function() {
-				var input = $(this);
-				if (!input.is(ele)) {
-					input.select();
-				}
-			});
-
-			// allow user to increase and decrease numbers using arrow keys
-			inputs.on('keydown', function(e) {
-				var direction, input = $(this);
-
-				// UP
-				if (e.which === 38) {
-					if (settings.increase_direction === 'down') {
-						direction = 'prev';
-					} else {
-						direction = 'next';
-					}
-				// DOWN
-				} else if (e.which === 40) {
-					if (settings.increase_direction === 'down') {
-						direction = 'next';
-					} else {
-						direction = 'prev';
-					}
-				}
-
-				if (input.closest('.timepicker_wrap .time').length) {
-					change_time(null, direction);
-				} else if (input.closest('.timepicker_wrap .mins').length) {
-					change_mins(null, direction);
-				} else if (input.closest('.timepicker_wrap .meridian').length && settings.show_meridian) {
-					change_meri(null, direction);
-				}
-			});
-
-			// close the modal when the time picker loses keyboard focus
-			inputs.on('blur', function() {
-				setTimeout(function() {
-					var focused_element = $(document.activeElement);
-					if (focused_element.is(':input') && !is_element_in_timepicki(focused_element)) {
-						set_value();
-						close_timepicki();
-					}
-				}, 0);
-			});
-
-			function is_element_in_timepicki(jquery_element) {
-				return $.contains(ele_par[0], jquery_element[0]) || ele_par.is(jquery_element);
-			}
-
-			function set_value(event, close) {
-				// use input values to set the time
-				var tim = ele_next.find(".ti_tx input").val();
-				var mini = ele_next.find(".mi_tx input").val();
-				var meri = "";
-				if(settings.show_meridian){
-					meri = ele_next.find(".mer_tx input").val();
-				}
-
-				if (tim.length !== 0 && mini.length !== 0 && (!settings.show_meridian || meri.length !== 0)) {
-					// store the value so we can set the initial value
-					// next time the picker is opened
-					ele.attr('data-timepicki-tim', tim);
-					ele.attr('data-timepicki-mini', mini);
-
-					if(settings.show_meridian){
-						ele.attr('data-timepicki-meri', meri);
-						// set the formatted value
-						ele.val(settings.format_output(tim, mini, meri));
-					}else{
-						ele.val(settings.format_output(tim, mini));
-					}
-				}
-
-				//Call user on_change callback function if set
-				if (settings.on_change !== null) {
-					settings.on_change(ele[0]);
-				}
-
-				if (close) {
-					close_timepicki();
-				}
-			}
-
-			function open_timepicki() {
-				set_date(settings.start_time);
-				ele_next.fadeIn();
-				if(!settings.input_writable) {
-					// focus on the first input and select its contents
-					var first_input = ele_next.find('input:visible').first();
-					first_input.focus();
-				}
-				// if the user presses shift+tab while on the first input,
-				// they mean to exit the time picker and go to the previous field
-				var first_input_exit_handler = function(e) {
-					if (e.which === 9 && e.shiftKey) {
-						first_input.off('keydown', first_input_exit_handler);
-						var all_form_elements = $(':input:visible:not(.timepicki-input)');
-						var index_of_timepicki_input = all_form_elements.index(ele);
-						var previous_form_element = all_form_elements.get(index_of_timepicki_input-1);
-						previous_form_element.focus();
-					}
-				};
-				first_input.on('keydown', first_input_exit_handler);
-			}
-
-			function close_timepicki() {
-				ele_next.fadeOut();
-			}
-
-			function set_date(start_time) {
-				var d, ti, mi, mer;
-
-				// if a value was already picked we will remember that value
-				if (ele.is('[data-timepicki-tim]')) {
-					ti = Number(ele.attr('data-timepicki-tim'));
-					mi = Number(ele.attr('data-timepicki-mini'));
-					if(settings.show_meridian){
-						mer = ele.attr('data-timepicki-meri');
-					}
-				// developer can specify a custom starting value
-				} else if (typeof start_time === 'object') {
-					ti = Number(start_time[0]);
-					mi = Number(start_time[1]);
-					if(settings.show_meridian){
-						mer = start_time[2];
-					}
-				// default is we will use the current time
-				} else {
-					d = new Date();
-					ti = d.getHours();
-					mi = d.getMinutes();
-					mer = "AM";
-					if (settings.show_meridian){
-						if (ti == 0) { // midnight
-							ti = 12;
-						} else if (ti == 12) { // noon
-							mer = "PM";
-						} else if (ti > 12) {
-							ti -= 12;
-							mer = "PM";
-						}
-					}
-				}
-
-				if (ti < 10) {
-					ele_next.find(".ti_tx input").val("0" + ti);
-				} else {
-					ele_next.find(".ti_tx input").val(ti);
-				}
-				if (mi < 10) {
-					ele_next.find(".mi_tx input").val("0" + mi);
-				} else {
-					ele_next.find(".mi_tx input").val(mi);
-				}
-				if(settings.show_meridian){
-					if (mer < 10) {
-						ele_next.find(".mer_tx input").val("0" + mer);
-					} else {
-						ele_next.find(".mer_tx input").val(mer);
-					}
-				}
-			}
-
-			function change_time(cur_ele, direction) {
-				var cur_cli = "time";
-				var cur_time = Number(ele_next.find("." + cur_cli + " .ti_tx input").val());
-				var ele_st = Number(settings.min_hour_value);
-				var ele_en = Number(settings.max_hour_value);
-				var step_size = Number(settings.step_size_hours);
-				if ((cur_ele && cur_ele.hasClass('action-next')) || direction === 'next') {
-					if (cur_time + step_size > ele_en) {
-						var min_value = ele_st;
-						if (min_value < 10) {
-							min_value = '0' + min_value;
-						} else {
-							min_value = String(min_value);
-						}
-						ele_next.find("." + cur_cli + " .ti_tx input").val(min_value);
-					} else {
-						cur_time = cur_time + step_size;
-						if (cur_time < 10) {
-							cur_time = "0" + cur_time;
-						}
-						ele_next.find("." + cur_cli + " .ti_tx input").val(cur_time);
-					}
-				} else if ((cur_ele && cur_ele.hasClass('action-prev')) || direction === 'prev') {
-					var minValue = Number(settings.min_hour_value)
-					if (cur_time - step_size < minValue) {
-						var max_value = ele_en;
-						if (max_value < 10) {
-							max_value = '0' + max_value;
-						} else {
-							max_value = String(max_value);
-						}
-						ele_next.find("." + cur_cli + " .ti_tx input").val(max_value);
-					} else {
-						cur_time = cur_time - step_size;
-						if (cur_time < 10) {
-							cur_time = "0" + cur_time;
-						}
-						ele_next.find("." + cur_cli + " .ti_tx input").val(cur_time);
-					}
-				}
-			}
-
-			function change_mins(cur_ele, direction) {
-				var cur_cli = "mins";
-				var cur_mins = Number(ele_next.find("." + cur_cli + " .mi_tx input").val());
-				var ele_st = 0;
-				var ele_en = 59;
-				var step_size = Number(settings.step_size_minutes);
-				if ((cur_ele && cur_ele.hasClass('action-next')) || direction === 'next') {
-					if (cur_mins + step_size > ele_en) {
-						ele_next.find("." + cur_cli + " .mi_tx input").val("00");
-						if(settings.overflow_minutes){
-							change_time(null, 'next');
-						}
-					} else {
-						cur_mins = cur_mins + step_size;
-						if (cur_mins < 10) {
-							ele_next.find("." + cur_cli + " .mi_tx input").val("0" + cur_mins);
-						} else {
-							ele_next.find("." + cur_cli + " .mi_tx input").val(cur_mins);
-						}
-					}
-				} else if ((cur_ele && cur_ele.hasClass('action-prev')) || direction === 'prev') {
-					if (cur_mins - step_size <= -1) {
-						ele_next.find("." + cur_cli + " .mi_tx input").val(ele_en + 1 - step_size);
-						if(settings.overflow_minutes){
-							change_time(null, 'prev');
-						}
-					} else {
-						cur_mins = cur_mins - step_size;
-						if (cur_mins < 10) {
-							ele_next.find("." + cur_cli + " .mi_tx input").val("0" + cur_mins);
-						} else {
-							ele_next.find("." + cur_cli + " .mi_tx input").val(cur_mins);
-						}
-					}
-				}
-			}
-
-			function change_meri(cur_ele, direction) {
-				var cur_cli = "meridian";
-				var ele_st = 0;
-				var ele_en = 1;
-				var cur_mer = null;
-				cur_mer = ele_next.find("." + cur_cli + " .mer_tx input").val();
-				if ((cur_ele && cur_ele.hasClass('action-next')) || direction === 'next') {
-					if (cur_mer == "AM") {
-						ele_next.find("." + cur_cli + " .mer_tx input").val("PM");
-					} else {
-						ele_next.find("." + cur_cli + " .mer_tx input").val("AM");
-					}
-				} else if ((cur_ele && cur_ele.hasClass('action-prev')) || direction === 'prev') {
-					if (cur_mer == "AM") {
-						ele_next.find("." + cur_cli + " .mer_tx input").val("PM");
-					} else {
-						ele_next.find("." + cur_cli + " .mer_tx input").val("AM");
-					}
-				}
-			}
-
-			// handle clicking on the arrow icons
-			var cur_next = ele_next.find(".action-next");
-			var cur_prev = ele_next.find(".action-prev");
-			$(cur_prev).add(cur_next).on("click", function() {
-				var cur_ele = $(this);
-				if (cur_ele.parent().attr("class") == "time") {
-					change_time(cur_ele);
-				} else if (cur_ele.parent().attr("class") == "mins") {
-					change_mins(cur_ele);
-				} else {
-					if(settings.show_meridian){
-						change_meri(cur_ele);
-					}
-				}
-			});
-
-		});
-	};
-
-}(jQuery));
+(function ( $ ) {
+'use strict';
+
+    var pluginName = 'picktim';
+
+    function Plugin( element, options ) {
+        var thisRef = this;
+        this.MODES = {
+            h12: 'h12',
+            h24: 'h24'
+        };
+        this.ORIENTATIONS = {
+            topLeft: 'topLeft',
+            topRight: 'topRight',
+            bottomLeft: 'bottomLeft',
+            bottomRight: 'bottomRight',
+            leftTop: 'leftTop',
+            leftBottom: 'leftBottom',
+            rightTop: 'rightTop',
+            rightBottom: 'rightBottom'
+        };
+        this.element = element[0];
+        this.$element = $(this.element);
+    this.settings = $.extend({
+        // Defaults
+        backgroundColor: "#EEE",
+        borderColor: "#DDD",
+        textColor: "#333",
+        symbolColor: "#333",
+        appendTo: 'body',
+        mode: this.MODES.h24,
+        orientation: this.ORIENTATIONS.bottomLeft,
+        defaultValue: '00:00',
+        formName: '',
+        icons: {
+            up: 'fa fa-chevron-up fa-fw',
+            down: 'fa fa-chevron-down fa-fw',
+            clear: 'fa fa-times fa-fw'
+        }
+    }, options );
+    this.timeouts = {
+        iH: 0,
+        dH: 1,
+        iM: 2,
+        dM: 3
+    };
+    // check and set default value
+    if (this.settings.defaultValue === 'now')
+    {
+        var curTim = new Date();
+        this.setDefaultValue(('0' + curTim.getHours()).slice(-2) + ':' + ('0' + curTim.getMinutes()).slice(-2));
+    }
+    if (!this.validTime(this.settings.defaultValue))
+    {
+        this.setDefaultValue('00:00');
+    }
+    this.incrementInterval = 150;
+    this.incrementUpCount = 0;
+    this.incrementValue = 1;
+
+    // setup structure. Internal elements referenced for easier customization
+    this.position = $(this).offset();
+    this._name = pluginName;
+
+    this.input = $('<input>');
+    this.input.addClass('time-input');
+    if (this.settings.formName !== '' && this.settings.formName !== null)
+    {
+        this.input.addClass('form-control');
+        this.input.attr('name', this.settings.formName);
+    }
+    this.input.attr('type', 'text');
+    this.$element.append(this.input);
+    this.tPopup = $('<div>');
+    this.tPopup.addClass('picktim-container');
+    if (this.settings.mode === this.MODES.h24)
+    {
+        this.tPopup.get(0).style.setProperty('--picktim-container-width', '150px');
+    }
+    else{
+        this.tPopup.get(0).style.setProperty('--picktim-container-width', '200px');
+    }
+    this.setOrientation();
+    this.tPopup.hide();
+    $(this.settings.appendTo).append(this.tPopup);
+    this.cTable = $('<table>');
+    this.cTable.addClass('picktim-table');
+    this.tPopup.append(this.cTable);
+    this.cTable.topRow = $('<tr>');
+    this.cTable.midRow = $('<tr>');
+    this.cTable.botRow = $('<tr>');
+    this.cTable.append(this.cTable.topRow);
+    this.cTable.append(this.cTable.midRow);
+    this.cTable.append(this.cTable.botRow);
+    this.cTable.topRow.c1 = $('<td>'); this.cTable.topRow.c2 = $('<td>');this.cTable.topRow.c3 = $('<td>');this.cTable.topRow.c4 = $('<td>');
+    this.cTable.topRow.append(this.cTable.topRow.c1, this.cTable.topRow.c2, this.cTable.topRow.c3, this.cTable.topRow.c4);
+    this.cTable.midRow.c1 = $('<td>'); this.cTable.midRow.c2 = $('<td>');this.cTable.midRow.c3 = $('<td>');this.cTable.midRow.c4 = $('<td>');
+    this.cTable.midRow.append(this.cTable.midRow.c1, this.cTable.midRow.c2, this.cTable.midRow.c3, this.cTable.midRow.c4);
+    this.cTable.botRow.c1 = $('<td>'); this.cTable.botRow.c2 = $('<td>');this.cTable.botRow.c3 = $('<td>');this.cTable.botRow.c4 = $('<td>');
+    this.cTable.botRow.append(this.cTable.botRow.c1, this.cTable.botRow.c2, this.cTable.botRow.c3, this.cTable.botRow.c4);
+    this.tHours = $('<input>');
+    this.tHours.attr('type', 'text');
+    this.tHours.addClass('picktim-hour');
+    this.tHours.on('change', $.proxy(function () {
+     this.updateInput();
+    },this));
+    this.cTable.midRow.c1.append(this.tHours);
+    this.tMins = $('<input>')
+    this.tMins.attr('type', 'text');
+    this.tMins.addClass('picktim-mins')
+    this.tMins.on('change', $.proxy(function () {
+     this.updateInput();
+    },this));
+    this.cTable.midRow.c3.append(this.tMins);
+    this.cTable.midRow.c2.text(':');
+    this.cTable.midRow.c2.addClass('picktim-separator picktim-symbol');
+    this.incHours = $('<i>');
+    this.incHours.addClass('picktim-btn picktim-symbol');
+    this.incHours.addClass(this.settings.icons.up);
+    this.incHours.on('mousedown touchstart', $.proxy(function (e) {
+        this.incrementHours();
+        this.tHours.addClass('active');
+        this.timeouts.iH = setInterval($.proxy(function () {
+            this.incrementHours(this.incrementValue);
+            if (this.incrementUpCount < 5)
+            {
+                this.incrementUpCount ++;
+            }
+            else if (this.incrementUpCount === 5)
+            {
+                this.incrementValue = 5;
+                this.incrementUpCount ++;
+            }
+        },this), this.incrementInterval);
+    },this)).bind('mouseup mouseleave touchend', $.proxy(function () {
+        this.tHours.removeClass('active');
+        clearInterval(this.timeouts.iH);
+        this.incrementUpCount = 0;
+        this.incrementValue = 1;
+    },this));
+    this.cTable.topRow.c1.append(this.incHours);
+    this.decHours = $('<i>');
+    this.decHours.addClass('picktim-btn picktim-symbol');
+    this.decHours.addClass(this.settings.icons.down);
+    this.decHours.on('mousedown touchstart', $.proxy(function (e) {
+        this.decrementHours();
+        this.tHours.addClass('active');
+        this.timeouts.dH = setInterval($.proxy(function () {
+            this.decrementHours(this.incrementValue);
+            if (this.incrementUpCount < 5)
+            {
+                this.incrementUpCount ++;
+            }
+            else if (this.incrementUpCount === 5)
+            {
+                this.incrementValue = 5;
+                this.incrementUpCount ++;
+            }
+        },this), this.incrementInterval);
+    },this)).bind('mouseup mouseleave touchend', $.proxy(function () {
+        this.tHours.removeClass('active');
+        clearInterval(this.timeouts.dH);
+        this.incrementUpCount = 0;
+        this.incrementValue = 1;
+    },this));
+    this.cTable.botRow.c1.append(this.decHours);
+    this.incMins = $('<i>');
+    this.incMins.addClass('picktim-btn picktim-symbol');
+    this.incMins.addClass(this.settings.icons.up);
+    this.incMins.on('mousedown touchstart', $.proxy(function (e) {
+        this.incrementMinutes();
+        this.tMins.addClass('active');
+        this.timeouts.iM = setInterval($.proxy(function () {
+            this.incrementMinutes(this.incrementValue);
+            if (this.incrementUpCount < 5)
+            {
+                this.incrementUpCount ++;
+            }
+            else if (this.incrementUpCount === 5)
+            {
+                this.incrementValue = 5;
+                this.incrementUpCount ++;
+            }
+        },this), this.incrementInterval);
+    },this)).bind('mouseup mouseleave touchend', $.proxy(function () {
+        this.tMins.removeClass('active');
+        clearInterval(this.timeouts.iM);
+        this.incrementUpCount = 0;
+        this.incrementValue = 1;
+    },this));
+    this.cTable.topRow.c3.append(this.incMins);
+    this.decMins = $('<i>');
+    this.decMins.addClass('picktim-btn picktim-symbol');
+    this.decMins.addClass(this.settings.icons.down);
+    this.decMins.on('mousedown touchstart', $.proxy(function (e) {
+        this.decrementMinutes();
+        this.tMins.addClass('active');
+        this.timeouts.dM = setInterval($.proxy(function () {
+            this.decrementMinutes(this.incrementValue);
+            if (this.incrementUpCount < 5)
+            {
+                this.incrementUpCount ++;
+            }
+            else if (this.incrementUpCount === 5)
+            {
+                this.incrementValue = 5;
+                this.incrementUpCount ++;
+            }
+        },this), this.incrementInterval);
+    },this)).bind('mouseup mouseleave touchend', $.proxy(function () {
+        this.tMins.removeClass('active');
+        clearInterval(this.timeouts.dM);
+        this.incrementUpCount = 0;
+        this.incrementValue = 1;
+    },this));
+    this.cTable.botRow.c3.append(this.decMins);
+    this.clearBtn = $('<i>')
+    this.clearBtn.addClass('picktim-clear');
+    this.clearBtn.addClass(this.settings.icons.clear);
+    this.$element.append(this.clearBtn);
+    this.clearBtn.css({
+        color: this.input.css('color')
+    });
+    this.clearBtn.on('click', $.proxy(function () {
+        this.input.val('');
+    },this));
+    this.ampm = $('<div>');
+    if (this.settings.mode === this.MODES.h12)
+        this.ampm.addClass('picktim-btn picktim-ampm');
+    this.cTable.midRow.c4.append(this.ampm);
+    if (this.settings.mode === this.MODES.h24)
+    {
+        this.ampm.text('');
+    }
+    else {
+        this.ampm.text('AM');
+    }
+    this.ampm.on('click', $.proxy(function () {
+        if (this.ampm.text() == 'AM')
+        {
+            this.ampm.text('PM');
+        }
+        else {
+            this.ampm.text('AM');
+        }
+        this.updateInput();
+    },this));
+
+    this.input.on('change', $.proxy(function () {
+        this.checkTime();
+    },this));
+
+    this.tPopup.on('click', function(e){
+        e.stopPropagation();
+    });
+
+    this.input.click(function(e){
+        e.stopPropagation();
+        if (!thisRef.tPopup.hasClass('active'))
+        {
+            thisRef.showPopup();
+            if (thisRef.value() === '')
+            {
+                thisRef.updateInput();
+            }
+            $('body').one('click', function(){
+                thisRef.hidePopup();
+            });
+        }
+    })
+
+    // set colours
+    this.cTable.find(".picktim-symbol").css('color', this.settings.symbolColor);
+    this.tPopup.css('background-color', this.settings.backgroundColor);
+    this.tPopup.css('border-color', this.settings.borderColor);
+    this.tPopup.css('color', this.settings.textColor);
+
+    return this;
+};
+
+// Set/return the input value
+Plugin.prototype.value = function(e)
+{
+    if (typeof e != 'undefined' && e != null)
+    {
+        this.input.val(e);
+    }
+    else {
+        return this.input.val();
+    }
+}
+
+// Show Popup
+ Plugin.prototype.showPopup = function(){
+     this.setOrientation();
+    this.tPopup.show();
+    this.tPopup.addClass('active');
+}
+
+// Hide Popup
+Plugin.prototype.hidePopup = function(){
+    this.tPopup.hide();
+    this.tPopup.removeClass('active');
+}
+
+// Set the popup's position
+Plugin.prototype.setOrientation = function(){
+    switch (this.settings.orientation)
+    {
+        case this.ORIENTATIONS.bottomLeft:
+        this.tPopup.css({
+        top: this.input.offset().top + 10 + this.input.outerHeight(),
+        left: this.input.offset().left
+        });
+        break;
+        case this.ORIENTATIONS.bottomRight:
+
+        this.tPopup.css({
+        top: this.input.offset().top + 10 + this.input.outerHeight(),
+        left: this.input.offset().left + this.input.outerWidth()
+        });
+        break;
+        case this.ORIENTATIONS.topLeft:
+        // var pHeight = getComputedStyle(document.body).getPropertyValue("--picktim-container-height");
+        this.tPopup.css({
+        top: this.input.offset().top - 130,
+        left: this.input.offset().left
+        });
+        break;
+        case this.ORIENTATIONS.topRight:
+        this.tPopup.css({
+        top: this.input.offset().top - 130,
+        left: this.input.offset().left + this.input.outerWidth()
+        });
+        break;
+        case this.ORIENTATIONS.leftBottom:
+        this.tPopup.css({
+        top: this.input.offset().top +  this.input.outerHeight(),
+        left: this.input.offset().left - 10 - this.tPopup.outerWidth()
+        });
+        break;
+        case this.ORIENTATIONS.leftTop:
+        this.tPopup.css({
+            top: this.input.offset().top,
+            left: this.input.offset().left - 10 - this.tPopup.outerWidth()
+        });
+        break;
+        case this.ORIENTATIONS.rightBottom:
+        this.tPopup.css({
+        top: this.input.offset().top + this.input.outerHeight(),
+        left: this.input.offset().left + 10 + this.input.outerWidth()
+        });
+        break;
+        case this.ORIENTATIONS.rightTop:
+        this.tPopup.css({
+            top: this.input.offset().top,
+            left: this.input.offset().left + 10 + this.input.outerWidth()
+        });
+        break;
+        default:
+        console.log(this.settings.orientation);
+        this.tPopup.css({
+        top: this.input.offset().top + 10 + this.input.outerHeight(),
+        left: this.input.offset().left
+        });
+        break;
+    }
+}
+
+// Update the input from popup values
+Plugin.prototype.updateInput = function(){
+    this.checknums();
+    if (this.settings.mode === this.MODES.h24)
+    {
+        this.input.val(this.tHours.val() + ":" + this.tMins.val());
+    }
+    else {
+        if (this.ampm.text() === 'AM')
+        {
+            this.input.val(this.tHours.val() + ":" + this.tMins.val());
+        }
+        else{
+            this.input.val((parseInt(this.tHours.val()) + 12) + ":" + this.tMins.val());
+        }
+
+    }
+
+}
+
+// Validate popup values
+Plugin.prototype.checknums = function(e){
+    var h = this.tHours;
+    var m = this.tMins;
+    var th = parseInt(h.val(), 10);
+    var tm = parseInt(m.val(), 10);
+    var td = this.settings.defaultValue.split(':');
+    var tdh = parseInt(td[0], 10);
+    var tdm = parseInt(td[1], 10);
+        if (isNaN(th))
+        {
+            h.val(td[0]);
+            h.data['val'] = tdh;
+            th = tdh;
+        }
+        if (h.val() === '')
+        {
+            h.val(td[0]);
+            h.data['val'] = tdh;
+        }
+        else if (this.settings.mode === this.MODES.h24 && th > 23){
+            h.val('23');
+            h.data['val'] = 23;
+        }
+        else if (this.settings.mode === this.MODES.h12 && th > 11){
+            h.val('11');
+            h.data['val'] = 11;
+        }
+        else if(th < 0)
+        {
+            h.val('00');
+            h.data['val'] = 0;
+        }
+        else
+        {
+            h.val(('0' + th).slice(-2));
+            h.data['val'] = th;
+        }
+
+        if (isNaN(tm))
+        {
+            m.val(td[1]);
+            m.data['val'] = tdm;
+            tm = tdm;
+        }
+        if (m.val() == '')
+        {
+            m.val(td[1]);
+            m.data['val'] = tdm;
+        }
+        else if (m.val() > 59){
+            m.val('59');
+            m.data['val'] = 59;
+        }
+        else if(m.val() < 0)
+        {
+            m.val('00');
+            m.data['val'] = 0;
+        }
+        else
+        {
+            m.val(('0' + tm).slice(-2));
+            m.data['val'] = tm;
+        }
+}
+
+// Validate input value and synchronise with popup values
+Plugin.prototype.checkTime = function(e)
+{
+    if (!this.validTime(this.input.val()))
+    {
+        this.input.val(this.settings.defaultValue);
+    }
+    var t = this.input.val().split(':');
+    this.tMins.val(('0' + t[1]).slice(-2));
+    this.tMins.data['val'] = parseInt(t[1], 10);
+    if (this.settings.mode === this.MODES.h24)
+    {
+        this.tHours.val(('0' + t[0]).slice(-2));
+        this.tHours.data['val'] = parseInt(t[0], 10);
+        this.input.val(('0' + t[0]).slice(-2) + ':' + ('0' + t[1]).slice(-2));
+    }
+    else {
+        var tt = parseInt(t[0], 10);
+        if (tt > 11)
+        {
+            this.tHours.val('' + tt - 12);
+            this.tHours.data['val'] = tt - 12
+            this.ampm.text('PM');
+        }
+        else {
+            this.tHours.val(('0' + t[0]).slice(-2));
+            this.tHours.data['val'] = tt;
+            this.ampm.text('AM');
+        }
+    }
+}
+
+// Check whether time corresponds with time scale
+Plugin.prototype.validTime = function(n){
+    const cor12 = /^([0-9]|0[0-9]|1[0-1]):([0-9]|[0-5][0-9])$/;
+    const cor24 = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):([0-9]|[0-5][0-9])$/;
+    if (this.settings.mode === this.MODES.h24)
+    {
+        if (!cor24.test(n) && n != '')
+        {
+            return false;
+        }
+    }
+    else {
+        if (!cor12.test(n) && n != '')
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+/** Increment/Decrement -- Limit
+* v -> value to be in/decremented
+* boolean inc -> specifies whether number should be incremented (true) or decremented (false)
+* i -> increment value
+* lim -> specifies the limit at which the operation should wrap around
+*/
+Plugin.prototype.iDL = function(v, inc, i, lim)
+{
+    if (inc)
+    {       // increment
+        if (v == lim - 1 || isNaN(v) || v == '')
+        {
+            return 0;
+        }
+        else{
+            if (i !== null && typeof i !== 'undefined')
+            {
+                if (parseInt(v) + i > lim - 1)
+                {
+                    return parseInt(v) + i - lim;
+                }
+                else {
+                    return parseInt(v) + i;
+                }
+            }
+            else{
+                return parseInt(v) + 1;
+            }
+        }
+    }
+    else{      // decrement
+        if (v == 0 || isNaN(v) || v == '')
+        {
+            return lim - 1;
+        }
+        else{
+            if (i !== null && typeof i !== 'undefined')
+            {
+                if (parseInt(v) - i < 0)
+                {
+                    return parseInt(v) - i + lim;
+                }
+                else {
+                    return parseInt(v) - i;
+                }
+            }
+            else{
+                return parseInt(v) - 1;
+            }
+        }
+    }
+
+}
+
+// Increment popup hours
+Plugin.prototype.incrementHours = function(e){
+
+    if (this.settings.mode === this.MODES.h24)
+    {
+        this.tHours.val(this.iDL(this.tHours.val(), true, e, 24));
+    }
+    else {
+        this.tHours.val(this.iDL(this.tHours.val(), true, e, 12));
+    }
+    this.tHours.trigger('change');
+};
+
+// Decrement popup hours
+Plugin.prototype.decrementHours = function(e){
+    if (this.settings.mode === this.MODES.h24)
+    {
+        this.tHours.val(this.iDL(this.tHours.val(), false, e, 24));
+    }
+    else {
+        this.tHours.val(this.iDL(this.tHours.val(), false, e, 12));
+    }
+    this.tHours.trigger('change');
+};
+
+// Increment popup minutes
+Plugin.prototype.incrementMinutes = function(e){
+    this.tMins.val(this.iDL(this.tMins.val(), true, e, 60));
+    this.tMins.trigger('change');
+};
+
+// Decrement popup minutes
+Plugin.prototype.decrementMinutes = function(e){
+    this.tMins.val(this.iDL(this.tMins.val(), false, e, 60));
+    this.tMins.trigger('change');
+};
+
+// Setter method for defaultValue
+Plugin.prototype.setDefaultValue = function(n)
+{
+    if (this.validTime(n))
+    {
+        this.settings.defaultValue = n;
+    }
+}
+// Getter method for default value
+Plugin.prototype.getDefaultValue = function()
+{
+    return this.settings.defaultValue;
+}
+
+/** Generic plugin function with instancing functionality
+* This method follows the structure of jquery plugins developed for UserFrosting(https://www.userfrosting.com)
+* @copyright Alexander Weissman <https://alexanderweissman.com>
+*/
+$.fn[pluginName] = function(methodOrOptions) {
+    // Grab plugin instance
+    var instance = $(this).data(pluginName);
+    // If undefined or object, initalise plugin.
+    if (methodOrOptions === undefined || typeof methodOrOptions === 'object') {
+        // Only initalise if not previously done.
+        if (!instance) {
+            $(this).data(pluginName, new Plugin(this, methodOrOptions));
+        }
+        return this;
+    }
+    // Otherwise ensure first parameter is a valid string, and is the name of an actual function.
+    else if (typeof methodOrOptions === 'string' && typeof instance[methodOrOptions] === 'function') {
+        // Ensure not a private function
+        if (methodOrOptions.indexOf('_') !== 0) {
+            return instance[methodOrOptions]( Array.prototype.slice.call(arguments, 1));
+        }
+        else {
+            console.warn( 'Method ' +  methodOrOptions + ' is private!' );
+        }
+    }
+    else {
+        console.warn( 'Method ' +  methodOrOptions + ' does not exist.' );
+    }
+};
+}( jQuery ));

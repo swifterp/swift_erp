@@ -121,4 +121,9 @@ public class EmpLogic {
 	public int bankAddDao(HashMap<String, String> bankPlus) {
 		return ed.bankAdd(bankPlus);	
 	}
+
+	public List<Map<String, String>> test() {
+		List<Map<String, String>> versionVO = ed.test();
+        return versionVO;
+	}
 }
