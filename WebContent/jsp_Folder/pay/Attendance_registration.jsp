@@ -3,16 +3,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- 조회 -->
-
+<style>
+	table td {
+		text-align: left;
+	}
+</style>
+<style type="text/css">
+	.line {
+		border-left: #fff;
+		border-right: #fff;
+	}
+</style>
 </head>
 <body>
 	<!-- 네비게이션 -->
@@ -70,11 +80,11 @@
 					</ul>
 				</li>
 				<li>
-					<a  class="active" data-toggle="collapse"
+					<a class="active" data-toggle="collapse"
 					data-target="#group2" aria-expanded="false" href="#">급여작업</a>
 					<ul class="collapse in depth2" id="group2">
-						<li><a class="active" href="#">급여계산/대장</a></li>
-						<li><a href="Daily_work.jsp">일별근무기록등록</a></li>
+						<li><a href="Payroll.jsp">급여계산/대장</a></li>
+						<li><a class="active" href="#">일별근무기록등록</a></li>
 					</ul>
 				</li>
 				<li><a data-toggle="collapse"
@@ -89,6 +99,77 @@
 				</li>
 			</ul>
 		</nav>
+	</div>
+	<div class="contents" style="padding-right: 30px;">
+		<table id="calendar" border="3" class="table line">
+			<tbody>
+				<tr>
+					<td width="10%"> 부서
+					</td>
+					<td width="10%"> <input>
+					</td>
+					<td width="10%"> <input>
+					</td>
+					<td> 
+					</td>
+				</tr>
+				<tr>
+					<td> 부서계층그룹
+					</td>
+					<td> <input>
+					</td>
+					<td> <input>
+					</td>
+					<td style="text-align: right;"> 
+						하위그루포함검색
+						<label> 
+							<input type="radio" name="optionsRadios"
+							       id="optionsRadios3" value="option3" checked>
+						</label>
+					</td>
+				</tr>
+			</tbody>	
+		</table>
+		<br>
+		<input type="button" class="btn btn-primary" value="선택삭제"></button>
+		<br>
+		<table id="calendar" border="3" class="table line">
+			<tbody>
+				<tr>
+					<td>선택</td>
+					<td>사원번호</td>
+					<td>사원명</td>
+					<td>부서명</td>
+					<td>야근수당시간</td>
+					<td>주말근무수당시간</td>
+					<td>연차수당일수</td>
+				</tr>
+				<tr>
+					<td>
+					<input type="radio" name="optionsRadios"
+						   id="optionsRadios3" value="option3" checked>
+					</td>
+					<td><input></td>
+					<td>홍길순</td>
+					<td>영업교육팀</td>
+					<td>0.00</td>
+					<td>0.00</td>
+					<td>0.00</td>
+				</tr>
+				<tr>
+					<td>
+					<input type="radio" name="optionsRadios"
+						   id="optionsRadios3" value="option3">
+					</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>

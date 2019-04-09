@@ -11,6 +11,40 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+var col = 6;
+var row = 3;
+$(function() {
+	$('#lbTable').empty();
+	var strTable = "<table class='table' style='margin: auto; text-align:center;'>";
+		for(var i=0; i<row; i++){
+			strTable += "<tr>";
+			for(var j=0;j<col;j++){
+				if(j==0){
+				strTable += "<td style='width:15%'>" + "001" + "</td>"
+				}
+				else if(j==1){
+				strTable += "<td width = '20%'>" + "1" + "</td>"
+				}
+				else if(j==2){
+				strTable += "<td width = '10%'>" + "홍길" + "</td>"
+				}
+				else if(j==3){
+				strTable += "<td width = '15%'>" + "영업부서" + "</td>"
+				}
+				else if(j==4){
+				strTable += "<td width = '20%'>" + "사원" + "</td>"
+				}
+				else if(j==5){
+				strTable += "<td width = '20%'>" + "2004/04/14" + "</td>"
+				}
+			}
+			strTable += "</tr>";
+		}
+		strTable += "</table>";
+	$('#lbTable').append(strTable);
+});
+</script>
 </head>
 <body>
 	<!-- 네비게이션 -->
@@ -87,6 +121,40 @@
 				</li>
 			</ul>
 		</nav>
+	</div>
+	<div style="width: 1000px"  class="contents">
+		<div style="text-align: right;">
+			<input style="width: 100px;">
+			<button type="button">검색</button>
+			&nbsp;
+			<input type="checkbox" id="jb-checkbox"
+				class="custom-control-input">
+			<label class="custom-control-label" for="jb-checkbox">
+			퇴사자 포함
+			</label>
+		</div>
+		<table class="table" style="margin: auto; text-align: center;">
+			<thead>
+				<tr>
+					<td width='15%'>사번
+					</td>
+					<td width='20%'>급여차수
+					</td>
+					<td width='10%'>성명
+					</td>
+					<td width='15%'>부서
+					</td>
+					<td width='20%'>직위/직급
+					</td>
+					<td width='20%'>입시일자
+					</td>
+				</tr>
+			</thead>			
+		</table>
+		<div id="lbTable"></div>
+		<div style="text-align: right;">
+			<a>인원(명):<input type="text" style="width: 20px"></a>
+		</div>
 	</div>
 </body>
 </html>

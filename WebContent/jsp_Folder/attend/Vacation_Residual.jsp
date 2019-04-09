@@ -7,15 +7,11 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<style type="text/css"> /* 테이블 선에 색상주기  */
-  .line{border-bottom: 1px solid #AAA;}
-</style>
 
 <style> /* 테이블 선에 투명도 주기  */
   .Transparency{border-right: none;
@@ -23,6 +19,9 @@
 				border-top:none;
 				border-bottom:none;
   				}
+</style>
+<style type="text/css"> /* 테이블 선에 색상주기  */
+  .line{border-bottom: 1px solid #AAA;}
 </style>
 <style>
   .line2{border-bottom: 1px solid #fff;}
@@ -187,18 +186,18 @@ button {
 			</ul>
 		</nav>
 	</div>
-	<div style="width: 65%;"  class="contents">
-		<table class="table" style=" text-align: left; background-color: #e0e0e0;">
+	<div style="padding-right: 20%;" class="contents">
+		<table class="table" style=" background-color: #e0e0e0;">
 			<thead>
 			</thead>
 			<tbody>
 				<tr>
-					<td  class="line" style="width:150px;">
+					<td class="line" style="width:150px; text-align: left;">
 						휴가항목
 					</td>
-					<td  class="line" >
-						<div class="input-group">
-							<span class="input-group-btn">
+					<td class="line" style="text-align: left;">
+						<div class="input-group" style="z-index: 0">
+							<span class="input-group-btn" >
 								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#vacation"></button>
 							</span>
 							<input type="text" class="form-control input-sm"
@@ -207,9 +206,9 @@ button {
 					</td>
 				</tr>
 				<tr>
-					<td class="line">사원</td>
-					<td  class="line" >
-						<div class="input-group">
+					<td class="line" style="text-align: left;">사원</td>
+					<td class="line" style="text-align: left;">
+						<div class="input-group" style="z-index: 0">
 							<span class="input-group-btn">
 								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#user_name"></button>
 								</span>
@@ -219,9 +218,9 @@ button {
 					</td>
 				</tr>
 				<tr>
-					<td  class="line" >부서</td>
-					<td  class="line" >
-						<div class="input-group">
+					<td  class="line" style="text-align: left;">부서</td>
+					<td  class="line" style="text-align: left;">
+						<div class="input-group" style="z-index: 0">
 							<span class="input-group-btn">
 								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#dept_name"></button>
 							</span>
@@ -231,11 +230,11 @@ button {
 					</td>
 				</tr>
 				<tr>
-					<td  class="line">
+					<td  class="line" style="text-align: left;">
 						프로젝트
 					</td>
-					<td  class="line" >
-						<div class="input-group">
+					<td  class="line" style="text-align: left;">
+						<div class="input-group" style="z-index: 0">
 							<span class="input-group-btn">
 								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#project"></button>
 							</span>
@@ -245,19 +244,19 @@ button {
 					</td>
 				</tr>
 				<tr>
-					<td  class="line">
+					<td  class="line" style="text-align: left;">
 						적요
 					</td>
-					<td  class="line" >
+					<td  class="line" style="text-align: left;">
 						<input type="text" class="form-control input-sm"
 							   style=" width:85%; height: 50%; display: inline-block">
 					</td>
 				</tr>
 				<tr>
-					<td  class="line">
+					<td  class="line" style="text-align: left;">
 						기타
 					</td>
-					<td  class="line" >
+					<td  class="line" style="text-align: left;">
 						<div class="custom-control custom-checkbox">
 							<input type="checkbox" id="jb-All_checkbox"
 								class="custom-control-input">
@@ -285,7 +284,7 @@ button {
 			<input style="text-align: right;" type="button" class="img-button_print"
 				   data-toggle="modal" data-target="#copy" onClick="btn_print()">
 		</span>
-		<table class="table Transparency">
+		<table class="table Transparency contents" >
 			<thead>
 				<tr>
 					<td  class="line2" style="text-align: center; font-size: 20pt;">
@@ -303,8 +302,8 @@ button {
 		</table>
 		<table class="table" style="margin: auto; text-align: center;">
 			<thead>
-				<tr style="background-color: #eee">
-					<td style="width: 100px"> 휴가코드
+				<tr style="background-color: #eee;">
+					<td style="width: 100px;"> 휴가코드
 					</td>
 					<td> 휴가명
 					</td>

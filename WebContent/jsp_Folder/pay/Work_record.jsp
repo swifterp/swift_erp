@@ -10,6 +10,75 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <meta charset="UTF-8">
+<style type="text/css"> /* 테이블 선에 색상주기  */
+  .line{border-bottom: 1px solid #AAA;}
+</style>
+<style> /* 테이블 선에 투명도 주기  */
+  .Transparency{border-right: none;
+   				border-left:none;
+				border-top:none;
+				border-bottom:none;
+  				}
+</style>
+<style>
+  .line2{border-bottom: 1px solid #fff;}
+</style>
+<style>
+	td{
+		height: 40px;
+	}
+</style>
+<script type="text/javascript">
+function Today(year,mon,day){
+    if(year == "null"){       
+    today = new Date();
+    this_year=today.getFullYear();
+}
+else{  
+    var this_year = eval(year);
+    }
+document.writeln("<select name='year' size=1 onChange='dateSelect(this.form,this.form.month.selectedIndex);'>");
+    for(i=this_year-5;i<this_year+1;i++){//현재 년도에서 과거로 5년까지 현재까지를 표시함
+        if(i==this_year) document.writeln("<OPTION VALUE="+i+ " selected >" +i); 
+        else document.writeln("<OPTION VALUE="+i+ ">" +i); 
+    }    
+document.writeln("</select>년");      
+}
+</script>
+<script>
+var col = 6;
+var row = 2;
+$(function() {
+	$('#lbTable').empty();
+	var strTable = "<table class='table' style='margin: auto; text-align:center;'>";
+		for(var i=0; i<row; i++){
+			strTable += "<tr>";
+			for(var j=0;j<col;j++){
+				if(j==0){
+				strTable += "<td style='width:10%'>" +"날짜"+ "</td>"
+				}
+				else if(j==1){
+				strTable += "<td width='5%'>" +"a"+ "</td>"
+				}
+				else if(j==2){
+				strTable += "<td width='30%'>" +"a"+ "</td>"
+				}
+				else if(j==3){
+				strTable += "<td width='13%'>" +"a"+ "</td>"
+				}
+				else if(j==4){
+				strTable += "<td width='7%'>" +"a"+ "</td>"
+				}
+				else if(j==5){
+				strTable += "<td width='5%'>" +"a"+ "</td>"
+				}
+			}
+			strTable += "</tr>";
+		}
+		strTable += "</table>";
+	$('#lbTable').append(strTable);
+});	
+</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -87,6 +156,164 @@
 				</li>
 			</ul>
 		</nav>
+	</div>
+	<div style="width: 1000px;"  class="contents">
+		<table class="table" style=" text-align: left; background-color: #e0e0e0;" >
+			<thead>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="line" style="width:150px; text-align: left;">
+						기준연도
+					</td>
+					<td class="line" style="text-align: left;">
+						<form name="form1">
+						<script language="javascript"> Today('null'); </script>
+						</form>
+					</td>
+				</tr>
+				<tr>
+					<td class="line" style="text-align: left;">
+						부서
+					</td>
+					<td class="line" style="text-align: left;">
+						<input type="text" style="width: 100px;">
+						<span>
+							<button type="button"></button>
+						</span>
+						<input type="text" style="width: 100px">
+					</td>
+				</tr>
+				<tr>
+					<td class="line" style="text-align: left;">
+						부서계층그룹
+					</td>
+					<td class="line" style="text-align: left;">
+						<input type="text" style="width: 100px">
+						<span>
+							<button type="button"></button>
+						</span>
+						<input type="text" style="width: 100px">
+						&nbsp;
+						<input type="checkbox" id="jb-checkbox1" class="custom-control-input"
+							style="vertical-align: middle; margin: 0px">
+						<label class="custom-control-label" for="jb-checkbox" style="margin: 0px;">
+							하위그룹 포함검색
+						</label>
+					</td>
+				</tr>
+				<tr>
+					<td class="line" style="text-align: left;">
+						프로젝트
+					</td>
+					<td class="line" style="text-align: left;">
+						<input type="text" style="width: 100px">
+						<span>
+							<button type="button"></button>
+						</span>
+						<input type="text" style="width: 100px">
+					</td>
+				</tr>
+				<tr>
+					<td class="line" style="text-align: left;">
+						사원번호
+					</td>
+					<td class="line" style="text-align: left;">
+						<input type="text" style="width: 100px">
+						<span>
+							<button type="button"></button>
+						</span>
+						<input type="text" style="width: 100px">
+					</td>
+				</tr>
+				<tr>
+					<td class="line" style="text-align: left;">
+						구분
+					</td>
+					<td class="line" style="text-align: left;">
+						<div class="radio" style="margin: 0px;">
+							<label> 
+								<input type="radio" name="optionsRadios"
+									   id="optionsRadios1" value="option1">
+									      개인별
+							</label>
+							&nbsp;&nbsp;
+							<label>
+								<input type="radio" name="optionsRadios"
+									   id="optionsRadios2" value="option2">
+									      부서별
+							</label>
+							&nbsp;&nbsp;
+							<label> 
+								<input type="radio" name="optionsRadios"
+									   id="optionsRadios3" value="option3">
+								              프로젝트별
+							</label>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="line" style="text-align: left;">
+						기타
+					</td>
+					<td class="line" style="text-align: left; margin: 0px">
+						<input type="checkbox" id="jb-checkbox2" class="custom-control-input"
+							   style="vertical-align: middle; margin: 0px">
+						<label class="custom-control-label" for="jb-checkbox" style="margin: 0px">
+						결재방표시
+						</label>
+					</td>
+				</tr>
+				<tr>
+					<td class="line" style="width: 155px" colspan="2">
+						<input type="submit" class="btn btn-primary pull-left" value="검색">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	<hr style="border:solid 1px #888;"> <!-- 중간 가로선  -->
+		<table class="table Transparency">
+			<thead>
+				<tr>
+					<td  class="line2" colspan="2" style="text-align: center; font-size: 20pt;">
+						근무기록확정 현황 인쇄
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="text-align: left;">
+						회사명 : (주)SWIFT
+					</td>
+					<td style="text-align: right;">
+						<input type="text" style="width: 80px">
+						~
+						<input type="text" style="width: 80px">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table" style="margin: auto; text-align: center;">
+			<thead>
+				<tr style="background-color: #eee">
+					<td style='width: 10%'> 신고귀속
+					</td>
+					<td width='5%'> 구분
+					</td>
+					<td width='30%'> 대장명칭
+					</td>
+					<td width='13%'> 지급일
+					</td>
+					<td width='7%'> 인원(명)
+					</td>
+					<td width='5%'> 인쇄
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+		<div id="lbTable"></div>
 	</div>
 </body>
 </html>

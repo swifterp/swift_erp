@@ -88,7 +88,7 @@
 			</ul>
 		</nav>
 	</div>
-	<div style="padding-right: 30px" class="contents">
+	<div style="width: 1200px" class="contents">
 		<table class="table" style="margin: auto; text-align:center;">
 			<tbody>
 				<tr>

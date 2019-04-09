@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -187,16 +186,16 @@ button {
 			</ul>
 		</nav>
 	</div>
-	<div style="width: 65%;"  class="contents">
+	<div style="padding-right: 20%;"  class="contents">
 		<table class="table" style=" text-align: left; background-color: #e0e0e0">
 			<thead>
 			</thead>
 			<tbody>
 				<tr>
-					<td class="line" style="width:150px;">
+					<td class="line" style="width:150px; text-align: left;">
 						휴가항목
 					</td>
-					<td class="line" >
+					<td class="line" style="text-align: left;">
 						<div class="input-group">
 							<span class="input-group-btn">
 								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#vacation"></button>
@@ -207,8 +206,8 @@ button {
 					</td>
 				</tr>
 				<tr>
-					<td class="line">사원</td>
-					<td class="line" >
+					<td class="line" style="text-align: left;">사원</td>
+					<td class="line" style="text-align: left;">
 						<div class="input-group">
 							<span class="input-group-btn">
 								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#user_name"></button>
@@ -219,8 +218,8 @@ button {
 					</td>
 				</tr>
 				<tr>
-					<td class="line">부서</td>
-					<td class="line" >
+					<td class="line" style="text-align: left;">부서</td>
+					<td class="line" style="text-align: left;">
 						<div class="input-group">
 							<span class="input-group-btn">
 								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#dept_name"></button>
@@ -231,10 +230,10 @@ button {
 					</td>
 				</tr>
 				<tr>
-					<td class="line">
+					<td class="line" style="text-align: left;">
 						프로젝트
 					</td>
-					<td class="line" >
+					<td class="line" style="text-align: left;">
 						<div class="input-group">
 							<span class="input-group-btn">
 								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#project"></button>
@@ -245,19 +244,19 @@ button {
 					</td>
 				</tr>
 				<tr>
-					<td class="line">
+					<td class="line" style="text-align: left;">
 						적요
 					</td>
-					<td class="line" >
+					<td class="line" style="text-align: left;">
 						<input type="text" class="form-control input-sm"
 							   style=" width:85%; height: 50%; display: inline-block">
 					</td>
 				</tr>
 				<tr>
-					<td class="line">
+					<td class="line" style="text-align: left;">
 						기타
 					</td>
-					<td class="line" >
+					<td class="line" style="text-align: left;">
 						<div class="input-group">
 							<span class="input-group-btn">
 								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#project"></button>

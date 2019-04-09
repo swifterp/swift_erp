@@ -1,16 +1,66 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<title>SWIFT ERP</title>
+<title>Insert title here</title>
+<!-- 명세서 인쇄 -->
+<script>
+var col = 9;
+var row = 3;
+var num = 001;
+$(function () {
+	$('#lblTable').empty();
+	var strTable
+	 = "<table id='set_table' class='table' style='margin: auto; text-align:center;'>";
+	  for (var i = 0; i < row; i++) {
+          strTable += "<tr>";
+          for (var j = 0; j < col; j++) {
+			  if(j == 0){
+				  strTable += "<td width='5%'>" 
+					  +  "<div class='radio'><label> <input type='radio' name='optionsRadios'id='optionsRadios4' value='option4' checked></label></div>" 
+					  + "</td>";
+			  }
+              else if(j == 1){
+            	  strTable += "<td width='5%'>" +  "날짜" + "</td>";
+              }
+              else if(j == 2){
+            	  strTable += "<td width='10%'>" + "급여" + "</td>";
+              }
+              else if(j == 3){
+            	  strTable += "<td width='10%'>" + "006" + "</td>";
+              }
+              else if(j == 4){
+            	  strTable += "<td width='12%'>" + "홍길이" + "</td>";
+              }
+              else if(j == 5){
+            	  strTable += "<td width='12%'>" + "부서명" + "</td>";
+              }
+              else if(j == 6){
+            	  strTable += "<td width='15%'>" + "지급통액" + "</td>";
+              }
+              else if(j == 7){
+            	  strTable += "<td width='15%'>" + "공재총액" + "</td>";
+              }
+              else if(j == 8){
+            	  strTable += "<td width='17%'>" + "실지급액" + "</td>";
+              }
+          }
+     	strTable += "</tr>";
+      }
+    strTable += "</table>";
+
+	$('#lblTable').append(strTable);
+});
+</script>
 </head>
 <body>
 	<!-- 네비게이션 -->
@@ -59,19 +109,19 @@
 		<!-- 왼쪽 네비게이션 -->
 		<nav class="nav-left">
 			<ul class="bg-primary">
-				<li><a class="active" data-toggle="collapse" data-target="#group1"
-					aria-expanded="false" href="#">기본사항등록</a>
-					<ul class="collapse in depth2" id="group1">
+				<li><a data-toggle="collapse" data-target="#group1"
+					aria-expanded="false" href="Allowance_Item.jsp">기본사항등록</a>
+					<ul class="collapse depth2" id="group1">
 						<li><a href="Allowance_Item.jsp">수당항목등록</a></li>
-						<li><a class="active" href="#">공제항목등록</a></li>
+						<li><a href="Deductible_Item.jsp">공제항목등록</a></li>
 						<li><a href="Bonus_payment.jsp">1년미만자<br>상여지급률등록</a></li>
 					</ul>
 				</li>
 				<li>
-					<a data-toggle="collapse"
-					data-target="#group2" aria-expanded="false" href="Payroll.jsp">급여작업</a>
-					<ul class="collapse depth2" id="group2">
-						<li><a href="Payroll.jsp">급여계산/대장</a></li>
+					<a  class="active" data-toggle="collapse"
+					data-target="#group2" aria-expanded="false" href="#">급여작업</a>
+					<ul class="collapse in depth2" id="group2">
+						<li><a class="active" href="Payroll.jsp">급여계산/대장</a></li>
 						<li><a href="Daily_work.jsp">일별근무기록등록</a></li>
 					</ul>
 				</li>
@@ -88,139 +138,30 @@
 			</ul>
 		</nav>
 	</div>
-	<div style="width: 1200px" class="contents">
+	<div style="width:1200px; text-align: right;" class="contents">
 		<table class="table" style="margin: auto; text-align:center;">
+			<thead>
+			</thead>
 			<tbody>
 				<tr>
-					<td>
-						공제명칭
-					</td>
-					<td> 
-						표시<br>순서
-					</td>
-					<td>
-						계정코드
-					</td>
-					<td>
-						거래처콛,
-					</td>
-					<td>
-						계산식
-					</td>
-					<td>
-						계산항목
-					</td>
-					<td>
-						계산내역
-					</td>
-					<td>
-						비고
-					</td>
-				</tr>
-				<tr>
-					<td>
-						소득세
-					</td>
-					<td> 
-						1
-					</td>
-					<td>
-						계정코드 팝업창
-					</td>
-					<td>
-						거래처 팝업창
-					</td>
-					<td>
-						<div class="input-group" style="width: 100px;">
-							<select class="custom-select" id="Search_2">
-								<option value="Round">반올림</option>
-								<option value="Raising">절상</option>
-								<option value="Floor">절사</option>
-							</select>
-						</div>
-					</td>
-					<td>
-						<input type="radio" name="optionsRadios"
-							id="optionsRadios1" value="option1">
-					</td>
-					<td>
-						<input type="button" value="계산내역" >
-					</td>
-					<td>
-						비고
-					</td>
-				</tr>
-				<tr>
-					<td>
-						주인세
-					</td>
-					<td> 
-						2
-					</td>
-					<td>
-						계정코드 팝업창
-					</td>
-					<td>
-						거래처 팝업창
-					</td>
-					<td>
-						<div class="input-group" style="width: 100px;">
-							<select class="custom-select" id="Search_2">
-								<option value="Round">반올림</option>
-								<option value="Raising">절상</option>
-								<option value="Floor">절사</option>
-							</select>
-						</div>
-					</td>
-					<td>
-						<input type="radio" name="optionsRadios"
-							id="optionsRadios1" value="option1">
-					</td>
-					<td>
-						<input type="button" value="계산내역" >
-					</td>
-					<td>
-						비고
-					</td>
-				</tr>
-				<tr>
-					<td>
-						국민연금
-					</td>
-					<td> 
-						3
-					</td>
-					<td>
-						계정코드 팝업창
-					</td>
-					<td>
-						거래처 팝업창
-					</td>
-					<td>
-						<div class="input-group" align="center" style="width: 100px;">
-							<select class="custom-select" id="Search_2">
-								<option value="Round">반올림</option>
-								<option value="Raising">절상</option>
-								<option value="Floor">절사</option>
-							</select>
-						</div>
-					</td>
-					<td>
-						<input type="radio" name="optionsRadios"
-							id="optionsRadios1" value="option1">
-					</td>
-					<td>
-						<input type="button" value="계산내역" >
-					</td>
-					<td>
-						비고
-					</td>
+					<td width="5%">선택</td>
+					<td width="5%">신고<br>귀속</td>
+					<td width="10%">구분</td>
+					<td width="10%">사원번호</td>
+					<td width="11%">사원명</td>
+					<td width="12%">부서명</td>
+					<td width="15%">지급총액</td>
+					<td width="15%">공제총액</td>
+					<td width="17%">실지급액</td>
 				</tr>
 			</tbody>
 		</table>
-		<br> 
+		<div id="lblTable"></div>
+		<br>
+		<div style="text-align: left;">
 		<input type="button" class="btn btn-primary pull-list"
-			 value="인쇄" >
+			   onClick="Normal_print" value="인쇄" >
+		</div> 
 	</div>
 </body>
 </html>

@@ -7,12 +7,15 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+<style type="text/css">
+	table td {
+		text-align: left;
+	}
+</style>
 
 <style type="text/css"> /* 테이블 선에 색상주기  */
   .line{border-bottom: 1px solid #AAA;}
@@ -171,7 +174,7 @@ button {
 						휴가코드
 					</td>
 					<td class="line">
-						<div class="input-group">
+						<div class="input-group" style="z-index: 0">
 							<span class="input-group-btn">
 								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#vacation"></button>
 							</span>

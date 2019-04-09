@@ -3,16 +3,44 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- 금액직접입력 -->
-
+<!-- 개인별급여상세내역 -->
+<style>
+	table td{text-align: left;}
+</style>
+<script type="text/javascript">
+	function timer4() {
+		var date = new Date();
+		var year = date.getFullYear();
+		var month = date.getMonth() + 1;
+		var day = date.getDate();
+		var dateString = year+"년 "+month+"월 "+day+"일 ";
+		
+		var hour = date.getHours();
+		var ampm = (hour < 12 || hour == 24) ? " 오전" : " 오후";
+		hour = hour % 12 || 12;
+		var minute = date.getMinutes();
+		minute = (minute > 9) ? minute : "0" + minute;
+		var second = date.getSeconds();
+		second = (second > 9) ? second : "0" + second;
+		var timeString = ampm + " " + hour + ":" + minute + ":" + second;
+		
+		return "최근 급여 계산일 : "+dateString+" "+timeString;
+	}
+</script>
+<style type="text/css">
+	#setTimer {
+		font-size: 15px;
+	}
+</style>
 </head>
 <body>
 	<!-- 네비게이션 -->
@@ -73,7 +101,7 @@
 					<a  class="active" data-toggle="collapse"
 					data-target="#group2" aria-expanded="false" href="#">급여작업</a>
 					<ul class="collapse in depth2" id="group2">
-						<li><a class="active" href="#">급여계산/대장</a></li>
+						<li><a class="active" href="Payroll.jsp">급여계산/대장</a></li>
 						<li><a href="Daily_work.jsp">일별근무기록등록</a></li>
 					</ul>
 				</li>
@@ -89,6 +117,105 @@
 				</li>
 			</ul>
 		</nav>
+	</div>
+	<div style="padding-right: 30px; text-align: right;" class="contents">
+		<a id="setTimer" ></a>
+		 <script type="text/javascript">
+		 var tag = document.getElementById( "setTimer" ); 
+		     tag.innerHTML =  timer4(); 
+		</script>
+		<table class="table" style="margin: auto; text-align:center;">
+			<thead>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="width: 200px">귀속연월</td>
+					<td><input></td>
+					<td style="width: 200px">성명</td>
+					<td><input></td>
+				</tr>
+				<tr>
+					<td>기본급</td>
+					<td><input></td>
+					<td>야근수당</td>
+					<td><input></td>
+				</tr>
+				<tr>
+					<td>주말근무수당</td>
+					<td><input></td>
+					<td>연차수당</td>
+					<td><input></td>
+				</tr>
+				<tr>
+					<td>출산보육수당</td>
+					<td><input></td>
+					<td>부양가족수당</td>
+					<td><input></td>
+				</tr>
+				<tr>
+					<td>식대</td>
+					<td><input></td>
+					<td>차량유지비</td>
+					<td><input></td>
+				</tr>
+				<tr>
+					<td>상여</td>
+					<td colspan="3"><input></td>
+				</tr>
+				<tr>
+					<td>지급총액</td>
+					<td colspan="3"><input></td>
+				</tr>
+				<tr>
+					<td>소득세</td>
+					<td><input></td>
+					<td>주민세</td>
+					<td><input></td>
+				</tr>
+				<tr>
+					<td>국민연금</td>
+					<td><input></td>
+					<td>건강보험</td>
+					<td><input></td>
+				</tr>
+				<tr>
+					<td>고용보험</td>
+					<td><input></td>
+					<td>장기요양</td>
+					<td><input></td>
+				</tr>
+				<tr>
+					<td>연말정산</td>
+					<td><input></td>
+					<td>사우회비</td>
+					<td><input></td>
+				</tr>
+				<tr>
+					<td>공제항목 추가기능</td>
+					<td colspan="3"><input></td>
+				</tr>
+				<tr>
+					<td>공제총액</td>
+					<td colspan="3"><input></td>
+				</tr>
+				<tr>
+					<td>수령액</td>
+					<td colspan="3"><input></td>
+				</tr>
+			</tbody>
+		</table>
+		<div id="lblTable"></div>
+		<br>
+		<div style="text-align: left;">
+		<input type="button" class="btn btn-primary pull-list"
+			   onClick="Save" value="저장" >
+		<input type="button" class="btn btn-primary pull-list"
+			   onClick="Calculation" value="세금재 계산" >
+		<input type="button" class="btn btn-primary pull-list"
+			   onClick="print" value="명세서 인쇄" >
+		<input type="button" class="btn btn-primary pull-list"
+			   onClick="Delete" value="삭제" >
+		</div> 
 	</div>
 </body>
 </html>

@@ -11,8 +11,37 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- 개인별 상세내역 -->
+<!-- 급여 명세서 -->
+<script>
 
+</script>
+<script type="text/javascript">
+function setDate(){
+	var date = new Date();
+	var year = date.getFullYear();
+	var month = date.getMonth() + 1;
+	var day = date.getDate();
+	var dateString = "지급일자 : "+ year +"년 "+ month +"월 "+ day +"일";
+
+	var name = "성명";
+	var user_name = "홍길순";
+	var num = "006";
+	var setName = name+" : "+user_name+"("+num+")";
+
+	return dateString+"&nbsp;&nbsp;&nbsp;"+setName; 
+}
+</script>
+<style>
+	#setDate{
+		font-size: 15px;
+	}
+</style>
+<style type="text/css">
+	table td {
+		text-align: left;
+		font-size: 12px;
+	}
+</style>
 </head>
 <body>
 	<!-- 네비게이션 -->
@@ -73,7 +102,7 @@
 					<a  class="active" data-toggle="collapse"
 					data-target="#group2" aria-expanded="false" href="#">급여작업</a>
 					<ul class="collapse in depth2" id="group2">
-						<li><a class="active" href="#">급여계산/대장</a></li>
+						<li><a class="active" href="Payroll.jsp">급여계산/대장</a></li>
 						<li><a href="Daily_work.jsp">일별근무기록등록</a></li>
 					</ul>
 				</li>
@@ -89,6 +118,74 @@
 				</li>
 			</ul>
 		</nav>
+	</div>
+	<div style="padding-right: 30px" class="contents">
+		<a>(주) SWIFT</a>
+		<br>
+		<p id="setDate"></p>
+		<script>
+			var tag = document.getElementById("setDate");
+				tag.innerHTML =  setDate();
+		</script>
+		<table class="table" style="margin: auto; text-align:center;">
+			<tbody>
+				<tr>
+					<td style="background-color: #0BA4BC; color: #fff; width: 20%;">지급항목</td>
+					<td colspan="4"></td>
+				</tr>
+				<tr>
+					<td>기본급</td>
+					<td style="width: 20%"></td>
+					<td style="width: 20%">식대</td>
+					<td style="width: 20%"></td>
+					<td style="width: 20%"></td>
+				</tr>
+				<tr>
+					<td colspan="5" style="text-align: right;
+						background-color: #F3F1E6; font-weight: bold;">지급총액 : 
+						<input></td>
+				</tr>
+				<tr>
+					<td style="background-color: #0BA4BC; color: #fff;">공제항목</td>
+					<td colspan="4"></td>
+				</tr>
+				<tr>
+					<td>소득세</td>
+					<td><input></td>
+					<td>주민세</td>
+					<td><input></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>국민연금</td>
+					<td><input>td>
+					<td>건강보험</td>
+					<td><input></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>고용보험</td>
+					<td><input></td>
+					<td>장기요양</td>
+					<td><input></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td colspan="5" style="text-align: right;
+						background-color: #F3F1E6; font-weight: bold;">공제총액 : 
+						<input></td>
+				</tr>
+				<tr>
+					<td colspan="5" style="text-align: right; 
+						background-color: #B8AE8C; font-weight: bold;">지급총액 - 공제총액 = 실지급액 : 
+						<input></td>
+				</tr>
+				<tr>
+					<td colspan="5" style="text-align: right;
+						font-weight: bold;">※ 수고하셨습니다</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>

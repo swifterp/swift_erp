@@ -10,7 +10,6 @@
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 <style>
  .line{border-left: 1px solid #fff;
  	   border-right: 1px solid #fff;
@@ -125,12 +124,7 @@
              }
         }
     </script>
-
-
-
 <title>SWIFT ERP</title>
-
-
 </head>
 <body>
 	<!-- 네비게이션 -->

@@ -11,8 +11,48 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- 개인별급여계산대상자선택 -->
+<!-- 금액직접입력 -->
+<script>
+var col = 7;
+var row = 3;
+$(function () {
+	$('#lblTable').empty();
+	var strTable
+	 = "<table id='set_table' class='table' style='margin: auto; text-align:center;'>";
+	  for (var i = 0; i < row; i++) {
+          strTable += "<tr>";
+          for (var j = 0; j < col; j++) {
+			  if(j == 0){
+				  strTable += "<td width='5%'>" 
+					  +  "<div class='radio'><label> <input type='radio' name='optionsRadios'id='optionsRadios4' value='option4' checked></label></div>" 
+					  + "</td>";
+			  }
+              else if(j == 1){
+            	  strTable += "<td width='10%'>" +  "사원번호" + "</td>";
+              }
+              else if(j == 2){
+            	  strTable += "<td width='10%'>" + "사원명" + "</td>";
+              }
+              else if(j == 3){
+            	  strTable += "<td width='10%'>" + "부서명" + "</td>";
+              }
+              else if(j == 4){
+            	  strTable += "<td width='20%'>" + "수당총액" + "</td>";
+              }
+              else if(j == 5){
+            	  strTable += "<td width='20%'>" + "공제총액" + "</td>";
+              }
+              else if(j == 6){
+            	  strTable += "<td width='25%'>" + "</td>";
+              }
+          }
+     	strTable += "</tr>";
+      }
+    strTable += "</table>";
 
+	$('#lblTable').append(strTable);
+});
+</script>
 </head>
 <body>
 	<!-- 네비게이션 -->
@@ -73,7 +113,7 @@
 					<a  class="active" data-toggle="collapse"
 					data-target="#group2" aria-expanded="false" href="#">급여작업</a>
 					<ul class="collapse in depth2" id="group2">
-						<li><a class="active" href="#">급여계산/대장</a></li>
+						<li><a class="active" href="Payroll.jsp">급여계산/대장</a></li>
 						<li><a href="Daily_work.jsp">일별근무기록등록</a></li>
 					</ul>
 				</li>
@@ -89,6 +129,29 @@
 				</li>
 			</ul>
 		</nav>
+	</div>
+	<div style="width: 1200px" class="contents">
+		<table class="table" style="margin: auto; text-align:center;">
+			<thead>
+				<tr>
+					<td width="5%">선택</td>
+					<td width='10%'>사원번호</td>
+					<td width='10%'>사원명</td>
+					<td width='10%'>부서명</td>
+					<td width='20%'>수당총액</td>
+					<td width='20%'>공제총액</td>
+					<td width='25%'></td>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+		<div id="lblTable"></div>
+		<br> 
+		<input type="button" class="btn btn-primary pull-list"
+			   onClick="Save" value="저장" >
+		<input type="button" class="btn btn-primary pull-list"
+			   onClick="add_row()" value="추가" >
 	</div>
 </body>
 </html>

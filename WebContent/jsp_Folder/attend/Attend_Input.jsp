@@ -8,7 +8,6 @@
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -137,7 +136,7 @@
 			</ul>
 		</nav>
 	</div>
-	<div style="width: 65%;"  class="contents">
+	<div style="padding-right: 20%"  class="contents">
 		<div style="margin: auto;">
 			<a type="button" class="btn btn-primary" data-toggle="modal" data-target="#New_All_Update">일괄등록</a>
 		</div>

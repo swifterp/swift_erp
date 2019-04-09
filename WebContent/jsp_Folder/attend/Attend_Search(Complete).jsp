@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -189,21 +188,25 @@ button {
 			</ul>
 		</nav>
 	</div>
-	<div style="width: 65%;"  class="contents">
-		<div class="input-group" style="margin: auto;">
-			<a style="width: 300px;" class="btn btn-default" href="Attend_Search(All).jsp" >전체</a>
-			&nbsp;
-			<a style="width: 300px;" class="btn btn-default" href="Attend_Search(Request).jsp" >결제중</a>
-			&nbsp;
-			<a style="width: 300px;" class="btn btn-primary" href="#" >결제완료</a>
-		</div>
+	<div style="padding-right: 20%"  class="contents">
+		<form role="form">
+			<div class="form-group" style="text-align: center;">
+				&nbsp;
+				<a style="width: 30%;" class="btn btn-default" href="Attend_Search(All).jsp" >전체</a>
+				&nbsp;
+				<a style="width: 30%;" class="btn btn-default" href="Attend_Search(Request).jsp" >결제중</a>
+				&nbsp;
+				<a style="width: 30%;" class="btn btn-primary" href="#" >결제완료</a>
+				&nbsp;
+			</div>
+		</form>
 		<p/>
 		<table class="table" style=" text-align: left;  background-color: #e0e0e0">
 			<thead>
 			</thead>
 			<tbody>
 				<tr>
-					<td class="line" style="width:150px;">
+					<td class="line" style="width:150px; text-align: left;">
 						기준일자
 					</td>
 					<td class="line" style="text-align: left;">
@@ -215,9 +218,9 @@ button {
 					</td>
 				</tr>
 				<tr>
-					<td class="line">사원명</td>
-					<td class="line">
-						<div class="input-group">
+					<td class="line" style="text-align: left;">사원명</td>
+					<td class="line" style="text-align: left;">
+						<div class="input-group" style="z-index: 0">
 							<span class="input-group-btn">
 								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#user_name"></button>
 							</span>
@@ -227,9 +230,9 @@ button {
 					</td>
 				</tr>
 				<tr>
-					<td class="line">부서</td>
-					<td class="line">
-						<div class="input-group">
+					<td class="line" style="text-align: left;">부서</td>
+					<td class="line" style="text-align: left;">
+						<div class="input-group"  style="z-index: 0">
 							<span class="input-group-btn">
 								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#dept_name"></button>
 							</span>
@@ -239,10 +242,10 @@ button {
 					</td>
 				</tr>
 				<tr>
-					<td class="line">
+					<td class="line" style="text-align: left;">
 						프로젝트
 					</td>
-					<td class="line">
+					<td class="line" style="text-align: left;">
 						<div class="radio">
 							<label> <input type="radio" name="optionsRadios"
 								id="optionsRadios1" value="option1" checked>
@@ -262,11 +265,11 @@ button {
 					</td>
 				</tr>
 				<tr>
-					<td class="line">
+					<td class="line" style="text-align: left;">
 						근태항목
 					</td>
-					<td class="line">
-						<div class="input-group">
+					<td class="line" style="text-align: left;">
+						<div class="input-group"  style="z-index: 0">
 							<span class="input-group-btn">
 								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#Working_attitude"></button>
 							</span>
@@ -276,11 +279,11 @@ button {
 					</td>
 				</tr>
 				<tr>
-					<td class="line">
+					<td class="line" style="text-align: left;">
 						휴가항목
 					</td>
-					<td class="line">
-						<div class="input-group">
+					<td class="line" style="text-align: left;">
+						<div class="input-group"  style="z-index: 0">
 							<span class="input-group-btn">
 								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#vacation"></button>
 							</span>

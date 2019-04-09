@@ -5,12 +5,68 @@
 <head>
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css"> /* 테이블 선에 색상주기  */
+  .line{border-bottom: 1px solid #AAA;}
+</style>
+<style> /* 테이블 선에 투명도 주기  */
+  .Transparency{border-right: none;
+   				border-left:none;
+				border-top:none;
+				border-bottom:none;
+  				}
+</style>
+<style>
+  .line2{border-bottom: 1px solid #fff;}
+</style>
+<style>
+	.a{
+		color: blue;
+	}
+	.a:hover{
+		color: blue;
+		text-decoration: underline;
+	}
+</style>
+<script>
+	$(function() {
+		$("#datepicker").datepicker(
+			{
+				showOn : "both",
+				buttonImage: "../../images/btn_calendar.png", 
+				buttonImageOnly : true,
+				dateFormat : "yy/mm/dd",
+				changeMonth : true,
+				dayNames : [ '월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일' ],
+				dayNamesMin : [ '월', '화', '수', '목', '금', '토', '일' ],
+				monthNamesShort : [ '1', '2', '3', '4', '5', '6', '7', '8',	'9', '10', '11', '12' ],
+				monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월' ]
+			});
+	});
+</script>
+<script>
+	$(function() {
+		$("#datepicker2").datepicker(
+			{
+				showOn : "both",
+				buttonImage: "../../images/btn_calendar.png", 
+				buttonImageOnly : true,
+				dateFormat : "yy/mm/dd",
+				changeMonth : true,
+				dayNames : [ '월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일' ],
+				dayNamesMin : [ '월', '화', '수', '목', '금', '토', '일' ],
+				monthNamesShort : [ '1', '2', '3', '4', '5', '6', '7', '8',	'9', '10', '11', '12' ],
+				monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월' ]
+			});
+	});
+</script>
 </head>
 <body>
 	<!-- 네비게이션 -->
@@ -87,6 +143,94 @@
 				</li>
 			</ul>
 		</nav>
+	</div>
+	<div style="width: 1000px;"  class="contents">
+		<table class="table" style=" text-align: left; background-color: #e0e0e0;" >
+			<thead>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="line" style="width:150px; text-align: left;">
+						기준일자
+					</td>
+					<td class="line" style="text-align: left;">
+						<input type="text" id="datepicker" class="form-control input-sm"
+						style="width: 200px; height: 100%; display: inline-block;">
+						&nbsp;&nbsp;~&nbsp;&nbsp;
+						<input type="text" id="datepicker2" class="form-control input-sm"
+						style="width: 200px; height: 100%; display: inline-block">
+					</td>
+				</tr>
+				<tr>
+					<td class="line" style="text-align: left;">
+						부서
+					</td>
+					<td class="line" style="text-align: left;">
+						<input type="text" style="width: 100px;">
+						<span>
+							<button type="button"></button>
+						</span>
+						<input type="text" style="width: 100px">
+					</td>
+				</tr>
+				<tr>
+					<td class="line" style="text-align: left;">
+						부서계층그룹
+					</td>
+					<td class="line" style="text-align: left;">
+						<input type="text" style="width: 100px">
+						<span>
+							<button type="button"></button>
+						</span>
+						<input type="text" style="width: 100px">
+						&nbsp;
+						<input type="checkbox" id="jb-checkbox1" class="custom-control-input"
+							style="vertical-align: middle; margin: 0px">
+						<label class="custom-control-label" for="jb-checkbox" style="margin: 0px;">
+							하위그룹 포함검색
+						</label>
+					</td>
+				</tr>
+				<tr>
+					<td class="line" style="text-align: left;">
+						프로젝트
+					</td>
+					<td class="line" style="text-align: left;">
+						<input type="text" style="width: 100px">
+						<span>
+							<button type="button"></button>
+						</span>
+						<input type="text" style="width: 100px">
+					</td>
+				</tr>
+				<tr>
+					<td class="line" style="text-align: left;">
+						기타
+					</td>
+					<td class="line" style="text-align: left; margin: 0px">
+						<input type="checkbox" id="jb-checkbox2" class="custom-control-input"
+							   style="vertical-align: middle; margin: 0px">
+						<label class="custom-control-label" for="jb-checkbox" style="margin: 0px">
+						결재방표시
+						</label>
+					</td>
+				</tr>
+				<tr>
+					<td class="line" style="text-align: left;">
+						간편검색
+					</td>
+					<td class="line" style="text-align: left;">
+						<a class="a">금월</a>&nbsp;
+						<a class="a">전월</a>&nbsp;
+						<a class="a">당년도</a>&nbsp;
+						<a class="a">전년도</a>&nbsp;
+						<a class="a">종료월</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<input type="submit" class="btn btn-primary pull-left" value="검색">
 	</div>
 </body>
 </html>

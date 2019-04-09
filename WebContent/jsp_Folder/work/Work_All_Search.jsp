@@ -13,6 +13,9 @@
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style>
+	table td {text-align:left;}
+</style>
 <script>
 	function search(){
 		var select = document.getElementById("Work_All_search").value;
@@ -147,6 +150,9 @@ input {
           vertical-align: middle;
         }
 </style>
+<style>
+	table td {text-align:left;}
+</style>
 <title>SWIFT ERP</title>
 </head>
 <body>
@@ -215,8 +221,8 @@ input {
 			</ul>
 		</nav>
 	</div>
-	<div style="width: 60%;"  class="contents">
-		<table class="table" style="margin: auto; text-align: left;">
+	<div style="width: 1000px"  class="contents">
+		<table class="table" style="margin: auto;">
 			<thead>
 			</thead>
 			<tbody>

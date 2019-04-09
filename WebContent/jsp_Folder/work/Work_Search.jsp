@@ -7,12 +7,13 @@
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+<style>
+	table td {text-align:left;}
+</style>
 <script>
 	function search(){
 		var select = document.getElementById("WorkOnOffTime").value;
@@ -173,21 +174,20 @@ input {
 			</ul>
 		</nav>
 	</div>
-	<div style="width: 60%;"  class="contents">
-		<table class="table" style="margin: auto; text-align: left;">
+	<div style="width: 1000px" class="contents">
+		<table class="table" style="margin: auto;">
 			<thead>
 			</thead>
 			<tbody>
 				<tr>
 					<td style="width:90px; vertical-align: middle;">기간</td>
-					<td colspan="4">
+					<td colspan="7">
 						<input type="text" id="datepicker" class="form-control input-sm"
 								style="width:170px; height: 50%; display: inline-block">
+						&nbsp;&nbsp;~&nbsp;&nbsp;
+						<input type="text" id="datepicker2"	class="form-control input-sm"
+							style="width:170px; height: 50%; display: inline-block">
 					</td>
-					<td style="width: 15px; vertical-align: middle; padding: 0px;">~</td>
-					<td colspan="2">
-					<input type="text" id="datepicker2"	class="form-control input-sm"
-						style="width:170px; height: 50%; display: inline-block"></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: middle;">사원명</td>
@@ -207,32 +207,23 @@ input {
 				</tr>
 				<tr>
 					<td style="vertical-align: middle;">구분</td>
-					<td style="width:75px;">
+					<td style="width:75px; text-align: left;" colspan="7">
 						<div class="radio">
 							<label> <input type="radio" name="optionsRadios"
-								id="optionsRadios1" value="option1" checked>
-								전체
+									id="optionsRadios1" value="option1" checked>
+									전체
 							</label>
-						</div>
-					</td>
-					<td style="width:75px;">
-						<div class="radio">
 							<label> 
 							<input type="radio" name="optionsRadios"
 									id="optionsRadios2" value="option2" checked>
 									내근
 							</label>
-						</div>
-					</td>
-					<td  style="width:75px;">
-						<div class="radio">
 							<label> <input type="radio" name="optionsRadios"
 									id="optionsRadios3" value="option3" checked>
 									외근
 							</label>
 						</div>
 					</td>
-					<td colspan="4"></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: middle;">기타</td>

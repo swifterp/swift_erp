@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -90,74 +89,74 @@
 			</ul>
 		</nav>
 	</div>
-	<div style="width: 65%; outline: 1px solid; padding: 20px 20px 400px 20px;"
-		  class="contents">
-		<table class="table Transparency">
-			<thead>
-				<tr>
-					<td  class="line2" colspan="2" style="text-align: center; font-size: 20pt;">
-						근태집계표
-					</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td style="text-align: left;">
-						회사명 : (주)SWIFT
-					</td>
-					<td style="text-align: right;">
-						<input type="text" style="width: 80px">
-						~
-						<input type="text" style="width: 80px">
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<table class="table" style="margin: auto; text-align: center;">
-			<thead>
-				<tr style="background-color: #eee">
-					<td> 사원
-					</td>
-					<td> 근태수
-					</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-					홍길동
-					</td>
-					<td>
-					8.0
-					</td>
-				</tr>
-				<tr>
-					<td>
-					홍길삼
-					</td>
-					<td>
-					8.0
-					</td>
-				</tr>
-				<tr>
-					<td>
-					홍길일
-					</td>
-					<td>
-					8.0
-					</td>
-				</tr>
-				<tr>
-					<td>
-					합계
-					</td>
-					<td>
-					24.0
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<br> 
+	<div style="width: 1000px;" class="contents">
+		<div style="outline: 1px solid; padding: 20px 20px 300px 20px ">
+			<table class="table Transparency">
+				<thead>
+					<tr>
+						<td  class="line2" colspan="2" style="text-align: center; font-size: 20pt;">
+							근태집계표
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="text-align: left;">
+							회사명 : (주)SWIFT
+						</td>
+						<td style="text-align: right;">
+							<input type="text" style="width: 80px">
+							~
+							<input type="text" style="width: 80px">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table" style="margin: auto; text-align: center;">
+				<thead>
+					<tr style="background-color: #eee">
+						<td> 사원
+						</td>
+						<td> 근태수
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+						홍길동
+						</td>
+						<td>
+						8.0
+						</td>
+					</tr>
+					<tr>
+						<td>
+						홍길삼
+						</td>
+						<td>
+						8.0
+						</td>
+					</tr>
+					<tr>
+						<td>
+						홍길일
+						</td>
+						<td>
+						8.0
+						</td>
+					</tr>
+					<tr>
+						<td>
+						합계
+						</td>
+						<td>
+						24.0
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div> 
 	</div>
 </body>
 </html>

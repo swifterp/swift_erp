@@ -17,7 +17,6 @@
 <style type="text/css"> /* 테이블 선에 색상주기  */
   .line{border-bottom: 1px solid #AAA;}
 </style>
-
 <style> /* 테이블 선에 투명도 주기  */
   .Transparency{border-right: none;
    				border-left:none;
@@ -261,13 +260,13 @@ input {
 			</ul>
 		</nav>
 	</div>
-	<div style="width: 65%;"  class="contents">
+	<div style="padding-right: 20%;"  class="contents">
 		<table class="table" style=" text-align: left; background-color: #e0e0e0;" >
 			<thead>
 			</thead>
 			<tbody>
 				<tr>
-					<td class="line" style="width:150px;">
+					<td class="line" style="width:150px; text-align: left;">
 						기준일자
 					</td>
 					<td class="line" style="text-align: left;" colspan="2">
@@ -279,7 +278,7 @@ input {
 					</td>
 				</tr>
 				<tr>
-					<td class="line" style="width:150px;">
+					<td class="line" style="width:150px; text-align: left;">
 						근태일자
 					</td>
 					<td class="line" style="text-align: left;" colspan="2">
@@ -291,7 +290,7 @@ input {
 					</td>
 				</tr>
 				<tr>
-					<td class="line">검색조건1</td>
+					<td class="line" style="text-align: left;">검색조건1</td>
 					<td class="line" style="width: 100px; vertical-align: middle;">
 						<div class="input-group" style="width: 100px">
 							<select class="custom-select" id="Search_1">
@@ -301,7 +300,7 @@ input {
 							</select>
 						</div>
 					</td>
-					<td class="line" >
+					<td class="line" style="text-align: left;">
 						<input type="text" class="form-control input-sm"
 							   style="width:150px; height: 50%; display: inline-block">
 						<span>
@@ -313,7 +312,7 @@ input {
 					</td>
 				</tr>
 				<tr>
-					<td class="line">검색조건2</td>
+					<td class="line" style="text-align: left;">검색조건2</td>
 					<td class="line" style="vertical-align: middle;">
 						<div class="input-group" style="width: 100px;">
 							<select class="custom-select" id="Search_2">
@@ -323,7 +322,7 @@ input {
 							</select>
 						</div>
 					</td>
-					<td class="line">
+					<td class="line" style="text-align: left;">
 						<input type="text" class="form-control input-sm"
 							   style="width:150px; height: 50%; display: inline-block">
 						<span>
@@ -335,7 +334,7 @@ input {
 					</td>
 				</tr>
 				<tr>
-					<td class="line">검색조건3</td>
+					<td class="line" style="text-align: left;">검색조건3</td>
 					<td class="line" style="vertical-align: middle;">
 						<div class="input-group" style="width: 100px">
 							<select class="custom-select" id="Search_3">
@@ -345,7 +344,7 @@ input {
 							</select>
 						</div>
 					</td>
-					<td class="line">
+					<td class="line" style="text-align: left;">
 						<input type="text" class="form-control input-sm"
 							   style="width:150px; height: 50%; display: inline-block">
 						<span>

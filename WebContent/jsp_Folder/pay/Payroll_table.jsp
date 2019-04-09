@@ -3,14 +3,75 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 급여집계표 -->
+<style type="text/css"> /* 테이블 선에 색상주기  */
+  .line{border-bottom: 1px solid #AAA;}
+</style>
+<style> /* 테이블 선에 투명도 주기  */
+  .Transparency{border-right: none;
+   				border-left:none;
+				border-top:none;
+				border-bottom:none;
+  				}
+</style>
+<style>
+  .line2{border-bottom: 1px solid #fff;}
+</style>
+<style>
+	.a{
+		color: blue;
+	}
+	.a:hover{
+		color: blue;
+		text-decoration: underline;
+	}
+</style>
+<style>
+	.main_di{
+		display: inline-block;
+	}
+</style>
+<script>
+	$(function() {
+		$("#datepicker").datepicker(
+			{
+				showOn : "both",
+				buttonImage: "../../images/btn_calendar.png", 
+				buttonImageOnly : true,
+				dateFormat : "yy/mm/dd",
+				changeMonth : true,
+				dayNames : [ '월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일' ],
+				dayNamesMin : [ '월', '화', '수', '목', '금', '토', '일' ],
+				monthNamesShort : [ '1', '2', '3', '4', '5', '6', '7', '8',	'9', '10', '11', '12' ],
+				monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월' ]
+			});
+	});
+</script>
+<script>
+	$(function() {
+		$("#datepicker2").datepicker(
+			{
+				showOn : "both",
+				buttonImage: "../../images/btn_calendar.png", 
+				buttonImageOnly : true,
+				dateFormat : "yy/mm/dd",
+				changeMonth : true,
+				dayNames : [ '월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일' ],
+				dayNamesMin : [ '월', '화', '수', '목', '금', '토', '일' ],
+				monthNamesShort : [ '1', '2', '3', '4', '5', '6', '7', '8',	'9', '10', '11', '12' ],
+				monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월' ]
+			});
+	});
+</script>
 </head>
 <body>
 	<!-- 네비게이션 -->
@@ -69,14 +130,14 @@
 				</li>
 				<li>
 					<a data-toggle="collapse"
-					data-target="#group2" aria-expanded="false" href="Payroll.jsp">급여작업</a>
+					data-target="#group2" aria-expanded="false" href="#">급여작업</a>
 					<ul class="collapse depth2" id="group2">
 						<li><a href="Payroll.jsp">급여계산/대장</a></li>
 						<li><a href="Daily_work.jsp">일별근무기록등록</a></li>
 					</ul>
 				</li>
-				<li><a class="active" data-toggle="collapse"
-					data-target="#group3" aria-expanded="false" href="#">출력물</a>
+				<li><a  class="active" data-toggle="collapse"
+					data-target="#group3" aria-expanded="false" href="Specification.jsp">출력물</a>
 					<ul class="collapse in depth2" id="group3">
 						<li><a href="Specification.jsp ">명세서인쇄</a></li>
 						<li><a href="Individual_benefits.jsp ">개인별급여내역인쇄</a></li>
@@ -87,6 +148,223 @@
 				</li>
 			</ul>
 		</nav>
+	</div>
+		<div style="width: 1000px;"  class="contents">
+		<table class="table" style=" text-align: left; background-color: #e0e0e0;" >
+			<thead>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="line" style="width:150px; text-align: left;">
+						기준월 (귀속연월)
+					</td>
+					<td class="line" style="text-align: left;">
+						<input type="text" id="datepicker" class="form-control input-sm"
+						style="width: 200px; height: 100%; display: inline-block;">
+						&nbsp;&nbsp;~&nbsp;&nbsp;
+						<input type="text" id="datepicker2" class="form-control input-sm"
+						style="width: 200px; height: 100%; display: inline-block">
+					</td>
+				</tr>
+				<tr>
+					<td class="line" style="text-align: left;">
+						검색조건1
+					</td>
+					<td class="line" style="text-align: left;">
+						<div class="main">
+							<div class="input-group main_di">
+								<select class="custom-select" id="Search_1">
+									<option value="user">사원</option>
+									<option value="dept">부서</option>
+									<option value="project">프로젝트</option>
+									<option value="rank">직급</option>
+									<option value="salary_degree">급여차수</option>
+									<option value="business">원천세사업장</option>
+								</select>
+							</div>
+							&nbsp;
+							<div class="main_di">
+								<input type="text" style="width: 100px;">
+								<span>
+									<button type="button"></button>
+								</span>
+								<input type="text" style="width: 100px">
+							</div>
+							&nbsp;
+							<div class="radio main_di" style="margin: 0px;">
+								<label> 
+									<input type="radio" name="optionsRadios"
+										   id="optionsRadios1" value="option1">
+										      코드순
+								</label>
+								&nbsp;
+								<label>
+									<input type="radio" name="optionsRadios"
+										   id="optionsRadios2" value="option2">
+										      코드명순
+								</label>
+								&nbsp;
+								<label> 
+									<input type="radio" name="optionsRadios"
+										   id="optionsRadios3" value="option3">
+									              금액순
+								</label>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="line" style="text-align: left;">
+						검색조건2
+					</td>
+					<td class="line" style="text-align: left;">
+						<div class="main">
+							<div class="input-group main_di">
+								<select class="custom-select" id="Search_2">
+									<option value="not_data">없음=====</option>
+									<option value="user">사원</option>
+									<option value="dept">부서</option>
+									<option value="project">프로젝트</option>
+									<option value="rank">직급</option>
+									<option value="salary_degree">급여차수</option>
+									<option value="business">원천세사업장</option>
+									<option value="monthly">월별</option>
+									<option value="Yearly">년별</option>
+								</select>
+							</div>
+							&nbsp;
+							<div class="main_di">
+								<input type="text" style="width: 100px;">
+								<span>
+									<button type="button"></button>
+								</span>
+								<input type="text" style="width: 100px">
+							</div>
+							&nbsp;
+							<div class="radio main_di" style="margin: 0px;">
+								<label> 
+									<input type="radio" name="optionsRadios"
+										   id="optionsRadios1" value="option1">
+										      코드순
+								</label>
+								&nbsp;
+								<label>
+									<input type="radio" name="optionsRadios"
+										   id="optionsRadios2" value="option2">
+										      코드명순
+								</label>
+								&nbsp;
+								<label> 
+									<input type="radio" name="optionsRadios"
+										   id="optionsRadios3" value="option3">
+									              금액순
+								</label>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="line" style="text-align: left;">
+						검색조건1
+					</td>
+					<td class="line" style="text-align: left;">
+						<div class="main">
+							<div class="input-group main_di">
+								<select class="custom-select" id="Search_3">
+									<option value="not_data">없음=====</option>
+									<option value="user">사원</option>
+									<option value="dept">부서</option>
+									<option value="project">프로젝트</option>
+									<option value="rank">직급</option>
+									<option value="salary_degree">급여차수</option>
+									<option value="business">원천세사업장</option>
+									<option value="monthly">월별</option>
+									<option value="Yearly">년별</option>
+								</select>
+							</div>
+							&nbsp;
+							<div class="main_di">
+								<input type="text" style="width: 100px;">
+								<span>
+									<button type="button"></button>
+								</span>
+								<input type="text" style="width: 100px">
+							</div>
+							&nbsp;
+							<div class="radio main_di" style="margin: 0px;">
+								<label> 
+									<input type="radio" name="optionsRadios"
+										   id="optionsRadios1" value="option1">
+										      코드순
+								</label>
+								&nbsp;
+								<label>
+									<input type="radio" name="optionsRadios"
+										   id="optionsRadios2" value="option2">
+										      코드명순
+								</label>
+								&nbsp;
+								<label> 
+									<input type="radio" name="optionsRadios"
+										   id="optionsRadios3" value="option3">
+									              금액순
+								</label>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="line" style="text-align: left;">
+						기타
+					</td>
+					<td class="line" style="text-align: left; margin: 0px">
+						<input type="checkbox" id="Other-checkbox1" class="custom-control-input"
+							   style="vertical-align: middle; margin: 0px">
+						<label class="custom-control-label" for="Other-checkbox" style="margin: 0px">
+						결재방표시
+						</label>
+						&nbsp;
+						<input type="checkbox" id="Other-checkbox2" class="custom-control-input"
+							   style="vertical-align: middle; margin: 0px">
+						<label class="custom-control-label" for="Other-checkbox" style="margin: 0px">
+						코드포함
+						</label>
+						&nbsp;
+						<input type="checkbox" id="Other-checkbox3" class="custom-control-input"
+							   style="vertical-align: middle; margin: 0px">
+						<label class="custom-control-label" for="Other-checkbox" style="margin: 0px">
+						비율(%)
+						</label>
+						&nbsp;
+						<input type="checkbox" id="Other-checkbox4" class="custom-control-input"
+							   style="vertical-align: middle; margin: 0px">
+						<label class="custom-control-label" for="Other-checkbox" style="margin: 0px">
+						퇴사자포함
+						</label>
+						&nbsp;
+						<input type="checkbox" id="Other-checkbox5" class="custom-control-input"
+							   style="vertical-align: middle; margin: 0px">
+						<label class="custom-control-label" for="Other-checkbox" style="margin: 0px">
+						가로
+						</label>
+					</td>
+				</tr>
+				<tr>
+					<td class="line" style="text-align: left;">
+						간편검색
+					</td>
+					<td class="line" style="text-align: left;">
+						<a class="a">금월</a>&nbsp;
+						<a class="a">전월</a>&nbsp;
+						<a class="a">당년도</a>&nbsp;
+						<a class="a">전년도</a>&nbsp;
+						<a class="a">종료월</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<input type="submit" class="btn btn-primary pull-left" value="검색">
 	</div>
 </body>
 </html>

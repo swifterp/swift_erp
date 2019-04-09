@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -90,74 +89,75 @@
 			</ul>
 		</nav>
 	</div>
-	<div style="width: 65%; outline: 1px solid; padding: 20px 20px 400px 20px; 
-		margin-"  class="contents">
-		<table class="table Transparency">
-			<thead>
-				<tr>
-					<td  class="line2" colspan="2" style="text-align: center; font-size: 20pt;">
-						근태현황
-					</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td style="text-align: left;">
-						회사명 : (주)SWIFT
-					</td>
-					<td style="text-align: right;">
-						<input type="text" style="width: 80px">
-						~
-						<input type="text" style="width: 80px">
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<table class="table" style="margin: auto; text-align: center;">
-			<thead>
-				<tr style="background-color: #eee">
-					<td style="width: 100px"> 전표일자
-					</td>
-					<td> 부서명
-					</td>
-					<td> 직급
-					</td>
-					<td> 사원번호
-					</td>
-					<td> 사원명
-					</td>
-					<td style="width: 120px"> 근태종류
-					</td>
-					<td style="width: 120px"> 근태시간
-					</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td style="color: blue; text-decoration:  underline;"> 
-						20190226-1
-					</td>
-					<td>
-						연구개발
-					</td>
-					<td>
-						사원
-					</td>
-					<td>
-						101
-					</td>
-					<td>
-						홍길동
-					</td>
-					<td>
-						예비군
-					</td>
-					<td>
-						0
-					</td>
-				</tr>
-			</tbody>
-		</table>
+	<div style="width: 1000px;" class="contents">
+		<div style="outline: 1px solid; padding: 20px 20px 300px 20px ">
+			<table class="table Transparency">
+				<thead>
+					<tr>
+						<td  class="line2" colspan="2" style="text-align: center; font-size: 20pt;">
+							근태현황
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="text-align: left;">
+							회사명 : (주)SWIFT
+						</td>
+						<td style="text-align: right;">
+							<input type="text" style="width: 80px">
+							~
+							<input type="text" style="width: 80px">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table" style="margin: auto; text-align: center;">
+				<thead>
+					<tr style="background-color: #eee">
+						<td style="width: 100px"> 전표일자
+						</td>
+						<td> 부서명
+						</td>
+						<td> 직급
+						</td>
+						<td> 사원번호
+						</td>
+						<td> 사원명
+						</td>
+						<td style="width: 120px"> 근태종류
+						</td>
+						<td style="width: 120px"> 근태시간
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="color: blue; text-decoration:  underline;"> 
+							20190226-1
+						</td>
+						<td>
+							연구개발
+						</td>
+						<td>
+							사원
+						</td>
+						<td>
+							101
+						</td>
+						<td>
+							홍길동
+						</td>
+						<td>
+							예비군
+						</td>
+						<td>
+							0
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 </html>

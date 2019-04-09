@@ -90,137 +90,137 @@
 			</ul>
 		</nav>
 	</div>
-	<div style="width: 65%; outline: 1px solid; padding: 20px 20px 400px 20px;"
-		  class="contents">
-		<table class="table Transparency">
-			<thead>
-				<tr>
-					<td  class="line2"  style="text-align: center; font-size: 20pt;">
-						휴가잔여일수현황
-					</td>
-				</tr>
-			</thead>
-			<tbody >
-				<tr>
-					<td class="line2" style="text-align: left;">
-						회사명 : (주)SWIFT
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<table class="table" style="margin: auto; text-align: center;">
-			<thead>
-				<tr style="background-color: #eee">
-					<td style="width: 100px"> 휴가코드
-					</td>
-					<td> 휴가명
-					</td>
-					<td> 부서명
-					</td>
-					<td> 사원번호
-					</td>
-					<td> 사원명
-					</td>
-					<td> 휴가일수
-					</td>
-					<td> 휴사사용일수
-					</td>
-					<td> 휴사잔여일수
-					</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						20150
-					</td>
-					<td>
-						2015연차
-					</td>
-					<td>
-						영업교육팀
-					</td>
-					<td>
-						003
-					</td>
-					<td>
-						홍길순
-					</td>
-					<td>
-						6.00
-					</td>
-					<td>
-						2.00
-					</td>
-					<td>
-						4.00
-					</td>
-				</tr>
-				<tr>
-					<td>
-						20150
-					</td>
-					<td>
-						2015연차
-					</td>
-					<td>
-						영업교육팀
-					</td>
-					<td>
-						005
-					</td>
-					<td>
-						이현구
-					</td>
-					<td>
-						16.00
-					</td>
-					<td>
-						0.00
-					</td>
-					<td>
-						16.00
-					</td>
-				</tr>
-				<tr>
-					<td>
-						20160
-					</td>
-					<td>
-						2016연차
-					</td>
-					<td>
-						영업교육팀
-					</td>
-					<td>
-						003
-					</td>
-					<td>
-						홍길순
-					</td>
-					<td>
-						15.00
-					</td>
-					<td>
-						0.00
-					</td>
-					<td>
-						15.00
-					</td>
-				</tr>
-				<tr>
-					<td colspan="5">합계
-					</td>
-					<td>37.00
-					</td>
-					<td>2.00
-					</td>
-					<td>35.00
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<br> 
+	<div style="width: 1000px;" class="contents">
+		<div style="outline: 1px solid; padding: 20px 20px 300px 20px ">
+			<table class="table Transparency">
+				<thead>
+					<tr>
+						<td  class="line2"  style="text-align: center; font-size: 20pt;">
+							휴가잔여일수현황
+						</td>
+					</tr>
+				</thead>
+				<tbody >
+					<tr>
+						<td class="line2" style="text-align: left;">
+							회사명 : (주)SWIFT
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table" style="margin: auto; text-align: center;">
+				<thead>
+					<tr style="background-color: #eee">
+						<td style="width: 100px"> 휴가코드
+						</td>
+						<td> 휴가명
+						</td>
+						<td> 부서명
+						</td>
+						<td> 사원번호
+						</td>
+						<td> 사원명
+						</td>
+						<td> 휴가일수
+						</td>
+						<td> 휴사사용일수
+						</td>
+						<td> 휴사잔여일수
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							20150
+						</td>
+						<td>
+							2015연차
+						</td>
+						<td>
+							영업교육팀
+						</td>
+						<td>
+							003
+						</td>
+						<td>
+							홍길순
+						</td>
+						<td>
+							6.00
+						</td>
+						<td>
+							2.00
+						</td>
+						<td>
+							4.00
+						</td>
+					</tr>
+					<tr>
+						<td>
+							20150
+						</td>
+						<td>
+							2015연차
+						</td>
+						<td>
+							영업교육팀
+						</td>
+						<td>
+							005
+						</td>
+						<td>
+							이현구
+						</td>
+						<td>
+							16.00
+						</td>
+						<td>
+							0.00
+						</td>
+						<td>
+							16.00
+						</td>
+					</tr>
+					<tr>
+						<td>
+							20160
+						</td>
+						<td>
+							2016연차
+						</td>
+						<td>
+							영업교육팀
+						</td>
+						<td>
+							003
+						</td>
+						<td>
+							홍길순
+						</td>
+						<td>
+							15.00
+						</td>
+						<td>
+							0.00
+						</td>
+						<td>
+							15.00
+						</td>
+					</tr>
+					<tr>
+						<td colspan="5">합계
+						</td>
+						<td>37.00
+						</td>
+						<td>2.00
+						</td>
+						<td>35.00
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 
 </body>

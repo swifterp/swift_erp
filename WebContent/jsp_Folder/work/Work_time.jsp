@@ -12,6 +12,9 @@
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style>
+	table td {text-align:left;}
+</style>
 <script>
 	function Work_Search(){
 		var select = document.getElementById("Work_on_time").value;
@@ -169,70 +172,69 @@ input {
 				</li>
 			</ul>
 		</nav>
-	
-		<div class="contents">
-			<table class="table" style=" margin: auto; text-align: left;">
-				<thead>
-				</thead>
-				<tbody>
-					<tr>
-						<td style="width:90px; vertical-align: middle;">기간</td>
-						<td  colspan="2">
-						<input type="text" id="datepicker" class="form-control input-sm"
-							style="width:170px; height: 50%; display: inline-block">
-						&nbsp;&nbsp;~&nbsp;&nbsp;
-						<input type="text" id="datepicker2"	class="form-control input-sm"
-							style="width:170px; height: 50%; display: inline-block"></td>
-						<td style="width:220px;"></td>
-						<td colspan="4"></td>
-					<tr>
-						<td style="vertical-align: middle;">사원명</td>
-						<td colspan="7">
-							<input type="button" class="img-button" data-toggle="modal" data-target="#user_name">
-							<input type="text" class="form-control input-sm"
-								   style="width:80%; height: 50%; display: inline-block">
-						</td>
-					</tr>
-					<tr>
-						<td>부서</td>
-						<td colspan="7">
-							<input type="button" class="img-button" data-toggle="modal" data-target="#user_name">
-							<input type="text" class="form-control input-sm"
-								   style="width:80%; height: 50%; display: inline-block">
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2" style="vertical-align: middle;">
-							<div class="input-group" >
-								<select class="custom-select" id="Work_on_time">
-									<option value="Work_time(on).jsp">근무시간현황</option>
-								</select>
-							</div>
-						</td>
-						<td colspan="6" style=" vertical-align: middle;">
-							<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-							  <div class="btn-group mr-2" role="group" aria-label="First group">
-							    <text type="button" class="btn btn-sm">금일</text>
-							    <text type="button" class="btn btn-sm">전일</text>
-							    <text type="button" class="btn btn-sm">금주(~오늘)</text>
-							    <text type="button" class="btn btn-sm">전주</text>
-							    <text type="button" class="btn btn-sm">금월(~오늘)</text>
-							    <text type="button" class="btn btn-sm">전월</text>
-							    <text type="button" class="btn btn-sm">종료일</text>
-							  </div>
-							   <div class="btn-group mr-2" role="group" aria-label="Second group">
-							  	<text type="button" class="btn btn-sm">설정</text>
-							    <text type="button" class="btn btn-sm">다시작성</text>
-							  </div>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<br> 
-			<input type="submit" id="Work_Search" class="btn btn-primary pull-right"
-				value="검색" onClick="Work_Search()">
-		</div>
+	</div>
+	<div style="width: 1000px" class="contents">
+		<table class="table" style=" margin: auto; text-align: left;">
+			<thead>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="width:90px; vertical-align: middle;">기간</td>
+					<td  colspan="2">
+					<input type="text" id="datepicker" class="form-control input-sm"
+						style="width:170px; height: 50%; display: inline-block">
+					&nbsp;&nbsp;~&nbsp;&nbsp;
+					<input type="text" id="datepicker2"	class="form-control input-sm"
+						style="width:170px; height: 50%; display: inline-block"></td>
+					<td style="width:220px;"></td>
+					<td colspan="4"></td>
+				<tr>
+					<td style="vertical-align: middle;">사원명</td>
+					<td colspan="7">
+						<input type="button" class="img-button" data-toggle="modal" data-target="#user_name">
+						<input type="text" class="form-control input-sm"
+							   style="width:80%; height: 50%; display: inline-block">
+					</td>
+				</tr>
+				<tr>
+					<td>부서</td>
+					<td colspan="7">
+						<input type="button" class="img-button" data-toggle="modal" data-target="#user_name">
+						<input type="text" class="form-control input-sm"
+							   style="width:80%; height: 50%; display: inline-block">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="vertical-align: middle;">
+						<div class="input-group" >
+							<select class="custom-select" id="Work_on_time">
+								<option value="Work_time(on).jsp">근무시간현황</option>
+							</select>
+						</div>
+					</td>
+					<td colspan="6" style=" vertical-align: middle;">
+						<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+						  <div class="btn-group mr-2" role="group" aria-label="First group">
+						    <text type="button" class="btn btn-sm">금일</text>
+						    <text type="button" class="btn btn-sm">전일</text>
+						    <text type="button" class="btn btn-sm">금주(~오늘)</text>
+						    <text type="button" class="btn btn-sm">전주</text>
+						    <text type="button" class="btn btn-sm">금월(~오늘)</text>
+						    <text type="button" class="btn btn-sm">전월</text>
+						    <text type="button" class="btn btn-sm">종료일</text>
+						  </div>
+						   <div class="btn-group mr-2" role="group" aria-label="Second group">
+						  	<text type="button" class="btn btn-sm">설정</text>
+						    <text type="button" class="btn btn-sm">다시작성</text>
+						  </div>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br> 
+		<input type="submit" id="Work_Search" class="btn btn-primary pull-right"
+			value="검색" onClick="Work_Search()">
 	</div>
 <!-- Modal 소스코드  -->	
 <div class="modal fade" id="user_name" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

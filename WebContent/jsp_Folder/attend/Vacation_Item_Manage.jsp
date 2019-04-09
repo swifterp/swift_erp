@@ -8,7 +8,6 @@
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -194,7 +193,7 @@ button {
 			</thead>
 			<tbody>
 				<tr>
-					<td class="line" style="width:150px;">
+					<td class="line" style="width:150px; text-align: left;">
 						기준일자
 					</td>
 					<td class="line" style="text-align: left;">
@@ -206,24 +205,24 @@ button {
 					</td>
 				</tr>
 				<tr>
-					<td class="line">휴가코드</td>
-					<td class="line">
+					<td class="line" style="text-align: left;">휴가코드</td>
+					<td class="line" style="text-align: left;">
 							<input type="text" class="form-control input-sm"
 								   style="width:85%; height: 50%; display: inline-block">
 					</td>
 				</tr>
 				<tr>
-					<td class="line">휴가명</td>
-					<td class="line">
+					<td class="line" style="text-align: left;">휴가명</td>
+					<td class="line" style="text-align: left;">
 							<input type="text" class="form-control input-sm"
 								   style="width:85%; height: 50%; display: inline-block">
 					</td>
 				</tr>
 				<tr>
-					<td class="line">
+					<td class="line" style="text-align: left;">
 						사용구분
 					</td>
-					<td class="line">
+					<td class="line"  style="text-align: left;">
 						<div class="radio">
 							<label> <input type="radio" name="optionsRadios"
 								id="optionsRadios1" value="option1" checked>
@@ -243,10 +242,10 @@ button {
 					</td>
 				</tr>
 				<tr>
-					<td class="line">
+					<td class="line"  style="text-align: left;">
 						적요
 					</td>
-					<td class="line">
+					<td class="line"  style="text-align: left;">
 						<input type="text" class="form-control input-sm"
 							   style="width:85%; height: 50%; display: inline-block">
 					</td>

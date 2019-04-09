@@ -8,7 +8,6 @@
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -152,7 +151,7 @@ button {
 </head>
 <body>
 	<!-- 네비게이션 -->
-	<nav class="navbar navbar-default" style="z-index: 1">
+	<nav class="navbar navbar-default" style="z-index: 2">
 		<!-- 네비게이션 헤더 -->
 		<div class="navbar-header">
 			<!-- 네비게이션 오른쪽 헤더 -->
@@ -225,7 +224,7 @@ button {
 			</ul>
 		</nav>
 	</div>
-	<div style="width: 65%;"  class="contents">
+	<div style="padding-right: 20%"  class="contents">
 		<table class="table" style=" text-align: left;  background-color: #e0e0e0">
 			<thead>
 			</thead>
@@ -245,7 +244,7 @@ button {
 				<tr>
 					<td class="line">사원명</td>
 					<td class="line" >
-						<div class="input-group">
+						<div class="input-group" style="z-index: 0">
 							<span class="input-group-btn">
 								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#user_name"></button>
 							</span>
@@ -257,7 +256,7 @@ button {
 				<tr>
 					<td class="line">부서</td>
 					<td class="line" >
-						<div class="input-group">
+						<div class="input-group" style="z-index: 0">
 							<span class="input-group-btn">
 								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#dept_name"></button>
 							</span>
@@ -270,7 +269,7 @@ button {
 					<td class="line">
 						프로젝트
 					</td>
-					<td class="line" >
+					<td class="line" style="text-align: left;" >
 						<div class="radio">
 							<label> <input type="radio" name="optionsRadios"
 								id="optionsRadios1" value="option1" checked>
@@ -294,7 +293,7 @@ button {
 						근태항목
 					</td>
 					<td class="line" >
-						<div class="input-group">
+						<div class="input-group" style="z-index: 0">
 							<span class="input-group-btn">
 								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#Working_attitude"></button>
 							</span>
@@ -308,7 +307,7 @@ button {
 						휴가항목
 					</td>
 					<td class="line" >
-						<div class="input-group">
+						<div class="input-group" style="z-index: 0">
 							<span class="input-group-btn">
 								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#vacation"></button>
 							</span>

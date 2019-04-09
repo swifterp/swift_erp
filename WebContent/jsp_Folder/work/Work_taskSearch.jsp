@@ -180,106 +180,103 @@ input {
 				</li>
 			</ul>	
 		</nav>
-		<div class="contents">
-			<a class="btn btn-default" href="Work_task.jsp" style="width: 150px">업무일지 조회</a>
-			<a class="btn btn-primary" href="#" style="width: 150px">상세조회</a>
-			<p/> 
-			<table class="table table-striped" style="margin: auto; text-align: left;">
-				<tbody>
-					<tr>
-						<td style="width: 90px">기간</td>
-						<td style="width: 100px">
-						<input type="text" id="datepicker" class="form-control input-sm" 
-								style="width: 130px; height:50%; display:inline-block"></td>
-						<td style="width: 15px; vertical-align: middle; padding: 0px;">~</td>
-						<td style="width: 50px">
-						<input type="text" id="datepicker2" class="form-control input-sm" 
-								style="width: 130px; height:50%; display:inline-block"></td>
-						<td style="width: 5px;"></td>
-						<td style="width: 100px"></td>
-						<td style="width: 5%"></td>
-						<td colspan="2" style="width: 5%"></td>
-					</tr>
-					<tr>
-						<td>작성자</td>
-						<td colspan="2">
-						<input type="text" class="form-control input-sm" style=" width:160px; height:50%; display:inline-block"/>
-						<input type="button" class="img-button" data-toggle="modal" data-target="#user_name"></td>
-						<td>
-						<input type="text" class="form-control input-sm"  style="width:160px; height:50%; display:inline-block"/></td>
-						<td colspan="3"></td>
-						<td colspan="2"></td>
-					</tr>
-					<tr>
-						<td>부서</td>
-						<td colspan="2">
-						<input type="text" class="form-control input-sm" style=" width:160px; height:50%; display:inline-block"/>
-						<input type="button" class="img-button" data-toggle="modal" data-target="#dept_name"></td>
-						<td>
-						<input type="text" class="form-control input-sm" style="width:160px; height:50%; display:inline-block"/></td>
-						<td colspan="3"></td>
-						<td colspan="2"></td>
-					</tr>
-					<tr>
-						<td>프로젝트</td>
-						<td colspan="2">
-						<input type="text" class="form-control input-sm" style=" width:160px; height:50%; display:inline-block"/>
-						<input type="button" class="img-button" data-toggle="modal" data-target="#project"></td>
-						<td>
-						<input type="text" class="form-control input-sm" style="width:160px; height:50%; display:inline-block"/></td>
-						<td colspan="3"></td>
-						<td colspan="2"></td>
-					</tr>
-					<tr>
-						<td>거래처</td>
-						<td colspan="2">
-						<input type="text" class="form-control input-sm" style=" width:160px; height:50%; display:inline-block">
-						<input type="button" class="img-button" data-toggle="modal" data-target="#deal_name"></td>
-						<td>
-						<input type="text" class="form-control input-sm" style="width:160px; height:50%;  display:inline-block"/></td>
-						<td style="vertical-align: middle; padding: 0px;">~</td>
-						<td>
-						<input type="text" class="form-control input-sm" style=" width:160px; height:50%; display:inline-block">
-						<input type="button" class="img-button" data-toggle="modal" data-target="#deal_name"></td>
-						<td>
-						<input type="text" class="form-control input-sm" style="width:160px; height:50%;  display:inline-block"/></td>
-						<td colspan="2"></td>
-					</tr>
-					<tr>
-						<td>파일명</td>
-						<td colspan="8">
-							<a class="btn btn-primary btn-sm" style="height:50%;" href="#">파일선택</a>
-							<input type="text" class="form-control input-sm" style="width:50%; height:50%; display:inline-block"/>
-						</td>
-					</tr>
-					<tr>
-						<td>검색조건</td>
-						<td> 
-							<div class="input-group" style="width: 100px">
-								<select class="custom-select" id="WorkOnOffTime">
-									<option id="Work_All" value="#">전체</option>
-									<option id="Work_Mon" value="#">매주 월요일</option>
-									<option id="Work_Tue" value="#">매주 화요일</option>
-									<option id="Work_Wed" value="#">매주 수요일</option>
-									<option id="Work_Thu" value="#">매주 목요일</option>
-									<option id="Work_Fri" value="#">매주 금요일</option>
-									<option id="Work_Sat" value="#">매주 토요일</option>
-									<option id="Work_Sun" value="#">매주 일요일</option>
-								</select>
-							</div>
-						</td>
-						<td colspan="7"></td>
-					</tr>
-				</tbody>
-			</table>
-			<br>
-			<input type="submit" class="btn btn-primary pull-right" value="검색">
-			<input type="submit" class="btn btn-default pull-right" value="다시작성">
-		</div>
 	</div>
-	
+	<div style="width: 1200px" class="contents">
+		<a class="btn btn-default" href="Work_task.jsp" style="width: 150px">업무일지 조회</a>
+		<a class="btn btn-primary" href="#" style="width: 150px">상세조회</a>
+		<p/> 
+		<table class="table table-striped" style="margin: auto;">
+			<tbody>
+				<tr>
+					<td style="width: 90px">기간</td>
+					<td style="width: 100px; text-align: left;" colspan="8">
+					<input type="text" id="datepicker" class="form-control input-sm" 
+							style="width: 130px; height:50%; display:inline-block">
+					&nbsp;&nbsp;~&nbsp;&nbsp;
+					<input type="text" id="datepicker2" class="form-control input-sm" 
+							style="width: 130px; height:50%; display:inline-block">
+					</td>
+				</tr>
+				<tr>
+					<td>작성자</td>
+					<td colspan="8" style="text-align: left;">
+					<input type="text" class="form-control input-sm" style=" width:160px; height:50%; display:inline-block"/>
+						<span>
+							<input type="button" class="img-button" data-toggle="modal" data-target="#user_name">
+						</span>	
+					&nbsp;&nbsp;
+					<input type="text" class="form-control input-sm"  style="width:160px; height:50%; display:inline-block"/></td>
+				</tr>
+				<tr>
+					<td>부서</td>
+					<td colspan="8" style="text-align: left;">
+					<input type="text" class="form-control input-sm" style=" width:160px; height:50%; display:inline-block"/>
+						<span>
+							<input type="button" class="img-button" data-toggle="modal" data-target="#dept_name">
+						</span>	
+					&nbsp;&nbsp;
+					<input type="text" class="form-control input-sm"  style="width:160px; height:50%; display:inline-block"/></td>
+				</tr>
+				<tr>
+					<td>프로젝트</td>
+					<td colspan="8" style="text-align: left;">
+					<input type="text" class="form-control input-sm" style=" width:160px; height:50%; display:inline-block"/>
+						<span>
+							<input type="button" class="img-button" data-toggle="modal" data-target="#project">
+						</span>	
+					&nbsp;&nbsp;
+					<input type="text" class="form-control input-sm"  style="width:160px; height:50%; display:inline-block"/></td>
+				</tr>
+				<tr>
+					<td>프로젝트</td>
+					<td colspan="8" style="text-align: left;">
+					<input type="text" class="form-control input-sm" style=" width:160px; height:50%; display:inline-block"/>
+						<span>
+							<input type="button" class="img-button" data-toggle="modal" data-target="#deal_name">
+						</span>	
+						&nbsp;&nbsp;
+					<input type="text" class="form-control input-sm"  style="width:160px; height:50%; display:inline-block"/>
+					&nbsp;&nbsp;~&nbsp;&nbsp;
+					<input type="text" class="form-control input-sm" style=" width:160px; height:50%; display:inline-block"/>
+						<span>
+							<input type="button" class="img-button" data-toggle="modal" data-target="#deal_name">
+						</span>	
+						&nbsp;&nbsp;
+					<input type="text" class="form-control input-sm"  style="width:160px; height:50%; display:inline-block"/>
+					</td>
+				</tr>
+				<tr>
+					<td>파일명</td>
+					<td colspan="8" style="text-align: left;">
+						<a class="btn btn-primary btn-sm" style="height:50%;" href="#">파일선택</a>
+						<input type="text" class="form-control input-sm" style="width:70%; height:50%; display:inline-block"/>
+					</td>
+				</tr>
+				<tr>
+					<td>검색조건</td>
+					<td> 
+						<div class="input-group" style="width: 100px;">
+							<select class="custom-select" id="WorkOnOffTime">
+								<option id="Work_All" value="#">전체</option>
+								<option id="Work_Mon" value="#">매주 월요일</option>
+								<option id="Work_Tue" value="#">매주 화요일</option>
+								<option id="Work_Wed" value="#">매주 수요일</option>
+								<option id="Work_Thu" value="#">매주 목요일</option>
+								<option id="Work_Fri" value="#">매주 금요일</option>
+								<option id="Work_Sat" value="#">매주 토요일</option>
+								<option id="Work_Sun" value="#">매주 일요일</option>
+							</select>
+						</div>
+					</td>
+					<td colspan="7"></td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<input type="submit" class="btn btn-primary pull-right" value="검색">
+		<input type="submit" class="btn btn-default pull-right" value="다시작성">
+	</div>
 	<!-- Modal 소스코드 -->
-	
 <div class="modal fade" id="user_name" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">

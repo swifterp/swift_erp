@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -90,121 +89,122 @@
 			</ul>
 		</nav>
 	</div>
-	<div style="width: 65%; outline: 1px solid; padding: 20px 20px 400px 20px;"
-		  class="contents">
-		<table class="table ">
-			<thead>
-				<tr>
-					<td  class="line2" style="text-align: center; font-size: 20pt;">
-						휴가사용일현황
-					</td>
-				</tr>
-			</thead>
-			<tbody >
-				<tr>
-					<td class="line2" style="text-align: left;">
-						회사명 : (주)SWIFT
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<table class="table" style="margin: auto; text-align: center;">
-			<thead>
-				<tr style="background-color: #eee">
-					<td style="width: 200px"> 전표번호
-					</td>
-					<td> 적요
-					</td>
-					<td> 휴가일수
-					</td>
-					<td> 휴가사용일수
-					</td>
-					<td> 휴가 잔여일수
-					</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-					</td>
-					<td> [휴가]
-					</td>
-					<td> 6.00
-					</td>
-					<td> 
-					</td>
-					<td>
-					</td>
-				</tr>
-				<tr>
-					<td> 2015/05/15-1
-					</td>
-					<td> 연차
-					</td>
-					<td> 
-					</td>
-					<td> 1.00
-					</td>
-					<td> 5.00
-					</td>
-				</tr>
-				<tr>
-					<td> 2015/05/15-1
-					</td>
-					<td> 연차
-					</td>
-					<td> 
-					</td>
-					<td> 1.00
-					</td>
-					<td> 4.00
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4">합계
-					</td>
-					<td> 
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<br>
-		<table class="table" style="margin: auto; text-align: center;">
-			<thead>
-				<tr style="background-color: #eee">
-					<td style="width: 200px"> 전표번호
-					</td>
-					<td> 적요
-					</td>
-					<td> 휴가일수
-					</td>
-					<td> 휴가사용일수
-					</td>
-					<td> 휴가 잔여일수
-					</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-					</td>
-					<td> [휴가]
-					</td>
-					<td> 6.00
-					</td>
-					<td> 
-					</td>
-					<td>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4">합계
-					</td>
-					<td> 
-					</td>
-				</tr>
-			</tbody>
-		</table>
+	<div style="width: 1000px;" class="contents">
+		<div style="outline: 1px solid; padding: 20px 20px 300px 20px ">
+			<table class="table ">
+				<thead>
+					<tr>
+						<td  class="line2" style="text-align: center; font-size: 20pt;">
+							휴가사용일현황
+						</td>
+					</tr>
+				</thead>
+				<tbody >
+					<tr>
+						<td class="line2" style="text-align: left;">
+							회사명 : (주)SWIFT
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table" style="margin: auto; text-align: center;">
+				<thead>
+					<tr style="background-color: #eee">
+						<td style="width: 200px"> 전표번호
+						</td>
+						<td> 적요
+						</td>
+						<td> 휴가일수
+						</td>
+						<td> 휴가사용일수
+						</td>
+						<td> 휴가 잔여일수
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+						</td>
+						<td> [휴가]
+						</td>
+						<td> 6.00
+						</td>
+						<td> 
+						</td>
+						<td>
+						</td>
+					</tr>
+					<tr>
+						<td> 2015/05/15-1
+						</td>
+						<td> 연차
+						</td>
+						<td> 
+						</td>
+						<td> 1.00
+						</td>
+						<td> 5.00
+						</td>
+					</tr>
+					<tr>
+						<td> 2015/05/15-1
+						</td>
+						<td> 연차
+						</td>
+						<td> 
+						</td>
+						<td> 1.00
+						</td>
+						<td> 4.00
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4">합계
+						</td>
+						<td> 
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<br>
+			<table class="table" style="margin: auto; text-align: center;">
+				<thead>
+					<tr style="background-color: #eee">
+						<td style="width: 200px"> 전표번호
+						</td>
+						<td> 적요
+						</td>
+						<td> 휴가일수
+						</td>
+						<td> 휴가사용일수
+						</td>
+						<td> 휴가 잔여일수
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+						</td>
+						<td> [휴가]
+						</td>
+						<td> 6.00
+						</td>
+						<td> 
+						</td>
+						<td>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4">합계
+						</td>
+						<td> 
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 </html>

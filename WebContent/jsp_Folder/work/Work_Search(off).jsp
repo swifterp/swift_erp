@@ -12,6 +12,9 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <title>Insert title here</title>
+<style>
+	table td {text-align:left;}
+</style>
 <style type="text/css"> /* 테이블 선에 색상주기  */
   .line{border-bottom: 1px solid #fff;
   		border-left: 1px solid #fff;
@@ -85,13 +88,13 @@
 			</ul>
 		</nav>
 	</div>
-	<div style="width: 60%;"  class="contents">
+	<div style="width: 1000px"  class="contents">
 		<table class="table line" style="margin: auto; text-align:center;">
 			<thead class="line">
 				<tr>
 					<td style="width: 100px">
 					</td>
-					<td style="font-size: 24px">
+					<td style="font-size: 24px; text-align: center;">
 						퇴근시간현황
 					</td>
 					<td style="width: 100px; vertical-align: bottom; ">

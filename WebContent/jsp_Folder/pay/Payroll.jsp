@@ -11,7 +11,6 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <!--
 
 추가 버튼 클릭 -> 팝업창 생성 -> 신고귀속 ~ 지급총액 입력 -> 팝업창 저장 버튼 클릭 -> row 자동 생성
@@ -19,33 +18,63 @@
 근무기록 확정, 금액 직접입력, 급여계산, 급여대장  input로 작성
 
 -->
+<style type="text/css">
+	.text-font{
+		font-size: 12px;
+	}
+</style>
 
 <script>
 var col = 9;
 var row = 2;
 $(function () {
 	$('#lblTable').empty();
-	var strTable = "<table id='set_table' class='table' style='margin: auto; text-align:center;'>";
+	var strTable
+	 = "<table id='set_table' class='table text-font' style='margin: auto; text-align:center;'>";
 	  for (var i = 0; i < row; i++) {
           strTable += "<tr>";
           for (var j = 0; j < col; j++) {
               if(i%2 == 0){
-	              if(j != 5 && j!= 6 && j!=7){
-		              strTable += "<td rowspan='2'>" + (i+1) + "r, " + (j + 1) + "</td>";
+	              if(j == 0){
+		              strTable += "<td rowspan='2'width='10%' >" + (i+1) + ", 신고귀속, " + (j + 1) + "</td>";
 	              }
-	              if(j == 5){
-	            	  strTable += "<td>" +  "근무기록 확정" + "</td>";
+	              else if(j == 1){
+	            	  strTable += "<td rowspan='2'width='10%' >" + (i+1) + ", 구분, " + (j + 1) + "</td>";
 	              }
-	              if(j == 6){
-	            	  strTable += "<td rowspan='2'>" +  "급여계산" + "</td>";
+	              else if(j == 2){
+	            	  strTable += "<td rowspan='2'width='15%' >" + (i+1) + ", 대장명칭, " + (j + 1) + "</td>";
 	              }
-	              if(j == 7){
-	            	  strTable += "<td rowspan='2'>" +  "급여대장" + "</td>";
+	              else if(j == 3){
+	            	  strTable += "<td rowspan='2'width='10%' >" + (i+1) + ", 지급일, " + (j + 1) + "</td>";
+	              }
+	              else if(j == 4){
+	            	  strTable += "<td rowspan='2'width='10%' >" + (i+1) + ", 지급연월, " + (j + 1) + "</td>";
+	              }
+	              else if(j == 5){
+	            	  strTable += "<td width='15%'>" +  "<a href='Payroll_records.jsp'>근무기록 확정" + "</td>";
+	              }
+	              else if(j == 6){
+	            	  strTable += "<td rowspan='2'width='10%'>" + 
+	            	  "<a href='Payroll_inquiry.jsp'>전체계산"+"<br>"+
+	            	  "<a href='Payroll_Salary_calculation.jsp'>개인별계산"+"<br>"+
+	            	  "수정"+ 
+	            	  "</td>";
+	              }
+	              else if(j == 7){
+	            	  strTable += "<td rowspan='2'width='10%'>" + 
+	            	  "<a href='Payroll_inquiry.jsp'>조회"+"<br>"+
+	            	  "<a href='Payroll_Print_statement.jsp'>명세서"+"<br>"+
+	            	  "확정"+"<br>"+
+	            	  "삭제" + 
+	            	  "</td>";            	  
+	              }
+	              else if(j == 8){
+	            	  strTable += "<td rowspan='2'width='10%' >" + (i+1) + ", 지급총액, " + (j + 1) + "</td>";
 	              }
               }
               else if(i%2 == 1){
                   if(j == 1){
-                      strTable += "<td>" +  "금액 직접입력" + "</td>";
+                      strTable += "<td>" +  "<a href='Payroll_Direct_input.jsp'>금액 직접입력" + "</td>";
                   }
               }
           }
@@ -56,11 +85,10 @@ $(function () {
 	$('#lblTable').append(strTable);
 });
 </script>
-
 </head>
 <body>
 	<!-- 네비게이션 -->
-	<nav class="navbar navbar-default" style="z-index: 1">
+	<nav class="navbar navbar-default" style="z-index: 1;">
 		<!-- 네비게이션 헤더-->
 		<div class="navbar-header">
 			<!-- 네비게이션 오른쪽 헤더-->
@@ -138,15 +166,15 @@ $(function () {
 		<table class="table" style="margin: auto; text-align:center;">
 			<thead>
 				<tr>
-					<td>신고귀속</td>
-					<td>구분</td>
-					<td>대장명칭</td>
-					<td>지급일</td>
-					<td>지급연월</td>
-					<td>사전작업</td>
-					<td>급여계산(인원)</td>
-					<td>급여대장</td>
-					<td>지급총액</td>
+					<td width="10%">신고귀속</td>
+					<td width="10%">구분</td>
+					<td width="15%">대장명칭</td>
+					<td width="10%">지급일</td>
+					<td width="10%">지급연월</td>
+					<td width="15%">사전작업</td>
+					<td width="10%">급여계산(인원)</td>
+					<td width="10%">급여대장</td>
+					<td width="10%">지급총액</td>
 				</tr>
 			</thead>
 			<tbody>

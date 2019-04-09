@@ -7,11 +7,13 @@
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style>
+	table td {text-align:left;}
+</style>
 <script>
 	$(function() {
 		$("#datepicker").datepicker({
@@ -157,52 +159,62 @@ input {
 				</li>
 			</ul>	
 		</nav>
-		<div class="contents">
-			<table class="table table-striped" style="margin: auto; text-align: left; ">
-				<tbody>
-					<tr>
-						<td>업무 보고일</td>
-						<td colspan="2">
-							<input type="text" id="datepicker" class="form-control input-sm" 
-								   style="width: 130px; height:50%; display:inline-block"></td>
-						<td>부서</td>
-						<td><input type="text" class="form-control input-sm" 
-								   style="width: 130px; height:50%; display:inline-block">
-							<input type="button" class="img-button" data-toggle="modal" data-target="#dept_name"></td>
-						<td style="width: 225px">
-						    <input type="text" class="form-control input-sm" 
-								   style="width: 150px; height:50%; display:inline-block"></td>
-					</tr>
-					<tr>
-						<td>거래처</td>
-						<td><input type="text" class="form-control input-sm" 
-							       style="width: 130px; height:50%; display:inline-block">
-							<input type="button" class="img-button" data-toggle="modal" data-target="#deal_name"></td>
-						<td style="width: 225px">
-							<input type="text" class="form-control input-sm" 
-								   style="width: 150px; height:50%; display:inline-block"></td>
-						<td>프로젝트</td>
-						<td><input type="text" class="form-control input-sm" 
-								   style="width: 130px; height:50%; display:inline-block">
+	</div>
+	<div style="width: 1300px" class="contents">
+		<table class="table table-striped" style="margin: auto; text-align: left; ">
+			<tbody>
+				<tr>
+					<td>업무 보고일</td>
+					<td colspan="2" style="text-align: left;">
+						<input type="text" id="datepicker" class="form-control input-sm" 
+							   style="width: 180px; height:50%; display:inline-block"></td>
+					<td>부서</td>
+					<td colspan="2" style="text-align: left;">
+						<input type="text" class="form-control input-sm" 
+							   style="width: 180px; height:50%; display:inline-block">
+						<samp>
+							<input type="button" class="img-button" data-toggle="modal" data-target="#dept_name">
+						</samp>	
+						&nbsp;&nbsp;
+					    <input type="text" class="form-control input-sm" 
+							   style="width: 180px; height:50%; display:inline-block">
+					</td>
+				</tr>
+				<tr>
+					<td>거래처</td>
+					<td  colspan="2" style="text-align: left;">
+						<input type="text" class="form-control input-sm" 
+						       style="width: 180px; height:50%; display:inline-block">
+						<samp>
+							<input type="button" class="img-button" data-toggle="modal" data-target="#deal_name">
+						</samp>	
+						&nbsp;&nbsp;
+						<input type="text" class="form-control input-sm" 
+							   style="width: 180px; height:50%; display:inline-block">
+					</td>
+					<td>프로젝트</td>
+					<td  colspan="2" style="text-align: left;">
+						<input type="text" class="form-control input-sm" 
+						       style="width: 180px; height:50%; display:inline-block">
+						<samp>
 							<input type="button" class="img-button" data-toggle="modal" data-target="#project">
-						<td><input type="text" class="form-control input-sm" 
-								   style="width: 150px; height:50%; display:inline-block"></td>
-					</tr>
-					<tr>
-						<td>첨부 파일</td>
-						<td colspan="5">
-							<a class="btn btn-primary" href="#">파일선택</a>
-							<input type="text" class="form-control" style="width:705px; display:inline-block"/>
-						   <!-- <div class="filebox filebox-primary">
-		파일첨부 코드				<input type="file" id="ex_file">
-								</div> 						--> 
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<br>
-			<input type="submit" class="btn btn-primary pull-right" value="등록완료">
-		</div>
+						</samp>	
+						&nbsp;&nbsp;
+						<input type="text" class="form-control input-sm" 
+							   style="width: 180px; height:50%; display:inline-block">
+					</td>
+				</tr>
+				<tr>
+					<td>첨부 파일</td>
+					<td colspan="5" style="text-align: left;">
+						<a class="btn btn-primary" href="#">파일선택</a>
+						<input type="text" class="form-control" style="width:705px; display:inline-block"/>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<input type="submit" class="btn btn-primary pull-right" value="등록완료">
 	</div>
 	<div class="modal fade" id="dept_name" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
