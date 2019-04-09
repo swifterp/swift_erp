@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>Welcome Page</title>
 <%@ include file="../common/ui_common.jsp" %>
-
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>

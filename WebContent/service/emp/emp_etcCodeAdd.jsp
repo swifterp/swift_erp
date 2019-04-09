@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.List, java.util.Map, java.util.HashMap" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="../common/ui_common.jsp" %>
+<%	List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list"); %>
 <style>
 	.etcCode li {float:left; width:120px; margin-left:4px;}
 </style> 
@@ -15,11 +17,12 @@ $(document).ready(function(){
 	    $.ajax({
 	        url : "../emp/test",
 	        type : "POST",
-	        cache : false,
+	        contentType : "application/json",
+	        
 	        success : function(response){
 	            var html = "";
 	            for(var i=0; i<response.length; i++){
-	                html += "<option value='"+response[i].versionInfo+"' label='"+response[i].versionInfo+"'/>";
+	                html += response[i];
 	            }
 	            $("#ff").html(html);
 	        }
@@ -68,7 +71,29 @@ $(document).ready(function(){
 						  <span class="input-group-addon" id="basic-addon2">직급이름</span>
 						  <input type="text" class="form-control" name="rank_name" placeholder="직급이름을 입력하세요" aria-describedby="basic-addon2" required />
 						</div>
-						<div id="ff"></div>
+						<table class="table" id="ff">
+							<thead>
+								<tr>
+									<th>부서코드</th>
+									<th>부서명</th>
+								</tr>
+							</thead>
+							<%
+								List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
+								if(lst != null){
+									for(int i=0;i<lst.size();i++){
+							%>
+							<tbody>
+								<tr>
+									<td><%= String.valueOf(lst.get(i).get("DEPTNO")) %></td>
+									<td><%= lst.get(i).get("DNAME") %></td>
+								</tr>
+							</tbody>
+							<%
+									}
+								} 
+							%>
+						</table>
 				      </div>
 					  <div class="modal-footer">
 			          	<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
@@ -138,5 +163,35 @@ $(document).ready(function(){
 			</form>
 		</div>
 	</div>
+	<script type="text/javascript">
+	var xhr5 = null;
+		
+		function insertRoom(){
+			xhr5 = createRequest(xhr5);
+			xhr5.onreadystatechange = function (){
+				
+				if(this.readyState == 4 && this.status == 200){
+					document.getElementById("chatlist").innerHTML = this.responseText;
+				}
+				
+			};
+			var tmp = "";
+			
+			for(var i=0;i<checkedArr.length;i++){
+				if(tmp == ""){}
+				else {
+					tmp = tmp + "&";
+				}
+				tmp = tmp + checkedArr[i]+"="+checkedArr[i];
+			}
+			tmp = tmp + "&me="+x;
+			var cnt = document.getElementById("chatroom_name_text").value;
+			tmp = tmp + "&title="+cnt
+					
+			xhr5.open("POST", "../chat/insertroom?", true);
+			xhr5.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
+			xhr5.send(tmp);
+		}
+	</script>
 </body>
 </html>

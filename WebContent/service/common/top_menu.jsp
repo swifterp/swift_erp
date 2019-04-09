@@ -7,8 +7,8 @@
 <title>Insert title here</title>
    <script>
 	$(function(){
-		$("li").click(function(){  
-	  		$("li").removeClass("active");
+		$(".tmenu li").click(function(){  
+	  		$(".tmenu li").removeClass("active");
 	  		$(this).addClass("active"); 
 		})
 	})
@@ -25,7 +25,7 @@
 		<!-- 네비게이션 본메뉴 -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<!-- 네비게이션 본메뉴 엘리먼트 -->
-			<ul class="nav navbar-nav">
+			<ul class="nav navbar-nav tmenu">
 				<li><a href="../emp/read">인사관리</a></li>
 				<li><a href="#">급여관리</a></li>		
 				<li><a href="../attend/attend_DataList">근태관리</a></li>
