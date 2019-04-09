@@ -31,7 +31,7 @@
 					<tr>
 						<td><%= Integer.parseInt(String.valueOf(lst.get(i).get("STYLE_CODE"))) %> </td>
 						<td><%= lst.get(i).get("STYLE_NAME") %> </td>
-						<td><form action="../approval/approval_search"><input type="submit" name ="STYLE_CODE" VALUE="조회"> </form></td>
+						<td><form action="../approval/approval_search"><input type="submit" class="btn btn-primary" name ="STYLE_CODE" VALUE="조회"> </form></td>
 					</tr>
 					<%
 							}

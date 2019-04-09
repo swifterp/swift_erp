@@ -7,7 +7,9 @@
 <meta charset="UTF-8">
 <title>SWIFT ERP</title>
 <%@ include file="../common/ui_common.jsp" %>
-<!-- 주소api -->
+<!-- sweetAlter api -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- 다음주소api -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
 	function execPostCode() {
@@ -55,32 +57,6 @@
 </script>
 <!-- 날짜선택 관련 -->
 <script>
-	$(function() {
-	  $( "#datepicker" ).datepicker({
-	        showOn: "both", 
-	        buttonImage: "../../images/btn_calendar.png", 
-	        buttonImageOnly: true, 
-	        dateFormat: "yy/mm/dd",
-	       	changeMonth: true, 
-	        dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
-	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
-	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
-	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
-		  });
-	});
-	$(function() {
-	  $( "#datepicker2" ).datepicker({
-	        showOn: "both", 
-	        buttonImage: "../../images/btn_calendar.png", 
-	        buttonImageOnly: true, 
-	        dateFormat: "yy/mm/dd",
-	       	changeMonth: true, 
-	        dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
-	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
-	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
-	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
-	  });
-	});
 	$(function() {
 	  $( "#datepicker3" ).datepicker({
 	        showOn: "both", 
@@ -162,10 +138,10 @@ $(document).ready(function() {
               },
               success: function(data){
                   if($.trim(data) == 0){
-                	  alert("사용가능한 사원번호입니다.");
+                	  swal("Ok","사용가능한 사원번호입니다.","success");
                   }
                   else{
-                	  alert("중복된 사원번호입니다.");
+                	  swal("NO","중복된 사원번호입니다.","error");
                   }
               }
           });    //end ajax    
@@ -219,7 +195,7 @@ $(document).ready(function() {
 									<td class="input-group">
 										<input type="text" id="emp_number" name="emp_number" class="form-control" required="">
 										<span class="input-group-btn">
-											<button type="button" id="check" class="btn btn-info">중복확인</button> 
+											<button type="button" id="check" class="btn btn-primary">중복확인</button> 
 										</span>
 									</td>
 									<th>사원명 <span class="essential">*</span></th>
@@ -250,22 +226,22 @@ $(document).ready(function() {
 								<tr>
 									<table class="table table-striped">
 										<colgroup>
-											<col width="50px" />
-											<col width="120px" />
-											<col width="50px" />
-											<col width="120px" />
-											<col width="50px" />
-											<col width="120px" />
+											<col width="10%" />
+											<col width="25%" />
+											<col width="10%" />
+											<col width="25%" />
+											<col width="10%" />
+											<col width="25%" />
 										</colgroup>
 										<tbody>
 											<tr>
 												<th>입사일자</th>
 												<td>	
-													<input type="text" name="emp_join_date" class="form-control" id="datepicker" style="width:80%; display:inline-block; margin-right:5px;">
+													<input type="date" name="emp_join_date" class="form-control">
 												</td>
 												<th>퇴사일자</th>
 												<td>		
-													<input type="text" name="emp_retire_date" class="form-control" id="datepicker2" style="width:80%; display:inline-block; margin-right:5px;">
+													<input type="date" name="emp_retire_date" class="form-control">
 												</td>
 												<th>퇴사사유</th>
 												<td><input type="text" name="emp_retire_reason" class="form-control"></td>
@@ -276,7 +252,7 @@ $(document).ready(function() {
 													<input type="hidden" id="p_dept_no" name="deptno" class="form-control">
 													<input type="text" id="p_dept_name" class="form-control" required="">
 													<span class="input-group-btn">
-														 <button class="btn btn-default" type="button" data-toggle="modal" data-target="#exampleModal">Go!</button>
+														 <button class="btn btn-info" type="button" data-toggle="modal" data-target="#exampleModal"><img src="../../images/icon_plus.png" /></button>
 													</span>
 												</td>
 												<th>직급 <span class="essential">*</span></th>
@@ -284,7 +260,7 @@ $(document).ready(function() {
 													<input type="hidden" id="p_rank_no" name="rank_no" class="form-control" required="">
 													<input type="text" id="p_rank_name" class="form-control" required="">
 													<span class="input-group-btn">
-														 <button class="btn btn-default" type="button">Go!</button>
+														 <button class="btn btn-info" type="button"><img src="../../images/icon_plus.png" /></button>
 													</span>
 												</td>
 												<th>직책<span class="essential">*</span></th>
@@ -292,7 +268,7 @@ $(document).ready(function() {
 													<input type="hidden" id="p_duty_no" name="duty_no" class="form-control">
 													<input type="text" id="p_duty_name" class="form-control">
 													<span class="input-group-btn">
-														 <button class="btn btn-default" type="button">Go!</button>
+														 <button class="btn btn-info" type="button"><img src="../../images/icon_plus.png" /></button>
 													</span>
 												</td>
 											</tr>
@@ -302,7 +278,7 @@ $(document).ready(function() {
 													<input type="hidden" id="p_bank_no" name="bank_no" class="form-control">
 													<input type="text" id="p_bank_name" class="form-control">
 													<span class="input-group-btn">
-														 <button class="btn btn-default" type="button">Go!</button>
+														 <button class="btn btn-info" type="button"><img src="../../images/icon_plus.png" /></button>
 													</span>
 												</td>
 												<th>계좌번호</th>
@@ -444,7 +420,7 @@ $(document).ready(function() {
 				</div>
 				<div class="btn_group">
 					<a href="../emp/read" class="btn btn-default pull-left">목록</a>
-					<input type="submit" id="submit" class="btn btn-primary pull-right" value="등록완료라능">
+					<input type="submit" id="submit" class="btn btn-primary pull-right" value="등록완료">
 				</div>
 			</div>
 		</form>

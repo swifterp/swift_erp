@@ -7,7 +7,9 @@
 <meta charset="UTF-8">
 <title>emp_mainpage</title>
 <%@ include file="../common/ui_common.jsp" %>
-<!-- 주소api -->
+<!-- sweetAlter api -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- 다음주소api -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
 	function execPostCode() {
@@ -161,10 +163,10 @@ $(document).ready(function() {
               },
               success: function(data){
                   if($.trim(data) == 0){
-                	  alert("사용가능한 사원번호입니다.");
+                	  swal("Ok","사용가능한 사원번호입니다.","success");
                   }
                   else{
-                	  alert("중복된 사원번호입니다.");
+                	  swal("NO","중복된 사원번호입니다.","error");
                   }
               }
           });    //end ajax    
@@ -441,7 +443,7 @@ reader.readAsDataURL(test);
 			</div>
 			<div class="btn_group">
 				<a href="../emp/read" class="btn btn-default pull-left">목록</a>
-				<input type="submit" class="btn btn-primary pull-right" value="수정완료라능">
+				<input type="submit" class="btn btn-primary pull-right" value="수정완료">
 			</div>
 		</div>
 	</form>

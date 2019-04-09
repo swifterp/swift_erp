@@ -22,6 +22,10 @@
 		  });
 	});
 </script>
+
+<style>
+	.tb_left td {text-align:left;}
+</style>
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
@@ -36,7 +40,7 @@
 					</tr>
 					<tr>
 						<th>근태날짜</th> 
-						<td><input type="date" id="datepicker" class="form-control" name="attend_date" value="${list.get(0).get("ATTEND_DATE")}" style="width:90%; display:inline-block; margin-right:5px;"></td>
+						<td><input type="text" id="datepicker" class="form-control" name="attend_date" value="${list.get(0).get("ATTEND_DATE")}" style="width:90%; display:inline-block; margin-right:5px;"></td>
 					</tr>
 					<tr>
 						<th>근태코드</th> 
