@@ -10,8 +10,8 @@
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
-	<div class="container">
-		<%@ include file="../common/left_menu_approval.jsp" %>	
+	<div class="container">		
+		<%@ include file="../common/left_menu_approval.jsp" %>
 		<div class="contents">
 			<h2>기안서조회</h2>		
 			<form action="../approval/selectDraftDetail">

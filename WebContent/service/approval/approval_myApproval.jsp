@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="java.util.Map, java.util.List" %>
+<%@ page import="java.util.Map, java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,11 +10,11 @@
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
-	<div class="container">
-		<%@ include file="../common/left_menu_approval.jsp" %>	
+	<div class="container">		
+		<%@ include file="../common/left_menu_approval.jsp" %>
 		<div class="contents">
 			<h2>내 결제 내역 조회</h2>
-			<table style="border:1px solid #ccc">
+			<table class="table">
 				<thead>
 					<tr> 
 						<th>No.</th>

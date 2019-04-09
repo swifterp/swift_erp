@@ -6,12 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>근태 코드 페이지</title>
-<%@ include file="../common/ui_common.jsp" %>
+
 <script type="text/javascript">
 	function attendCodeInsert(){
 		location.href = "../attend/attend_CodeInsert.jsp";
 	}
 </script>
+<%@ include file="../common/ui_common.jsp" %>
 <!-- 날짜선택 관련 -->
 <script>
 	$(function() {
@@ -28,17 +29,21 @@
 		});
 	});
 </script>
+
+<style>
+	.tb_left {text-align:left;}
+</style>
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
-	<div class="container">
-		<%@ include file="../common/left_menu_attend.jsp" %>	
+	<div class="container">		
+		<%@ include file="../common/left_menu_attend.jsp" %>
 		<div class="contents">
-			<form action="../attend/attend_DetailCode">
-				<table class="table" style="text-align:left; margin-bottom:20px; background:#eee;">
+			<form action="../attend/attend_DetailCode" style="text-align:left; margin-bottom:20px; background:#eee;">
+				<table class="table tb_left">
 					<colgroup>
-						<col width="20%">
-						<col width="80%">
+						<col width="20%" />
+						<col width="80%" />
 					</colgroup>
 					<tr>
 						<th>근태코드</th>
@@ -51,7 +56,7 @@
 					<tr>
 						<th>근태코드상태</th>
 						<td>
-							<select id="attend_code_state" name="attend_code_state" class="form-control" style="width:200px;">
+							<select id="attend_code_state" name="attend_code_state" class="form-control"style="width:200px;">
 								<option value="">전체</option>			  
 								<option value="사용">사용</option>
 								<option value="중지">중지</option>
@@ -78,8 +83,8 @@
 						<th>근태명</th>
 						<th>근태코드상태</th>
 						<th>비고</th>
-						<th>수정</th>
-						<th>삭제</th>
+						<th>    </th>
+						<th>    </th>
 					</tr>
 				</thead>	
 				<tbody>
@@ -94,17 +99,16 @@
 			               <td><%= lst.get(i).get("ATTEND_NAME") %> </td>
 			               <td><%= lst.get(i).get("ATTEND_CODE_STATE") %> </td>
 			               <td><%= lst.get(i).get("ATTEND_C_ETC") %> </td>
-			               <td>
-				               <form action="../attend/attend_CodeLow">
-				               <input type="hidden" id="attend_code" name="attend_code" value="<%= String.valueOf(lst.get(i).get("ATTEND_CODE")) %>">
-				               <input type="submit" class="btn btn-default" value="수정">
-				               </form>
-			               </td>
 			               <td> 
-				               <form action="../attend/attend_CodeDelete">
-				               <input type="hidden" id="attend_code" name="attend_code" value="<%= String.valueOf(lst.get(i).get("ATTEND_CODE")) %>">
-				               <input type="submit" class="btn btn-default" value="삭제">
-				               </form>
+			               <form action="../attend/attend_CodeDelete">
+			               <input type="hidden" id="attend_code" name="attend_code" value="<%= String.valueOf(lst.get(i).get("ATTEND_CODE")) %>">
+			               <input type="submit" class="btn btn-default" value="삭제">
+			               </form>
+			               </td><td>
+			               <form action="../attend/attend_CodeLow">
+			               <input type="hidden" id="attend_code" name="attend_code" value="<%= String.valueOf(lst.get(i).get("ATTEND_CODE")) %>">
+			               <input type="submit" class="btn btn-default" value="수정">
+			               </form>
 			               </td>
 			            </tr>
 			   <%

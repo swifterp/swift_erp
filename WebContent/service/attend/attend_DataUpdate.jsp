@@ -22,17 +22,14 @@
 		  });
 	});
 </script>
-<style>
- table td {text-align:left;}
-</style>
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
-	<div class="container">
-		<%@ include file="../common/left_menu_attend.jsp" %>	
+	<div class="container">		
+		<%@ include file="../common/left_menu_attend.jsp" %>
 		<div class="contents">
 			<form action="../attend/attend_DataUpdate">
-				<table class="table">
+				<table class="table tb_left">
 					<tr>
 						<th>사원번호</th> 
 						<td><input type="text" id="empno" class="form-control" name="empno" value="${list.get(0).get("EMPNO")}"></td>
@@ -49,18 +46,18 @@
 						<th>근태시간</th> 
 						<td><input type="text" id="attend_time" class="form-control" name="attend_time" value="${list.get(0).get("ATTEND_TIME")}"></td>
 					</tr>
-		
+
 					<tr>
 						<th>비고</th> 
 						<td><input type="text" id="attend_m_etc" class="form-control" name="attend_m_etc" value="${list.get(0).get("ATTEND_M_ETC")}"></td>
 					</tr>
 					<tr>
 						<th>출근시간</th> 
-						<td><input type="text" id="attend_open" class="form-control" name="attend_open" value="${list.get(0).get("ATTEND_OPEN")}"></td>
+						<td><input type="time" id="attend_open" class="form-control" name="attend_open" value="${list.get(0).get("ATTEND_OPEN")}"></td>
 					</tr>
 					<tr>
 						<th>퇴근시간</th> 
-						<td><input type="text" id="attend_close" class="form-control" name="attend_close" value="${list.get(0).get("ATTEND_CLOSE")}"></td>
+						<td><input type="time" id="attend_close" class="form-control" name="attend_close" value="${list.get(0).get("ATTEND_CLOSE")}"></td>
 					</tr>
 				</table>
 				<div class="btn_group">

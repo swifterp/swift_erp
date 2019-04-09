@@ -11,25 +11,7 @@
 <style>
 	.etcCode li {float:left; width:120px; margin-left:4px;}
 </style> 
-<script type="text/javascript">
-$(document).ready(function(){
-    $('#ajax_rank').on('click', function(){
-	    $.ajax({
-	        url : "../emp/test",
-	        type : "POST",
-	        contentType : "application/json",
-	        
-	        success : function(response){
-	            var html = "";
-	            for(var i=0; i<response.length; i++){
-	                html += response[i];
-	            }
-	            $("#ff").html(html);
-	        }
-	    });
-	});
-});
-</script>
+
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
@@ -40,7 +22,7 @@ $(document).ready(function(){
 			<ul class="etcCode">
 				<li>
 					<span>직급</span>
-					<a id="ajax_rank" class="btn btn-primary" href="#" data-toggle="modal" data-target="#rank"><img src="../../images/icon_plus.png" /></a>
+					<button type="button" id="ajax_rank" class="btn btn-primary" data-toggle="modal" data-target="#rank" onclick="insertRoom()"><img src="../../images/icon_plus.png" /></button>
 				</li>
 				<li>
 					<span>직책</span>
@@ -71,29 +53,7 @@ $(document).ready(function(){
 						  <span class="input-group-addon" id="basic-addon2">직급이름</span>
 						  <input type="text" class="form-control" name="rank_name" placeholder="직급이름을 입력하세요" aria-describedby="basic-addon2" required />
 						</div>
-						<table class="table" id="ff">
-							<thead>
-								<tr>
-									<th>부서코드</th>
-									<th>부서명</th>
-								</tr>
-							</thead>
-							<%
-								List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
-								if(lst != null){
-									for(int i=0;i<lst.size();i++){
-							%>
-							<tbody>
-								<tr>
-									<td><%= String.valueOf(lst.get(i).get("DEPTNO")) %></td>
-									<td><%= lst.get(i).get("DNAME") %></td>
-								</tr>
-							</tbody>
-							<%
-									}
-								} 
-							%>
-						</table>
+						<div id="test"></div>
 				      </div>
 					  <div class="modal-footer">
 			          	<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
@@ -164,33 +124,16 @@ $(document).ready(function(){
 		</div>
 	</div>
 	<script type="text/javascript">
-	var xhr5 = null;
-		
+		var xhr2 = null;
 		function insertRoom(){
-			xhr5 = createRequest(xhr5);
-			xhr5.onreadystatechange = function (){
-				
+			xhr2 = createRequest(xhr2);
+			xhr2.onreadystatechange = function (){
 				if(this.readyState == 4 && this.status == 200){
-					document.getElementById("chatlist").innerHTML = this.responseText;
+					document.getElementById("test").innerHTML = this.responseText;
 				}
-				
 			};
-			var tmp = "";
-			
-			for(var i=0;i<checkedArr.length;i++){
-				if(tmp == ""){}
-				else {
-					tmp = tmp + "&";
-				}
-				tmp = tmp + checkedArr[i]+"="+checkedArr[i];
-			}
-			tmp = tmp + "&me="+x;
-			var cnt = document.getElementById("chatroom_name_text").value;
-			tmp = tmp + "&title="+cnt
-					
-			xhr5.open("POST", "../chat/insertroom?", true);
-			xhr5.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
-			xhr5.send(tmp);
+			xhr2.open("POST", "../emp/test?", true);
+			xhr2.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
 		}
 	</script>
 </body>

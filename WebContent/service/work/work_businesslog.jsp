@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>업무일지 조회</title>
-<%@ include file="../common/ui_common.jsp" %>
 <script type="text/javascript">
 
 	function goBusinessLogWrite(){
@@ -29,10 +28,11 @@
 	location.href="../client/client_clientinfowrite.jsp"
 		}
 </script>
+<%@ include file="../common/ui_common.jsp" %>
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
-	<div class="container">
+	<div class="container">		
 		<%@ include file="../common/left_menu_work.jsp" %>
 		<div class="contents">
 			<h2>업무일지목록</h2>

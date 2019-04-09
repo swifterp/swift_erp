@@ -32,6 +32,7 @@
 				<li><a href="../approval/selectDraft">결재관리</a></li>
 				<li><a href="../work/selectBusinessLog">업무관리</a></li>
 				<li><a href="../client/selectClientInfo">고객관리</a></li>
+				<li><a href="../approval/approval_save.jsp">서머노트</a></li>
 			</ul>
 			<!-- 드롭다운 기능 -->
 			<ul class="nav navbar-nav navbar-right">

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import logic.approval.InsertApprovalData;
 import logic.approval.SelectApprovalPath;
 import logic.approval.SelectCommonStyle;
 import logic.approval.SelectDraft;
@@ -40,9 +41,17 @@ public class Approval_Controller {
 	@Autowired
 	private SelectApprovalPath sap;
 	@RequestMapping("/selectApprovalPath")
-	public String readCommonStyle(Model model) {
+	public String readApprovalPath(Model model) {
 		
 		model.addAttribute("list", sap.callApprovalPathDao());
+		
+		return "approval/approval_path";
+	}
+	
+	@RequestMapping("/insertApprovalPath")
+	public String writeApprovalPath(Model model,@RequestParam HashMap<String,String> Approval_path) {
+		
+		model.addAttribute("list", sap.writeApprovalPathDao(Approval_path));
 		
 		return "approval/approval_path";
 	}
@@ -50,9 +59,8 @@ public class Approval_Controller {
 	@Autowired
 	private SelectCommonStyle scs;
 	
-	
 	@RequestMapping("/selectCommon")
-	public String readApprovalPath(Model model) {
+	public String readCommonStyle(Model model) {
 		
 		model.addAttribute("list", scs.callCommonStyleDao());
 		
@@ -63,11 +71,21 @@ public class Approval_Controller {
 	private SelectMyApproval sma;
 	
 	@RequestMapping("/selectMyApproval")
-	public String readMyApproval(Model model,@RequestParam int EMPNO) {
-		
+	public String readMyApproval(Model model) {
+		int EMPNO=3;
 		model.addAttribute("list", sma.callMyApproval(EMPNO));
 		
 		return "approval/approval_myApproval";
+	}
+	
+	@Autowired
+	private InsertApprovalData iad;
+	
+	@RequestMapping("/approval_save")
+	public String approval_save(Model model, @RequestParam HashMap<String, String> approval_data) {
+		System.out.println("��Ʈ�ѷ� ��� : " +approval_data);
+		model.addAttribute("list", iad.callInsertApprovalData(approval_data));
+		return "approval/approval_common";
 	}
 
 }

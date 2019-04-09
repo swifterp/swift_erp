@@ -10,7 +10,7 @@
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
-	<div class="container">
+	<div class="container">		
 		<%@ include file="../common/left_menu_work.jsp" %>
 		<div class="contents">
 			<h2>부서별 출퇴근 현황</h2>

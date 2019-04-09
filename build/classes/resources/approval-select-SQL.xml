@@ -21,24 +21,22 @@
 	
 	<select id="getCommonList" resultType="hashmap">
 	
-		select   DRAFT_NO,DRAFT_TITLE,DRAFT_DATE,DRAFT_WRITER,DRAFT_REFERENCE ,DRAFT_OWNER
-				,DRAFT_STYLE, DRAFT_DIVISION, DRAFT_CONTENT  from draft
+		select style_code,style_name, style_content from common_style
 	
 	</select>
 	
 	<select id="getApprovalPathList" resultType="hashmap">
-	
-		select   DRAFT_NO,DRAFT_TITLE,DRAFT_DATE,DRAFT_WRITER,DRAFT_REFERENCE ,DRAFT_OWNER
-				,DRAFT_STYLE, DRAFT_DIVISION, DRAFT_CONTENT  from draft
-	
+	select  PATH_CODE, PATH_NAME,
+            PATH_FIRSTNAME,(select emp_name from employee where empno = PATH_FIRSTEMP) as "F_EMP_NAME" ,PATH_FIRSTPOSITION,
+            PATH_SECONDNAME,(select emp_name from employee where empno = PATH_SECONDEMP) as "S_EMP_NAME" ,PATH_SECONDPOSITION 
+            from APPROVAL_PATH
 	</select>
 	
 	<select id="getMyApprovalList" parameterType = "Integer" resultType="hashmap">
 		select   DRAFT_NO,DRAFT_TITLE,DRAFT_DATE,DRAFT_WRITER,DRAFT_REFERENCE ,DRAFT_OWNER
 				,DRAFT_STYLE, DRAFT_DIVISION, DRAFT_CONTENT  from draft
 				<where>
-					draft_writer = (select emp_name from employee) where empno=#{EMPNO,jdbcType=INTEGER})
+					draft_writer = (select emp_name from employee where empno=#{EMPNO,jdbcType=INTEGER})
 				</where>
 	</select>
-
 </mapper>

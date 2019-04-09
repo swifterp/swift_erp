@@ -12,6 +12,7 @@
 		       #{business_content, jdbcType=VARCHAR})
 	
 	</insert>
+	
 
 </mapper>
 

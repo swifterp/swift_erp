@@ -9,7 +9,7 @@
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
-	<div class="container">
+	<div class="container">		
 		<%@ include file="../common/left_menu_work.jsp" %>
 		<div class="contents">
 			<h2>업무일지등록</h2>

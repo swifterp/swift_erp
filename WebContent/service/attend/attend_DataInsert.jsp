@@ -6,14 +6,6 @@
 <meta charset="UTF-8">
 <title>근태등록</title>
 <%@ include file="../common/ui_common.jsp" %>
-
-<!-- 시간선택 관련 -->
-<link rel="stylesheet" type="text/css" href="../../css/timepicki.css">
-<script type="text/javascript" src="../../js/timepicki.js"></script>
-
-<script type="text/javascript"> 
-	$('#timepicker').timepicki(); 
-</script>
 <!-- 날짜선택 관련 -->
 <script>
 	$(function() {
@@ -30,14 +22,15 @@
 		});
 	});
 </script>
+
 <style>
 table td {text-align:left;}
 </style>
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
-	<div class="container">
-		<%@ include file="../common/left_menu_attend.jsp" %>	
+	<div class="container">		
+		<%@ include file="../common/left_menu_attend.jsp" %>
 		<div class="contents">
 			<h3>근태등록</h3>
 			<form action="../attend/attend_DataInsert">
@@ -64,13 +57,11 @@ table td {text-align:left;}
 					</tr>
 					<tr>
 						<th>출근시간</th>
-						<td>
-							<input type="text" class="form-control" id="platanusTime" name="platanusTime" onclick="javascript:fn_timePicker(this);" />
-						</td>
+						<td><input type="time" id="attend_open" class="form-control" name="attend_open"></td>
 					</tr>
 					<tr>
 						<th>퇴근시간</th>
-						<td><input type="text" id="attend_close" class="form-control" name="attend_close"></td>
+						<td><input type="time" id="attend_close" class="form-control" name="attend_close"></td>
 					</tr>
 				</table>
 				<div class="btn_group">

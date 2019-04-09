@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="resources.mapper.insertListMapper">
+
+	<insert id="putApprovalPath" parameterType="HashMap">
+		insert into Approval_path values(
+			(select MAX(path_code)+1 from approval_path),
+        	   #{path_name, jdbcType=VARCHAR},
+        	   #{path_firstname, jdbcType=VARCHAR},
+        	   (select empno from employee where emp_name=#{path_firstapproval, jdbcType=INTEGER}),
+        	   #{path_firstposition, jdbcType=VARCHAR},
+        	   #{path_secondname, jdbcType=VARCHAR},
+        	   (select empno from employee where emp_name=#{path_secondapproval, jdbcType=INTEGER}),
+        	   #{path_secondposition, jdbcType=VARCHAR}
+        	   )
+	</insert>
+	<insert id="InsertApprovalData" parameterType="HashMap" statementType="CALLABLE">
+		<!-- {
+			CALL APPROVAL_SAVE(#{approval_name, jdbcType=VARCHAR}, #{approval_save, jdbcType=CLOB})
+		} -->
+		insert into COMMON_STYLE (STYLE_CODE, STYLE_NAME, STYLE_CONTENT)
+        values((select count(STYLE_CODE)+1 from COMMON_STYLE),#{approval_name, jdbcType=VARCHAR}, #{approval_save, jdbcType=CLOB})
+	</insert>
+
+</mapper>

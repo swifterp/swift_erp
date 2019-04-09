@@ -13,7 +13,7 @@
 	
 	</select>
 
-	<select id="getMonthWorkList" parameterType = "String"  resultType="hashmap">
+	<select id="getMonthWorkList" parameterType ="String"  resultType="hashmap">
 		
 		select attend_date,employee.emp_name,attend_open,attend_close from attend_manager_t, employee
 		<where>
@@ -89,6 +89,16 @@
 			a.empno = e.empno and e.emp_name like '%'||#{EMP_NAME}||'%'
 		</where>
 			
+	</select>	
+	
+	<select id="WriteWorkStart" parameterType="Map" statementType="CALLABLE">
+		{CALL proc_workStart(#{EMPNO, mode=IN, jdbcType=INTEGER, javaType=String},
+		#{msg, mode=OUT, jdbcType=VARCHAR, javaType=String})}
+		
 	</select>
-
+	
+	<select id="WriteWorkEnd" parameterType="Map" statementType="CALLABLE">
+		{CALL proc_workEnd(#{EMPNO, mode=IN, jdbcType=INTEGER, javaType=String},
+		#{msg, mode=OUT, jdbcType=VARCHAR, javaType=String})}
+	</select>
 </mapper>

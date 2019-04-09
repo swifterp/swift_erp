@@ -33,6 +33,9 @@ $(function(){
 			<li>
 				<a href="../work/selectWorkEtc">출퇴근/근태/일정 조회</a>
 			</li>
+			<li>
+				<a href="../work/work_startend.jsp">출근/퇴근 입력</a>
+			</li>
 		</ul>
 	</nav>
 </body>

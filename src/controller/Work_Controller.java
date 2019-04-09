@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import logic.work.InsertBusinessLog;
+import logic.work.InsertWorkStartEnd;
 import logic.work.SelectBusinessLog;
 import logic.work.SelectClientList;
 import logic.work.SelectDeptList;
@@ -124,6 +125,23 @@ public class Work_Controller {
 		model.addAttribute("list",ses.callEmpStateDao(EMP_NAME));
 		
 		return "work/work_workempstate";
+	}
+	
+	@Autowired
+	private InsertWorkStartEnd iws;
+	@RequestMapping("/insertWorkStart")
+	public String readWorkStart(Model model, @RequestParam int EMPNO) {
+		
+		model.addAttribute("state",iws.writeWorkStart(EMPNO));
+		
+		return "work/work_startendstate";
+	}
+	@RequestMapping("/insertWorkEnd")
+	public String readWorkEnd(Model model, @RequestParam int EMPNO) {
+		
+		model.addAttribute("state",iws.writeWorkEnd(EMPNO));
+		
+		return "work/work_startendstate";
 	}
 	
 	

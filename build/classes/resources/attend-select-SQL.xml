@@ -34,7 +34,7 @@
 	</select>
 	
 	<select id="getAttendDetailList" parameterType="HashMap" resultType="HashMap">
-        select empno,attend_no,to_char(attend_date, 'YYYY-MM-DD') as attend_date, attend_time, 
+        select rownum, to_char(attend_date, 'YYYY-MM-DD') as attend_date, attend_time, 
         attend_name, attend_open, attend_close, attend_m_etc 
 			from ATTEND_MANAGER_T amt, ATTEND_CODE_T act
         where empno = decode(#{empno, jdbcType=INTEGER}, null, empno, #{empno, jdbcType=INTEGER})
