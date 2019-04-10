@@ -18,5 +18,10 @@ public class SelectCommonStyle {
 		
 		return csd.selectCommonList();
 	}
+	
+	public String callCommonStyleDao(int style_code) {
+		
+		return csd.selectCommon(style_code);
+	}
 
 }

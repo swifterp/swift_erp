@@ -32,5 +32,7 @@ public interface insertListMapper {
 	//approval
 	public void putApprovalPath(HashMap<String, String> approval_path);
 	public void InsertApprovalData(HashMap<String, String> approval_data);
+
+	public void InsertApprovalWrite(String approval_write);
 }
 

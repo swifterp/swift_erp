@@ -19,7 +19,7 @@
 <script>
 	$(document).ready(function() {
 		$('#summernote').summernote({
-			height : 300, // 에디터의 높이 
+			height : 600, // 에디터의 높이 
 			minHeight : null,
 			maxHeight : null,
 			focus : true,

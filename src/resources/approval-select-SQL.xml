@@ -18,10 +18,21 @@
 			</where>
 	
 	</select>
-	
+	<resultMap type="String" id="StyleSheet">
+
+	<result property="STYLE_CONTENT" column="STYLE_CONTENT" jdbcType="CLOB" javaType="java.lang.String" />
+
+</resultMap>
+	<select id="getCommon" parameterType="Integer" resultType="String" resultMap="StyleSheet">
+		
+		select style_content from common_style where style_code=#{style_code,jdbcType=INTEGER} 
+		order by style_code
+		
+	</select>
+
 	<select id="getCommonList" resultType="hashmap">
 	
-		select style_code,style_name, style_content from common_style
+		select style_code,style_name from common_style order by style_code
 	
 	</select>
 	

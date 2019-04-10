@@ -22,5 +22,12 @@
 		insert into COMMON_STYLE (STYLE_CODE, STYLE_NAME, STYLE_CONTENT)
         values((select count(STYLE_CODE)+1 from COMMON_STYLE),#{approval_name, jdbcType=VARCHAR}, #{approval_save, jdbcType=CLOB})
 	</insert>
+	
+	
+	
+	<insert id="InsertApprovalWrite" parameterType="String">
+
+		insert into COMMON_STYLE values((select count(STYLE_CODE)+1 from COMMON_STYLE),null, #{approval_write, jdbcType=CLOB})
+	</insert>
 
 </mapper>

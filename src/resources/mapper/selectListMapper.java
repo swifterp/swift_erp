@@ -73,4 +73,6 @@ public interface selectListMapper {
 
 	public String WriteWorkStart(Map<String,String> EMPNO);
 	public String WriteWorkEnd(Map<String,String> EMPNO);
+
+	public String getCommon(int style_code);
 }

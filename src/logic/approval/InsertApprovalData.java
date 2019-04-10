@@ -18,5 +18,10 @@ public class InsertApprovalData {
 		System.out.println("로직통과 : " +approval_info);
 		return csd.insertApprovalData(approval_info);
 	}
+	public List<Map<String, String>> callInsertApprovalData(String approval_write) {
+		// TODO Auto-generated method stub
+		
+		return csd.insertApprovalWrite(approval_write);
+	}
 
 }

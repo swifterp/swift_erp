@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.oracle.webservices.internal.api.EnvelopeStyle.Style;
+
 import logic.approval.InsertApprovalData;
 import logic.approval.SelectApprovalPath;
 import logic.approval.SelectCommonStyle;
@@ -83,9 +85,24 @@ public class Approval_Controller {
 	
 	@RequestMapping("/approval_save")
 	public String approval_save(Model model, @RequestParam HashMap<String, String> approval_data) {
-		System.out.println("��Ʈ�ѷ� ��� : " +approval_data);
 		model.addAttribute("list", iad.callInsertApprovalData(approval_data));
 		return "approval/approval_common";
+	}
+	
+	
+	@RequestMapping("/approval_style")
+	public String approval_style(Model model, @RequestParam int style_code) {
+		model.addAttribute("list", scs.callCommonStyleDao(style_code));
+
+		return "approval/approval_style";
+	}
+	
+	@RequestMapping("/approval_write")
+	public String approval_write(Model model, @RequestParam String approval_write) {
+		model.addAttribute("list", iad.callInsertApprovalData(approval_write));
+		
+		return "approval/approval_style";
+		
 	}
 
 }

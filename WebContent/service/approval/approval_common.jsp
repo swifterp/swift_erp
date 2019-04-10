@@ -7,6 +7,13 @@
 <meta charset="UTF-8">
 <title>공통양식 조회 페이지 입니다</title>
 <%@ include file="../common/ui_common.jsp" %>
+<script type="text/javascript">
+
+	function goStyleSearch(style_code){
+		location.href = "./approval_style?style_code="+style_code;
+		
+		}
+</script>
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
@@ -31,7 +38,15 @@
 					<tr>
 						<td><%= Integer.parseInt(String.valueOf(lst.get(i).get("STYLE_CODE"))) %> </td>
 						<td><%= lst.get(i).get("STYLE_NAME") %> </td>
-						<td><form action="../approval/approval_search"><input type="submit" name ="STYLE_CODE" VALUE="조회"> </form></td>
+						<!-- <td><form action="../approval/approval_style"><input type="submit" name ="STYLE_CODE" VALUE="조회"> </form></td> -->
+						
+							
+							<td><a class="btn btn-default" onclick="javascript:goStyleSearch(<%= Integer.parseInt(String.valueOf(lst.get(i).get("STYLE_CODE"))) %>)" href="#">조회</a></td>
+							<%-- <form action="../../approval/approval_style">
+								<input type="hidden"   name="style_code" class="form-control" value=<%= Integer.parseInt(String.valueOf(lst.get(i).get("STYLE_CODE"))) %>>
+								<input type="submit"   name="style_code" class="btn btn-default" value="조회">
+							</form> --%>
+								</td>
 					</tr>
 					<%
 							}
