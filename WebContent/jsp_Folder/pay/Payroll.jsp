@@ -109,8 +109,8 @@ $(function () {
 			<ul class="nav navbar-nav">
 				<li><a href="../emp/Emp_memList.jsp">인사관리</a></li>
 				<li><a href="#">급여관리</a></li>		
-				<li><a href="../attend/Attend.jsp">근태관리</a></li>
-				<li><a href="../approval/Approval.jsp">결재관리</a></li>
+				<li><a href="../attend/Attend_Item_Manage.jsp">근태관리</a></li>
+				<li><a href="../approval/Prospect_write.jsp">결재관리</a></li>
 				<li><a href="../work/Work_taskUpdate.jsp">업무관리</a></li>
 				<li><a href="../customer/Customer_List.jsp">고객관리</a></li>
 			</ul>

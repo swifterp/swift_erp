@@ -16,6 +16,12 @@
 <style>
 	table td {text-align:left;}
 </style>
+<style>
+	.a:hover {
+		color:black;
+		text-decoration: underline;
+	}
+</style>
 <script>
 	function search(){
 		var select = document.getElementById("Work_All_search").value;
@@ -177,9 +183,9 @@ input {
 			<!-- 네비게이션 본메뉴 엘리먼트 -->
 			<ul class="nav navbar-nav">
 				<li><a href="../emp/Emp_memList.jsp">인사관리</a></li>
-				<li><a href="../Pay/Pay.jsp">급여관리</a></li>		
+				<li><a href="../pay/Allowance_Item.jsp">급여관리</a></li>		
 				<li><a href="../attend/Attend_Item_Manage.jsp">근태관리</a></li>
-				<li><a href="../approval/Approval.jsp">결재관리</a></li>
+				<li><a href="../approval/Prospect_write.jsp">결재관리</a></li>
 				<li><a href="#">업무관리</a></li>
 				<li><a href="../customer/Customer_List.jsp">고객관리</a></li>
 			</ul>
@@ -228,18 +234,17 @@ input {
 			<tbody>
 				<tr>
 					<td style="width: 10%; vertical-align: middle;" >기간</td>
-					<td colspan="3">
+					<td colspan="2">
 					<input type="text" id="datepicker" class="form-control input-sm"
-						style="width: 130px; height: 50%; display: inline-block"></td>
-					<td style="width: 15px; vertical-align: middle; padding: 0px;">~</td>
-					<td  colspan="2">
+						style="width: 130px; height: 50%; display: inline-block">
+					&nbsp;&nbsp;~&nbsp;&nbsp;
 					<input type="text" id="datepicker2"	class="form-control input-sm"
-						style="width: 130px; height: 50%; display: inline-block"></td>
-					<td ></td>
+						style="width: 130px; height: 50%; display: inline-block">
+					</td>
 				</tr>
 				<tr>
 					<td style="vertical-align: middle;">사원명</td>
-					<td colspan="7">
+					<td colspan="2">
 						<input type="button" class="img-button" data-toggle="modal" data-target="#user_name">
 						<input type="text" class="form-control input-sm"
 							   style="width:80%; height: 50%; display: inline-block">
@@ -247,7 +252,7 @@ input {
 				</tr>
 				<tr>
 					<td>부서</td>
-					<td colspan="7">
+					<td colspan="2">
 						<input type="button" class="img-button" data-toggle="modal" data-target="#dept_name">
 						<input type="text" class="form-control input-sm"
 							   style="width:80%; height: 50%; display: inline-block">
@@ -255,56 +260,53 @@ input {
 				</tr>
 				<tr>
 					<td style=" vertical-align: middle;">내/외근</td>
-					<td style="width:10px">
+					<td colspan="2">
 						<div class="radio">
 							<label> <input type="radio" name="optionsRadios"
 								id="optionsRadios1" value="option1" checked>
 								전체
 							</label>
-						</div>
-					</td>
-					<td style="width:15px;"	>
-						<div class="radio">
+							&nbsp;
 							<label><input type="radio" name="optionsRadios"
 									id="optionsRadios2" value="option2" checked>
 									내근
 							</label>
-						</div>
-					</td>
-					<td colspan="3" style="width:20px;">
-						<div class="radio">
+							&nbsp;
 							<label> <input type="radio" name="optionsRadios"
 									id="optionsRadios3" value="option3" checked>
 									외근
 							</label>
 						</div>
 					</td>
-					<td colspan="2"></td>
 				</tr>
 				<tr>
 					<td style="vertical-align: middle;">기타</td>
-					<td colspan="7" >
+					<td colspan="2" >
 						<div class="custom-control custom-checkbox">
 							<input type="checkbox" id="jb-All_checkbox"
 								class="custom-control-input">
 							<label class="custom-control-label" for="jb-checkbox">
 							전체
 							</label>
+							&nbsp;
 							<input type="checkbox" id="jb-Work_checkbox"
 								class="custom-control-input">
 							<label class="custom-control-label" for="jb-checkbox">
 							정상근무
 							</label>
+							&nbsp;
 							<input type="checkbox" id="jb-Late_checkbox"
 								class="custom-control-input">
 							<label class="custom-control-label" for="jb-checkbox">
 							지각
 							</label>
+							&nbsp;
 							<input type="checkbox" id="jb-Leave_checkbox"
 								class="custom-control-input">
 							<label class="custom-control-label" for="jb-checkbox">
 							조기퇴근
 							</label>
+							&nbsp;
 							<input type="checkbox" id="jb-absence_checkbox"
 								class="custom-control-input">
 							<label class="custom-control-label" for="jb-checkbox">
@@ -315,35 +317,28 @@ input {
 				</tr>
 				<tr>
 					<td style="vertical-align: middle;">근무구분</td>
-					<td>
+					<td colspan="2">
 						<div class="radio">
 							<label> <input type="radio" name="optionsRadios"
 								id="optionsRadios4" value="option4" checked>
 								전체
 							</label>
-						</div>
-					</td>
-					<td>
-						<div class="radio">
+							&nbsp;
 							<label><input type="radio" name="optionsRadios"
 									id="optionsRadios5" value="option5" checked>
 									업무일
 							</label>
-						</div>
-					</td>
-					<td colspan="3">
-						<div class="radio">
+							&nbsp;
 							<label> <input type="radio" name="optionsRadios"
 									id="optionsRadios6" value="option6" checked>
 									휴일
 							</label>
 						</div>
 					</td>
-					<td colspan="2"></td>
 				</tr>
 				<tr>
 					<td>프로젝트</td>
-					<td colspan="7">
+					<td colspan="2">
 						<input type="button" class="img-button" data-toggle="modal" data-target="#project">
 						<input type="text" class="form-control input-sm"
 							   style="width:80%; height: 50%; display: inline-block">
@@ -351,7 +346,7 @@ input {
 				</tr>
 				<tr>
 					<td>근태항목</td>
-					<td colspan="7">
+					<td colspan="2">
 						<input type="button" class="img-button" data-toggle="modal" data-target="#Working_attitude">
 						<input type="text" class="form-control input-sm"
 							   style="width:80%; height: 50%; display: inline-block">
@@ -359,7 +354,7 @@ input {
 				</tr>
 				<tr>
 					<td>휴가항목</td>
-					<td colspan="7">
+					<td colspan="2">
 						<input type="button" class="img-button" data-toggle="modal" data-target="#vacation">
 						<input type="text" class="form-control input-sm"
 							   style="width:80%; height: 50%; display: inline-block">
@@ -368,7 +363,7 @@ input {
 				
 				<tr>
 					<td>근태그룹</td>
-					<td colspan="7">
+					<td colspan="2">
 						<input type="button" class="img-button" data-toggle="modal" data-target="#Working_group">
 						<input type="text" class="form-control input-sm"
 							   style="width:80%; height: 50%; display: inline-block">
@@ -376,7 +371,7 @@ input {
 				</tr>
 				<tr>
 					<td>적요</td>
-					<td colspan="7">
+					<td colspan="2">
 						<input class="not_img">
 						<input type="text" class="form-control input-sm"
 							   style="width:80%; height: 50%; display: inline-block;">
@@ -384,31 +379,30 @@ input {
 				</tr>
 				<tr>
 					<td style="vertical-align: middle;">상태</td>
-					<td>
-						<div class="radio">
-							<label> <input type="radio" name="optionsRadios"
-								id="optionsRadios4" value="option4" checked>
-								전체
-							</label>
-						</div>
-					</td>
-					<td>
-						<div class="radio">
-							<label><input type="radio" name="optionsRadios"
-									id="optionsRadios5" value="option5" checked>
-									UserPay
-							</label>
-						</div>
-					</td>
 					<td colspan="3">
 						<div class="radio">
-							<label> <input type="radio" name="optionsRadios"
-									id="optionsRadios6" value="option6" checked>
+							<label> 
+								<input type="radio" name="optionsRadios"
+									id="optionsRadios4" value="option4"
+									style="margin: 0">
+									전체
+							</label>
+							&nbsp;
+							<label>
+								<input type="radio" name="optionsRadios"
+									id="optionsRadios5" value="option5"
+									style="margin: 0">
+									UserPay
+							</label>
+							&nbsp;
+							<label> 
+								<input type="radio" name="optionsRadios"
+									id="optionsRadios6" value="option6"
+									style="margin: 0">
 									확인
 							</label>
 						</div>
 					</td>
-					<td colspan="2"></td>
 				</tr>
 				<tr>
 					<td colspan="2" style="vertical-align: middle;">
@@ -418,20 +412,18 @@ input {
 							</select>
 						</div>
 					</td>
-					<td colspan="6">
+					<td>
 						<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
 						  <div class="btn-group mr-2" role="group" aria-label="First group">
-						    <text type="button" class="btn btn-sm">금일</text>
-						    <text type="button" class="btn btn-sm">전일</text>
-						    <text type="button" class="btn btn-sm">금주(~오늘)</text>
-						    <text type="button" class="btn btn-sm">전주</text>
-						    <text type="button" class="btn btn-sm">금월(~오늘)</text>
-						    <text type="button" class="btn btn-sm">전월</text>
-						    <text type="button" class="btn btn-sm">종료일</text>
-						  </div>
-						   <div class="btn-group mr-2" role="group" aria-label="Second group">
-						  	<text type="button" class="btn btn-sm">설정</text>
-						    <text type="button" class="btn btn-sm">다시작성</text>
+						    <text type="button" class="btn btn-sm a">금일</text>
+						    <text type="button" class="btn btn-sm a">전일</text>
+						    <text type="button" class="btn btn-sm a">금주(~오늘)</text>
+						    <text type="button" class="btn btn-sm a">전주</text>
+						    <text type="button" class="btn btn-sm a">금월(~오늘)</text>
+						    <text type="button" class="btn btn-sm a">전월</text>
+						    <text type="button" class="btn btn-sm a">종료일</text>
+						  	<text type="button" class="btn btn-sm a">설정</text>
+						    <text type="button" class="btn btn-sm a">다시작성</text>
 						  </div>
 						</div>
 					</td>

@@ -2,41 +2,53 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript">
-function selectCal(monthfield, yearfield){
-	  var today=new Date();
-	  for(var i = 1; i < 13; i++){
-	   
-	   if(today.getMonth() == i) $("#"+monthfield).append("<option value='"+i+"' selected='selected'>"+i+"</option>");
-	   else $("#"+monthfield).append("<option value='"+i+"'>"+i+"</option>"); 
-	  }
+    <head>
+    <script src ="https://code.jquery.com/jquery-1.11.2.js"></script>
+    </head>
+    <body>
+        <input type="text"></input>
+        <button>현재페이지</button>
+        <div id="pageZone"></div>
+    </body>
+    <script>    
+    var totalCount = 1000; //전체 건수
+    var totalPage = Math.ceil(totalCount/15);//페이지 수
+    var PageNum;
+    var page;
+    $("button").click(function(){    
+        page = parseInt($("input").val());
+        drawPage(page);
+    });
+    function drawPage(goTo){        
+        page = goTo;    
+        var pageGroup = Math.ceil(page/10);    //페이지 그룹 넘버링
+        var next = pageGroup*10;
+        var prev = next-9;            
+        var goNext = next+1;
+        if(prev-1<=0){
+            var goPrev = 1;
+        }else{
+            var goPrev = prev-1;
+        }    
+        if(next>totalPage){
+            var goNext = totalPage;
+            next = totalPage;
+        }else{
+            var goNext = next+1;
+        }
+        var prevStep = " <a href='javascript:drawPage("+goPrev+");'>"+goPrev+"이동</a> ";
 
-	  var thisyear=today.getFullYear();
-	     for (var y=thisyear-10; y<thisyear+10; y++){
-	        
-	        if(thisyear == y) $("#"+yearfield).append("<option value='"+y+"' selected='selected'>"+y+"</option>"); 
-	        else $("#"+yearfield).append("<option value='"+y+"'>"+y+"</option>"); 
-	     }
-	    
-	  }
-</script>
-<script type="text/javascript">
-$(document).ready(function() {
+        var nextStep = " <a href='javascript:drawPage("+goNext+");'>"+goNext+"이동</a> ";            
+        $("#pageZone").empty();
 
-	  selectCal('selectDateMonth1', 'selectDateYear1');
+        $("#pageZone").append(prevStep);
 
-	});
-</script>
-</head>
-<body>  
-		<label for="select">정산년월</label>
-          <select name="selectDateYear1" id="selectDateYear1">
-          </select> 
-          <label for="select4"></label>
-          <select name="selectDateMonth1" id="selectDateMonth1">
-          </select>
-</body>
+        for(var i=prev; i<=next;i++){
+            PageNum = "<strong>"+i+"</strong> ";
+            $("#pageZone").append(PageNum);
+        }    
+        $("#pageZone").append(nextStep);    
+    }    
+    </script>
+
 </html>

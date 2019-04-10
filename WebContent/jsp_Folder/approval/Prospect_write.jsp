@@ -6,22 +6,44 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
 <script type = "text/javascript" src ="../../js/jquery-3.3.1.js"></script>
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <title>Insert title here</title>
-<style>
-	table td {text-align:left;}
-</style>
-<style type="text/css"> /* 테이블 선에 색상주기  */
-  .line{border-bottom: 1px solid #fff;
-  		border-left: 1px solid #fff;
-  		border-right: 1px solid #fff;
-  		border-top: 1px solid #fff;}
-</style>
-
+<script>
+var col = 4;
+var row = 200;
+var num = 25;
+$(function(){
+	$('#lbTable').empty();
+	var styTable = "<table class='table' width='1000px'>";
+		for(var i=0; i<row; i++){
+			styTable += "<tr>";
+			for(var j=0; j<col; j++){
+				if(j == 0){
+				styTable += "<td width='10%'>"+ "번호" + "</td>"
+				}
+				if(j == 1){
+				styTable += "<td width='45%'>"+ "양식명" + "</td>"
+				}
+				if(j == 2){
+				styTable += "<td width='25%'>"+ "구분" + "</td>"
+				}
+				if(j == 3){
+				styTable += "<td width='15%'>"+ "전표명" + "</td>"
+				}
+			}
+			styTable += "</tr>";
+		}
+		styTable += "</table>"
+	$('#lbTable').append(styTable);
+});
+</script>
+<script>    
+  
+    
+    </script>
 </head>
 <body>
 <!-- 네비게이션 -->
@@ -45,10 +67,10 @@
 			<!-- 네비게이션 본메뉴 엘리먼트 -->
 			<ul class="nav navbar-nav">
 				<li><a href="../emp/Emp_memList.jsp">인사관리</a></li>
-				<li><a href="../pay/Allowance_Item.jsp">급여관리</a></li>		
+				<li><a href="../pay/Allowance_item.jsp">급여관리</a></li>			
 				<li><a href="../attend/Attend_Item_Manage.jsp">근태관리</a></li>
-				<li><a href="../approval/Prospect_write.jsp">결재관리</a></li>
-				<li><a href="#">업무관리</a></li>
+				<li><a href="#">결재관리</a></li>
+				<li><a href="../work/Work_taskUpdate.jsp">업무관리</a></li>
 				<li><a href="../customer/Customer_List.jsp">고객관리</a></li>
 			</ul>
 			<!-- 드롭다운 기능 -->
@@ -70,90 +92,34 @@
 		<!-- 왼쪽 네비게이션 -->
 		<nav class="nav-left">
 			<ul class="bg-primary">
-				<li><a data-toggle="collapse" data-target="#group1"
-					aria-expanded="false" href="Work_task.jsp">업무일지</a>
-					<ul class="collapse depth2" id="group1">
-						<li><a href="Work_taskUpdate.jsp">업무일지 작성</a></li>
-						<li><a href="Work_task.jsp">업무일지 조회</a></li>
-					</ul></li>
-				<li><a class="active" data-toggle="collapse"
-					data-target="#group2" aria-expanded="false" href="#">출/퇴근</a>
-					<ul class="collapse in depth2" id="group2">
-						<li><a href="Work_on_off.jsp">출/퇴근 기록부</a></li>
-						<li><a class="active" href="Work_Search.jsp">출/퇴근현황 조회</a></li>
-						<li><a href="Work_time.jsp">근무시간 조회</a></li>
-						<li><a href="Work_All_Search.jsp">출퇴근/근태/일정 조회</a></li>
+				<a class="active" href="#">기안서 작성</a>
+				<a href="My_Progress.jsp">내 결재관리</a>
+				<a  href="Integrated_Progress.jsp">기안서 통합관리</a>
+				<li>
+					<a data-toggle="collapse"
+					   data-target="#group1" aria-expanded="false" href="Payment_line.jsp">기초자료등록</a>
+					<ul class="collapse depth2" id="group3">
+						<li><a href="Payment_line.jsp ">결재라인등록</a></li>
+						<li><a href="Common_form.jsp ">공통양식등록</a></li>
 					</ul>
 				</li>
 			</ul>
 		</nav>
 	</div>
 	<div style="width: 1000px"  class="contents">
-		<table class="table line" style="margin: auto; text-align:center;">
-			<thead class="line">
-				<tr>
-					<td style="width: 100px">
-					</td>
-					<td style="font-size: 24px; text-align: center;">
-						퇴근시간현황
-					</td>
-					<td style="width: 100px; vertical-align: bottom; ">
-						시간
-					</td>
-				</tr>
-			</thead>
-		</table>
-		<table class="table" style="margin: auto; text-align:center;">
+		<table class="table">
 			<thead>
+				<tr>
+					<td width='10%'>정렬순서</td>
+					<td width='45%'>양식명</td>
+					<td width='25%'>구분</td>
+					<td width='15%'>ERP전표</td>
+				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>
-						일지
-					</td>
-					<td style="width: 100px"> 
-						사원명
-					</td>
-					<td>
-						퇴근시간
-					</td>
-					<td>
-						퇴근입력시간(출/퇴근)
-					</td>
-				</tr>
-				<tr>
-					<td>
-						2019/02/01
-					</td>
-					<td>
-						사용자
-					</td>
-					<td>
-						2019/02/01 오후 6:30
-					</td>
-					<td>
-						2019/02/01 오후 6:31
-					</td>
-				</tr>
-				<tr>
-					<td>
-						2019/02/01
-					</td>
-					<td>
-						사용자
-					</td>
-					<td>
-						2019/02/01 오후 6:30
-					</td>
-					<td>
-						2019/02/01 오후 6:35
-					</td>
-				</tr>
 			</tbody>
 		</table>
-		<br> 
-		<input type="button" class="btn btn-primary pull-list"
-			 value="인쇄" >
+		<div id="lbTable"></div>
 	</div>
 </body>
 </html>

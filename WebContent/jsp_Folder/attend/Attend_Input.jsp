@@ -84,9 +84,9 @@
 			<!-- 네비게이션 본메뉴 엘리먼트 -->
 			<ul class="nav navbar-nav">
 				<li><a href="../emp/Emp_memList.jsp">인사관리</a></li>
-				<li><a href="../Pay/Pay.jsp">급여관리</a></li>		
+				<li><a href="../pay/Allowance_Item.jsp">급여관리</a></li>		
 				<li><a href="#">근태관리</a></li>
-				<li><a href="../approval/Approval.jsp">결재관리</a></li>
+				<li><a href="../approval/Prospect_write.jsp">결재관리</a></li>
 				<li><a href="../work/Work_taskUpdate.jsp">업무관리</a></li>
 				<li><a href="../customer/Customer_List.jsp">고객관리</a></li>
 			</ul>
@@ -141,8 +141,8 @@
 			<a type="button" class="btn btn-primary" data-toggle="modal" data-target="#New_All_Update">일괄등록</a>
 		</div>
 		<p/>
-		<table class="table" style=" text-align:center;">
-			<thead >
+		<table class="table" style="text-align:center;">
+			<thead>
 				<tr	style="background-color: #eee">
 					<td style="width: 50px;" >
 						<div class="custom-control custom-checkbox">
