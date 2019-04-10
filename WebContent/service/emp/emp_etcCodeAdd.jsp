@@ -7,7 +7,20 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="../common/ui_common.jsp" %>
-<%	List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list"); %>
+<script type="text/javascript">
+$('#ajax_rank').on('click', function(){
+    $.ajax({
+        url: " ../emp/test",
+        type: "POST",
+        contentType: "application/json; charset=utf-8;",
+        dataType: "json",
+        success: function(data) {
+        	document.getElementsByClassName(ff).innerHTML=data;
+        }
+    });
+});
+</script>
+
 <style>
 	.etcCode li {float:left; width:120px; margin-left:4px;}
 </style> 
@@ -53,7 +66,7 @@
 						  <span class="input-group-addon" id="basic-addon2">직급이름</span>
 						  <input type="text" class="form-control" name="rank_name" placeholder="직급이름을 입력하세요" aria-describedby="basic-addon2" required />
 						</div>
-						<div id="test"></div>
+						<div id="test" class="ff"></div>
 				      </div>
 					  <div class="modal-footer">
 			          	<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
@@ -123,18 +136,6 @@
 			</form>
 		</div>
 	</div>
-	<script type="text/javascript">
-		var xhr2 = null;
-		function insertRoom(){
-			xhr2 = createRequest(xhr2);
-			xhr2.onreadystatechange = function (){
-				if(this.readyState == 4 && this.status == 200){
-					document.getElementById("test").innerHTML = this.responseText;
-				}
-			};
-			xhr2.open("POST", "../emp/test?", true);
-			xhr2.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
-		}
-	</script>
+
 </body>
 </html>

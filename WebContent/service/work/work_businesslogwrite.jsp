@@ -17,7 +17,7 @@
 				<table class="table">
 					<tr>
 						<th>업무보고일</th>
-						<td><input type="text" class="form-control" name="business_date"></td>
+						<td><input type="date" class="form-control" name="business_date"></td>
 					</tr>
 					<tr>
 						<th>부서</th>

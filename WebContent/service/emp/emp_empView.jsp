@@ -58,32 +58,6 @@
 <!-- 날짜선택 관련 -->
 <script>
 	$(function() {
-	  $( "#datepicker" ).datepicker({
-	        showOn: "both", 
-	        buttonImage: "../../images/btn_calendar.png", 
-	        buttonImageOnly: true, 
-	        dateFormat: "yy/mm/dd",
-	       	changeMonth: true, 
-	        dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
-	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
-	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
-	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
-		  });
-	});
-	$(function() {
-	  $( "#datepicker2" ).datepicker({
-	        showOn: "both", 
-	        buttonImage: "../../images/btn_calendar.png", 
-	        buttonImageOnly: true, 
-	        dateFormat: "yy/mm/dd",
-	       	changeMonth: true, 
-	        dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
-	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
-	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
-	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
-	  });
-	});
-	$(function() {
 	  $( "#datepicker3" ).datepicker({
 	        showOn: "both", 
 	        buttonImage: "../../images/btn_calendar.png", 
@@ -187,6 +161,9 @@ reader.readAsDataURL(fis.files[0]);
 reader.readAsDataURL(test);
 }
 </script>
+<style>
+	table td {text-align:left;}
+</style>
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
@@ -207,9 +184,9 @@ reader.readAsDataURL(test);
 				<colgroup>
 					<col width="20%" />
 					<col width="10%" />
-					<col width="25%" />
+					<col width="30%" />
 					<col width="10%" />
-					<col width="35%" />
+					<col width="30%" />
 				</colgroup>
 				<tbody>
 					<tr>
@@ -251,22 +228,22 @@ reader.readAsDataURL(test);
 					<tr>
 						<table class="table">
 							<colgroup>
-								<col width="50px" />
-								<col width="120px" />
-								<col width="50px" />
-								<col width="120px" />
-								<col width="50px" />
-								<col width="120px" />
+								<col width="10%" />
+								<col width="20%" />
+								<col width="10%" />
+								<col width="20%" />
+								<col width="10%" />
+								<col width="20%" />
 							</colgroup>
 							<tbody>
 								<tr>
 									<th>입사일자</th>
 									<td>	
-										<input type="text" name="emp_join_date" class="form-control" id="datepicker" value="${list.get(0).get("EMP_JOIN_DATE")}" style="width:80%; display:inline-block; margin-right:5px;">
+										<input type="date" name="emp_join_date" class="form-control" value="${list.get(0).get("EMP_JOIN_DATE")}" style="width:80%; display:inline-block; margin-right:5px;">
 									</td>
 									<th>퇴사일자</th>
 									<td>		
-										<input type="text" name="emp_retire_date" class="form-control" id="datepicker2" value="${list.get(0).get("EMP_RETIRE_DATE")}" style="width:80%; display:inline-block; margin-right:5px;">
+										<input type="date" name="emp_retire_date" class="form-control" value="${list.get(0).get("EMP_RETIRE_DATE")}" style="width:80%; display:inline-block; margin-right:5px;">
 									</td>
 									<th>퇴사사유</th>
 									<td><input type="text" name="emp_retire_reason" class="form-control" value="${list.get(0).get("EMP_RETIRE_REASON")}"></td>
@@ -348,7 +325,7 @@ reader.readAsDataURL(test);
 						</td>
 						<th>급여차수</th>
 						<td>
-							<select>
+							<select class="form-control">
 				  				<option value="one">1차</option>
 				  				<option value="two">2차</option>
 				 				<option value="three">3차</option>
@@ -375,7 +352,7 @@ reader.readAsDataURL(test);
 		  </div>
 		  <div id="menu3" class="tab-pane fade">
 		    <h3>세무정보등록</h3>
-		    <form action="../../emp/taxInfoAdd">
+		    <form action="../emp/taxInfoAdd">
 			    <table class="table">
 			    	<colgroup>
 						<col width="15%" />
@@ -385,12 +362,12 @@ reader.readAsDataURL(test);
 					</colgroup>
 					<th>적용일</th>
 					<td colspan="3">	
-						<input type="text" name="emp_join_date" class="form-control" id="datepicker4" placeholder="적용일" style="width:80%; display:inline-block; margin-right:5px;">
+						<input type="text" name="emp_join_date" class="form-control" id="datepicker4" placeholder="적용일" style="width:200px; display:inline-block; margin-right:5px;">
 					</td>
 					<tr>
 						<th>국민연금</th>
 						<td>
-							<select>
+							<select class="form-control">
 				  				<option value="autoSum">자동계산</option>
 				  				<option value="Income">기준소득기준</option>
 				 				<option value="none">안함</option>
@@ -402,7 +379,7 @@ reader.readAsDataURL(test);
 					<tr>
 						<th>건강보험</th>
 						<td>
-							<select>
+							<select class="form-control">
 				  				<option value="autoSum">자동계산</option>
 				  				<option value="Income">기준소득기준</option>
 				 				<option value="none">안함</option>
@@ -414,7 +391,7 @@ reader.readAsDataURL(test);
 					<tr>
 						<th>고용보험</th>
 						<td>
-							<select>
+							<select class="form-control">
 				  				<option value="autoSum">자동계산</option>
 				  				<option value="Income">기준소득기준</option>
 				 				<option value="none">안함</option>
@@ -426,7 +403,7 @@ reader.readAsDataURL(test);
 					<tr>
 						<th>배우자공제</th>
 						<td colspan="3">
-							<select>
+							<select class="form-control">
 				  				<option value="autoSum">자동계산</option>
 				  				<option value="Income">기준소득기준</option>
 				 				<option value="none">안함</option>

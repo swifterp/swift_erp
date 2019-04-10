@@ -190,11 +190,11 @@ public class Emp_Controller {
 		return "emp/emp_etcCodeAdd";
 	}
 	
-    @ResponseBody
+	@ResponseBody
     @RequestMapping(value = "/test", method = RequestMethod.POST)
-	public String kkyu(Model model) {
-		model.addAttribute("list", el.callRankListDao());	
-		return "emp/pop_rank";
-	}
+    public List<Map<String, String>> test(Model model) {
+    	List<Map<String, String>> versionVO = el.test();
+        return versionVO;
+    }
     
 }
