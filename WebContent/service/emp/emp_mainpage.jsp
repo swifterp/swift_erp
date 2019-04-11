@@ -33,7 +33,18 @@ $(document).ready(function() {
   window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
     });
 </script>
-
+<script>
+$(document).ready(function(){
+	$("img").hover(function() {
+	var temp = $(this).attr("src");
+	$(this).attr("src", $(this).attr("data-alt"));
+	$(this).attr("data-alt", temp);
+	});
+	})
+</script>
+<style>
+table tr:hover {background:#fefefe;}
+</style>
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
@@ -89,10 +100,10 @@ $(document).ready(function() {
 						<td><%= lst.get(i).get("DNAME") %></td>
 						<td><%= lst.get(i).get("RANK_NAME") %></td>
 						<td><%= lst.get(i).get("EMP_JOIN_DATE") %></td>
-						<td><a class="btn btn-default">이메일</a></td>
-						<td><a class="btn btn-default">인쇄</a></td>
-						<td><a class="btn btn-default" onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" href="#">수정</a></td>
-						<td><a class="btn btn-default" onclick="javascript:empDel(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" href="#">삭제</a></td>
+						<td><a href="#"><img src="../../images/icon_email_0.png" data-alt="../../images/icon_email_1.png" style="width:35px; height:35px;"/></a></td>
+						<td><a href="#"><img src="../../images/icon_print_0.png" data-alt="../../images/icon_print_1.png" style="width:35px; height:35px;"/></a></td>
+						<td><a onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" href="#"><img src="../../images/icon_pencil_0.png" data-alt="../../images/icon_pencil_1.png" style="width:35px; height:35px;" /></a></td>
+						<td><a onclick="javascript:empDel(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" href="#"><img src="../../images/icon_delete_0.png" data-alt="../../images/icon_delete_1.png" style="width:35px; height:35px;"/></a></td>
 					</tr>
 					<%
 							}
@@ -101,8 +112,15 @@ $(document).ready(function() {
 			    </tbody>
 			</table>
 			<div class="btn_group">
-				<a class="btn btn-primary pull-right" onclick="javascript:goEmpAdd()">사원등록</a>
+				<a class="btn btn-outline-primary pull-right" onclick="javascript:goEmpAdd()">사원등록</a>
 			</div>
+			<nav aria-label="...">
+			  <ul class="pagination">
+			    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+			    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+			    ...
+			  </ul>
+			</nav>
 		</div>
 	</div>
 </body>

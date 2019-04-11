@@ -250,7 +250,7 @@ $(document).ready(function() {
 													<input type="hidden" id="p_dept_no" name="deptno" class="form-control">
 													<input type="text" id="p_dept_name" class="form-control" required="">
 													<span class="input-group-btn">
-														 <button class="btn btn-info" type="button" data-toggle="modal" data-target="#exampleModal"><img src="../../images/icon_plus.png" /></button>
+														 <button class="btn btn-default" type="button" data-toggle="modal" data-target="#exampleModal">보기</button>
 													</span>
 												</td>
 												<th>직급 <span class="essential">*</span></th>
@@ -258,7 +258,7 @@ $(document).ready(function() {
 													<input type="hidden" id="p_rank_no" name="rank_no" class="form-control" required="">
 													<input type="text" id="p_rank_name" class="form-control" required="">
 													<span class="input-group-btn">
-														 <button class="btn btn-info" type="button"><img src="../../images/icon_plus.png" /></button>
+														 <button class="btn btn-default" type="button">보기</button>
 													</span>
 												</td>
 												<th>직책<span class="essential">*</span></th>
@@ -266,7 +266,7 @@ $(document).ready(function() {
 													<input type="hidden" id="p_duty_no" name="duty_no" class="form-control">
 													<input type="text" id="p_duty_name" class="form-control">
 													<span class="input-group-btn">
-														 <button class="btn btn-info" type="button"><img src="../../images/icon_plus.png" /></button>
+														 <button class="btn btn-default" type="button">보기</button>
 													</span>
 												</td>
 											</tr>
@@ -276,7 +276,7 @@ $(document).ready(function() {
 													<input type="hidden" id="p_bank_no" name="bank_no" class="form-control">
 													<input type="text" id="p_bank_name" class="form-control">
 													<span class="input-group-btn">
-														 <button class="btn btn-info" type="button"><img src="../../images/icon_plus.png" /></button>
+														 <button class="btn btn-default" type="button">보기</button>
 													</span>
 												</td>
 												<th>계좌번호</th>
@@ -418,7 +418,7 @@ $(document).ready(function() {
 				</div>
 				<div class="btn_group">
 					<a href="../emp/read" class="btn btn-default pull-left">목록</a>
-					<input type="submit" id="submit" class="btn btn-primary pull-right" value="등록완료">
+					<input type="submit" id="submit" class="btn btn-outline-primary pull-right" value="등록완료">
 				</div>
 			</div>
 		</form>

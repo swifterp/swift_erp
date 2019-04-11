@@ -6,17 +6,18 @@
 <meta charset="UTF-8">
 <title>Welcome Page</title>
 <%@ include file="../common/ui_common.jsp" %>
-<style>
-body {background:url('../../images/bg_main2.jpg') no-repeat 0 0 #FFF;}
-</style>
+<link rel="stylesheet" href="../../css/style.css">
+<script type='text/javascript' src='../../js/jquery.particleground.js'></script>
+<script type = "text/javascript" src ="../../js/demo.js"></script>
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
-	<div class="container">	
-		<div class="contents">	
-			<p style="color:white">Welcome! This is Swift Corporation.</p>
-			<h2 style="color"white">${member}님 환영합니다.</h2>
+	<div id="particles">
+		 <div id="intro">	
+		   <h1>Welcome!<br>This is Swift Corporation.</h1>	  
+		  <p>${member}님 환영합니다.</p>	  
 		</div>
+		
 	</div>
 </body>
 </html>

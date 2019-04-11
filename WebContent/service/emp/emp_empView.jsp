@@ -220,7 +220,7 @@ reader.readAsDataURL(test);
 						<td class="input-group">
 							<input class="form-control" value="${list.get(0).get("EMP_ADDR1")}" name="emp_addr1" id="emp_addr1" type="text" readonly="readonly" style="display:inline-block;" placeholder="우편번호" />
 							<span class="input-group-btn">
-								<button type="button" class="btn btn-primary" onclick="execPostCode();">검색</button> 
+								<button type="button" class="btn btn-default" onclick="execPostCode();">검색</button> 
 							</span>
 						</td>
 						<td colspan="2"><input class="form-control" value="${list.get(0).get("EMP_ADDR2")}" name="emp_addr2" id="emp_addr2" type="text" readonly="readonly" placeholder="도로명주소" /></td>
@@ -254,7 +254,7 @@ reader.readAsDataURL(test);
 										<input type="hidden" id="p_dept_no" name="deptno" value="${list.get(0).get("DEPTNO")}" class="form-control">
 										<input type="text" id="p_dept_name" class="form-control" value="${list.get(0).get("DNAME")}" required="">
 										<span class="input-group-btn">
-											 <button class="btn btn-default" type="button" data-toggle="modal" data-target="#exampleModal">Go!</button>
+											 <button class="btn btn-default" type="button" data-toggle="modal" data-target="#exampleModal">보기</button>
 										</span>
 									</td>
 									<th>직급<span class="essential">*</span></th>
@@ -262,7 +262,7 @@ reader.readAsDataURL(test);
 										<input type="hidden" id="p_rank_no" name="rank_no" class="form-control" value="${list.get(0).get("RANK_NO")}">
 										<input type="text" id="p_rank_name" class="form-control" value="${list.get(0).get("RANK_NAME")}" required="">
 										<span class="input-group-btn">
-											 <button class="btn btn-default" type="button">Go!</button>
+											 <button class="btn btn-default" type="button">보기</button>
 										</span>
 									</td>
 									<th>직책<span class="essential">*</span></th>
@@ -270,7 +270,7 @@ reader.readAsDataURL(test);
 										<input type="hidden" id="p_duty_no" name="duty_no" class="form-control" value="${list.get(0).get("DUTY_NO")}">
 										<input type="text" id="p_duty_name" class="form-control" value="${list.get(0).get("DUTY_NAME")}">
 										<span class="input-group-btn">
-											 <button class="btn btn-default" type="button">Go!</button>
+											 <button class="btn btn-default" type="button">보기</button>
 										</span>
 									</td>
 								</tr>
@@ -280,7 +280,7 @@ reader.readAsDataURL(test);
 										<input type="hidden" id="p_bank_no" name="bank_no" class="form-control" value="${list.get(0).get("BANK_NO")}">
 										<input type="text" id="p_bank_name" class="form-control" value="${list.get(0).get("BANK_NAME")}">
 										<span class="input-group-btn">
-											 <button class="btn btn-default" type="button">Go!</button>
+											 <button class="btn btn-default" type="button">보기</button>
 										</span>
 									</td>
 									<th>계좌번호</th>
