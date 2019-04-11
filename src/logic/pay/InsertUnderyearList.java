@@ -21,4 +21,10 @@ public class InsertUnderyearList {
 		
 	}
 	
+	public List<Map<String, String>> callUnderyearDao() {
+		
+		return ud.selectUnderyearList();
+		
+	}
+	
 }

@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 import controller.Approval_Controller;
 import controller.Attend_Controller;
+import controller.Chat_Controller;
 import controller.Client_Controller;
 import controller.Emp_Controller;
 import controller.Mem_Controller;
@@ -53,5 +54,10 @@ public class ControllerConfig {
 	@Bean
 	public Mem_Controller mem_Controller() {
 		return new Mem_Controller();
+	}
+	
+	@Bean
+	public Chat_Controller chat_Controller() {
+		return new Chat_Controller();
 	}
 }

@@ -14,9 +14,14 @@ public class AllowanceItemDao {
 	@Autowired
 	private selectListMapper slm;
 	
-	public List<Map<String, String>> selectAllowanceList() {
+	public List<Map<String, String>> selectAllowanceList(Integer classify) {
 		
-		return slm.getAllowanceList();
+		if(classify == 1) {
+			return slm.getDailyAllowanceList();
+		} else {
+			return slm.getAllowanceList();
+		}
+		
 	}
 	
 }

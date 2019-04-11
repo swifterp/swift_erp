@@ -14,9 +14,9 @@ public class SelectAllowanceItem {
 	@Autowired
 	private AllowanceItemDao aid;
 	
-	public List<Map<String, String>> callAllowanceItemDao() {
+	public List<Map<String, String>> callAllowanceItemDao(Integer classify) {
 		
-		return aid.selectAllowanceList();
+		return aid.selectAllowanceList(classify);
 		
 	}
 	

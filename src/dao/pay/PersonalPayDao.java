@@ -16,7 +16,16 @@ public class PersonalPayDao {
 	
 	public List<Map<String, String>> selectPersonalPayList(String report) {
 		
-		return slm.getPersonalPayList(report);
+		List<Map<String, String>> tmp = slm.getPersonalPayList(report);
+		
+		return tmp;
+	}
+	
+	public List<Map<String, String>> selectPersonalDeducList(String report) {
+
+		List<Map<String, String>> tmp = slm.getPersonalDeducList(report);
+		
+		return tmp;
 	}
 	
 }
