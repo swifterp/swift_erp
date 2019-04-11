@@ -41,6 +41,11 @@
 	}
 </style>
 <script>
+	function search(){
+		location.href="Payroll_table(page).jsp";
+	}
+</script>
+<script>
 	$(function() {
 		$("#datepicker").datepicker(
 			{
@@ -364,7 +369,7 @@
 			</tbody>
 		</table>
 		<br>
-		<input type="submit" class="btn btn-primary pull-left" value="검색">
+		<input type="submit" class="btn btn-primary pull-left" value="검색" onclick="search();">
 	</div>
 </body>
 </html>

@@ -78,38 +78,6 @@
 	});
 </script>
 
-<style>
-button {
-	vertical-align: middle;
-}
-	button.img-button_Searc {
-	background: url("../../images/btn_Searc.png" ) no-repeat;
-    border: none;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    }
-</style>
-
-<style>/* modal 중앙에 띄우기  */
-  .modal {
-          text-align: center;
-        }
-        @media screen and (min-width: 768px) {
-          .modal:before {
-            display: inline-block;
-            vertical-align: middle;
-            content: " ";
-            height: 100%;
-          }
-        }
-        .modal-dialog {
-          display: inline-block;
-          text-align: left;
-          vertical-align: middle;
-        }
-</style>
-
 <title>SWIFT ERP</title>
 </head>
 <body>

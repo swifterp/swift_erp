@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="../../css/common.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -11,38 +10,29 @@
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-button {
-	vertical-align: middle;
-}
-	button.img-button_Searc {
-	background: url("../../images/btn_Searc.png" ) no-repeat;
-    border: none;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    }
+<style type="text/css"> /* 테이블 선에 색상주기  */
+  .line{border-bottom: 1px solid #AAA;}
 </style>
-<script type="text/javascript">
-function pop_dept(){
-	var url="../pop/window_dept.jsp";
-	var windowW = 300;  // 창의 가로 길이
-    var windowH = 300;  // 창의 세로 길이
-    var left = Math.ceil((window.screen.width - windowW)/2);
-    var top = Math.ceil((window.screen.height - windowH)/2);
-    window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
-}
-</script>
+<style> /* 테이블 선에 투명도 주기  */
+  .Transparency{border-right: none;
+   				border-left:none;
+				border-top:none;
+				border-bottom:none;
+  				}
+</style>
 <style>
-	table td {
-		text-align: left;
+  .line2{border-bottom: 1px solid #fff;}
+</style>
+<style>
+	.a{
+		color: blue;
 	}
-</style>
-<style type="text/css">
-	.line {
-		border-left: #fff;
-		border-right: #fff;
+	.a:hover{
+		color: blue;
+		text-decoration: underline;
 	}
 </style>
 </head>
@@ -102,102 +92,89 @@ function pop_dept(){
 					</ul>
 				</li>
 				<li>
-					<a class="active" data-toggle="collapse"
-					data-target="#group2" aria-expanded="false" href="#">급여작업</a>
-					<ul class="collapse in depth2" id="group2">
+					<a data-toggle="collapse"
+					data-target="#group2" aria-expanded="false" href="Payroll.jsp">급여작업</a>
+					<ul class="collapse depth2" id="group2">
 						<li><a href="Payroll.jsp">급여계산/대장</a></li>
-						<li><a class="active" href="#">일별근무기록등록</a></li>
+						<li><a href="Daily_work.jsp">일별근무기록등록</a></li>
 					</ul>
 				</li>
-				<li><a data-toggle="collapse"
-					data-target="#group3" aria-expanded="false" href="Specification.jsp">출력물</a>
-					<ul class="collapse depth2" id="group3">
+				<li><a class="active" data-toggle="collapse"
+					data-target="#group3" aria-expanded="false" href="#">출력물</a>
+					<ul class="collapse in depth2" id="group3">
 						<li><a href="Specification.jsp ">명세서인쇄</a></li>
 						<li><a href="Individual_benefits.jsp ">개인별급여내역인쇄</a></li>
 						<li><a href="Work_record.jsp">근무기록확정현황인쇄</a></li>
-						<li><a href="Monthly_Personnel.jsp">월별인원현황인쇄</a></li>
+						<li><a class="active" href="#">월별인원현황인쇄</a></li>
 						<li><a href="Payroll_table.jsp">급여집계표</a></li>
 					</ul>
 				</li>
 			</ul>
 		</nav>
 	</div>
-	<div class="contents" style="padding-right: 30px;">
-		<table id="calendar" border="3" class="table line">
+		<div style="width: 1000px"  class="contents">
+		<table class="table line" style="margin: auto; text-align:center;">
+			<thead class="line">
+				<tr>
+					<td style="width: 200px">
+					</td>
+					<td style="font-size: 24px; text-align: center;">
+						월별 인원 현황
+					</td>
+					<td style="width: 200px; vertical-align: bottom; ">
+						시간(년/월) ~ 시간(년/월)
+					</td>
+				</tr>
+			</thead>
+		</table>
+		<table class="table" style="margin: auto; text-align:center;">
+			<thead>
+			</thead>
 			<tbody>
 				<tr>
-					<td width="10%"> 부서
+					<td style="width: 10%">
+						월별
 					</td>
-					<td class="line" style="text-align: left;" colspan="2">
-						<input type="text" style="width: 100px;">
-						<span>
-							<button type="button" class="img-button_Searc" onclick="pop_dept()"></button>
-						</span>
-						<input type="text" style="width: 100px">
+					<td  style="width: 40%" colspan="2"> 
+						입사
+					</td>
+					<td  style="width: 40%" colspan="2">
+						퇴사
+					</td>
+					<td  style="width: 10%">
+						현재원
+					</td>
+				</tr>
+				<tr>
+					<td>
+						2019/02
 					</td>
 					<td> 
+						&nbsp;
 					</td>
-				</tr>
-				<tr>
-					<td> 부서계층그룹
+					<td width="5%"> 
+						0
 					</td>
-					<td class="line" style="text-align: left;" colspan="2">
-						<input type="text" style="width: 100px;">
-						<span>
-							<button type="button" class="img-button_Searc" onclick="pop_dept()"></button>
-						</span>
-						<input type="text" style="width: 100px">
+					<td> 
+						&nbsp;
 					</td>
-					<td style="text-align: right;"> 
-						하위그룹포함검색
-						<label> 
-							<input type="radio" name="optionsRadios"
-							       id="optionsRadios3" value="option3" checked>
-						</label>
+					<td width="5%">
+						0
 					</td>
-				</tr>
-			</tbody>	
-		</table>
-		<br>
-		<input type="button" class="btn btn-primary" value="선택삭제"></button>
-		<br>
-		<table id="calendar" border="3" class="table line">
-			<tbody>
-				<tr>
-					<td>선택</td>
-					<td>사원번호</td>
-					<td>사원명</td>
-					<td>부서명</td>
-					<td>야근수당시간</td>
-					<td>주말근무수당시간</td>
-					<td>연차수당일수</td>
-				</tr>
-				<tr>
 					<td>
-					<input type="radio" name="optionsRadios"
-						   id="optionsRadios3" value="option3" checked>
+						2
 					</td>
-					<td><input></td>
-					<td>홍길순</td>
-					<td>영업교육팀</td>
-					<td>0.00</td>
-					<td>0.00</td>
-					<td>0.00</td>
-				</tr>
-				<tr>
-					<td>
-					<input type="radio" name="optionsRadios"
-						   id="optionsRadios3" value="option3">
-					</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
 				</tr>
 			</tbody>
 		</table>
+		<div style=" text-align: right;">
+			<a style="width: 100px; vertical-align: bottom;">
+				시간(년/ 월/ 일   오전 시:분:초)
+			</a>
+		</div>
+		<br> 
+		<input type="button" class="btn btn-primary pull-list"
+			 value="인쇄" >
 	</div>
 </body>
 </html>

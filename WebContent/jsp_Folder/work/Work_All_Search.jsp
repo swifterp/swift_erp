@@ -234,7 +234,7 @@ input {
 			<tbody>
 				<tr>
 					<td style="width: 10%; vertical-align: middle;" >기간</td>
-					<td colspan="2">
+					<td colspan="4">
 					<input type="text" id="datepicker" class="form-control input-sm"
 						style="width: 130px; height: 50%; display: inline-block">
 					&nbsp;&nbsp;~&nbsp;&nbsp;
@@ -244,7 +244,7 @@ input {
 				</tr>
 				<tr>
 					<td style="vertical-align: middle;">사원명</td>
-					<td colspan="2">
+					<td colspan="4">
 						<input type="button" class="img-button" data-toggle="modal" data-target="#user_name">
 						<input type="text" class="form-control input-sm"
 							   style="width:80%; height: 50%; display: inline-block">
@@ -252,7 +252,7 @@ input {
 				</tr>
 				<tr>
 					<td>부서</td>
-					<td colspan="2">
+					<td colspan="4">
 						<input type="button" class="img-button" data-toggle="modal" data-target="#dept_name">
 						<input type="text" class="form-control input-sm"
 							   style="width:80%; height: 50%; display: inline-block">
@@ -260,7 +260,7 @@ input {
 				</tr>
 				<tr>
 					<td style=" vertical-align: middle;">내/외근</td>
-					<td colspan="2">
+					<td colspan="4">
 						<div class="radio">
 							<label> <input type="radio" name="optionsRadios"
 								id="optionsRadios1" value="option1" checked>
@@ -281,7 +281,7 @@ input {
 				</tr>
 				<tr>
 					<td style="vertical-align: middle;">기타</td>
-					<td colspan="2" >
+					<td colspan="4" >
 						<div class="custom-control custom-checkbox">
 							<input type="checkbox" id="jb-All_checkbox"
 								class="custom-control-input">
@@ -317,7 +317,7 @@ input {
 				</tr>
 				<tr>
 					<td style="vertical-align: middle;">근무구분</td>
-					<td colspan="2">
+					<td colspan="4">
 						<div class="radio">
 							<label> <input type="radio" name="optionsRadios"
 								id="optionsRadios4" value="option4" checked>
@@ -338,7 +338,7 @@ input {
 				</tr>
 				<tr>
 					<td>프로젝트</td>
-					<td colspan="2">
+					<td colspan="4">
 						<input type="button" class="img-button" data-toggle="modal" data-target="#project">
 						<input type="text" class="form-control input-sm"
 							   style="width:80%; height: 50%; display: inline-block">
@@ -346,7 +346,7 @@ input {
 				</tr>
 				<tr>
 					<td>근태항목</td>
-					<td colspan="2">
+					<td colspan="4">
 						<input type="button" class="img-button" data-toggle="modal" data-target="#Working_attitude">
 						<input type="text" class="form-control input-sm"
 							   style="width:80%; height: 50%; display: inline-block">
@@ -354,7 +354,7 @@ input {
 				</tr>
 				<tr>
 					<td>휴가항목</td>
-					<td colspan="2">
+					<td colspan="4">
 						<input type="button" class="img-button" data-toggle="modal" data-target="#vacation">
 						<input type="text" class="form-control input-sm"
 							   style="width:80%; height: 50%; display: inline-block">
@@ -363,7 +363,7 @@ input {
 				
 				<tr>
 					<td>근태그룹</td>
-					<td colspan="2">
+					<td colspan="4">
 						<input type="button" class="img-button" data-toggle="modal" data-target="#Working_group">
 						<input type="text" class="form-control input-sm"
 							   style="width:80%; height: 50%; display: inline-block">
@@ -371,7 +371,7 @@ input {
 				</tr>
 				<tr>
 					<td>적요</td>
-					<td colspan="2">
+					<td colspan="4">
 						<input class="not_img">
 						<input type="text" class="form-control input-sm"
 							   style="width:80%; height: 50%; display: inline-block;">
@@ -379,33 +379,33 @@ input {
 				</tr>
 				<tr>
 					<td style="vertical-align: middle;">상태</td>
-					<td colspan="3">
+					<td colspan="4">
 						<div class="radio">
+							<input type="radio" name="optionsRadios"
+								id="optionsRadios4" value="option4"
+								style="margin: 0">
 							<label> 
-								<input type="radio" name="optionsRadios"
-									id="optionsRadios4" value="option4"
-									style="margin: 0">
 									전체
 							</label>
 							&nbsp;
+							<input type="radio" name="optionsRadios"
+								id="optionsRadios5" value="option5"
+								style="margin: 0">
 							<label>
-								<input type="radio" name="optionsRadios"
-									id="optionsRadios5" value="option5"
-									style="margin: 0">
-									UserPay
+								UserPay
 							</label>
 							&nbsp;
+							<input type="radio" name="optionsRadios"
+								id="optionsRadios6" value="option6"
+								style="margin: 0">
 							<label> 
-								<input type="radio" name="optionsRadios"
-									id="optionsRadios6" value="option6"
-									style="margin: 0">
-									확인
+								확인
 							</label>
 						</div>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" style="vertical-align: middle;">
+					<td colspan="4" style="vertical-align: middle;">
 						<div class="input-group" style="width: 20%">
 							<select class="custom-select" id="Work_All_search">
 								<option value="Work_All_Serch(page).jsp">출/퇴근,근태,일정 현황</option>

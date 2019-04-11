@@ -10,6 +10,18 @@
 <script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style>
+button {
+	vertical-align: middle;
+}
+	button.img-button_Searc {
+	background: url("../../images/btn_Searc.png" ) no-repeat;
+    border: none;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    }
+</style>
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -35,6 +47,11 @@
 		text-decoration: underline;
 	}
 </style>
+<script>
+	function search(){
+		location.href="Monthly_Personnel(page).jsp";
+	}
+</script>
 <script>
 	$(function() {
 		$("#datepicker").datepicker(
@@ -66,6 +83,26 @@
 				monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월' ]
 			});
 	});
+</script>
+<script type="text/javascript">
+function pop_dept(){
+	var url="../pop/window_dept.jsp";
+	var windowW = 300;  // 창의 가로 길이
+    var windowH = 300;  // 창의 세로 길이
+    var left = Math.ceil((window.screen.width - windowW)/2);
+    var top = Math.ceil((window.screen.height - windowH)/2);
+    window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+}
+</script>
+<script type="text/javascript">
+function pop_project(){
+	var url="../pop/window_project.jsp";
+	var windowW = 300;  // 창의 가로 길이
+    var windowH = 300;  // 창의 세로 길이
+    var left = Math.ceil((window.screen.width - windowW)/2);
+    var top = Math.ceil((window.screen.height - windowH)/2);
+    window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+}
 </script>
 </head>
 <body>
@@ -168,7 +205,7 @@
 					<td class="line" style="text-align: left;">
 						<input type="text" style="width: 100px;">
 						<span>
-							<button type="button"></button>
+							<button type="button" class="img-button_Searc" onclick="pop_dept()"></button>
 						</span>
 						<input type="text" style="width: 100px">
 					</td>
@@ -180,7 +217,7 @@
 					<td class="line" style="text-align: left;">
 						<input type="text" style="width: 100px">
 						<span>
-							<button type="button"></button>
+							<button type="button" class="img-button_Searc" onclick="pop_dept()"></button>
 						</span>
 						<input type="text" style="width: 100px">
 						&nbsp;
@@ -198,7 +235,7 @@
 					<td class="line" style="text-align: left;">
 						<input type="text" style="width: 100px">
 						<span>
-							<button type="button"></button>
+							<button type="button" class="img-button_Searc" onclick="pop_project()"></button>
 						</span>
 						<input type="text" style="width: 100px">
 					</td>
@@ -230,7 +267,8 @@
 			</tbody>
 		</table>
 		<br>
-		<input type="submit" class="btn btn-primary pull-left" value="검색">
+		<input type="submit" id="Work_Search" onClick="search()" class="btn btn-primary"
+			value="검색">
 	</div>
 </body>
 </html>

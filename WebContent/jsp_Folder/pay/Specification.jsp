@@ -13,6 +13,28 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+button {
+	vertical-align: middle;
+}
+	button.img-button_Searc {
+	background: url("../../images/btn_Searc.png" ) no-repeat;
+    border: none;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    }
+</style>
+<script type="text/javascript">
+function pop_dept(){
+	var url="../pop/window_dept.jsp";
+	var windowW = 300;  // 창의 가로 길이
+    var windowH = 300;  // 창의 세로 길이
+    var left = Math.ceil((window.screen.width - windowW)/2);
+    var top = Math.ceil((window.screen.height - windowH)/2);
+    window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+}
+</script>
+<style>
 	td{
 		height: 40px;
 	}
@@ -256,7 +278,7 @@ $(function () {
 					<td class="line" style="text-align: left;">
 						<input type="text" style="width: 100px;">
 						<span>
-							<button type="button"></button>
+							<button type="button" class="img-button_Searc" onclick="pop_dept()"></button>
 						</span>
 						<input type="text" style="width: 100px">
 					</td>
@@ -269,7 +291,7 @@ $(function () {
 						<div class="custom-control custom-checkbox">
 							<input type="text" style="width: 100px">
 							<span>
-								<button type="button"></button>
+								<button type="button" class="img-button_Searc" onclick="pop_dept()"></button>
 							</span>
 							<input type="text" style="width: 100px">
 							&nbsp;

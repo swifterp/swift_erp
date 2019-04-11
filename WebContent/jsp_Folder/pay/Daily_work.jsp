@@ -124,6 +124,11 @@
              }
         }
     </script>
+   <script>
+	function page(){
+		location.href="Attendance_registration.jsp";
+	}
+</script>
 <title>SWIFT ERP</title>
 </head>
 <body>
@@ -246,7 +251,8 @@
 			<script language="javascript" type="text/javascript">
 			    buildCalendar();//
 			</script>
+			<br>
+			<button type="button" onclick="page();">임시페이지 이동 버튼</button>
 		</div>
-	</div>
 </body>
 </html>

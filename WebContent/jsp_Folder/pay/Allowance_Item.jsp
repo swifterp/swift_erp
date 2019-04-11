@@ -11,6 +11,58 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <title>SWIFT ERP</title>
+<style>
+button {
+	vertical-align: middle;
+}
+	button.img-button_Searc {
+	background: url("../../images/btn_Searc.png" ) no-repeat;
+    border: none;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    }
+</style>
+<script type="text/javascript">
+function pop_cal(){
+	var url="../pop/window_Calculation.jsp";
+	var windowW = 300;  // 창의 가로 길이
+    var windowH = 300;  // 창의 세로 길이
+    var left = Math.ceil((window.screen.width - windowW)/2);
+    var top = Math.ceil((window.screen.height - windowH)/2);
+    window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+}
+</script>
+<script type="text/javascript">
+function pop_dept(){
+	var url="../pop/window_dept.jsp";
+	var windowW = 300;  // 창의 가로 길이
+    var windowH = 300;  // 창의 세로 길이
+    var left = Math.ceil((window.screen.width - windowW)/2);
+    var top = Math.ceil((window.screen.height - windowH)/2);
+    window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+}
+</script>
+<script type="text/javascript">
+function pop_work_code(){
+	var url="../pop/window_work_code.jsp";
+	var windowW = 300;  // 창의 가로 길이
+    var windowH = 300;  // 창의 세로 길이
+    var left = Math.ceil((window.screen.width - windowW)/2);
+    var top = Math.ceil((window.screen.height - windowH)/2);
+    window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+}
+</script>
+<script type="text/javascript">
+function pop_tax_free(){
+	var url="../pop/window_tax_free.jsp";
+	var windowW = 300;  // 창의 가로 길이
+    var windowH = 300;  // 창의 세로 길이
+    var left = Math.ceil((window.screen.width - windowW)/2);
+    var top = Math.ceil((window.screen.height - windowH)/2);
+    window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+}
+</script>
 </head>
 <body>
 	<!-- 네비게이션 -->
@@ -118,8 +170,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td>
-						기본급
+					<td>기본급
+						<button type="button" class="img-button_Searc" onclick="pop_dept();"></button>
 					</td>
 					<td> 
 						1
@@ -135,7 +187,13 @@
 						</div>
 					</td>
 					<td>
-						비과세 팝업창 생성
+						<div class="input-group1">
+						<input type="text" style="width: 60px">
+							<span>
+								<button type="button" class="img-button_Searc" onclick="pop_tax_free();"></button>
+							</span>
+						<input type="text" style="width: 80px">
+						</div>
 					</td>
 					<td>
 						<div class="input-group" style="width: 100px;">
@@ -151,10 +209,10 @@
 							id="optionsRadios1" value="option1">
 					</td>
 					<td>
-						<input type="button" value="계산내역" >
+						<a onclick="pop_cal();">계산내역</a>
 					</td>
 					<td>
-						근태코드 팝업창
+						<button type="button" class="img-button_Searc" onclick="pop_work_code();"></button>
 					</td>
 				</tr>
 				<tr>
@@ -175,7 +233,13 @@
 						</div>
 					</td>
 					<td>
-						비과세 팝업창 생성
+					<div class="input-group2">
+						<input type="text" style="width: 60px">
+							<span>
+								<button type="button" class="img-button_Searc" onclick="pop_tax_free();"></button>
+							</span>
+						<input type="text" style="width: 80px">
+					</div>
 					</td>
 					<td>
 						<div class="input-group" style="width: 100px;">
@@ -191,10 +255,10 @@
 							id="optionsRadios1" value="option1">
 					</td>
 					<td>
-						<input type="button" value="계산내역" >
+						<a onclick="pop_cal();">계산내역</a>
 					</td>
 					<td>
-						근태코드 팝업창
+						<button type="button" class="img-button_Searc" onclick="pop_work_code();"></button>
 					</td>
 				</tr>
 				<tr>
@@ -215,7 +279,13 @@
 						</div>
 					</td>
 					<td>
-						비과세 팝업창 생성
+					<div class="input-group3">
+						<input type="text" style="width: 60px">
+							<span>
+								<button type="button" class="img-button_Searc" onclick="pop_tax_free();"></button>
+							</span>
+						<input type="text" style="width: 80px">
+					</div>
 					</td>
 					<td>
 						<div class="input-group" style="width: 100px;">
@@ -231,17 +301,17 @@
 							id="optionsRadios1" value="option1">
 					</td>
 					<td>
-						<input type="button" value="계산내역" >
+						<a onclick="pop_cal();">계산내역</a>
 					</td>
 					<td>
-						근태코드 팝업창
+						<button type="button" class="img-button_Searc" onclick="pop_work_code();"></button>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 		<br> 
 		<input type="button" class="btn btn-primary pull-list"
-			 value="인쇄" >
+			 value="저장" >
 	</div>
 </body>
 </html>

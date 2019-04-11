@@ -149,7 +149,7 @@ $(function () {
 		</div>
 		<br> 
 		<input type="button" class="btn btn-primary pull-list"
-			 value="인쇄" >
+			 value="저장" >
 	</div>
 </body>
 </html>
