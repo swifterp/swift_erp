@@ -19,7 +19,7 @@ public class SelectCommonStyle {
 		return csd.selectCommonList();
 	}
 	
-	public String callCommonStyleDao(int style_code) {
+	public Map<String, String> callCommonStyleDao(int style_code) {
 		
 		return csd.selectCommon(style_code);
 	}

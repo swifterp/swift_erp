@@ -21,7 +21,7 @@ public class CommonStyleDao {
 		return slm.getCommonList();
 	}
 	
-	public String selectCommon(int style_code) {
+	public Map<String, String> selectCommon(int style_code) {
 		
 		return slm.getCommon(style_code);
 		

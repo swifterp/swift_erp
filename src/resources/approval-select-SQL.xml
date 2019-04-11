@@ -5,7 +5,7 @@
 
 	<select id="getDraftList" resultType="hashmap">
 	
-		select DRAFT_NO,DRAFT_TITLE,DRAFT_DATE,DRAFT_WRITER,DRAFT_REFERENCE,DRAFT_OWNER,DRAFT_STYLE,DRAFT_DIVISION,DRAFT_CONTENT,DRAFT_NAME from draft
+		select DRAFT_NO,DRAFT_DATE,draft_writer from draft
 	
 	</select>
 	
@@ -23,9 +23,9 @@
 	<result property="STYLE_CONTENT" column="STYLE_CONTENT" jdbcType="CLOB" javaType="java.lang.String" />
 
 </resultMap>
-	<select id="getCommon" parameterType="Integer" resultType="String" resultMap="StyleSheet">
+	<select id="getCommon" parameterType="Integer" resultType="HashMap" resultMap="StyleSheet">
 		
-		select style_content from common_style where style_code=#{style_code,jdbcType=INTEGER} 
+		select style_code,style_name,style_content from common_style where style_code=#{style_code,jdbcType=INTEGER} 
 		order by style_code
 		
 	</select>
@@ -37,17 +37,18 @@
 	</select>
 	
 	<select id="getApprovalPathList" resultType="hashmap">
-	select  PATH_CODE, PATH_NAME,
-            PATH_FIRSTNAME,(select emp_name from employee where empno = PATH_FIRSTEMP) as "F_EMP_NAME" ,PATH_FIRSTPOSITION,
-            PATH_SECONDNAME,(select emp_name from employee where empno = PATH_SECONDEMP) as "S_EMP_NAME" ,PATH_SECONDPOSITION 
+			select  PATH_CODE, PATH_NAME,
+            (select emp_name from employee where empno = PATH_FIRSTEMP) as "F_EMP_NAME" ,
+            (select emp_name from employee where empno = PATH_SECONDEMP) as "S_EMP_NAME", 
+            (select emp_name from employee where empno = PATH_THIRDEMP) as "T_EMP_NAME" 
             from APPROVAL_PATH
 	</select>
 	
 	<select id="getMyApprovalList" parameterType = "Integer" resultType="hashmap">
-		select   DRAFT_NO,DRAFT_TITLE,DRAFT_DATE,DRAFT_WRITER,DRAFT_REFERENCE ,DRAFT_OWNER
-				,DRAFT_STYLE, DRAFT_DIVISION, DRAFT_CONTENT  from draft
+		select   DRAFT_NO,DRAFT_DATE,DRAFT_STYLE from draft
 				<where>
 					draft_writer = (select emp_name from employee where empno=#{EMPNO,jdbcType=INTEGER})
 				</where>
 	</select>
+	
 </mapper>

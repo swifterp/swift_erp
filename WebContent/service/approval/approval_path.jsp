@@ -25,12 +25,9 @@
 					<tr> 
 						<th>No.</th>
 						<th>결재라인 제목</th>
-						<th>첫번째 결재방 이름</th>
-						<th>첫번째 결재방 결재자</th>
-						<th>첫번째 결재방 직급</th>
-						<th>두번째 결재방 이름</th>
-						<th>두번째 결재방 결재자</th>
-						<th>두번째 결재방 직급</th>
+						<th>1차 결재자</th>
+						<th>2차 결재자</th>
+						<th>3차 결재자</th>
 					</tr>
 				</thead>
 			    <tbody>
@@ -42,12 +39,9 @@
 					<tr>
 						<td><%= Integer.parseInt(String.valueOf(lst.get(i).get("PATH_CODE"))) %> </td>
 						<td><%= lst.get(i).get("PATH_NAME") %> </td>
-						<td><%= lst.get(i).get("PATH_FIRSTNAME") %> </td>
 						<td><%= lst.get(i).get("F_EMP_NAME") %> </td>
-						<td><%= lst.get(i).get("PATH_FIRSTPOSITION") %> </td>
-						<td><%= lst.get(i).get("PATH_SECONDNAME") %> </td>
 						<td><%= lst.get(i).get("S_EMP_NAME") %> </td>
-						<td><%= lst.get(i).get("PATH_SECONDPOSITION") %> </td>
+						<td><%= lst.get(i).get("T_EMP_NAME") %> </td>
 					</tr>
 					<%
 							}
