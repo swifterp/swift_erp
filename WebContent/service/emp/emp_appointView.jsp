@@ -62,7 +62,7 @@ $(document).ready(function() {
 	<div class="container">		
 		<%@ include file="../common/left_menu_emp.jsp" %>
 		<div class="contents">
-			<h3>인사발령 조회/수정</h3>
+			<h1>인사발령 조회/수정</h1>
 			<form action="../emp/appointUpd">
 			<table class="table">
 				<colgroup>

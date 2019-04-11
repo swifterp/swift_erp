@@ -21,7 +21,6 @@
 			<tr>
 				<th>은행코드</th>
 				<th>은행명</th>
-				<th>선택</th>
 			</tr>
 		</thead>
 		<%
@@ -30,12 +29,9 @@
 				for(int i=0;i<lst.size();i++){
 		%>
 		<tbody>
-			<tr>
+			<tr onclick="javascript:bankSelect('<%= String.valueOf(lst.get(i).get("BANK_NO")) %>','<%= String.valueOf(lst.get(i).get("BANK_NAME")) %>')">
 				<td><%= String.valueOf(lst.get(i).get("BANK_NO")) %></td>
 				<td><%= lst.get(i).get("BANK_NAME") %></td>
-				<td>
-					<a class="btn btn-primary" onclick="javascript:bankSelect('<%= String.valueOf(lst.get(i).get("BANK_NO")) %>','<%= String.valueOf(lst.get(i).get("BANK_NAME")) %>')">선택</a>
-				</td>
 			</tr>
 		</tbody>
 		<%

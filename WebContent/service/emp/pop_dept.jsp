@@ -14,6 +14,9 @@
             window.close();
 	}
 </script>
+<style>
+	table tbody tr:hover {background-color:#eee;}
+</style>
 </head>
 <body>
 	<table class="table">
@@ -21,7 +24,6 @@
 			<tr>
 				<th>부서코드</th>
 				<th>부서명</th>
-				<th>선택</th>
 			</tr>
 		</thead>
 		<%
@@ -30,13 +32,10 @@
 				for(int i=0;i<lst.size();i++){
 		%>
 		<tbody>
-			<tr>
-				<td><%= String.valueOf(lst.get(i).get("DEPTNO")) %></td>
-				<td><%= lst.get(i).get("DNAME") %></td>
-				<td>
-					<a class="btn btn-primary" onclick="javascript:deptSelect('<%= String.valueOf(lst.get(i).get("DEPTNO")) %>','<%= String.valueOf(lst.get(i).get("DNAME")) %>')">선택</a>
-				</td>
-			</tr>
+				<tr onclick="javascript:deptSelect('<%= String.valueOf(lst.get(i).get("DEPTNO")) %>','<%= String.valueOf(lst.get(i).get("DNAME")) %>')">
+					<td><%= String.valueOf(lst.get(i).get("DEPTNO")) %></td>
+					<td><%= lst.get(i).get("DNAME") %></td>
+				</tr>
 		</tbody>
 		<%
 				}

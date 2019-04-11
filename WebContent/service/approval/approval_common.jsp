@@ -41,12 +41,13 @@
 						<!-- <td><form action="../approval/approval_style"><input type="submit" name ="STYLE_CODE" VALUE="조회"> </form></td> -->
 						
 							
-							<td><a class="btn btn-default" onclick="javascript:goStyleSearch(<%= Integer.parseInt(String.valueOf(lst.get(i).get("STYLE_CODE"))) %>)" href="#">조회</a></td>
+							<td><a class="btn btn-primary" onclick="javascript:goStyleSearch(<%= Integer.parseInt(String.valueOf(lst.get(i).get("STYLE_CODE"))) %>)" >조회</a></td>
 							<%-- <form action="../../approval/approval_style">
 								<input type="hidden"   name="style_code" class="form-control" value=<%= Integer.parseInt(String.valueOf(lst.get(i).get("STYLE_CODE"))) %>>
 								<input type="submit"   name="style_code" class="btn btn-default" value="조회">
 							</form> --%>
 								</td>
+						<!-- <td><form action="../approval/approval_search"><input type="submit" class="btn btn-primary" name ="STYLE_CODE" VALUE="조회"> </form></td> -->
 					</tr>
 					<%
 							}

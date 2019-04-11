@@ -17,13 +17,22 @@
 		location.href = "../emp/deptDel?deptno="+deptno;	
 	}
 </script>
+<script>
+$(document).ready(function(){
+	$("img").hover(function() {
+	var temp = $(this).attr("src");
+	$(this).attr("src", $(this).attr("data-alt"));
+	$(this).attr("data-alt", temp);
+	});
+	})
+</script>
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
 	<div class="container">
 		<%@ include file="../common/left_menu_emp.jsp" %>
 		<div class="contents">
-			<h3>부서목록</h3>
+			<h1>부서목록</h1>
 			<form action="../emp/deptDel">
 				<table class="table">
 					<thead>
@@ -43,8 +52,8 @@
 						<tr>
 							<td><%= String.valueOf(lst.get(i).get("DEPTNO")) %></td>
 							<td><%= lst.get(i).get("DNAME") %></td>
-							<td><a class="btn btn-default" onclick="javascript:deptView(<%= String.valueOf(lst.get(i).get("DEPTNO")) %>)">수정</a></td>
-							<td><a class="btn btn-default" onclick="javascript:deptDel(<%= String.valueOf(lst.get(i).get("DEPTNO")) %>)">삭제</a></td>
+							<td><a onclick="javascript:deptView(<%= String.valueOf(lst.get(i).get("DEPTNO")) %>)" href="#"><img src="../../images/icon_pencil_0.png" data-alt="../../images/icon_pencil_1.png" style="width:35px; height:35px;"/></a></td>
+							<td><a onclick="javascript:deptDel(<%= String.valueOf(lst.get(i).get("DEPTNO")) %>)" href="#"><img src="../../images/icon_delete_0.png" data-alt="../../images/icon_delete_1.png" style="width:35px; height:35px;"/></a></td>
 						</tr>
 					</tbody>
 					<%

@@ -189,12 +189,5 @@ public class Emp_Controller {
 		model.addAttribute("list", el.bankAddDao(bankPlus));	
 		return "emp/emp_etcCodeAdd";
 	}
-	
-    @ResponseBody
-    @RequestMapping(value = "/test", method = RequestMethod.POST)
-	public String kkyu(Model model) {
-		model.addAttribute("list", el.callRankListDao());	
-		return "emp/pop_rank";
-	}
     
 }

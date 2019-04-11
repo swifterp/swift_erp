@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>emp_mainpage</title>
 <%@ include file="../common/ui_common.jsp" %>
+<script src="../../js/jquery.twbsPagination.js"></script>
+<script src="../../js/jquery.twbsPagination.min.js"></script>
+
 <script type="text/javascript">
 	<!--사원등록-->
 	function goEmpAdd(){
@@ -33,14 +36,52 @@ $(document).ready(function() {
   window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
     });
 </script>
+<script>
+$(document).ready(function(){
+	$("img").hover(function() {
+	var temp = $(this).attr("src");
+	$(this).attr("src", $(this).attr("data-alt"));
+	$(this).attr("data-alt", temp);
+	});
+	})
+</script>
+<script>
+function paging(page) {
+    $('#list-body').empty();
+    var startRow = (page - 1) * pageSize; // + 1 list는 0부터 시작하니깐;
+    var endRow = page * pageSize;
+    if (endRow > totalCount) 
+    {
+        endRow = totalCount;
+    }  
+    var startPage = ((page - 1)/visibleBlock) * visibleBlock + 1;
+    var endPage = startPage + visibleBlock - 1;
+    if(endPage > totalPages) {    //
+      endPage = totalPages;
+    }
+    for (var j = startRow; j < endRow; j++) 
+    {   
+        $('#list-body').append(''+ chatLogList[j].fileNo +'<a onclick="getContent(\''+chatLogList[j].fileName+'\')">'
+                + textLengthOverCut(chatLogList[j].fileName, '25', '...') +'</a>'+ chatLogList[j].fileDate +'');
+    }
+    
+    totalPages = totalCount/pageSize;
+    if (totalCount%pageSize > 0) {
+    totalPages++;
+    }
+}
 
+</script>
+<style>
+table tr:hover {background:#fefefe;}
+</style>
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
 	<div class="container">		
 		<%@ include file="../common/left_menu_emp.jsp" %>
 		<div class="contents">
-			<h2>사원목록</h2>
+			<h1>사원목록</h1>
 			<form action="../emp/empSearchNumName">
 				<div class="input-group">
 					<input type="text" class="form-control" id="empinfo" name="empinfo" placeholder="성명 또는 부서">
@@ -89,10 +130,10 @@ $(document).ready(function() {
 						<td><%= lst.get(i).get("DNAME") %></td>
 						<td><%= lst.get(i).get("RANK_NAME") %></td>
 						<td><%= lst.get(i).get("EMP_JOIN_DATE") %></td>
-						<td><a class="btn btn-default">이메일</a></td>
-						<td><a class="btn btn-default">인쇄</a></td>
-						<td><a class="btn btn-default" onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" href="#">수정</a></td>
-						<td><a class="btn btn-default" onclick="javascript:empDel(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" href="#">삭제</a></td>
+						<td><a href="#"><img src="../../images/icon_email_0.png" data-alt="../../images/icon_email_1.png" style="width:35px; height:35px;"/></a></td>
+						<td><a href="#"><img src="../../images/icon_print_0.png" data-alt="../../images/icon_print_1.png" style="width:35px; height:35px;"/></a></td>
+						<td><a onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" href="#"><img src="../../images/icon_pencil_0.png" data-alt="../../images/icon_pencil_1.png" style="width:35px; height:35px;" /></a></td>
+						<td><a onclick="javascript:empDel(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" href="#"><img src="../../images/icon_delete_0.png" data-alt="../../images/icon_delete_1.png" style="width:35px; height:35px;"/></a></td>
 					</tr>
 					<%
 							}
@@ -101,9 +142,28 @@ $(document).ready(function() {
 			    </tbody>
 			</table>
 			<div class="btn_group">
-				<a class="btn btn-primary pull-right" onclick="javascript:goEmpAdd()">사원등록</a>
+				<a class="btn btn-outline-primary pull-right" onclick="javascript:goEmpAdd()">사원등록</a>
 			</div>
+			<nav aria-label="Page navigation example" style="text-align: center;">
+				<ul class="pagination-sm" id="pagination"></ul>
+			</nav>
 		</div>
 	</div>
+	
+	<script src="/resources/bootstrap/js/jquery.twbsPagination.js"></script>
+	<script type="text/javascript">
+	$('#pagination').twbsPagination({
+		   totalPages: totalPages,  // 전체 page블럭 수
+		   visiblePages: visibleBlock,  // 출력될 page 블럭수 상수로 지정해 줘도 되고, 변수로 지정해줘도 된다.
+		   prev: "이전",
+		   next: "다음",
+		   first: '<span aria-hidden="true">«</span>',
+		   last: '<span aria-hidden="true">»</span>',
+		   onPageClick: function (event, page) {
+		   $('#page-content').text('Page ' + page);
+		   paging(page);
+		   }
+		});
+	</script>
 </body>
 </html>

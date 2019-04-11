@@ -21,13 +21,22 @@
 		location.href = "../emp/appointDel?emp_appoint_no="+emp_appoint_no;	
 	}
 </script>
+<script>
+$(document).ready(function(){
+	$("img").hover(function() {
+	var temp = $(this).attr("src");
+	$(this).attr("src", $(this).attr("data-alt"));
+	$(this).attr("data-alt", temp);
+	});
+	})
+</script>
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
 	<div class="container">		
 		<%@ include file="../common/left_menu_emp.jsp" %>
 		<div class="contents">
-			<h3>인사발령목록</h3>
+			<h1>인사발령목록</h1>
 			<table class="table">
 				<thead>
 					<tr>
@@ -52,8 +61,8 @@
 						<td><%= lst.get(i).get("EMP_NAME") %></td>
 						<td><%= lst.get(i).get("NEXT_RANK") %></td>
 						<td><%= lst.get(i).get("NEXT_DEPT") %></td>
-						<td><button class="btn btn-default" onclick="javascript:appointView(<%= String.valueOf(lst.get(i).get("EMP_APPOINT_NO")) %>)">수정</button></td>
-						<td><a class="btn btn-default" onclick="javascript:appointDel(<%= String.valueOf(lst.get(i).get("EMP_APPOINT_NO")) %>)">삭제</a></td>
+						<td><a onclick="javascript:appointView(<%= String.valueOf(lst.get(i).get("EMP_APPOINT_NO")) %>)" href="#"><img src="../../images/icon_pencil_0.png" data-alt="../../images/icon_pencil_1.png"  style="width:30px; height:30px;"/></a></td>
+						<td><a onclick="javascript:appointDel(<%= String.valueOf(lst.get(i).get("EMP_APPOINT_NO")) %>)" href="#"><img src="../../images/icon_delete_0.png" data-alt="../../images/icon_delete_1.png"  style="width:30px; height:30px;"/></a></td>
 					</tr>
 					<%
 							}
@@ -62,7 +71,7 @@
 			    </tbody>
 			</table>
 			<div class="btn_group">
-				<a class="btn btn-primary pull-right" onclick="javascript:goAppointAdd()">등록</a>
+				<a class="btn btn-outline-primary pull-right" onclick="javascript:goAppointAdd()">등록</a>
 			</div>
 		</div>
 	</div>

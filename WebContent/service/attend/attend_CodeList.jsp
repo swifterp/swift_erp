@@ -39,6 +39,7 @@
 	<div class="container">		
 		<%@ include file="../common/left_menu_attend.jsp" %>
 		<div class="contents">
+			<h2>근태항목관리 목록</h2>
 			<form action="../attend/attend_DetailCode" style="text-align:left; margin-bottom:20px; background:#eee;">
 				<table class="table tb_left">
 					<colgroup>

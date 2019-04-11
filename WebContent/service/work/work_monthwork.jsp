@@ -7,14 +7,13 @@
 <meta charset="UTF-8">
 <title>월별 출퇴근 기록페이지</title>
 <%@ include file="../common/ui_common.jsp" %>
-
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
 	<div class="container">		
 		<%@ include file="../common/left_menu_work.jsp" %>
 		<div class="contents">
-			<h2>월별 출퇴근 기록</h2>
+			<h1>월별 출퇴근 기록</h1>
 			<form id="search_month" action="../work/selectMonthWork">
 				<div class="input-group">
 					<input type="month" class="form-control" name="search_month" min="2018-01" value="2019-01">

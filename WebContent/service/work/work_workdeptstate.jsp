@@ -13,7 +13,7 @@
 	<div class="container">		
 		<%@ include file="../common/left_menu_work.jsp" %>
 		<div class="contents">
-			<h2>부서별 출퇴근 현황</h2>
+			<h1>부서별 출퇴근 현황</h1>
 			<table class="table">
 				<thead>
 					<tr>

@@ -35,7 +35,7 @@
 	<div class="container">		
 		<%@ include file="../common/left_menu_work.jsp" %>
 		<div class="contents">
-			<h2>업무일지목록</h2>
+			<h1>업무일지목록</h1>
 			<form action="../work/selectClientList">
 				<div class="input-group">
 					<input type="text" class="form-control" name="clientName" placeholder="거래처이름">

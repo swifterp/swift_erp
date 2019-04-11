@@ -14,6 +14,9 @@
             window.close();
 	}
 </script>
+<style>
+	table tbody tr:hover {background-color:#eee;}
+</style>
 </head>
 <body>
 	<table class="table">
@@ -21,7 +24,6 @@
 			<tr>
 				<th>직책코드</th>
 				<th>직책명</th>
-				<th>선택</th>
 			</tr>
 		</thead>
 		<%
@@ -30,12 +32,9 @@
 				for(int i=0;i<lst.size();i++){
 		%>
 		<tbody>
-			<tr>
+			<tr onclick="javascript:dutySelect('<%= String.valueOf(lst.get(i).get("DUTY_NO")) %>','<%= String.valueOf(lst.get(i).get("DUTY_NAME")) %>')">
 				<td><%= String.valueOf(lst.get(i).get("DUTY_NO")) %></td>
 				<td><%= lst.get(i).get("DUTY_NAME") %></td>
-				<td>
-					<a class="btn btn-primary" onclick="javascript:dutySelect('<%= String.valueOf(lst.get(i).get("DUTY_NO")) %>','<%= String.valueOf(lst.get(i).get("DUTY_NAME")) %>')">선택</a>
-				</td>
 			</tr>
 		</tbody>
 		<%

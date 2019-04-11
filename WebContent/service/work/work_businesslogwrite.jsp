@@ -12,12 +12,12 @@
 	<div class="container">		
 		<%@ include file="../common/left_menu_work.jsp" %>
 		<div class="contents">
-			<h2>업무일지등록</h2>
+			<h1>업무일지등록</h1>
 			<form action="../work/insertBusinessLog">
 				<table class="table">
 					<tr>
 						<th>업무보고일</th>
-						<td><input type="text" class="form-control" name="business_date"></td>
+						<td><input type="date" class="form-control" name="business_date"></td>
 					</tr>
 					<tr>
 						<th>부서</th>

@@ -21,6 +21,7 @@
 	<div class="container">		
 		<%@ include file="../common/left_menu_attend.jsp" %>
 		<div class="contents">
+			<h2>근태관리 목록</h2>
 			<form action="../attend/attend_DetailData">
 				<table class="table tb_left" style="margin-bottom:20px; background:#eee;">
 					<colgroup>
@@ -31,7 +32,7 @@
 						<tr>
 							<th class="line">사원번호</th>
 							<td class="line">
-								<input type="text" id="empno" name="empno" class="form-control input-sm"
+								<input type="text" id="empno" name="empno" class="form-control"
 									   style="width:200px; display:inline-block">
 							</td>
 						</tr>
@@ -39,7 +40,7 @@
 							<th class="line">근무시간</th>
 							<td class="line">
 								<div class="input-group">
-									<input type="text" class="form-control input-sm" style="width:200px; display: inline-block" id="attend_time" name="attend_time">
+									<input type="text" class="form-control" style="width:200px; display:inline-block" id="attend_time" name="attend_time">
 								</div>
 							</td>
 						</tr>
@@ -48,10 +49,10 @@
 								근태날짜
 							</th>
 							<td class="line">
-							<input type="date" name="attend_date" class="form-control input-sm"
+							<input type="date" name="attend_date" class="form-control"
 								style="width:200px; display:inline-block">
 							&nbsp;~&nbsp;
-							<input type="date" name="attend_date2" class="form-control input-sm"
+							<input type="date" name="attend_date2" class="form-control"
 								style="width:200px; display:inline-block">
 							</td>
 						</tr>
@@ -61,13 +62,13 @@
 							</th>
 							<td class="line">
 								<div class="input-group">
-									<input type="text" id="attend_name" name="attend_name" class="form-control input-sm"
+									<input type="text" id="attend_name" name="attend_name" class="form-control"
 										   style="width:200px; display:inline-block">
 								</div>
 							</td>
 						</tr>
 						<tr>
-							<td class="line" style="width: 155px" colspan="2">
+							<td class="line" style="width:155px" colspan="2">
 								<div class="input-group pull-right">
 									<input type="submit" class="btn btn-primary" value="조회">
 								</div>
