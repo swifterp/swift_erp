@@ -93,12 +93,13 @@ public class Approval_Controller {
 	@RequestMapping("/approval_style")
 	public String approval_style(Model model, @RequestParam int style_code) {
 		model.addAttribute("list", scs.callCommonStyleDao(style_code));
+		model.addAttribute("list2", style_code);
 
 		return "approval/approval_style";
 	}
 	
 	@RequestMapping("/approval_write")
-	public String approval_write(Model model, @RequestParam String approval_write) {
+	public String approval_write(Model model, @RequestParam HashMap<String,String> approval_write) {
 		model.addAttribute("list", iad.callInsertApprovalData(approval_write));
 		
 		return "approval/approval_style";

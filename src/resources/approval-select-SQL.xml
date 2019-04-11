@@ -22,11 +22,11 @@
 
 	<result property="STYLE_CONTENT" column="STYLE_CONTENT" jdbcType="CLOB" javaType="java.lang.String" />
 
-</resultMap>
-	<select id="getCommon" parameterType="Integer" resultType="HashMap" resultMap="StyleSheet">
+	</resultMap>
+	<select id="getCommon" parameterType="Integer" resultType="String" >
 		
-		select style_code,style_name,style_content from common_style where style_code=#{style_code,jdbcType=INTEGER} 
-		order by style_code
+		select style_content from common_style where style_code=#{style_code,jdbcType=INTEGER} 
+		
 		
 	</select>
 

@@ -16,18 +16,20 @@
         	   )
 	</insert>
 	<insert id="InsertApprovalData" parameterType="HashMap" statementType="CALLABLE">
-		<!-- {
-			CALL APPROVAL_SAVE(#{approval_name, jdbcType=VARCHAR}, #{approval_save, jdbcType=CLOB})
-		} -->
-		insert into COMMON_STYLE (STYLE_CODE, STYLE_NAME, STYLE_CONTENT)
-        values((select count(STYLE_CODE)+1 from COMMON_STYLE),#{approval_name, jdbcType=VARCHAR}, #{approval_save, jdbcType=CLOB})
+	
+		insert into DRAFT
+        values((select count(DRAFT_NO)+1 from DRAFT),
+        SYSDATE,'임시작성자',1,
+        #{approval_name, jdbcType=INTEGER}, 
+        #{approval_write, jdbcType=CLOB})
+        
 	</insert>
 	
 	
 	
-	<insert id="InsertApprovalWrite" parameterType="String">
+	<insert id="InsertApprovalWrite" parameterType="HashMap">
 
-		insert into COMMON_STYLE values((select count(STYLE_CODE)+1 from COMMON_STYLE),null, #{approval_write, jdbcType=CLOB})
+		insert into draft values((select count(STYLE_CODE)+1 from COMMON_STYLE),null,1,1, #{approval_write, jdbcType=CLOB})
 	</insert>
 
 </mapper>
