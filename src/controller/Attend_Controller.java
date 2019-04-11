@@ -46,6 +46,7 @@ public class Attend_Controller {
 //Update Attend Data
 	@RequestMapping("/attend_DataUpdate")
 	public String attend_DataUpdate(Model model, @RequestParam HashMap<String, String> attendInsert) {
+		System.out.println(attendInsert);
 		model.addAttribute("list", ual.callUpdateAttendDataDao(attendInsert));
 		return "attend/attend_DataList";
 	}
