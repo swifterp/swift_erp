@@ -13,10 +13,6 @@ a:hover, a:active, a:focus {text-decoration:none }
 	font-family: 'Nanum Gothic';
 }
 
-h1{
-	font-family: 'Hanna';
-}
-
 a{
 	color: black;
 	text-decoration: none;
@@ -34,9 +30,7 @@ a:hover{
 .navbar {
   position:fixed; 
   width:100%;
-  min-height: 50px;
-  margin-bottom: 20px;
-  padding:12px;
+  padding:10px;
   border: 1px solid transparent;
 }
 
@@ -51,7 +45,7 @@ nav.nav-left {
  position:fixed;
  width:200px; 
  height:100%; 
- top:72px;
+ top:82px;
  overflow:auto;
 }
 
@@ -61,7 +55,7 @@ nav.nav-left a {
  padding: 10px;
 }
 
-nav.nav-left>ul {height:100%;}
+nav.nav-left>ul {height:100%; padding-top:20px;}
 
 nav.nav-left>ul>li>a {background:url('../images/arrow_0.png') no-repeat right 10px;}
 
@@ -83,7 +77,7 @@ nav.nav-left a {
 
 nav.nav-left .depth2 li a {padding-left:30px;}
 
-.contents {padding:92px 0 80px 220px;}
+.contents {padding:120px 0 80px 220px;}
 
 table {border: 1px solid #dddddd;}
 table th {background-color:#eeeeee; text-align: center; font-size:13px;}

@@ -21,6 +21,7 @@
 	<div class="container">		
 		<%@ include file="../common/left_menu_attend.jsp" %>
 		<div class="contents">
+			<h2>근태관리 목록</h2>
 			<form action="../attend/attend_DetailData">
 				<table class="table tb_left" style="margin-bottom:20px; background:#eee;">
 					<colgroup>

@@ -41,7 +41,11 @@
 					<!-- 누르기 전 이미지 -->
 					<a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">회원관리<span class="caret"></span></a>
+						aria-expanded="false">
+						<span>${member}님</span>
+               			<img style="border-radius:8rem; width:40px; height:40px;" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+               			<span class="caret"></span>
+               		</a>
 					<!-- 눌렀을 때 -->
 					<ul class="dropdown-menu">
 						<li><a href="../mem/logout">로그아웃</a></li>

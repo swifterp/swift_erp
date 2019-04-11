@@ -8,22 +8,67 @@
 <title>Insert title here</title>
 <%@ include file="../common/ui_common.jsp" %>
 <script type="text/javascript">
-$('#ajax_rank').on('click', function(){
-    $.ajax({
-        url: " ../emp/test",
-        type: "POST",
-        contentType: "application/json; charset=utf-8;",
-        dataType: "json",
-        success: function(data) {
-        	document.getElementsByClassName(ff).innerHTML=data;
-        }
-    });
-});
+var xhr1 = null;
+var xhr2 = null;
+var xhr3 = null;
+function createRequest(xhr){	
+	try {
+		xhr = new XMLHttpRequest();
+	} catch (e) {
+		try {
+			xhr = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (e) {
+			try {
+				xhr = new ActiveXObject("Microsoft.XMLHTTP")
+			} catch (e) {
+				xhr = null;
+			}
+		}
+	}
+	if(xhr == null){
+		alert("Error Creating XMLHttpRequest Object");
+	}	
+	return xhr;
+}
+function rank(){
+  	xhr1 = createRequest(xhr1);
+  	xhr1.onreadystatechange = function (){		
+		if(this.readyState == 4 && this.status == 200){
+			document.getElementById("ajax_rank").innerHTML = this.responseText;
+		}	
+	};
+	xhr1.open("POST", "../emp/pop_rankRead?", true);
+	xhr1.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
+	xhr1.send();
+}
+function duty(){
+  	xhr2 = createRequest(xhr2);
+  	xhr2.onreadystatechange = function (){		
+		if(this.readyState == 4 && this.status == 200){
+			document.getElementById("ajax_duty").innerHTML = this.responseText;
+		}	
+	};
+	xhr2.open("POST", "../emp/pop_dutyRead?", true);
+	xhr2.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
+	xhr2.send();
+}
+function bank(){
+  	xhr3 = createRequest(xhr3);
+  	xhr3.onreadystatechange = function (){		
+		if(this.readyState == 4 && this.status == 200){
+			document.getElementById("ajax_bank").innerHTML = this.responseText;
+		}	
+	};
+	xhr3.open("POST", "../emp/pop_bankRead?", true);
+	xhr3.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
+	xhr3.send();
+}
 </script>
 
 <style>
 	.etcCode li {float:left; width:120px; margin-left:4px;}
 </style> 
+
 
 </head>
 <body>
@@ -31,19 +76,19 @@ $('#ajax_rank').on('click', function(){
 	<div class="container">		
 		<%@ include file="../common/left_menu_emp.jsp" %>
 		<div class="contents">
-			<h2>기타코드등록</h2>
+			<h1>기타코드등록</h1>
 			<ul class="etcCode">
 				<li>
 					<span>직급</span>
-					<button type="button" id="ajax_rank" class="btn btn-primary" data-toggle="modal" data-target="#rank" onclick="insertRoom()"><img src="../../images/icon_plus.png" /></button>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rank" onclick="rank()"><img src="../../images/icon_plus.png" /></button>
 				</li>
 				<li>
 					<span>직책</span>
-					<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#duty"><img src="../../images/icon_plus.png" /></a>
+					<button type="button" class="btn btn-primary" href="#" data-toggle="modal" data-target="#duty" onclick="duty()"><img src="../../images/icon_plus.png" /></button>
 				</li>
 				<li>
 					<span>은행명</span>
-					<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#bank"><img src="../../images/icon_plus.png" /></a>
+					<button type="button" class="btn btn-primary" href="#" data-toggle="modal" data-target="#bank" onclick="bank()"><img src="../../images/icon_plus.png" /></button>
 				</li>
 			</ul>
 			<!-- rank Modal -->
@@ -66,7 +111,7 @@ $('#ajax_rank').on('click', function(){
 						  <span class="input-group-addon" id="basic-addon2">직급이름</span>
 						  <input type="text" class="form-control" name="rank_name" placeholder="직급이름을 입력하세요" aria-describedby="basic-addon2" required />
 						</div>
-						<div id="test" class="ff"></div>
+						<div id="ajax_rank"></div>
 				      </div>
 					  <div class="modal-footer">
 			          	<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
@@ -96,6 +141,7 @@ $('#ajax_rank').on('click', function(){
 						  <span class="input-group-addon" id="basic-addon2">직책이름</span>
 						  <input type="text" class="form-control" name="duty_name" placeholder="직책이름을 입력하세요" aria-describedby="basic-addon2" required>
 						</div>
+						<div id="ajax_duty"></div>
 				      </div>
 					  <div class="modal-footer">
 			          	<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
@@ -125,6 +171,7 @@ $('#ajax_rank').on('click', function(){
 						  <span class="input-group-addon" id="basic-addon2">은행이름</span>
 						  <input type="text" class="form-control" name="bank_name" placeholder="은행이름을 입력하세요" aria-describedby="basic-addon2" required>
 						</div>
+						<div id="ajax_bank"></div>
 				      </div>
 					  <div class="modal-footer">
 			          	<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>

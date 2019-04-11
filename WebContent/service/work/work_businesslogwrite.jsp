@@ -12,7 +12,7 @@
 	<div class="container">		
 		<%@ include file="../common/left_menu_work.jsp" %>
 		<div class="contents">
-			<h2>업무일지등록</h2>
+			<h1>업무일지등록</h1>
 			<form action="../work/insertBusinessLog">
 				<table class="table">
 					<tr>

@@ -12,7 +12,7 @@
 	<div class="container">		
 		<%@ include file="../common/left_menu_work.jsp" %>
 		<div class="contents">
-			<h2>출근 / 퇴근 입력</h2>
+			<h1>출근 / 퇴근 입력</h1>
 			<table class="table">
 				<form action="../work/insertWorkStart">
 					<tr>

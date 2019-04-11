@@ -177,7 +177,7 @@ $(document).ready(function() {
 			<form action="../emp/add">
 				<div class="tab-content">
 				  <div id="menu1" class="tab-pane fade in active">
-					<h3>사원등록</h3>
+					<h1>사원등록</h1>
 						<table class="table">
 							<colgroup>
 								<col width="20%" />
@@ -195,7 +195,7 @@ $(document).ready(function() {
 									<td class="input-group">
 										<input type="text" id="emp_number" name="emp_number" class="form-control" required="">
 										<span class="input-group-btn">
-											<button type="button" id="check" class="btn btn-primary">중복확인</button> 
+											<button type="button" id="check" class="btn btn-info">중복확인</button> 
 										</span>
 									</td>
 									<th>사원명 <span class="essential">*</span></th>
@@ -247,7 +247,7 @@ $(document).ready(function() {
 											<tr>
 												<th>부서 <span class="essential">*</span></th>
 												<td id="pop_dept" class="input-group">
-													<input type="hidden" id="p_dept_no" name="deptno" class="form-control">
+													<input type="hidden" id="p_dept_no" name="deptno" class="form-control" required="">
 													<input type="text" id="p_dept_name" class="form-control" required="">
 													<span class="input-group-btn">
 														 <button class="btn btn-default" type="button" data-toggle="modal" data-target="#exampleModal">보기</button>
@@ -263,8 +263,8 @@ $(document).ready(function() {
 												</td>
 												<th>직책<span class="essential">*</span></th>
 												<td id="pop_duty" class="input-group">
-													<input type="hidden" id="p_duty_no" name="duty_no" class="form-control">
-													<input type="text" id="p_duty_name" class="form-control">
+													<input type="hidden" id="p_duty_no" name="duty_no" class="form-control" required="">
+													<input type="text" id="p_duty_name" class="form-control" required="">
 													<span class="input-group-btn">
 														 <button class="btn btn-default" type="button">보기</button>
 													</span>
@@ -273,8 +273,8 @@ $(document).ready(function() {
 											<tr>
 												<th>은행명<span class="essential">*</span></th>
 												<td id="pop_bank" class="input-group">
-													<input type="hidden" id="p_bank_no" name="bank_no" class="form-control">
-													<input type="text" id="p_bank_name" class="form-control">
+													<input type="hidden" id="p_bank_no" name="bank_no" class="form-control" required="">
+													<input type="text" id="p_bank_name" class="form-control" required="">
 													<span class="input-group-btn">
 														 <button class="btn btn-default" type="button">보기</button>
 													</span>
@@ -309,7 +309,7 @@ $(document).ready(function() {
 						</table>
 				  </div>	  
 				  <div id="menu2" class="tab-pane fade">
-				    <h3>급여지급사항등록</h3>
+				    <h1>급여지급사항등록</h1>
 					    <table class="table">
 							<tr>
 								<th>적용일</th>
@@ -349,7 +349,7 @@ $(document).ready(function() {
 						</table>
 				  </div>
 				  <div id="menu3" class="tab-pane fade">
-				    <h3>세무정보등록</h3>
+				    <h1>세무정보등록</h1>
 				    <form action="../../emp/taxInfoAdd">
 					    <table class="table">
 					    	<colgroup>

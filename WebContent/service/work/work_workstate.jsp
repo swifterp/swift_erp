@@ -13,7 +13,7 @@
 	<div class="container">		
 		<%@ include file="../common/left_menu_work.jsp" %>
 		<div class="contents">
-			<h2>출퇴근현황조회</h2>
+			<h1>출퇴근현황조회</h1>
 			<form action="../work/selectEmpStateList">
 				<div class="input-group">
 					<input type="text" class="form-control" name="EMP_NAME" placeholder="사원조회">

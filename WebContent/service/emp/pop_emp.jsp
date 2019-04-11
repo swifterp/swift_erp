@@ -17,6 +17,9 @@
 	    window.close();
 	}
 </script>
+<style>
+	table tbody tr:hover {background-color:#eee;}
+</style>
 </head>
 <body>
 	<table class="table">
@@ -24,7 +27,6 @@
 			<tr>
 				<th>사원번호</th>
 				<th>사원명</th>
-				<th>선택</th>
 			</tr>
 		</thead>
 		<%
@@ -33,12 +35,9 @@
 				for(int i=0;i<lst.size();i++){
 		%>
 		<tbody>
-			<tr>
+			<tr onclick="javascript:empSelect('<%= String.valueOf(lst.get(i).get("EMPNO")) %>','<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>','<%= lst.get(i).get("EMP_NAME") %>','<%= lst.get(i).get("RANK_NAME") %>','<%= lst.get(i).get("DNAME") %>')">
 				<td><%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %></td>
 				<td><%= lst.get(i).get("EMP_NAME") %></td>
-				<td>
-					<a class="btn btn-primary" onclick="javascript:empSelect('<%= String.valueOf(lst.get(i).get("EMPNO")) %>','<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>','<%= lst.get(i).get("EMP_NAME") %>','<%= lst.get(i).get("RANK_NAME") %>','<%= lst.get(i).get("DNAME") %>')">선택</a>
-				</td>
 			</tr>
 		</tbody>
 		<%

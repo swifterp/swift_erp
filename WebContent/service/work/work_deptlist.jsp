@@ -8,8 +8,7 @@
 <title>부서조회</title>
 </head>
 <body>
-
-<h2>업무일지목록</h2>
+<h1>업무일지목록</h1>
 <table style="border:1px solid #ccc">
 	<thead>
 		<tr>

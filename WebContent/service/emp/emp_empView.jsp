@@ -170,7 +170,7 @@ reader.readAsDataURL(test);
 	<div class="container">		
 		<%@ include file="../common/left_menu_emp.jsp" %>
 		<div class="contents">
-		<h3>사원정보</h3>
+		<h1>사원정보</h1>
 		<ul class="nav nav-tabs">
 		  <li class="active"><a data-toggle="tab" href="#menu1">사원등록</a></li>
 		  <li><a data-toggle="tab" href="#menu2">급여지급사항등록</a></li>
@@ -179,7 +179,7 @@ reader.readAsDataURL(test);
 		<form  action="../emp/update">
 		<div class="tab-content">
 		  <div id="menu1" class="tab-pane fade in active">
-			<h3>사원등록</h3>
+			<h1>사원등록</h1>
 			<table class="table">
 				<colgroup>
 					<col width="20%" />
@@ -239,11 +239,11 @@ reader.readAsDataURL(test);
 								<tr>
 									<th>입사일자</th>
 									<td>	
-										<input type="date" name="emp_join_date" class="form-control" value="${list.get(0).get("EMP_JOIN_DATE")}" style="width:80%; display:inline-block; margin-right:5px;">
+										<input type="date" name="emp_join_date" class="form-control" value="${list.get(0).get("EMP_JOIN_DATE")}">
 									</td>
 									<th>퇴사일자</th>
 									<td>		
-										<input type="date" name="emp_retire_date" class="form-control" value="${list.get(0).get("EMP_RETIRE_DATE")}" style="width:80%; display:inline-block; margin-right:5px;">
+										<input type="date" name="emp_retire_date" class="form-control" value="${list.get(0).get("EMP_RETIRE_DATE")}">
 									</td>
 									<th>퇴사사유</th>
 									<td><input type="text" name="emp_retire_reason" class="form-control" value="${list.get(0).get("EMP_RETIRE_REASON")}"></td>
@@ -311,7 +311,7 @@ reader.readAsDataURL(test);
 			</table>
 		  </div>	  
 		  <div id="menu2" class="tab-pane fade">
-		    <h3>급여지급사항등록</h3>
+		    <h1>급여지급사항등록</h1>
 			    <table class="table">
 					<tr>
 						<th>적용일</th>
@@ -351,7 +351,7 @@ reader.readAsDataURL(test);
 				</table>
 		  </div>
 		  <div id="menu3" class="tab-pane fade">
-		    <h3>세무정보등록</h3>
+		    <h1>세무정보등록</h1>
 		    <form action="../emp/taxInfoAdd">
 			    <table class="table">
 			    	<colgroup>
@@ -420,7 +420,7 @@ reader.readAsDataURL(test);
 			</div>
 			<div class="btn_group">
 				<a href="../emp/read" class="btn btn-default pull-left">목록</a>
-				<input type="submit" class="btn btn-primary pull-right" value="수정완료">
+				<input type="submit" class="btn btn-outline-primary pull-right" value="수정완료">
 			</div>
 		</div>
 	</form>

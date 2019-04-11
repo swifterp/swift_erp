@@ -13,7 +13,7 @@
 	<div class="container">		
 		<%@ include file="../common/left_menu_work.jsp" %>
 		<div class="contents">
-			<h2>일별 출퇴근 기록</h2>
+			<h1>일별 출퇴근 기록</h1>
 			<form id="search_day" action="../work/selectWorkTime">
 				<div class="input-group">
 					<input type="date" class="form-control" name="search_day" min="2018-01-01" >

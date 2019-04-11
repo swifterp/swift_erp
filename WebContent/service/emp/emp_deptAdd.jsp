@@ -13,7 +13,7 @@
 	<div class="container">		
 		<%@ include file="../common/left_menu_emp.jsp" %>
 		<div class="contents">
-			<h3>부서등록</h3>
+			<h1>부서등록</h1>
 			<form action="../emp/deptAdd">					
 				<table class="table">
 					<tr>
