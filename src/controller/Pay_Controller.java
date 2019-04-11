@@ -22,18 +22,6 @@ import logic.pay.SelectSpecsList;
 @Controller
 @RequestMapping("service/pay")
 public class Pay_Controller {
-
-	@Autowired
-	private SelectAllowanceItem sai;
-	
-	@RequestMapping("/allowance")
-	public String pay_Allowance(Model model) {
-				
-		model.addAttribute("list", sai.callAllowanceItemDao());
-		
-		return "pay/pay_allowanceItem";
-		
-	}
 	
 	@Autowired
 	private DeleteAllowanceItem dai;
