@@ -59,6 +59,7 @@
 						<th>퇴근시간</th> 
 						<td><input type="time" id="attend_close" class="form-control" name="attend_close" value="${list.get(0).get("ATTEND_CLOSE")}"></td>
 					</tr>
+					<input type="hidden" id="attend_no" class="form-control" name="attend_no" value="${list.get(0).get("ATTEND_NO")}">
 				</table>
 				<div class="btn_group">
 					<input type="submit" class="btn btn-primary pull-right" value="확인">
