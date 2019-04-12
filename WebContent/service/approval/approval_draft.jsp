@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>기안서 조회 페이지</title>
+<title>결재 서류 조회</title>
 <%@ include file="../common/ui_common.jsp" %>
 <script type="text/javascript">
 
@@ -20,10 +20,10 @@
 	<div class="container">		
 		<%@ include file="../common/left_menu_approval.jsp" %>
 		<div class="contents">
-			<h2>기안서조회</h2>		
+			<h2>결재서류조회</h2>		
 			<form action="../approval/selectDraftDetail">
 				<div class="input-group">
-					<input type="text" class="form-control" name="draft_num" placeholder="기안서 번호">
+					<input type="text" class="form-control" name="draft_num" placeholder="서류 번호">
 					<span class="input-group-btn" style="width:100px;">	
 						<input type="submit" class="btn btn-primary" style="margin-bottom:20px;" value="검색">
 					</span>
@@ -33,7 +33,7 @@
 				<thead>
 					<tr> 
 						<th>No.</th>
-						<th>기안일자</th>
+						<th>작성일</th>
 						<th>제목</th>
 						<th>작성자</th>
 						<th>보기</th>
