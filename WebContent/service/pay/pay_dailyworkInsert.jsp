@@ -1,45 +1,52 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ page import="java.util.List, java.util.HashMap" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.List, java.util.ArrayList, java.util.Map" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>ÀÏº°±Ù¹«±â·Ï µî·Ï ÆäÀÌÁö</title>
+<meta charset="UTF-8">
+<title>ì¼ë³„ê·¼ë¬´ê¸°ë¡ ë“±ë¡ íŽ˜ì´ì§€</title>
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/common.css">
+<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
+<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
+<%
+
+	List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
+
+%>
 </head>
 <body>
 
-<form action="../../pay/dailyworkInsert">
-±âÁØÀÏÀÚ(³â):<br>
+<form action="../pay/dailyworkInsert">
+ê¸°ì¤€ì¼ìž(ë…„):<br>
 <input type="text" name="year">
 <br>
 
-±âÁØÀÏÀÚ(¿ù):<br>
+ê¸°ì¤€ì¼ìž(ì›”):<br>
 <input type="text" name="month">
 <br>
 
-±âÁØÀÏÀÚ(ÀÏ):<br>
+ê¸°ì¤€ì¼ìž(ì¼):<br>
 <input type="text" name="day">
 <br>
 
-»ç¿ø¹øÈ£:<br>
+ì‚¬ì›ë²ˆí˜¸:<br>
 <input type="text" name="empno">
 <br>
-
-¾ß±Ù¼ö´ç ½Ã°£:<br>
-<input type="text" name="night">
+<%
+	for(int i=0;i<lst.size();i++){
+%>
+		<input type="hidden" name="<%= String.valueOf(lst.get(i).get("ALLOWANCE_NO")) %>" value="<%= String.valueOf(lst.get(i).get("ALLOWANCE_NAME")) %>">
+		
+		<%= lst.get(i).get("ALLOWANCE_NAME") %>:<br>
+		<input type="text" name="DAILYWORK_TIME<%= String.valueOf(lst.get(i).get("ALLOWANCE_NO")) %>">
+		<br>
+<%
+	}
+%>
 <br>
-
-ÁÖ¸»±Ù¹«¼ö´ç ½Ã°£:<br>
-<input type="text" name="weekend">
-<br>
-
-¿¬Â÷¼ö´ç ÀÏ¼ö:<br>
-<input type="text" name="annualAllowance">
-<br>
-
-<br>
-<input type="submit" value="µî·Ï">
+<input type="submit" value="ë“±ë¡">
 </form> 
 
 </body>

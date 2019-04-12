@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import logic.emp.EmpLogic;
 
 @Controller
-@RequestMapping("/emp")
+@RequestMapping("service/emp")
 public class Emp_Controller {
 	@Autowired
 	private EmpLogic el;

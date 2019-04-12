@@ -1,12 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, java.util.HashMap" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>¸í¼¼¼­ Á¶È¸ ÆäÀÌÁö</title>
-
+<meta charset="UTF-8">
+<title>ëª…ì„¸ì„œ ì¡°íšŒ í˜ì´ì§€</title>
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/common.css">
+<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
+<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script type="text/javascript">
 	function specs(){
 		location.href = "../../pay/specs?empno="+document.getElementById("empno").value;	
@@ -15,9 +18,12 @@
 
 </head>
 <body>
-
+	<%@ include file="../common/top_menu.jsp" %>
+	<div class="container">
+		<%@ include file="../common/left_menu_pay.jsp" %>
+		<div class="contents">
 <input type="text" id="empno">
-<input type="button" onclick="javascript:specs()" value="Á¶È¸">
-
+<input type="button" onclick="javascript:specs()" value="ì¡°íšŒ">
+</div></div>
 </body>
 </html>

@@ -31,7 +31,7 @@ import logic.pay.UpdatePayConfirmCancelList;
 import logic.pay.UpdatePayConfirmList;
 
 @Controller
-@RequestMapping("/pay")
+@RequestMapping("service/pay")
 public class Pay_Controller {
 
 	@Autowired

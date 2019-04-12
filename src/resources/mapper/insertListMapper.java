@@ -7,23 +7,49 @@ import org.apache.ibatis.annotations.Param;
 
 public interface insertListMapper {
 	
-	public void memAdd(HashMap<String, String> memPlus);
+	//member
+	public void memAdd(HashMap<String, String> memPlus);	
 	
-	public void empAdd(HashMap<String, Integer> empPlus);
-	
-	public void empPayInfoAdd(Map<String, String> payinfo);
-	
+	//employee
+	public void empAdd(HashMap<String, Integer> empPlus);	
 	public void appointAdd(HashMap<String, String> appointAdd);
+	public void deptAdd(HashMap<String, String> deptPlus);	
+	public int getRankAdd(HashMap<String, String> rankPlus);
+	public int getDutyAdd(HashMap<String, String> dutyPlus);
+	public int getBankAdd(HashMap<String, String> bankPlus);
 	
-	public void deptAdd(HashMap<String, String> deptPlus);
-	
+	//pay	
 	public void setUnderyearList(HashMap<String, Integer> percentage);
-
-	public void setDailyworkList(Map<String, String> info);
-	
-	public void setPersonalPayList(HashMap<String, String> personal_data);
 	
 	public void InsertBusinessLog(HashMap<String, String> businesslog);
+	public void setDailyworkList(HashMap<String, String> info);
+
+	//Attend
+	public void InsertAttendData(HashMap<String, String> attendDPlus);//Insert Attend Data
+	public void InsertAttendCode(HashMap<String, String> attendCPlus);//Insert Attend Code
+	
+	//client
+	public void InsertClientInfo(HashMap<String, String> CLIENT_INFO);
+	public void InsertNameCardInfo(HashMap<String, String> NAMECARD_INFO);
+	
+	//approval
+	public void putApprovalPath(HashMap<String, String> approval_path);
+	public void InsertApprovalData(HashMap<String, String> approval_data);
+
+	public void InsertApprovalWrite(String approval_write);
+	
+	
+	
+	
+	
+	
+
+	
+	public void empPayInfoAdd(Map<String, String> payinfo);
+
+	//public void setDailyworkList(Map<String, String> info);
+	
+	public void setPersonalPayList(HashMap<String, String> personal_data);
 	
 	public void setAttendAddList(HashMap<String, Integer> attendplus);
 	

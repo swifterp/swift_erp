@@ -1,23 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>pay_mainpage</title>
-
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/common.css">
+<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
+<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 <script type="text/javascript">
 
 	function allowance(){
-		location.href = "../../pay/allowance";		
+		location.href = "../pay/allowance";		
 	}
 	
 	function deduction(){
-		location.href = "../../pay/deduction";	
+		location.href = "../pay/deduction";	
 	}
 	
 	function payroll(){
-		location.href = "../../pay/payroll";	
+		location.href = "../pay/payroll";	
 	}
 	
 	function specs(){
@@ -25,7 +28,7 @@
 	}
 	
 	function underyear(){
-		location.href = "./pay_underyearSearch.jsp";	
+		location.href = "../pay/underyearSearch";
 	}
 	
 	function monthlyemp(){
@@ -34,30 +37,42 @@
 
 	function dailywork(){
 		var d = new Date();
-		location.href = "../../pay/dailyworkList?year="+ d.getFullYear() +"&month="+ (parseInt(d.getMonth())+1).toString() +"&day="+d.getDate();
+		location.href = "../pay/dailyworkList?selectedDate="+ d.getFullYear() +"/"+ (parseInt(d.getMonth())+1).toString() +"/"+d.getDate();
 	}
 
 	function monthlyemp(){
 		location.href = "./pay_monthlyempSearch.jsp";	
 	}
+
+	function workconfirm(){
+		location.href = "../pay/selectworkconfirm";
+	}
+	
 </script>
 
 </head>
 <body>
+	<%@ include file="../common/top_menu.jsp" %>
+	<div class="container">
+		<%@ include file="../common/left_menu_pay.jsp" %>
+		<div class="contents">
 This is pay page.
 <br>
-<input type="button" onclick="javascript:allowance()" value="¼ö´çÇ×¸ñ Á¶È¸">
+<input type="button" onclick="javascript:allowance()" value="ìˆ˜ë‹¹í•­ëª© ì¡°íšŒ">
 <br>
-<input type="button" onclick="javascript:deduction()" value="°øÁ¦Ç×¸ñ Á¶È¸">
+<input type="button" onclick="javascript:deduction()" value="ê³µì œí•­ëª© ì¡°íšŒ">
 <br>
-<input type="button" onclick="javascript:payroll()" value="±Þ¿©°è»ê/´ëÀå Á¶È¸">
+<input type="button" onclick="javascript:payroll()" value="ê¸‰ì—¬ê³„ì‚°/ëŒ€ìž¥ ì¡°íšŒ">
 <br>
-<input type="button" onclick="javascript:specs()" value="¸í¼¼¼­ Á¶È¸">
+<input type="button" onclick="javascript:specs()" value="ëª…ì„¸ì„œ ì¡°íšŒ">
 <br>
-<input type="button" onclick="javascript:underyear()" value="1³â¹Ì¸¸ÀÚ»ó¿©Áö±Þ·ü µî·Ï">
+<input type="button" onclick="javascript:underyear()" value="1ë…„ë¯¸ë§Œìžìƒì—¬ì§€ê¸‰ë¥  ë“±ë¡">
 <br>
-<input type="button" onclick="javascript:monthlyemp()" value="¿ùº°ÀÎ¿øÇöÈ² Á¶È¸">
+<input type="button" onclick="javascript:monthlyemp()" value="ì›”ë³„ì¸ì›í˜„í™© ì¡°íšŒ">
 <br>
-<input type="button" onclick="javascript:dailywork()" value="ÀÏº°±Ù¹«±â·Ï Á¶È¸">
+<input type="button" onclick="javascript:dailywork()" value="ì¼ë³„ê·¼ë¬´ê¸°ë¡ ì¡°íšŒ">
+<br>
+<input type="button" onclick="javascript:workconfirm()" value="ê·¼ë¬´ê¸°ë¡í™•ì • ì¡°íšŒ">
+</div></div>
 </body>
 </html>

@@ -1,26 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, java.util.HashMap" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>¿ùº°ÀÎ¿øÇöÈ² ÆäÀÌÁö</title>
+<meta charset="UTF-8">
+<title>ì›”ë³„ì¸ì›í˜„í™© íŽ˜ì´ì§€</title>
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/common.css">
+<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
+<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 </head>
 <body>
-
+	<%@ include file="../common/top_menu.jsp" %>
+	<div class="container">
+		<%@ include file="../common/left_menu_pay.jsp" %>
+		<div class="contents">
 <form action="../../pay/monthlyemp">
-±âÁØÀÏÀÚ(³â):<br>
+ê¸°ì¤€ì¼ìž(ë…„):<br>
 <input type="text" name="year">
 <br>
 
-±âÁØÀÏÀÚ(¿ù):<br>
+ê¸°ì¤€ì¼ìž(ì›”):<br>
 <input type="text" name="month">
 <br>
 
 <br>
 <input type="submit" value="Submit">
 </form> 
-
+</div></div>
 </body>
 </html>

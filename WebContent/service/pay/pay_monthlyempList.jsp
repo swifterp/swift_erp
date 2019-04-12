@@ -1,20 +1,27 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, java.util.HashMap" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>¿ùº°ÀÎ¿øÇöÈ² Á¶È¸ ÆäÀÌÁö</title>
+<meta charset="UTF-8">
+<title>ì›”ë³„ì¸ì›í˜„í™© ì¡°íšŒ íŽ˜ì´ì§€</title>
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/common.css">
+<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
+<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
 </head>
 <body>
-
+	<%@ include file="../common/top_menu.jsp" %>
+	<div class="container">
+		<%@ include file="../common/left_menu_pay.jsp" %>
+		<div class="contents">
 <table>
 	<tr>
-		<td>±âÁØÀÏÀÚ</td>
-		<td>ÀÔ»ç</td>
-		<td>Åð»ç</td>
-		<td>ÃÑÀÎ¿ø</td>
+		<td>ê¸°ì¤€ì¼ìž</td>
+		<td>ìž…ì‚¬</td>
+		<td>í‡´ì‚¬</td>
+		<td>ì´ì¸ì›</td>
 	</tr>
 	<tr>
 		<td>${list.get(0).get("MONTHLY_DATE") }</td>
@@ -23,6 +30,6 @@
 		<td>${list.get(0).get("MONTHLY_TOTAL") }</td>
 	</tr>
 </table>
-
+</div></div>
 </body>
 </html>
