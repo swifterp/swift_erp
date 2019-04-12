@@ -49,9 +49,7 @@
 				 	%>
 			    </tbody>
 			</table>
-		<div class="btn_group">
-			<a class="btn btn-primary pull-right" onclick="javascript:goWriteApprovalPath()">결제라인등록</a>
-		</div>
+	
 	</div>
 	<!-- <form action="./approval_pathwrite.jsp">
 	<input type="submit" value="결제라인등록">

@@ -8,9 +8,9 @@
 <title>부서목록</title>
 <%@ include file="../common/ui_common.jsp" %>
 <script>
-	function deptSelect(deptno,dname){
+	function deptSelect(deptno,parent_dname){
             opener.document.getElementById("p_dept_no").value = deptno;
-            opener.document.getElementById("p_dept_name").value = dname;
+            opener.document.getElementById("p_dept_name").value = parent_dname;
             window.close();
 	}
 </script>
@@ -32,7 +32,7 @@
 				for(int i=0;i<lst.size();i++){
 		%>
 		<tbody>
-				<tr onclick="javascript:deptSelect('<%= String.valueOf(lst.get(i).get("DEPTNO")) %>','<%= String.valueOf(lst.get(i).get("DNAME")) %>')">
+				<tr onclick="javascript:deptSelect('<%= Integer.parseInt(String.valueOf(lst.get(i).get("DEPTNO"))) %>','<%= String.valueOf(lst.get(i).get("DNAME")) %>')">
 					<td><%= String.valueOf(lst.get(i).get("DEPTNO")) %></td>
 					<td><%= lst.get(i).get("DNAME") %></td>
 				</tr>

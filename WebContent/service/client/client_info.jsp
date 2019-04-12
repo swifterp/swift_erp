@@ -28,8 +28,8 @@
 						<th>이메일</th>
 						<th>주소</th>
 						<th>내용</th>
-						<th></th>
-						<th></th>						
+						<th>수정</th>
+						<th>삭제</th>						
 					</tr>
 				</thead>
 			    <tbody>

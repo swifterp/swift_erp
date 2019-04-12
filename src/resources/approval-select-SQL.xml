@@ -51,7 +51,7 @@
 	<select id="getMyApprovalList" parameterType = "Integer" resultType="hashmap">
 		select   DRAFT_NO,DRAFT_DATE,DRAFT_STYLE from draft
 				<where>
-					draft_writer = (select emp_name from employee where empno=#{EMPNO,jdbcType=INTEGER})
+					draft_writer = #{EMPNO,jdbcType=INTEGER}
 				</where>
 	</select>
 	

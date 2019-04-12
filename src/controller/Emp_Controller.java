@@ -2,11 +2,15 @@ package controller;
 
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import logic.emp.EmpLogic;
 
@@ -25,7 +29,6 @@ public class Emp_Controller {
 			return "chat/chat_emplist";
 		}
 	}
-
 	@RequestMapping("/add")
 	public String addEmp(Model model
 			 ,@RequestParam HashMap<String, Integer> empPlus) {
@@ -34,9 +37,8 @@ public class Emp_Controller {
 	}
 	
 	@RequestMapping("/view")
-	public String viewEmp(Model model, @RequestParam(value="emp_number", defaultValue="0") Integer emp_number
-									 , @RequestParam(value="empno", defaultValue="0") Integer empno) {
-		model.addAttribute("list", el.empViewDao(emp_number, empno));
+	public String viewEmp(Model model, @RequestParam(value="emp_number", defaultValue="0") Integer emp_number) {
+		model.addAttribute("list", el.empViewDao(emp_number));
 		return "emp/emp_empView";
 	}
 	
@@ -47,9 +49,8 @@ public class Emp_Controller {
 	}	
 	
 	@RequestMapping("/delete")
-	public String delEmp(Model model, @RequestParam(value="emp_number", defaultValue="0") Integer emp_number
-									, @RequestParam(value="empno", defaultValue="0") Integer empno) {
-		model.addAttribute("list", el.empDelDao(emp_number, empno));	
+	public String delEmp(Model model, @RequestParam(value="emp_number", defaultValue="0") Integer emp_number) {
+		model.addAttribute("list", el.empDelDao(emp_number));	
 		return "emp/emp_empDelete";
 
 	}
@@ -86,7 +87,7 @@ public class Emp_Controller {
 	
 	@RequestMapping("/deptRead")
 	public String readDept(Model model) {
-		model.addAttribute("list", el.callDeptListDao());	
+		model.addAttribute("list", el.callEmpDeptListDao());	
 		return "emp/emp_deptList";
 	}
 	
@@ -122,14 +123,14 @@ public class Emp_Controller {
 	
 	@RequestMapping("/empSearchNumName")
 	public String selectEmpInfoSearch(Model model, @RequestParam String empinfo) {
-		System.out.println(empinfo);
 		model.addAttribute("list", el.empInfoSearch(empinfo));
 		return "emp/emp_mainpage";
 	}
 	
 	@RequestMapping("/pop_deptRead")
 	public String pop_readDept(Model model) {
-		model.addAttribute("list", el.callDeptListDao());	
+		System.out.println("Test");
+		model.addAttribute("list", el.callEmpDeptListDao());	
 		return "emp/pop_dept";
 	}
 	
@@ -157,4 +158,30 @@ public class Emp_Controller {
 		return "emp/pop_emp";
 	}
 	
+    @ResponseBody
+    @RequestMapping(value = "/checkEmpNum", method = RequestMethod.POST)
+    public String checkEmpNum(HttpServletRequest request, Model model) {
+        String emp_number = request.getParameter("emp_number");
+        int rowcount = el.checkEmpNum(emp_number);
+        return String.valueOf(rowcount);
+    }
+    
+	@RequestMapping("/rankAdd")
+	public String addRank(Model model, @RequestParam HashMap<String,String> rankPlus) {
+		model.addAttribute("list", el.rankAddDao(rankPlus));	
+		return "emp/emp_etcCodeAdd";
+	}
+    
+	@RequestMapping("/dutyAdd")
+	public String addDuty(Model model, @RequestParam HashMap<String,String> dutyPlus) {
+		model.addAttribute("list", el.dutyAddDao(dutyPlus));	
+		return "emp/emp_etcCodeAdd";
+	}
+    
+	@RequestMapping("/bankAdd")
+	public String addBank(Model model, @RequestParam HashMap<String,String> bankPlus) {
+		model.addAttribute("list", el.bankAddDao(bankPlus));	
+		return "emp/emp_etcCodeAdd";
+	}
+    
 }

@@ -90,7 +90,7 @@ table tr:hover {background:#fefefe;}
 					</span>
 				</div>
 			</form>
-			<table class="table">
+			<table class="table" id="mytable">
 				<colgroup>
 					<col width="10%">
 					<col width="10%">
@@ -141,29 +141,58 @@ table tr:hover {background:#fefefe;}
 				 	%>
 			    </tbody>
 			</table>
+			<div class="pagination-container">
+		         <nav>
+		            <ul class="pagination">
+		            </ul>
+		         </nav>
+		     </div>
 			<div class="btn_group">
 				<a class="btn btn-outline-primary pull-right" onclick="javascript:goEmpAdd()">사원등록</a>
 			</div>
-			<nav aria-label="Page navigation example" style="text-align: center;">
-				<ul class="pagination-sm" id="pagination"></ul>
-			</nav>
 		</div>
 	</div>
 	
-	<script src="/resources/bootstrap/js/jquery.twbsPagination.js"></script>
-	<script type="text/javascript">
-	$('#pagination').twbsPagination({
-		   totalPages: totalPages,  // 전체 page블럭 수
-		   visiblePages: visibleBlock,  // 출력될 page 블럭수 상수로 지정해 줘도 되고, 변수로 지정해줘도 된다.
-		   prev: "이전",
-		   next: "다음",
-		   first: '<span aria-hidden="true">«</span>',
-		   last: '<span aria-hidden="true">»</span>',
-		   onPageClick: function (event, page) {
-		   $('#page-content').text('Page ' + page);
-		   paging(page);
-		   }
-		});
-	</script>
+   <script type="text/javascript">
+   var table = '#mytable'
+   $(document).ready(function(){
+      $('.pagination').html('')
+      var trnum=0
+      var maxRows = parseInt(10)
+      var totalRows = $(table+' tbody tr').length
+      $(table+' tr:gt(0)').each(function(){
+         trnum++
+         if(trnum > maxRows){
+            $(this).hide()
+         }
+         if(trnum <= maxRows){
+            $(this).show()
+         }
+      })
+      if(totalRows > maxRows){
+         var pagenum = Math.ceil(totalRows/maxRows)
+         for(var i=1; i<=pagenum;){
+            $('.pagination').append('<li data-page="'+i+'"><span>'+
+             i++ +'<span class="sr-only">(current)</span></span></li>').show()
+         }
+      }
+      $('.pagination li:first-child').addClass('active')
+      $('.pagination li').on('click',function() {
+         var pageNum = $(this).attr('data-page')
+         var trIndex = 0;
+         $('.pagination li').removeClass('active')
+         $(this).addClass('active')
+         $(table+' tr:gt(0)').each(function(){
+            trIndex++
+            if(trIndex > (maxRows*pageNum) || trIndex <= ((maxRows*pageNum)-maxRows)){
+               $(this).hide()
+            }else{
+               $(this).show()
+            }
+         })
+      })
+   })
+
+   </script>
 </body>
 </html>

@@ -176,7 +176,7 @@ reader.readAsDataURL(test);
 		  <li><a data-toggle="tab" href="#menu2">급여지급사항등록</a></li>
 		  <li><a data-toggle="tab" href="#menu3">세무정보등록</a></li>
 		</ul>
-		<form  action="../../emp/update">
+		<form  action="../emp/update">
 		<div class="tab-content">
 		  <div id="menu1" class="tab-pane fade in active">
 			<h1>사원등록</h1>

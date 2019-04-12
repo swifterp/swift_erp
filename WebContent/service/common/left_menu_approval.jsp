@@ -22,7 +22,7 @@ $(function(){
 				<a data-toggle="collapse" data-target="#group1"
 				aria-expanded="false" href="#">조회</a>
 				<ul class="collapse in depth2" id="group1">
-					<li><a href="../approval/selectDraft">기안서조회</a></li>
+					<li><a href="../approval/selectDraft">결재 조회</a></li>
 					<li><a href="../approval/selectCommon">공통양식조회</a></li>
 					<li><a href="../approval/selectApprovalPath">결재라인조회</a></li>
 					<li><a href="../approval/selectMyApproval">내 결재 전체 조회</a></li>

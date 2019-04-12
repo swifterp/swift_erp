@@ -36,14 +36,13 @@
         where a.empno = e.empno and a.emp_appoint_no = #{emp_appoint_no, jdbcType=INTEGER}
 	</select>
 	<select id="getEmpDeptList" resultType="hashmap">		
-        select deptno,dname
+        select *
         from dept
-        order by deptno
 	</select>
 		<select id="getDeptView" parameterType="Integer" resultType="hashmap">		
         select deptno, dname
         from dept
-        where deptno = #{deptno}
+        where deptno = #{deptno,jdbcType=INTEGER}
 	</select>
 	<select id="getEmpData" parameterType="String" resultType="hashmap">
 		select e.emp_number, e.emp_name, e.emp_email, e.emp_resident_number, d.dname, r.rank_name, e.emp_join_date 

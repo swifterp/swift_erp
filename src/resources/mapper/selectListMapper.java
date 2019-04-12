@@ -13,7 +13,7 @@ public interface selectListMapper {
 		
 		//employee
 		public List<Map<String, String>> getEmpList();
-		//public List<Map<String, String>> getEmpView(Integer emp_number);
+		public List<Map<String, String>> getEmpView(Integer emp_number);
 		public List<Map<String, String>> getEmpNumList();
 		public List<Map<String, String>> getEmpDeptList();
 		public List<Map<String, String>> getDeptView(Integer deptno);
@@ -31,7 +31,7 @@ public interface selectListMapper {
 		
 		//approval
 		public List<Map<String, String>> getDraftList();
-		public List<Map<String, String>> getDraftDetailList(Integer draft_num);	
+		public String getDraftDetailList(Integer draft_num);	
 		public List<Map<String, String>> getCommonList();
 		public List<Map<String, String>> getApprovalPathList();
 		public List<Map<String, String>> getMyApprovalList(int EMPNO);
