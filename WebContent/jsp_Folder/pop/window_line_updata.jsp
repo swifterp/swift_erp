@@ -14,9 +14,6 @@
 		background-color: #4F81BD;
 		color: #fff;
 	}
-	.type{
-		width: 100px;
-	}
 </style>
 <script language="javascript">
 function javascript(){
@@ -26,43 +23,29 @@ function javascript(){
 </head>
 <body>
 <div style="padding: 10px 10px 10px 10px">
+	<div style="padding: 10px 10px 10px 10px">
+		결재라인명칭&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="text" class="" style="width: inherit; text-align: left;">
+	</div>
 	<table class="table table-striped" data-sorting="true" >
 		<thead class="thead-dark">
 			<tr>
-				<th class="th" colspan="2">계산내역등록</th>
+				<th class="th">계정코드</th>
+				<th class="th">계정명</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td>A01</td>
-				<td>기본급</td>
+				<td>&nbsp</td>
+				<td>&nbsp</td>
 			</tr>
 			<tr>
-				<td>A02</td>
-				<td>야근수당</td>
-			</tr>
-		</tbody>
-	</table>
-	<br>
-	<table class="table table-striped" data-sorting="true" >
-		<tbody>
-			<tr>
-				<td><input type="button" class="type" value="괄호 )"></td>
-				<td><input type="button" value="괄호 ("></td>
-				<td><input type="button" value="더하기 +"></td>
-				<td><input type="button" value="빼기-"></td>
+				<td>&nbsp</td>
+				<td>&nbsp</td>
 			</tr>
 			<tr>
-				<td><input type="button" value="곱하기 *"></td>
-				<td><input type="button" value="나누기 /"></td>
-				<td><input type="button" value="반올림 R"></td>
-				<td><input type="button" value="절상 C"></td>
-			</tr>
-			<tr>
-				<td><input type="button" value="절사 F"></td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
+				<td>&nbsp</td>
+				<td>&nbsp</td>
 			</tr>
 		</tbody>
 	</table>

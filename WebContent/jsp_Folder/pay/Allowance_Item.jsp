@@ -26,8 +26,8 @@ button {
 <script type="text/javascript">
 function pop_cal(){
 	var url="../pop/window_Calculation.jsp";
-	var windowW = 300;  // 창의 가로 길이
-    var windowH = 300;  // 창의 세로 길이
+	var windowW = 450;  // 창의 가로 길이
+    var windowH = 500;  // 창의 세로 길이
     var left = Math.ceil((window.screen.width - windowW)/2);
     var top = Math.ceil((window.screen.height - windowH)/2);
     window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
@@ -88,7 +88,7 @@ function pop_tax_free(){
 				<li><a href="../emp/Emp_memList.jsp">인사관리</a></li>
 				<li><a href="#">급여관리</a></li>		
 				<li><a href="../attend/Attend_Item_Manage.jsp">근태관리</a></li>
-				<li><a href="../approval/Approval.jsp">결재관리</a></li>
+				<li><a href="../approval/Prospect_write.jsp">결재관리</a></li>
 				<li><a href="../work/Work_taskUpdate.jsp">업무관리</a></li>
 				<li><a href="../customer/Customer_List.jsp">고객관리</a></li>
 			</ul>

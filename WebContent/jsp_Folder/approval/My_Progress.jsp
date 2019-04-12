@@ -18,6 +18,13 @@
 		 $("textarea[name=txtarea]").text("값을 변경합니다.");
 	});
 </script>
+<script>
+	$('.click').click(function(){
+		alert($(this).attr('value'));
+		
+	});
+
+</script>
 </head>
 <body>
 <!-- 네비게이션 -->
@@ -41,7 +48,7 @@
 			<!-- 네비게이션 본메뉴 엘리먼트 -->
 			<ul class="nav navbar-nav">
 				<li><a href="../emp/Emp_memList.jsp">인사관리</a></li>
-				<li><a href="../pay/Allowance_item.jsp">급여관리</a></li>			
+				<li><a href="../pay/Allowance_Item.jsp">급여관리</a></li>			
 				<li><a href="../attend/Attend_Item_Manage.jsp">근태관리</a></li>
 				<li><a href="#">결재관리</a></li>
 				<li><a href="../work/Work_taskUpdate.jsp">업무관리</a></li>
@@ -81,6 +88,19 @@
 		</nav>
 	</div>
 	<div class="contents" style="width: 1000px">
+		<form role="form">
+			<div class="form-group" style="text-align: left;">
+				<a style="width: 10%" class="btn btn-default click" href="My_All.jsp">전체 </a>
+				<a style="width: 10%" class="btn btn-default click" href="My_Prospect.jsp">기안중</a>
+				<a style="width: 10%" class="btn btn-primary click" href="#">진행중</a>
+				<a style="width: 10%" class="btn btn-default click" href="My_Return.jsp">반려 </a>
+				<a style="width: 10%" class="btn btn-default click" href="My_Approval.jsp">결재 </a>
+				<a style="width: 10%" class="btn btn-default pull-right click" href="My_Reception.jsp">수신참조</a>
+			</div>
+		</form>
+		<div>
+		</div>
+		<p/>
 		<table class="table">
 			<thead>
 				<tr id="info">

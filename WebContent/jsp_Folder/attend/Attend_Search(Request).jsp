@@ -206,7 +206,7 @@ button {
 			</thead>
 			<tbody>
 				<tr>
-					<td class="line" style="width:150px;">
+					<td class="line" style="width:150px; text-align: left;">
 						기준일자
 					</td>
 					<td class="line" style="text-align: left;">
@@ -218,8 +218,8 @@ button {
 					</td>
 				</tr>
 				<tr>
-					<td class="line">사원명</td>
-					<td class="line">
+					<td class="line" style="text-align: left;">사원명</td>
+					<td class="line" style="text-align: left;">
 						<div class="input-group" style="z-index: 0">
 							<span class="input-group-btn">
 								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#user_name"></button>
@@ -230,8 +230,8 @@ button {
 					</td>
 				</tr>
 				<tr>
-					<td class="line">부서</td>
-					<td class="line">
+					<td class="line" style="text-align: left;">부서</td>
+					<td class="line" style="text-align: left;">
 						<div class="input-group" style="z-index: 0">
 							<span class="input-group-btn">
 								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#dept_name"></button>
@@ -242,10 +242,10 @@ button {
 					</td>
 				</tr>
 				<tr>
-					<td class="line">
+					<td class="line" style="text-align: left;">
 						프로젝트
 					</td>
-					<td class="line">
+					<td class="line" style="text-align: left;">
 						<div class="radio">
 							<label> <input type="radio" name="optionsRadios"
 								id="optionsRadios1" value="option1" checked>
@@ -265,10 +265,10 @@ button {
 					</td>
 				</tr>
 				<tr>
-					<td class="line">
+					<td class="line" style="text-align: left;">
 						근태항목
 					</td>
-					<td class="line">
+					<td class="line" style="text-align: left;">
 						<div class="input-group" style="z-index: 0">
 							<span class="input-group-btn">
 								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#Working_attitude"></button>
@@ -279,10 +279,10 @@ button {
 					</td>
 				</tr>
 				<tr>
-					<td class="line">
+					<td class="line" style="text-align: left;">
 						휴가항목
 					</td>
-					<td class="line">
+					<td class="line" style="text-align: left;">
 						<div class="input-group" style="z-index: 0">
 							<span class="input-group-btn">
 								<button type="button" class="img-button_Searc" data-toggle="modal" data-target="#vacation"></button>

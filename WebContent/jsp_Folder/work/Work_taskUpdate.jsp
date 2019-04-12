@@ -29,33 +29,6 @@
 	 	 });
 	});
 </script>
-<script>
-jQuery(function($){
-	$('#modal-dept_name').footable({
-		"useParentWidth": true,
-		"columns": $.get('columns.json'),
-		"rows": $.get('rows.json')
-	});
-});
-</script>
-<script>
-jQuery(function($){
-	$('#modal-project').footable({
-		"useParentWidth": true,
-		"columns": $.get('columns.json'),
-		"rows": $.get('rows.json')
-	});
-});
-</script>
-<script>
-jQuery(function($){
-	$('#modal-deal_name').footable({
-		"useParentWidth": true,
-		"columns": $.get('columns.json'),
-		"rows": $.get('rows.json')
-	});
-});
-</script>
 
 <style>
 input {
@@ -173,7 +146,7 @@ input {
 						<input type="text" class="form-control input-sm" 
 							   style="width: 180px; height:50%; display:inline-block">
 						<samp>
-							<input type="button" class="img-button" data-toggle="modal" data-target="#dept_name">
+							<input type="button" class="img-button" >
 						</samp>	
 						&nbsp;&nbsp;
 					    <input type="text" class="form-control input-sm" 
