@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="resources.mapper.MergeListMapper">
+
+	<update id="resetPersonalPayList" parameterType="java.util.Map">
+		MERGE INTO personalpaylist a
+		USING dual
+		on (a.personalpay_report = #{REPORT, jdbcType=VARCHAR}
+		and a.empno = #{EMPNO, jdbcType=VARCHAR}
+		and a.allowance_no = #{ALLOWANCE_NO, jdbcType=INTEGER}
+		and a.personalpay_pay = #{PAYINFO_PRICE, jdbcType=INTEGER})
+
+		WHEN NOT MATCHED THEN
+		INSERT (a.personalpay_report, a.empno, a.allowance_no, a.allowance_name, a.personalpay_pay)
+		values(#{REPORT, jdbcType=VARCHAR}, #{EMPNO, jdbcType=VARCHAR}, #{ALLOWANCE_NO, jdbcType=INTEGER}, #{ALLOWANCE_NAME, jdbcType=VARCHAR}, #{PAYINFO_PRICE, jdbcType=INTEGER})
+    </update>
+    
+    <update id="resetDailyworkList" parameterType="java.util.Map">
+		MERGE INTO dailyworklist a
+		USING dual
+		on (a.empno = #{EMPNO, jdbcType=VARCHAR}
+		and a.dailywork_date = to_date(#{SELECTEDDATE, jdbcType=VARCHAR}, 'YYYY/MM/DD')
+		and a.allowance_no = #{ALLOWANCE_NO, jdbcType=INTEGER})
+
+		WHEN MATCHED THEN
+		UPDATE SET a.dailywork_time = #{DAILYWORK_TIME, jdbcType=INTEGER}
+
+		WHEN NOT MATCHED THEN
+		insert (a.empno, a.dailywork_date, a.allowance_no, a.allowance_name, a.dailywork_confirm, a.dailywork_time)
+		values(#{EMPNO, jdbcType=VARCHAR}, to_date(#{SELECTEDDATE, jdbcType=VARCHAR}, 'YYYY/MM/DD'), #{ALLOWANCE_NO, jdbcType=INTEGER}, #{ALLOWANCE_NAME, jdbcType=VARCHAR}, 0, #{DAILYWORK_TIME, jdbcType=INTEGER})
+	</update>
+	
+    <update id="insertAllowanceItem" parameterType="java.util.Map">
+		MERGE INTO allowanceitem a
+		USING dual
+		on (a.allowance_name = #{name, jdbcType=VARCHAR}
+		and a.allowance_division = #{division, jdbcType=VARCHAR})
+
+		WHEN NOT MATCHED THEN
+		insert (a.allowance_name, a.allowance_division)
+		values(#{name, jdbcType=VARCHAR}, #{division, jdbcType=VARCHAR})
+	</update>
+	
+	<update id="insertDeductionItem" parameterType="String">
+		MERGE INTO deductionitem a
+		USING dual
+		on (a.deduction_name = #{name, jdbcType=VARCHAR})
+
+		WHEN NOT MATCHED THEN
+		insert (a.deduction_name)
+		values(#{name, jdbcType=VARCHAR})
+	</update>
+	
+	<update id="empPayInfoAdd" parameterType="HashMap">
+		MERGE INTO personalpayinfo a
+		USING dual
+		on (a.empno = #{EMPNO, jdbcType=INTEGER}
+		and a.allowance_no = #{ALLOWANCE_NO, jdbcType=INTEGER})
+
+		WHEN MATCHED THEN
+		UPDATE SET a.payinfo_price = #{PAYINFO_PRICE, jdbcType=INTEGER}
+
+		WHEN NOT MATCHED THEN
+		insert (a.empno, a.allowance_no, a.allowance_name, a.payinfo_price, a.allowance_division)
+		values (#{EMPNO}, #{ALLOWANCE_NO}, #{ALLOWANCE_NAME}, #{PAYINFO_PRICE}, #{ALLOWANCE_DIVISION})
+	</update>
+	
+	<update id="resetPersonalDeducList" parameterType="java.util.Map">
+		MERGE INTO personaldeduclist a
+		USING dual
+		on (a.personaldeduc_report = #{REPORT, jdbcType=VARCHAR}
+		and a.empno = #{EMPNO, jdbcType=VARCHAR}
+		and a.deduction_no = #{DEDUCTION_NO, jdbcType=INTEGER}
+		and a.personaldeduc_deduc = #{DEDUCINFO_PRICE, jdbcType=INTEGER})
+
+		WHEN NOT MATCHED THEN
+		INSERT (a.personaldeduc_report, a.empno, a.deduction_no, a.deduction_name, a.personaldeduc_deduc)
+		values(#{REPORT, jdbcType=VARCHAR}, #{EMPNO, jdbcType=VARCHAR}, #{DEDUCTION_NO, jdbcType=INTEGER}, #{DEDUCTION_NAME, jdbcType=VARCHAR}, #{DEDUCINFO_PRICE, jdbcType=INTEGER})
+    </update>
+
+</mapper>

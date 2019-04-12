@@ -1,6 +1,9 @@
 package resources.mapper;
 
 import java.util.HashMap;
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
 
 public interface updateListMapper {
 	
@@ -22,4 +25,22 @@ public interface updateListMapper {
 	public void resetAttendList(HashMap<String, String> attendInsert); //Update Attend Data
 	public void resetAttendCodeList(HashMap<String, String> attendCInsert);//Update Attend Code
 	//Attend End
+	
+	
+	
+	
+	
+	
+
+	
+	public void resetTotalCalcList(HashMap<String, String> totalNreport);
+	
+	public void resetPersonalPayList(List<HashMap<String, String>> personal_data);
+
+	public void resetWorkConfirmList(@Param("selectedDate") String selectedDate, @Param("empno") String empno);
+	
+	public void resetPayConfirmList(String report);
+	
+	public void resetPayConfirmCancelList(String report);
+
 }

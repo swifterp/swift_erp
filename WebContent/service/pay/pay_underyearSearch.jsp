@@ -1,66 +1,105 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, java.util.HashMap" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>1³â¹Ì¸¸ÀÚ»ó¿©Áö±Ş·ü µî·Ï ÆäÀÌÁö</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/common.css">
+<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
+<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<title>1ë…„ë¯¸ë§Œììƒì—¬ì§€ê¸‰ë¥  ë“±ë¡ í˜ì´ì§€</title>
 </head>
 <body>
+	<%@ include file="../common/top_menu.jsp" %>
+	<div class="container">
+		<%@ include file="../common/left_menu_pay.jsp" %>
+		<div class="contents">
+	<input type="hidden" id="jan" name="jan" value=${list.get(0).get("JAN") }>
+	<input type="hidden" id="feb" name="feb" value=${list.get(0).get("FEB") }>
+	<input type="hidden" id="mar" name="mar" value=${list.get(0).get("MAR") }>
+	<input type="hidden" id="apr" name="apr" value=${list.get(0).get("APR") }>
+	<input type="hidden" id="may" name="may" value=${list.get(0).get("MAY") }>
+	<input type="hidden" id="jun" name="jun" value=${list.get(0).get("JUN") }>
+	<input type="hidden" id="jul" name="jul" value=${list.get(0).get("JUL") }>
+	<input type="hidden" id="aug" name="aug" value=${list.get(0).get("AUG") }>
+	<input type="hidden" id="sep" name="sep" value=${list.get(0).get("SEP") }>
+	<input type="hidden" id="oct" name="oct" value=${list.get(0).get("OCT") }>
+	<input type="hidden" id="nov" name="nov" value=${list.get(0).get("NOV") }>
+	<input type="hidden" id="deb" name="deb" value=${list.get(0).get("DEB") }>
 
-<form action="../../pay/underyear">
-1¿ù:<br>
-<input type="text" name="jan" value="100">
-<br>
+	<script>
+		var jbAry = Array();
+		jbAry[0] = document.getElementById("jan").value;
+		jbAry[1] = document.getElementById("feb").value;
+		jbAry[2] = document.getElementById("mar").value;
+		jbAry[3] = document.getElementById("apr").value;
+		jbAry[4] = document.getElementById("may").value;
+		jbAry[5] = document.getElementById("jun").value;
+		jbAry[6] = document.getElementById("jul").value;
+		jbAry[7] = document.getElementById("aug").value;
+		jbAry[8] = document.getElementById("sep").value;
+		jbAry[9] = document.getElementById("oct").value;
+		jbAry[10] = document.getElementById("nov").value;
+		jbAry[11] = document.getElementById("deb").value;
+		
+		$(function () {
+			$('#lblTable').empty();
+			var row = 12;
+			var col = 3;
+			var strTable = "<table class='table' style='margin: auto;'>";
+			
+			for (var i = 0; i < row; i++) {
+			     strTable += "<tr>";
+			    for (var j = 0; j < col; j++) {
+					if(j == 0){
+			    		strTable += "<td style='width: 50%; text-align: left; padding-left: 60px'>" + (i+1) +"</td>";
+					}
+					if(j == 1) {
+						strTable += "<td style='width: 1%'>" + "." + "</td>"
+					}
+					if(j == 2) {
+						strTable += "<td style='width: 49%; text-align: left;'>" +
+						 "<input type='text' name='"+document.getElementById("jan").id+"' value='"+jbAry[i]+"' class='form-control' style='width:100px; height: 50%; display: inline-block'/>"+ "%" + "</td>"
+					}
+			    }
+			    strTable += "</tr>";
+			    strTable += "</tbody>"
+			}
+			strTable += "</table>";
+			
+			$('#lblTable').append(strTable);
+		});
+	</script>
 
-2¿ù:<br>
-<input type="text" name="feb" value="100">
-<br>
-
-3¿ù:<br>
-<input type="text" name="mar" value="100">
-<br>
-
-4¿ù:<br>
-<input type="text" name="apr" value="100">
-<br>
-
-5¿ù:<br>
-<input type="text" name="may" value="100">
-<br>
-
-6¿ù:<br>
-<input type="text" name="jun" value="100">
-<br>
-
-7¿ù:<br>
-<input type="text" name="jul" value="100">
-<br>
-
-8¿ù:<br>
-<input type="text" name="aug" value="100">
-<br>
-
-9¿ù:<br>
-<input type="text" name="sep" value="100">
-<br>
-
-10¿ù:<br>
-<input type="text" name="oct" value="100">
-<br>
-
-11¿ù:<br>
-<input type="text" name="nov" value="100">
-<br>
-
-12¿ù:<br>
-<input type="text" name="deb" value="100">
-<br>
-
-<br>
-<input type="submit" value="Submit">
-</form> 
-
+	<div style="width: 1200px" class="contents">
+		<table class="table" style="margin: auto;">
+			<tbody>
+				<tr>
+					<td style="width: 50%; text-align: left; padding-left: 40px">
+						ê·¼ì†ì›”
+					</td>
+					<td style="width: 1%"> 
+					</td>
+					<td style="width: 49%; text-align: left; padding-left: 40px"> 
+						ì§€ê¸‰ë¥ 
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<form action="../pay/underyear">
+			<div id="lblTable">
+			</div>
+			<br>
+			<input type="submit" value="Submit" class="btn btn-primary pull-list">
+		</form>
+		<br> 
+		<input type="button" class="btn btn-primary pull-list"
+			 value="ì¸ì‡„" >
+	</div>
+</div></div>
 </body>
 </html>

@@ -1,10 +1,8 @@
 package resources.mapper;
 
-import java.util.List;
-import java.util.Map;
-
 public interface deleteListMapper {
-
+	
+	
 	//employee
 	public int getEmpDel(Integer emp_appoint_num);	
 	public void getAppointDel(Integer emp_appoint_num);
@@ -21,8 +19,20 @@ public interface deleteListMapper {
 	//client
 	public void DeleteNameCardInfo(Integer NAMECARD_CODE);	
 	public void DeleteClientInfo(Integer CLIENT_CODE);
+	
+	
+	
+	
+	
 
+	public int getList();
+	public int setList();
 
-
+	
+	public Integer killDeductionList(Integer deduction_no);
+	
+	public Integer killPersonalPayList(String report);
+	
+	public Integer killSalaryCalcList(String report);
 
 }

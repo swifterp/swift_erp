@@ -1,48 +1,136 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ page import="java.util.List, java.util.HashMap" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.List, java.util.Map" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>±Ş¿©°è»êÇöÈ² ÆäÀÌÁö</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/common.css">
+<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
+<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<title>ê¸‰ì—¬ê³„ì‚°í˜„í™© í˜ì´ì§€</title>
+
+<style type="text/css">
+	.text-font{
+		font-size: 12px;
+	}
+</style>
 
 <script type="text/javascript">
-	function personalPay(salaryCalc_no){
-		location.href = "../pay/personalPay?salaryCalc_no="+salaryCalc_no;
-	}
 	function personalPay(report){
 		location.href = "../pay/personalPay?report="+report;
 	}
+	function totalCalculation(report){
+		location.href = "../pay/totalCalculation?report="+report;
+	}
+	function personalCalculation(report){
+		location.href = "../service/pay/pay_personalCalcSearch.jsp?report="+report;
+	}
+	function payConfirm(report){
+		location.href = "../pay/payConfirm?report="+report;
+	}
+	function payConfirmCancel(report){
+		location.href = "../pay/payConfirmCancel?report="+report;
+	}
+	function deletePayroll(report){
+		location.href = "../pay/deletePayroll?report="+report;
+	}
 </script>
-<%
-	List list = (List)request.getAttribute("list");
-	HashMap map0 = (HashMap)list.get(0);
-	String report0 = (String)map0.get("SALARYCALC_REPORT");
-%>
 </head>
 <body>
+	<%@ include file="../common/top_menu.jsp" %>
+	<div class="container">
+		<%@ include file="../common/left_menu_pay.jsp" %>
+		<div class="contents">
+	<div style="padding-right: 30px" class="contents">
+		<div id="lblTable">
+			<table id='set_table' class='table text-font' style='margin: auto; text-align:center;'>
+				<thead>
+					<tr>
+						<td width="10%">ì‹ ê³ ê·€ì†</td>
+						<td width="10%">ëŒ€ì¥ëª…ì¹­</td>
+						<td width="10%">ê³„ì‚°ê¸ˆì•¡</td>
+						<td width="10%">ê¸‰ì—¬ê³„ì‚°</td>
+						<td width="10%">ê°œì¸ë³„ê¸‰ì—¬ë‚´ì—­</td>
+						<td width="10%">ê³„ì‚°í™•ì •</td>
+						<td width="10%">ë‚´ì—­ì‚­ì œ</td>
+					</tr>
+				</thead>
+				<%
+					List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
+				
+					if(lst != null){
+						for(int i=0;i<lst.size();i++){
+							if(Integer.parseInt(String.valueOf(lst.get(i).get("SALARYCALC_CONFIRM"))) == 0){
+				%>
+								<tr>
+									<td width="10%"><%= lst.get(i).get("SALARYCALC_REPORT") %></td>
+									<td width="10%"><%= lst.get(i).get("SALARYCALC_NAME") %></td>
+									<td width="10%"><%= String.valueOf(lst.get(i).get("SALARYCALC_TOTAL")) %></td>
+									<td width="10%"><input type="button" class="btn btn-primary pull-list" onclick="javascript:totalCalculation('<%= lst.get(i).get("SALARYCALC_REPORT") %>')" value="ì „ì²´ê³„ì‚°"></td>
+									<td width="10%"><input type="button" class="btn btn-primary pull-list" onclick="javascript:personalPay('<%= lst.get(i).get("SALARYCALC_REPORT") %>')" value="ê°œì¸ë³„ê¸‰ì—¬ë‚´ì—­"></td>
+									<td width="10%"><input type="button" class="btn btn-primary pull-list" onclick="javascript:payConfirm('<%= lst.get(i).get("SALARYCALC_REPORT") %>')" value="ê³„ì‚°í™•ì •"></td>
+									<td width="10%"><input type="button" class="btn btn-primary pull-list" onclick="javascript:deletePayroll('<%= lst.get(i).get("SALARYCALC_REPORT") %>')" value="ë‚´ì—­ì‚­ì œ"></td>
+								</tr>
+				<%
+							} else {
+				%>
+								<tr>
+									<td width="10%"><%= lst.get(i).get("SALARYCALC_REPORT") %></td>
+									<td width="10%"><%= lst.get(i).get("SALARYCALC_NAME") %></td>
+									<td width="10%"><%= String.valueOf(lst.get(i).get("SALARYCALC_TOTAL")) %></td>
+									<td width="10%"></td>
+									<td width="10%"><input type="button" class="btn btn-primary pull-list" onclick="javascript:personalPay('<%= lst.get(i).get("SALARYCALC_REPORT") %>')" value="ê°œì¸ë³„ê¸‰ì—¬ë‚´ì—­"></td>
+									<td width="10%"><input type="button" class="btn btn-primary pull-list" onclick="javascript:payConfirmCancel('<%= lst.get(i).get("SALARYCALC_REPORT") %>')" value="í™•ì •ì·¨ì†Œ"></td>
+									<td width="10%"></td>
+								</tr>
+				<%
+							}
+						}
+					}
+				 %>
+			</table>
+		</div>
+		<br>
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">ì¶”ê°€</button>
+	</div>
 
-<table>
-	<tr>
-		<td>½Å°í±Í¼Ó</td>
-		<td>Á¦¸ñ</td>
-		<td>°³ÀÎº°±Ş¿©³»¿ª</td>
-		<td>Áö±ŞÃÑ¾×</td>
-	</tr>
-	<tr>
-		<td>${list.get(0).get("SALARYCALC_REPORT") }</td>
-		<td>${list.get(0).get("SALARYCALC_NAME") }</td>
-		<td><input type="button" onclick="javascript:personalPay('<%= report0 %>')" value="°³ÀÎº°±Ş¿©³»¿ª"></td>
-		<td>${list.get(0).get("SALARYCALC_TOTAL") }</td>
-	</tr>
-	<tr>
-		<td>${list.get(1).get("SALARYCALC_REPORT") }</td>
-		<td>${list.get(1).get("SALARYCALC_NAME") }</td>
-		<td><input type="button" onclick="javascript:personalPay('${list.get(1).get('SALARYCALC_REPORT') }')" value="°³ÀÎº°±Ş¿©³»¿ª"></td>
-		<td>${list.get(1).get("SALARYCALC_TOTAL") }</td>
-	</tr>
-</table>
-
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">ì¶”ê°€í•˜ê¸°</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <form action="../pay/insertPayroll">
+			ê¸°ì¤€ì¼ì(ë…„):<br>
+			<input type="text" name="year">
+			<br>
+			
+			ê¸°ì¤€ì¼ì(ì›”):<br>
+			<input type="text" name="month">
+			<br>
+			
+			ì œëª©:<br>
+			<input type="text" name="title">
+			<br>
+			
+			<br>
+			<input type="submit" class="btn btn-primary pull-list" value="ë“±ë¡">
+			</form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">ë‹«ê¸°</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div></div>
 </body>
 </html>
