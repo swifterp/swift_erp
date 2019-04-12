@@ -55,4 +55,8 @@ public class ControllerConfig {
 		return new Mem_Controller();
 	}
 
+	@Bean
+	public Chat_Controller chat_Controller() {
+		return new Chat_Controller();
+	}
 }
