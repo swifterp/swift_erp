@@ -5,12 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../../css/common.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
-<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<%@ include file="../common/ui_common.jsp" %>
 <title>수당항목등록 페이지</title>
 <script type="text/javascript">
 
@@ -27,25 +22,24 @@
 	<div class="container">
 		<%@ include file="../common/left_menu_pay.jsp" %>
 		<div class="contents">
-			<div style="width: 1200px" class="contents">
 				<form action="../pay/insertAllowance">
-					<table class="table" style="margin: auto; text-align:center;">
+					<table class="table" style="margin-bottom:20px;">
 						<tbody>
 							<tr>
-								<td>
+								<th>
 									항목이름
-								</td>
+								</th>
 								<td>
 									<input type="text" name="name">
 								</td>
 							</tr>
 							<tr>
-								<td>
+								<th>
 									항목구분
-								</td>
+								</th>
 								<td>
 									<div class="input-group" style="width: 100px;">
-										<select class="custom-select" name="division">
+										<select class="custom-select" name="division" class="form-control">
 											<option name="division" value="월정액">월정액</option>
 											<option name="division" value="일급">일급</option>
 										</select>
@@ -54,27 +48,25 @@
 							</tr>
 							<tr>
 								<td colspan="2">
-									<input type="submit" value="등록">
+									<input type="submit" class="btn btn-outline-primary" value="등록">
 								</td>
 							</tr>
 						</tbody>
 					</table>
 				</form>
-			</div>
-			
-			<div style="width: 1200px" class="contents">
-				<table class="table" style="margin: auto; text-align:center;">
+
+				<table class="table" style="margin-bottom:20px;">
 					<tbody>
 						<tr>
-							<td>
+							<th>
 								수당명
-							</td>
-							<td> 
+							</th>
+							<th> 
 								수당구분
-							</td>
-							<td>
+							</th>
+							<th>
 								기타
-							</td>
+							</th>
 						</tr>
 		<%
 				List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
@@ -102,7 +94,6 @@
 				<br> 
 				<input type="button" class="btn btn-primary pull-list"
 					 value="인쇄" >
-			</div>
 		</div>
 	</div>
 	
