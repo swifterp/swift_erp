@@ -35,9 +35,9 @@ public class Approval_Controller {
 	private SelectDraftDetail sdd;
 	
 	@RequestMapping("/selectDraftDetail")
-	public String readDraftDetail(Model model, @RequestParam Integer draft_num) {
-		model.addAttribute("list",sdd.callDraftDetailDao(draft_num));
-		return "approval/approval_draft";
+	public String readDraftDetail(Model model, @RequestParam Integer draft_code) {
+		model.addAttribute("list",sdd.callDraftDetailDao(draft_code));
+		return "approval/approval_draftdetail";
 		
 	}
 	@Autowired

@@ -41,6 +41,7 @@ int style1 =Integer.parseInt(String.valueOf(request.getAttribute("list2")));
 					<input type="submit" class="btn btn-primary pull-right" value="확인">
 				</div>
 			</form>
+			
 
 
 <script>
@@ -71,9 +72,10 @@ String style = String.valueOf(request.getAttribute("list"));
 		out.print(style);
 		%>
 		</textarea>
-		<input type="submit" value="결재">
+		
+		<input type="submit" onclick = "javascript:goSaveData()" value="결재">
 		</form>
-</section>
+
 </section>
 </body>
 </html>

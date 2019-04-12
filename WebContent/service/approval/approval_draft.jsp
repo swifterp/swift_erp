@@ -7,6 +7,13 @@
 <meta charset="UTF-8">
 <title>기안서 조회 페이지</title>
 <%@ include file="../common/ui_common.jsp" %>
+<script type="text/javascript">
+
+	function goDraftSearch(draft_code){
+		location.href = "./selectDraftDetail?draft_code="+draft_code;
+		
+		}
+</script>
 </head>
 <body>
 	<%@ include file="../common/top_menu.jsp" %>
@@ -27,7 +34,9 @@
 					<tr> 
 						<th>No.</th>
 						<th>기안일자</th>
+						<th>제목</th>
 						<th>작성자</th>
+						<th>보기</th>
 						
 					</tr>
 				</thead>
@@ -40,7 +49,9 @@
 					<tr>
 						<td><%= Integer.parseInt(String.valueOf(lst.get(i).get("DRAFT_NO"))) %> </td>
 						<td><%= String.valueOf(lst.get(i).get("DRAFT_DATE")).substring(0,10) %> </td>
-						<td><%= lst.get(i).get("DRAFT_WRITER") %> </td>
+						<td><%= lst.get(i).get("STYLE_NAME") %> </td>
+						<td><%= lst.get(i).get("EMP_NAME") %> </td>
+						<td><a class="btn btn-primary" onclick="javascript:goDraftSearch(<%= Integer.parseInt(String.valueOf(lst.get(i).get("DRAFT_NO"))) %>)" >조회</a></td>
 					
 					</tr>
 					<%

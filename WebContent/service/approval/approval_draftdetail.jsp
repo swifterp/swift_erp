@@ -8,7 +8,8 @@
 </head>
 <body>
 
-${list.get(0) }<p>
+
+${list}<p>
 
 
 

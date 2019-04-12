@@ -5,24 +5,28 @@
 
 	<select id="getDraftList" resultType="hashmap">
 	
-		select DRAFT_NO,DRAFT_DATE,draft_writer from draft
+		select draft.DRAFT_NO,draft.DRAFT_DATE, (select style_name from common_style where style_code = draft_style) as "STYLE_NAME",
+		employee.emp_name from draft, employee 
+		<where>
+			draft.draft_writer = employee.empno
+		</where>
 	
 	</select>
 	
-	<select id="getDraftDetailList" parameterType="Integer" resultType="hashmap">
-	
-		select DRAFT_NO, DRAFT_TITLE, DRAFT_DATE, DRAFT_WRITER, DRAFT_REFERENCE ,DRAFT_OWNER
-				,DRAFT_STYLE, DRAFT_DIVISION, DRAFT_CONTENT  from draft
-			<where>
-			DRAFT_NO = #{draft_num}
-			</where>
-	
-	</select>
 	<resultMap type="String" id="StyleSheet">
 
 	<result property="STYLE_CONTENT" column="STYLE_CONTENT" jdbcType="CLOB" javaType="java.lang.String" />
 
 	</resultMap>
+	
+	<select id="getDraftDetailList" parameterType="Integer" resultType="String">
+	
+		select DRAFT_CONTENT from draft
+			<where>
+				DRAFT_NO = #{draft_num}
+			</where>
+	
+	</select>
 	<select id="getCommon" parameterType="Integer" resultType="String" >
 		
 		select style_content from common_style where style_code=#{style_code,jdbcType=INTEGER} 
