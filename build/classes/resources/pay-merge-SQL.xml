@@ -24,7 +24,7 @@
 		and a.allowance_no = #{ALLOWANCE_NO, jdbcType=INTEGER})
 
 		WHEN MATCHED THEN
-		UPDATE SET a.dailywork_time = #{DAILYWORK_TIME, jdbcType=INTEGER}
+		UPDATE SET a.dailywork_time = #{DAILYWORK_TIME, jdbcType=INTEGER}, a.dailywork_confirm = 0 <!-- 추가됨 -->
 
 		WHEN NOT MATCHED THEN
 		insert (a.empno, a.dailywork_date, a.allowance_no, a.allowance_name, a.dailywork_confirm, a.dailywork_time)

@@ -18,6 +18,8 @@ public class InsertDailyworkList {
 	
 	public List<Map<String, String>> callDailyworkInsertDao(HashMap<String, String> datas) {
 		
+		System.out.println(datas.get("empno"));
+		
 		String selectedDate = "";
 		
 		if(Integer.parseInt(datas.get("month")) > 9) {

@@ -14,10 +14,12 @@ public class WorkConfirmSelectDao {
 	@Autowired
 	private selectListMapper slm;
 	
-	public List<Map<String, String>> selectTotalWorkConfirmList() {
-		
-		return slm.getTotalWorkConfirmList();
-		
+	public List<Map<String, String>> selectWorkConfirmList(String selectedDate, String empno, Integer classify) {
+		if(classify == 1 || classify == 2) {
+			return slm.getWorkNotConfirmList(selectedDate, empno);
+		} else {
+			return slm.getWorkConfirmList(selectedDate, empno);
+		}
 	}
 	
 }

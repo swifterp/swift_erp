@@ -101,6 +101,8 @@ public interface selectListMapper {
 	//public List<Map<String, String>> getWorkTimeList();
 
 	public List<Map<String, String>> getWorkConfirmList(@Param("selectedDate") String selectedDate, @Param("empno") String empno);
+	
+	public List<Map<String, String>> getWorkNotConfirmList(@Param("selectedDate") String selectedDate, @Param("empno") String empno); // pay Ãß°¡ 0415 13:03
 
 	public List<Map<String, String>> getTotalWorkConfirmList();
 

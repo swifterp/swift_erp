@@ -143,6 +143,15 @@
 
 	</select>
 	
+	<select id="getWorkNotConfirmList" parameterType="String" resultType="hashmap"> <!-- 추가됨 -->
+	
+		select empno, allowance_no, allowance_name, dailywork_time, to_char(dailywork_date, 'YYYY/MM/DD') as dailywork_date from dailyworklist
+		<where>
+			dailywork_confirm = 0 and to_char(dailywork_date, 'YYYY/MM/DD') = #{selectedDate} and empno = #{empno}
+		</where>
+
+	</select>
+	
 	<select id="getTotalWorkConfirmList" resultType="hashmap">
 	
 		select empno, allowance_no, allowance_name, dailywork_time, to_char(dailywork_date, 'YYYY/MM/DD') as dailywork_date from dailyworklist
