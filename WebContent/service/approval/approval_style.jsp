@@ -18,22 +18,68 @@ int style1 =Integer.parseInt(String.valueOf(request.getAttribute("list2")));
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
   <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
   <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
+  
+  <script>
+$(document).ready(function() {
+    $('#pop_dept1').on("click", function() {	
+    	var url="../approval/approval_path_dept1?EMPNO="+1;
+    	var windowW = 300;  // 창의 가로 길이
+        var windowH = 300;  // 창의 세로 길이
+        var left = Math.ceil((window.screen.width - windowW)/2);
+        var top = Math.ceil((window.screen.height - windowH)/2);
+  window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+    });
+});$(document).ready(function() {
+    $('#pop_dpet2').on("click", function() {	
+    	var url="../approval/approval_path_dept2";
+    	var windowW = 300;  // 창의 가로 길이
+        var windowH = 300;  // 창의 세로 길이
+        var left = Math.ceil((window.screen.width - windowW)/2);
+        var top = Math.ceil((window.screen.height - windowH)/2);
+  window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+    });
+});
+$(document).ready(function() {
+    $('#pop_dept3').on("click", function() {	
+    	var url="../approval/approval_path_dept3";
+    	var windowW = 300;  // 창의 가로 길이
+        var windowH = 300;  // 창의 세로 길이
+        var left = Math.ceil((window.screen.width - windowW)/2);
+        var top = Math.ceil((window.screen.height - windowH)/2);
+  window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+    });
+});
+</script>
 </head>
 <body>
 <h3>서류작성</h3>
 			<form action="../approval/insertApprovalPath">
 				<table class="table">
 					<tr>
-						<th>결재라인명</th>
-						<td><input type="text" id="path_name" class="form-control" name="path_name" ></td>
-						<th>첫번째 결재자</th>
-						<td><input type="text" id="path_firstapproval" class="form-control" name="path_firstapproval" ></td>
-					</tr>
-					<tr>
-						<th>두번째 결재자</th>
-						<td><input type="text" id="path_secondapproval" class="form-control" name="path_secondapproval" ></td>
-						<th>세번째 결재자</th>
-						<td><input type="text" id="path_thirdapproval" class="form-control" name="path_thirdapproval" ></td>
+						<th>1차결재 <span class="essential">*</span></th>
+						<td id="pop_dept1" class="input-group">
+							<input type="hidden" id="approval_dept_no" name="deptno" class="form-control" required="" value="1">
+							<input type="text" id="approval_dept_name" class="form-control" required="">
+							<span class="input-group-btn">
+								 <button class="btn btn-default" type="button" data-toggle="modal" data-target="#exampleModal">보기</button>
+							</span>
+						</td>
+						<th>2차결재 <span class="essential">*</span></th>
+						<td id="pop_dept2" class="input-group">
+							<input type="hidden" id="p_rank_no" name="rank_no" class="form-control" required="">
+							<input type="text" id="p_rank_name" class="form-control" required="">
+							<span class="input-group-btn">
+								 <button class="btn btn-default" type="button">보기</button>
+							</span>
+						</td>
+						<th>3차결재<span class="essential">*</span></th>
+						<td id="pop_dept" class="input-group">
+							<input type="hidden" id="p_duty_no" name="duty_no" class="form-control" required="">
+							<input type="text" id="p_duty_name" class="form-control" required="">
+							<span class="input-group-btn">
+								 <button class="btn btn-default" type="button">보기</button>
+							</span>
+						</td>
 					</tr>
 					
 				</table>

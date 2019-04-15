@@ -92,7 +92,7 @@
 					</tr>
 					<tr>
 						<td rowspan="2">비밀번호 <span class="essential">*</span></td>
-						<td><input type="text" id="mem_pw" name="mem_pw" class="form-control" placeholder="비밀번호" required=""></td>
+						<td><input type="text" id="mem_pw" name="mem_pw" class="form-control" placeholder="비밀번호" required="" ></td>
 					</tr>
 					<tr>
 						<td><input type="text" id="mem_pw_check" name="mem_pw_check" class="form-control" placeholder="비밀번호 확인" required=""></td>

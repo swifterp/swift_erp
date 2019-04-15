@@ -105,5 +105,14 @@ public class Approval_Controller {
 		return "approval/approval_style";
 		
 	}
+	
+	
+	@RequestMapping("/approval_path_dept1")
+	public String approval_dept1(Model model, @RequestParam int EMPNO) {
+		model.addAttribute("list", sap.callApprovalPathDao1(EMPNO));
+		System.out.println(EMPNO);
+		return "approval/approval_pop_dept";
+		
+	}
 
 }

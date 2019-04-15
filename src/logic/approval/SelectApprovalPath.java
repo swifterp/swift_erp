@@ -20,6 +20,22 @@ public class SelectApprovalPath {
 		return apd.selectApprovalPath();
 		
 	}
+	
+	public List<Map<String,String>> callApprovalPathDao1(int empno){
+		
+		return apd.selectApprovalPath1(empno);
+		
+	}
+	public List<Map<String,String>> callApprovalPathDao2(int empno){
+		
+		return apd.selectApprovalPath2(empno);
+		
+	}
+	public List<Map<String,String>> callApprovalPathDao3(int empno){
+		
+		return apd.selectApprovalPath3(empno);
+		
+	}
 
 	public List<Map<String,String>> writeApprovalPathDao(HashMap<String, String> approval_path) {
 		// TODO Auto-generated method stub

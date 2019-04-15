@@ -48,6 +48,13 @@
             from APPROVAL_PATH
 	</select>
 	
+	<select id="getApprovalPathList1" parameterType="Integer" resultType="hashmap">
+		select emp_name from employee 
+		<where>
+			rank_no=2 and deptno = (select deptno from employee where empno= #{EMPNO,jdbcType=INTEGER})
+		</where> 
+	</select>
+	
 	<select id="getMyApprovalList" parameterType = "Integer" resultType="hashmap">
 		select   DRAFT_NO,DRAFT_DATE,DRAFT_STYLE from draft
 				<where>

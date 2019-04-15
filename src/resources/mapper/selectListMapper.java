@@ -34,6 +34,9 @@ public interface selectListMapper {
 		public String getDraftDetailList(Integer draft_num);	
 		public List<Map<String, String>> getCommonList();
 		public List<Map<String, String>> getApprovalPathList();
+		public List<Map<String, String>> getApprovalPathList1(int EMPNO);
+		public List<Map<String, String>> getApprovalPathList2(int EMPNO);
+		public List<Map<String, String>> getApprovalPathList3(int EMPNO);
 		public List<Map<String, String>> getMyApprovalList(int EMPNO);
 		
 		//work
