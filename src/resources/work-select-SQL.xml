@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="resources.mapper.selectListMapper">
+
+	<select id="getBusinessLogList" resultType="hashmap">
+	
+		select log_no, log_date, dept.dname, log_client, log_project, log_content from Business_Log,dept
+		<where>
+			dept.deptno = business_log.deptno
+		</where>
+		order by log_no
+	
+	</select>
+
+	<select id="getMonthWorkList" parameterType ="String"  resultType="hashmap">
+		
+		select attend_date,employee.emp_name,attend_open,attend_close from attend_manager_t, employee
+		<where>
+		<![CDATA[ 
+			EMPLOYEE.EMPNO = ATTEND_MANAGER_T.EMPNO
+			and
+			attend_date >= to_date(#{search_month},'YYYY-MM') 
+			and 
+			attend_date < add_months(to_date(#{search_month},'YYYY-MM'),1) 
+		]]>
+		</where>
+	</select>
+	
+	<select id="getWorkStateList" resultType="hashmap">
+	
+		select attend_date, EMPLOYEE.emp_name, attend_code, attend_time from ATTEND_MANAGER_T,EMPLOYEE
+		<where>
+			EMPLOYEE.EMPNO = ATTEND_MANAGER_T.EMPNO
+		</where>
+	
+	</select>
+	
+	<select id="getWorkTimeList"  parameterType="String" resultType="hashmap">
+	
+			select attend_date,employee.emp_name,attend_open,attend_close from attend_manager_t, employee
+		<where>
+		<![CDATA[ 
+			EMPLOYEE.EMPNO = ATTEND_MANAGER_T.EMPNO
+			and
+			attend_date = to_date(#{search_day},'YYYY-MM-DD') 
+		]]>
+		</where>
+	
+	</select>
+	
+	<select id="getWorkEtcList" resultType="hashmap">
+	
+		select * from attend_manager_t
+	
+	</select>
+	
+	<select id="getClientList" parameterType="String" resultType="hashmap">
+	
+		select CLIENT_DIVISION, CLIENT_NAME, CLIENT_TEL, CLIENT_ADDRESS,CLIENT_CONTENT from client
+		<where>
+			CLIENT_NAME like '%' || #{clientName} || '%'
+		</where>
+	
+	</select>
+	
+	<select id="getDeptList" parameterType="String" resultType="hashmap">
+	
+		select log_no,log_date, dept.dname, log_client, log_project, log_content from Business_Log,dept
+		<where>
+			dept.DNAME like '%' || #{deptName} ||'%'
+			and
+			dept.deptno = business_log.deptno
+		</where>
+			
+	</select>
+	<select id="getDeptStateList" parameterType="String" resultType="hashmap">
+	
+		select d.dname,e.emp_name, a.attend_date, a.attend_code,a.attend_time,a.attend_open, a.attend_close  from attend_manager_t a, employee e, dept d
+		<where>
+			e.empno=a.empno and d.deptno=e.deptno and d.dname like '%'|| #{DEPT_NAME} ||'%' 
+		</where>
+			
+	</select>
+	<select id="getEmpStateList" parameterType="String" resultType="hashmap">
+	
+		select a.ATTEND_DATE, a.EMPNO,e.EMP_NAME, ATTEND_TIME,a.ATTEND_OPEN,a.ATTEND_CLOSE  from attend_manager_t a, employee e
+		<where>
+			a.empno = e.empno and e.emp_name like '%'||#{EMP_NAME}||'%'
+		</where>
+			
+	</select>	
+	
+	<select id="WriteWorkStart" parameterType="Map" statementType="CALLABLE">
+		{CALL proc_workStart(#{EMPNO, mode=IN, jdbcType=INTEGER, javaType=String},
+		#{msg, mode=OUT, jdbcType=VARCHAR, javaType=String})}
+		
+	</select>
+	
+	<select id="WriteWorkEnd" parameterType="Map" statementType="CALLABLE">
+		{CALL proc_workEnd(#{EMPNO, mode=IN, jdbcType=INTEGER, javaType=String},
+		#{msg, mode=OUT, jdbcType=VARCHAR, javaType=String})}
+	</select>
+</mapper>

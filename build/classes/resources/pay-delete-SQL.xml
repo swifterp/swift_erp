@@ -6,5 +6,17 @@
 	<delete id="killAllowanceList" parameterType="Integer">
 		delete from allowanceitem where allowance_no = #{allowance_no}
 	</delete>
+	
+	<delete id="killDeductionList" parameterType="Integer">
+		delete from deductionitem where deduction_no = #{deduction_no}
+	</delete>
+
+	<delete id="killPersonalPayList" parameterType="String">
+		delete from personalpaylist where personalpay_report = #{report}
+	</delete>
+
+	<delete id="killSalaryCalcList" parameterType="String">
+		delete from salarycalclist where salarycalc_report = #{report}
+	</delete>	
 
 </mapper>

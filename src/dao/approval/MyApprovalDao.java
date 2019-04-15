@@ -14,9 +14,9 @@ public class MyApprovalDao {
 	@Autowired
 	private selectListMapper slm;
 	
-	public List<Map<String, String>> selectMyApprovalList() {
+	public List<Map<String, String>> selectMyApprovalList(int EMPNO) {
 		
-		return slm.getMyApprovalList();
+		return slm.getMyApprovalList(EMPNO);
 	}
 	
 	

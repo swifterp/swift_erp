@@ -26,4 +26,9 @@ public class UnderyearDao {
 		return slm.getUnderyearList();
 	}
 	
+	public List<Map<String, String>> selectUnderyearList() {
+		
+		return slm.getUnderyearList();
+	}
+	
 }

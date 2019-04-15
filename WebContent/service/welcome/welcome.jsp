@@ -1,64 +1,36 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.List, java.util.ArrayList, java.util.Map" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Welcome Page</title>
-
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/common.css">
+<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
+<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
+<!-- ë‚ ì§œì„ íƒ ê´€ë ¨ -->
+<link rel="stylesheet" href="../../css/datepicker.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="../../css/style.css">
+<script type='text/javascript' src='../../js/jquery.particleground.js'></script>
+<script type = "text/javascript" src ="../../js/demo.js"></script>
+<%	List<Map<String, String>> sess = (List<Map<String, String>>)request.getSession().getAttribute("member"); %>
 <script type="text/javascript">
-
-	function empList(){
-		location.href = "../../emp/read";	
-	}	
-	
-	function goPay(){
-		location.href = "../pay/pay_mainpage.jsp";
-
-	}
-
-	function goApproval(){
-
-		location.href = "../approval/approval_mainpage.jsp";
-		
-	}
-	
-	function goWork(){
-
-		location.href = "../work/work_mainpage.jsp";
-		
-	}
-	
-	function goClient(){
-
-		location.href = "../client/client_mainpage.jsp";
-
-		
-	}
-
-	function goAttend(){
-		location.href = "../attend/attend_mainpage.jsp";
-	}
-
-</script>
-
+	$(document).ready(function(){
+		$("#chat").load("../common/top_menu.jsp")
+	});
+</script> 
 </head>
 <body>
-
-Welcome! This is Swift Corporation.<p>
-
-<input type="button" onclick="javascript:empList()" value="ÀÎ»ç°ü¸®">
-
-<input type="button" onclick="javascript:goPay()" value="±Ş¿©°ü¸®">
-
-<p>
-<input type="button" onclick="javascript:goApproval()" value="°áÀç">
-<p>
-<input type="button" onclick="javascript:goWork()" value="¾÷¹«">
-<p>
-<input type="button" onclick="javascript:goClient()" value="°Å·¡Ã³Á¤º¸°ü¸®">
-
-<input type="button" onclick="javascript:goAttend()" value="±ÙÅÂ°ü¸®">
-
+	<div id="chat"></div>
+	<div id="particles">
+		 <div id="intro">	
+		   <h1>Welcome!<br>This is Swift Corporation.</h1>	  
+		  <p>${member.get(0).get("MEM_NAME")}ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤.</p>	  
+		</div>
+		<input type="hidden" id="hidempno" name="<%= String.valueOf(sess.get(0).get("EMPNO")) %>">
+	</div>
 </body>
 </html>

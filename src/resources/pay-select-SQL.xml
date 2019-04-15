@@ -5,7 +5,16 @@
 
 	<select id="getAllowanceList" resultType="hashmap">
 	
+		select allowance_no, allowance_name, allowance_division from allowanceItem
+	
+	</select>
+	
+	<select id="getDailyAllowanceList" resultType="hashmap">
+	
 		select allowance_no, allowance_name from allowanceItem
+		<where>
+			allowance_division = '일급'
+		</where>
 	
 	</select>
 	
@@ -15,17 +24,41 @@
 	
 	</select>
 	
+	<select id="getDeductionInfo" resultType="hashmap">
+	
+		select deducinfo_no, empno, deduction_no, deduction_name, deducinfo_price from deductioninfo
+	
+	</select>	
+	
 	<select id="getSalaryCalcList" resultType="hashmap">
 	
+		select salaryCalc_no, salaryCalc_name, salaryCalc_report, salaryCalc_total, salaryCalc_confirm from salaryCalcList
+	
+	</select>
+	
+	<select id="getIndividualSalaryCalcList" parameterType="String" resultType="hashmap">
+	
 		select salaryCalc_no, salaryCalc_name, salaryCalc_report, salaryCalc_total from salaryCalcList
+		<where>
+			salaryCalc_report = #{report}
+		</where>
 	
 	</select>
 	
 	<select id="getPersonalPayList" parameterType="String" resultType="hashmap">
 	
-		select allowance_name, personalPay_pay from personalPayList
+		select empno, allowance_name, personalPay_pay from personalPayList
 		<where>
 			personalPay_report = #{report}
+		</where>
+	
+	</select>
+	
+	<select id="getPersonalDeducList" parameterType="String" resultType="hashmap">
+	
+		select empno, deduction_name, personaldeduc_deduc from personaldeducList
+		<where>
+			personaldeduc_report = #{report}
 		</where>
 	
 	</select>
@@ -59,9 +92,62 @@
 	
 	<select id="getDailyworkList" parameterType="String" resultType="hashmap">
 	
-		select to_char(dailywork_date, 'YYYY/MM/DD') as dailywork_date, empno, dailywork_night, dailywork_weekend, dailywork_annualAllowance from dailyworklist
+		select to_char(dailywork_date, 'YYYY/MM/DD') as dailywork_date, empno, allowance_name, dailywork_time from dailyworklist
 		<where>
 			to_char(dailywork_date, 'YYYY/MM/DD') = #{selectedDate}
+		</where>
+
+	</select>
+	
+	<select id="getDailyworkConfirmList" parameterType="String" resultType="hashmap">
+	
+		select empno, allowance_no, allowance_name, dailywork_time, substr(to_char(dailywork_date, 'YYYY/MM'), 1, 7) as dailywork_date from dailyworklist
+		<where>
+			dailywork_confirm = 1 and substr(to_char(dailywork_date, 'YYYY/MM'), 1, 7) = substr(#{report}, 1, 7)
+		</where>
+		order by allowance_no
+
+	</select>
+	
+	<select id="getPersonalPayInfoList" resultType="hashmap">
+	
+		select empno, allowance_no, allowance_name, payinfo_price, allowance_division from personalpayinfo
+
+	</select>
+	
+	<select id="getPersonalDailyworkConfirmList" parameterType="String" resultType="hashmap">
+	
+		select empno, allowance_no, allowance_name, dailywork_time, substr(to_char(dailywork_date, 'YYYY/MM'), 1, 7) as dailywork_date from dailyworklist
+		<where>
+			dailywork_confirm = 1 and substr(to_char(dailywork_date, 'YYYY/MM'), 1, 7) = substr(#{report}, 1, 7) and empno = #{empno}
+		</where>
+		order by allowance_no
+
+	</select>
+	
+	<select id="getPersonalPersonalPayInfoList" parameterType="String" resultType="hashmap">
+	
+		select empno, allowance_no, allowance_name, payinfo_price, allowance_division from personalpayinfo
+		<where>
+			empno = #{empno}
+		</where>
+	
+	</select>
+	
+	<select id="getWorkConfirmList" parameterType="String" resultType="hashmap">
+	
+		select empno, allowance_no, allowance_name, dailywork_time, to_char(dailywork_date, 'YYYY/MM/DD') as dailywork_date from dailyworklist
+		<where>
+			dailywork_confirm = 1 and to_char(dailywork_date, 'YYYY/MM/DD') = #{selectedDate} and empno = #{empno}
+		</where>
+
+	</select>
+	
+	<select id="getTotalWorkConfirmList" resultType="hashmap">
+	
+		select empno, allowance_no, allowance_name, dailywork_time, to_char(dailywork_date, 'YYYY/MM/DD') as dailywork_date from dailyworklist
+		<where>
+			dailywork_confirm = 1
 		</where>
 
 	</select>

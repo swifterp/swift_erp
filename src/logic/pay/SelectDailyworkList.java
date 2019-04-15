@@ -14,21 +14,21 @@ public class SelectDailyworkList {
 	@Autowired
 	private DailyworkDao dwd;
 	
-	public List<Map<String, String>> callDailyworkListDao(String year, String month, String day) {
+	public List<Map<String, String>> callDailyworkListDao(String selectedDate) {
 		
-		String selectedDate = "";
-		
-		if(Integer.parseInt(month) > 9) {
-			selectedDate = year + "/" + month;
-		} else {
-			selectedDate = year + "/0" + month;
-		}
-		
-		if(Integer.parseInt(day) > 9) {
-			selectedDate = selectedDate + "/" + day;
-		} else {
-			selectedDate = selectedDate + "/0" + day;
-		}
+//		String selectedDate = "";
+//		
+//		if(Integer.parseInt(month) > 9) {
+//			selectedDate = year + "/" + month;
+//		} else {
+//			selectedDate = year + "/0" + month;
+//		}
+//		
+//		if(Integer.parseInt(day) > 9) {
+//			selectedDate = selectedDate + "/" + day;
+//		} else {
+//			selectedDate = selectedDate + "/0" + day;
+//		}
 		
 		return dwd.selectDailyworkList(selectedDate);
 		

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="resources.mapper.insertListMapper">
+
+	<insert id="setChatlog" parameterType="Map">
+	
+		insert into chat_log(chatroom_code, msg, empno, log_time)
+		values(#{chatroom_code, jdbcType=VARCHAR}, #{msg, jdbcType=VARCHAR}, #{empno, jdbcType=INTEGER}, to_date(#{log_time, jdbcType=VARCHAR}, 'YYYY/MM/DD HH24:MI:SS'))
+	
+	</insert>
+	
+	<insert id="setRoom" statementType="CALLABLE" parameterType="Map">
+	
+		{ call proc_insertRoom(#{title, mode=IN, jdbcType=INTEGER, javaType=string},
+							   #{chatroom_code, mode=OUT, jdbcType=VARCHAR, javaType=string}) }
+	
+	</insert>
+
+	<insert id="setParticipent" statementType="CALLABLE" parameterType="Map">
+	
+		{ call proc_insertParticipent(#{chatroom_code, mode=IN, jdbcType=VARCHAR, javaType=string},
+									  #{participent, mode=IN, jdbcType=INTEGER, javaType=string}) }
+	
+	</insert>
+
+</mapper>

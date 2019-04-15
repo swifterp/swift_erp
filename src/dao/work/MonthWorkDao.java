@@ -13,9 +13,9 @@ public class MonthWorkDao {
 	@Autowired
 	private selectListMapper slm;
 	
-	public List<Map<String,String>> selectMonthWork(){
+	public List<Map<String,String>> selectMonthWork(String search_month){
 		
-		return slm.getMonthWorkList();
+		return slm.getMonthWorkList(search_month);
 	}
 
 }

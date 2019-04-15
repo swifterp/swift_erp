@@ -15,8 +15,22 @@
 	
 	<insert id="setDailyworkList" parameterType="HashMap">
 	
-		insert into dailyworklist
-		values(99, #{empno, jdbcType=VARCHAR}, to_date(#{selectedDate, jdbcType=VARCHAR}, 'YYYY/MM/DD'), #{night, jdbcType=VARCHAR}, #{weekend, jdbcType=VARCHAR}, #{annualAllowance, jdbcType=VARCHAR})
+		insert into dailyworklist(empno, dailywork_date, allowance_no, allowance_name, dailywork_confirm, dailywork_time)
+		values(#{EMPNO, jdbcType=VARCHAR}, to_date(#{SELECTEDDATE, jdbcType=VARCHAR}, 'YYYY/MM/DD'), #{ALLOWANCE_NO, jdbcType=INTEGER}, #{ALLOWANCE_NAME, jdbcType=VARCHAR}, 0, #{DAILYWORK_TIME, jdbcType=INTEGER})
+	
+	</insert>
+	
+	<insert id="setSalaryCalc" parameterType="String">
+	
+		insert into salarycalclist(salarycalc_name, salarycalc_report, salarycalc_confirm, salarycalc_total)
+		values(#{title, jdbcType=VARCHAR}, #{report, jdbcType=VARCHAR}, 0, 0)
+	
+	</insert>
+	
+	<insert id="empPayInfoAdd" parameterType="HashMap">
+	
+		insert into personalPayinfo(empno, allowance_no, allowance_name, payinfo_price, allowance_division)
+		values(#{EMPNO}, #{ALLOWANCE_NO}, #{ALLOWANCE_NAME}, #{PAYINFO_PRICE}, #{ALLOWANCE_DIVISION})
 	
 	</insert>
 

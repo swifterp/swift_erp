@@ -14,7 +14,7 @@ public class SelectDraftDetail {
 	@Autowired
 	private DraftDetailDao ddd;
 
-	public List<Map<String,String>> callDraftDetailDao(Integer draft_num) {
+	public String callDraftDetailDao(Integer draft_num) {
 		// TODO Auto-generated method stub
 		return ddd.selectDraftDetailList(draft_num);
 	}

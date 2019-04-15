@@ -14,8 +14,8 @@ public class WorkTimeDao {
 	@Autowired
 	private selectListMapper slm;
 	
-	public List<Map<String,String>> selectWorkTime(){
+	public List<Map<String,String>> selectWorkTime(String search_day){
 		
-		return slm.getWorkTimeList();
+		return slm.getWorkTimeList(search_day);
 	}
 }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="resources.mapper.updateListMapper">
+
+	<update id="UpdateNameCardInfo" parameterType="HashMap">
+		update namecard set
+  NAMECARD_NAME =#{NAMECARD_NAME,jdbcType=VARCHAR},
+  CLIENT_NAME = #{CLIENT_NAME,jdbcType=VARCHAR},
+  NAMECARD_DIVISION = #{NAMECARD_DIVISION,jdbcType=VARCHAR},
+  NAMECARD_POSITION=#{NAMECARD_POSITION,jdbcType=VARCHAR},
+  NAMECARD_BIRTH=#{NAMECARD_BIRTH,jdbcType=VARCHAR},
+  NAMECARD_TEL =#{NAMECARD_TEL,jdbcType=VARCHAR},
+  NAMECARD_PHONE =#{NAMECARD_PHONE,jdbcType=VARCHAR},
+  NAMECARD_FAX =#{NAMECARD_FAX,jdbcType=VARCHAR},
+  NAMECARD_EMAIL=#{NAMECARD_EMAIL,jdbcType=VARCHAR},
+  NAMECARD_HOMEPAGE=#{NAMECARD_HOMEPAGE,jdbcType=VARCHAR},
+  NAMECARD_CLIENT =#{NAMECARD_CLIENT,jdbcType=VARCHAR},
+  NAMECARD_GROUP_CODE=#{NAMECARD_GROUP_CODE,jdbcType=INTEGER},
+  NAMECARD_GROUP_NAME=#{NAMECARD_GROUP_NAME,jdbcType=VARCHAR},
+  NAMECARD_ADDRESS=#{NAMECARD_ADDRESS,jdbcType=VARCHAR},
+  NAMECARD_CONTENT=#{NAMECARD_CONTENT,jdbcType=VARCHAR}
+  	<where>
+  		NAMECARD_CODE = #{NAMECARD_CODE,jdbcType=INTEGER}
+  	</where>
+	</update>
+	
+	
+	
+	<update id="UpdateClientInfo" parameterType="HashMap">
+		update client set
+  CLIENT_DIVISION = #{CLIENT_DIVISION,jdbcType=VARCHAR},
+  CLIENT_NAME = #{CLIENT_NAME,jdbcType=VARCHAR},
+  CLIENT_TEL =#{CLIENT_TEL,jdbcType=VARCHAR},
+  CLIENT_PHONE =#{CLIENT_PHONE,jdbcType=VARCHAR},
+  CLIENT_FAX =#{CLIENT_FAX,jdbcType=VARCHAR},
+  CLIENT_EMAIL=#{CLIENT_EMAIL,jdbcType=VARCHAR},
+  CLIENT_HOMEPAGE=#{CLIENT_HOMEPAGE,jdbcType=VARCHAR},
+  CLIENT_ETC=#{CLIENT_ETC,jdbcType=VARCHAR},
+  CLIENT_ADDRESS=#{CLIENT_ADDRESS,jdbcType=VARCHAR},
+  CLIENT_CONTENT=#{CLIENT_CONTENT,jdbcType=VARCHAR}
+  	<where>
+  		CLIENT_CODE = #{CLIENT_CODE,jdbcType=INTEGER}
+  	</where>
+	</update>
+
+</mapper>

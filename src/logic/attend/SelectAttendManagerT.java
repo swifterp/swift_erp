@@ -1,29 +1,30 @@
 package logic.attend;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import dao.attend.AttendManagerTDao;
 
 @Service("SelectAttendManagerT")
 public class SelectAttendManagerT {
-	
 	@Autowired
 	private AttendManagerTDao amt;
 	
-	//Attend Manager 페이지에서 테이블 전체 출력
-	public List<Map<String, String>> callAttendManagerTDao(){
-		
+//View Attend Data List
+	public List<Map<String, String>> callAttendManagerTDao(){		
 		return amt.selectAttendManagerList();
-	
 	}
-	
-	//Attend Manager에서 Attend_no 값 받아서 Attend Update에서 조회하고 싶을때 
-	public List<Map<String, String>> callAttendManagerLowTDao(Integer attendno){
-		return amt.selectAttendManagerLow(attendno);
+//Call Attend Data One Low
+	public List<Map<String, String>> callAttendDataLowDao(Integer attendno){
+		return amt.selectAttendDataLow(attendno);
 	}
-	
+//Call Attend Data Details
+	public List<Map<String, String>> callAttendDetailListDao(@RequestParam HashMap<String, String> DetailInfo){
+		return amt.selectAttendDetailList(DetailInfo);
+	}
 }

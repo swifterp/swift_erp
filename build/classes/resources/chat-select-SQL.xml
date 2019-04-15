@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="resources.mapper.selectListMapper">
+
+	<select id="getChatroomList" parameterType="Integer" resultType="hashmap">
+	
+		select a.chatroom_code, a.chatroom_name, b.empno from chatroom a, participent_list b
+		<where>
+			a.chatroom_code = b.chatroom_code and b.empno = #{empno}
+		</where>
+	
+	</select>
+	
+	<select id="getChatlogList" parameterType="String" resultType="hashmap">
+	
+		select chatroom_code, msg, empno, to_char(log_time, 'YYYY/MM/DD HH24:MI:SS') as log_time from chat_log
+		<where>
+			chatroom_code = #{chatroom_code, jdbcType=VARCHAR}
+		</where>
+		order by chat_log_code
+		
+	</select>
+
+</mapper>

@@ -1,71 +1,200 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, java.util.Map, java.util.HashMap" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>emp_mainpage</title>
+<%@ include file="../common/ui_common.jsp" %>
+<script src="../../js/jquery.twbsPagination.js"></script>
+<script src="../../js/jquery.twbsPagination.min.js"></script>
+
 <script type="text/javascript">
-	<!--»ç¿øµî·Ï-->
+	<!--ì‚¬ì›ë“±ë¡-->
 	function goEmpAdd(){
-		location.href = "../service/emp/emp_add.jsp";	
+		location.href = "../emp/emp_empAdd.jsp";	
 	}
-	<!--»ç¿ø»ó¼¼º¸±â-->
+	<!--ì‚¬ì›ìƒì„¸ë³´ê¸°-->
 	function empView(emp_number){
-		location.href = "../emp/view?emp_number="+emp_number;
+		location.href = "../emp/view?emp_number="+emp_number;	
 	}
-	<!--»ç¿ø¼öÁ¤-->
-	function empUpd(emp_number){
-		location.href = "../emp/update?emp_number="+emp_number;	
-	}
-	<!--»ç¿ø»èÁ¦-->
+	<!--ì‚¬ì›ì‚­ì œ-->
 	function empDel(emp_number){
 		location.href = "../emp/delete?emp_number="+emp_number;	
 	}
 </script>
+<!-- íŒì—…ì°½ -->
+<script>
+$(document).ready(function() {
+    $('#pop_dept').on("click", function() {	
+    	var url="../emp/pop_deptRead";
+    	var windowW = 300;  // ì°½ì˜ ê°€ë¡œ ê¸¸ì´
+        var windowH = 300;  // ì°½ì˜ ì„¸ë¡œ ê¸¸ì´
+        var left = Math.ceil((window.screen.width - windowW)/2);
+        var top = Math.ceil((window.screen.height - windowH)/2);
+  window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+    });
+</script>
+<script>
+$(document).ready(function(){
+	$("img").hover(function() {
+	var temp = $(this).attr("src");
+	$(this).attr("src", $(this).attr("data-alt"));
+	$(this).attr("data-alt", temp);
+	});
+	})
+</script>
+<script>
+function paging(page) {
+    $('#list-body').empty();
+    var startRow = (page - 1) * pageSize; // + 1 listëŠ” 0ë¶€í„° ì‹œì‘í•˜ë‹ˆê¹;
+    var endRow = page * pageSize;
+    if (endRow > totalCount) 
+    {
+        endRow = totalCount;
+    }  
+    var startPage = ((page - 1)/visibleBlock) * visibleBlock + 1;
+    var endPage = startPage + visibleBlock - 1;
+    if(endPage > totalPages) {    //
+      endPage = totalPages;
+    }
+    for (var j = startRow; j < endRow; j++) 
+    {   
+        $('#list-body').append(''+ chatLogList[j].fileNo +'<a onclick="getContent(\''+chatLogList[j].fileName+'\')">'
+                + textLengthOverCut(chatLogList[j].fileName, '25', '...') +'</a>'+ chatLogList[j].fileDate +'');
+    }
+    
+    totalPages = totalCount/pageSize;
+    if (totalCount%pageSize > 0) {
+    totalPages++;
+    }
+}
+
+</script>
+<style>
+table tr:hover {background:#fefefe;}
+</style>
 </head>
 <body>
-<h2>»ç¿ø ¸ñ·Ï</h2>
-<table style="border:1px solid #ccc">
-	<thead>
-		<tr>
-			<td>»ç¹ø</td>
-			<td>¼º¸í</td>
-			<td>ÁÖ¹Îµî·Ï¹øÈ£</td>
-			<td>ºÎ¼­</td>
-			<td>Á÷±Ş</td>
-			<td>ÀÔ»çÀÏÀÚ</td>
-			<td>Email</td>
-			<td>ÀÎ¼â</td>
-			<td>»ó¼¼º¸±â</td>
-			<td>»èÁ¦</td>
-		</tr>
-	</thead>
-    <tbody>
-		<%
-			List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
-			if(lst != null){
-				for(int i=0;i<lst.size();i++){
-		%>
-		<tr>
-			<td><%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %> </td>
-			<td><%= lst.get(i).get("EMP_NAME") %></td>
-			<td><%= lst.get(i).get("EMP_RESIDENT_NUMBER") %></td>
-			<td><%= lst.get(i).get("DNAME") %></td>
-			<td><%= lst.get(i).get("RANK_NAME") %></td>
-			<td><%= lst.get(i).get("EMP_JOIN_DATE") %></td>
-			<td><input type="button" value="ÀÌ¸ŞÀÏ"></td>
-			<td><input type="button" value="ÀÎ¼â"></td>
-			<td><input type="button" onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" value="»ó¼¼º¸±â"></td>
-			<td><input type="button" value="»èÁ¦" onclick="javascript:empDel(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)"></td>
-		</tr>
-		<%
-				}
-			}
-	 	%>
-    </tbody>
-</table>
-<input type="button" onclick="javascript:goEmpAdd()" value="»ç¿øµî·Ï">
+<%	List<Map<String, String>> sess = (List<Map<String, String>>)request.getSession().getAttribute("member"); %>
+<input type="hidden" id="hidempno" name="<%= String.valueOf(sess.get(0).get("EMPNO")) %>">
+	<%@ include file="../common/top_menu.jsp" %>
+	<div class="container">		
+		<%@ include file="../common/left_menu_emp.jsp" %>
+		<div class="contents">
+			<h1>ì‚¬ì›ëª©ë¡</h1>
+			<form action="../emp/empSearchNumName">
+				<div class="input-group">
+					<input type="text" class="form-control" id="empinfo" name="empinfo" placeholder="ì„±ëª… ë˜ëŠ” ë¶€ì„œ">
+					<span class="input-group-btn" style="width:100px;">
+						<button type="submit" class="btn btn-default" style="margin-bottom:20px;">ê²€ìƒ‰</button>
+					</span>
+				</div>
+			</form>
+			<table class="table" id="mytable">
+				<colgroup>
+					<col width="10%">
+					<col width="10%">
+					<col width="20%">
+					<col width="15%">
+					<col width="10%">
+					<col width="15%">
+					<col width="5%">
+					<col width="5%">
+					<col width="5%">
+					<col width="5%">
+				</colgroup>
+				<thead>
+					<tr>
+						<th>ì‚¬ë²ˆ</th>
+						<th>ì„±ëª…</th>
+						<th>ì£¼ë¯¼ë“±ë¡ë²ˆí˜¸</th>
+						<th>ë¶€ì„œ</th>
+						<th>ì§ê¸‰</th>
+						<th>ì…ì‚¬ì¼ì</th>
+						<th>Email</th>
+						<th>ì¸ì‡„</th>
+						<th>ìˆ˜ì •</th>
+						<th>ì‚­ì œ</th>
+					</tr>
+				</thead>
+			    <tbody>
+					<%
+						List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
+						if(lst != null){
+							for(int i=0;i<lst.size();i++){
+					%>
+					<tr>
+						<td><a onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)"><%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %></a></td>
+						<td><a onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)"><%= lst.get(i).get("EMP_NAME") %></a></td>
+						<td><%= lst.get(i).get("EMP_RESIDENT_NUMBER") %></td>
+						<td><%= lst.get(i).get("DNAME") %></td>
+						<td><%= lst.get(i).get("RANK_NAME") %></td>
+						<td><%= lst.get(i).get("EMP_JOIN_DATE") %></td>
+						<td><a href="#"><img src="../../images/icon_email_0.png" data-alt="../../images/icon_email_1.png" style="width:35px; height:35px;"/></a></td>
+						<td><a href="#"><img src="../../images/icon_print_0.png" data-alt="../../images/icon_print_1.png" style="width:35px; height:35px;"/></a></td>
+						<td><a onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" href="#"><img src="../../images/icon_pencil_0.png" data-alt="../../images/icon_pencil_1.png" style="width:35px; height:35px;" /></a></td>
+						<td><a onclick="javascript:empDel(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" href="#"><img src="../../images/icon_delete_0.png" data-alt="../../images/icon_delete_1.png" style="width:35px; height:35px;"/></a></td>
+					</tr>
+					<%
+							}
+						}
+				 	%>
+			    </tbody>
+			</table>
+			<div class="pagination-container">
+		         <nav>
+		            <ul class="pagination">
+		            </ul>
+		         </nav>
+		     </div>
+			<div class="btn_group">
+				<a class="btn btn-outline-primary pull-right" onclick="javascript:goEmpAdd()">ì‚¬ì›ë“±ë¡</a>
+			</div>
+		</div>
+	</div>
+	
+   <script type="text/javascript">
+   var table = '#mytable'
+   $(document).ready(function(){
+      $('.pagination').html('')
+      var trnum=0
+      var maxRows = parseInt(10)
+      var totalRows = $(table+' tbody tr').length
+      $(table+' tr:gt(0)').each(function(){
+         trnum++
+         if(trnum > maxRows){
+            $(this).hide()
+         }
+         if(trnum <= maxRows){
+            $(this).show()
+         }
+      })
+      if(totalRows > maxRows){
+         var pagenum = Math.ceil(totalRows/maxRows)
+         for(var i=1; i<=pagenum;){
+            $('.pagination').append('<li data-page="'+i+'"><span>'+
+             i++ +'<span class="sr-only">(current)</span></span></li>').show()
+         }
+      }
+      $('.pagination li:first-child').addClass('active')
+      $('.pagination li').on('click',function() {
+         var pageNum = $(this).attr('data-page')
+         var trIndex = 0;
+         $('.pagination li').removeClass('active')
+         $(this).addClass('active')
+         $(table+' tr:gt(0)').each(function(){
+            trIndex++
+            if(trIndex > (maxRows*pageNum) || trIndex <= ((maxRows*pageNum)-maxRows)){
+               $(this).hide()
+            }else{
+               $(this).show()
+            }
+         })
+      })
+   })
+
+   </script>
 </body>
 </html>

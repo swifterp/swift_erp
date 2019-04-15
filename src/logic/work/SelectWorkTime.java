@@ -14,9 +14,9 @@ public class SelectWorkTime {
 	@Autowired
 	private WorkTimeDao wtd;
 	
-	public List<Map<String,String>> callWorkTimeDao(){
+	public List<Map<String,String>> callWorkTimeDao(String search_day){
 		
-		return wtd.selectWorkTime();
+		return wtd.selectWorkTime(search_day);
 		
 	}
 

@@ -13,4 +13,40 @@
 	
 	</update>
 
+	<update id="resetTotalCalcList" parameterType="HashMap">
+	
+		update salarycalclist set salarycalc_total = #{total}
+		<where>
+			salarycalc_report = #{report}
+		</where>
+	
+	</update>
+	
+	<update id="resetWorkConfirmList" parameterType="String">
+	
+		update dailyworklist set dailywork_confirm = 1
+		<where>
+			empno = #{empno} and dailywork_date = to_date(#{selectedDate, jdbcType=VARCHAR}, 'YYYY/MM/DD')
+		</where>
+	
+	</update>
+	
+	<update id="resetPayConfirmList" parameterType="String">
+	
+		update salarycalclist set salarycalc_confirm = 1
+		<where>
+			salarycalc_report = #{report, jdbcType=VARCHAR}
+		</where>
+	
+	</update>
+	
+	<update id="resetPayConfirmCancelList" parameterType="String">
+	
+		update salarycalclist set salarycalc_confirm = 0
+		<where>
+			salarycalc_report = #{report, jdbcType=VARCHAR}
+		</where>
+	
+	</update>
+	
 </mapper>

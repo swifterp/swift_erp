@@ -19,5 +19,10 @@ public class ClientInfoDao {
 		return slm.getClientInfoList();
 	}
 
+	public Map<String, String> selectClientInfoDetail(int CLIENT_CODE) {
+		// TODO Auto-generated method stub
+		return slm.getClientInfoDetail(CLIENT_CODE);
+	}
+
 
 }

@@ -1,16 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ page import="java.util.Map, java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>ÃâÅğ±Ù/±ÙÅÂ/ÀÏÁ¤ Á¶È¸</title>
+<meta charset="UTF-8">
+<title>ì¶œí‡´ê·¼/ê·¼íƒœ/ì¼ì • ì¡°íšŒ</title>
+<%@ include file="../common/ui_common.jsp" %>
 </head>
 <body>
-
-${list.get(0) }<p>
-${list.get(1) }<p>
-${list.get(2) }<p>
-
+<%	List<Map<String, String>> sess = (List<Map<String, String>>)request.getSession().getAttribute("member"); %>
+<input type="hidden" id="hidempno" name="<%= String.valueOf(sess.get(0).get("EMPNO")) %>">
+	<%@ include file="../common/top_menu.jsp" %>
+	<div class="container">		
+		<%@ include file="../common/left_menu_work.jsp" %>
+		<div class="contents">
+			${list.get(0) }
+			${list.get(1) }
+			${list.get(2) }
+		</div>
+	</div>
 </body>
 </html>

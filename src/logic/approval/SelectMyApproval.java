@@ -14,9 +14,9 @@ public class SelectMyApproval {
 	@Autowired
 	private MyApprovalDao mad;
 	
-	public List<Map<String,String>> callMyApproval(){
+	public List<Map<String,String>> callMyApproval(int EMPNO){
 		
-		return mad.selectMyApprovalList();
+		return mad.selectMyApprovalList(EMPNO);
 		
 	}
 

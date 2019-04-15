@@ -18,5 +18,15 @@
      <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg index="0" ref="sqlSession"/>
     </bean>
+    
+    <bean id="multipartResolver"
+    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    	<property name="maxUploadSize" value="10000000" />
+    </bean>
+	
+	<!-- 업로드된 파일의 저장 위치 지정 -->
+	<bean id="uploadPath" class="java.lang.String">
+    	<constructor-arg value="C:\SpringUpload\upload"/>
+    </bean>    
 
 </beans>

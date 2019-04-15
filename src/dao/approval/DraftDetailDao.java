@@ -14,7 +14,7 @@ public class DraftDetailDao {
 	@Autowired
 	private selectListMapper slm;
 	
-	public List<Map<String, String>> selectDraftDetailList(Integer draft_num) {
+	public String selectDraftDetailList(Integer draft_num) {
 		
 		return slm.getDraftDetailList(draft_num);
 	}

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="resources.mapper.selectListMapper">
+
+	<select id="getDraftList" resultType="hashmap">
+	
+		select draft.DRAFT_NO,draft.DRAFT_DATE, (select style_name from common_style where style_code = draft_style) as "STYLE_NAME",
+		employee.emp_name from draft, employee 
+		<where>
+			draft.draft_writer = employee.empno
+		</where>
+	
+	</select>
+	
+	<resultMap type="String" id="StyleSheet">
+
+	<result property="STYLE_CONTENT" column="STYLE_CONTENT" jdbcType="CLOB" javaType="java.lang.String" />
+
+	</resultMap>
+	
+	<select id="getDraftDetailList" parameterType="Integer" resultType="String">
+	
+		select DRAFT_CONTENT from draft
+			<where>
+				DRAFT_NO = #{draft_num}
+			</where>
+	
+	</select>
+	<select id="getCommon" parameterType="Integer" resultType="String" >
+		
+		select style_content from common_style where style_code=#{style_code,jdbcType=INTEGER} 
+		
+		
+	</select>
+
+	<select id="getCommonList" resultType="hashmap">
+	
+		select style_code,style_name from common_style order by style_code
+	
+	</select>
+	
+	<select id="getApprovalPathList" resultType="hashmap">
+			select  PATH_CODE, PATH_NAME,
+            (select emp_name from employee where empno = PATH_FIRSTEMP) as "F_EMP_NAME" ,
+            (select emp_name from employee where empno = PATH_SECONDEMP) as "S_EMP_NAME", 
+            (select emp_name from employee where empno = PATH_THIRDEMP) as "T_EMP_NAME" 
+            from APPROVAL_PATH
+	</select>
+	
+	<select id="getMyApprovalList" parameterType = "Integer" resultType="hashmap">
+		select   DRAFT_NO,DRAFT_DATE,DRAFT_STYLE from draft
+				<where>
+					draft_writer = #{EMPNO,jdbcType=INTEGER}
+				</where>
+	</select>
+	
+</mapper>

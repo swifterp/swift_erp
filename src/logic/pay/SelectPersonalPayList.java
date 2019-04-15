@@ -20,4 +20,10 @@ public class SelectPersonalPayList {
 		
 	}
 	
+	public List<Map<String, String>> callPersonalDeducDao(String report) {
+		
+		return ppd.selectPersonalDeducList(report);
+		
+	}
+	
 }

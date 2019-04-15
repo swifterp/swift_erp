@@ -15,9 +15,11 @@ public class SelectNameCardInfo {
 	private NameCardInfoDao nid;
 	
 	public List<Map<String,String>> callNameCardInfoDao(){
-		
-		return nid.selectClientInfo();
-		
+		return nid.selectNameCardInfo();
 	}
 
+	public Map<String,String> callNameCardInfoDao(int NAMECARD_CODE) {
+		// TODO Auto-generated method stub
+		return nid.selectNameCardInfo(NAMECARD_CODE);
+	}
 }

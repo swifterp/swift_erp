@@ -1,13 +1,97 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.List, java.util.Map" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>°øÁ¦Ç×¸ñµî·Ï ÆäÀÌÁö</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../css/common.css">
+<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
+<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<title>ê³µì œí•­ëª©ë“±ë¡ í˜ì´ì§€</title>
+<script type="text/javascript">
+
+	function deleteDeductionItem(deduction_no){
+
+		location.href = "./deleteDeduction?deduction_no="+deduction_no;
+		
+	}
+
+</script>
 </head>
 <body>
-${list.get(0) }
-${list.get(1) }
+<%	List<Map<String, String>> sess = (List<Map<String, String>>)request.getSession().getAttribute("member"); %>
+<input type="hidden" id="hidempno" name="<%= String.valueOf(sess.get(0).get("EMPNO")) %>">
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#chat").load("../common/top_menu.jsp")
+	});
+	</script>
+	<div id="chat"></div>
+	<div class="container">
+		<%@ include file="../common/left_menu_pay.jsp" %>
+		<div class="contents">
+	<div style="width: 1200px" class="contents">
+		<form action="../pay/insertDeduction">
+			<table class="table" style="margin: auto; text-align:center;">
+				<tbody>
+					<tr>
+						<td>
+							í•­ëª©ì´ë¦„
+						</td>
+						<td>
+							<input type="text" name="name">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<input type="submit" value="ë“±ë¡">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+
+	<div style="width: 1200px" class="contents">
+		<table class="table" style="margin: auto; text-align:center;">
+			<tbody>
+				<tr>
+					<td>
+						ê³µì œëª…
+					</td>
+					<td>
+						ê¸°íƒ€
+					</td>
+				</tr>
+<%
+		List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
+	
+		if(lst != null){
+			for(int i=0;i<lst.size();i++){
+%>
+				<tr>
+					<td>
+						<%= lst.get(i).get("DEDUCTION_NAME") %>
+					</td>
+					<td>
+						<input type="button" class="btn btn-primary pull-list" value="ì‚­ì œí•˜ê¸°" onclick="javascript:deleteDeductionItem(<%= String.valueOf(lst.get(i).get("DEDUCTION_NO")) %>)">
+					</td>
+				</tr>
+<%
+			}
+		}
+%>
+			</tbody>
+		</table>
+		<br> 
+		<input type="button" class="btn btn-primary pull-list"
+			 value="ì¸ì‡„" >
+	</div>
+</div>
+</div>
 </body>
 </html>

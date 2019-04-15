@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="resources.mapper.insertListMapper">
+
+	<insert id="InsertClientInfo" parameterType="HashMap">
+	
+		insert into client
+		values((select MAX(CLIENT_CODE)+1 from client),
+				#{CLIENT_DIVISION, jdbcType=VARCHAR},
+			 	#{CLIENT_NAME, jdbcType=VARCHAR},
+				#{CLIENT_TEL, jdbcType=VARCHAR},
+		        #{CLIENT_PHONE, jdbcType=VARCHAR},
+		        #{CLIENT_FAX, jdbcType=VARCHAR},
+		        #{CLIENT_EMAIL, jdbcType=VARCHAR},
+		        #{CLIENT_HOMEPAGE, jdbcType=VARCHAR},
+		        #{CLIENT_ETC, jdbcType=VARCHAR},
+		        #{CLIENT_ADDRESS, jdbcType=VARCHAR},
+		        #{CLIENT_CONTENT, jdbcType=VARCHAR}
+		        )
+	
+	</insert>
+	
+	<insert id="InsertNameCardInfo" parameterType="HashMap">
+	
+		insert into NAMECARD
+		values((select MAX(NAMECARD_CODE)+1 from NAMECARD),
+				#{NAMECARD_NAME,jdbcType=VARCHAR},
+				#{CLIENT_NAME,jdbcType=VARCHAR},
+				#{NAMECARD_DIVISION,jdbcType=VARCHAR},
+				#{NAMECARD_POSITION,jdbcType=VARCHAR},
+				#{NAMECARD_BIRTH,jdbcType=DATE},
+				#{NAMECARD_TEL,jdbcType=VARCHAR},
+				#{NAMECARD_PHONE,jdbcType=VARCHAR},
+				#{NAMECARD_FAX,jdbcType=VARCHAR},
+				#{NAMECARD_EMAIL,jdbcType=VARCHAR},
+				#{NAMECARD_HOMEPAGE,jdbcType=VARCHAR},
+				#{NAMECARD_CLIENT,jdbcType=VARCHAR},
+				#{NAMECARD_GROUP_CODE,jdbcType=INTEGER},
+				#{NAMECARD_GROUP_NAME,jdbcType=VARCHAR},
+				#{NAMECARD_ADDRESS,jdbcType=VARCHAR},
+				#{NAMECARD_CONTENT,jdbcType=VARCHAR}
+		        )
+	
+	</insert>
+
+</mapper>
+

@@ -14,9 +14,9 @@ public class SelectMonthWork {
 	@Autowired
 	private MonthWorkDao mwd;
 	
-	public List<Map<String,String>> callMonthWorkDao(){
+	public List<Map<String,String>> callMonthWorkDao(String search_month){
 		
-		return mwd.selectMonthWork();
+		return mwd.selectMonthWork(search_month);
 		
 	}
 	

@@ -1,14 +1,14 @@
 package dao.emp;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import controller.Emp_Controller;
+import resources.mapper.MergeListMapper;
 import resources.mapper.deleteListMapper;
 import resources.mapper.insertListMapper;
 import resources.mapper.selectListMapper;
@@ -23,8 +23,23 @@ public class EmpDao {
 		return slm.getEmpList();
 	}
 
-	public List<Map<String, String>> empView(String emp_number) {
+	public List<Map<String, String>> empView(Integer emp_number) {
 		return slm.getEmpView(emp_number);
+	}
+	
+	public List<Map<String, String>> selectEmpDeptList() {
+		return slm.getEmpDeptList();
+	}
+	
+	
+	
+	public List<Map<String, String>> deptView(Integer deptno) {
+		System.out.println(deptno);
+		return slm.getDeptView(deptno);
+	}
+	public List<Map<String, String>> empNumList() {
+		slm.getEmpNumList();
+		return slm.getEmpNumList();
 	}
 
 	@Autowired
@@ -33,6 +48,11 @@ public class EmpDao {
 		ilm.empAdd(empPlus);
 		return slm.getEmpList();
 	}
+	
+	public List<Map<String, String>> deptAdd(HashMap<String, String> deptPlus) {
+		ilm.deptAdd(deptPlus);
+		return slm.getEmpDeptList();
+	}
 
 	@Autowired
 	private updateListMapper ulm;
@@ -40,11 +60,87 @@ public class EmpDao {
 		ulm.getEmpUpd(empUpd);
 		return slm.getEmpList();
 	}
-	
 
+	public List<Map<String, String>> deptUpd(HashMap<String, String> deptUpd) {
+		ulm.getDeptUpd(deptUpd);
+		return slm.getEmpDeptList();
+	}
+	
 	@Autowired
 	private deleteListMapper dlm;
-	public List<Map<String, String>> empDel(String emp_number) {
+	public int empDel(Integer emp_number) {
 		return dlm.getEmpDel(emp_number);
+	}
+
+
+	public int deptDel(Integer deptno) {
+		dlm.getDeptDel(deptno);
+		return dlm.getDeptDel(deptno);
+	}
+	
+	public List<Map<String, String>> selectEmpData(String empInfo){
+		return slm.getEmpData(empInfo);
+	}
+
+	public List<Map<String, Integer>> empNumCheck(Integer emp_number) {
+		return slm.empNumCheck(emp_number);
+	}
+	
+	public List<Map<String, String>> selectRankList() {
+		return slm.getRankList();
+	}
+	
+	public List<Map<String, String>> selectDutyList() {
+		return slm.getDutyList();
+	}
+	
+	public List<Map<String, String>> selectBankList() {
+		return slm.getBankList();
+	}
+
+	public List<Map<String, String>> selectAppointList() {
+		return slm.getAppointList();
+	}
+
+	public List<Map<String, String>> appointAdd(HashMap<String, String> appointAdd) {
+		ilm.appointAdd(appointAdd);
+		ulm.getDeptRankUpd(appointAdd);
+		return slm.getAppointList();
+	}
+
+	public List<Map<String, String>> appointUpd(HashMap<String, String> appointUpd) {
+		ulm.getAppointUpd(appointUpd);
+		ulm.getDeptRankUpd(appointUpd);
+		return slm.getAppointList();
+	}
+
+	public List<Map<String, String>> appointDel(Integer emp_appoint_no) {
+		dlm.getAppointDel(emp_appoint_no);
+		return slm.getAppointList();
+	}
+
+	public List<Map<String, String>> appointView(Integer emp_appoint_no) {
+		return slm.getAppointView(emp_appoint_no);
+	}
+
+	public int checkEmpNum(String emp_number) {
+		return slm.checkEmpNum(emp_number);
+	}
+
+	public int rankAdd(HashMap<String, String> rankPlus) {
+		return ilm.getRankAdd(rankPlus);
+	}
+
+	public int dutyAdd(HashMap<String, String> dutyPlus) {
+		return ilm.getDutyAdd(dutyPlus);
+	}
+
+	public int bankAdd(HashMap<String, String> bankPlus) {
+		return ilm.getBankAdd(bankPlus);
+	}
+
+	public List<Map<String, String>> test() {
+		slm.getEmpDeptList();
+		return slm.getEmpDeptList();
 	}
 }
