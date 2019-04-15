@@ -20,13 +20,14 @@
 				</td>
 				
 				<td>
+					<div id="participentDiv" style="overflow:scroll; width:300px; height:150px; padding:10px;"></div><br>
 					<div id="textareaDiv"></div><br>
 					<div id="inputDiv"></div>
 					<div id="submitDiv"></div>
 					<div id="inviteDiv"></div>
 				</td>
 				
-				<td id="chatlist">
+				<td id="chatlist" style="overflow:scroll; width:300px; height:150px; padding:10px;">
 					
 				</td>
 			</tr>
@@ -44,6 +45,7 @@
 	var xhr4 = null;
 	var xhr5 = null;
 	var xhr6 = null;
+	var xhr7 = null;
 
 	var empnoArr = [];
 	var checkedArr = [];
@@ -240,6 +242,7 @@
 		inviteDiv.appendChild(inviteButton);
 
 		bringLog(chatroom_code);
+		participentList(inputMessage);
 		
 	}
 
@@ -293,6 +296,23 @@
 		xhr6.open("POST", "../chat/invite?", true);
 		xhr6.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
 		xhr6.send(tmp+"&chatroom_code="+inputMessage.id.substr(5));
+
+	}
+
+	function participentList(inputMessage){
+
+		xhr7 = createRequest(xhr7);
+		xhr7.onreadystatechange = function (){
+			
+			if(this.readyState == 4 && this.status == 200){
+				document.getElementById("participentDiv").innerHTML = this.responseText;
+			}
+			
+		};
+		
+		xhr7.open("POST", "../chat/selectparticipent?", true);
+		xhr7.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
+		xhr7.send("chatroom_code="+inputMessage.id.substr(5));
 
 	}
 	

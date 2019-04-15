@@ -129,5 +129,7 @@ public interface selectListMapper {
 	public List<Map<String, String>> getDeductionInfo();
 	
 	public List<Map<String, String>> getPersonalDeducList(String report);
+	
+	public List<Map<String, String>> getParticipentList(@Param("chatroom_code") String chatroom_code);
 
 }

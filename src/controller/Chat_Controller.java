@@ -12,6 +12,7 @@ import logic.chat.InsertChatlog;
 import logic.chat.InsertRoom;
 import logic.chat.SelectChatlog;
 import logic.chat.SelectChatroom;
+import logic.chat.SelectParticipentList;
 
 @Controller
 @RequestMapping("service/chat")
@@ -58,6 +59,18 @@ public class Chat_Controller {
 		model.addAttribute("list", ir.callInsertRoomDao(participent_list));
 		
 		return "chat/chat_roomlist";
+		
+	}
+	
+	@Autowired
+	private SelectParticipentList spl;
+	
+	@RequestMapping("/selectparticipent")
+	public String chat_inviteEmp(Model model, @RequestParam(value="chatroom_code", defaultValue="0") String chatroom_code) {
+		
+		model.addAttribute("participent", spl.callParticipentDao(chatroom_code));
+		
+		return "chat/chat_participentlist";
 		
 	}
 	
