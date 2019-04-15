@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.Map, java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,8 @@
 <%@ include file="../common/ui_common.jsp" %>
 </head>
 <body>
+<%	List<Map<String, String>> sess = (List<Map<String, String>>)request.getSession().getAttribute("member"); %>
+<input type="hidden" id="hidempno" name="<%= String.valueOf(sess.get(0).get("EMPNO")) %>">
 	<%@ include file="../common/top_menu.jsp" %>
 	<div class="container">		
 		<%@ include file="../common/left_menu_attend.jsp" %>

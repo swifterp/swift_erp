@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Param;
 public interface selectListMapper {
 
 
-		public String login(HashMap<String, String> memLogin);
+		public List<Map<String, String>> login(HashMap<String, String> memLogin);
 		
 		//employee
 		public List<Map<String, String>> getEmpList();

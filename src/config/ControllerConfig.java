@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 import controller.Approval_Controller;
 import controller.Attend_Controller;
+import controller.Chat_Controller;
 import controller.Client_Controller;
 import controller.Emp_Controller;
 import controller.Mem_Controller;

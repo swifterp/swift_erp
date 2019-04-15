@@ -26,7 +26,7 @@ public class MemLogic {
 	}
 	
 	//login
-	public String login(HashMap<String, String> memLogin) {
+	public List<Map<String, String>> login(HashMap<String, String> memLogin) {
 		return md.login(memLogin);
 	}
 	

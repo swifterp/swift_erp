@@ -47,7 +47,7 @@ public class Mem_Controller {
     public String login(@RequestParam HashMap<String,String> memLogin,
     		HttpServletRequest req, RedirectAttributes rttr){
     	HttpSession session = req.getSession();
-    	String mem_name = ml.login(memLogin);
+    	List<Map<String, String>> mem_name = ml.login(memLogin);
         if (mem_name == null) { 
             session.setAttribute("member", null);
             rttr.addFlashAttribute("msg","false");

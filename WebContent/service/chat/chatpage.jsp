@@ -5,14 +5,9 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../css/common.css">
-<script type = "text/javascript" src ="../js/jquery.min.js"></script>
-<script type = "text/javascript" src ="../js/bootstrap.js"></script>
 <%	List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list"); %>
 </head>
 <body>
-
 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" onclick="bringEmp()">
 	메신저
 </button>
@@ -28,6 +23,7 @@
 					<div id="textareaDiv"></div><br>
 					<div id="inputDiv"></div>
 					<div id="submitDiv"></div>
+					<div id="inviteDiv"></div>
 				</td>
 				
 				<td id="chatlist">
@@ -131,7 +127,6 @@
 		xhr4.onreadystatechange = function (){
 			
 			if(this.readyState == 4 && this.status == 200){
-				//textarea.setAttribute("value", this.responseText);
 				textarea.innerHTML = this.responseText;
 			}
 			
@@ -214,6 +209,9 @@
 		if(submitDiv.hasChildNodes()){
 			submitDiv.removeChild(submitDiv.childNodes[0]);
 		}
+		if(inviteDiv.hasChildNodes()){
+			inviteDiv.removeChild(inviteDiv.childNodes[0]);
+		}
 
 		textarea = document.createElement("TEXTAREA");
 		inputMessage = document.createElement("INPUT");
@@ -233,12 +231,13 @@
 		submitMessage.setAttribute("onclick", "send()");
 		inviteButton.setAttribute("id", "inviteButton"+chatroom_code);
 		inviteButton.setAttribute("type", "button");
+		inviteButton.setAttribute("value", "초대하기");
 		inviteButton.setAttribute("onclick", "inviteEmp()");
 		
 		textareaDiv.appendChild(textarea);
 		inputDiv.appendChild(inputMessage);
 		submitDiv.appendChild(submitMessage);
-		submitDiv.appendChild(inviteButton);
+		inviteDiv.appendChild(inviteButton);
 
 		bringLog(chatroom_code);
 		

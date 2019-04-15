@@ -13,6 +13,12 @@
 		})
 	})
 </script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#inchat").load("../chat/chatpage.jsp")
+	});
+</script>
 </head>
 <body>
 	<!-- 네비게이션 -->
@@ -33,6 +39,7 @@
 				<li><a href="../work/selectBusinessLog">업무관리</a></li>
 				<li><a href="../client/selectClientInfo">고객관리</a></li>
 			</ul>
+			<div id="inchat"></div>
 			<!-- 드롭다운 기능 -->
 			<ul class="nav navbar-nav navbar-right">
 				<!-- 드롭다운 -->
@@ -41,7 +48,7 @@
 					<a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">
-						<span>${member}님</span>
+						<span>${member.get(0).get("MEM_NAME")}님</span>
                			<img style="border-radius:8rem; width:40px; height:40px;" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                			<span class="caret"></span>
                		</a>

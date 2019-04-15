@@ -151,9 +151,16 @@
 	}
 
 </script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#chat").load("../common/top_menu.jsp")
+	});
+</script>
 </head>
 <body>
-	<%@ include file="../common/top_menu.jsp" %>
+<%	List<Map<String, String>> sess = (List<Map<String, String>>)request.getSession().getAttribute("member"); %>
+<input type="hidden" id="hidempno" name="<%= String.valueOf(sess.get(0).get("EMPNO")) %>">
+	<div id="chat"></div>
 	<div class="container">
 		<%@ include file="../common/left_menu_pay.jsp" %>
 	<div class="contents" >

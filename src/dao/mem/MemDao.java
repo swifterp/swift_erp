@@ -25,7 +25,7 @@ public class MemDao {
 	@Autowired
 	private selectListMapper slm;
 
-    public String login(HashMap<String, String> memLogin) {
+    public List<Map<String, String>> login(HashMap<String, String> memLogin) {
         return slm.login(memLogin);
     }
 
