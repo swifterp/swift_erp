@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import resources.mapper.CanvasjsChartData;
 import resources.mapper.MergeListMapper;
 import resources.mapper.deleteListMapper;
 import resources.mapper.insertListMapper;
@@ -142,5 +143,9 @@ public class EmpDao {
 	public List<Map<String, String>> test() {
 		slm.getEmpDeptList();
 		return slm.getEmpDeptList();
+	}
+	
+	public List<List<Map<Object, Object>>> getCanvasjsChartData() {
+		return CanvasjsChartData.getCanvasjsDataList();
 	}
 }

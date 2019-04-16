@@ -71,5 +71,10 @@
         select COUNT(*) from employee
         where emp_number = #{emp_number}
 	</select>
-	
+	<select id="canvas" resultType="hashmap">
+		select d.parent_dname "aa",round((ratio_to_report(count(e.empno)) over())*100) as "bb"
+		from dept d, employee e
+		where d.deptno = e.deptno 
+		group by d.parent_dname
+	</select>
 </mapper>
