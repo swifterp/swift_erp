@@ -31,7 +31,6 @@
 				</td>
 				
 				<td id="chatlist">
-					
 				</td>
 			</tr>
 		</table>

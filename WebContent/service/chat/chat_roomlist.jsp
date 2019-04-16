@@ -10,7 +10,7 @@
 <%
 	for(int i=0;i<lst.size();i++){
 %>
-		<a onclick="createRoom('<%= String.valueOf(lst.get(i).get("CHATROOM_CODE")) %>')"><%= String.valueOf(lst.get(i).get("CHATROOM_NAME")) %></a>
+		<a class="roomlist" onclick="createRoom('<%= String.valueOf(lst.get(i).get("CHATROOM_CODE")) %>')"><%= String.valueOf(lst.get(i).get("CHATROOM_NAME")) %></a>
 <%
 	}
 %>
