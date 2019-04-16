@@ -6,28 +6,31 @@
 <head>
 <meta charset="EUC-KR">
 <%	List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list"); %>
+<style>
+#chatlist {overflow:scroll; width:300px; height:300px; padding:10px; text-align:left;}
+</style>
 </head>
 <body>
-<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" onclick="bringEmp()">
-	메신저
+<button type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" onclick="bringEmp()" style="border:none; background:none;">
+	<img src="../../images/btn_chat.png" alt="SWIFT MESSENGER" style="width:180px; height:auto;"/>
 </button>
 <div class="collapse" id="collapseExample">
 	<div class="card card-body">
 		<table>
 			<tr>
 				<td>
-					<div id="emplist" style="overflow:scroll; width:300px; height:150px; padding:10px;"></div>
+					<div id="emplist" style="overflow:scroll; width:300px; height:300px; padding:10px;"></div>
 				</td>
 				
 				<td>
-					<div id="participentDiv" style="overflow:scroll; width:300px; height:150px; padding:10px;"></div><br>
+					<div id="participentDiv" style="overflow:scroll; width:300px; height:300px; padding:10px;"></div><br>
 					<div id="textareaDiv"></div><br>
 					<div id="inputDiv"></div>
 					<div id="submitDiv"></div>
 					<div id="inviteDiv"></div>
 				</td>
 				
-				<td id="chatlist" style="overflow:scroll; width:300px; height:150px; padding:10px;">
+				<td id="chatlist">
 					
 				</td>
 			</tr>
