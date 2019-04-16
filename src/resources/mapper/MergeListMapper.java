@@ -9,4 +9,5 @@ public interface MergeListMapper {
 	public void insertDeductionItem(String name);
 	public void empPayInfoAdd(Map<String, String> info);
 	public void resetPersonalDeducList(Map<String, String> personal_data_deduction);
+	public void resetParticipent(Map<String, String> invitedata);
 }

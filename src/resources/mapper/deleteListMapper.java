@@ -1,5 +1,7 @@
 package resources.mapper;
 
+import org.apache.ibatis.annotations.Param;
+
 public interface deleteListMapper {
 	
 	
@@ -34,5 +36,7 @@ public interface deleteListMapper {
 	public Integer killPersonalPayList(String report);
 	
 	public Integer killSalaryCalcList(String report);
+	
+	public Integer exitroom(@Param("chatroom_code") String chatroom_code, @Param("empno") String empno);
 
 }

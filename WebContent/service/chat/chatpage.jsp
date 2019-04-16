@@ -19,12 +19,13 @@
 					<div id="emplist" style="overflow:scroll; width:300px; height:150px; padding:10px;"></div>
 				</td>
 				
-				<td>
+				<td id="inchatTd">
 					<div id="participentDiv" style="overflow:scroll; width:300px; height:150px; padding:10px;"></div><br>
 					<div id="textareaDiv"></div><br>
 					<div id="inputDiv"></div>
 					<div id="submitDiv"></div>
 					<div id="inviteDiv"></div>
+					<div id="exitDiv"></div>
 				</td>
 				
 				<td id="chatlist" style="overflow:scroll; width:300px; height:150px; padding:10px;">
@@ -46,6 +47,7 @@
 	var xhr5 = null;
 	var xhr6 = null;
 	var xhr7 = null;
+	var xhr8 = null;
 
 	var empnoArr = [];
 	var checkedArr = [];
@@ -110,13 +112,6 @@
 
 	function insertLog(msg, chatroom_code, empno){
 		xhr3 = createRequest(xhr3);
-		xhr3.onreadystatechange = function (){
-			
-			if(this.readyState == 4 && this.status == 200){
-				alert(this.responseText);
-			}
-			
-		};
 
 		xhr3.open("POST", "../chat/insertlog?", true);
 		xhr3.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
@@ -177,11 +172,16 @@
 			onMessage(event);
 		};
 	}
+
+	var chattd = document.getElementById("inchatTd");
 	
 	var textareaDiv = document.getElementById("textareaDiv");
 	var inputDiv = document.getElementById("inputDiv");
 	var submitDiv = document.getElementById("submitDiv");
-
+	var inviteDiv = document.getElementById("inviteDiv");
+	var exitDiv = document.getElementById("exitDiv");
+	var participentDiv = document.getElementById("participentDiv");
+	
 	var textarea = null;
 	var inputMessage = null;
 	var submitMessage = null;
@@ -201,7 +201,7 @@
 	}	
 
 	function createRoom(chatroom_code){
-		
+
 		if(textareaDiv.hasChildNodes()){
 			textareaDiv.removeChild(textareaDiv.childNodes[0]);
 		}
@@ -214,11 +214,15 @@
 		if(inviteDiv.hasChildNodes()){
 			inviteDiv.removeChild(inviteDiv.childNodes[0]);
 		}
-
+		if(exitDiv.hasChildNodes()){
+			exitDiv.removeChild(exitDiv.childNodes[0]);
+		}
+		
 		textarea = document.createElement("TEXTAREA");
 		inputMessage = document.createElement("INPUT");
 		submitMessage = document.createElement("INPUT");
 		inviteButton = document.createElement("INPUT");
+		exitButton = document.createElement("INPUT");
 		
 		textarea.setAttribute("id", "textarea"+chatroom_code);
 		textarea.setAttribute("readonly", "true");
@@ -234,12 +238,17 @@
 		inviteButton.setAttribute("id", "inviteButton"+chatroom_code);
 		inviteButton.setAttribute("type", "button");
 		inviteButton.setAttribute("value", "초대하기");
-		inviteButton.setAttribute("onclick", "inviteEmp()");
+		inviteButton.setAttribute("onclick", "inviteEmp("+chatroom_code+")");
+		exitButton.setAttribute("id", "exitButton"+chatroom_code);
+		exitButton.setAttribute("type", "button");
+		exitButton.setAttribute("value", "방나가기");
+		exitButton.setAttribute("onclick", "exitRoom("+chatroom_code+")");
 		
 		textareaDiv.appendChild(textarea);
 		inputDiv.appendChild(inputMessage);
 		submitDiv.appendChild(submitMessage);
 		inviteDiv.appendChild(inviteButton);
+		exitDiv.appendChild(exitButton);
 
 		bringLog(chatroom_code);
 		participentList(inputMessage);
@@ -272,13 +281,19 @@
 		$("#checktext"+x).remove();
 	}
 
-	function inviteEmp(){
+	function inviteEmp(chatroom_code){
+
+		for(var i=0;i<document.getElementById("checkdiv").childNodes.length;i++){
+			if(document.getElementById("checkdiv").childNodes[i].checked == true){
+				checkedArr.push(document.getElementById("checkdiv").childNodes[i].id.substr(8));
+			}
+		}
 
 		xhr6 = createRequest(xhr6);
 		xhr6.onreadystatechange = function (){
 			
 			if(this.readyState == 4 && this.status == 200){
-				document.getElementById("chatlist").innerHTML = this.responseText;
+				document.getElementById("participentDiv").innerHTML = this.responseText;
 			}
 			
 		};
@@ -295,7 +310,7 @@
 		
 		xhr6.open("POST", "../chat/invite?", true);
 		xhr6.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
-		xhr6.send(tmp+"&chatroom_code="+inputMessage.id.substr(5));
+		xhr6.send(tmp+"&chatroom_code="+chatroom_code);
 
 	}
 
@@ -313,6 +328,44 @@
 		xhr7.open("POST", "../chat/selectparticipent?", true);
 		xhr7.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
 		xhr7.send("chatroom_code="+inputMessage.id.substr(5));
+
+	}
+
+	function exitRoom(chatroom_code){
+
+		xhr8 = createRequest(xhr8);
+		xhr8.onreadystatechange = function (){
+			
+			if(this.readyState == 4 && this.status == 200){
+				document.getElementById("chatlist").innerHTML = this.responseText;
+
+				if(textareaDiv.hasChildNodes()){
+					textareaDiv.removeChild(textareaDiv.childNodes[0]);
+				}
+				if(inputDiv.hasChildNodes()){
+					inputDiv.removeChild(inputDiv.childNodes[0]);
+				}
+				if(submitDiv.hasChildNodes()){
+					submitDiv.removeChild(submitDiv.childNodes[0]);
+				}
+				if(inviteDiv.hasChildNodes()){
+					inviteDiv.removeChild(inviteDiv.childNodes[0]);
+				}
+				if(exitDiv.hasChildNodes()){
+					exitDiv.removeChild(exitDiv.childNodes[0]);
+				}
+				if(participentDiv.hasChildNodes()){
+					alert(participentDiv.childNodes[1].id);
+					participentDiv.removeChild(participentDiv.childNodes[1]);
+				}
+				
+			}
+			
+		};
+		
+		xhr8.open("POST", "../chat/exitroom?", true);
+		xhr8.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
+		xhr8.send("chatroom_code="+chatroom_code+"&empno="+x);
 
 	}
 	
