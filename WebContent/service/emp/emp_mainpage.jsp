@@ -7,8 +7,6 @@
 <meta charset="UTF-8">
 <title>emp_mainpage</title>
 <%@ include file="../common/ui_common.jsp" %>
-<script src="../../js/jquery.twbsPagination.js"></script>
-<script src="../../js/jquery.twbsPagination.min.js"></script>
 
 <script type="text/javascript">
 	<!--사원등록-->

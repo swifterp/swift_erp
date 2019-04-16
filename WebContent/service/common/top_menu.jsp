@@ -39,7 +39,7 @@
 				<li><a href="../work/selectBusinessLog">업무관리</a></li>
 				<li><a href="../client/selectClientInfo">고객관리</a></li>
 			</ul>
-			<div id="inchat"></div>
+			<div id="inchat" style="float:left;"></div>
 			<!-- 드롭다운 기능 -->
 			<ul class="nav navbar-nav navbar-right">
 				<!-- 드롭다운 -->
