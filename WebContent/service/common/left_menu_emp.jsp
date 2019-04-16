@@ -34,6 +34,7 @@ $(function(){
 				<ul class="collapse depth2" id="group2">
 					<li><a href="#">각종증명서인쇄</a></li>
 					<li><a href="#">사원명부</a></li>
+					<li><a href="../emp/emp_chart.jsp">인사관련 통계</a></li>
 				</ul>
 			</li>
 		</ul>
