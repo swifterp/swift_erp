@@ -38,5 +38,9 @@ public interface deleteListMapper {
 	public Integer killSalaryCalcList(String report);
 	
 	public Integer exitroom(@Param("chatroom_code") String chatroom_code, @Param("empno") String empno);
+	
+	public void empPayInfoDelete(String empno);
+	
+	public void empDeducInfoDelete(String empno);
 
 }

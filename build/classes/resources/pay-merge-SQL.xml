@@ -55,15 +55,29 @@
 	<update id="empPayInfoAdd" parameterType="HashMap">
 		MERGE INTO personalpayinfo a
 		USING dual
-		on (a.empno = #{EMPNO, jdbcType=INTEGER}
-		and a.allowance_no = #{ALLOWANCE_NO, jdbcType=INTEGER})
+		on (a.empno = #{empno, jdbcType=INTEGER}
+		and a.allowance_no = #{allowance_no, jdbcType=INTEGER})
 
 		WHEN MATCHED THEN
-		UPDATE SET a.payinfo_price = #{PAYINFO_PRICE, jdbcType=INTEGER}
+		UPDATE SET a.payinfo_price = #{payinfo_price, jdbcType=INTEGER}
 
 		WHEN NOT MATCHED THEN
 		insert (a.empno, a.allowance_no, a.allowance_name, a.payinfo_price, a.allowance_division)
-		values (#{EMPNO}, #{ALLOWANCE_NO}, #{ALLOWANCE_NAME}, #{PAYINFO_PRICE}, #{ALLOWANCE_DIVISION})
+		values (#{empno, jdbcType=INTEGER}, #{allowance_no, jdbcType=INTEGER}, #{allowance_name, jdbcType=VARCHAR}, #{payinfo_price, jdbcType=INTEGER}, #{allowance_division, jdbcType=VARCHAR})
+	</update>
+	
+	<update id="empDeducInfoAdd" parameterType="HashMap">
+		MERGE INTO personaldeducinfo a
+		USING dual
+		on (a.empno = #{empno, jdbcType=INTEGER}
+		and a.deduction_no = #{deduction_no, jdbcType=INTEGER})
+
+		WHEN MATCHED THEN
+		UPDATE SET a.deducinfo_price = #{deducinfo_price, jdbcType=INTEGER}
+
+		WHEN NOT MATCHED THEN
+		insert (a.empno, a.deduction_no, a.deduction_name, a.deducinfo_price)
+		values (#{empno, jdbcType=INTEGER}, #{deduction_no, jdbcType=INTEGER}, #{deduction_name, jdbcType=VARCHAR}, #{deducinfo_price, jdbcType=INTEGER})
 	</update>
 	
 	<update id="resetPersonalDeducList" parameterType="java.util.Map">

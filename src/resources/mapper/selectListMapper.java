@@ -25,6 +25,7 @@ public interface selectListMapper {
 		public List<Map<String, String>> getAppointView(Integer emp_appoint_no);
 		public int checkEmpNum(String emp_number);
 		public List<Map<String, String>> getEmpData(String empInfo);
+		public String getEmpOne(Integer emp_number);
 		
 		//pay
 		public List<Map<String, String>> getAllowanceList();
@@ -117,6 +118,10 @@ public interface selectListMapper {
 	public List<HashMap<String, String>> getDailyworkConfirmList(String report);
 	
 	public List<Map<String, String>> getPersonalPayInfoList();
+	
+	public List<Map<String, String>> getDeducInfoList(String empno);
+	
+	public List<Map<String, String>> getPayInfoList(String empno);
 	
 	public List<HashMap<String, String>> getPersonalDailyworkConfirmList(@Param("report") String report, @Param("empno") String empno);
 	

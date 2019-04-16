@@ -72,4 +72,11 @@
         where emp_number = #{emp_number}
 	</select>
 	
+	<select id="getEmpOne" parameterType="Integer" resultType="String">		
+		select empno from employee
+		<where>
+			emp_number = #{emp_number}
+		</where>
+	</select>
+	
 </mapper>

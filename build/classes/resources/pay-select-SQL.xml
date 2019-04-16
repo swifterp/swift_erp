@@ -115,6 +115,24 @@
 
 	</select>
 	
+	<select id="getPayInfoList" parameterType="String" resultType="hashmap">
+	
+		select empno, allowance_no, allowance_name, payinfo_price, allowance_division from personalpayinfo
+		<where>
+			empno = #{empno}
+		</where>
+
+	</select>
+	
+	<select id="getDeducInfoList" parameterType="String" resultType="hashmap">
+	
+		select empno, deduction_no, deduction_name, deducinfo_price from personaldeducinfo
+		<where>
+			empno = #{empno}
+		</where>
+
+	</select>
+	
 	<select id="getPersonalDailyworkConfirmList" parameterType="String" resultType="hashmap">
 	
 		select empno, allowance_no, allowance_name, dailywork_time, substr(to_char(dailywork_date, 'YYYY/MM'), 1, 7) as dailywork_date from dailyworklist

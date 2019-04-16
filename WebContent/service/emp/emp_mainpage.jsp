@@ -11,7 +11,7 @@
 <script type="text/javascript">
 	<!--사원등록-->
 	function goEmpAdd(){
-		location.href = "../emp/emp_empAdd.jsp";	
+		location.href = "../pay/allowNdeduc";
 	}
 	<!--사원상세보기-->
 	function empView(emp_number){

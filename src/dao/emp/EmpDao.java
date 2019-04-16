@@ -1,6 +1,5 @@
 package dao.emp;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,7 +7,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import resources.mapper.MergeListMapper;
 import resources.mapper.deleteListMapper;
 import resources.mapper.insertListMapper;
 import resources.mapper.selectListMapper;
@@ -22,6 +20,10 @@ public class EmpDao {
 	public List<Map<String, String>> selectEmpList() {
 		return slm.getEmpList();
 	}
+	
+	public String selectEmpOne(Integer emp_number){
+		return slm.getEmpOne(emp_number);
+	}
 
 	public List<Map<String, String>> empView(Integer emp_number) {
 		return slm.getEmpView(emp_number);
@@ -31,10 +33,7 @@ public class EmpDao {
 		return slm.getEmpDeptList();
 	}
 	
-	
-	
 	public List<Map<String, String>> deptView(Integer deptno) {
-		System.out.println(deptno);
 		return slm.getDeptView(deptno);
 	}
 	public List<Map<String, String>> empNumList() {
@@ -44,7 +43,7 @@ public class EmpDao {
 
 	@Autowired
 	private insertListMapper ilm;
-	public List<Map<String, String>> empAdd(HashMap<String, Integer> empPlus) {
+	public List<Map<String, String>> empAdd(HashMap<String, String> empPlus) {
 		ilm.empAdd(empPlus);
 		return slm.getEmpList();
 	}

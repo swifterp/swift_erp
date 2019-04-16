@@ -1,6 +1,8 @@
 package controller;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import logic.emp.EmpLogic;
+import logic.pay.PersonalpayinfoList;
+import logic.pay.SelectAllowanceItem;
+import logic.pay.SelectDeductionItem;
 
 @Controller
 @RequestMapping("service/emp")
@@ -31,20 +36,38 @@ public class Emp_Controller {
 	}
 	@RequestMapping("/add")
 	public String addEmp(Model model
-			 ,@RequestParam HashMap<String, Integer> empPlus) {
+			 ,@RequestParam HashMap<String, String> empPlus) {
 		model.addAttribute("list", el.empAddDao(empPlus));
 		return "emp/emp_mainpage";
 	}
 	
+	@Autowired
+	private PersonalpayinfoList ppil;
+	
+	@Autowired
+	private SelectAllowanceItem sai;
+	@Autowired
+	private SelectDeductionItem sdi;
+	
 	@RequestMapping("/view")
 	public String viewEmp(Model model, @RequestParam(value="emp_number", defaultValue="0") Integer emp_number) {
+		
+		List<Map<String, String>> tmp1 = ppil.callpayinfoDao(emp_number);
+		List<Map<String, String>> tmp2 = ppil.calldeducinfoDao(emp_number);
+		
+		model.addAttribute("allow", sai.callAllowanceItemDao(2));
+		model.addAttribute("deduc", sdi.callDeductionItemDao());
+		
+		model.addAttribute("allow_value", tmp1);
+		model.addAttribute("deduc_value", tmp2);
+		
 		model.addAttribute("list", el.empViewDao(emp_number));
 		return "emp/emp_empView";
 	}
 	
 	@RequestMapping("/update")
 	public String updEmp(Model model, @RequestParam HashMap<String,String> empUpd) {
-		model.addAttribute("list", el.empUpdDao(empUpd));	
+		model.addAttribute("list", el.empUpdDao(empUpd));
 		return "emp/emp_mainpage";
 	}	
 	

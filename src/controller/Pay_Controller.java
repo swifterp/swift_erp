@@ -35,7 +35,16 @@ import logic.pay.UpdatePayConfirmList;
 @Controller
 @RequestMapping("service/pay")
 public class Pay_Controller {
-
+	
+	@RequestMapping("/allowNdeduc")
+	public String pay_allowNdeduc(Model model) {
+		
+		model.addAttribute("deduc", sdi.callDeductionItemDao());
+		model.addAttribute("allow", sai.callAllowanceItemDao(2));
+		
+		return "emp/emp_empAdd";
+	}
+	
 	@Autowired
 	private SelectAllowanceItem sai;
 	
@@ -85,9 +94,9 @@ public class Pay_Controller {
 	public String pay_Deduction(Model model) {
 				
 		model.addAttribute("list", sdi.callDeductionItemDao());
-		
+
 		return "pay/pay_deductionItem";
-		
+
 	}
 	
 	@Autowired

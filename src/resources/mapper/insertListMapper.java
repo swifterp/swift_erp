@@ -11,7 +11,7 @@ public interface insertListMapper {
 	public void memAdd(HashMap<String, String> memPlus);	
 	
 	//employee
-	public void empAdd(HashMap<String, Integer> empPlus);	
+	public void empAdd(HashMap<String, String> empPlus);	
 	public void appointAdd(HashMap<String, String> appointAdd);
 	public void deptAdd(HashMap<String, String> deptPlus);	
 	public int getRankAdd(HashMap<String, String> rankPlus);
