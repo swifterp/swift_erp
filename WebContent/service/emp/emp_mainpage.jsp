@@ -48,7 +48,8 @@ function paging(page) {
     $('#list-body').empty();
     var startRow = (page - 1) * pageSize; // + 1 list는 0부터 시작하니깐;
     var endRow = page * pageSize;
-    if (endRow > totalCount) 
+
+	if (totalCount < endRow) 
     {
         endRow = totalCount;
     }  
@@ -59,10 +60,10 @@ function paging(page) {
     }
     for (var j = startRow; j < endRow; j++) 
     {   
+        
         $('#list-body').append(''+ chatLogList[j].fileNo +'<a onclick="getContent(\''+chatLogList[j].fileName+'\')">'
                 + textLengthOverCut(chatLogList[j].fileName, '25', '...') +'</a>'+ chatLogList[j].fileDate +'');
     }
-    
     totalPages = totalCount/pageSize;
     if (totalCount%pageSize > 0) {
     totalPages++;
@@ -143,8 +144,10 @@ table tr:hover {background:#fefefe;}
 			</table>
 			<div class="pagination-container">
 		         <nav>
-		            <ul class="pagination">
-		            </ul>
+		         	<div>
+		         	   <ul class="pagination">
+		               </ul>
+		         	</div>
 		         </nav>
 		     </div>
 			<div class="btn_group">
@@ -159,6 +162,7 @@ table tr:hover {background:#fefefe;}
       $('.pagination').html('')
       var trnum=0
       var maxRows = parseInt(10)
+      var buttons = parseInt(10)
       var totalRows = $(table+' tbody tr').length
       $(table+' tr:gt(0)').each(function(){
          trnum++
@@ -171,12 +175,19 @@ table tr:hover {background:#fefefe;}
       })
       if(totalRows > maxRows){
          var pagenum = Math.ceil(totalRows/maxRows)
-         for(var i=1; i<=pagenum;){
-            $('.pagination').append('<li data-page="'+i+'"><span>'+
-             i++ +'<span class="sr-only">(current)</span></span></li>').show()
-         }
+	   		 	$('.pagination').append(
+	   	   		'<button class="btn btn-outline-primary pull-left" style="margin-right: 10px">이전</button>'
+	    	    )
+       	 for(var i=1; i<=pagenum;){
+	   		 	$('.pagination').append(
+	   	   		'<li data-page="'+i+'"> <span>'+i++ +'<span class="sr-only"> (current) </span></span></li>'
+	    	    ).show()
+         }	
+	   		 	$('.pagination').append(
+	   	   		'<button class="btn btn-outline-primary" style="margin-left: 10px">다음</button>'
+	    	    )
       }
-      $('.pagination li:first-child').addClass('active')
+      $('.pagination li:nth-child(2)').addClass('active')
       $('.pagination li').on('click',function() {
          var pageNum = $(this).attr('data-page')
          var trIndex = 0;

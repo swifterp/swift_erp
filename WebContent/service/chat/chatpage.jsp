@@ -9,6 +9,22 @@
 <style>
 #chatlist {overflow:scroll; width:300px; height:300px; padding:10px; text-align:left;}
 </style>
+<style>
+#emplist {overflow:scroll; width:300px; height:300px; padding:10px; text-align:left;}
+</style>
+<script type="text/javascript">
+	$(function(){
+		$("#chatroom_main").hide();
+		$("#chatlist").on("click",function(){
+			$("#chatroom_main").show();
+		})
+	})
+</script>
+<script type="text/javascript">
+	$(function(){
+		$("#participentDiv").hide();
+	})
+</script>
 </head>
 <body>
 <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" onclick="bringEmp()" style="border:none; background:none;">
@@ -18,17 +34,18 @@
 	<div class="card card-body">
 		<table>
 			<tr>
-				<td>
-					<div id="emplist" style="overflow:scroll; width:300px; height:300px; padding:10px;"></div>
+				<td id="emplist">
 				</td>
 				
-				<td>
-					<div id="participentDiv" style="overflow:scroll; width:300px; height:300px; padding:10px;"></div><br>
-					<div id="textareaDiv"></div><br>
-					<div id="inputDiv"></div>
-					<div id="submitDiv"></div>
-					<div id="inviteDiv"></div>
+				<td id="chatroom_main" style="background-color:#A5D4FF;  width:300px; height:300px; padding:0px;">
+					<div id="chatroom_name" style="background-color:fuchsia;height: 45px;"></div>	
+					<div id="participentDiv" style="overflow-y:scroll; background-color:#FFA2B6; width:200px; height:100px; padding:25px 5px 5px 5px;"></div><br>
+					<div id="textareaDiv" style="background-color: purple;" ></div><br>
+					<div id="inputDiv"    style="background-color:blue;" ></div>
+					<div id="submitDiv"   style="background-color:olive;"></div>
+					<div id="inviteDiv"   style="background-color:maroon;" ></div>
 				</td>
+				
 				
 				<td id="chatlist">
 				</td>
@@ -216,7 +233,7 @@
 		if(inviteDiv.hasChildNodes()){
 			inviteDiv.removeChild(inviteDiv.childNodes[0]);
 		}
-
+		
 		textarea = document.createElement("TEXTAREA");
 		inputMessage = document.createElement("INPUT");
 		submitMessage = document.createElement("INPUT");
@@ -237,12 +254,13 @@
 		inviteButton.setAttribute("type", "button");
 		inviteButton.setAttribute("value", "초대하기");
 		inviteButton.setAttribute("onclick", "inviteEmp()");
-		
+		inviteButton.className = 'btn btn-outline-primary'
+			
 		textareaDiv.appendChild(textarea);
 		inputDiv.appendChild(inputMessage);
 		submitDiv.appendChild(submitMessage);
 		inviteDiv.appendChild(inviteButton);
-
+		
 		bringLog(chatroom_code);
 		participentList(inputMessage);
 		
@@ -271,6 +289,7 @@
 
 	function removeMe(){
 		$("#checkbox"+x).remove();
+		$("#checkteam"+x).remove();
 		$("#checktext"+x).remove();
 	}
 
@@ -317,7 +336,6 @@
 		xhr7.send("chatroom_code="+inputMessage.id.substr(5));
 
 	}
-	
 </script>
 
 </body>
