@@ -127,6 +127,6 @@ public class EmpLogic {
 	}
  
 	public List<List<Map<Object, Object>>> getCanvasjsChartData() {
-		return ed.getCanvasjsChartData();
+		return ed.aaa();
 	}
 }
