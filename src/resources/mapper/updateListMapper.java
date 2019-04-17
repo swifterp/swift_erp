@@ -42,5 +42,7 @@ public interface updateListMapper {
 	public void resetPayConfirmList(String report);
 	
 	public void resetPayConfirmCancelList(String report);
+	
+	public void resetWorkConfirmCancel(@Param("empno") String empno, @Param("selectedDate") String selectedDate);
 
 }

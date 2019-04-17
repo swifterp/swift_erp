@@ -270,6 +270,21 @@
 		<td>
 			<%= String.valueOf(lst.get(i).get("EMPNO")) %>
 		</td>
+			<%
+				if(String.valueOf(lst.get(i).get("DAILYWORK_CONFIRM")).equals("1")){
+					%>
+					<td>
+						확정
+					</td>
+					<%
+				} else {
+					%>
+					<td>
+						미확정
+					</td>
+					<%
+				}
+			%>
 		</tr>
 		<tr>
 		<%

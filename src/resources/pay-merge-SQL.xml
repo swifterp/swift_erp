@@ -8,8 +8,10 @@
 		USING dual
 		on (a.personalpay_report = #{REPORT, jdbcType=VARCHAR}
 		and a.empno = #{EMPNO, jdbcType=VARCHAR}
-		and a.allowance_no = #{ALLOWANCE_NO, jdbcType=INTEGER}
-		and a.personalpay_pay = #{PAYINFO_PRICE, jdbcType=INTEGER})
+		and a.allowance_no = #{ALLOWANCE_NO, jdbcType=INTEGER})
+		
+		WHEN MATCHED THEN
+		UPDATE SET a.personalpay_pay = #{PAYINFO_PRICE, jdbcType=INTEGER}
 
 		WHEN NOT MATCHED THEN
 		INSERT (a.personalpay_report, a.empno, a.allowance_no, a.allowance_name, a.personalpay_pay)

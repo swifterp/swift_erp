@@ -31,6 +31,7 @@ import logic.pay.SelectSpecsList;
 import logic.pay.SelectWorkConfirm;
 import logic.pay.UpdatePayConfirmCancelList;
 import logic.pay.UpdatePayConfirmList;
+import logic.pay.UpdateWorkConfirmCancel;
 
 @Controller
 @RequestMapping("service/pay")
@@ -330,6 +331,19 @@ public class Pay_Controller {
 		
 		return "pay/pay_salaryCalcList";
 		
+	}
+	
+	@Autowired
+	private UpdateWorkConfirmCancel uwcc;
+	
+	@RequestMapping("/cancelworkconfirm")
+	public String pay_cancelworkconfirm(Model model, @RequestParam(value="empno", defaultValue="0") String empno,
+													 @RequestParam(value="selectedDate", defaultValue="0") String selectedDate) {
+
+		model.addAttribute("list", uwcc.callWorkConfirmCancelDao(empno, selectedDate));
+		
+		return "pay/pay_workconfirmList";
+
 	}
 
 }

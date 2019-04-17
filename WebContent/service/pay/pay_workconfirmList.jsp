@@ -210,6 +210,12 @@
 		xhr2.send("empno="+empno+"&year="+document.getElementById("yeartext").value+"&month="+document.getElementById("monthtext").value+"&day="+document.getElementById("daytext").value);
 	}
 
+	function cancelConfirm(empno, selectedDate){
+
+		location.href = "./cancelworkconfirm?empno="+empno+"&selectedDate="+selectedDate;
+		
+	}
+
 </script>
 </head>
 <body>
@@ -319,6 +325,21 @@
 	<td>
 		<%= String.valueOf(lst.get(i).get("EMPNO")) %>
 	</td>
+		<%
+			if(String.valueOf(lst.get(i).get("DAILYWORK_CONFIRM")).equals("1")){
+				%>
+				<td>
+					<button type="button" class="btn btn-secondary" onclick="cancelConfirm('<%= String.valueOf(lst.get(i).get("EMPNO")) %>', '<%= String.valueOf(lst.get(i).get("DAILYWORK_DATE")) %>')">확정</button>
+				</td>
+				<%
+			} else {
+				%>
+				<td>
+					미확정
+				</td>
+				<%
+			}
+		%>
 	</tr>
 	<tr>
 	<%

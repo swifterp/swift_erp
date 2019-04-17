@@ -26,7 +26,7 @@
 	
 	<select id="getDeductionInfo" resultType="hashmap">
 	
-		select deducinfo_no, empno, deduction_no, deduction_name, deducinfo_price from deductioninfo
+		select deducinfo_no, empno, deduction_no, deduction_name, deducinfo_price from personaldeducinfo
 	
 	</select>	
 	
@@ -92,7 +92,7 @@
 	
 	<select id="getDailyworkList" parameterType="String" resultType="hashmap">
 	
-		select to_char(dailywork_date, 'YYYY/MM/DD') as dailywork_date, empno, allowance_name, dailywork_time from dailyworklist
+		select to_char(dailywork_date, 'YYYY/MM/DD') as dailywork_date, empno, allowance_name, dailywork_time, dailywork_confirm from dailyworklist
 		<where>
 			to_char(dailywork_date, 'YYYY/MM/DD') = #{selectedDate}
 		</where>
@@ -101,7 +101,7 @@
 	
 	<select id="getDailyworkConfirmList" parameterType="String" resultType="hashmap">
 	
-		select empno, allowance_no, allowance_name, dailywork_time, substr(to_char(dailywork_date, 'YYYY/MM'), 1, 7) as dailywork_date from dailyworklist
+		select empno, allowance_no, allowance_name, dailywork_time, substr(to_char(dailywork_date, 'YYYY/MM'), 1, 7) as dailywork_date, dailywork_confirm from dailyworklist
 		<where>
 			dailywork_confirm = 1 and substr(to_char(dailywork_date, 'YYYY/MM'), 1, 7) = substr(#{report}, 1, 7)
 		</where>
@@ -135,7 +135,7 @@
 	
 	<select id="getPersonalDailyworkConfirmList" parameterType="String" resultType="hashmap">
 	
-		select empno, allowance_no, allowance_name, dailywork_time, substr(to_char(dailywork_date, 'YYYY/MM'), 1, 7) as dailywork_date from dailyworklist
+		select empno, allowance_no, allowance_name, dailywork_time, substr(to_char(dailywork_date, 'YYYY/MM'), 1, 7) as dailywork_date, dailywork_confirm from dailyworklist
 		<where>
 			dailywork_confirm = 1 and substr(to_char(dailywork_date, 'YYYY/MM'), 1, 7) = substr(#{report}, 1, 7) and empno = #{empno}
 		</where>
@@ -154,7 +154,7 @@
 	
 	<select id="getWorkConfirmList" parameterType="String" resultType="hashmap">
 	
-		select empno, allowance_no, allowance_name, dailywork_time, to_char(dailywork_date, 'YYYY/MM/DD') as dailywork_date from dailyworklist
+		select empno, allowance_no, allowance_name, dailywork_time, to_char(dailywork_date, 'YYYY/MM/DD') as dailywork_date, dailywork_confirm from dailyworklist
 		<where>
 			dailywork_confirm = 1 and to_char(dailywork_date, 'YYYY/MM/DD') = #{selectedDate} and empno = #{empno}
 		</where>
@@ -163,7 +163,7 @@
 	
 	<select id="getWorkNotConfirmList" parameterType="String" resultType="hashmap"> <!-- 추가됨 -->
 	
-		select empno, allowance_no, allowance_name, dailywork_time, to_char(dailywork_date, 'YYYY/MM/DD') as dailywork_date from dailyworklist
+		select empno, allowance_no, allowance_name, dailywork_time, to_char(dailywork_date, 'YYYY/MM/DD') as dailywork_date, dailywork_confirm from dailyworklist
 		<where>
 			dailywork_confirm = 0 and to_char(dailywork_date, 'YYYY/MM/DD') = #{selectedDate} and empno = #{empno}
 		</where>
@@ -172,7 +172,7 @@
 	
 	<select id="getTotalWorkConfirmList" resultType="hashmap">
 	
-		select empno, allowance_no, allowance_name, dailywork_time, to_char(dailywork_date, 'YYYY/MM/DD') as dailywork_date from dailyworklist
+		select empno, allowance_no, allowance_name, dailywork_time, to_char(dailywork_date, 'YYYY/MM/DD') as dailywork_date, dailywork_confirm from dailyworklist
 		<where>
 			dailywork_confirm = 1
 		</where>
