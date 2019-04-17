@@ -46,7 +46,6 @@
 					<div id="inviteDiv"   style="background-color:maroon;" ></div>
 				</td>
 				
-				
 				<td id="chatlist">
 				</td>
 			</tr>

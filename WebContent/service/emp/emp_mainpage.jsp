@@ -22,6 +22,11 @@
 		location.href = "../emp/delete?emp_number="+emp_number;	
 	}
 </script>
+<style>
+	.Pre_color{
+		color: #fff;
+	}
+</style>
 <!-- 팝업창 -->
 <script>
 $(document).ready(function() {
@@ -67,6 +72,22 @@ function paging(page) {
     totalPages = totalCount/pageSize;
     if (totalCount%pageSize > 0) {
     totalPages++;
+    }
+    if(page < totalCount){
+		$('#Previous').on('click',function() {
+			var pageNum = $(this).attr('data-page')
+        	var trIndex = 0;
+        	$('.pagination li').removeClass('active')
+         	$(this).addClass('active')
+         	$(table+' tr:gt(0)').each(function(){
+            	trIndex++
+            	if(trIndex > (maxRows*pageNum) || trIndex <= ((maxRows*pageNum)-maxRows)){
+               		$(this).hide()
+            	}else{
+               		$(this).show()
+            	}
+         	})
+      })
     }
 }
 
@@ -179,7 +200,7 @@ table tr:hover {background:#fefefe;}
 	   	   		'<button class="btn btn-outline-primary pull-left" style="margin-right: 10px">이전</button>'
 	    	    )
        	 for(var i=1; i<=pagenum;){
-	   		 	$('.pagination').append(
+	   		 $('.pagination').append(
 	   	   		'<li data-page="'+i+'"> <span>'+i++ +'<span class="sr-only"> (current) </span></span></li>'
 	    	    ).show()
          }	
