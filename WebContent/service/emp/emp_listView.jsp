@@ -9,62 +9,37 @@
 <%@ include file="../common/ui_common.jsp" %>
 <!-- sweetAlter api -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script type="text/javascript">
-var xhr1 = null;
-var xhr2 = null;
-var xhr3 = null;
-function createRequest(xhr){	
-	try {
-		xhr = new XMLHttpRequest();
-	} catch (e) {
-		try {
-			xhr = new ActiveXObject("Msxml2.XMLHTTP");
-		} catch (e) {
-			try {
-				xhr = new ActiveXObject("Microsoft.XMLHTTP")
-			} catch (e) {
-				xhr = null;
-			}
-		}
-	}
-	if(xhr == null){
-		alert("Error Creating XMLHttpRequest Object");
-	}	
-	return xhr;
-}
-function dept(){
-  	xhr1 = createRequest(xhr1);
-  	xhr1.onreadystatechange = function (){		
-		if(this.readyState == 4 && this.status == 200){
-			document.getElementById("ajax_dept").innerHTML = this.responseText;
-		}	
-	};
-	xhr1.open("POST", "../emp/pop_deptRead?", true);
-	xhr1.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
-	xhr1.send();
-}
-function rank(){
-  	xhr2 = createRequest(xhr2);
-  	xhr2.onreadystatechange = function (){		
-		if(this.readyState == 4 && this.status == 200){
-			document.getElementById("ajax_rank").innerHTML = this.responseText;
-		}	
-	};
-	xhr2.open("POST", "../emp/pop_rankRead?", true);
-	xhr2.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
-	xhr2.send();
-}
-function duty(){
-  	xhr3 = createRequest(xhr3);
-  	xhr3.onreadystatechange = function (){		
-		if(this.readyState == 4 && this.status == 200){
-			document.getElementById("ajax_duty").innerHTML = this.responseText;
-		}	
-	};
-	xhr3.open("POST", "../emp/pop_dutyRead?", true);
-	xhr3.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
-	xhr3.send();
-}
+<!-- 팝업창 -->
+<script>
+$(document).ready(function() {
+    $('#pop_dept').on("click", function() {	
+    	var url="../emp/pop_deptRead";
+    	var windowW = 300;  // 창의 가로 길이
+        var windowH = 300;  // 창의 세로 길이
+        var left = Math.ceil((window.screen.width - windowW)/2);
+        var top = Math.ceil((window.screen.height - windowH)/2);
+  window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+    });
+});$(document).ready(function() {
+    $('#pop_rank').on("click", function() {	
+    	var url="../emp/pop_rankRead";
+    	var windowW = 300;  // 창의 가로 길이
+        var windowH = 300;  // 창의 세로 길이
+        var left = Math.ceil((window.screen.width - windowW)/2);
+        var top = Math.ceil((window.screen.height - windowH)/2);
+  window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+    });
+});
+$(document).ready(function() {
+    $('#pop_duty').on("click", function() {	
+    	var url="../emp/pop_dutyRead";
+    	var windowW = 300;  // 창의 가로 길이
+        var windowH = 300;  // 창의 세로 길이
+        var left = Math.ceil((window.screen.width - windowW)/2);
+        var top = Math.ceil((window.screen.height - windowH)/2);
+  window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+    });
+});
 </script>
 </head>
 <body>
@@ -78,44 +53,41 @@ function duty(){
 				<h1>사원명부 조회</h1>
 				<table class="table">
 					<colgroup>
-						<col width="30%" />
-						<col width="70%" />
+						<col width="10%" />
+						<col width="40%" />
+						<col width="10%" />
+						<col width="40%" />
 					</colgroup>
 					<tbody>
 						<tr>
 							<th>부서</th>					
 							<td class="input-group">
-								<input type="text" value="" class="form-control">
+								<input type="hidden" id="p_dept_no" name="deptno" class="form-control" required="">
+								<input type="text" id="p_dept_name" class="form-control" required="">		
 								<span class="input-group-btn">
-									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dept" onclick="dept()"><img src="../../images/icon_plus.png" /></button>
+									<button type="button" id="pop_dept" class="btn btn-primary" data-toggle="modal" data-target="#dept" onclick="dept()"><img src="../../images/icon_plus.png" /></button>
 								</span>
 							</td>	
-						</tr>
-						<tr>
 							<th>직급</th>
 							<td class="input-group">
-								<input type="text" value="" class="form-control">
+								<input type="hidden" id="p_rank_no" name="rank_no" class="form-control" required="">
+								<input type="text" id="p_rank_name" class="form-control" required="">
 								<span class="input-group-btn">
-									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rank" onclick="rank()"><img src="../../images/icon_plus.png" /></button>
+									<button type="button" id="pop_rank" class="btn btn-primary"><img src="../../images/icon_plus.png" /></button>
 								</span>
 							</td>
 						</tr>
 						<tr>
 							<th>직책</th>
 							<td class="input-group">
-								<input type="text" value="" class="form-control">
+								<input type="hidden" id="p_duty_no" name="duty_no" class="form-control" required="">
+								<input type="text" id="p_duty_name" class="form-control" required="">
 								<span class="input-group-btn">
-									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#duty" onclick="duty()"><img src="../../images/icon_plus.png" /></button>
+									<button type="button" id="pop_duty" name="dept" class="btn btn-primary" data-toggle="modal" data-target="#duty" onclick="duty()"><img src="../../images/icon_plus.png" /></button>
 								</span>
 							</td>
-						</tr>
-						<tr>
 							<th>입사일</th>
-							<td><input type="date" value="" class="form-control"></td>
-						</tr>
-						<tr>
-							<th>생년월일</th>
-							<td><input type="date" value="" class="form-control"></td>
+							<td><input type="date" name="emp_join_date" class="form-control"></td>
 						</tr>
 					</tbody>
 				</table>
@@ -124,63 +96,6 @@ function duty(){
 				</div>
 			</form>
 		</div>
-	</div>
-	<!-- dept Modal -->
-	<div class="modal fade" id="dept" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top:150px;">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">직급</h5>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>   
-	      <div class="modal-body">   	
-			<div id="ajax_dept"></div>
-	      </div>
-		  <div class="modal-footer">
-          	<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-     	 </div>
-	    </div>
-	  </div>
-	</div>
-	<!-- rank Modal -->
-	<div class="modal fade" id="rank" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top:150px;">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">직급</h5>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>   
-	      <div class="modal-body">   	
-			<div id="ajax_rank"></div>
-	      </div>
-		  <div class="modal-footer">
-          	<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-     	 </div>
-	    </div>
-	  </div>
-	</div>
-	<!-- duty Modal -->
-	<div class="modal fade" id="duty" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top:150px;">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">직급</h5>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>   
-	      <div class="modal-body">   	
-			<div id="ajax_duty"></div>
-	      </div>
-		  <div class="modal-footer">
-          	<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-     	 </div>
-	    </div>
-	  </div>
 	</div>
 </body>
 </html>

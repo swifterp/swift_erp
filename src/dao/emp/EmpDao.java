@@ -145,7 +145,6 @@ public class EmpDao {
 		return slm.getEmpDeptList();
 	}
 
-	
 	public List<List<Map<Object, Object>>> aaa() {
 		Map<Object,Object> map = null;
 		List<List<Map<Object,Object>>> list = new ArrayList<List<Map<Object,Object>>>();
@@ -164,5 +163,4 @@ public class EmpDao {
 		list.add(dataPoints1);
 		return list;
 	}
-
 }
