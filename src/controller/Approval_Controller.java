@@ -8,8 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.oracle.webservices.internal.api.EnvelopeStyle.Style;
-
 import logic.approval.InsertApprovalData;
 import logic.approval.SelectApprovalPath;
 import logic.approval.SelectCommonStyle;
