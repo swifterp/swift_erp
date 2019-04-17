@@ -33,17 +33,9 @@ public interface insertListMapper {
 	public void InsertNameCardInfo(HashMap<String, String> NAMECARD_INFO);
 	
 	//approval
-	public void putApprovalPath(HashMap<String, String> approval_path);
+	public void putApprovalPathData(HashMap<String, Integer> approval_path);
 	public void InsertApprovalData(HashMap<String, String> approval_data);
-
-	public void InsertApprovalWrite(String approval_write);
 	
-	
-	
-	
-	
-	
-
 	
 	public void empPayInfoAdd(Map<String, String> payinfo);
 

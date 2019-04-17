@@ -3,33 +3,26 @@
 
 <mapper namespace="resources.mapper.insertListMapper">
 
-	<insert id="putApprovalPath" parameterType="HashMap">
-		insert into Approval_path values(
-			(select MAX(path_code)+1 from approval_path),
-        	   #{path_name, jdbcType=VARCHAR},
-        	   #{path_firstname, jdbcType=VARCHAR},
-        	   (select empno from employee where emp_name=#{path_firstapproval, jdbcType=INTEGER}),
-        	   #{path_firstposition, jdbcType=VARCHAR},
-        	   #{path_secondname, jdbcType=VARCHAR},
-        	   (select empno from employee where emp_name=#{path_secondapproval, jdbcType=INTEGER}),
-        	   #{path_secondposition, jdbcType=VARCHAR}
-        	   )
+	<insert id="putApprovalPathData" parameterType="HashMap" >
+		insert into Approval_Path_code values(
+			(select count(PATH_CODE)+1 from approval_path_code),
+			#{reference_list,jdbcType=INTEGER},
+			'결재대기중',
+			#{path_order,jdbcType=INTEGER},
+			#{draft_no,jdbcType=INTEGER}
+		)
 	</insert>
+	
 	<insert id="InsertApprovalData" parameterType="HashMap" statementType="CALLABLE">
 	
 		insert into DRAFT
-        values((select count(DRAFT_NO)+1 from DRAFT),
-        SYSDATE,'임시작성자',1,
-        #{approval_name, jdbcType=INTEGER}, 
-        #{approval_write, jdbcType=CLOB})
-        
+        values(#{draft_no,jdbcType=INTEGER},
+        SYSDATE,
+        #{empno,jdbcType=INTEGER},
+		'결재대기중',
+        #{style_code, jdbcType=INTEGER}, 
+        #{draft_data, jdbcType=CLOB})
 	</insert>
-	
-	
-	
-	<insert id="InsertApprovalWrite" parameterType="HashMap">
 
-		insert into draft values((select count(STYLE_CODE)+1 from COMMON_STYLE),null,1,1, #{approval_write, jdbcType=CLOB})
-	</insert>
 
 </mapper>

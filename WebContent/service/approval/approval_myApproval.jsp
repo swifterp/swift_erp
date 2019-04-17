@@ -7,6 +7,13 @@
 <meta charset="UTF-8">
 <title>내 결제 전체 조회</title>
 <%@ include file="../common/ui_common.jsp" %>
+<script>
+function goDraftState(draft_code){
+	location.href="./updateDraft?draft_code="+draft_code;
+}
+</script>
+
+
 </head>
 <body>
 <%	List<Map<String, String>> sess = (List<Map<String, String>>)request.getSession().getAttribute("member"); %>
@@ -20,8 +27,12 @@
 				<thead>
 					<tr> 
 						<th>No.</th>						
-						<th>기안일자</th>						
-						<th>DRAFT_STYLE</th>						
+						<th>작성일</th>						
+						<th>작성자</th>						
+						<th>결재양식</th>
+						<th>결재상태</th>
+						<th>결재</th>
+												
 					</tr>
 				</thead>
 			    <tbody>
@@ -30,10 +41,13 @@
 						if(lst != null){
 							for(int i=0;i<lst.size();i++){
 					%>
-					<tr>
+					<tr >
 						<td><%= Integer.parseInt(String.valueOf(lst.get(i).get("DRAFT_NO"))) %> </td>
 						<td><%= String.valueOf(lst.get(i).get("DRAFT_DATE")).substring(0,10) %> </td>
-						<td><%= lst.get(i).get("DRAFT_STYLE") %> </td>
+						<td><%= String.valueOf(lst.get(i).get("DRAFT_WRITER")) %> </td>
+						<td><%= String.valueOf(lst.get(i).get("STYLE_NAME")) %> </td>
+						<td><%= String.valueOf(lst.get(i).get("DRAFT_STATE")) %> </td>
+						<td><a class="btn btn-primary" onclick="javascript:goDraftState(<%= Integer.parseInt(String.valueOf(lst.get(i).get("DRAFT_NO"))) %>)" >결재</a></td>
 		
 					</tr>
 					<%

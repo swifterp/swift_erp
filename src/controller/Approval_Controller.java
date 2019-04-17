@@ -1,14 +1,14 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.oracle.webservices.internal.api.EnvelopeStyle.Style;
 
 import logic.approval.InsertApprovalData;
 import logic.approval.SelectApprovalPath;
@@ -23,6 +23,9 @@ public class Approval_Controller {
 	@Autowired
 	private SelectDraft sd;
 	
+	@Autowired
+	private InsertApprovalData iad;
+	
 	@RequestMapping("/selectDraft")
 	public String readDraft(Model model) {
 		
@@ -30,6 +33,55 @@ public class Approval_Controller {
 		
 		return "approval/approval_draft";
 	}
+	
+	@RequestMapping("/insertDraft")
+	public void writeDraft(Model model,@RequestParam HashMap<String,String> draft) {
+		model.addAttribute("list",iad.callInsertApprovalData(draft));
+	}
+	
+	@RequestMapping("/draftSearch")
+	public String searchDraft(Model model,@RequestParam int draft_code) {
+		
+		model.addAttribute("list",sd.callDraftDao(draft_code));
+		
+		return "approval/approval_draft";
+	}
+	
+	  @RequestMapping("/approval_write") 
+	  public String approval_write(Model model,
+			  			@RequestParam (value="empno")String empno,
+			  			@RequestParam (value="style_code")String style_code,
+			  			@RequestParam (value="reference_empno") List<String> reference_empno,
+					  	@RequestParam (value="draft_data")String draft_data,
+					  	@RequestParam (value="draft_no") String draft_no) 
+	  {
+		  List<HashMap<String,Integer>> reference = new ArrayList<HashMap<String,Integer>>();
+		  HashMap<String,Integer> ref;
+		  System.out.println("컨트롤층 배열크기"+reference_empno.size());
+		  System.out.println("컨트롤층 배열의 내용"+reference_empno);
+		  for(int i=0; i<reference_empno.size(); i++) 
+		  {
+			  ref = new HashMap<String,Integer>();
+			  System.out.println("컨트롤단계 맵에 넣기전 결제자들의 사번 : " + reference_empno.get(i));
+			  ref.put("reference_list",Integer.parseInt(reference_empno.get(i)));
+			  ref.put("draft_no",Integer.parseInt(draft_no));
+			  ref.put("path_order",i+1);
+			  System.out.println("컨트롤단계 reference_empno : "+ref.get("reference_list"));
+			  System.out.println("컨트롤단계 draft_no"+ref.get("draft_no"));
+			  System.out.println("컨트롤단계 path_order"+ref.get("path_order"));
+			  reference.add(ref);
+		  }
+		  
+	  model.addAttribute("list", iad.callInsertApprovalData(empno,
+			  style_code,
+			  reference, 
+			  draft_data,
+			  draft_no));
+	  
+	  return "approval/approval_draft";
+	  
+	  }
+	 
 	
 	@Autowired
 	private SelectDraftDetail sdd;
@@ -42,22 +94,16 @@ public class Approval_Controller {
 	}
 	@Autowired
 	private SelectApprovalPath sap;
+	
 	@RequestMapping("/selectApprovalPath")
-	public String readApprovalPath(Model model) {
+	public String readApprovalPath(Model model, @RequestParam Integer draft_code) {
 		
-		model.addAttribute("list", sap.callApprovalPathDao());
+		model.addAttribute("list", sap.callApprovalPathDao(draft_code));
 		
 		return "approval/approval_path";
 	}
 	
-	@RequestMapping("/insertApprovalPath")
-	public String writeApprovalPath(Model model,@RequestParam HashMap<String,String> Approval_path) {
-		
-		model.addAttribute("list", sap.writeApprovalPathDao(Approval_path));
-		
-		return "approval/approval_path";
-	}
-
+	
 	@Autowired
 	private SelectCommonStyle scs;
 	
@@ -73,37 +119,44 @@ public class Approval_Controller {
 	private SelectMyApproval sma;
 	
 	@RequestMapping("/selectMyApproval")
-	public String readMyApproval(Model model) {
-		int EMPNO=3;
+	public String readMyApproval(Model model, @RequestParam int EMPNO) {
 		model.addAttribute("list", sma.callMyApproval(EMPNO));
 		
 		return "approval/approval_myApproval";
 	}
 	
-	@Autowired
-	private InsertApprovalData iad;
-	
-	@RequestMapping("/approval_save")
-	public String approval_save(Model model, @RequestParam HashMap<String, String> approval_data) {
-		model.addAttribute("list", iad.callInsertApprovalData(approval_data));
-		return "approval/approval_common";
-	}
-	
 	
 	@RequestMapping("/approval_style")
 	public String approval_style(Model model, @RequestParam int style_code) {
-		model.addAttribute("list", scs.callCommonStyleDao(style_code));
+		model.addAttribute("style", scs.callCommonStyleDao(style_code));
 		model.addAttribute("list2", style_code);
 
 		return "approval/approval_style";
 	}
 	
-	@RequestMapping("/approval_write")
-	public String approval_write(Model model, @RequestParam HashMap<String,String> approval_write) {
-		model.addAttribute("list", iad.callInsertApprovalData(approval_write));
+	
+	@RequestMapping("/approval_path_dept1")
+	public String approval_dept1(Model model, @RequestParam int EMPNO) {
+		model.addAttribute("list", sap.callApprovalPathDao1(EMPNO));
+		return "approval/approval_pop_dept";
+	}
+	
+	@RequestMapping("/updateDraft")
+	public String updateDraft(Model model,@RequestParam int draft_code){
 		
-		return "approval/approval_style";
+		model.addAttribute("list",sdd.callDraftDetailDao(draft_code));
+		return "approval/approval_state";
 		
+	}
+	
+	@RequestMapping("/updateDraftState")
+	public String updateDraftState(Model model, @RequestParam (value="draft_code")int draft_code,
+												@RequestParam (value="state")int state,
+												@RequestParam (value="empno")int empno){
+		//model.addAttribute("list",iad.UpdateDraft(draft_code, state,empno));
+		iad.UpdateDraft(draft_code, state,empno);
+		
+		return "approval/approval_gomyapproval";
 	}
 
 }
