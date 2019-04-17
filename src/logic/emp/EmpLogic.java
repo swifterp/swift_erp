@@ -244,4 +244,12 @@ public class EmpLogic {
 		List<Map<String, String>> versionVO = ed.test();
         return versionVO;
 	}
+
+	public void setCanvasjsChartDao(EmpDao ed) {
+		this.ed = ed;
+	}
+ 
+	public List<List<Map<Object, Object>>> getCanvasjsChartData() {
+		return ed.aaa();
+	}
 }

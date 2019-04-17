@@ -1,5 +1,6 @@
 package dao.emp;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -158,4 +159,25 @@ public class EmpDao {
 		slm.getEmpDeptList();
 		return slm.getEmpDeptList();
 	}
+
+	
+	public List<List<Map<Object, Object>>> aaa() {
+		Map<Object,Object> map = null;
+		List<List<Map<Object,Object>>> list = new ArrayList<List<Map<Object,Object>>>();
+		List<Map<Object,Object>> dataPoints1 = new ArrayList<Map<Object,Object>>();
+		
+		List<Map<Object, Object>> lst = slm.canvas();
+		System.out.println(lst);
+		if(lst != null){
+			for(int i=0;i<lst.size();i++){
+				map = new HashMap<Object,Object>(); 
+				map.put("label", lst.get(i).get("A")); 
+				map.put("y", lst.get(i).get("B"));
+				dataPoints1.add(map);
+			}
+		}
+		list.add(dataPoints1);
+		return list;
+	}
+
 }

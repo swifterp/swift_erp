@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Param;
 
 public interface selectListMapper {
 
-
 		public List<Map<String, String>> login(HashMap<String, String> memLogin);
 		
 		//employee
@@ -27,6 +26,8 @@ public interface selectListMapper {
 		public List<Map<String, String>> getEmpData(String empInfo);
 		public String getEmpOne(Integer emp_number);
 		public List<Map<String, String>> getEmpOneList(Integer emp_number);
+		
+		public List<Map<Object, Object>> canvas();
 		
 		//pay
 		public List<Map<String, String>> getAllowanceList();
@@ -104,7 +105,7 @@ public interface selectListMapper {
 
 	public List<Map<String, String>> getWorkConfirmList(@Param("selectedDate") String selectedDate, @Param("empno") String empno);
 	
-	public List<Map<String, String>> getWorkNotConfirmList(@Param("selectedDate") String selectedDate, @Param("empno") String empno); // pay Ãß°¡ 0415 13:03
+	public List<Map<String, String>> getWorkNotConfirmList(@Param("selectedDate") String selectedDate, @Param("empno") String empno); // pay ï¿½ß°ï¿½ 0415 13:03
 
 	public List<Map<String, String>> getTotalWorkConfirmList();
 

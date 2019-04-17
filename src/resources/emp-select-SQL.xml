@@ -101,5 +101,12 @@
         and (e.emp_name like '%'||#{empinfo, jdbcType=VARCHAR}||'%' or d.dname like '%'||#{empinfo, jdbcType=VARCHAR}||'%')
         order by e.emp_number
 	</select>
-	
+
+	<select id="canvas" resultType="hashmap">
+		select d.parent_dname as a, round((ratio_to_report(count(e.empno)) over())*100) as b
+		from dept d, employee e
+		where d.deptno = e.deptno 
+		group by d.parent_dname
+	</select>
+
 </mapper>

@@ -22,6 +22,16 @@
 		<div class="contents">
 			<h2>거래처정보목록</h2>
 			<table class="table">
+				<colgroup>
+					<col width="10%" />
+					<col width="15%" />
+					<col width="15%" />
+					<col width="15%" />
+					<col width="20%" />
+					<col width="15%" />
+					<col width="5%" />
+					<col width="5%" />
+				</colgroup>
 				<thead>
 					<tr>
 						<th>업체구분</th>
