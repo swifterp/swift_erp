@@ -26,6 +26,7 @@ public interface selectListMapper {
 		public int checkEmpNum(String emp_number);
 		public List<Map<String, String>> getEmpData(String empInfo);
 		public String getEmpOne(Integer emp_number);
+		public List<Map<String, String>> getEmpOneList(Integer emp_number);
 		
 		//pay
 		public List<Map<String, String>> getAllowanceList();
@@ -136,5 +137,9 @@ public interface selectListMapper {
 	public List<Map<String, String>> getPersonalDeducList(String report);
 	
 	public List<Map<String, String>> getParticipentList(@Param("chatroom_code") String chatroom_code);
+	
+	public List<Map<String, String>> getRetiredEmpList();
+	
+	public List<Map<String, String>> getRetiredEmpData(String empInfo);
 
 }

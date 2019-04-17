@@ -61,5 +61,7 @@ public interface insertListMapper {
 	
 	public void setParticipent(Map<String, String> tempor);
 	
+	public void setRetiredEmp(Map<String, String> retired);
+	
 }
 

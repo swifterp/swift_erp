@@ -34,6 +34,16 @@ public class Emp_Controller {
 			return "chat/chat_emplist";
 		}
 	}
+	
+	@RequestMapping("/retiredemp")
+	public String retiredEmp(Model model) {
+		
+		model.addAttribute("list", el.callRetiredEmpListDao());
+
+		return "emp/emp_retiredEmp";
+		
+	}
+	
 	@RequestMapping("/add")
 	public String addEmp(Model model
 			 ,@RequestParam HashMap<String, String> empPlus) {
@@ -148,6 +158,12 @@ public class Emp_Controller {
 	public String selectEmpInfoSearch(Model model, @RequestParam String empinfo) {
 		model.addAttribute("list", el.empInfoSearch(empinfo));
 		return "emp/emp_mainpage";
+	}
+	
+	@RequestMapping("/retiredempSearchNumName")
+	public String selectretiredEmpInfoSearch(Model model, @RequestParam String empinfo) {
+		model.addAttribute("list", el.retiredempInfoSearch(empinfo));
+		return "emp/emp_retiredEmp";
 	}
 	
 	@RequestMapping("/pop_deptRead")

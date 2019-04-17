@@ -79,4 +79,27 @@
 		</where>
 	</select>
 	
+	<select id="getEmpOneList" parameterType="Integer" resultType="Map">		
+		select * from employee
+		<where>
+			emp_number = #{emp_number}
+		</where>
+	</select>
+	
+	<select id="getRetiredEmpList" resultType="hashmap">		
+        select e.empno, e.emp_number, e.emp_name, e.emp_email, e.emp_resident_number, d.dname, r.rank_name, e.emp_join_date 
+        from retired_employee e, dept d, rank r
+        where d.deptno=e.deptno and r.rank_no=e.rank_no
+        order by e.emp_number
+	</select>
+	
+	<select id="getRetiredEmpData" parameterType="String" resultType="hashmap">
+		select e.emp_number, e.emp_name, e.emp_email, e.emp_resident_number, d.dname, r.rank_name, e.emp_join_date 
+        from retired_employee e, dept d, rank r
+        where d.deptno=e.deptno 
+        and r.rank_no=e.rank_no
+        and (e.emp_name like '%'||#{empinfo, jdbcType=VARCHAR}||'%' or d.dname like '%'||#{empinfo, jdbcType=VARCHAR}||'%')
+        order by e.emp_number
+	</select>
+	
 </mapper>

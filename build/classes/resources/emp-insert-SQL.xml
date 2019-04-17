@@ -24,4 +24,9 @@
 	<insert id="getBankAdd" parameterType="HashMap">		
         insert into bank(bank_no,bank_name) values (#{bank_no, jdbcType=INTEGER},#{bank_name, jdbcType=VARCHAR})
 	</insert>
+	
+	<insert id="setRetiredEmp" parameterType="HashMap">		
+        insert into retired_employee(empno,emp_number,emp_name,emp_email,emp_resident_number,emp_tel,emp_mobile,emp_addr1,emp_addr2,emp_join_date,emp_retire_date,emp_retire_reason,deptno,rank_no,duty_no,bank_no,emp_account_num,emp_account_holder,emp_profile,emp_attach_file,emp_etc) values (SEQ_EMPNO.NEXTVAL,#{EMP_NUMBER, jdbcType=VARCHAR},#{EMP_NAME, jdbcType=VARCHAR}, #{EMP_EMAIL, jdbcType=VARCHAR}, #{EMP_RESIDENT_NUMBER, jdbcType=VARCHAR}, #{EMP_TEL, jdbcType=VARCHAR}, #{EMP_MOBILE, jdbcType=VARCHAR}, #{EMP_ADDR1, jdbcType=VARCHAR}, #{EMP_ADDR2, jdbcType=VARCHAR}, #{EMP_JOIN_DATE, jdbcType=VARCHAR}, #{EMP_RETIRE_DATE, jdbcType=VARCHAR}, #{EMP_RETIRE_REASON, jdbcType=VARCHAR}, #{DEPTNO, jdbcType=VARCHAR}, #{RANK_NO, jdbcType=VARCHAR}, #{DUTY_NO, jdbcType=VARCHAR}, #{BANK_NO, jdbcType=VARCHAR}, #{EMP_ACCOUNT_NUM, jdbcType=VARCHAR}, #{EMP_ACCOUNT_HOLDER, jdbcType=VARCHAR}, #{EMP_PROFILE, jdbcType=VARCHAR}, #{EMP_ATTATCH_FILE, jdbcType=VARCHAR}, #{EMP_ETC, jdbcType=VARCHAR})
+	</insert>
+	
 </mapper>

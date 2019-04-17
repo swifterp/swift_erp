@@ -21,8 +21,20 @@ public class EmpDao {
 		return slm.getEmpList();
 	}
 	
+	public List<Map<String, String>> selectRetiredEmpList() {
+		return slm.getRetiredEmpList();
+	}
+	
 	public String selectEmpOne(Integer emp_number){
 		return slm.getEmpOne(emp_number);
+	}
+	
+	public List<Map<String, String>> selectEmpOneList(Integer emp_number){
+		return slm.getEmpOneList(emp_number);
+	}
+	
+	public void insertRetiredEmp(Map<String, String> retired){
+		ilm.setRetiredEmp(retired);
 	}
 
 	public List<Map<String, String>> empView(Integer emp_number) {
@@ -79,6 +91,10 @@ public class EmpDao {
 	
 	public List<Map<String, String>> selectEmpData(String empInfo){
 		return slm.getEmpData(empInfo);
+	}
+	
+	public List<Map<String, String>> selectRetiredEmpData(String empInfo){
+		return slm.getRetiredEmpData(empInfo);
 	}
 
 	public List<Map<String, Integer>> empNumCheck(Integer emp_number) {

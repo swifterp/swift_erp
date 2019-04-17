@@ -34,6 +34,10 @@ public class EmpLogic {
 		return ed.selectEmpList();
 	}
 	
+	public List<Map<String, String>> callRetiredEmpListDao() {
+		return ed.selectRetiredEmpList();
+	}
+	
 	public List<Map<String,String>> empAddDao(HashMap<String, String> empPlus) {
 
 		String newEmpno = "";
@@ -140,6 +144,9 @@ public class EmpLogic {
 		
 		String myEmpno = ed.selectEmpOne(emp_number);
 		
+		List<Map<String, String>> retiredEmp = ed.selectEmpOneList(emp_number);
+		ed.insertRetiredEmp(retiredEmp.get(0));
+		
 		dpid.deletepayinfolist(myEmpno);
 		dpid.deletededucinfolist(myEmpno);
 		
@@ -176,6 +183,10 @@ public class EmpLogic {
 	
 	public List<Map<String, String>> empInfoSearch(String empInfo){
 		return ed.selectEmpData(empInfo);
+	}
+	
+	public List<Map<String, String>> retiredempInfoSearch(String empInfo){
+		return ed.selectRetiredEmpData(empInfo);
 	}
 
 	public List<Map<String, Integer>> empNumCheck(Integer emp_number) {
