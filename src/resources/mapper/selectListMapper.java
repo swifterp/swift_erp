@@ -24,7 +24,7 @@ public interface selectListMapper {
 		public List<Map<String, String>> getAppointView(Integer emp_appoint_no);
 		public int checkEmpNum(String emp_number);
 		public List<Map<String, String>> getEmpData(String empInfo);
-		
+		public List<Map<String, String>> getEmpPrintList(HashMap<String, String> empInfo);
 		public List<Map<Object, Object>> canvas();
 		
 		//pay

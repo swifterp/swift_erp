@@ -71,6 +71,22 @@
         select COUNT(*) from employee
         where emp_number = #{emp_number}
 	</select>
+	<select id="getEmpPrintList" parameterType="HashMap" resultType="HashMap">
+		select emp_number, emp_name
+		from employee
+		where 
+		deptno = 
+		decode(#{deptno, jdbcType=INTEGER}, null, deptno, #{deptno, jdbcType=INTEGER})
+		and 
+		rank_no = 
+		decode(#{rank_no, jdbcType=INTEGER}, null, rank_no, #{rank_no, jdbcType=INTEGER})
+		and 
+		duty_no = 
+		decode(#{duty_no, jdbcType=INTEGER}, null, duty_no, #{duty_no, jdbcType=INTEGER})
+		and 
+		emp_join_date = 
+		decode(#{emp_join_date, jdbcType=VARCHAR}, null, emp_join_date, #{emp_join_date, jdbcType=VARCHAR})
+	</select>
 	<select id="canvas" resultType="hashmap">
 		select d.parent_dname as a, round((ratio_to_report(count(e.empno)) over())*100) as b
 		from dept d, employee e

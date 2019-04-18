@@ -121,6 +121,10 @@ public class EmpLogic {
 		List<Map<String, String>> versionVO = ed.test();
         return versionVO;
 	}
+	
+	public List<Map<String, String>> getEmpPrintList(HashMap<String, String> empInfo) {
+		return ed.getEmpPrintList(empInfo);	
+	}
 
 	public void setCanvasjsChartDao(EmpDao ed) {
 		this.ed = ed;

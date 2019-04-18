@@ -163,4 +163,7 @@ public class EmpDao {
 		list.add(dataPoints1);
 		return list;
 	}
+	public List<Map<String, String>> getEmpPrintList(HashMap<String, String> empInfo) {
+		return slm.getEmpPrintList(empInfo);
+	}
 }

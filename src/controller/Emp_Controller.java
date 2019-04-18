@@ -189,6 +189,12 @@ public class Emp_Controller {
 		model.addAttribute("list", el.bankAddDao(bankPlus));	
 		return "emp/emp_etcCodeAdd";
 	}
+	
+	@RequestMapping("/listView")
+	public String empPrintList(Model model, @RequestParam HashMap<String,String> empInfo) {
+		model.addAttribute("list", el.getEmpPrintList(empInfo));	
+		return "emp/emp_listView";
+	}
 
 
 	@RequestMapping("/canvasjschart")
