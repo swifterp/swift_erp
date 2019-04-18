@@ -5,12 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../../css/common.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
-<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<%@ include file="../common/ui_common.jsp" %>
 <title>일별근무기록현황 페이지</title>
 <style>
  .line{border-left: 1px solid #fff;
@@ -136,6 +131,14 @@
 		
 	}
 
+	function changeCalendar(){
+		var tmp1 = document.getElementById("datepicker").value;
+		var arr = tmp1.split("/");
+		today = new Date(arr[0], arr[1]-1, arr[2]);
+		date  = new Date(arr[0], arr[1]-1, arr[2]);
+		buildCalendar();	
+	}
+
 	var xhr1 = null;
 
 	function createRequest(xhr){
@@ -208,10 +211,10 @@
 	<div class="container">
 		<%@ include file="../common/left_menu_pay.jsp" %>
 	<div class="contents" >
-		<span>연월선택 : </span>
-		<input type="date" class="form-control" name="selectedDate">
+		연월선택 : <input type="text" oninput="changeCalendar()" class="form-control" name="selectedDate" id="datepicker" style="width:200px; display:inline-block; margin-right:5px;">
 		<button type='button' onclick="changeCalendar()" class='btn btn-outline-primary'>변경</button>
 		<button type='button' onclick="selectworklist()" class='btn btn-outline-primary'>조회</button>
+		<br>
 		<table id="calendar" border="3" class="table line2" style="width: 900px"> 
 			<thead>
 				<tr>

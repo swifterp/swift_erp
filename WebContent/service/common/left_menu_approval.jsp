@@ -20,7 +20,6 @@ $(function(){
 		<ul class="bg-primary">
 			<li><a href="../approval/selectDraft">결재 조회</a></li>
 			<li><a href="../approval/selectCommon">공통양식조회</a></li>
-			<li><a href="../approval/selectApprovalPath">결재라인조회</a></li>
 			<li><a href="../approval/approval_gomyapproval.jsp">내 결재 전체 조회</a></li>
 		</ul>
 	</nav>

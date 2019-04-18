@@ -79,22 +79,7 @@
 		</where>
 	</select>
 
-	<select id="getEmpPrintList" parameterType="HashMap" resultType="HashMap">
-		select emp_number, emp_name
-		from employee
-		where 
-		deptno = 
-		decode(#{deptno, jdbcType=INTEGER}, null, deptno, #{deptno, jdbcType=INTEGER})
-		and 
-		rank_no = 
-		decode(#{rank_no, jdbcType=INTEGER}, null, rank_no, #{rank_no, jdbcType=INTEGER})
-		and 
-		duty_no = 
-		decode(#{duty_no, jdbcType=INTEGER}, null, duty_no, #{duty_no, jdbcType=INTEGER})
-		and 
-		emp_join_date = 
-		decode(#{emp_join_date, jdbcType=VARCHAR}, null, emp_join_date, #{emp_join_date, jdbcType=VARCHAR})
-	</select>
+	
 
 	<select id="getEmpOneList" parameterType="Integer" resultType="Map">		
 		select * from employee

@@ -42,8 +42,8 @@
 		<%@ include file="../common/left_menu_attend.jsp" %>
 		<div class="contents">
 			<h2>근태항목관리 목록</h2>
-			<form action="../attend/attend_DetailCode" style="text-align:left; margin-bottom:20px; background:#eee;">
-				<table class="table tb_left">
+			<form action="../attend/attend_DetailCode">
+				<table class="table tb_left" style="text-align:left; margin-bottom:20px; background:#eee;">
 					<colgroup>
 						<col width="20%" />
 						<col width="80%" />
@@ -59,7 +59,7 @@
 					<tr>
 						<th>근태코드상태</th>
 						<td>
-							<select id="attend_code_state" name="attend_code_state" class="form-control"style="width:200px;">
+							<select id="attend_code_state" name="attend_code_state" class="form-control" style="width:200px;">
 								<option value="">전체</option>			  
 								<option value="사용">사용</option>
 								<option value="중지">중지</option>

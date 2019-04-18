@@ -35,7 +35,7 @@
 				<div class="input-group">
 					<input type="text" class="form-control" name="draft_code" placeholder="서류 번호">
 					<span class="input-group-btn" style="width:100px;">	
-						<input type="submit" class="btn btn-primary" style="margin-bottom:20px;" value="검색">
+						<input type="submit" class="btn btn-outline-primary" style="margin-bottom:20px;" value="검색">
 					</span>
 				</div>
 			</form> 
@@ -64,8 +64,8 @@
 						<td><%= lst.get(i).get("STYLE_NAME") %> </td>
 						<td><%= lst.get(i).get("EMP_NAME") %> </td>
 						<td><%= lst.get(i).get("DRAFT_STATE") %> </td>
-						<td><a class="btn btn-primary" onclick="javascript:goDraftSearch(<%= Integer.parseInt(String.valueOf(lst.get(i).get("DRAFT_NO"))) %>)" >조회</a></td>
-						<td><a class="btn btn-primary" onclick="javascript:goApprovalPath(<%= Integer.parseInt(String.valueOf(lst.get(i).get("DRAFT_NO"))) %>)" >결재라인 조회</a></td>
+						<td><a class="btn btn-outline-primary" onclick="javascript:goDraftSearch(<%= Integer.parseInt(String.valueOf(lst.get(i).get("DRAFT_NO"))) %>)" >조회</a></td>
+						<td><a class="btn btn-default" onclick="javascript:goApprovalPath(<%= Integer.parseInt(String.valueOf(lst.get(i).get("DRAFT_NO"))) %>)" >결재라인 조회</a></td>
 					
 					</tr>
 					<%

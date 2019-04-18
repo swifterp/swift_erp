@@ -44,15 +44,33 @@
 		<div class="contents">
 			<h1>업무일지 관리</h1>
 			<form action="../work/workDetailList">
-				<div id="pop_clientlist" class="input-group">
-					<input type="hidden" id="client_code" name="client_code" class="form-control" value="0">
-					<input type="text" id="client_name" class="form-control" placeholder="거래처명">
-				</div>
-				<div id="pop_deptlist" class="input-group">
-					<input type="hidden" id="deptno" name="deptno" class="form-control" value="0">
-					<input type="text" id="dname" class="form-control" placeholder="부서명">
-				</div>
-				<button type="submit" class="btn btn-default" style="margin-bottom:20px;">검색</button>
+				<table class="table tb_left" style="text-align:left; margin-bottom:20px; background:#eee;">
+					<tr>
+						<th>거래처명</th>
+						<td>
+							<div id="pop_clientlist">
+								<input type="hidden" id="client_code" name="client_code" class="form-control" value="0">
+								<input type="text" id="client_name" class="form-control" placeholder="거래처명" style="width:200px;">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>부서명</th>
+						<td>
+							<div id="pop_deptlist">
+								<input type="hidden" id="deptno" name="deptno" class="form-control" value="0">
+								<input type="text" id="dname" class="form-control" placeholder="부서명" style="width:200px;">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="line" style="width:155px" colspan="2">
+						<div class="input-group pull-right">
+							<button type="submit" class="btn btn-outline-primary">검색</button>
+						</div>
+						</td>
+					</tr>
+				</table>
 			</form>
 
 			<table class="table">

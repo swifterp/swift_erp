@@ -33,7 +33,7 @@ public class InsertTotalCalcList {
 
 					if(String.valueOf(confirmed.get(i).get("ALLOWANCE_NO")).equals(String.valueOf(payinfo.get(j).get("ALLOWANCE_NO")))) {
 
-						if(payinfo.get(j).get("ALLOWANCE_DIVISION").equals("¿œ±ﬁ")) {
+						if(payinfo.get(j).get("ALLOWANCE_DIVISION").equals("ÏùºÍ∏â")) {
 							
 							Map<String, String> tmp = new HashMap<String, String>();
 							
@@ -57,7 +57,7 @@ public class InsertTotalCalcList {
 			}
 			/*
 			if(payinfo.size() > i) {
-				if(payinfo.get(i).get("ALLOWANCE_DIVISION").equals("ø˘¡§æ◊")) {
+				if(payinfo.get(i).get("ALLOWANCE_DIVISION").equals("ÏõîÏ†ïÏï°")) {
 
 					Map<String, String> tmp = new HashMap<String, String>();
 					
@@ -77,7 +77,7 @@ public class InsertTotalCalcList {
 			*/
 		}
 		for(int i=0;i<payinfo.size();i++) {
-			if(payinfo.get(i).get("ALLOWANCE_DIVISION").equals("ø˘¡§æ◊")) {
+			if(payinfo.get(i).get("ALLOWANCE_DIVISION").equals("ÏõîÏ†ïÏï°")) {
 	
 				Map<String, String> tmp = new HashMap<String, String>();
 				

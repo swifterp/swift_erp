@@ -45,24 +45,13 @@
 	</select>
 	
 	<select id="getAttendDetailList" parameterType="HashMap" resultType="HashMap">
-<!--         select to_char(attend_date, 'YYYY-MM-DD') as attend_date, emp.emp_number, emp.emp_name,
+      select to_char(attend_date, 'YYYY-MM-DD') as attend_date, emp.emp_number, emp.emp_name,
         attend_time, attend_m_etc, attend_name, attend_no, attend_open, attend_close
-            from ATTEND_MANAGER_T amt, ATTEND_CODE_T act, employee emp, (select sum(decode(emp_number, #{empno, jdbcType=INTEGER},  empno, '0')) as empnum from employee) emp1
-        where emp.empno = amt.empno
-            and amt.empno = decode(emp1.empnum, '0', amt.empno, emp1.empnum)
-            and amt.attend_code = act.attend_code
-            and attend_time = decode(#{attend_time, jdbcType=INTEGER}, null, attend_time, #{attend_time, jdbcType=INTEGER})
-            and attend_date between to_date((decode(#{attend_date, jdbcType=DATE}, null, '1900-01-01', #{attend_date, jdbcType=DATE})), 'YYYY-MM-DD')
-            and to_date((decode(#{attend_date2, jdbcType=DATE}, null, to_char(sysdate, 'YYYY-MM-DD'), #{attend_date2, jdbcType=DATE})), 'YYYY-MM-DD')
-            and attend_name = decode(#{attend_name, jdbcType=VARCHAR}, null, attend_name, #{attend_name, jdbcType=VARCHAR})
-            order by attend_no -->
-        select to_char(attend_date, 'YYYY-MM-DD') as attend_date, emp.emp_number, emp.emp_name,
-        attend_time, attend_m_etc, attend_name, attend_no, attend_open, attend_close
-            from ATTEND_MANAGER_T amt, ATTEND_CODE_T act, employee emp, 
-            (select sum(decode(emp_number, #{empno, jdbcType=INTEGER},  empno, '0')) as empnum from employee) emp1, 
+            from ATTEND_MANAGER_T amt, ATTEND_CODE_T act, employee emp,
+            (select sum(distinct(decode(#{empno, jdbcType=INTEGER}, null, null, emp_number, empno, '0'))) as emp_no from employee) e1,
             (select attend_code from attend_code_t where attend_name like '%' || #{attend_name, jdbcType=VARCHAR} || '%') attend_c
         where emp.empno = amt.empno
-            and amt.empno = decode(emp1.empnum, '0', '0', emp1.empnum)
+            and amt.empno = decode(e1.emp_no, null, amt.empno, '0', '0', e1.emp_no)
             and amt.attend_code = act.attend_code
             and attend_time = decode(#{attend_time, jdbcType=INTEGER}, null, attend_time, #{attend_time, jdbcType=INTEGER})
             and attend_date between to_date((decode(#{attend_date, jdbcType=DATE}, null, '1900-01-01', #{attend_date, jdbcType=DATE})), 'YYYY-MM-DD')

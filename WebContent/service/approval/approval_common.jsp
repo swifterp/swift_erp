@@ -42,9 +42,11 @@
 						
 						
 							
-							<td><a class="btn btn-primary" onclick="javascript:goStyleSearch(<%= 
+							<td>
+								<a class="btn btn-outline-primary" onclick="javascript:goStyleSearch(<%= 
 									Integer.parseInt(String.valueOf(lst.get(i).get("STYLE_CODE"))) %>,
-								<%= Integer.parseInt(String.valueOf(lst.get(i).get("DRAFT_NO"))) %> )">조회</a></td>
+								<%= Integer.parseInt(String.valueOf(lst.get(i).get("DRAFT_NO"))) %> )">조회</a>
+							</td>
 							
 								</td>
 						

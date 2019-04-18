@@ -91,11 +91,7 @@ table tr:hover {background:#fefefe;}
 				</div>
 			</form>
 			<form action="../emp/retiredemp">
-				<div class="input-group">
-					<span class="input-group-btn" style="width:100px;">
-						<button type="submit" class="btn btn-default" style="margin-bottom:20px;">퇴사자명단</button>
-					</span>
-				</div>
+				<button type="submit" class="btn btn-outline-primary" style="margin-bottom:20px;">퇴사자명단</button>
 			</form>
 			<table class="table" id="mytable">
 				<colgroup>

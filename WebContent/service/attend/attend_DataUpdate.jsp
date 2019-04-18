@@ -7,23 +7,6 @@
 <meta charset="UTF-8">
 <title>근태 수정</title>
 <%@ include file="../common/ui_common.jsp" %>
-<!-- 날짜선택 관련 -->
-<script>
-	$(function() {
-	  $( "#datepicker" ).datepicker({
-	        showOn: "both", 
-	        buttonImage: "../../images/btn_calendar.png", 
-	        buttonImageOnly: true, 
-	        dateFormat: "yy/mm/dd",
-	       	changeMonth: true, 
-	        dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
-	        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
-	        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
-	        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
-		  });
-	});
-</script>
-
 <script type="text/javascript">
 	$(document).ready(function() {
 	    $('#pop_attendcode').on("click", function() {	
@@ -60,7 +43,7 @@
 					</tr>
 					<tr>
 						<th> 근태날짜 <span class="essential">*</span></th>	 
-						<td><input type="text" id="datepicker" class="form-control" name="attend_date" value="${list.get(0).get("ATTEND_DATE")}" style="width:90%; display:inline-block; margin-right:5px;" required=""></td>
+						<td><input type="date" class="form-control" name="attend_date" value="${list.get(0).get("ATTEND_DATE")}" style="width:90%; display:inline-block; margin-right:5px;" required=""></td>
 					</tr>
 					<tr>
 						<th> 근태코드 <span class="essential">*</span></th>				

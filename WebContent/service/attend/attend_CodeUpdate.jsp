@@ -54,8 +54,10 @@
 						<td><input type="text" id="attend_c_etc" name="attend_c_etc" value="${list.get(0).get("ATTEND_C_ETC")}" class="form-control"></td>
 					</tr>
 				</table>
-				<a class="btn btn-default pull-left" href="../attend/attend_CodeList">목록</a>
-				<input type="submit" value="확인" class="btn btn-primary pull-right">
+				<div class="btn_group">
+					<a class="btn btn-default pull-left" href="../attend/attend_CodeList">목록</a>
+					<input type="submit" value="확인" class="btn btn-primary pull-right">
+				</div>
 			</form>
 		</div>
 	</div>

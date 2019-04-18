@@ -131,21 +131,10 @@
 			    </tbody>
 			</table>
 			<div class="btn_group">
-				<input type="button" class="btn btn-primary pull-right" onclick="javascript:attendDataInsert()" value="상세등록">
+				<input type="button" class="btn btn-outline-primary pull-right" onclick="javascript:attendDataInsert()" value="상세등록" style="margin-left:10px;">
 			</div>
-<%-- 				<form action="../work/insertWorkStart">
-					<input type="text" id="EMPNO" name="EMPNO" value="<%=sess.get(0).get("EMPNO")%>">
-				<input type="hidden" id="EMPNO" name="EMPNO" value="<%=sess.get(0).get("EMPNO")%>">
-					<input type="submit" class="btn btn-primary pull-right" value="출근">
-				</form>
-				<form action="../work/insertWorkEnd">
-					<input type="text" id="EMPNO" name="EMPNO" value="1">
-				<input type="hidden" id="EMPNO" name="EMPNO" value="<%=sess.get(0).get("EMPNO")%>">
-					<input type="submit" class="btn btn-primary pull-right" value="퇴근">
-				</form> --%>
-			<input type="button" class="btn btn-primary pull-right" onclick="javascript:attend_end_add(<%= String.valueOf(sess.get(0).get("EMPNO")) %>)" value="퇴근">
-
-			<input type="button" class="btn btn-primary pull-right" onclick="javascript:attend_start_add(<%= String.valueOf(sess.get(0).get("EMPNO")) %>)" value="출근">
+			<input type="button" class="btn btn-outline-primary pull-right" onclick="javascript:attend_end_add(<%= String.valueOf(sess.get(0).get("EMPNO")) %>)" value="퇴근" style="margin-left:10px;">
+			<input type="button" class="btn btn-outline-primary pull-right" onclick="javascript:attend_start_add(<%= String.valueOf(sess.get(0).get("EMPNO")) %>)" value="출근" style="margin-left:10px;">
 
 		</div>
 	</div>

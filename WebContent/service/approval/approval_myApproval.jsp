@@ -22,7 +22,7 @@ function goDraftState(draft_code){
 	<div class="container">		
 		<%@ include file="../common/left_menu_approval.jsp" %>
 		<div class="contents">
-			<h2>내 결제 내역 조회</h2>
+			<h2>내 결재 내역 조회</h2>
 			<table class="table">
 				<thead>
 					<tr> 
@@ -49,7 +49,7 @@ function goDraftState(draft_code){
 						<td><%= String.valueOf(lst.get(i).get("STYLE_NAME")) %> </td>
 						<td><%= String.valueOf(lst.get(i).get("DRAFT_STATE")) %> </td>
 						<td><%= String.valueOf(lst.get(i).get("PATH_STATE")) %> </td>
-						<td><a class="btn btn-primary" onclick="javascript:goDraftState(<%= Integer.parseInt(String.valueOf(lst.get(i).get("DRAFT_NO"))) %>)" >결재</a></td>
+						<td><a class="btn btn-outline-primary" onclick="javascript:goDraftState(<%= Integer.parseInt(String.valueOf(lst.get(i).get("DRAFT_NO"))) %>)" >결재</a></td>
 		
 					</tr>
 					<%
