@@ -70,6 +70,7 @@
 	</select>
 	<select id="getAttendCodepop" resultType="HashMap">
 		select attend_code, attend_name from ATTEND_CODE_T
+		order by attend_code
 	</select>
 	
 <!-- 출근기록 -->

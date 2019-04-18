@@ -20,7 +20,7 @@ $(function(){
 		<ul class="bg-primary">
 			<li>
 				<a data-toggle="collapse" data-target="#group1"
-				aria-expanded="false" href="#">기본사항관리</a>
+				aria-expanded="false" href="#">업무관리</a>
 				<ul class="collapse in depth2" id="group1">
 					<li><a href="../attend/attend_CodeList">근태항목관리</a></li>
 					<li><a href="../attend/attend_DataList">근태관리</a></li>

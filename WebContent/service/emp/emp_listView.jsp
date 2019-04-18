@@ -96,7 +96,12 @@ $(document).ready(function() {
 				</div>
 			</form>
 			<div>
-				<p style="clear:both;">검색결과 : 총  n명</p>
+				<%
+			 	  List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list"); 
+			      if(lst != null){
+			         for(int i=0;i<lst.size();i++){
+			    %>
+				<p style="clear:both;">검색결과 : 총  <%= String.valueOf(lst.get(0).get("EMPNO1")) %>명</p>
 				<table class="table">
 					<thead>
 						<tr>
@@ -105,11 +110,7 @@ $(document).ready(function() {
 						</tr>
 					</thead>
 					<tbody>
-					   <%
-					      List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
-					      if(lst != null){
-					         for(int i=0;i<lst.size();i++){
-					   %>
+
 					            <tr>
 					               <td><%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %> </td>
 					               <td><%= lst.get(i).get("EMP_NAME") %> </td>
