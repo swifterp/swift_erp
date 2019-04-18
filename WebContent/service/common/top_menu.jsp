@@ -34,9 +34,8 @@
 			<ul class="nav navbar-nav tmenu">
 				<li><a href="../emp/read">인사관리</a></li>
 				<li><a href="../pay/allowance">급여관리</a></li>		
-				<li><a href="../attend/attend_DataList">근태관리</a></li>
+				<li><a href="../attend/attend_DataList">업무관리</a></li>
 				<li><a href="../approval/selectDraft">결재관리</a></li>
-				<li><a href="../work/selectBusinessLog">업무관리</a></li>
 				<li><a href="../client/selectClientInfo">고객관리</a></li>
 			</ul>
 			<div id="inchat" style="float:left;"></div>

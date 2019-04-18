@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>근태내역상세조회</title>
+<title>근태내역 상세조회</title>
 </head>
 <body>
 <table style="border:1px solid #ccc; text-align:center;">

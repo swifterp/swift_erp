@@ -15,20 +15,26 @@ public class SelectApprovalPath {
 	@Autowired
 	private ApprovalPathDao apd;
 	
-	public List<Map<String,String>> callApprovalPathDao(){
+	public List<Map<String,String>> callApprovalPathDao(int draft_code){
 		
-		return apd.selectApprovalPath();
+		return apd.selectApprovalPath(draft_code);
+		
+	}
+public List<Map<String,String>> callApprovalPathDao1(int empno){
+		
+		return apd.selectApprovalPath1(empno);
 		
 	}
 
-	public List<Map<String,String>> writeApprovalPathDao(HashMap<String, String> approval_path) {
-		// TODO Auto-generated method stub
-		
-		apd.insertApprovalPath(approval_path);
-		
-		return apd.selectApprovalPath();
-	}
-	
+
+	/*
+	 * public List<Map<String,String>> writeApprovalPathDao(HashMap<String, String>
+	 * approval_path) { // TODO Auto-generated method stub
+	 * 
+	 * apd.insertApprovalPath(approval_path);
+	 * 
+	 * return apd.selectApprovalPath(); }
+	 */
 
 	
 

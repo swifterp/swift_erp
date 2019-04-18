@@ -6,17 +6,17 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dao.work.ClientListDao;
+import dao.work.ClientDao;
 
 @Service("SelectClientList")
 public class SelectClientList {
 	
 	@Autowired
-	private ClientListDao cld;
-	
-	public List<Map<String,String>> CallClientListDao(String clientName){	
-		
-		return cld.selectClientList(clientName); 
+	private ClientDao cd;
+
+//Client POP-UP Call
+	public List<Map<String, String>> call_pop_client(){
+		return cd.select_pop_client();
 	}
 
 }

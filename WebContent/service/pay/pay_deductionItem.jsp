@@ -34,64 +34,58 @@
 	<div class="container">
 		<%@ include file="../common/left_menu_pay.jsp" %>
 		<div class="contents">
-	<div style="width: 1200px" class="contents">
-		<form action="../pay/insertDeduction">
-			<table class="table" style="margin: auto; text-align:center;">
+			<form action="../pay/insertDeduction">
+				<table class="table" text-align:center;">
+					<tbody>
+						<tr>
+							<th>
+								항목이름
+							</th>
+							<td class="input-group">
+								<input type="text" name="name" class="form-control">
+								<span class="input-group-btn">
+									<input type="submit" class="btn btn-outline-primary" value="등록">
+								</span>
+							</td>
+						</tr>	
+					</tbody>
+				</table>
+			</form>
+	
+			<table class="table" style="margin-top:20px; text-align:center;">
 				<tbody>
 					<tr>
-						<td>
-							항목이름
-						</td>
-						<td>
-							<input type="text" name="name">
-						</td>
+						<th>
+							공제명
+						</th>
+						<th>
+							기타
+						</th>
 					</tr>
+	<%
+			List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
+		
+			if(lst != null){
+				for(int i=0;i<lst.size();i++){
+	%>
 					<tr>
-						<td colspan="2">
-							<input type="submit" value="등록">
+						<td>
+							<%= lst.get(i).get("DEDUCTION_NAME") %>
+						</td>
+						<td>
+							<input type="button" class="btn btn-default pull-list" value="삭제하기" onclick="javascript:deleteDeductionItem(<%= String.valueOf(lst.get(i).get("DEDUCTION_NO")) %>)">
 						</td>
 					</tr>
+	<%
+				}
+			}
+	%>
 				</tbody>
 			</table>
-		</form>
+			<div class="btn_group">
+				<input type="button" class="btn btn-outline-primary pull-list" value="인쇄" >
+			</div>
+		</div>
 	</div>
-
-	<div style="width: 1200px" class="contents">
-		<table class="table" style="margin: auto; text-align:center;">
-			<tbody>
-				<tr>
-					<td>
-						공제명
-					</td>
-					<td>
-						기타
-					</td>
-				</tr>
-<%
-		List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
-	
-		if(lst != null){
-			for(int i=0;i<lst.size();i++){
-%>
-				<tr>
-					<td>
-						<%= lst.get(i).get("DEDUCTION_NAME") %>
-					</td>
-					<td>
-						<input type="button" class="btn btn-primary pull-list" value="삭제하기" onclick="javascript:deleteDeductionItem(<%= String.valueOf(lst.get(i).get("DEDUCTION_NO")) %>)">
-					</td>
-				</tr>
-<%
-			}
-		}
-%>
-			</tbody>
-		</table>
-		<br> 
-		<input type="button" class="btn btn-primary pull-list"
-			 value="인쇄" >
-	</div>
-</div>
-</div>
 </body>
 </html>

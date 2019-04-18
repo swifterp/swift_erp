@@ -17,6 +17,15 @@
 
 	<delete id="killSalaryCalcList" parameterType="String">
 		delete from salarycalclist where salarycalc_report = #{report}
-	</delete>	
+	</delete>
+	
+	<delete id="empPayInfoDelete" parameterType="String">
+		delete from personalpayinfo where empno = #{empno}
+	</delete>
+	
+	<delete id="empDeducInfoDelete" parameterType="String">
+		delete from personaldeducinfo where empno = #{empno}
+	</delete>
+
 
 </mapper>

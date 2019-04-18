@@ -27,4 +27,5 @@ public class SelectAttendManagerT {
 	public List<Map<String, String>> callAttendDetailListDao(@RequestParam HashMap<String, String> DetailInfo){
 		return amt.selectAttendDetailList(DetailInfo);
 	}
+
 }

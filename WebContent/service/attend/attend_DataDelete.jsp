@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>근태 삭제 PK로 index</title>
+<title>근태 삭제</title>
 <script type="text/javascript">
 	location.href="../attend/attend_DataList";
 </script>

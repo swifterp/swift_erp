@@ -210,6 +210,12 @@
 		xhr2.send("empno="+empno+"&year="+document.getElementById("yeartext").value+"&month="+document.getElementById("monthtext").value+"&day="+document.getElementById("daytext").value);
 	}
 
+	function cancelConfirm(empno, selectedDate){
+
+		location.href = "./cancelworkconfirm?empno="+empno+"&selectedDate="+selectedDate;
+		
+	}
+
 </script>
 </head>
 <body>
@@ -225,7 +231,7 @@
 		<%@ include file="../common/left_menu_pay.jsp" %>
 		<div class="contents">
 		
-				연월선택 : <input type="text" oninput="changeCalendar()" class="form-control" name="selectedDate" id="datepicker" style="width:7%; display:inline-block; margin-right:5px;">
+				연월선택 : <input type="text" oninput="changeCalendar()" class="form-control" name="selectedDate">
 		<button type='button' onclick="changeCalendar()" class='btn btn-outline-black'>변경</button>
 		<button type='button' onclick="selectconfirmlist()" class='btn btn-outline-black'>조회</button>
 		<br>
@@ -319,6 +325,21 @@
 	<td>
 		<%= String.valueOf(lst.get(i).get("EMPNO")) %>
 	</td>
+		<%
+			if(String.valueOf(lst.get(i).get("DAILYWORK_CONFIRM")).equals("1")){
+				%>
+				<td>
+					<button type="button" class="btn btn-secondary" onclick="cancelConfirm('<%= String.valueOf(lst.get(i).get("EMPNO")) %>', '<%= String.valueOf(lst.get(i).get("DAILYWORK_DATE")) %>')">확정</button>
+				</td>
+				<%
+			} else {
+				%>
+				<td>
+					미확정
+				</td>
+				<%
+			}
+		%>
 	</tr>
 	<tr>
 	<%

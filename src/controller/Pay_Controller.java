@@ -24,18 +24,26 @@ import logic.pay.InsertWorkConfirm;
 import logic.pay.SelectAllowanceItem;
 import logic.pay.SelectDailyworkList;
 import logic.pay.SelectDeductionItem;
-import logic.pay.SelectMonthlyempList;
 import logic.pay.SelectPersonalPayList;
 import logic.pay.SelectSalaryCalcList;
-import logic.pay.SelectSpecsList;
 import logic.pay.SelectWorkConfirm;
 import logic.pay.UpdatePayConfirmCancelList;
 import logic.pay.UpdatePayConfirmList;
+import logic.pay.UpdateWorkConfirmCancel;
 
 @Controller
 @RequestMapping("service/pay")
 public class Pay_Controller {
-
+	
+	@RequestMapping("/allowNdeduc")
+	public String pay_allowNdeduc(Model model) {
+		
+		model.addAttribute("deduc", sdi.callDeductionItemDao());
+		model.addAttribute("allow", sai.callAllowanceItemDao(2));
+		
+		return "emp/emp_empAdd";
+	}
+	
 	@Autowired
 	private SelectAllowanceItem sai;
 	
@@ -85,9 +93,9 @@ public class Pay_Controller {
 	public String pay_Deduction(Model model) {
 				
 		model.addAttribute("list", sdi.callDeductionItemDao());
-		
+
 		return "pay/pay_deductionItem";
-		
+
 	}
 	
 	@Autowired
@@ -140,18 +148,6 @@ public class Pay_Controller {
 	}
 	
 	@Autowired
-	private SelectSpecsList sspl;
-	
-	@RequestMapping("/specs")
-	public String pay_Specs(Model model, @RequestParam(value="empno", defaultValue="0") Integer empno) {
-
-		model.addAttribute("list", sspl.callSpecsDao(empno));
-		
-		return "pay/pay_specsList";
-		
-	}
-	
-	@Autowired
 	private InsertUnderyearList iul;
 	
 	@RequestMapping("/underyearSearch")
@@ -169,19 +165,6 @@ public class Pay_Controller {
 		model.addAttribute("list", iul.callUnderyearDao(percentage));
 		
 		return "pay/pay_underyearSearch";
-		
-	}
-
-	@Autowired
-	private SelectMonthlyempList sml;
-	
-	@RequestMapping("/monthlyemp")
-	public String pay_monthlyemp(Model model, @RequestParam(value="year", defaultValue="error") String year
-											, @RequestParam(value="month", defaultValue="error") String month) {
-		
-		model.addAttribute("list", sml.callMonthlyempDao(year, month));
-		
-		return "pay/pay_monthlyempList";
 		
 	}
 	
@@ -321,6 +304,19 @@ public class Pay_Controller {
 		
 		return "pay/pay_salaryCalcList";
 		
+	}
+	
+	@Autowired
+	private UpdateWorkConfirmCancel uwcc;
+	
+	@RequestMapping("/cancelworkconfirm")
+	public String pay_cancelworkconfirm(Model model, @RequestParam(value="empno", defaultValue="0") String empno,
+													 @RequestParam(value="selectedDate", defaultValue="0") String selectedDate) {
+
+		model.addAttribute("list", uwcc.callWorkConfirmCancelDao(empno, selectedDate));
+		
+		return "pay/pay_workconfirmList";
+
 	}
 
 }

@@ -4,15 +4,21 @@
 <mapper namespace="resources.mapper.selectListMapper">
 
 	<select id="getAttendCodeList" resultType="hashmap">
-		select attend_code, attend_name, attend_code_state, attend_c_etc 
-			from ATTEND_CODE_T order by attend_code
+		select attend_code, attend_name, attend_code_state, attend_c_etc
+		from ATTEND_CODE_T order by attend_code
 	</select>
 
 	<select id="getAttendDataList" resultType="hashmap">
-        select to_char(attend_date,'YYYY-MM-DD') as attend_date, empno, 
+<!--         select to_char(attend_date,'YYYY-MM-DD') as attend_date, empno, 
         attend_time, attend_m_etc, attend_name, attend_no, attend_open, attend_close 
             from ATTEND_MANAGER_T amt, ATTEND_CODE_T act
             where amt.attend_code = act.attend_code
+        order by attend_no -->
+        select to_char(attend_date,'YYYY-MM-DD') as attend_date, emp.emp_number, emp.emp_name, 
+        attend_time, attend_m_etc, attend_name, attend_no, attend_open, attend_close 
+            from ATTEND_MANAGER_T amt, ATTEND_CODE_T act, employee emp
+            where amt.attend_code = act.attend_code and 
+                  emp.empno = amt.empno
         order by attend_no
 	</select>
 	
@@ -21,37 +27,71 @@
 	</select>
 	
 	<select id="getAttendLow" parameterType="Integer" resultType="HashMap">
-		select to_char(attend_date, 'YYYY-MM-DD') as attend_date, empno, attend_time, attend_m_etc, 
+<!-- 		select to_char(attend_date, 'YYYY-MM-DD') as attend_date, empno, attend_time, attend_m_etc, 
 		attend_code, attend_no, attend_open, attend_close 
 			from attend_manager_T 
-		where attend_no = #{attendno, jdbcType=INTEGER}
+		where attend_no = #{attendno, jdbcType=INTEGER} -->
+		select to_char(attend_date, 'YYYY-MM-DD') as attend_date, emp.emp_number,emp.emp_name, attend_time, attend_m_etc, 
+        attend_code, attend_no, attend_open, attend_close 
+            from attend_manager_T amt, employee emp
+        where attend_no = #{attendno, jdbcType=INTEGER}
+            and amt.empno = emp.empno
 	</select>
 	
 	<select id="getAttendCodeLow" parameterType="Integer" resultType="HashMap">
-		select attend_code, attend_name, attend_code_state, attend_c_etc 
+		select attend_code, attend_name, attend_code_state, attend_c_etc  
 			from ATTEND_CODE_T
 		where attend_code=#{attend_code, jdbcType=INTEGER}
 	</select>
 	
 	<select id="getAttendDetailList" parameterType="HashMap" resultType="HashMap">
-        select rownum, to_char(attend_date, 'YYYY-MM-DD') as attend_date, attend_time, 
-        attend_name, attend_open, attend_close, attend_m_etc 
-			from ATTEND_MANAGER_T amt, ATTEND_CODE_T act
-        where empno = decode(#{empno, jdbcType=INTEGER}, null, empno, #{empno, jdbcType=INTEGER})
-        and attend_time = decode(#{attend_time, jdbcType=INTEGER}, null, attend_time, #{attend_time, jdbcType=INTEGER})
-        and attend_date between to_date((decode(#{attend_date, jdbcType=DATE}, null, '1900-01-01', #{attend_date, jdbcType=DATE})), 'YYYY-MM-DD')
-        					and to_date((decode(#{attend_date2, jdbcType=DATE}, null, to_char(sysdate, 'YYYY-MM-DD'), #{attend_date2, jdbcType=DATE})), 'YYYY-MM-DD')
-        and attend_name = decode(#{attend_name, jdbcType=VARCHAR}, null, attend_name, #{attend_name, jdbcType=VARCHAR})
-        and amt.attend_code = act.attend_code
+<!--         select to_char(attend_date, 'YYYY-MM-DD') as attend_date, emp.emp_number, emp.emp_name,
+        attend_time, attend_m_etc, attend_name, attend_no, attend_open, attend_close
+            from ATTEND_MANAGER_T amt, ATTEND_CODE_T act, employee emp, (select sum(decode(emp_number, #{empno, jdbcType=INTEGER},  empno, '0')) as empnum from employee) emp1
+        where emp.empno = amt.empno
+            and amt.empno = decode(emp1.empnum, '0', amt.empno, emp1.empnum)
+            and amt.attend_code = act.attend_code
+            and attend_time = decode(#{attend_time, jdbcType=INTEGER}, null, attend_time, #{attend_time, jdbcType=INTEGER})
+            and attend_date between to_date((decode(#{attend_date, jdbcType=DATE}, null, '1900-01-01', #{attend_date, jdbcType=DATE})), 'YYYY-MM-DD')
+            and to_date((decode(#{attend_date2, jdbcType=DATE}, null, to_char(sysdate, 'YYYY-MM-DD'), #{attend_date2, jdbcType=DATE})), 'YYYY-MM-DD')
+            and attend_name = decode(#{attend_name, jdbcType=VARCHAR}, null, attend_name, #{attend_name, jdbcType=VARCHAR})
+            order by attend_no -->
+        select to_char(attend_date, 'YYYY-MM-DD') as attend_date, emp.emp_number, emp.emp_name,
+        attend_time, attend_m_etc, attend_name, attend_no, attend_open, attend_close
+            from ATTEND_MANAGER_T amt, ATTEND_CODE_T act, employee emp, 
+            (select sum(decode(emp_number, #{empno, jdbcType=INTEGER},  empno, '0')) as empnum from employee) emp1, 
+            (select attend_code from attend_code_t where attend_name like '%' || #{attend_name, jdbcType=VARCHAR} || '%') attend_c
+        where emp.empno = amt.empno
+            and amt.empno = decode(emp1.empnum, '0', '0', emp1.empnum)
+            and amt.attend_code = act.attend_code
+            and attend_time = decode(#{attend_time, jdbcType=INTEGER}, null, attend_time, #{attend_time, jdbcType=INTEGER})
+            and attend_date between to_date((decode(#{attend_date, jdbcType=DATE}, null, '1900-01-01', #{attend_date, jdbcType=DATE})), 'YYYY-MM-DD')
+            and to_date((decode(#{attend_date2, jdbcType=DATE}, null, to_char(sysdate, 'YYYY-MM-DD'), #{attend_date2, jdbcType=DATE})), 'YYYY-MM-DD')
+            and amt.attend_code = attend_c.attend_code
+            order by attend_no
 	</select>
 	
 	<select id="getAttendCodeDetailList" parameterType="HashMap" resultType="HashMap">
-		select attend_code, attend_name, attend_code_state, attend_c_etc
-			from ATTEND_CODE_T 
+		select ACT.attend_code, ACT.attend_name, ACT.attend_code_state, ACT.attend_c_etc 
+			from ATTEND_CODE_T ACT, (SELECT ATTEND_NAME FROM ATTEND_CODE_T WHERE ATTEND_NAME LIKE '%'||#{attend_name, jdbcType=VARCHAR}||'%') ATTEND_N
 		where attend_code = decode(#{attend_code, jdbcType=INTEGER}, null, attend_code, #{attend_code, jdbcType=INTEGER})
-		and attend_name = decode(#{attend_name, jdbcType=VARCHAR}, null, attend_name, #{attend_name, jdbcType=VARCHAR})
+		and ACT.attend_name = ATTEND_N.ATTEND_NAME
 		and attend_code_state = decode(#{attend_code_state, jdbcType=VARCHAR}, null, attend_code_state, #{attend_code_state, jdbcType=VARCHAR})
-		and attend_c_etc = decode(#{attend_c_etc, jdbcType=VARCHAR}, null, attend_c_etc, #{attend_c_etc, jdbcType=VARCHAR})
+<!-- 		and attend_c_etc = decode(#{attend_c_etc, jdbcType=VARCHAR}, null, attend_c_etc, #{attend_c_etc, jdbcType=VARCHAR}) -->
+	</select>
+	<select id="getAttendCodepop" resultType="HashMap">
+		select attend_code, attend_name from ATTEND_CODE_T
+	</select>
+	
+<!-- 출근기록 -->
+	<select id="WriteWorkStart" parameterType="Map" statementType="CALLABLE">
+		{CALL proc_workStart(#{EMPNO, mode=IN, jdbcType=INTEGER, javaType=String},
+		#{msg, mode=OUT, jdbcType=VARCHAR, javaType=String})}
+	</select>
+<!-- 퇴근기록 -->	
+	<select id="WriteWorkEnd" parameterType="Map" statementType="CALLABLE">
+		{CALL proc_workEnd(#{EMPNO, mode=IN, jdbcType=INTEGER, javaType=String},
+		#{msg, mode=OUT, jdbcType=VARCHAR, javaType=String})}
 	</select>
 
 </mapper>

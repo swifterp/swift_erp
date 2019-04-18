@@ -87,6 +87,7 @@
 		emp_join_date = 
 		decode(#{emp_join_date, jdbcType=VARCHAR}, null, emp_join_date, #{emp_join_date, jdbcType=VARCHAR})
 	</select>
+
 	<select id="canvas" resultType="hashmap">
 		select d.parent_dname as a, round((ratio_to_report(count(e.empno)) over())*100) as b
 		from dept d, employee e

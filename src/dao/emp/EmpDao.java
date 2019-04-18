@@ -8,7 +8,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import resources.mapper.CanvasjsChartData;
 import resources.mapper.MergeListMapper;
 import resources.mapper.deleteListMapper;
 import resources.mapper.insertListMapper;
@@ -24,6 +23,22 @@ public class EmpDao {
 		return slm.getEmpList();
 	}
 
+	public List<Map<String, String>> selectRetiredEmpList() {
+		return slm.getRetiredEmpList();
+	}
+	
+	public String selectEmpOne(Integer emp_number){
+		return slm.getEmpOne(emp_number);
+	}
+	
+	public List<Map<String, String>> selectEmpOneList(Integer emp_number){
+		return slm.getEmpOneList(emp_number);
+	}
+	
+	public void insertRetiredEmp(Map<String, String> retired){
+		ilm.setRetiredEmp(retired);
+	}
+	
 	public List<Map<String, String>> empView(Integer emp_number) {
 		return slm.getEmpView(emp_number);
 	}
@@ -43,9 +58,13 @@ public class EmpDao {
 		return slm.getEmpNumList();
 	}
 
+	public List<Map<String, String>> selectRetiredEmpData(String empInfo){
+		return slm.getRetiredEmpData(empInfo);
+	}
+	
 	@Autowired
 	private insertListMapper ilm;
-	public List<Map<String, String>> empAdd(HashMap<String, Integer> empPlus) {
+	public List<Map<String, String>> empAdd(HashMap<String, String> empPlus) {
 		ilm.empAdd(empPlus);
 		return slm.getEmpList();
 	}
@@ -145,7 +164,7 @@ public class EmpDao {
 		return slm.getEmpDeptList();
 	}
 
-	public List<List<Map<Object, Object>>> aaa() {
+	public List<List<Map<Object, Object>>> canvas() {
 		Map<Object,Object> map = null;
 		List<List<Map<Object,Object>>> list = new ArrayList<List<Map<Object,Object>>>();
 		List<Map<Object,Object>> dataPoints1 = new ArrayList<Map<Object,Object>>();
@@ -163,7 +182,9 @@ public class EmpDao {
 		list.add(dataPoints1);
 		return list;
 	}
+
 	public List<Map<String, String>> getEmpPrintList(HashMap<String, String> empInfo) {
+		slm.getEmpListCount(empInfo);
 		return slm.getEmpPrintList(empInfo);
 	}
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import resources.mapper.insertListMapper;
 import resources.mapper.selectListMapper;
+import resources.mapper.updateListMapper;
 
 @Repository("CommonStyleDao")
 public class CommonStyleDao {
@@ -33,11 +34,7 @@ public class CommonStyleDao {
 		ilm.InsertApprovalData(approval_data);
 		return slm.getCommonList();
 	}
-
-	public List<Map<String, String>> insertApprovalWrite(String approval_write) {
-		// TODO Auto-generated method stub
-		ilm.InsertApprovalWrite(approval_write);
-		return slm.getCommonList();
-	}
+	
+	
 
 }

@@ -2,15 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="resources.mapper.insertListMapper">
-
+<!-- Work Business Data Insert -->
 	<insert id="InsertBusinessLog" parameterType="HashMap">
-	
-		insert into business_log(log_date,log_dept,log_client,log_project,log_no,log_content)
-		values(#{business_date, jdbcType=DATE}, #{business_dept, jdbcType=VARCHAR},
-				 #{business_client, jdbcType=VARCHAR},
-		       #{business_project, jdbcType=VARCHAR}, #{business_no, jdbcType=INTEGER},
-		       #{business_content, jdbcType=VARCHAR})
-	
+	INSERT INTO BUSINESS_LOG(LOG_DATE, LOG_CLIENT, LOG_PROJECT, LOG_NO, LOG_CONTENT, EMPNO)
+    	VALUES(#{log_date, jdbcType=DATE},
+    		   #{client_code, jdbcType=INTEGER},
+    		   #{log_project, jdbcType=VARCHAR},
+    		   (SELECT MAX(LOG_NO)+1 FROM BUSINESS_LOG),
+    		   #{log_content, jdbcType=VARCHAR},
+    		   #{empno, jdbcType=INTEGER})
 	</insert>
 	
 

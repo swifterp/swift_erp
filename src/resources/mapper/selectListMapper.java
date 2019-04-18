@@ -7,7 +7,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 
 public interface selectListMapper {
-
+	
 		public List<Map<String, String>> login(HashMap<String, String> memLogin);
 		
 		//employee
@@ -25,28 +25,38 @@ public interface selectListMapper {
 		public int checkEmpNum(String emp_number);
 		public List<Map<String, String>> getEmpData(String empInfo);
 		public List<Map<String, String>> getEmpPrintList(HashMap<String, String> empInfo);
+		public int getEmpListCount(HashMap<String, String> empInfo);
 		public List<Map<Object, Object>> canvas();
+		public String getEmpOne(Integer emp_number);
+		public List<Map<String, String>> getEmpOneList(Integer emp_number);
 		
 		//pay
 		public List<Map<String, String>> getAllowanceList();
 		
 		//approval
 		public List<Map<String, String>> getDraftList();
-		public String getDraftDetailList(Integer draft_num);	
+		public List<Map<String, String>> getDraft(int draft_code);
+		public String getDraftDetailList(Integer draft_code);	
 		public List<Map<String, String>> getCommonList();
-		public List<Map<String, String>> getApprovalPathList();
+		public List<Map<String, String>> getApprovalPathList(int draft_code);
+		public List<Map<String, String>> getApprovalPathList1(int empno);
 		public List<Map<String, String>> getMyApprovalList(int EMPNO);
 		
 		//work
-		public List<Map<String, String>> getBusinessLogList();	
-		public List<Map<String, String>> getMonthWorkList(String search_month);
-		public List<Map<String, String>> getWorkStateList();
-		public List<Map<String, String>> getWorkTimeList(String search_day);
-		public List<Map<String, String>> getWorkEtcList();
-		public List<Map<String, String>> getClientInfoList();
-		public List<Map<String, String>> getNameCardInfoList();
-
-
+		public List<Map<String, String>> getBusinessLogList();//Work Business List Call
+		public List<Map<String, String>> get_pop_client();//Client POP-UP Call
+		public List<Map<String, String>> get_pop_deptlist();//Dept POP-UP Call
+		public List<Map<String, String>> getworkDetailList(HashMap<String, String> searchData);//Work Business List Search
+		public List<Map<String, String>> get_work_monthwork();////월별근무기록 전체 조회
+		public List<Map<String, String>> getMonthWorkList(String search_month);////월별근무기록 월별 조회
+		public List<Map<String, String>> getselectwork_DataListLow(int log_no);//Work Business List Low Search
+		//work end
+	
+		  public List<Map<String, String>> getWorkStateList(); 
+		  public List<Map<String, String>> getWorkTimeList(String search_day); 
+		  public List<Map<String, String>> getWorkEtcList(); 
+		  public List<Map<String, String>> getClientInfoList();
+		  public List<Map<String, String>> getNameCardInfoList();
 		
 		//pay
 		public List<Map<String, String>> getDeductionList();
@@ -65,6 +75,9 @@ public interface selectListMapper {
 		public List<Map<String, String>> getAttendCodeLow(Integer attendd_code);//Call Attend Code One Low
 		public List<Map<String, String>> getAttendDetailList(HashMap<String, String> DetailInfo);//Call Attend Data Details
 		public List<Map<String, String>> getAttendCodeDetailList(HashMap<String, String> DetailCodeInfo);//Call Attend Code Details
+		public List<Map<String, String>> getAttendCodepop();//근태코드 팝업
+		public String WriteWorkStart(Map<String,String> empno);//출근기록
+		public String WriteWorkEnd(Map<String,String> empno);//퇴근기록
 		////Attend End
 		
 		//client
@@ -74,10 +87,6 @@ public interface selectListMapper {
 		public List<Map<String, String>> getDeptStateList(String DEPT_NAME);	
 		public Map<String, String> getClientInfoDetail(Integer CLIENT_CODE);	
 		public Map<String, String> getNameCardInfoDetail(Integer NAMECARD_CODE);
-
-
-		public String WriteWorkStart(Map<String,String> EMPNO);
-		public String WriteWorkEnd(Map<String,String> EMPNO);
 
 		public String getCommon(int style_code);
 		
@@ -119,6 +128,10 @@ public interface selectListMapper {
 	
 	public List<Map<String, String>> getPersonalPayInfoList();
 	
+	public List<Map<String, String>> getDeducInfoList(String empno);
+	
+	public List<Map<String, String>> getPayInfoList(String empno);
+	
 	public List<HashMap<String, String>> getPersonalDailyworkConfirmList(@Param("report") String report, @Param("empno") String empno);
 	
 	public List<Map<String, String>> getPersonalPersonalPayInfoList(String empno);
@@ -132,5 +145,9 @@ public interface selectListMapper {
 	public List<Map<String, String>> getPersonalDeducList(String report);
 	
 	public List<Map<String, String>> getParticipentList(@Param("chatroom_code") String chatroom_code);
+	
+	public List<Map<String, String>> getRetiredEmpList();
+	
+	public List<Map<String, String>> getRetiredEmpData(String empInfo);
 
 }

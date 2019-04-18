@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>근태코드 추가 페이지</title>
+<title>근태 항목 추가</title>
 <%@ include file="../common/ui_common.jsp" %>
 </head>
 <body>
@@ -17,13 +17,13 @@
 		<div class="contents">
 			<form action="../attend/attend_CodeInsert">
 				<table class="table">
-					<tr>
+<!-- 				<tr>
 						<th>근태코드</th>
 						<td><input type="text" id="attend_code" name="attend_code" class="form-control" value=""></td>
-					</tr>
+					</tr> -->
 					<tr>
 						<th>근태코드명</th>
-						<td><input type="text" id="attend_name" name="attend_name" class="form-control" value=""></td>
+						<td><input type="text" id="attend_name" name="attend_name" class="form-control" value="" required=""></td>
 					</tr>
 					<tr>
 						<th>근태코드상태</th>
@@ -40,6 +40,7 @@
 					</tr>		
 				</table>
 				<div class="btn_group">
+					<a class="btn btn-default pull-left" href="../attend/attend_CodeList">목록</a>
 					<input type="submit" class="btn btn-primary pull-right" value="저장">
 				</div>
 			</form>

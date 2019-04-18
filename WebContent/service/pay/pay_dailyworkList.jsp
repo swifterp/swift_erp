@@ -136,14 +136,6 @@
 		
 	}
 
-	function changeCalendar(){
-		var tmp1 = document.getElementById("datepicker").value;
-		var arr = tmp1.split("/");
-		today = new Date(arr[0], arr[1]-1, arr[2]);
-		date  = new Date(arr[0], arr[1]-1, arr[2]);
-		buildCalendar();	
-	}
-
 	var xhr1 = null;
 
 	function createRequest(xhr){
@@ -216,10 +208,10 @@
 	<div class="container">
 		<%@ include file="../common/left_menu_pay.jsp" %>
 	<div class="contents" >
-		연월선택 : <input type="text" oninput="changeCalendar()" class="form-control" name="selectedDate" id="datepicker" style="width:7%; display:inline-block; margin-right:5px;">
-		<button type='button' onclick="changeCalendar()" class='btn btn-outline-black'>변경</button>
-		<button type='button' onclick="selectworklist()" class='btn btn-outline-black'>조회</button>
-		<br>
+		<span>연월선택 : </span>
+		<input type="date" class="form-control" name="selectedDate">
+		<button type='button' onclick="changeCalendar()" class='btn btn-outline-primary'>변경</button>
+		<button type='button' onclick="selectworklist()" class='btn btn-outline-primary'>조회</button>
 		<table id="calendar" border="3" class="table line2" style="width: 900px"> 
 			<thead>
 				<tr>
@@ -270,6 +262,21 @@
 		<td>
 			<%= String.valueOf(lst.get(i).get("EMPNO")) %>
 		</td>
+			<%
+				if(String.valueOf(lst.get(i).get("DAILYWORK_CONFIRM")).equals("1")){
+					%>
+					<td>
+						확정
+					</td>
+					<%
+				} else {
+					%>
+					<td>
+						미확정
+					</td>
+					<%
+				}
+			%>
 		</tr>
 		<tr>
 		<%

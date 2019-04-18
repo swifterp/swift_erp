@@ -49,5 +49,9 @@ public class AttendCodeTDao {
 	public List<Map<String, String>> selectAttendCodeDetailList(HashMap<String, String> DetailCodeInfo){
 		return slm.getAttendCodeDetailList(DetailCodeInfo);
 	}
+//Call Attend Code PopUp
+	public List<Map<String, String>> selectAttendCodepop() {
+		return slm.getAttendCodepop();
+	}
 	
 }

@@ -19,4 +19,9 @@ public class SelectDraft {
 		return DD.selectDraftList();
 	}
 
+	public List<Map<String, String>> callDraftDao(int draft_code) {
+		// TODO Auto-generated method stub
+		return DD.selectDraftList(draft_code);
+	}
+
 }

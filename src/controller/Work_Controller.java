@@ -8,17 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import logic.work.DeleteBusinessLog;
 import logic.work.InsertBusinessLog;
-import logic.work.InsertWorkStartEnd;
 import logic.work.SelectBusinessLog;
 import logic.work.SelectClientList;
 import logic.work.SelectDeptList;
-import logic.work.SelectDeptStateList;
-import logic.work.SelectEmpStateList;
-import logic.work.SelectMonthWork;
-import logic.work.SelectWorkEtc;
-import logic.work.SelectWorkState;
-import logic.work.SelectWorkTime;
+import logic.work.UpdateBusinessLog;
+
 
 @Controller
 @RequestMapping("service/work")
@@ -26,123 +22,70 @@ public class Work_Controller {
 
 	@Autowired
 	private SelectBusinessLog sbl;
-
-	@RequestMapping("/selectBusinessLog")
-	public String readBusinessLog(Model model) {
-		
-		model.addAttribute("list", sbl.callBusinessLogDao());
-		
-		return "work/work_businesslog";
-	}
-	
 	@Autowired
 	private InsertBusinessLog ibl;
-	
-	@RequestMapping("/insertBusinessLog")
-	public String writeBusinessLog(Model model, @RequestParam HashMap<String, String> businesslog){
-		
-		model.addAttribute("list", ibl.writeBusinessLog(businesslog));
-		
-		return "work/work_businesslog";
-//		return "work/work_businesslogwrite";
-	}
-
 	@Autowired
-	private SelectMonthWork smw;
-	
-	@RequestMapping("/selectMonthWork")
-	public String readMonthWork(Model model,@RequestParam String search_month) {
-		
-		model.addAttribute("list", smw.callMonthWorkDao(search_month));
-		
-		return "work/work_monthwork";
-	}
+	private UpdateBusinessLog ubl;
 	@Autowired
-	private SelectWorkState sws;
-	@RequestMapping("/selectWorkState")
-	public String readWorkState(Model model) {
-		
-		model.addAttribute("list", sws.callWorkStateDao());
-		
-		return "work/work_workstate";
-	}
-
-	
-	@Autowired
-	private SelectWorkTime swt;
-	@RequestMapping("/selectWorkTime")
-	public String readWorkTime(Model model, @RequestParam String search_day) {
-		
-		model.addAttribute("list", swt.callWorkTimeDao(search_day));
-		
-		return "work/work_worktime";
-	}
-
-	@Autowired
-	private SelectWorkEtc swe;
-	@RequestMapping("/selectWorkEtc")
-	public String readWorkEtc(Model model) {
-		
-		model.addAttribute("list", swe.callWorkEtcDao());
-		
-		return "work/work_worketc";
-	}
-	
+	private DeleteBusinessLog dbl;
 	@Autowired
 	private SelectClientList scl;
-	@RequestMapping("/selectClientList")
-	public String readClientList(Model model, @RequestParam String clientName) {
-		
-		model.addAttribute("list",scl.CallClientListDao(clientName));
-	
-		return "work/work_businesslog";
-	}
 	@Autowired
 	private SelectDeptList sdl;
-	@RequestMapping("/selectDeptList")
-	public String readDeptList(Model model, @RequestParam String deptName) {
-		
-		model.addAttribute("list",sdl.CallDeptListDao(deptName));
-		
-		return "work/work_businesslog";
-	}
+
 	
-	@Autowired
-	private SelectDeptStateList sds;
-	@RequestMapping("/selectDeptStateList")
-	public String readDeptStateList(Model model, @RequestParam String DEPT_NAME) {
-		
-		model.addAttribute("list",sds.callDeptStateDao(DEPT_NAME));
-		
-		return "work/work_workdeptstate";
+///////-----------안전선------------수진 추가 시작//////////////////////////
+
+//Work Business List Call
+	@RequestMapping("/selectBusinessLog")
+	public String selectBusinessLog(Model model) {
+		model.addAttribute("list", sbl.callBusinessLogDao());
+		return "work/work_BusinessLogList";
 	}
-	
-	@Autowired
-	private SelectEmpStateList ses;
-	@RequestMapping("/selectEmpStateList")
-	public String readEmpStateList(Model model, @RequestParam String EMP_NAME) {
-		
-		model.addAttribute("list",ses.callEmpStateDao(EMP_NAME));
-		
-		return "work/work_workempstate";
+//Client POP-UP Call
+	@RequestMapping("/pop_clientlist")
+	public String pop_client(Model model) {
+		model.addAttribute("list", scl.call_pop_client());	
+		return "work/pop_clientlist";
 	}
-	
-	@Autowired
-	private InsertWorkStartEnd iws;
-	@RequestMapping("/insertWorkStart")
-	public String readWorkStart(Model model, @RequestParam int EMPNO) {
-		
-		model.addAttribute("state",iws.writeWorkStart(EMPNO));
-		
-		return "work/work_startendstate";
+
+//Dept POP-UP Call
+	@RequestMapping("/pop_deptlist")
+	public String pop_deptlist(Model model) {
+		model.addAttribute("list", sdl.call_pop_deptlist());	
+		return "work/pop_deptlist";
 	}
-	@RequestMapping("/insertWorkEnd")
-	public String readWorkEnd(Model model, @RequestParam int EMPNO) {
-		
-		model.addAttribute("state",iws.writeWorkEnd(EMPNO));
-		
-		return "work/work_startendstate";
+//Work Business List Search
+	@RequestMapping("/workDetailList")
+	public String workDetailList(Model model, @RequestParam HashMap<String, String> searchData) {
+		System.out.println(searchData);
+		model.addAttribute("list", sbl.callworkDetailList(searchData));
+		return "work/work_BusinessLogList";
 	}
-	
-	
+//Work Business Data Insert
+	@RequestMapping("/insertBusinessLog")
+	public String insertBusinessLog(Model model, @RequestParam HashMap<String, String> businesslog){
+		model.addAttribute("list", ibl.callinsertBusinessLog(businesslog));
+		return "work/work_BusinessLogList";
+	}
+
+//Work Business List Low Search
+	@RequestMapping("/work_DataListLow")
+	public String work_DataListLow(Model model, @RequestParam int log_no) {
+		model.addAttribute("list", sbl.callwork_DataListLow(log_no));
+		return "work/work_BusinessLogUpdate";
+	}
+//Work Business List Low Update
+	@RequestMapping("/updateBusinessLog")
+	public String updateBusinessLog(Model model, @RequestParam HashMap<String, String> businessdata) {
+		model.addAttribute("list", ubl.callupdateBusinessLog(businessdata));
+		return "work/work_BusinessLogList";
+	}
+//Work Business List Low Delete
+	@RequestMapping("/work_BusinessLogDelete")
+	public String work_BusinessLogDelete(Model model, @RequestParam int log_no) {
+		model.addAttribute("list", dbl.callwork_DataDelete(log_no));
+		return "work/work_BusinessLogDelete";
+	}
+
 }

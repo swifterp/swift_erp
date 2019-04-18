@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="resources.mapper.MergeListMapper">
+
+	<update id="resetParticipent" parameterType="java.util.Map">
+		MERGE INTO participent_list a
+		USING dual
+		on (a.chatroom_code = #{chatroom_code, jdbcType=VARCHAR}
+		and a.empno = #{participent, jdbcType=INTEGER})
+
+		WHEN NOT MATCHED THEN
+		INSERT (a.chatroom_code, a.empno)
+		values(#{chatroom_code, jdbcType=VARCHAR}, #{participent, jdbcType=INTEGER})
+    </update>
+
+</mapper>

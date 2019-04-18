@@ -24,7 +24,7 @@ public class InsertTotalCalcList {
 		Integer total = 0;
 		
 		List<Map<String, String>> personal_data = new ArrayList<Map<String, String>>();
-				
+		
 		for(int i=0;i<confirmed.size();i++) {
 			
 			for(int j=0;j<payinfo.size();j++) {
@@ -55,6 +55,7 @@ public class InsertTotalCalcList {
 				}
 				
 			}
+			/*
 			if(payinfo.size() > i) {
 				if(payinfo.get(i).get("ALLOWANCE_DIVISION").equals("월정액")) {
 
@@ -73,17 +74,36 @@ public class InsertTotalCalcList {
 
 				}
 			}
+			*/
+		}
+		for(int i=0;i<payinfo.size();i++) {
+			if(payinfo.get(i).get("ALLOWANCE_DIVISION").equals("월정액")) {
+	
+				Map<String, String> tmp = new HashMap<String, String>();
+				
+				tmp.put("EMPNO", String.valueOf(payinfo.get(i).get("EMPNO")));
+				tmp.put("ALLOWANCE_NO", String.valueOf(payinfo.get(i).get("ALLOWANCE_NO")));
+				tmp.put("ALLOWANCE_NAME", String.valueOf(payinfo.get(i).get("ALLOWANCE_NAME")));
+				tmp.put("ALLOWANCE_DIVISION", payinfo.get(i).get("ALLOWANCE_DIVISION"));
+				
+				tmp.put("PAYINFO_PRICE", String.valueOf(payinfo.get(i).get("PAYINFO_PRICE")));
+				
+				personal_data.add(tmp);
+				
+				total += Integer.parseInt(String.valueOf(payinfo.get(i).get("PAYINFO_PRICE")));
+	
+			}
 		}
 		
-		if(confirmed.size() != 0) {
+		//if(confirmed.size() != 0) {
 			for(int i=0;i<personal_data.size();i++) {
 				personal_data.get(i).put("REPORT", report);
 			}
 			
 			tcd.mergePersonalPayList(personal_data);
-		}
+		//}
 
-		if(confirmed.size() != 0) {
+		//if(confirmed.size() != 0) {
 			List<Map<String, String>> deducinfo = tcd.selectDeductionInfo();
 			
 			List<Map<String, String>> personal_data_deduction = new ArrayList<Map<String, String>>();
@@ -108,7 +128,7 @@ public class InsertTotalCalcList {
 				personal_data_deduction.get(i).put("REPORT", report);
 			}
 			tcd.mergePersonalDeducList(personal_data_deduction);
-		}
+		//}
 		
 		HashMap<String, String> totalNreport = new HashMap<String, String>();
 		totalNreport.put("total", String.valueOf(total));

@@ -18,8 +18,6 @@ public class InsertDailyworkList {
 	
 	public List<Map<String, String>> callDailyworkInsertDao(HashMap<String, String> datas) {
 		
-		System.out.println(datas.get("empno"));
-		
 		String selectedDate = "";
 		
 		if(Integer.parseInt(datas.get("month")) > 9) {
@@ -43,11 +41,13 @@ public class InsertDailyworkList {
 			HashMap<String, String> tmp = new HashMap<String, String>();
 			
 			if(datas.get(String.valueOf(i)) != null) {
-				
 				tmp.put("SELECTEDDATE", selectedDate);
 				tmp.put("EMPNO", datas.get("empno"));
 				tmp.put("ALLOWANCE_NO", String.valueOf(i));
 				tmp.put("ALLOWANCE_NAME", datas.get(String.valueOf(i)));
+				if(datas.get("DAILYWORK_TIME"+i) == "") {
+					datas.put("DAILYWORK_TIME"+i, "0");
+				}
 				tmp.put("DAILYWORK_TIME", datas.get("DAILYWORK_TIME"+i));
 			
 				lst.add(tmp);

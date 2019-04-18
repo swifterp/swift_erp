@@ -10,17 +10,17 @@
         	   #{attend_date, jdbcType=DATE}, 
         	   #{attend_code, jdbcType=INTEGER}, 
         	   #{attend_time, jdbcType=INTEGER}, 
-        	   #{attend_m_etc, jdbcType=VARCHAR}, 
+        	   decode(#{attend_m_etc, jdbcType=VARCHAR}, null, '-', #{attend_m_etc, jdbcType=VARCHAR}), 
         	   #{attend_open, jdbcType=VARCHAR}, 
         	   #{attend_close, jdbcType=VARCHAR})
 	</insert>
 	
 	<insert id="InsertAttendCode" parameterType="HashMap">
 	    insert into ATTEND_CODE_T  (attend_code, attend_name, attend_code_state, attend_c_etc)
-        values(#{attend_code, jdbcType=INTEGER},
+        values((select count(attend_code)+1 from ATTEND_CODE_T),
         	   #{attend_name, jdbcType=VARCHAR},
         	   #{attend_code_state, jdbcType=VARCHAR},
-        	   #{attend_c_etc, jdbcType=VARCHAR})
+        	   decode(#{attend_c_etc, jdbcType=VARCHAR}, null, '-', #{attend_c_etc, jdbcType=VARCHAR}))
 	</insert>
 
 </mapper>

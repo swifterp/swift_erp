@@ -22,8 +22,10 @@ $(function(){
 				<a data-toggle="collapse" data-target="#group1"
 				aria-expanded="false" href="#">기본사항관리</a>
 				<ul class="collapse in depth2" id="group1">
-					<li><a class="lmenu_1" href="../attend/attend_CodeList">근태항목관리</a></li>
-					<li><a class="lmenu_2" href="../attend/attend_DataList">근태관리</a></li>
+					<li><a href="../attend/attend_CodeList">근태항목관리</a></li>
+					<li><a href="../attend/attend_DataList">근태관리</a></li>
+					<li><a href="../work/selectBusinessLog">업무일지관리</a></li>
+			</li>
 				</ul>
 			</li>
 			<li>

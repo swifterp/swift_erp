@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import logic.emp.EmpLogic;
+import logic.pay.PersonalpayinfoList;
+import logic.pay.SelectAllowanceItem;
+import logic.pay.SelectDeductionItem;
 
 @Controller
 @RequestMapping("service/emp")
@@ -35,15 +38,43 @@ public class Emp_Controller {
 			return "chat/chat_emplist";
 		}
 	}
+	
+	@RequestMapping("/retiredemp")
+	public String retiredEmp(Model model) {
+		
+		model.addAttribute("list", el.callRetiredEmpListDao());
+
+		return "emp/emp_retiredEmp";
+		
+	}
+	
 	@RequestMapping("/add")
 	public String addEmp(Model model
-			 ,@RequestParam HashMap<String, Integer> empPlus) {
+			 ,@RequestParam HashMap<String, String> empPlus) {
 		model.addAttribute("list", el.empAddDao(empPlus));
 		return "emp/emp_mainpage";
 	}
 	
+	@Autowired
+	private PersonalpayinfoList ppil;
+	
+	@Autowired
+	private SelectAllowanceItem sai;
+	@Autowired
+	private SelectDeductionItem sdi;
+	
 	@RequestMapping("/view")
 	public String viewEmp(Model model, @RequestParam(value="emp_number", defaultValue="0") Integer emp_number) {
+		
+		List<Map<String, String>> tmp1 = ppil.callpayinfoDao(emp_number);
+		List<Map<String, String>> tmp2 = ppil.calldeducinfoDao(emp_number);
+		
+		model.addAttribute("allow", sai.callAllowanceItemDao(2));
+		model.addAttribute("deduc", sdi.callDeductionItemDao());
+		
+		model.addAttribute("allow_value", tmp1);
+		model.addAttribute("deduc_value", tmp2);
+		
 		model.addAttribute("list", el.empViewDao(emp_number));
 		return "emp/emp_empView";
 	}
@@ -133,6 +164,12 @@ public class Emp_Controller {
 		return "emp/emp_mainpage";
 	}
 	
+	@RequestMapping("/retiredempSearchNumName")
+	public String selectretiredEmpInfoSearch(Model model, @RequestParam String empinfo) {
+		model.addAttribute("list", el.retiredempInfoSearch(empinfo));
+		return "emp/emp_retiredEmp";
+	}
+	
 	@RequestMapping("/pop_deptRead")
 	public String pop_readDept(Model model) {
 		System.out.println("Test");
@@ -203,4 +240,5 @@ public class Emp_Controller {
 		modelMap.addAttribute("dataPointsList", canvasjsDataList);
 		return "emp/emp_chart";
 	}
+
 }

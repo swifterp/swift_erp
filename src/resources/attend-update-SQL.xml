@@ -4,23 +4,23 @@
 <mapper namespace="resources.mapper.updateListMapper">
 
 	<update id="resetAttendList" parameterType="HashMap">
-		update ATTEND_MANAGER_T set
-			empno = #{empno, jdbcType=INTEGER}, 
-			attend_date = to_date(#{attend_date, jdbcType=DATE},'YYYY-MM-DD'),
-			attend_code = #{attend_code, jdbcType=INTEGER}, 
-			attend_time = #{attend_time, jdbcType=INTEGER}, 
-			attend_m_etc = #{attend_m_etc, jdbcType=VARCHAR},
-			attend_open = #{attend_open, jdbcType=VARCHAR}, 
-			attend_close = #{attend_close, jdbcType=VARCHAR}
-			where attend_no = #{attend_no, jdbcType=INTEGER}
+        update ATTEND_MANAGER_T set
+            empno = (select empno from employee where emp_number = #{empno, jdbcType=INTEGER}), 
+            attend_date = to_date(#{attend_date, jdbcType=DATE},'YYYY-MM-DD'),
+            attend_code = #{attend_code, jdbcType=INTEGER}, 
+            attend_time = #{attend_time, jdbcType=INTEGER}, 
+            attend_m_etc =decode(#{attend_m_etc, jdbcType=VARCHAR}, null, '-', #{attend_m_etc, jdbcType=VARCHAR}),
+            attend_open = #{attend_open, jdbcType=VARCHAR}, 
+            attend_close = #{attend_close, jdbcType=VARCHAR}
+            where attend_no = #{attend_no, jdbcType=INTEGER}
 	</update>
 	
 	<update id="resetAttendCodeList" parameterType="HashMap">
-		update ATTEND_CODE_T  set
-            attend_name = #{attend_name, jdbcType=VARCHAR},
-            attend_code_state = #{attend_code_state,  jdbcType=VARCHAR},
-            attend_c_etc = #{attend_c_etc,  jdbcType=VARCHAR}
-            where attend_code= #{attend_code,  jdbcType=INTEGER}
+        update ATTEND_CODE_T set
+            ATTEND_NAME = #{attend_name, jdbcType=VARCHAR},
+            ATTEND_CODE_STATE = #{attend_code_state,  jdbcType=VARCHAR},
+            ATTEND_C_ETC = decode(#{attend_c_etc,  jdbcType=VARCHAR}, null, '-', #{attend_c_etc,  jdbcType=VARCHAR})
+            where ATTEND_CODE = #{attend_code, jdbcType=INTEGER}
 	</update>
 
 </mapper>

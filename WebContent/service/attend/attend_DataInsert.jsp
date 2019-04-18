@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>근태등록</title>
+<title>근태 등록</title>
 <%@ include file="../common/ui_common.jsp" %>
 <!-- 날짜선택 관련 -->
 <script>
@@ -23,7 +23,18 @@
 		});
 	});
 </script>
-
+<script type="text/javascript">
+	$(document).ready(function() {
+	    $('#pop_attendcode').on("click", function() {	
+	    	var url="../attend/pop_attendCodeRead";
+	    	var windowW = 300;  // 창의 가로 길이
+	        var windowH = 300;  // 창의 세로 길이
+	        var left = Math.ceil((window.screen.width - windowW)/2);
+	        var top = Math.ceil((window.screen.height - windowH)/2);
+	  window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+	    });
+	});
+</script>
 <style>
 table td {text-align:left;}
 </style>
@@ -37,37 +48,41 @@ table td {text-align:left;}
 		<div class="contents">
 			<h3>근태등록</h3>
 			<form action="../attend/attend_DataInsert">
+				<input type="hidden" id="empno" class="form-control" name="empno" value="<%= String.valueOf(sess.get(0).get("EMPNO")) %>" readonly>
 				<table class="table">
 					<tr>
-						<th>사원번호</th>
-						<td><input type="text" id="empno" class="form-control" name="empno"></td>
+						<th> 근태날짜 <span class="essential">*</span></th>
+						<td><input type="text" id="datepicker" class="form-control" name="attend_date" style="width:90%; display:inline-block; margin-right:5px;" required=""></td>
 					</tr>
 					<tr>
-						<th>근태날짜</th>
-						<td><input type="text" id="datepicker" class="form-control" name="attend_date" style="width:90%; display:inline-block; margin-right:5px;"></td>
+						<th> 근태코드 <span class="essential">*</span></th>				
+						<td id="pop_attendcode" class="input-group">
+							<input type="hidden" id="attend_code" name="attend_code" class="form-control" required="">
+							<input type="text" id="attend_name" class="form-control" required="">
+							<span class="input-group-btn">
+								 <button class="btn btn-default" type="button" data-toggle="modal" data-target="#exampleModal">보기</button>
+							</span>
+						</td>
 					</tr>
 					<tr>
-						<th>근태코드</th>
-						<td><input type="text" id="attend_code" class="form-control" name="attend_code" ></td>
+						<th> 근무시간 <span class="essential">*</span></th>
+						<td><input type="text" id="attend_time" class="form-control" name="attend_time" required=""></td>
 					</tr>
 					<tr>
-						<th>근무시간</th>
-						<td><input type="text" id="attend_time" class="form-control" name="attend_time"></td>
-					</tr>
-					<tr>
-						<th>비고</th>
+						<th> 비고 </th>
 						<td><input type="text" id="attend_m_etc" class="form-control" name="attend_m_etc"></td>
 					</tr>
 					<tr>
-						<th>출근시간</th>
-						<td><input type="time" id="attend_open" class="form-control" name="attend_open"></td>
+						<th> 출근시간 <span class="essential">*</span></th>
+						<td><input type="time" id="attend_open" class="form-control" name="attend_open" required=""></td>
 					</tr>
 					<tr>
-						<th>퇴근시간</th>
+						<th> 퇴근시간 <span class="essential">*</span></th>
 						<td><input type="time" id="attend_close" class="form-control" name="attend_close"></td>
 					</tr>
 				</table>
 				<div class="btn_group">
+					<a class="btn btn-default pull-left" href="../attend/attend_DataList">목록</a>
 					<input type="submit" class="btn btn-primary pull-right" value="확인">
 				</div>
 			</form>

@@ -68,7 +68,7 @@
 			}
 			
 			for(int j=0;j<deduc.size();j++){
-				if(String.valueOf(deduc.get(i).get("EMPNO")).equals(String.valueOf(deduc.get(j).get("EMPNO")))) {
+				if(String.valueOf(lst.get(i).get("EMPNO")).equals(String.valueOf(deduc.get(j).get("EMPNO")))) {
 					deduction.put(String.valueOf(deduc.get(j).get("DEDUCTION_NAME")), "0");
 				}
 			}

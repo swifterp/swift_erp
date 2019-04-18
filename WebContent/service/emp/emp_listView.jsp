@@ -44,7 +44,7 @@ $(document).ready(function() {
 </head>
 <body>
 <%	List<Map<String, String>> sess = (List<Map<String, String>>)request.getSession().getAttribute("member"); %>
-<input type="hidden" id="hidempno" name="<%= String.valueOf(sess.get(0).get("EMPNO")) %>">
+	<input type="hidden" id="hidempno" name="<%= String.valueOf(sess.get(0).get("EMPNO")) %>">
 	<%@ include file="../common/top_menu.jsp" %>
 	<div class="container">
 		<%@ include file="../common/left_menu_emp.jsp" %>
@@ -95,30 +95,32 @@ $(document).ready(function() {
 					<input type="submit" id="submit" class="btn btn-outline-primary pull-right" value="검색">
 				</div>
 			</form>
-			
-			<table class="table" style="margin-top:15px;">
-				<thead>
-					<tr>
-						<th>사원번호</th>
-						<th>사원이름</th>
-					</tr>
-				</thead>
-				<tbody>
-				   <%
-				      List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
-				      if(lst != null){
-				         for(int i=0;i<lst.size();i++){
-				   %>
-				            <tr>
-				               <td><%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %> </td>
-				               <td><%= lst.get(i).get("EMP_NAME") %> </td>
-				            </tr>
-				   <%
-				         }
-				      }
-				    %>
-				</tbody>
-			</table>
+			<div>
+				<p style="clear:both;">검색결과 : 총  n명</p>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>사원번호</th>
+							<th>사원이름</th>
+						</tr>
+					</thead>
+					<tbody>
+					   <%
+					      List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
+					      if(lst != null){
+					         for(int i=0;i<lst.size();i++){
+					   %>
+					            <tr>
+					               <td><%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %> </td>
+					               <td><%= lst.get(i).get("EMP_NAME") %> </td>
+					            </tr>
+					   <%
+					         }
+					      }
+					    %>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </body>

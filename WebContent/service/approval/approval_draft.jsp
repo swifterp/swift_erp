@@ -13,6 +13,14 @@
 		location.href = "./selectDraftDetail?draft_code="+draft_code;
 		
 		}
+	function goApprovalPath(draft_code){
+		var url="./selectApprovalPath?draft_code=" +draft_code;
+    	var windowW = 800;  // 창의 가로 길이
+        var windowH = 300;  // 창의 세로 길이
+        var left = Math.ceil((window.screen.width - windowW)/2);
+        var top = Math.ceil((window.screen.height - windowH)/2);
+  window.open(url,'',"l top="+top+", left="+left+", height="+windowH+", width="+windowW);
+		}
 </script>
 </head>
 <body>
@@ -22,10 +30,10 @@
 	<div class="container">		
 		<%@ include file="../common/left_menu_approval.jsp" %>
 		<div class="contents">
-			<h2>기안서조회</h2>		
-			<form action="../approval/selectDraftDetail">
+			<h2>결재조회</h2>		
+			<form action="./draftSearch">
 				<div class="input-group">
-					<input type="text" class="form-control" name="draft_num" placeholder="기안서 번호">
+					<input type="text" class="form-control" name="draft_code" placeholder="서류 번호">
 					<span class="input-group-btn" style="width:100px;">	
 						<input type="submit" class="btn btn-primary" style="margin-bottom:20px;" value="검색">
 					</span>
@@ -38,7 +46,9 @@
 						<th>기안일자</th>
 						<th>제목</th>
 						<th>작성자</th>
+						<th>최종결재상태</th>
 						<th>보기</th>
+						<th>결재라인 보기</th>
 						
 					</tr>
 				</thead>
@@ -53,7 +63,9 @@
 						<td><%= String.valueOf(lst.get(i).get("DRAFT_DATE")).substring(0,10) %> </td>
 						<td><%= lst.get(i).get("STYLE_NAME") %> </td>
 						<td><%= lst.get(i).get("EMP_NAME") %> </td>
+						<td><%= lst.get(i).get("DRAFT_STATE") %> </td>
 						<td><a class="btn btn-primary" onclick="javascript:goDraftSearch(<%= Integer.parseInt(String.valueOf(lst.get(i).get("DRAFT_NO"))) %>)" >조회</a></td>
+						<td><a class="btn btn-primary" onclick="javascript:goApprovalPath(<%= Integer.parseInt(String.valueOf(lst.get(i).get("DRAFT_NO"))) %>)" >결재라인 조회</a></td>
 					
 					</tr>
 					<%
