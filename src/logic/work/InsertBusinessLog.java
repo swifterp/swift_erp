@@ -7,19 +7,17 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dao.work.BusinessLogWriteDao;
+import dao.work.BusinessLogDao;
 
 
 @Service("InsertBusinessLog")
 public class InsertBusinessLog {
 	
 	@Autowired
-	private BusinessLogWriteDao bld;
+	private BusinessLogDao bld;
 	
-	public List<Map<String, String>> writeBusinessLog(HashMap<String, String> businesslog) {
-		
+//Work Business Data Insert
+	public List<Map<String, String>> callinsertBusinessLog(HashMap<String, String> businesslog) {
 		return bld.InsertBusinessLog(businesslog);
-		
 	}
-	
 }

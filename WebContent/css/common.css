@@ -96,3 +96,5 @@ h2 {margin-bottom:20px;}
 a.icon_email:hover {background-image: url('../../images/icon_email_1.png');}
 
 a.icon_print:hover {background-image: url('../../images/icon_print_1.png');}
+
+#inchat {float:left;}

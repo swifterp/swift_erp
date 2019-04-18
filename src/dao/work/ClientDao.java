@@ -8,14 +8,15 @@ import org.springframework.stereotype.Repository;
 
 import resources.mapper.selectListMapper;
 
-@Repository("MonthWorkDao")
-public class MonthWorkDao {
+@Repository("ClientListDao")
+public class ClientDao {
+	
 	@Autowired
 	private selectListMapper slm;
-	
-	public List<Map<String,String>> selectMonthWork(String search_month){
-		
-		return slm.getMonthWorkList(search_month);
+
+//Client POP-UP Call
+	public List<Map<String, String>> select_pop_client(){
+		return slm.get_pop_client();
 	}
 
 }

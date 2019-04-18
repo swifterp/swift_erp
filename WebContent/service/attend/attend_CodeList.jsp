@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>근태 코드 페이지</title>
+<title>근태 항목</title>
 
 <script type="text/javascript">
 	function attendCodeInsert(){
@@ -66,10 +66,10 @@
 							</select>
 						</td>
 					</tr>
-					<tr>
+<!-- 					<tr>
 						<th>비고</th>
 						<td><input type="text" id="attend_c_etc" name="attend_c_etc" class="form-control" style="width:200px;"></td>
-					</tr>
+					</tr> -->
 					<tr>
 						<td class="line" style="width:155px" colspan="2">
 							<div class="input-group pull-right">

@@ -21,14 +21,13 @@ public interface updateListMapper {
 	public void UpdateClientInfo(HashMap<String, String> CLIENT_INFO);
 
 
-	//Attend Start
+	//Attend
 	public void resetAttendList(HashMap<String, String> attendInsert); //Update Attend Data
 	public void resetAttendCodeList(HashMap<String, String> attendCInsert);//Update Attend Code
-	//Attend End
+
 	
-	
-	
-	
+	//work
+	public void update_BusinessLog(HashMap<String, String> businessdata);//Work Business List Low Update
 	
 	
 

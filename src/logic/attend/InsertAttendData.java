@@ -18,4 +18,13 @@ public class InsertAttendData {
 	public List<Map<String, String>> callInsertAttendDataDao(HashMap<String, String> attendDPlus) {
 		return amtd.insertAttendData(attendDPlus);
 	}
+////출근기록
+	public String writeWorkStart(int EMPNO) {
+		return amtd.WriteWorkStart(EMPNO);
+	}
+////퇴근기록
+	public String writeWorkEnd(int EMPNO) {
+		return amtd.WriteWorkEnd(EMPNO);
+		
+	}
 }

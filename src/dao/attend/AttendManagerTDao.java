@@ -50,5 +50,20 @@ public class AttendManagerTDao {
 	public List<Map<String, String>> selectAttendDetailList(HashMap<String, String> DetailInfo){
 		return slm.getAttendDetailList(DetailInfo);
 	}
+//출근기록
+	public String WriteWorkStart (int EMPNO) {
+		Map<String,String> P_EMPNO = new HashMap<String,String>();
+		P_EMPNO.put("EMPNO",String.valueOf(EMPNO));
+		slm.WriteWorkStart(P_EMPNO);
+		return P_EMPNO.get("msg");	
+	}
+//퇴근기록
+	public String WriteWorkEnd (int EMPNO) {	
+		Map<String,String> P_EMPNO = new HashMap<String,String>();
+		P_EMPNO.put("EMPNO",String.valueOf(EMPNO));
+		slm.WriteWorkEnd(P_EMPNO);
+		return P_EMPNO.get("msg");	
+	}
+
 	
 }

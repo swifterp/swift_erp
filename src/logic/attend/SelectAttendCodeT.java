@@ -26,4 +26,8 @@ public class SelectAttendCodeT {
 	public List<Map<String, String>> callAttendCodeDetailListDao(HashMap<String, String> DetailCodeInfo){
 		return actd.selectAttendCodeDetailList(DetailCodeInfo);
 	}
+//Call Attend Code PopUp
+	public List<Map<String, String>> callAttendCodepop() {		
+		return actd.selectAttendCodepop();	
+	}
 }

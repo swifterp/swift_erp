@@ -5,12 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>근태 관리 페이지</title>
+<title>근태 관리</title>
 <script type="text/javascript">
 	function attendDataInsert(){
 		location.href = "../attend/attend_DataInsert.jsp";
 	}
 </script>
+
 <%@ include file="../common/ui_common.jsp" %>
 <style>
 	.tb_left td {text-align:left;}
@@ -26,10 +27,7 @@
 			<h2>근태관리 목록</h2>
 			<form action="../attend/attend_DetailData">
 				<table class="table tb_left" style="margin-bottom:20px; background:#eee;">
-					<colgroup>
-						<col width="20%" />
-						<col width="80%" />
-					</colgroup>
+
 					<tbody>
 						<tr>
 							<th class="line">사원번호</th>
@@ -84,6 +82,7 @@
 					<tr>
 						<th> 근태번호 </th>
 						<th> 사원번호 </th>
+						<th> 사원명 </th>
 						<th> 근태날짜 </th>
 						<th> 근태명 </th>
 						<th> 근무시간 </th>
@@ -104,7 +103,8 @@
 			            <tr>
 			<%--           <td><input type="checkbox" value="<%= String.valueOf(lst.get(i).get("ATTEND_NO")) %>"></td> --%>
 			               <td><%= String.valueOf(lst.get(i).get("ATTEND_NO")) %> </td>
-			               <td><%= String.valueOf(lst.get(i).get("EMPNO")) %> </td>
+			               <td><%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %> </td>
+			               <td><%= String.valueOf(lst.get(i).get("EMP_NAME")) %> </td>
 			               <td><%= lst.get(i).get("ATTEND_DATE") %> </td>
 			               <td><%= String.valueOf(lst.get(i).get("ATTEND_NAME")) %> </td>
 			               <td><%= String.valueOf(lst.get(i).get("ATTEND_TIME")) %> </td>
@@ -112,15 +112,16 @@
 			               <td><%= lst.get(i).get("ATTEND_OPEN") %> </td>
 			               <td><%= lst.get(i).get("ATTEND_CLOSE") %> </td>
 			               <td> 
-			               	<form action="../attend/attend_DataDelete">
-			              	 <input class="form-control" type="hidden" id="attend_no" name="attend_no" value="<%= String.valueOf(lst.get(i).get("ATTEND_NO")) %>">
-			              	 <input class="form-control btn btn-default" type="submit" value="삭제">
-			               	</form>
-			               </td><td>
-			               <form action="../attend/attend_DataListLow">
+			                <form action="../attend/attend_DataListLow">
 			               		<input class="form-control" type="hidden" id="attendno" name="attendno" value="<%= String.valueOf(lst.get(i).get("ATTEND_NO")) %>">
 			               		<input class="form-control btn btn-default" type="submit" value="수정">
-			               </form>
+			               	</form>
+							</td><td>
+							<form action="../attend/attend_DataDelete">
+								<input class="form-control" type="hidden" id="attend_no" name="attend_no" value="<%= String.valueOf(lst.get(i).get("ATTEND_NO")) %>">
+								<input class="form-control btn btn-default" type="submit" value="삭제">
+							</form>
+			              
 			               </td>
 			            </tr>
 			   <%
@@ -130,9 +131,34 @@
 			    </tbody>
 			</table>
 			<div class="btn_group">
-				<input type="button" class="btn btn-primary pull-right" onclick="javascript:attendDataInsert()" value="등록">
+				<input type="button" class="btn btn-primary pull-right" onclick="javascript:attendDataInsert()" value="상세등록">
 			</div>
+<%-- 				<form action="../work/insertWorkStart">
+					<input type="text" id="EMPNO" name="EMPNO" value="<%=sess.get(0).get("EMPNO")%>">
+				<input type="hidden" id="EMPNO" name="EMPNO" value="<%=sess.get(0).get("EMPNO")%>">
+					<input type="submit" class="btn btn-primary pull-right" value="출근">
+				</form>
+				<form action="../work/insertWorkEnd">
+					<input type="text" id="EMPNO" name="EMPNO" value="1">
+				<input type="hidden" id="EMPNO" name="EMPNO" value="<%=sess.get(0).get("EMPNO")%>">
+					<input type="submit" class="btn btn-primary pull-right" value="퇴근">
+				</form> --%>
+			<input type="button" class="btn btn-primary pull-right" onclick="javascript:attend_end_add(<%= String.valueOf(sess.get(0).get("EMPNO")) %>)" value="퇴근">
+
+			<input type="button" class="btn btn-primary pull-right" onclick="javascript:attend_start_add(<%= String.valueOf(sess.get(0).get("EMPNO")) %>)" value="출근">
+
 		</div>
 	</div>
+<script type="text/javascript">
+	function attend_start_add(EMPNO){
+		location.href = "../attend/insertWorkStart?EMPNO="+EMPNO;
+	}
+</script>
+<script type="text/javascript">
+	function attend_end_add(EMPNO){
+		location.href = "../attend/insertWorkEnd?EMPNO="+EMPNO;
+	}
+</script>
+
 </body>
 </html>

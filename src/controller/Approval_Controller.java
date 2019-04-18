@@ -36,6 +36,7 @@ public class Approval_Controller {
 	
 	@RequestMapping("/selectDraftDetail")
 	public String readDraftDetail(Model model, @RequestParam Integer draft_code) {
+		System.out.println(draft_code);
 		model.addAttribute("list",sdd.callDraftDetailDao(draft_code));
 		return "approval/approval_draftdetail";
 		
@@ -92,6 +93,7 @@ public class Approval_Controller {
 	
 	@RequestMapping("/approval_style")
 	public String approval_style(Model model, @RequestParam int style_code) {
+		System.out.println(style_code);
 		model.addAttribute("list", scs.callCommonStyleDao(style_code));
 		model.addAttribute("list2", style_code);
 

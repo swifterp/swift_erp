@@ -33,6 +33,7 @@
 				    </label>
 				  </div>
 				  <div class="mem_add">
+				  
 				  	<span><a href="../mem/join.jsp">사용자등록</a></span>
 				  	<span><a href="#">비밀번호찾기</a></span>
 				  </div>

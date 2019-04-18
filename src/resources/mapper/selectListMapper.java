@@ -37,14 +37,21 @@ public interface selectListMapper {
 		public List<Map<String, String>> getMyApprovalList(int EMPNO);
 		
 		//work
-		public List<Map<String, String>> getBusinessLogList();	
-		public List<Map<String, String>> getMonthWorkList(String search_month);
-		public List<Map<String, String>> getWorkStateList();
-		public List<Map<String, String>> getWorkTimeList(String search_day);
-		public List<Map<String, String>> getWorkEtcList();
-		public List<Map<String, String>> getClientInfoList();
-		public List<Map<String, String>> getNameCardInfoList();
-
+		public List<Map<String, String>> getBusinessLogList();//Work Business List Call
+		public List<Map<String, String>> get_pop_client();//Client POP-UP Call
+		public List<Map<String, String>> get_pop_deptlist();//Dept POP-UP Call
+		public List<Map<String, String>> getworkDetailList(HashMap<String, String> searchData);//Work Business List Search
+		public List<Map<String, String>> get_work_monthwork();////월별근무기록 전체 조회
+		public List<Map<String, String>> getMonthWorkList(String search_month);////월별근무기록 월별 조회
+		public List<Map<String, String>> getselectwork_DataListLow(int log_no);//Work Business List Low Search
+		//work end
+	
+		  public List<Map<String, String>> getWorkStateList(); 
+		  public List<Map<String, String>> getWorkTimeList(String search_day); 
+		  public List<Map<String, String>> getWorkEtcList(); 
+		  public List<Map<String, String>> getClientInfoList();
+		  public List<Map<String, String>> getNameCardInfoList();
+		 
 
 		
 		//pay
@@ -64,6 +71,9 @@ public interface selectListMapper {
 		public List<Map<String, String>> getAttendCodeLow(Integer attendd_code);//Call Attend Code One Low
 		public List<Map<String, String>> getAttendDetailList(HashMap<String, String> DetailInfo);//Call Attend Data Details
 		public List<Map<String, String>> getAttendCodeDetailList(HashMap<String, String> DetailCodeInfo);//Call Attend Code Details
+		public List<Map<String, String>> getAttendCodepop();//근태코드 팝업
+		public String WriteWorkStart(Map<String,String> EMPNO);//출근기록
+		public String WriteWorkEnd(Map<String,String> EMPNO);//퇴근기록
 		////Attend End
 		
 		//client
@@ -75,8 +85,6 @@ public interface selectListMapper {
 		public Map<String, String> getNameCardInfoDetail(Integer NAMECARD_CODE);
 
 
-		public String WriteWorkStart(Map<String,String> EMPNO);
-		public String WriteWorkEnd(Map<String,String> EMPNO);
 
 		public String getCommon(int style_code);
 		

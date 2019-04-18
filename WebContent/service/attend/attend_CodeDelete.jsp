@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>근태코드 삭제 페이지</title>
+<title>근태항목 삭제</title>
 <script type="text/javascript">
 	location.href="../attend/attend_CodeList";
 </script>

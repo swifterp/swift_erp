@@ -16,6 +16,9 @@ public interface deleteListMapper {
 	public int setDeleteAttendCode(Integer attend_code);//Delete Attend Code
 	//Attend End
 	
+	//work
+	public int setwork_DataDelete(int log_no);//Work Business List Low Delete
+	
 	//client
 	public void DeleteNameCardInfo(Integer NAMECARD_CODE);	
 	public void DeleteClientInfo(Integer CLIENT_CODE);

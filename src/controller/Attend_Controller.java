@@ -30,6 +30,7 @@ public class Attend_Controller {
 	private InsertAttendData iad;
 	@Autowired
 	private DeleteAttendData dad;
+
 	
 //View Attend Data List
 	@RequestMapping("/attend_DataList")
@@ -40,6 +41,7 @@ public class Attend_Controller {
 //Call Attend Data One Low
 	@RequestMapping("/attend_DataListLow")
 	public String attend_DataListLow(Model model, @RequestParam Integer attendno) {
+		System.out.println(attendno);
 		model.addAttribute("list", samt.callAttendDataLowDao(attendno));
 		return "attend/attend_DataUpdate";
 	}
@@ -112,6 +114,7 @@ public class Attend_Controller {
 //Update Attend Code
 	@RequestMapping("/attend_CodeUpdate")
 	public String attend_CodeUpdate(Model model,  @RequestParam HashMap<String, String> attendCInsert) {
+		System.out.println(attendCInsert);
 		model.addAttribute("list", uact.callUpdateAttendCodeDao(attendCInsert));
 		return "attend/attend_CodeList";
 	}
@@ -124,5 +127,25 @@ public class Attend_Controller {
 	}
 	
 //////////////////////////attend code end/////////////////////
+//popup attend_code search
+	@RequestMapping("/pop_attendCodeRead")
+	public String pop_attendcode(Model model) {
+		model.addAttribute("list", sact.callAttendCodepop());	
+		return "attend/pop_attendcode";
+	}
+///출근 기록
+	@RequestMapping("/insertWorkStart")
+	public String readWorkStart(Model model, @RequestParam int EMPNO) {
+		System.out.println(EMPNO);
+		model.addAttribute("state",iad.writeWorkStart(EMPNO));
+		return "attend/attend_StartEnd";
+	}
+///////퇴근기록
+	@RequestMapping("/insertWorkEnd")
+	public String readWorkEnd(Model model, @RequestParam int EMPNO) {
+		System.out.println(EMPNO);
+		model.addAttribute("state",iad.writeWorkEnd(EMPNO));
+		return "attend/attend_StartEnd";
+	}
 
 }

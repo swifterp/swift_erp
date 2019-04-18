@@ -21,18 +21,6 @@ $(function(){
 			<li>
 				<a href="../work/selectBusinessLog">업무일지조회</a>
 			</li>
-			<li>
-				<a href="../work/work_monthwork.jsp">월별출퇴근기록</a>
-			</li>
-			<li>
-				<a href="../work/selectWorkState">출퇴근현황</a>
-			</li>
-			<li>
-				<a href="../work/work_worktime.jsp">일별근무시간조회</a>
-			</li>
-			<li>
-				<a href="../work/work_startend.jsp">출근/퇴근 입력</a>
-			</li>
 		</ul>
 	</nav>
 </body>

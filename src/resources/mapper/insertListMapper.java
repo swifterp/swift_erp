@@ -20,8 +20,8 @@ public interface insertListMapper {
 	
 	//pay	
 	public void setUnderyearList(HashMap<String, Integer> percentage);
-	
-	public void InsertBusinessLog(HashMap<String, String> businesslog);
+	//work
+	public void InsertBusinessLog(HashMap<String, String> businesslog);//Work Business Data Insert
 	public void setDailyworkList(HashMap<String, String> info);
 
 	//Attend

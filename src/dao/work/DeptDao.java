@@ -8,15 +8,15 @@ import org.springframework.stereotype.Repository;
 
 import resources.mapper.selectListMapper;
 
-@Repository("EmpStateDao")
-public class EmpStateDao {
+@Repository("DeptDao")
+public class DeptDao {
 	
 	@Autowired
 	private selectListMapper slm;
-	
-	public List<Map<String,String>> selectEmpState(String EMP_NAME){
-		
-		return slm.getEmpStateList(EMP_NAME);
+
+//Dept POP-UP Call
+	public List<Map<String, String>> select_pop_deptlist(){
+		return slm.get_pop_deptlist();
 	}
 
 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="resources.mapper.updateListMapper">
+<!-- Work Business List Low Update -->
+	<update id="update_BusinessLog" parameterType="HashMap">
+		UPDATE BUSINESS_LOG SET
+			LOG_DATE = #{log_date, jdbcType=DATE},
+			LOG_CLIENT = #{client_code, jdbcType=INTEGER},
+			LOG_PROJECT = #{log_project, jdbcType=VARCHAR},
+			LOG_CONTENT = #{log_content, jdbcType=VARCHAR},
+			EMPNO = #{empno, jdbcType=INTEGER}
+		WHERE LOG_NO = #{log_no, jdbcType=INTEGER}
+	</update>
+	
+</mapper>

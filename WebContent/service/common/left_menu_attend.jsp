@@ -24,6 +24,7 @@ $(function(){
 				<ul class="collapse in depth2" id="group1">
 					<li><a class="lmenu_1" href="../attend/attend_CodeList">근태항목관리</a></li>
 					<li><a class="lmenu_2" href="../attend/attend_DataList">근태관리</a></li>
+					<li><a class="lmenu_3" href="../work/selectBusinessLog">업무일지관리</a></li>			
 				</ul>
 			</li>
 			<li>
