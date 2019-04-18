@@ -22,7 +22,7 @@ public class EmpDao {
 	public List<Map<String, String>> selectEmpList() {
 		return slm.getEmpList();
 	}
-
+	
 	public List<Map<String, String>> selectRetiredEmpList() {
 		return slm.getRetiredEmpList();
 	}
@@ -47,10 +47,7 @@ public class EmpDao {
 		return slm.getEmpDeptList();
 	}
 	
-	
-	
 	public List<Map<String, String>> deptView(Integer deptno) {
-		System.out.println(deptno);
 		return slm.getDeptView(deptno);
 	}
 	public List<Map<String, String>> empNumList() {
@@ -58,9 +55,6 @@ public class EmpDao {
 		return slm.getEmpNumList();
 	}
 
-	public List<Map<String, String>> selectRetiredEmpData(String empInfo){
-		return slm.getRetiredEmpData(empInfo);
-	}
 	
 	@Autowired
 	private insertListMapper ilm;
@@ -100,6 +94,10 @@ public class EmpDao {
 	
 	public List<Map<String, String>> selectEmpData(String empInfo){
 		return slm.getEmpData(empInfo);
+	}
+	
+	public List<Map<String, String>> selectRetiredEmpData(String empInfo){
+		return slm.getRetiredEmpData(empInfo);
 	}
 
 	public List<Map<String, Integer>> empNumCheck(Integer emp_number) {

@@ -71,6 +71,14 @@
         select COUNT(*) from employee
         where emp_number = #{emp_number}
 	</select>
+	
+	<select id="getEmpOne" parameterType="Integer" resultType="String">		
+		select empno from employee
+		<where>
+			emp_number = #{emp_number}
+		</where>
+	</select>
+
 	<select id="getEmpPrintList" parameterType="HashMap" resultType="HashMap">
 		select emp_number, emp_name
 		from employee
@@ -88,10 +96,34 @@
 		decode(#{emp_join_date, jdbcType=VARCHAR}, null, emp_join_date, #{emp_join_date, jdbcType=VARCHAR})
 	</select>
 
+	<select id="getEmpOneList" parameterType="Integer" resultType="Map">		
+		select * from employee
+		<where>
+			emp_number = #{emp_number}
+		</where>
+	</select>
+	
+	<select id="getRetiredEmpList" resultType="hashmap">		
+        select e.empno, e.emp_number, e.emp_name, e.emp_email, e.emp_resident_number, d.dname, r.rank_name, e.emp_join_date 
+        from retired_employee e, dept d, rank r
+        where d.deptno=e.deptno and r.rank_no=e.rank_no
+        order by e.emp_number
+	</select>
+	
+	<select id="getRetiredEmpData" parameterType="String" resultType="hashmap">
+		select e.emp_number, e.emp_name, e.emp_email, e.emp_resident_number, d.dname, r.rank_name, e.emp_join_date 
+        from retired_employee e, dept d, rank r
+        where d.deptno=e.deptno 
+        and r.rank_no=e.rank_no
+        and (e.emp_name like '%'||#{empinfo, jdbcType=VARCHAR}||'%' or d.dname like '%'||#{empinfo, jdbcType=VARCHAR}||'%')
+        order by e.emp_number
+	</select>
+
 	<select id="canvas" resultType="hashmap">
 		select d.parent_dname as a, round((ratio_to_report(count(e.empno)) over())*100) as b
 		from dept d, employee e
 		where d.deptno = e.deptno 
 		group by d.parent_dname
 	</select>
+
 </mapper>

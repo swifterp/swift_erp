@@ -39,5 +39,5 @@ public interface deleteListMapper {
 	public void empPayInfoDelete(String empno);
 	
 	public void empDeducInfoDelete(String empno);
-
+	
 }

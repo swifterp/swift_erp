@@ -82,18 +82,11 @@ table tr:hover {background:#fefefe;}
 		<%@ include file="../common/left_menu_emp.jsp" %>
 		<div class="contents">
 			<h1>사원목록</h1>
-			<form action="../emp/empSearchNumName">
+			<form action="../emp/retiredempSearchNumName">
 				<div class="input-group">
 					<input type="text" class="form-control" id="empinfo" name="empinfo" placeholder="성명 또는 부서">
 					<span class="input-group-btn" style="width:100px;">
 						<button type="submit" class="btn btn-default" style="margin-bottom:20px;">검색</button>
-					</span>
-				</div>
-			</form>
-			<form action="../emp/retiredemp">
-				<div class="input-group">
-					<span class="input-group-btn" style="width:100px;">
-						<button type="submit" class="btn btn-default" style="margin-bottom:20px;">퇴사자명단</button>
 					</span>
 				</div>
 			</form>
@@ -120,8 +113,6 @@ table tr:hover {background:#fefefe;}
 						<th>입사일자</th>
 						<th>Email</th>
 						<th>인쇄</th>
-						<th>수정</th>
-						<th>삭제</th>
 					</tr>
 				</thead>
 			    <tbody>
@@ -131,16 +122,14 @@ table tr:hover {background:#fefefe;}
 							for(int i=0;i<lst.size();i++){
 					%>
 					<tr>
-						<td><a onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)"><%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %></a></td>
-						<td><a onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)"><%= lst.get(i).get("EMP_NAME") %></a></td>
+						<td><a><%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %></a></td>
+						<td><a><%= lst.get(i).get("EMP_NAME") %></a></td>
 						<td><%= lst.get(i).get("EMP_RESIDENT_NUMBER") %></td>
 						<td><%= lst.get(i).get("DNAME") %></td>
 						<td><%= lst.get(i).get("RANK_NAME") %></td>
 						<td><%= lst.get(i).get("EMP_JOIN_DATE") %></td>
 						<td><a href="#"><img src="../../images/icon_email_0.png" data-alt="../../images/icon_email_1.png" style="width:35px; height:35px;"/></a></td>
 						<td><a href="#"><img src="../../images/icon_print_0.png" data-alt="../../images/icon_print_1.png" style="width:35px; height:35px;"/></a></td>
-						<td><a onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" href="#"><img src="../../images/icon_pencil_0.png" data-alt="../../images/icon_pencil_1.png" style="width:35px; height:35px;" /></a></td>
-						<td><a onclick="javascript:empDel(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" href="#"><img src="../../images/icon_delete_0.png" data-alt="../../images/icon_delete_1.png" style="width:35px; height:35px;"/></a></td>
 					</tr>
 					<%
 							}
@@ -155,7 +144,7 @@ table tr:hover {background:#fefefe;}
 		         </nav>
 		     </div>
 			<div class="btn_group">
-				<a class="btn btn-outline-primary pull-right" onclick="javascript:goEmpAdd()">사원등록</a>
+				
 			</div>
 		</div>
 	</div>

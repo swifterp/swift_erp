@@ -17,6 +17,7 @@ import dao.pay.InsertpayinfoDao;
 
 @Service("EmpLogic")
 public class EmpLogic {
+	
 	@Autowired
 	private EmpDao ed;
 	
@@ -82,9 +83,11 @@ public class EmpLogic {
 		}
 
 		return result;
+		
 	}
 	
-	public List<Map<String, String>> empViewDao(Integer emp_number) {		
+	public List<Map<String, String>> empViewDao(Integer emp_number) {
+	
 		return ed.empView(emp_number);	
 	}
 
@@ -155,9 +158,6 @@ public class EmpLogic {
 		return ed.empNumList();	
 	}
 	
-	public List<Map<String, String>> retiredempInfoSearch(String empInfo){
-		return ed.selectRetiredEmpData(empInfo);
-	}
 
 	public List<Map<String, String>> callAppointListDao() {
 		return ed.selectAppointList();	
@@ -185,6 +185,10 @@ public class EmpLogic {
 	
 	public List<Map<String, String>> empInfoSearch(String empInfo){
 		return ed.selectEmpData(empInfo);
+	}
+	
+	public List<Map<String, String>> retiredempInfoSearch(String empInfo){
+		return ed.selectRetiredEmpData(empInfo);
 	}
 
 	public List<Map<String, Integer>> empNumCheck(Integer emp_number) {
