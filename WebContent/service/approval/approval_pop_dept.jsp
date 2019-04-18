@@ -7,18 +7,23 @@
 <meta charset="UTF-8">
 <title>부서목록</title>
 <%@ include file="../common/ui_common.jsp" %>
-<script>
-	function ApprovaldeptSelect(empno,emp_name){
-            opener.document.getElementById("approval_empno").value = empno;
-            opener.document.getElementById("approval_emp_name").value = emp_name;
-            window.close();
-	}
-</script>
 <style>
 	table tbody tr:hover {background-color:#eee;}
 </style>
 </head>
 <body>
+<script>
+<%
+	String i=String.valueOf(request.getAttribute("i"));
+%>
+
+	function ApprovaldeptSelect(empno,emp_name){
+            opener.document.getElementById("approval_empno<%=i%>").value = empno;
+            opener.document.getElementById("approval_emp_name<%=i%>").value = emp_name;
+            window.close();
+	}
+	</script>
+
 	<table class="table">
 		<thead>
 			<tr>
@@ -31,14 +36,14 @@
 		<%
 			List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
 			if(lst != null){
-				for(int i=0;i<lst.size();i++){
+				for(int j=0;j<lst.size();j++){
 		%>
 		<tbody>
-				<tr onclick="javascript:ApprovaldeptSelect('<%= Integer.parseInt(String.valueOf(lst.get(i).get("EMPNO"))) %>','<%= String.valueOf(lst.get(i).get("EMP_NAME")) %>')">
-					<td><%= String.valueOf(lst.get(i).get("DNAME")) %></td>
-					<td><%= Integer.parseInt(String.valueOf(lst.get(i).get("EMPNO"))) %></td>
-					<td><%= lst.get(i).get("EMP_NAME") %></td>
-					<td><%= lst.get(i).get("RANK_NAME") %></td>
+				<tr onclick="javascript:ApprovaldeptSelect('<%= Integer.parseInt(String.valueOf(lst.get(j).get("EMPNO"))) %>','<%= String.valueOf(lst.get(j).get("EMP_NAME")) %>')">
+					<td><%= String.valueOf(lst.get(j).get("DNAME")) %></td>
+					<td><%= Integer.parseInt(String.valueOf(lst.get(j).get("EMPNO"))) %></td>
+					<td><%= lst.get(j).get("EMP_NAME") %></td>
+					<td><%= lst.get(j).get("RANK_NAME") %></td>
 				</tr>
 		</tbody>
 		<%

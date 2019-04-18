@@ -46,6 +46,7 @@ public class DraftDao {
 	public void updateDraftState(HashMap<String, String> updateState) {
 		// TODO Auto-generated method stub
 		ulm.UpdateDraftState(updateState);
+		ulm.UpdateFinalState(updateState.get("draft_code"));
 	}
 
 	

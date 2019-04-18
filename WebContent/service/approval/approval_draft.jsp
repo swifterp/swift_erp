@@ -46,6 +46,7 @@
 						<th>기안일자</th>
 						<th>제목</th>
 						<th>작성자</th>
+						<th>최종결재상태</th>
 						<th>보기</th>
 						<th>결재라인 보기</th>
 						
@@ -62,6 +63,7 @@
 						<td><%= String.valueOf(lst.get(i).get("DRAFT_DATE")).substring(0,10) %> </td>
 						<td><%= lst.get(i).get("STYLE_NAME") %> </td>
 						<td><%= lst.get(i).get("EMP_NAME") %> </td>
+						<td><%= lst.get(i).get("DRAFT_STATE") %> </td>
 						<td><a class="btn btn-primary" onclick="javascript:goDraftSearch(<%= Integer.parseInt(String.valueOf(lst.get(i).get("DRAFT_NO"))) %>)" >조회</a></td>
 						<td><a class="btn btn-primary" onclick="javascript:goApprovalPath(<%= Integer.parseInt(String.valueOf(lst.get(i).get("DRAFT_NO"))) %>)" >결재라인 조회</a></td>
 					

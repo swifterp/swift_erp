@@ -20,5 +20,8 @@
 		</where>
 		
 	</update>
-
+	
+	<update id="UpdateFinalState" statementType="CALLABLE">
+	{CALL proc_draftState(#{draft_code, mode=IN, jdbcType=INTEGER,javaType=String})}
+	</update>
 </mapper>

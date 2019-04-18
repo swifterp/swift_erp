@@ -44,5 +44,6 @@ public interface updateListMapper {
 	public void resetPayConfirmCancelList(String report);
 	public void InsertApprovalWrite(HashMap<String,String> draft_info);
 	public void UpdateDraftState(HashMap<String, String> updateState);
+	public void UpdateFinalState(String draft_code);
 
 }

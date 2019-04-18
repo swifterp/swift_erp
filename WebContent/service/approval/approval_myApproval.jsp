@@ -30,7 +30,8 @@ function goDraftState(draft_code){
 						<th>작성일</th>						
 						<th>작성자</th>						
 						<th>결재양식</th>
-						<th>결재상태</th>
+						<th>최종결재상태</th>
+						<th>내 결재상태</th>
 						<th>결재</th>
 												
 					</tr>
@@ -47,6 +48,7 @@ function goDraftState(draft_code){
 						<td><%= String.valueOf(lst.get(i).get("DRAFT_WRITER")) %> </td>
 						<td><%= String.valueOf(lst.get(i).get("STYLE_NAME")) %> </td>
 						<td><%= String.valueOf(lst.get(i).get("DRAFT_STATE")) %> </td>
+						<td><%= String.valueOf(lst.get(i).get("PATH_STATE")) %> </td>
 						<td><a class="btn btn-primary" onclick="javascript:goDraftState(<%= Integer.parseInt(String.valueOf(lst.get(i).get("DRAFT_NO"))) %>)" >결재</a></td>
 		
 					</tr>

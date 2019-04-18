@@ -25,7 +25,8 @@
   
 $(document).ready(function() {
     $('#pop_dept1').on("click", function() {	
-    	var url="../approval/approval_path_dept1?EMPNO=" + document.getElementById("hidempno").name;
+    	var url="../approval/approval_path_dept1?EMPNO=" + document.getElementById("hidempno").name
+    									+"&idValue=1"
     	var windowW = 300;  // 창의 가로 길이
         var windowH = 500;  // 창의 세로 길이
         var left = Math.ceil((window.screen.width - windowW)/2);
@@ -34,8 +35,9 @@ $(document).ready(function() {
     });
 }); 
 
-function pop_emp(){	
-    	var url="../approval/approval_path_dept1?EMPNO=" + document.getElementById("hidempno").name;
+function pop_emp(i){	
+    	var url="../approval/approval_path_dept1?EMPNO=" + document.getElementById("hidempno").name
+    									+"&idValue="+i;
     	var windowW = 300;  // 창의 가로 길이
         var windowH = 500;  // 창의 세로 길이
         var left = Math.ceil((window.screen.width - windowW)/2);
@@ -86,15 +88,17 @@ function addReference(){
   
  
   div.setAttribute("id","test"+i);
-
-  txtbox1.setAttribute("id", "approval_empno");
+	
+  txtbox1.setAttribute("id", "approval_empno"+i);
   txtbox1.setAttribute("name", "reference_empno");
+/*   txtbox1.setAttribute("value", "111"); */
+  
   txtbox1.setAttribute("class", "form-control");
-  txtbox2.setAttribute("id","approval_emp_name")
-  txtbox2.setAttribute("name","reference_empno")
+  txtbox2.setAttribute("id","approval_emp_name"+i)
+  /* txtbox2.setAttribute("name","reference_empno") */
   txtbox2.setAttribute("class", "form-control");
   txtbox2.setAttribute("required", "");
-  txtbox2.setAttribute("onclick", "pop_emp()");
+  txtbox2.setAttribute("onclick", "pop_emp("+i+")");
   txtbtn.setAttribute("class","btn btn-default");
   txtbtn.setAttribute("value","보기");
   btn.setAttribute("class", "btn btn-default");
@@ -109,6 +113,15 @@ function addReference(){
   document.getElementById("test2").appendChild(div);
   i=i+1;
 }
+
+function add_text(){
+	var div= document.createElement('div');
+	div.innerHTML = document.getElementById('pre_set').innerHTML;
+	document.getElementById('field').appendChild(div);
+	
+}
+
+
 </script>
 <section>
 <script>
@@ -135,8 +148,8 @@ function addReference(){
 					<tr id="test1">
 						<th width="200">1차결재 <span class="essential">*</span></th>
 						<td id="pop_dept1" class="input-group" width="200">
-							<input type="hidden" id="approval_empno" name="reference_empno" class="form-control" required="" >
-							<input type="text" id="approval_emp_name" class="form-control" required="" readonly/>
+							<input type="hidden" id="approval_empno1" name="reference_empno" class="form-control" required="" >
+							<input type="text" id="approval_emp_name1" class="form-control" required="" readonly/>
 							
 							<span class="input-group-btn">
 								 <button class="btn btn-default" type="button" data-toggle="modal" data-target="#exampleModal">보기</button>
@@ -145,8 +158,8 @@ function addReference(){
 						<td>
 						<button class="btn btn-default" type="button" onclick="addReference()">결재자 추가</button>
 						</td>
-						
 					</tr>
+					
 					<tr id="test2">
 					
 					</tr>

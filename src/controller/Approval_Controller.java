@@ -136,8 +136,10 @@ public class Approval_Controller {
 	
 	
 	@RequestMapping("/approval_path_dept1")
-	public String approval_dept1(Model model, @RequestParam int EMPNO) {
+	public String approval_dept1(Model model, @RequestParam(value="EMPNO") int EMPNO,
+											@RequestParam(value="idValue") int idValue) {
 		model.addAttribute("list", sap.callApprovalPathDao1(EMPNO));
+		model.addAttribute("i",idValue);
 		return "approval/approval_pop_dept";
 	}
 	

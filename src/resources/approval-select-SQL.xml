@@ -6,7 +6,7 @@
 	<select id="getDraftList" resultType="hashmap">
 	
 		select draft.DRAFT_NO,draft.DRAFT_DATE, (select style_name from common_style where style_code = draft_style) as "STYLE_NAME",
-		employee.emp_name from draft, employee 
+		employee.emp_name, draft_state from draft, employee 
 		<where>
 			draft.draft_writer = employee.empno
 		</where>
@@ -68,8 +68,8 @@
 	</select>
 	
 	<select id="getMyApprovalList" parameterType = "Integer" resultType="hashmap">
-		select   DRAFT_NO,DRAFT_DATE, EMP_NAME as "DRAFT_WRITER",style_name,draft_state 
-		from draft,common_style,employee, (select path_draft_code from approval_path_code where path_emp=#{EMPNO,jdbcType=INTEGER}) d
+		select   DRAFT_NO,DRAFT_DATE, EMP_NAME as "DRAFT_WRITER",style_name,draft_state,path_state  
+		from draft,common_style,employee, (select path_draft_code,path_state from approval_path_code where path_emp=#{EMPNO,jdbcType=INTEGER}) d
 				<where>
 					draft_no =d.path_draft_code 
 					and style_code = draft_style
