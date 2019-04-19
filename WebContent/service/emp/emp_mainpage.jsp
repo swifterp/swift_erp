@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>emp_mainpage</title>
 <%@ include file="../common/ui_common.jsp" %>
-
 <script type="text/javascript">
 	<!--사원등록-->
 	function goEmpAdd(){
@@ -47,50 +46,6 @@ $(document).ready(function(){
 	$(this).attr("data-alt", temp);
 	});
 	})
-</script>
-<script>
-function paging(page) {
-    $('#list-body').empty();
-    var startRow = (page - 1) * pageSize; // + 1 list는 0부터 시작하니깐;
-    var endRow = page * pageSize;
-
-	if (totalCount < endRow) 
-    {
-        endRow = totalCount;
-    }  
-    var startPage = ((page - 1)/visibleBlock) * visibleBlock + 1;
-    var endPage = startPage + visibleBlock - 1;
-    if(endPage > totalPages) {    //
-      endPage = totalPages;
-    }
-    for (var j = startRow; j < endRow; j++) 
-    {   
-        
-        $('#list-body').append(''+ chatLogList[j].fileNo +'<a onclick="getContent(\''+chatLogList[j].fileName+'\')">'
-                + textLengthOverCut(chatLogList[j].fileName, '25', '...') +'</a>'+ chatLogList[j].fileDate +'');
-    }
-    totalPages = totalCount/pageSize;
-    if (totalCount%pageSize > 0) {
-    totalPages++;
-    }
-    if(page < totalCount){
-		$('#Previous').on('click',function() {
-			var pageNum = $(this).attr('data-page')
-        	var trIndex = 0;
-        	$('.pagination li').removeClass('active')
-         	$(this).addClass('active')
-         	$(table+' tr:gt(0)').each(function(){
-            	trIndex++
-            	if(trIndex > (maxRows*pageNum) || trIndex <= ((maxRows*pageNum)-maxRows)){
-               		$(this).hide()
-            	}else{
-               		$(this).show()
-            	}
-         	})
-      })
-    }
-}
-
 </script>
 <style>
 table tr:hover {background:#fefefe;}
@@ -142,6 +97,7 @@ table tr:hover {background:#fefefe;}
 			    <tbody>
 					<%
 						List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
+						float size= lst.size();
 						if(lst != null){
 							for(int i=0;i<lst.size();i++){
 					%>
@@ -166,7 +122,7 @@ table tr:hover {background:#fefefe;}
 			<div class="pagination-container">
 		         <nav>
 		         	<div>
-		         	   <ul class="pagination">
+		         	   <ul class="pagination" id="paging">
 		               </ul>
 		         	</div>
 		         </nav>
@@ -176,55 +132,102 @@ table tr:hover {background:#fefefe;}
 			</div>
 		</div>
 	</div>
-	
-   <script type="text/javascript">
-   var table = '#mytable'
-   $(document).ready(function(){
-      $('.pagination').html('')
-      var trnum=0
-      var maxRows = parseInt(10)
-      var buttons = parseInt(10)
-      var totalRows = $(table+' tbody tr').length
-      $(table+' tr:gt(0)').each(function(){
-         trnum++
-         if(trnum > maxRows){
-            $(this).hide()
-         }
-         if(trnum <= maxRows){
-            $(this).show()
-         }
-      })
-      if(totalRows > maxRows){
-         var pagenum = Math.ceil(totalRows/maxRows)
-	   		 	$('.pagination').append(
-	   	   		'<button class="btn btn-outline-primary pull-left" style="margin-right: 10px">이전</button>'
-	    	    )
-       	 for(var i=1; i<=pagenum;){
-	   		 $('.pagination').append(
-	   	   		'<li data-page="'+i+'"> <span>'+i++ +'<span class="sr-only"> (current) </span></span></li>'
-	    	    ).show()
-         }	
-	   		 	$('.pagination').append(
-	   	   		'<button class="btn btn-outline-primary" style="margin-left: 10px">다음</button>'
-	    	    )
-      }
-      $('.pagination li:nth-child(2)').addClass('active')
-      $('.pagination li').on('click',function() {
-         var pageNum = $(this).attr('data-page')
-         var trIndex = 0;
-         $('.pagination li').removeClass('active')
-         $(this).addClass('active')
-         $(table+' tr:gt(0)').each(function(){
-            trIndex++
-            if(trIndex > (maxRows*pageNum) || trIndex <= ((maxRows*pageNum)-maxRows)){
-               $(this).hide()
-            }else{
-               $(this).show()
-            }
-         })
-      })
-   })
+	<script>
+	var totalData = "<%=size%>"
+	var dataPerPage = 10;    // 한 페이지에 나타낼 데이터 수
+	var pageCount = "<%= Math.ceil(size/20) %>" 
+	var currentPage = 10;
+	var table = '#mytable'
 
-   </script>
+	function paging(totalData, dataPerPage, pageCount, currentPage){
+		$('#paging').html('')
+		var trnum=0
+		var maxRows = dataPerPage // 한 페이지에 나타낼 데이터 
+		var maxPageNum = pageCount; // 한 화면에 나타낼 페이지버튼 수
+		var totalRows = $(table+' tbody tr').length //총 데이터 수
+		var pagenum = Math.ceil(totalRows/maxRows); 	//총 페이지버튼 수
+		var pageGroup = Math.ceil(currentPage/maxPageNum);
+		var last = pageGroup*maxPageNum;
+		if (last > pagenum)
+			  last = pagenum;
+		var first = last - (maxPageNum-1);
+		var next = last+1;
+		var prev = first-1;
+		
+		//alert("maxRows ="+maxRows); //한 페이지에 보여줄 데이터 수
+		//alert("totalRows ="+totalRows); //총 데이터 수
+		//alert("maxPageNum ="+maxPageNum);//한 페이지에 보여줄 버튼수
+		//alert("pagenum ="+pagenum);//한 페이지에 보여줄 버튼수
+		//alert("pageGroup ="+pageGroup);  //페이지 그룹번호
+		//alert("last ="+last);  //마지막 버튼 번호
+		//alert("first ="+first);  //첫번째 버튼 번호
+		//alert("next ="+next);  //다음 페이지 첫번째 버튼
+		//alert("prev ="+prev);  //이전 버튼 번호
+		
+		$(table+' tr:gt(0)').each(function(){
+		   trnum++
+		   if(trnum > maxRows){
+		      $(this).hide()
+		   }
+		   if(trnum <= maxRows){
+		      $(this).show()
+		   }
+		})
+	      if(prev > 0){
+	 		 	$('#paging').append(
+	 	   		'<a id="prev" class="btn btn-outline-primary pull-left" style="margin-right: 10px">이전</a>'
+				)
+	      }
+		  for(var i=first; i<=last;){
+		 		$('#paging').append(
+	 	   		'<li data-page="'+(i)+'"> <span>'+i++ +'<span class="sr-only"> (current) </span></span></li>'
+	  	  		)
+		  }	
+		  if(last < pagenum){
+	 		 	$('#paging').append(
+	 	   		'<a id="next" class="btn btn-outline-primary" style="margin-left: 10px ">다음</a>'
+	  	  		)
+		  }
+		$('#paging li:first-child').addClass('active')
+		$('#paging li').on('click',function() {
+			var pageNum = $(this).attr('data-page');
+			//alert("pageNum ="+pageNum); //클릭한 페이지 번호
+		  	var trIndex = 0;
+		  	
+		    //var d = (maxRows*pageNum)-maxRows;
+	    	//alert("d ="+d); //전체 데이터 범위에서 클릭한 페이지번호의 첫번째에 보여줄 데이터번호
+		    //var a = maxRows*pageNum;
+		    //alert("a ="+a); //전체 데이터 범위에서 클릭한 페이지번호의 마지막에 보여줄 데이터번호
+			//alert(this);
+			
+	    	$('#paging li').removeClass('active')
+		   	$(this).addClass('active')
+		   	$(table+' tr:gt(0)').each(function(){
+		    	trIndex++
+		   		// alert("trIndex ="+trIndex); //총 데이터수
+		      	if(trIndex <= ((maxRows*pageNum)-maxRows) || trIndex > (maxRows*pageNum)){
+		        	$(this).hide()
+		      	}else{
+		        	$(this).show()
+		      	}
+		   })
+		})
+		$('#paging a').on('click', function(){
+			var $item = $(this);
+            var $id = $item.attr("id");
+            var selectedPage = $item.text();
+            
+            if($id == "next")    selectedPage = next;
+            if($id == "prev")    selectedPage = prev;
+            //alert("$id ="+$id);
+
+            paging(totalData, dataPerPage, pageCount, selectedPage);
+		})
+	}
+	
+	$(document).ready(function(){
+		 paging(totalData, dataPerPage, pageCount, 1);
+	})
+	</script>
 </body>
 </html>
