@@ -6,16 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Welcome Page</title>
-<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../../css/common.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
-<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
-<!-- 날짜선택 관련 -->
-<link rel="stylesheet" href="../../css/datepicker.css">
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="../../css/style.css">
+<%@ include file="../common/ui_common.jsp" %>
+<!-- 메인화면 -->
 <script type='text/javascript' src='../../js/jquery.particleground.js'></script>
 <script type = "text/javascript" src ="../../js/demo.js"></script>
+<link rel="stylesheet" href="../../css/style.css">
 <%	List<Map<String, String>> sess = (List<Map<String, String>>)request.getSession().getAttribute("member"); %>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -23,7 +18,7 @@
 	});
 </script> 
 </head>
-<body>
+<body class="welcome">
 	<div id="chat"></div>
 	<div id="particles">
 		 <div id="intro">	
@@ -32,5 +27,6 @@
 		</div>
 		<input type="hidden" id="hidempno" name="<%= String.valueOf(sess.get(0).get("EMPNO")) %>">
 	</div>
+	
 </body>
 </html>

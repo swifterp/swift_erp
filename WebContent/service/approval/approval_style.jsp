@@ -59,7 +59,6 @@
 		<div class="container">		
 			<%@ include file="../common/left_menu_approval.jsp" %>
 			<div class="contents">
-	
 				<h3>서류작성</h3>
 				<script>
 				var i=2;
@@ -166,7 +165,7 @@
 				<input type="hidden" name="style_code" value="<%= style_code %>">
 				<input type="hidden" name="draft_no" value="<%= draft_no %>">
 				<input type="hidden" name="empno" value="<%= String.valueOf(sess.get(0).get("EMPNO")) %>">
-				<input type="submit" value="결재">
+				<input type="submit" value="결재" class="btn btn-outline-primary" style="width:200px">
 				</form>
 			</section>
 		</div>

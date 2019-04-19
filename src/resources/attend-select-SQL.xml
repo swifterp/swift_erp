@@ -19,7 +19,7 @@
             from ATTEND_MANAGER_T amt, ATTEND_CODE_T act, employee emp
             where amt.attend_code = act.attend_code and 
                   emp.empno = amt.empno
-        order by attend_no
+        order by attend_date desc
 	</select>
 	
 	<select id="getAttendAddList" resultType="hashmap">

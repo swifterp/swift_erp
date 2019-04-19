@@ -26,7 +26,6 @@ public interface selectListMapper {
 		public List<Map<String, String>> getEmpData(String empInfo);
 
 		public List<Map<String, String>> getEmpPrintList(HashMap<String, String> empInfo);
-		public int getEmpListCount(HashMap<String, String> empInfo);
 
 		public List<Map<Object, Object>> canvas();
 		public String getEmpOne(Integer emp_number);

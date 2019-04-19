@@ -9,7 +9,7 @@
         WHERE BL.LOG_CLIENT = C.CLIENT_CODE
             AND BL.EMPNO = E.EMPNO
             AND E.DEPTNO = D.DEPTNO
-        ORDER BY LOG_NO
+        ORDER BY LOG_DATE desc
 	</select>
 <!-- Client POP-UP Call -->
 	<select id="get_pop_client" resultType="HashMap">

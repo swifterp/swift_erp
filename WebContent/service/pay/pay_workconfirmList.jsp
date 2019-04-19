@@ -226,9 +226,9 @@
 		<%@ include file="../common/left_menu_pay.jsp" %>
 		<div class="contents">
 		
-				연월선택 : <input type="text" oninput="changeCalendar()" class="form-control" name="selectedDate" id="datepicker" style="width:7%; display:inline-block; margin-right:5px;">
-		<button type='button' onclick="changeCalendar()" class='btn btn-outline-black'>변경</button>
-		<button type='button' onclick="selectconfirmlist()" class='btn btn-outline-black'>조회</button>
+				연월선택 : <input type="text" oninput="changeCalendar()" class="form-control" name="selectedDate" id="datepicker" style="width:200px; display:inline-block; margin-right:5px;">
+		<button type='button' onclick="changeCalendar()" class='btn btn-outline-primary'>변경</button>
+		<button type='button' onclick="selectconfirmlist()" class='btn btn-outline-primary'>조회</button>
 		<br>
 		<table id="calendar" border="3" class="table line2" style="width: 900px"> 
 			<thead>

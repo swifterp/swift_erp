@@ -32,7 +32,6 @@ $(function(){
 				<a data-toggle="collapse" data-target="#group2"
 				aria-expanded="false" href="#">조회/인쇄</a>
 				<ul class="collapse depth2" id="group2">
-					<li><a href="#">각종증명서인쇄</a></li>
 					<li><a href="../emp/emp_listView.jsp">사원명부</a></li>
 					<li><a href="../emp/canvasjschart">인사관련 차트</a></li>
 				</ul>

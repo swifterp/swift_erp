@@ -182,7 +182,6 @@ public class EmpDao {
 	}
 
 	public List<Map<String, String>> getEmpPrintList(HashMap<String, String> empInfo) {
-		slm.getEmpListCount(empInfo);
 		return slm.getEmpPrintList(empInfo);
 	}
 }

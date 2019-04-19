@@ -82,7 +82,7 @@ table tr:hover {background:#fefefe;}
 		<div class="contents">
 			<h1>사원목록</h1>
 			<form action="../emp/empSearchNumName">
-				<div class="input-group">
+				<div class="input-group" style="float:left;">
 					<input type="text" class="form-control" id="empinfo" name="empinfo" placeholder="성명 또는 부서">
 					<span class="input-group-btn" style="width:100px;">
 						<button type="submit" class="btn btn-default" style="margin-bottom:20px;">검색</button>
@@ -90,7 +90,7 @@ table tr:hover {background:#fefefe;}
 				</div>
 			</form>
 			<form action="../emp/retiredemp">
-				<button type="submit" class="btn btn-outline-primary" style="margin-bottom:20px;">퇴사자명단</button>
+				<button type="submit" class="btn btn-outline-info" style="float:right;">퇴사자명단</button>
 			</form>
 			<table class="table" id="mytable">
 				<colgroup>
@@ -144,7 +144,7 @@ table tr:hover {background:#fefefe;}
 				 	%>
 			    </tbody>
 			</table>
-			  <div class="pagination-container">
+			<div class="pagination-container">
                <nav>
                   <div>
                      <ul class="pagination" id="paging">
@@ -160,7 +160,7 @@ table tr:hover {background:#fefefe;}
 	<script>
    var totalData = "<%=size%>"
    var dataPerPage = 10;    // 한 페이지에 나타낼 데이터 수
-   var pageCount = "<%= Math.ceil(size/2) %>";  // 한 화면에 나타낼 페이지버튼 수
+   var pageCount = "<%= Math.ceil(size/20) %>";  // 한 화면에 나타낼 페이지버튼 수
    var currentPage = 1;
    var table = '#mytable'
    
@@ -215,7 +215,11 @@ table tr:hover {background:#fefefe;}
                 '<a id="next" class="btn btn-outline-primary" style="margin-left: 10px ">다음</a>'
                 )
         }
-      $('#paging li:first-child').addClass('active')
+        if(first == 1 && last == 10){
+            $('#paging li:first-child').addClass('active')
+            }else{
+            $('#paging li:nth-child(2)').addClass('active')
+       }
       $('#paging li').on('click',function() {
          var pageNum = $(this).attr('data-page');
          //alert("pageNum ="+pageNum); //클릭한 페이지 번호

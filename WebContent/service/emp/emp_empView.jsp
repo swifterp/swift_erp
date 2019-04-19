@@ -203,7 +203,7 @@ reader.readAsDataURL(test);
 						</td>	
 						<th>사원번호<span class="essential">*</span></th>
 						<td class="input-group">
-							<input type="text" id="emp_number" name="emp_number" class="form-control" value="${list.get(0).get("EMP_NUMBER")}" required="">
+							<input type="text" id="emp_number" name="emp_number" class="form-control" value="${list.get(0).get("EMP_NUMBER")}" required="" readonly>
 							<span class="input-group-btn">
 								<button type="button" id="check" class="btn btn-info">중복확인</button> 
 							</span>

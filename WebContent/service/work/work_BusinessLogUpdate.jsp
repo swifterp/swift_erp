@@ -58,7 +58,7 @@ $(document).ready(function() {
 					</tr>
 					<tr>
 						<th>업무일지 제목</th>
-						<td><input type="text" class="form-control" name="log_project" value="${list.get(0).get("LOG_PROJECT")}"></td>
+						<td><input type="text" class="form-control" name="log_project" value="${list.get(0).get("LOG_PROJECT")}" maxlength="25"></td>
 					</tr>
 					<tr>
 						<th>업무내용</th>
