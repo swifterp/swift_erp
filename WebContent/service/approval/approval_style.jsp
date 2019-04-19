@@ -79,6 +79,7 @@ function addReference(){
   var txtbtn= document.createElement("INPUT");
   var btn= document.createElement("INPUT");
   var div=document.createElement("div");
+  var spn = document.createElement("SPAN");
   
   //txt.setAttribute("type", "text");
   txtbox1.setAttribute("type", "hidden");
@@ -98,19 +99,37 @@ function addReference(){
   /* txtbox2.setAttribute("name","reference_empno") */
   txtbox2.setAttribute("class", "form-control");
   txtbox2.setAttribute("required", "");
+  txtbox2.setAttribute("readonly", "true");
   txtbox2.setAttribute("onclick", "pop_emp("+i+")");
   txtbtn.setAttribute("class","btn btn-default");
   txtbtn.setAttribute("value","보기");
+  spn.setAttribute("class", "input-group-btn");
   btn.setAttribute("class", "btn btn-default");
   btn.setAttribute("value", "결재자 추가");
   btn.setAttribute("onclick", "addReference("+i+")");
 
 
-  document.getElementById("test2").appendChild(txt);
-  document.getElementById("test2").appendChild(txtbox1);
-  document.getElementById("test2").appendChild(txtbox2);
-  document.getElementById("test2").appendChild(txtbtn);
-  document.getElementById("test2").appendChild(div);
+	var test2tr = document.createElement("TR");
+	var test2th = document.createElement("TH");
+	var test2td = document.createElement("TD");
+	var test2td2 = document.createElement("TD");
+
+	test2th.setAttribute("width", "200");
+	test2td.setAttribute("class", "input-group");
+	test2td.setAttribute("width", "200");
+
+	var table = document.getElementById("test2table");
+	
+	table.appendChild(test2tr);
+	test2tr.appendChild(test2th);
+	test2tr.appendChild(test2td);
+	test2tr.appendChild(test2td2);
+  
+  test2td.appendChild(txtbox1);
+  test2td.appendChild(txtbox2);
+  test2td.appendChild(spn);
+  spn.appendChild(txtbtn);
+  test2th.innerHTML = i+"차결재";
   i=i+1;
 }
 
@@ -144,26 +163,24 @@ function add_text(){
 
 
 	<form action="./approval_write" method="POST">
-	<table class="table">
-					<tr id="test1">
-						<th width="200">1차결재 <span class="essential">*</span></th>
-						<td id="pop_dept1" class="input-group" width="200">
-							<input type="hidden" id="approval_empno1" name="reference_empno" class="form-control" required="" >
-							<input type="text" id="approval_emp_name1" class="form-control" required="" readonly/>
-							
-							<span class="input-group-btn">
-								 <button class="btn btn-default" type="button" data-toggle="modal" data-target="#exampleModal">보기</button>
-							</span>
-						</td>
-						<td>
-						<button class="btn btn-default" type="button" onclick="addReference()">결재자 추가</button>
-						</td>
-					</tr>
+	<table class="table" >
+		<tbody id="test2table">
+			<tr id="test1">
+				<th width="200">1차결재 <span class="essential">*</span></th>
+				<td id="pop_dept1" class="input-group" width="200">
+					<input type="hidden" id="approval_empno1" name="reference_empno" class="form-control" required="" >
+					<input type="text" id="approval_emp_name1" class="form-control" required="" readonly/>
 					
-					<tr id="test2">
-					
-					</tr>
-				</table>
+					<span class="input-group-btn">
+						 <button class="btn btn-default" type="button" data-toggle="modal" data-target="#exampleModal">보기</button>
+					</span>
+				</td>
+				<td>
+				<button class="btn btn-default" type="button" onclick="addReference()">결재자 추가</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 		<!-- summernote와 관련된 영역 -->
 		<textarea id="summernote" name="draft_data">
 		<%
