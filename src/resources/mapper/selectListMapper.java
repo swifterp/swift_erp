@@ -12,6 +12,7 @@ public interface selectListMapper {
 		
 		//employee
 		public List<Map<String, String>> getEmpList();
+		public List<Map<String, String>> getSearchEmpList(String empno);
 		public List<Map<String, String>> getEmpView(Integer emp_number);
 		public List<Map<String, String>> getEmpNumList();
 		public List<Map<String, String>> getEmpDeptList();

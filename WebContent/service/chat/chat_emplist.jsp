@@ -13,9 +13,9 @@
 <p style="background:url(../../images/img_chat_title.png) no-repeat 0 4px; padding:5px 0px 5px 28px; font-size:15px; margin-bottom: 0px;">사용자 목록</p>
 <p>대화방에<span class="color">초대할 멤버</span>를 선택하세요</p>
 <div class="input-group">
-   <input type="text" class="form-control" placeholder="멤버 및 팀명">
+   <input type="text" id="searchEmpText" class="form-control" placeholder="멤버 및 팀명">
    <span class="input-group-btn" style="width:34px; margin-bottom: 0px">
-      <button type="submit" class="btn btn-default" style="margin-bottom:10px;">검색</button>
+      <button type="button" onclick="searchEmp()" class="btn btn-default" style="margin-bottom:10px;">검색</button>
    </span>
 </div>
 <%   List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list"); %>

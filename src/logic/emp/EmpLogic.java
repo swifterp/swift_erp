@@ -34,6 +34,10 @@ public class EmpLogic {
 		return ed.selectEmpList();
 	}
 	
+	public List<Map<String, String>> callSearchEmpDao(String empno){
+		return ed.selectSearchEmpList(empno);
+	}
+	
 	public List<Map<String, String>> callRetiredEmpListDao() {
 		return ed.selectRetiredEmpList();
 	}

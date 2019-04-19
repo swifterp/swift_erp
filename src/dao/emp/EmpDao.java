@@ -23,6 +23,10 @@ public class EmpDao {
 		return slm.getEmpList();
 	}
 	
+	public List<Map<String, String>> selectSearchEmpList(String empno){
+		return slm.getSearchEmpList(empno);
+	}
+	
 	public List<Map<String, String>> selectRetiredEmpList() {
 		return slm.getRetiredEmpList();
 	}

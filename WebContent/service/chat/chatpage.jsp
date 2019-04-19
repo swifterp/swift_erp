@@ -22,7 +22,6 @@
                <div id="emplist" style="overflow:scroll; width:300px; height:300px; padding:10px; text-align:left;"></div>
             </td>
             <td id="inchatTd">
-               <div id="participentDiv"  style="overflow-y:scroll; width:200px; height:200px;"></div>
                <div id="roomTitleDiv"></div>
                <div id="textareaDiv"></div><br>
                <div id="inputDiv"></div>
@@ -31,9 +30,8 @@
 	               <div id="exitDiv" style="float:left;"></div>
 	           </div>
             </td>
-            
-            <td id="chatlist">
-            </td>
+            <td id="partiTd"></td>
+            <td id="chatlist"></td>
          </tr>
       </table>
    </div>
@@ -51,9 +49,12 @@
    var xhr6 = null;
    var xhr7 = null;
    var xhr8 = null;
+   var xhr9 = null;
 
    var empnoArr = [];
    var checkedArr = [];
+
+   var partiflag = 0;
    
    function createRequest(xhr){
    
@@ -203,7 +204,7 @@
    
    }   
 
-   function createRoom(chatroom_code){
+   function createRoom(chatroom_code, chatroom_name){
       if(roomTitleDiv.hasChildNodes()){
          roomTitleDiv.removeChild(roomTitleDiv.childNodes[0]);
       }
@@ -220,12 +221,16 @@
       if(exitDiv.hasChildNodes()){
          exitDiv.removeChild(exitDiv.childNodes[0]);
       }
+      if(partiTd.hasChildNodes()){
+    	  partiTd.removeChild(partiTd.childNodes[0]);
+      }
       
       textarea = document.createElement("TEXTAREA");
       inputMessage = document.createElement("INPUT");
       submitMessage = document.createElement("INPUT");
       inviteButton = document.createElement("INPUT");
       exitButton = document.createElement("INPUT");
+      
       
       textarea.setAttribute("id", "textarea"+chatroom_code);
       textarea.setAttribute("readonly", "true");
@@ -257,7 +262,13 @@
       inviteDiv.appendChild(inviteButton);
       exitDiv.appendChild(exitButton);
       bringLog(chatroom_code);
-      participentList(inputMessage);
+      //participentList(inputMessage);
+      
+      //var partibutton = document.createElement("BUTTON");
+      //partibutton.setAttribute("class", "btn-outline-primary btn");
+      //partibutton.setAttribute("onclick", "participentList("+inputMessage+")");
+      var tmp = roomTitleDiv.innerHTML = chatroom_name;
+      roomTitleDiv.innerHTML = tmp + "<button class='btn-outline-primary btn', onclick='participentList("+inputMessage.id.substr(5)+")'> = </button>"; 
       
    }
 
@@ -321,20 +332,34 @@
    }
 
    function participentList(inputMessage){
-
+	if(partiflag == 0){
       xhr7 = createRequest(xhr7);
       xhr7.onreadystatechange = function (){
          
          if(this.readyState == 4 && this.status == 200){
-            document.getElementById("participentDiv").innerHTML = this.responseText;
+             if(document.getElementById("partiTd").hasChildNodes()){
+            	 document.getElementById("partiTd").removeChild(document.getElementById("partiTd").childNodes[0]);
+              }
+             var partidiv = document.createElement("DIV");
+             partidiv.setAttribute("id", "participentDiv");
+             document.getElementById("partiTd").appendChild(partidiv);
+             partidiv.innerHTML = this.responseText;
          }
          
       };
       
       xhr7.open("POST", "../chat/selectparticipent?", true);
       xhr7.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
-      xhr7.send("chatroom_code="+inputMessage.id.substr(5));
+      xhr7.send("chatroom_code="+inputMessage);
 
+      partiflag = 1;
+      
+	} else if(partiflag == 1){
+        if(document.getElementById("partiTd").hasChildNodes()){
+       	 document.getElementById("partiTd").removeChild(document.getElementById("partiTd").childNodes[0]);
+         }
+        partiflag = 0;
+	}
    }
 
    function exitRoom(chatroom_code){
@@ -358,7 +383,6 @@
                exitDiv.removeChild(exitDiv.childNodes[0]);
             }
             if(participentDiv.hasChildNodes()){
-               alert(participentDiv.childNodes[1].id);
                participentDiv.removeChild(participentDiv.childNodes[1]);
             }
             
@@ -371,6 +395,24 @@
       xhr8.send("chatroom_code="+chatroom_code+"&empno="+x);
 
    }
+
+	function searchEmp(){
+
+	      xhr9 = createRequest(xhr9);
+	      xhr9.onreadystatechange = function (){
+	         
+	         if(this.readyState == 4 && this.status == 200){
+	            document.getElementById("emplist").innerHTML = this.responseText;
+	            removeMe();
+	         }
+	         
+	      };
+
+	      xhr9.open("POST", "../emp/read?", true);
+	      xhr9.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
+	      xhr9.send("classify=search&empno="+document.getElementById("searchEmpText").value);
+	      
+	}
    
 </script>
 

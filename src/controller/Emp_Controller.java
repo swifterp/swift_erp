@@ -27,11 +27,18 @@ public class Emp_Controller {
 	private EmpLogic el;
 
 	@RequestMapping("/read")
-	public String readEmp(Model model, @RequestParam(value="classify", defaultValue="nochat") String classify) {
-		model.addAttribute("list", el.callEmpListDao());
+	public String readEmp(Model model, @RequestParam(value="classify", defaultValue="nochat") String classify
+									 , @RequestParam(value="empno", defaultValue="0") String empno) {
+		
 		if(classify.equals("nochat")) {
+			model.addAttribute("list", el.callEmpListDao());
 			return "emp/emp_mainpage";
+		} else if(classify.equals("search")) {
+			List<Map<String, String>> tmp = el.callSearchEmpDao(empno);
+			model.addAttribute("list", tmp);
+			return "chat/chat_emplist";
 		} else {
+			model.addAttribute("list", el.callEmpListDao());
 			return "chat/chat_emplist";
 		}
 	}
