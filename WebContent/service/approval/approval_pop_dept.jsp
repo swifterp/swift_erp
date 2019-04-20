@@ -41,7 +41,7 @@
 		<tbody>
 				<tr onclick="javascript:ApprovaldeptSelect('<%= Integer.parseInt(String.valueOf(lst.get(j).get("EMPNO"))) %>','<%= String.valueOf(lst.get(j).get("EMP_NAME")) %>')">
 					<td><%= String.valueOf(lst.get(j).get("DNAME")) %></td>
-					<td><%= Integer.parseInt(String.valueOf(lst.get(j).get("EMPNO"))) %></td>
+					<td><%= Integer.parseInt(String.valueOf(lst.get(j).get("EMP_NUMBER"))) %></td>
 					<td><%= lst.get(j).get("EMP_NAME") %></td>
 					<td><%= lst.get(j).get("RANK_NAME") %></td>
 				</tr>
