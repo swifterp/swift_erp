@@ -90,7 +90,7 @@ table tr:hover {background:#fefefe;}
 				</div>
 			</form>
 			<form action="../emp/retiredemp">
-				<button type="submit" class="btn btn-outline-info" style="float:right;">퇴사자명단</button>
+				<button type="submit" class="btn btn-outline-secondary" style="float:right;">퇴사자명단</button>
 			</form>
 			<table class="table" id="mytable">
 				<colgroup>

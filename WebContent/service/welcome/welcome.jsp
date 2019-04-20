@@ -10,7 +10,7 @@
 <!-- 메인화면 -->
 <script type='text/javascript' src='../../js/jquery.particleground.js'></script>
 <script type = "text/javascript" src ="../../js/demo.js"></script>
-<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/welcome.css">
 <%	List<Map<String, String>> sess = (List<Map<String, String>>)request.getSession().getAttribute("member"); %>
 <script type="text/javascript">
 	$(document).ready(function(){
