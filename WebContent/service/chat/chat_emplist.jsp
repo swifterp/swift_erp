@@ -25,7 +25,7 @@
 %>
    <div>
    <input type="checkbox" id="checkbox<%= String.valueOf(lst.get(i).get("EMPNO")) %>" >
-   <input type="text" id="checkteam<%= String.valueOf(lst.get(i).get("EMPNO")) %>" style="width:50px; background-color: #cfffff; border: 0 solid black; border-radius: 6px;">
+   <input type="text" id="checkteam<%= String.valueOf(lst.get(i).get("EMPNO")) %>" style="width:50px; background-color: #dbeef4; border: 0 solid black; border-radius: 6px;">
    <input type="text" id="checktext<%= String.valueOf(lst.get(i).get("EMPNO")) %>" value="<%= String.valueOf(lst.get(i).get("EMP_NAME")) %>" style="border:none; background:none; width: 100px;">
    </div>
 <%

@@ -225,7 +225,7 @@
 	<div class="container">
 		<%@ include file="../common/left_menu_pay.jsp" %>
 		<div class="contents">
-		
+		<h1>근무기록확정</h1>	
 				연월선택 : <input type="text" oninput="changeCalendar()" class="form-control" name="selectedDate" id="datepicker" style="width:200px; display:inline-block; margin-right:5px;">
 		<button type='button' onclick="changeCalendar()" class='btn btn-outline-primary'>변경</button>
 		<button type='button' onclick="selectconfirmlist()" class='btn btn-outline-primary'>조회</button>
@@ -258,7 +258,7 @@
 		    buildCalendar();
 		</script>
 		
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top:150px;">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">

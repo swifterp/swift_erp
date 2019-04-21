@@ -124,7 +124,7 @@
 			    </tbody>
 			</table>
 			<div class="btn_group">
-				<input type="button" class="btn btn-primary pull-right" onclick="javascript:workDataInsert()" value="업무일지등록">
+				<input type="button" class="btn btn-outline-primary pull-right" onclick="javascript:workDataInsert()" value="업무일지등록">
 			</div>
 			<div class="pagination-container">
                <nav>

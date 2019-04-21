@@ -182,6 +182,15 @@ public class EmpLogic {
 	public List<Map<String, String>> deptUpdDao(HashMap<String, String> deptUpd) {		
 		return ed.deptUpd(deptUpd);
 	}
+	public List<Map<String, String>> rankUpdDao(HashMap<String, String> rankUpd) {		
+		return ed.rankUpd(rankUpd);
+	}
+	public List<Map<String, String>> dutyUpdDao(HashMap<String, String> dutyUpd) {		
+		return ed.dutyUpd(dutyUpd);
+	}
+	public List<Map<String, String>> bankUpdDao(HashMap<String, String> bankUpd) {		
+		return ed.bankUpd(bankUpd);
+	}
 	
 	public int deptDelDao(Integer deptno) {		
 		return ed.deptDel(deptno);
@@ -233,6 +242,18 @@ public class EmpLogic {
 	public int checkEmpNum(String emp_number) {
 		return ed.checkEmpNum(emp_number);
 	}
+	public int checkDeptNum(String deptno) {
+		return ed.checkDeptNum(deptno);
+	}
+	public int checkRankNum(Integer rank_no) {
+		return ed.checkRankNum(rank_no);
+	}
+	public int checkDutyNum(Integer duty_no) {
+		return ed.checkDutyNum(duty_no);
+	}
+	public int checkBankNum(Integer bank_no) {
+		return ed.checkBankNum(bank_no);
+	}
 
 	public int rankAddDao(HashMap<String, String> rankPlus) {
 		return ed.rankAdd(rankPlus);		
@@ -261,6 +282,10 @@ public class EmpLogic {
  
 	public List<List<Map<Object, Object>>> getCanvasjsChartData() {
 		return ed.canvas();
+	}
+	
+	public List<List<Map<Object, Object>>> getCanvasjsChartData2() {
+		return ed.canvas2();
 	}
 	
 }

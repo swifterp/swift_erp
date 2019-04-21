@@ -29,6 +29,7 @@
 	<div class="container">
 		<%@ include file="../common/left_menu_pay.jsp" %>
 		<div class="contents">
+			<h1>공제항목</h1>
 			<form action="../pay/insertDeduction">
 				<table class="table" text-align:center;">
 					<tbody>

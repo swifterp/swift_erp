@@ -125,37 +125,7 @@ public class Emp_Controller {
 		model.addAttribute("list", el.appointDelDao(emp_appoint_no));	
 		return "emp/emp_appointList";
 	}
-	
-	@RequestMapping("/deptRead")
-	public String readDept(Model model) {
-		model.addAttribute("list", el.callEmpDeptListDao());	
-		return "emp/emp_deptList";
-	}
-	
-	@RequestMapping("/deptView")
-	public String viewDept(Model model, @RequestParam(value="deptno", defaultValue="0") Integer deptno) {
-		model.addAttribute("list", el.callDeptViewDao(deptno));	
-		return "emp/emp_deptView";
-	}
-	
-	@RequestMapping("/deptAdd")
-	public String addDept(Model model, @RequestParam HashMap<String,String> deptPlus) {
-		model.addAttribute("list", el.deptAddDao(deptPlus));	
-		return "emp/emp_deptList";
-	}
-	
-	@RequestMapping("/deptUpd")
-	public String updDept(Model model, @RequestParam HashMap<String,String> deptUpd) {
-		model.addAttribute("list", el.deptUpdDao(deptUpd));	
-		return "emp/emp_deptList";
-	}
-	
-	@RequestMapping("/deptDel")
-	public String delDept(Model model, @RequestParam(value="deptno", defaultValue="0") Integer deptno) {
-		model.addAttribute("list", el.deptDelDao(deptno));	
-		return "emp/emp_deptDelete";
-	}
-	
+
 	@RequestMapping("/empNumRead")
 	public String readEmpNum(Model model) {
 		model.addAttribute("list", el.empNumListDao());	
@@ -204,12 +174,71 @@ public class Emp_Controller {
 		model.addAttribute("list", el.callEmpListDao());	
 		return "emp/pop_emp";
 	}
+
+	@RequestMapping("/deptAdd")
+	public String addDept(Model model, @RequestParam HashMap<String,String> deptPlus) {
+		model.addAttribute("list", el.deptAddDao(deptPlus));	
+		return "emp/emp_etcCodeAdd";
+	}
+	
+	@RequestMapping("/deptUpd")
+	public String updDept(Model model, @RequestParam HashMap<String,String> deptUpd) {
+		model.addAttribute("list", el.deptUpdDao(deptUpd));	
+		return "emp/emp_etcCodeAdd";
+	}
+	@RequestMapping("/rankUpd")
+	public String updRank(Model model, @RequestParam HashMap<String,String> rankUpd) {
+		model.addAttribute("list", el.rankUpdDao(rankUpd));	
+		return "emp/emp_etcCodeAdd";
+	}
+	@RequestMapping("/dutyUpd")
+	public String updDuty(Model model, @RequestParam HashMap<String,String> dutyUpd) {
+		model.addAttribute("list", el.dutyUpdDao(dutyUpd));	
+		return "emp/emp_etcCodeAdd";
+	}
+	@RequestMapping("/bankUpd")
+	public String updBank(Model model, @RequestParam HashMap<String,String> bankUpd) {
+		model.addAttribute("list", el.bankUpdDao(bankUpd));	
+		return "emp/emp_etcCodeAdd";
+	}
 	
     @ResponseBody
     @RequestMapping(value = "/checkEmpNum", method = RequestMethod.POST)
     public String checkEmpNum(HttpServletRequest request, Model model) {
         String emp_number = request.getParameter("emp_number");
         int rowcount = el.checkEmpNum(emp_number);
+        return String.valueOf(rowcount);
+    }
+	
+    @ResponseBody
+    @RequestMapping(value = "/checkDeptNum", method = RequestMethod.POST)
+    public String checkDeptNum(HttpServletRequest request, Model model) {
+    	String dept_no = request.getParameter("dept_no");
+        int rowcount = el.checkDeptNum(dept_no);
+        return String.valueOf(rowcount);
+    }
+	
+    @ResponseBody
+    @RequestMapping(value = "/checkRankNum", method = RequestMethod.POST)
+    public String checkRankNum(HttpServletRequest request, Model model
+    ,@RequestParam(value="rank_no", defaultValue="0") Integer rank_no) {
+        int rowcount = el.checkRankNum(rank_no);
+        return String.valueOf(rowcount);
+    }
+	
+    @ResponseBody
+    @RequestMapping(value = "/checkDutyNum", method = RequestMethod.POST)
+    public String checkDutyNum(HttpServletRequest request, Model model
+    ,@RequestParam(value="duty_no", defaultValue="0") Integer duty_no) {
+        int rowcount = el.checkDutyNum(duty_no);
+        return String.valueOf(rowcount);
+    }
+	
+    @ResponseBody
+    @RequestMapping(value = "/checkBankNum", method = RequestMethod.POST)
+    public String checkBankNum(HttpServletRequest request, Model model
+    ,@RequestParam(value="bank_no", defaultValue="0") Integer bank_no) {
+        int rowcount = el.checkBankNum(bank_no);
         return String.valueOf(rowcount);
     }
     
@@ -241,8 +270,11 @@ public class Emp_Controller {
 	@RequestMapping("/canvasjschart")
 	public String springMVC(ModelMap modelMap) {
 		List<List<Map<Object, Object>>> canvasjsDataList = el.getCanvasjsChartData();
+		List<List<Map<Object, Object>>> canvasjsDataList2 = el.getCanvasjsChartData2();
 		modelMap.addAttribute("dataPointsList", canvasjsDataList);
+		modelMap.addAttribute("dataPointsList2", canvasjsDataList2);
 		return "emp/emp_chart";
 	}
+
 
 }

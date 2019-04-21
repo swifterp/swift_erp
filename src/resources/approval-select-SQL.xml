@@ -79,7 +79,7 @@
 				order by draft_no desc
 	</select>
 	<select id="getApprovalPathList1" parameterType="Integer" resultType="hashmap">
-		select dname, empno, emp_name, rank_name from
+		select dname, empno, emp_number, emp_name, rank_name from
 		dept,rank,employee 
 		where employee.rank_no > (select rank_no from employee where empno=#{EMPNO,jdbcType=INTEGER}) 
 		and dept.deptno=employee.deptno

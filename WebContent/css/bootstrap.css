@@ -2430,6 +2430,7 @@ select[multiple].input-lg {
     font-size: 12px;
   }
 }
+
 .btn {
   display: inline-block;
   padding: 6px 12px;
@@ -2931,13 +2932,13 @@ fieldset[disabled] .btn-danger.focus {
 
 .btn-outline-info {
   color: #fff;
-  background-color: #17a2b8;
-  border-color: #17a2b8;
+  background-color: #4bacc6;
+  border-color: #4bacc6;
 }
 
 .btn-outline-info:hover {
-  color: #17a2b8;
-  border-color: #17a2b8;
+  color: #4bacc6;
+  border-color: #4bacc6;
   background-color:#fff;
 }
 
@@ -2946,15 +2947,15 @@ fieldset[disabled] .btn-danger.focus {
 }
 
 .btn-outline-info.disabled, .btn-outline-info:disabled {
-  color: #17a2b8;
+  color: #4bacc6;
   background-color: transparent;
   
 }
 
 .btn-outline-info:not(:disabled):not(.disabled):active, .btn-outline-info:not(:disabled):not(.disabled).active,
 .show > .btn-outline-info.dropdown-toggle {
-  color: #17a2b8;
-  border-color: #17a2b8;
+  color: #4bacc6;
+  border-color: #4bacc6;
 }
 
 .btn-outline-info:not(:disabled):not(.disabled):active:focus, .btn-outline-info:not(:disabled):not(.disabled).active:focus,

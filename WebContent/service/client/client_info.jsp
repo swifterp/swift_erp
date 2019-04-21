@@ -20,7 +20,7 @@
 	<div class="container">
 		<%@ include file="../common/left_menu_client.jsp" %>	
 		<div class="contents">
-			<h2>거래처정보목록</h2>
+			<h1>거래처정보목록</h1>
 			<table class="table" id="mytable">
 				<colgroup>
 					<col width="10%" />

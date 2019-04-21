@@ -15,7 +15,7 @@
 	<div class="container">
 		<%@ include file="../common/left_menu_client.jsp" %>	
 		<div class="contents">
-			<h2>거래처정보수정</h2>
+			<h1>거래처정보수정</h1>
 			<form action="../client/updateClientInfo">
 				<table class="table">
 					<tr>

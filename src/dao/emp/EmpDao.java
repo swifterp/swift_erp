@@ -83,6 +83,21 @@ public class EmpDao {
 		ulm.getDeptUpd(deptUpd);
 		return slm.getEmpDeptList();
 	}
+
+	public List<Map<String, String>> rankUpd(HashMap<String, String> rankUpd) {
+		ulm.getDeptUpd(rankUpd);
+		return slm.getEmpDeptList();
+	}
+
+	public List<Map<String, String>> dutyUpd(HashMap<String, String> dutyUpd) {
+		ulm.getDeptUpd(dutyUpd);
+		return slm.getEmpDeptList();
+	}
+
+	public List<Map<String, String>> bankUpd(HashMap<String, String> bankUpd) {
+		ulm.getDeptUpd(bankUpd);
+		return slm.getEmpDeptList();
+	}
 	
 	@Autowired
 	private deleteListMapper dlm;
@@ -119,6 +134,10 @@ public class EmpDao {
 	public List<Map<String, String>> selectBankList() {
 		return slm.getBankList();
 	}
+	
+	public List<Map<String, String>> selectEtcList() {
+		return slm.getEtcList();
+	}
 
 	public List<Map<String, String>> selectAppointList() {
 		return slm.getAppointList();
@@ -149,6 +168,22 @@ public class EmpDao {
 		return slm.checkEmpNum(emp_number);
 	}
 
+	public int checkDeptNum(String deptno) {
+		return slm.checkDeptNum(deptno);
+	}
+
+	public int checkRankNum(Integer rank_no) {
+		return slm.checkRankNum(rank_no);
+	}
+
+	public int checkDutyNum(Integer duty_no) {
+		return slm.checkDutyNum(duty_no);
+	}
+
+	public int checkBankNum(Integer bank_no) {
+		return slm.checkBankNum(bank_no);
+	}
+
 	public int rankAdd(HashMap<String, String> rankPlus) {
 		return ilm.getRankAdd(rankPlus);
 	}
@@ -172,12 +207,29 @@ public class EmpDao {
 		List<Map<Object,Object>> dataPoints1 = new ArrayList<Map<Object,Object>>();
 		
 		List<Map<Object, Object>> lst = slm.canvas();
-		System.out.println(lst);
 		if(lst != null){
 			for(int i=0;i<lst.size();i++){
 				map = new HashMap<Object,Object>(); 
-				map.put("label", lst.get(i).get("A")); 
-				map.put("y", lst.get(i).get("B"));
+				map.put("label", lst.get(i).get("DNAME")); 
+				map.put("y", lst.get(i).get("DCOUNT"));
+				dataPoints1.add(map);
+			}
+		}
+		list.add(dataPoints1);
+		return list;
+	}
+	
+	public List<List<Map<Object,Object>>> canvas2() {
+		Map<Object,Object> map = null;
+		List<List<Map<Object,Object>>> list = new ArrayList<List<Map<Object,Object>>>();
+		List<Map<Object,Object>> dataPoints1 = new ArrayList<Map<Object,Object>>();
+		
+		List<Map<Object, Object>> lst = slm.canvas2();
+		if(lst != null){
+			for(int i=0;i<lst.size();i++){
+				map = new HashMap<Object,Object>(); 
+				map.put("x", lst.get(i).get("EMP_JOIN_DATE")); 
+				map.put("y", lst.get(i).get("ECOUNT"));
 				dataPoints1.add(map);
 			}
 		}

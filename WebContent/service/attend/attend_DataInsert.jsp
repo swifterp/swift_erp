@@ -30,7 +30,7 @@ table td {text-align:left;}
 	<div class="container">		
 		<%@ include file="../common/left_menu_attend.jsp" %>
 		<div class="contents">
-			<h3>근태등록</h3>
+			<h1>근태등록</h1>
 			<form action="../attend/attend_DataInsert">
 				<input type="hidden" id="empno" class="form-control" name="empno" value="<%= String.valueOf(sess.get(0).get("EMPNO")) %>" readonly>
 				<table class="table">

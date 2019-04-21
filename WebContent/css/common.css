@@ -78,7 +78,7 @@ nav.nav-left a {
 
 nav.nav-left .depth2 li a {padding-left:30px;}
 
-.contents {padding:120px 0 80px 220px;}
+.contents {padding:100px 0 80px 220px;}
 
 table {border: 1px solid #dddddd;}
 table th {background-color:#eeeeee; text-align: center; font-size:13px;}
@@ -90,7 +90,7 @@ table td {text-align:center;}
 
 .essential {color:red;}
 
-h2 {margin-bottom:20px;}
+h1 {margin-bottom:20px;}
 
 .input-group {margin-bottom:10px;}
 

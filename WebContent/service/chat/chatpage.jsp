@@ -7,7 +7,8 @@
 <meta charset="EUC-KR">
 <%   List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list"); %>
 <style>
-   #chatlist {overflow:scroll; width:300px; height:300px; padding:10px; text-align:left;}
+   #chatlist {overflow:scroll; width:300px; height:300px; text-align:left;}
+   table td {vertical-align:top; padding:5px;}
 </style>
 </head>
 <body>
@@ -236,6 +237,7 @@
       textarea.setAttribute("readonly", "true");
       textarea.setAttribute("rows", "10");
       textarea.setAttribute("cols", "50");
+      textarea.setAttribute("style", "width:100%; border:1px solid #ddd;")
       inputMessage.setAttribute("id", "input"+chatroom_code);
       inputMessage.setAttribute("type", "text");
       inputMessage.setAttribute("class", "form-control");
@@ -247,14 +249,14 @@
       inviteButton.setAttribute("id", "inviteButton"+chatroom_code);
       inviteButton.setAttribute("type", "button");
       inviteButton.setAttribute("value", "초대하기");
-      inviteButton.setAttribute("class", "btn-outline-primary btn");
+      inviteButton.setAttribute("class", "btn-outline-info btn");
       inviteButton.setAttribute("onclick", "inviteEmp("+chatroom_code+")");
       exitButton.setAttribute("id", "exitButton"+chatroom_code);
       exitButton.setAttribute("type", "button");
       exitButton.setAttribute("value", "방나가기");
       exitButton.setAttribute("class", "btn-default btn");
       exitButton.setAttribute("onclick", "exitRoom("+chatroom_code+")");
-      roomTitleDiv.setAttribute("style", "background-color:#4bacc6;height:30px;")
+      roomTitleDiv.setAttribute("style", "background-color:#4bacc6;height:34px;line-height:34px;color:white;")
       
       
       textareaDiv.appendChild(textarea);
@@ -268,7 +270,7 @@
       //partibutton.setAttribute("class", "btn-outline-primary btn");
       //partibutton.setAttribute("onclick", "participentList("+inputMessage+")");
       var tmp = roomTitleDiv.innerHTML = chatroom_name;
-      roomTitleDiv.innerHTML = tmp + "<button class='btn-outline-primary btn', onclick='participentList("+inputMessage.id.substr(5)+")'> = </button>"; 
+      roomTitleDiv.innerHTML = tmp + "<a class='btn btn-outline-info', style='float:right; font-weight:bold;', onclick='participentList("+inputMessage.id.substr(5)+")'> = </a>"; 
       
    }
 

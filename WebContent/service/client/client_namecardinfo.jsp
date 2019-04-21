@@ -31,7 +31,7 @@
 	<div class="container">
 		<%@ include file="../common/left_menu_client.jsp" %>	
 		<div class="contents">
-			<h2>명함 정보</h2>
+			<h1>명함 정보</h1>
 			<table class="table" id="mytable">
 				<thead>
 					<tr> 

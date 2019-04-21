@@ -32,7 +32,7 @@ $(document).ready(function(){
 	<div class="container">		
 		<%@ include file="../common/left_menu_attend.jsp" %>
 		<div class="contents">
-			<h2>근태관리 목록</h2>
+			<h1>근태관리 목록</h1>
 			<form action="../attend/attend_DetailData">
 				<table class="table tb_left" style="margin-bottom:20px; background:#eee;">
 
@@ -78,7 +78,7 @@ $(document).ready(function(){
 						<tr>
 							<td class="line" style="width:155px" colspan="2">
 								<div class="input-group pull-right">
-									<input type="submit" class="btn btn-primary" value="조회">
+									<input type="submit" class="btn btn-outline-primary" value="조회">
 								</div>
 							</td>
 						</tr>
@@ -154,8 +154,8 @@ $(document).ready(function(){
 			<div class="btn_group">
 				<input type="button" class="btn btn-outline-primary pull-right" onclick="javascript:attendDataInsert()" value="상세등록" style="margin-left:10px;">
 			</div>
-			<input type="button" class="btn btn-outline-primary pull-right" onclick="javascript:attend_end_add(<%= String.valueOf(sess.get(0).get("EMPNO")) %>)" value="퇴근" style="margin-left:10px;">
-			<input type="button" class="btn btn-outline-primary pull-right" onclick="javascript:attend_start_add(<%= String.valueOf(sess.get(0).get("EMPNO")) %>)" value="출근" style="margin-left:10px;">
+			<input type="button" class="btn btn-default pull-right" onclick="javascript:attend_end_add(<%= String.valueOf(sess.get(0).get("EMPNO")) %>)" value="퇴근" style="margin-left:10px;">
+			<input type="button" class="btn btn-default pull-right" onclick="javascript:attend_start_add(<%= String.valueOf(sess.get(0).get("EMPNO")) %>)" value="출근" style="margin-left:10px;">
 			<div class="pagination-container">
                <nav>
                   <div>
@@ -179,11 +179,9 @@ $(document).ready(function(){
 <script>
    var totalData = "<%=size%>"
    var dataPerPage = 10;    // 한 페이지에 나타낼 데이터 수
-   var pageCount = "<%= Math.ceil(size/10) %>";  // 한 화면에 나타낼 페이지버튼 수
+   var pageCount = 10;  // 한 화면에 나타낼 페이지버튼 수
    var currentPage = 1;
    var table = '#mytable'
-   
-
 
    function paging(totalData, dataPerPage, pageCount, currentPage){
       $('#paging').html('')
@@ -194,21 +192,14 @@ $(document).ready(function(){
       var pagenum = Math.ceil(totalRows/maxRows);    //총 페이지버튼 수
       var pageGroup = Math.ceil(currentPage/maxPageNum);
       var last = pageGroup*maxPageNum;
+      var nextPageNumBer = last-(maxPageNum-1);
+      //alert("nextPageNumBer ="+nextPageNumBer); 
+      //마지막 버튼 번호(10,20,30...)-(10-1) = 1,11,21...
       if (last > pagenum)
            last = pagenum;
-      var first = last - (maxPageNum-1);
+      var first = nextPageNumBer;
       var next = last+1;
       var prev = first-1;
-      
-      //alert("maxRows ="+maxRows); //한 페이지에 보여줄 데이터 수
-      //alert("totalRows ="+totalRows); //총 데이터 수
-      //alert("maxPageNum ="+maxPageNum);//한 페이지에 보여줄 버튼수
-      //alert("pagenum ="+pagenum);//한 페이지에 보여줄 버튼수
-      //alert("pageGroup ="+pageGroup);  //페이지 그룹번호
-      //alert("last ="+last);  //마지막 버튼 번호
-      //alert("first ="+first);  //첫번째 버튼 번호
-      //alert("next ="+next);  //다음 페이지 첫번째 버튼
-      //alert("prev ="+prev);  //이전 버튼 번호
       
       $(table+' tr:gt(0)').each(function(){
          trnum++
@@ -234,18 +225,17 @@ $(document).ready(function(){
                 '<a id="next" class="btn btn-outline-primary" style="margin-left: 10px ">다음</a>'
                 )
         }
-      $('#paging li:first-child').addClass('active')
+        if(first == 1 && last == 10){
+            $('#paging li:first-child').addClass('active')
+            }else{
+            $('#paging li:nth-child(2)').addClass('active')
+       }
       $('#paging li').on('click',function() {
          var pageNum = $(this).attr('data-page');
          //alert("pageNum ="+pageNum); //클릭한 페이지 번호
            var trIndex = 0;
+
            
-          //var d = (maxRows*pageNum)-maxRows;
-          //alert("d ="+d); //전체 데이터 범위에서 클릭한 페이지번호의 첫번째에 보여줄 데이터번호
-          //var a = maxRows*pageNum;
-          //alert("a ="+a); //전체 데이터 범위에서 클릭한 페이지번호의 마지막에 보여줄 데이터번호
-         //alert(this);
-         
           $('#paging li').removeClass('active')
             $(this).addClass('active')
             $(table+' tr:gt(0)').each(function(){
@@ -259,13 +249,12 @@ $(document).ready(function(){
          })
       })
       $('#paging a').on('click', function(){
-         var $item = $(this);
+           var $item = $(this);
             var $id = $item.attr("id");
             var selectedPage = $item.text();
             
             if($id == "next")    selectedPage = next;
             if($id == "prev")    selectedPage = prev;
-            //alert("$id ="+$id);
 
             paging(totalData, dataPerPage, pageCount, selectedPage);
       })

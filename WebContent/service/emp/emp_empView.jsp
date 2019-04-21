@@ -13,10 +13,6 @@
 	List<Map<String, String>> allow_value = (List<Map<String, String>>)request.getAttribute("allow_value");
 	List<Map<String, String>> deduc_value = (List<Map<String, String>>)request.getAttribute("deduc_value");
 %>
-<!-- sweetAlter api -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<!-- 다음주소api -->
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
 	function execPostCode() {
 	    new daum.Postcode({

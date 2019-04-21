@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, java.util.Map, java.util.HashMap" %>
@@ -9,25 +10,25 @@
 <%@ include file="../common/ui_common.jsp" %>
 
 <script type="text/javascript">
-	<!--사원등록-->
-	function goEmpAdd(){
-		location.href = "../pay/allowNdeduc";
-	}
-	<!--사원상세보기-->
-	function empView(emp_number){
-		location.href = "../emp/view?emp_number="+emp_number;	
-	}
-	<!--사원삭제-->
-	function empDel(emp_number){
-		location.href = "../emp/delete?emp_number="+emp_number;	
-	}
+   <!--사원등록-->
+   function goEmpAdd(){
+      location.href = "../pay/allowNdeduc";
+   }
+   <!--사원상세보기-->
+   function empView(emp_number){
+      location.href = "../emp/view?emp_number="+emp_number;   
+   }
+   <!--사원삭제-->
+   function empDel(emp_number){
+      location.href = "../emp/delete?emp_number="+emp_number;   
+   }
 </script>
 <!-- 팝업창 -->
 <script>
 $(document).ready(function() {
-    $('#pop_dept').on("click", function() {	
-    	var url="../emp/pop_deptRead";
-    	var windowW = 300;  // 창의 가로 길이
+    $('#pop_dept').on("click", function() {   
+       var url="../emp/pop_deptRead";
+       var windowW = 300;  // 창의 가로 길이
         var windowH = 300;  // 창의 세로 길이
         var left = Math.ceil((window.screen.width - windowW)/2);
         var top = Math.ceil((window.screen.height - windowH)/2);
@@ -36,12 +37,12 @@ $(document).ready(function() {
 </script>
 <script>
 $(document).ready(function(){
-	$("img").hover(function() {
-	var temp = $(this).attr("src");
-	$(this).attr("src", $(this).attr("data-alt"));
-	$(this).attr("data-alt", temp);
-	});
-	})
+   $("img").hover(function() {
+   var temp = $(this).attr("src");
+   $(this).attr("src", $(this).attr("data-alt"));
+   $(this).attr("data-alt", temp);
+   });
+   })
 </script>
 <script>
 function paging(page) {
@@ -69,127 +70,118 @@ function paging(page) {
     }
 }
 </script>
+
 <style>
 table tr:hover {background:#fefefe;}
 </style>
 </head>
 <body>
-<%	List<Map<String, String>> sess = (List<Map<String, String>>)request.getSession().getAttribute("member"); %>
+<%   List<Map<String, String>> sess = (List<Map<String, String>>)request.getSession().getAttribute("member"); %>
 <input type="hidden" id="hidempno" name="<%= String.valueOf(sess.get(0).get("EMPNO")) %>">
-	<%@ include file="../common/top_menu.jsp" %>
-	<div class="container">		
-		<%@ include file="../common/left_menu_emp.jsp" %>
-		<div class="contents">
-			<h1>사원목록</h1>
-			<form action="../emp/empSearchNumName">
-				<div class="input-group" style="float:left;">
-					<input type="text" class="form-control" id="empinfo" name="empinfo" placeholder="성명 또는 부서">
-					<span class="input-group-btn" style="width:100px;">
-						<button type="submit" class="btn btn-default" style="margin-bottom:20px;">검색</button>
-					</span>
+   <%@ include file="../common/top_menu.jsp" %>
+   <div class="container">      
+      <%@ include file="../common/left_menu_emp.jsp" %>
+      <div class="contents">
+         <h1>사원목록</h1>
+         <form action="../emp/empSearchNumName">
+            <div class="input-group" style="float:left;">
+               <input type="text" class="form-control" id="empinfo" name="empinfo" placeholder="성명 또는 부서">
+               <span class="input-group-btn" style="width:100px;">
+                  <button type="submit" class="btn btn-default" style="margin-bottom:20px;">검색</button>
+               </span>
+            </div>
+         </form>
+         <form action="../emp/retiredemp">
+            <button type="submit" class="btn btn-outline-secondary" style="float:right;">퇴사자명단</button>
+         </form>
+         <table class="table" id="mytable">
+            <colgroup>
+               <col width="10%">
+               <col width="10%">
+               <col width="20%">
+               <col width="15%">
+               <col width="10%">
+               <col width="15%">
+               <col width="5%">
+               <col width="5%">
+               <col width="5%">
+               <col width="5%">
+            </colgroup>
+            <thead>
+               <tr>
+                  <th>사번</th>
+                  <th>성명</th>
+                  <th>주민등록번호</th>
+                  <th>부서</th>
+                  <th>직급</th>
+                  <th>입사일자</th>
+                  <th>Email</th>
+                  <th>인쇄</th>
+                  <th>수정</th>
+                  <th>삭제</th>
+               </tr>
+            </thead>
+             <tbody>
+               <%
+                  List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
+                  float size= lst.size();   
+                  if(lst != null){
+                     for(int i=0;i<lst.size();i++){
+               %>
+               <tr>
+                  <td><a onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)"><%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %></a></td>
+                  <td><a onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)"><%= lst.get(i).get("EMP_NAME") %></a></td>
+                  <td><%= lst.get(i).get("EMP_RESIDENT_NUMBER") %></td>
+                  <td><%= lst.get(i).get("DNAME") %></td>
+                  <td><%= lst.get(i).get("RANK_NAME") %></td>
+                  <td><%= lst.get(i).get("EMP_JOIN_DATE") %></td>
+                  <td><a href="#"><img src="../../images/icon_email_0.png" data-alt="../../images/icon_email_1.png" style="width:35px; height:35px;"/></a></td>
+                  <td><a href="#"><img src="../../images/icon_print_0.png" data-alt="../../images/icon_print_1.png" style="width:35px; height:35px;"/></a></td>
+                  <td><a onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" href="#"><img src="../../images/icon_pencil_0.png" data-alt="../../images/icon_pencil_1.png" style="width:35px; height:35px;" /></a></td>
+                  <td><a onclick="javascript:empDel(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" href="#"><img src="../../images/icon_delete_0.png" data-alt="../../images/icon_delete_1.png" style="width:35px; height:35px;"/></a></td>
+               </tr>
+               <%
+                     }
+                  }
+                %>
+             </tbody>
+         </table>
+		<div class="pagination-container" style="float:left;">
+			<nav>
+				<div>
+					<ul class="pagination" id="paging"></ul>
 				</div>
-			</form>
-			<form action="../emp/retiredemp">
-				<button type="submit" class="btn btn-outline-secondary" style="float:right;">퇴사자명단</button>
-			</form>
-			<table class="table" id="mytable">
-				<colgroup>
-					<col width="10%">
-					<col width="10%">
-					<col width="20%">
-					<col width="15%">
-					<col width="10%">
-					<col width="15%">
-					<col width="5%">
-					<col width="5%">
-					<col width="5%">
-					<col width="5%">
-				</colgroup>
-				<thead>
-					<tr>
-						<th>사번</th>
-						<th>성명</th>
-						<th>주민등록번호</th>
-						<th>부서</th>
-						<th>직급</th>
-						<th>입사일자</th>
-						<th>Email</th>
-						<th>인쇄</th>
-						<th>수정</th>
-						<th>삭제</th>
-					</tr>
-				</thead>
-			    <tbody>
-					<%
-						List<Map<String, String>> lst = (List<Map<String, String>>)request.getAttribute("list");
-						float size= lst.size();	
-						if(lst != null){
-							for(int i=0;i<lst.size();i++){
-					%>
-					<tr>
-						<td><a onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)"><%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %></a></td>
-						<td><a onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)"><%= lst.get(i).get("EMP_NAME") %></a></td>
-						<td><%= lst.get(i).get("EMP_RESIDENT_NUMBER") %></td>
-						<td><%= lst.get(i).get("DNAME") %></td>
-						<td><%= lst.get(i).get("RANK_NAME") %></td>
-						<td><%= lst.get(i).get("EMP_JOIN_DATE") %></td>
-						<td><a href="#"><img src="../../images/icon_email_0.png" data-alt="../../images/icon_email_1.png" style="width:35px; height:35px;"/></a></td>
-						<td><a href="#"><img src="../../images/icon_print_0.png" data-alt="../../images/icon_print_1.png" style="width:35px; height:35px;"/></a></td>
-						<td><a onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" href="#"><img src="../../images/icon_pencil_0.png" data-alt="../../images/icon_pencil_1.png" style="width:35px; height:35px;" /></a></td>
-						<td><a onclick="javascript:empDel(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" href="#"><img src="../../images/icon_delete_0.png" data-alt="../../images/icon_delete_1.png" style="width:35px; height:35px;"/></a></td>
-					</tr>
-					<%
-							}
-						}
-				 	%>
-			    </tbody>
-			</table>
-			<div class="pagination-container">
-               <nav>
-                  <div>
-                     <ul class="pagination" id="paging">
-                     </ul>
-                  </div>
-               </nav>
-           </div>
-			<div class="btn_group">
-				<a class="btn btn-outline-primary pull-right" onclick="javascript:goEmpAdd()">사원등록</a>
-			</div>
-		</div>
-	</div>
-	<script>
+			</nav>
+         </div>
+         <div class="btn_group" style="float:right">
+            <a class="btn btn-outline-primary" onclick="javascript:goEmpAdd()">사원등록</a>
+         </div>
+      </div>
+   </div>
+   <script>
    var totalData = "<%=size%>"
    var dataPerPage = 10;    // 한 페이지에 나타낼 데이터 수
-   var pageCount = "<%= Math.ceil(size/20) %>";  // 한 화면에 나타낼 페이지버튼 수
+   var pageCount = 10;  // 한 화면에 나타낼 페이지버튼 수
    var currentPage = 1;
    var table = '#mytable'
-   
-
 
    function paging(totalData, dataPerPage, pageCount, currentPage){
       $('#paging').html('')
       var trnum=0
       var maxRows = dataPerPage // 한 페이지에 나타낼 데이터 
       var maxPageNum = pageCount; // 한 화면에 나타낼 페이지버튼 수
-      var totalRows = $(table+' tbody tr').length //총 데이터 수
+      var totalRows = $(table+' tbody tr').length; //총 데이터 수
       var pagenum = Math.ceil(totalRows/maxRows);    //총 페이지버튼 수
       var pageGroup = Math.ceil(currentPage/maxPageNum);
       var last = pageGroup*maxPageNum;
+      var nextPageNumBer = last-(maxPageNum-1);
+      //alert("nextPageNumBer ="+nextPageNumBer); 
+      //마지막 버튼 번호(10,20,30...)-(10-1) = 1,11,21...
       if (last > pagenum)
            last = pagenum;
-      var first = last - (maxPageNum-1);
+      var first = nextPageNumBer;
       var next = last+1;
       var prev = first-1;
-      
-      //alert("maxRows ="+maxRows); //한 페이지에 보여줄 데이터 수
-      //alert("totalRows ="+totalRows); //총 데이터 수
-      //alert("maxPageNum ="+maxPageNum);//한 페이지에 보여줄 버튼수
-      //alert("pagenum ="+pagenum);//한 페이지에 보여줄 버튼수
-      //alert("pageGroup ="+pageGroup);  //페이지 그룹번호
-      //alert("last ="+last);  //마지막 버튼 번호
-      //alert("first ="+first);  //첫번째 버튼 번호
-      //alert("next ="+next);  //다음 페이지 첫번째 버튼
-      //alert("prev ="+prev);  //이전 버튼 번호
       
       $(table+' tr:gt(0)').each(function(){
          trnum++
@@ -224,13 +216,8 @@ table tr:hover {background:#fefefe;}
          var pageNum = $(this).attr('data-page');
          //alert("pageNum ="+pageNum); //클릭한 페이지 번호
            var trIndex = 0;
+
            
-          //var d = (maxRows*pageNum)-maxRows;
-          //alert("d ="+d); //전체 데이터 범위에서 클릭한 페이지번호의 첫번째에 보여줄 데이터번호
-          //var a = maxRows*pageNum;
-          //alert("a ="+a); //전체 데이터 범위에서 클릭한 페이지번호의 마지막에 보여줄 데이터번호
-         //alert(this);
-         
           $('#paging li').removeClass('active')
             $(this).addClass('active')
             $(table+' tr:gt(0)').each(function(){
@@ -243,19 +230,33 @@ table tr:hover {background:#fefefe;}
                }
          })
       })
-      $('#paging a').on('click', function(){
-         var $item = $(this);
-            var $id = $item.attr("id");
-            var selectedPage = $item.text();
-            
-            if($id == "next")    selectedPage = next;
-            if($id == "prev")    selectedPage = prev;
-            //alert("$id ="+$id);
+     $('#paging a').on('click', function(){
+        var $item = $(this);
+       var $id = $item.attr("id");
+       var selectedPage = $item.text();
+        var item_paging = $('#paging li').last().attr('data-page');
+      
+      item_paging++;
 
-            paging(totalData, dataPerPage, pageCount, selectedPage);
-      })
+      //alert("item_paging : "+item_paging)
+      
+       if($id == "next")              selectedPage = next;
+      if($id == "prev")             selectedPage = prev;
+
+         //alert("next : "+next)
+      
+       paging(totalData, dataPerPage, pageCount, selectedPage);
+
+      if(item_paging == next){
+         var set_paging = $('#paging li').attr('data-page');
+            alert("set_paging : "+set_paging)
+         
+         $('#paging li').first().trigger('click')
+         $('#paging li').removeClass('active')
+           $('#paging li').first().addClass('active')
+      }   
+   })
    }
-   
    $(document).ready(function(){
        paging(totalData, dataPerPage, pageCount, 1);
    })

@@ -13,7 +13,7 @@
 		
 	</insert>
 	<insert id="deptAdd" parameterType="HashMap">		
-        insert into dept(deptno,dname) values (#{deptno, jdbcType=INTEGER},#{dname, jdbcType=VARCHAR})
+        insert into dept(deptno,dname) values (#{dept_no, jdbcType=INTEGER},#{dept_name, jdbcType=VARCHAR})
 	</insert>
 	<insert id="getRankAdd" parameterType="HashMap">		
         insert into rank(rank_no,rank_name) values (#{rank_no, jdbcType=INTEGER},#{rank_name, jdbcType=VARCHAR})

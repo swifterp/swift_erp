@@ -41,7 +41,7 @@
 	<div class="container">		
 		<%@ include file="../common/left_menu_attend.jsp" %>
 		<div class="contents">
-			<h2>근태항목관리 목록</h2>
+			<h1>근태항목관리 목록</h1>
 			<form action="../attend/attend_DetailCode">
 				<table class="table tb_left" style="text-align:left; margin-bottom:20px; background:#eee;">
 					<colgroup>
@@ -73,7 +73,7 @@
 					<tr>
 						<td class="line" style="width:155px" colspan="2">
 							<div class="input-group pull-right">
-								<input type="submit" class="btn btn-primary" value="조회">
+								<input type="submit" class="btn btn-outline-primary" value="조회">
 							</div>
 						</td>
 					</tr>
@@ -115,7 +115,7 @@
 			    </tbody>
 			</table>
 			<div class="btn_group">
-				<input type="button" class="btn btn-primary pull-right" onclick="javascript:attendCodeInsert()" value="등록">
+				<input type="button" class="btn btn-outline-primary pull-right" onclick="javascript:attendCodeInsert()" value="등록">
 			</div>
 			<div class="pagination-container">
                <nav>

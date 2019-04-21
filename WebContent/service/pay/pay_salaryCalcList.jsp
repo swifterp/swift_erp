@@ -47,6 +47,7 @@
 	<div class="container">
 		<%@ include file="../common/left_menu_pay.jsp" %>
 		<div class="contents">
+			<h1>급여계산/대장</h1>
 			<div id="lblTable">
 				<table id='mytable' class='table text-font'>
 					<thead>
@@ -106,7 +107,7 @@
                   </div>
                </nav>
            </div>
-			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top:150px;">
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">

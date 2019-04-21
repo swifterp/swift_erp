@@ -21,14 +21,20 @@ public interface selectListMapper {
 		public List<Map<String, String>> getDutyList();
 		public List<Map<String, String>> getBankList();
 		public List<Map<String, Integer>> empNumCheck(Integer emp_number);
+		public List<Map<String, String>> getEtcList();
 		public List<Map<String, String>> getAppointList();
 		public List<Map<String, String>> getAppointView(Integer emp_appoint_no);
 		public int checkEmpNum(String emp_number);
+		public int checkDeptNum(String deptno);
+		public int checkRankNum(Integer rank_no);
+		public int checkDutyNum(Integer duty_no);
+		public int checkBankNum(Integer bank_no);
 		public List<Map<String, String>> getEmpData(String empInfo);
 
 		public List<Map<String, String>> getEmpPrintList(HashMap<String, String> empInfo);
 
 		public List<Map<Object, Object>> canvas();
+		public List<Map<Object, Object>> canvas2();
 		public String getEmpOne(Integer emp_number);
 		public List<Map<String, String>> getEmpOneList(Integer emp_number);
 		
@@ -49,8 +55,8 @@ public interface selectListMapper {
 		public List<Map<String, String>> get_pop_client();//Client POP-UP Call
 		public List<Map<String, String>> get_pop_deptlist();//Dept POP-UP Call
 		public List<Map<String, String>> getworkDetailList(HashMap<String, String> searchData);//Work Business List Search
-		public List<Map<String, String>> get_work_monthwork();////월별근무기록 전체 조회
-		public List<Map<String, String>> getMonthWorkList(String search_month);////월별근무기록 월별 조회
+		public List<Map<String, String>> get_work_monthwork();////�썡蹂꾧렐臾닿린濡� �쟾泥� 議고쉶
+		public List<Map<String, String>> getMonthWorkList(String search_month);////�썡蹂꾧렐臾닿린濡� �썡蹂� 議고쉶
 		public List<Map<String, String>> getselectwork_DataListLow(int log_no);//Work Business List Low Search
 		//work end
 	
@@ -77,9 +83,9 @@ public interface selectListMapper {
 		public List<Map<String, String>> getAttendCodeLow(Integer attendd_code);//Call Attend Code One Low
 		public List<Map<String, String>> getAttendDetailList(HashMap<String, String> DetailInfo);//Call Attend Data Details
 		public List<Map<String, String>> getAttendCodeDetailList(HashMap<String, String> DetailCodeInfo);//Call Attend Code Details
-		public List<Map<String, String>> getAttendCodepop();//근태코드 팝업
-		public String WriteWorkStart(Map<String,String> empno);//출근기록
-		public String WriteWorkEnd(Map<String,String> empno);//퇴근기록
+		public List<Map<String, String>> getAttendCodepop();//洹쇳깭肄붾뱶 �뙘�뾽
+		public String WriteWorkStart(Map<String,String> empno);//異쒓렐湲곕줉
+		public String WriteWorkEnd(Map<String,String> empno);//�눜洹쇨린濡�
 		////Attend End
 		
 		//client
@@ -114,7 +120,7 @@ public interface selectListMapper {
 
 	public List<Map<String, String>> getWorkConfirmList(@Param("selectedDate") String selectedDate, @Param("empno") String empno);
 	
-	public List<Map<String, String>> getWorkNotConfirmList(@Param("selectedDate") String selectedDate, @Param("empno") String empno); // pay �߰� 0415 13:03
+	public List<Map<String, String>> getWorkNotConfirmList(@Param("selectedDate") String selectedDate, @Param("empno") String empno); // pay 占쌩곤옙 0415 13:03
 
 	public List<Map<String, String>> getTotalWorkConfirmList();
 

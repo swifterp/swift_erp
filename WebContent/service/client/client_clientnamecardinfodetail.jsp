@@ -17,7 +17,7 @@
 		<div class="contents">
 				<% Map<String, String> map = (Map<String,String>)request.getAttribute("map");
 				%>
-				<h2>명함수정</h2>
+				<h1>명함수정</h1>
 				<form  action="../client/updateNameCardInfo">
 				<table class="table">
 					<tr>
