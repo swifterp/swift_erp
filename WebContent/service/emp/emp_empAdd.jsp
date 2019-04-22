@@ -7,6 +7,10 @@
 <meta charset="UTF-8">
 <title>SWIFT ERP</title>
 <%@ include file="../common/ui_common.jsp" %>
+<%
+	List<Map<String, String>> allow = (List<Map<String, String>>)request.getAttribute("allow");
+	List<Map<String, String>> deduc = (List<Map<String, String>>)request.getAttribute("deduc");
+%>
 <!-- sweetAlter api -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!-- 다음주소api -->
@@ -313,109 +317,73 @@ $(document).ready(function() {
 				  <div id="menu2" class="tab-pane fade">
 				    <h1>급여지급사항등록</h1>
 					    <table class="table">
+					    <%
+					    	for(int i=0;i<allow.size();i=i+2){
+					    %>
 							<tr>
-								<th>적용일</th>
-								<td>	
-									<input type="text" name="emp_join_date" class="form-control" id="datepicker3" placeholder="적용일" style="width:80%; display:inline-block; margin-right:5px;">
-								</td>
-								<th>급여구분</th>
+								<th><%= String.valueOf(allow.get(i).get("ALLOWANCE_NAME")) %></th>
 								<td>
-									<span><input type="checkbox" />고정급</span>
-									<span><input type="checkbox" />변동급</span>
+								<input type="hidden" name="allowance_length" value="<%= String.valueOf(allow.get(i).get("ALLOWANCE_NO")) %>">
+								<input type="hidden" name="allowance_division<%= String.valueOf(allow.get(i).get("ALLOWANCE_NO")) %>" value="<%= String.valueOf(allow.get(i).get("ALLOWANCE_DIVISION")) %>">
+								<input type="hidden" name="allowance_name<%= String.valueOf(allow.get(i).get("ALLOWANCE_NO")) %>" value="<%= String.valueOf(allow.get(i).get("ALLOWANCE_NAME")) %>">
+								<input type="text" name="payinfo_price<%= String.valueOf(allow.get(i).get("ALLOWANCE_NO")) %>" class="form-control" />
 								</td>
-								<th>급여차수</th>
+								<%
+									if(i+1 < allow.size()){
+								%>
+								<th><%= String.valueOf(allow.get(i+1).get("ALLOWANCE_NAME")) %></th>
 								<td>
-									<select class="form-control">
-						  				<option value="one">1차</option>
-						  				<option value="two">2차</option>
-						 				<option value="three">3차</option>
-						  				<option value="four">4차</option>
-									</select>
+								<input type="hidden" name="allowance_length" value="<%= String.valueOf(allow.get(i+1).get("ALLOWANCE_NO")) %>">
+								<input type="hidden" name="allowance_division<%= String.valueOf(allow.get(i+1).get("ALLOWANCE_NO")) %>" value="<%= String.valueOf(allow.get(i+1).get("ALLOWANCE_DIVISION")) %>">
+								<input type="hidden" name="allowance_name<%= String.valueOf(allow.get(i+1).get("ALLOWANCE_NO")) %>" value="<%= String.valueOf(allow.get(i+1).get("ALLOWANCE_NAME")) %>">
+								<input type="text" name="payinfo_price<%= String.valueOf(allow.get(i+1).get("ALLOWANCE_NO")) %>" class="form-control" />
 								</td>
+								<%
+									} else {
+								%>
+								<td></td>
+								<%
+									}
+								%>
 							</tr>
-							<tr>
-								<th>기본급</th>
-								<td><input type="text" class="form-control" /></td>
-								<th>법정수당</th>
-								<td colspan="3"><input type="text" class="form-control" /></td>
-							</tr>
-							<tr>
-								<th>차량유지비</th>
-								<td><input type="text" class="form-control" /></td>
-								<th>식대</th>
-								<td colspan="3"><input type="text" class="form-control" /></td>
-							</tr>
-							<tr>
-								<th>지급총액</th>
-								<td colspan="5"><input type="text" class="form-control" /></td>
+						<%
+					    	}
+						%>
 						</table>
 				  </div>
 				  <div id="menu3" class="tab-pane fade">
 				    <h1>세무정보등록</h1>
-				    <form action="../../emp/taxInfoAdd">
 					    <table class="table">
-					    	<colgroup>
-								<col width="15%" />
-								<col width="35%" />
-								<col width="15%" />
-								<col width="35%" />
-							</colgroup>
-							<th>적용일</th>
-							<td colspan="3">	
-								<input type="text" name="emp_join_date" class="form-control" id="datepicker4" placeholder="적용일" style="width:80%; display:inline-block; margin-right:5px;">
-							</td>
+						<%
+					    	for(int i=0;i<deduc.size();i=i+2){
+					    %>
 							<tr>
-								<th>국민연금</th>
+								<th><%= String.valueOf(deduc.get(i).get("DEDUCTION_NAME")) %></th>
 								<td>
-									<select class="form-control">
-						  				<option value="autoSum">자동계산</option>
-						  				<option value="Income">기준소득기준</option>
-						 				<option value="none">안함</option>
-									</select>
+								<input type="hidden" name="deduction_length" value="<%= String.valueOf(deduc.get(i).get("DEDUCTION_NO")) %>">
+								<input type="hidden" name="deduction_name<%= String.valueOf(deduc.get(i).get("DEDUCTION_NO")) %>" value="<%= String.valueOf(deduc.get(i).get("DEDUCTION_NAME")) %>">
+								<input type="text" name="deducinfo_price<%= String.valueOf(deduc.get(i).get("DEDUCTION_NO")) %>" class="form-control" />
 								</td>
-								<th>기준소득월액</th>
-								<td><input type="text" class="form-control" /></td>
-							</tr>
-							<tr>
-								<th>건강보험</th>
+								<%
+									if(i+1 < deduc.size()){
+								%>
+								<th><%= String.valueOf(deduc.get(i+1).get("DEDUCTION_NAME")) %></th>
 								<td>
-									<select class="form-control">
-						  				<option value="autoSum">자동계산</option>
-						  				<option value="Income">기준소득기준</option>
-						 				<option value="none">안함</option>
-									</select>
+								<input type="hidden" name="deduction_length" value="<%= String.valueOf(deduc.get(i+1).get("DEDUCTION_NO")) %>">
+								<input type="hidden" name="deduction_name<%= String.valueOf(deduc.get(i+1).get("DEDUCTION_NO")) %>" value="<%= String.valueOf(deduc.get(i+1).get("DEDUCTION_NAME")) %>">
+								<input type="text" name="deducinfo_price<%= String.valueOf(deduc.get(i+1).get("DEDUCTION_NO")) %>" class="form-control" />
 								</td>
-								<th>기준소득월액</th>
-								<td><input type="text" class="form-control" /></td>
+								<%
+									} else {
+								%>
+								<td></td>
+								<%
+									}
+								%>
 							</tr>
-							<tr>
-								<th>고용보험</th>
-								<td>
-									<select class="form-control">
-						  				<option value="autoSum">자동계산</option>
-						  				<option value="Income">기준소득기준</option>
-						 				<option value="none">안함</option>
-									</select>
-								</td>
-								<th>기준소득월액</th>
-								<td><input type="text" class="form-control" /></td>
-							</tr>
-							<tr>
-								<th>배우자공제</th>
-								<td colspan="3">
-									<select class="form-control">
-						  				<option value="autoSum">자동계산</option>
-						  				<option value="Income">기준소득기준</option>
-						 				<option value="none">안함</option>
-									</select>
-								</td>
-							</tr>
-							<tr>
-								<th>부양가족수(본인 및 배우자 제외)</th>
-								<td><input type="text" class="form-control" /></td>
-								<th>부양가족중 20세 미만 수</th>
-								<td><input type="text" class="form-control" /></td>
-							</tr>
+						<%
+					    	}
+						%>
 						</table>
 				</div>
 				<div class="btn_group">

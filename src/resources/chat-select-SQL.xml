@@ -21,5 +21,14 @@
 		order by chat_log_code
 		
 	</select>
+	
+	<select id="getParticipentList" parameterType="String" resultType="hashmap">
+	
+		select a.empno, b.emp_name from participent_list a, employee b
+		<where>
+			a.empno = b.empno and a.chatroom_code = #{chatroom_code}
+		</where>
+		
+	</select>
 
 </mapper>

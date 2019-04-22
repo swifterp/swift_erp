@@ -23,7 +23,7 @@ public class WorkConfirmInsertDao {
 
 		ulm.resetWorkConfirmList(selectedDate, empno);
 
-		return slm.getWorkConfirmList(selectedDate, empno);
+		return slm.getWorkNotConfirmList(selectedDate, empno);
 	}
 	
 }

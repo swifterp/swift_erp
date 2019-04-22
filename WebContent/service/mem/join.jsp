@@ -126,7 +126,7 @@
 				</tbody>
 			</table>
 			<a href="../mem/login.jsp" class="btn btn-default">로그인화면</a>
-			<input type="submit" class="btn btn-primary" value="등록완료">
+			<input type="submit" class="btn btn-outline-primary" value="등록완료">
 		</form>
 	</div>
 </body>

@@ -8,10 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import logic.chat.ExitRoom;
 import logic.chat.InsertChatlog;
 import logic.chat.InsertRoom;
+import logic.chat.InviteEmp;
 import logic.chat.SelectChatlog;
 import logic.chat.SelectChatroom;
+import logic.chat.SelectParticipentList;
 
 @Controller
 @RequestMapping("service/chat")
@@ -61,16 +64,40 @@ public class Chat_Controller {
 		
 	}
 	
-//	@Autowired
-//	private InviteEmp ie;
-//	
-//	@RequestMapping("/invite")
-//	public String chat_inviteEmp(Model model, @RequestParam Map<String, String> invitedata) {
-//		
-//		model.addAttribute("list", ir.callInviteEmpDao(invitedata));
-//		
-//		return "chat/chat_roomlist";
-//		
-//	}
+	@Autowired
+	private SelectParticipentList spl;
+	
+	@RequestMapping("/selectparticipent")
+	public String chat_participentlist(Model model, @RequestParam(value="chatroom_code", defaultValue="0") String chatroom_code) {
+		
+		model.addAttribute("participent", spl.callParticipentDao(chatroom_code));
+		
+		return "chat/chat_participentlist";
+		
+	}
+	
+	@Autowired
+	private InviteEmp ie;
+	
+	@RequestMapping("/invite")
+	public String chat_inviteEmp(Model model, @RequestParam Map<String, String> invitedata) {
+		
+		model.addAttribute("participent", ie.callInviteEmpDao(invitedata));
+		
+		return "chat/chat_participentlist";
+		
+	}
+	
+	@Autowired
+	private ExitRoom er;
+	
+	@RequestMapping("/exitroom")
+	public String chat_exitroom(Model model, @RequestParam Map<String, String> exitdata) {
+		
+		model.addAttribute("list", er.callexitroomDao(exitdata));
+		
+		return "chat/chat_roomlist";
+		
+	}
 
 }

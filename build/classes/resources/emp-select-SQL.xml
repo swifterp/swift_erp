@@ -2,15 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="resources.mapper.selectListMapper">
 	<select id="getEmpList" resultType="hashmap">		
-        select e.empno, e.emp_number, e.emp_name, e.emp_email, e.emp_resident_number, d.dname, r.rank_name, e.emp_join_date 
+        select e.empno, e.emp_number, e.emp_name, e.emp_email, e.emp_resident_number, d.dname, r.rank_name, TO_CHAR(e.emp_join_date, 'YYYY-MM-DD') as emp_join_date
         from employee e, dept d, rank r
         where d.deptno=e.deptno and r.rank_no=e.rank_no
         order by e.emp_number
 	</select>
-	<!-- 사원번호중복 확인 -->
-	<select id="empNumCheck" parameterType="Integer" resultType="Integer">
-	 select emp_number from employee
-	     where emp_number = #{emp_number, jdbcType=INTEGER}
+	
+	<select id="getSearchEmpList" parameterType="String" resultType="hashmap">		
+        select e.empno, e.emp_number, e.emp_name, e.emp_email, e.emp_resident_number, d.dname, r.rank_name, e.emp_join_date 
+        from employee e, dept d, rank r
+        where d.deptno=e.deptno and r.rank_no=e.rank_no
+        and e.emp_name = #{empno}
+        order by e.emp_number
 	</select>
 	
 	<select id="getEmpView" parameterType="Integer" resultType="hashmap">		
@@ -38,6 +41,7 @@
 	<select id="getEmpDeptList" resultType="hashmap">		
         select *
         from dept
+        order by deptno
 	</select>
 		<select id="getDeptView" parameterType="Integer" resultType="hashmap">		
         select deptno, dname
@@ -67,9 +71,93 @@
         from bank
         order by bank_no
 	</select>
+	<!-- 사원번호중복 확인 -->
 	<select id="checkEmpNum" parameterType="String" resultType="Integer">		
         select COUNT(*) from employee
         where emp_number = #{emp_number}
 	</select>
+	<select id="checkDeptNum" parameterType="String" resultType="Integer">		
+        select COUNT(*) from dept
+        where deptno = #{dept_no}
+	</select>
+	<select id="checkRankNum" parameterType="String" resultType="Integer">		
+        select COUNT(*) from rank
+        where rank_no = #{rank_no}
+	</select>
+	<select id="checkDutyNum" parameterType="String" resultType="Integer">		
+        select COUNT(*) from duty
+        where duty_no = #{duty_no}
+	</select>
+	<select id="checkBankNum" parameterType="String" resultType="Integer">		
+        select COUNT(*) from bank
+        where bank_no = #{bank_no}
+	</select>
 	
+	<select id="getEmpOne" parameterType="Integer" resultType="String">		
+		select empno from employee
+		<where>
+			emp_number = #{emp_number}
+		</where>
+	</select>
+
+	  <select id="getEmpPrintList" parameterType="HashMap" resultType="HashMap">
+      select emp_number, emp_name, e1.empno1 
+      from employee, (select count(empno) as empno1 from employee 
+         where 
+            deptno = decode(#{deptno, jdbcType=INTEGER}, null, deptno, #{deptno, jdbcType=INTEGER})
+            and 
+            rank_no = decode(#{rank_no, jdbcType=INTEGER}, null, rank_no, #{rank_no, jdbcType=INTEGER})
+            and 
+            duty_no = decode(#{duty_no, jdbcType=INTEGER}, null, duty_no, #{duty_no, jdbcType=INTEGER})
+            and 
+            emp_join_date = decode(#{emp_join_date, jdbcType=DATE}, null, emp_join_date, #{emp_join_date, jdbcType=DATE})
+         ) e1   
+         where 
+         deptno = decode(#{deptno, jdbcType=INTEGER}, null, deptno, #{deptno, jdbcType=INTEGER})
+         and rank_no = 
+         decode(#{rank_no, jdbcType=INTEGER}, null, rank_no, #{rank_no, jdbcType=INTEGER})
+         and 
+         duty_no = 
+         decode(#{duty_no, jdbcType=INTEGER}, null, duty_no, #{duty_no, jdbcType=INTEGER})
+         and 
+         emp_join_date = 
+         decode(#{emp_join_date, jdbcType=DATE}, null, emp_join_date, #{emp_join_date, jdbcType=DATE})
+   </select>
+
+	<select id="getEmpOneList" parameterType="Integer" resultType="Map">		
+		select * from employee
+		<where>
+			emp_number = #{emp_number}
+		</where>
+	</select>
+	
+	<select id="getRetiredEmpList" resultType="hashmap">		
+        select e.empno, e.emp_number, e.emp_name, e.emp_email, e.emp_resident_number, d.dname, r.rank_name, TO_CHAR(e.emp_join_date, 'YYYY-MM-DD') as emp_join_date
+        from retired_employee e, dept d, rank r
+        where d.deptno=e.deptno and r.rank_no=e.rank_no
+        order by e.emp_number
+	</select>
+	
+	<select id="getRetiredEmpData" parameterType="String" resultType="hashmap">
+		select e.emp_number, e.emp_name, e.emp_email, e.emp_resident_number, d.dname, r.rank_name, e.emp_join_date 
+        from retired_employee e, dept d, rank r
+        where d.deptno=e.deptno 
+        and r.rank_no=e.rank_no
+        and (e.emp_name like '%'||#{empinfo, jdbcType=VARCHAR}||'%' or d.dname like '%'||#{empinfo, jdbcType=VARCHAR}||'%')
+        order by e.emp_number
+	</select>
+	<select id="canvas" resultType="hashmap">
+		select d.parent_dname as dname, round((ratio_to_report(count(e.empno)) over())*100) as dcount
+		from dept d, employee e
+		where d.deptno = e.deptno 
+		group by d.parent_dname
+	</select>
+	<select id="canvas2" resultType="hashmap">
+		select extract(year from emp_join_date) as emp_join_date,
+			   round((ratio_to_report(count(empno)) over())*100) as ecount
+		from employee
+		where extract(year from emp_join_date) BETWEEN extract(year from sysdate)-5 and extract(year from sysdate)
+		group by extract(year from emp_join_date)
+		order by emp_join_date asc
+	</select>
 </mapper>

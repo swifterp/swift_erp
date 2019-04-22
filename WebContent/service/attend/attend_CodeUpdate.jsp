@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>근태 코드 수정</title>
+<title>근태 항목 수정</title>
 <%@ include file="../common/ui_common.jsp" %>
 </head>
 <body>
@@ -19,11 +19,11 @@
 				<table class="table">
 					<tr>
 						<th>근태코드</th>
-						<td><input type="text" id="attend_code" name="attend_code" value="${list.get(0).get("ATTEND_CODE")}" class="form-control"></td>
+						<td><input type="text" id="attend_code" name="attend_code" value="${list.get(0).get("ATTEND_CODE")}" class="form-control" readonly ></td>
 					</tr>
 					<tr>
-						<th>근태명</th>
-						<td><input type="text" id="attend_name" name="attend_name" value="${list.get(0).get("ATTEND_NAME")}" class="form-control"></td>
+						<th> 근태명 <span class="essential">*</span></th>	
+						<td><input type="text" id="attend_name" name="attend_name" value="${list.get(0).get("ATTEND_NAME")}" class="form-control" required=""></td>
 					</tr>
 					<tr>
 						<th>근태코드상태</th>
@@ -54,7 +54,10 @@
 						<td><input type="text" id="attend_c_etc" name="attend_c_etc" value="${list.get(0).get("ATTEND_C_ETC")}" class="form-control"></td>
 					</tr>
 				</table>
-				<input type="submit" value="확인" class="btn btn-primary pull-right">
+				<div class="btn_group">
+					<a class="btn btn-default pull-left" href="../attend/attend_CodeList">목록</a>
+					<input type="submit" value="확인" class="btn btn-primary pull-right">
+				</div>
 			</form>
 		</div>
 	</div>

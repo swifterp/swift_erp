@@ -5,12 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../../css/common.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
-<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<%@ include file="../common/ui_common.jsp" %>
 <title>일별근무기록현황 페이지</title>
 <style>
  .line{border-left: 1px solid #fff;
@@ -143,11 +138,63 @@
 		date  = new Date(arr[0], arr[1]-1, arr[2]);
 		buildCalendar();	
 	}
+
+	var xhr1 = null;
+
+	function createRequest(xhr){
+		
+		try {
+			xhr = new XMLHttpRequest();
+		} catch (e) {
+			try {
+				xhr = new ActiveXObject("Msxml2.XMLHTTP");
+			} catch (e) {
+				try {
+					xhr = new ActiveXObject("Microsoft.XMLHTTP")
+				} catch (e) {
+					xhr = null;
+				}
+			}
+		}
+		
+		if(xhr == null){
+			alert("Error Creating XMLHttpRequest Object");
+		}
+		
+		return xhr;
+	
+	}
 	
 	function onModal(year, month, date){
+
+		document.getElementById("insertempno").value = document.getElementById("hidempno").name;
 		document.getElementById("yeartext").value = year;
 		document.getElementById("monthtext").value = month;
 		document.getElementById("daytext").value = date;
+
+		document.getElementById("yeartext").readOnly = true;
+		document.getElementById("monthtext").readOnly = true;
+		document.getElementById("daytext").readOnly = true;
+
+		xhr1 = createRequest(xhr1);
+		xhr1.onreadystatechange = function (){
+			
+			if(this.readyState == 4 && this.status == 200){
+				document.getElementById("allowancelist").innerHTML = this.responseText;
+			}
+			
+		};
+
+		xhr1.open("POST", "../pay/allowance?", true);
+		xhr1.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
+		xhr1.send("classify=1");
+		
+	}
+
+	function selectworklist(){
+		var tmp = document.getElementById("datepicker").value;
+		var tmparr = tmp.split("/");
+		location.href = "./dailyworkList?year="+tmparr[0]+"&month="+tmparr[1]+"&day="+tmparr[2];
 	}
 
 </script>
@@ -164,11 +211,10 @@
 	<div class="container">
 		<%@ include file="../common/left_menu_pay.jsp" %>
 	<div class="contents" >
-		<form action="./dailyworkList">
-			연월선택 : <input type="text" oninput="changeCalendar()" class="form-control" name="selectedDate" id="datepicker" style="width:7%; display:inline-block; margin-right:5px;">
-			<button type='button' onclick="changeCalendar()" class='btn btn-outline-black'>변경</button>
-			<input type="submit" class="btn btn-outline-black" value="조회">
-		</form>
+		<h1>일별근무기록</h1>
+		연월선택 : <input type="text" oninput="changeCalendar()" class="form-control" name="selectedDate" id="datepicker" style="width:200px; display:inline-block; margin-right:5px;">
+		<button type='button' onclick="changeCalendar()" class='btn btn-outline-primary'>변경</button>
+		<button type='button' onclick="selectworklist()" class='btn btn-outline-primary'>조회</button>
 		<br>
 		<table id="calendar" border="3" class="table line2" style="width: 900px"> 
 			<thead>
@@ -220,6 +266,21 @@
 		<td>
 			<%= String.valueOf(lst.get(i).get("EMPNO")) %>
 		</td>
+			<%
+				if(String.valueOf(lst.get(i).get("DAILYWORK_CONFIRM")).equals("1")){
+					%>
+					<td>
+						확정
+					</td>
+					<%
+				} else {
+					%>
+					<td>
+						미확정
+					</td>
+					<%
+				}
+			%>
 		</tr>
 		<tr>
 		<%
@@ -258,7 +319,7 @@
 
 	<br>
 	
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top:150px;">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -268,21 +329,31 @@
 	        </button>
 	      </div>
 	      <div id="dwinsert" class="modal-body">
-			<form action="./dailyworkList">
-			기준일자(년):<br>
-			<input type="text" id="yeartext" name="year">
-			<br>
-			
-			기준일자(월):<br>
-			<input type="text" id="monthtext" name="month">
-			<br>
-			
-			기준일자(일):<br>
-			<input type="text" id="daytext" name="day">
-			<br>
-			
-			<div id="dwinsert"></div>
-			
+			<form action="./dailyworkInsert">
+			<table>
+				<tr>
+					<td>
+						<input type="hidden" name="empno" id="insertempno">
+						기준일자(년):<input type="text" id="yeartext" name="year">
+					</td>
+					<td>					
+						기준일자(월):<input type="text" id="monthtext" name="month">
+					</td>
+					<td>
+						기준일자(일):<input type="text" id="daytext" name="day">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<div id="allowancelist"></div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<input type="submit" value="등록">
+					</td>
+				</tr>
+			</table>
 			</form>
 	      </div>
 	      <div class="modal-footer">

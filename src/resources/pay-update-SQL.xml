@@ -31,6 +31,15 @@
 	
 	</update>
 	
+	<update id="resetWorkConfirmCancel" parameterType="String">
+	
+		update dailyworklist set dailywork_confirm = 0
+		<where>
+			empno = #{empno, jdbcType=INTEGER} and dailywork_date = to_date(#{selectedDate, jdbcType=VARCHAR}, 'YYYY/MM/DD')
+		</where>
+	
+	</update>
+	
 	<update id="resetPayConfirmList" parameterType="String">
 	
 		update salarycalclist set salarycalc_confirm = 1

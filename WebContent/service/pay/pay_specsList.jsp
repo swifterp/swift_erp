@@ -6,10 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>명세서 조회 페이지</title>
-<link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../../css/common.css">
-<script type = "text/javascript" src ="../../js/jquery.min.js"></script>
-<script type = "text/javascript" src ="../../js/bootstrap.js"></script>
+<%@ include file="../common/ui_common.jsp" %>
 </head>
 <body>
 <%	List<Map<String, String>> sess = (List<Map<String, String>>)request.getSession().getAttribute("member"); %>
