@@ -62,10 +62,10 @@
               },
               success: function(data){
                   if($.trim(data) == 0){
-                	  swal("Ok","사용가능한 직위코드입니다.","success");
+                	  swal("Ok","사용가능한 직책코드입니다.","success");
                   }
                   else{
-                	  swal("NO","중복된 직위이름입니다.","error");
+                	  swal("NO","중복된 직책이름입니다.","error");
                   }
               }
           });    //end ajax    
@@ -168,7 +168,128 @@ function dept(){
 	.etcCode li {float:left; width:120px; margin-left:4px;}
 </style> 
 
-
+<style>
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,700);
+.snip1445 {
+  font-family: 'Raleway', Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  min-width: 230px;
+  max-width: 315px;
+  width: 100%;
+  color: #ffffff;
+  text-align: center;
+  font-size: 16px;
+  background-color: #000000;
+}
+.snip1445 *,
+.snip1445 *:before,
+.snip1445 *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.55s ease;
+  transition: all 0.55s ease;
+}
+.snip1445 img {
+  max-width: 100%;
+  backface-visibility: hidden;
+  vertical-align: top;
+}
+.snip1445 figcaption {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  padding: 5px 10px 10px;
+}
+.snip1445 figcaption:before,
+.snip1445 figcaption:after {
+  height: 2px;
+  width: 400px;
+  position: absolute;
+  content: '';
+  background-color: #ffffff;
+}
+.snip1445 figcaption:before {
+  top: 0;
+  left: 0;
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+.snip1445 figcaption:after {
+  bottom: 0;
+  right: 0;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+.snip1445 figcaption div:before,
+.snip1445 figcaption div:after {
+  width: 2px;
+  height: 300px;
+  position: absolute;
+  content: '';
+  background-color: #ffffff;
+}
+.snip1445 figcaption div:before {
+  top: 0;
+  left: 0;
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+}
+.snip1445 figcaption div:after {
+  bottom: 0;
+  right: 0;
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+.snip1445 h2,
+.snip1445 h4 {
+  margin: 0;
+  text-transform: uppercase;
+}
+.snip1445 h2 {
+  font-weight: 400;
+}
+.snip1445 h4 {
+  display: block;
+  font-weight: 700;
+  background-color: #ffffff;
+  padding: 5px 10px;
+  color: #000000;
+}
+.snip1445 a {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.snip1445:hover img,
+.snip1445.hover img {
+  zoom: 1;
+  filter: alpha(opacity=50);
+  -webkit-opacity: 0.5;
+  opacity: 0.5;
+}
+.snip1445:hover figcaption:before,
+.snip1445.hover figcaption:before,
+.snip1445:hover figcaption:after,
+.snip1445.hover figcaption:after,
+.snip1445:hover figcaption div:before,
+.snip1445.hover figcaption div:before,
+.snip1445:hover figcaption div:after,
+.snip1445.hover figcaption div:after {
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.snip1445:hover figcaption:before,
+.snip1445.hover figcaption:before,
+.snip1445:hover figcaption:after,
+.snip1445.hover figcaption:after {
+  -webkit-transition-delay: 0.15s;
+  transition-delay: 0.15s;
+}
+</style>
 </head>
 <body>
 <%	List<Map<String, String>> sess = (List<Map<String, String>>)request.getSession().getAttribute("member"); %>
@@ -178,24 +299,53 @@ function dept(){
 		<%@ include file="../common/left_menu_emp.jsp" %>
 		<div class="contents">
 			<h1>기타코드등록</h1>
-			<ul class="etcCode">
-				<li>
-					<span>부서등록</span>
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dept" onclick="dept()"><img src="../../images/icon_plus.png" /></button>
-				</li>
-				<li>
-					<span>직급등록</span>
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rank" onclick="rank()"><img src="../../images/icon_plus.png" /></button>
-				</li>
-				<li>
-					<span>직책등록</span>
-					<button type="button" class="btn btn-primary" href="#" data-toggle="modal" data-target="#duty" onclick="duty()"><img src="../../images/icon_plus.png" /></button>
-				</li>
-				<li>
-					<span>은행등록</span>
-					<button type="button" class="btn btn-primary" href="#" data-toggle="modal" data-target="#bank" onclick="bank()"><img src="../../images/icon_plus.png" /></button>
-				</li>
-			</ul>
+<figure class="snip1445" style="float:left; width:45%;">
+  <img src="../../images/c.jpg" alt="부서코드등록" />
+  <figcaption>
+    <div>
+      <h2>부서코드</h2>
+       <h4>등록</h4>
+    </div>
+  </figcaption>
+  <a href="#" data-toggle="modal" data-target="#dept" onclick="dept()"></a>
+</figure>
+<figure class="snip1445 hover" style="float:left; width:45%;"><img src="../../images/d.jpg" alt="직급코드등록" />
+  <figcaption>
+    <div>
+      <h2>직급코드</h2>
+      <h4>등록</h4>
+    </div>
+  </figcaption>
+  <a href="#" data-toggle="modal" data-target="#rank" onclick="rank()"></a>
+</figure>
+<figure class="snip1445" style="float:left; width:45%;"><img src="../../images/b.jpg" alt="직책코드등록" />
+  <figcaption>
+	    <div>
+	      <h2>직책코드</h2>
+	      <h4>등록</h4>
+	    </div>
+  </figcaption>
+  <a href="#" data-toggle="modal" data-target="#duty" onclick="duty()"></a>
+</figure>
+<figure class="snip1445" style="float:left; width:45%;"><img src="../../images/e.jpg" alt="은행코드등록" />
+  <figcaption>
+  
+    <div>
+      <h2>은행코드</h2>
+      <h4>등록</h4>
+    </div>
+ 
+  </figcaption>
+  <a href="#" data-toggle="modal" data-target="#bank" onclick="bank()"></a>
+</figure>
+			<script>
+			/* Demo purposes only */
+			$(".hover").mouseleave(
+			  function () {
+			    $(this).removeClass("hover");
+			  }
+			);
+			</script>
 			<!-- dept Modal -->
 			 <form action="../emp/deptAdd">
 				<div class="modal fade" id="dept" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top:150px;">

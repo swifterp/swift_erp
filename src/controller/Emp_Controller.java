@@ -184,7 +184,7 @@ public class Emp_Controller {
 	@RequestMapping("/deptUpd")
 	public String updDept(Model model, @RequestParam HashMap<String,String> deptUpd) {
 		model.addAttribute("list", el.deptUpdDao(deptUpd));	
-		return "emp/emp_etcCodeAdd";
+		return "emp/pop_dept";
 	}
 	@RequestMapping("/rankUpd")
 	public String updRank(Model model, @RequestParam HashMap<String,String> rankUpd) {

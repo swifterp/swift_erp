@@ -128,41 +128,6 @@ $(document).ready(function() {
     });
 });
 </script>
-<script type="text/javascript">
-  $(document).ready(function(){
-      $('#check').on('click', function(){
-          $.ajax({
-              type: 'POST',
-              url: '../emp/checkEmpNum',
-              data: {
-                  "emp_number" : $('#emp_number').val()
-              },
-              success: function(data){
-                  if($.trim(data) == 0){
-                	  swal("Ok","사용가능한 사원번호입니다.","success");
-                  }
-                  else{
-                	  swal("NO","중복된 사원번호입니다.","error");
-                  }
-              }
-          });    //end ajax    
-      });    //end on    
-  });
-</script>
- <script>
-  function fileUpload(fis) {
-      var str = fis.value;
-      var test = $('#file').value;
-      $('#span').text(fis.value.substring(str.lastIndexOf("\\")+1));
-      // 이미지를 변경한다.
-        var reader = new FileReader();
- 	  	reader.onload = function(e){
-		$('#loadImg').attr('src',e.target.result);
-    }
-reader.readAsDataURL(fis.files[0]);
-reader.readAsDataURL(test);
-}
-</script>
 <style>
 	table td {text-align:left;}
 </style>
@@ -198,11 +163,8 @@ reader.readAsDataURL(test);
 							<img id="loadImg" style="width:140px; heigth:auto;" src=""/>
 						</td>	
 						<th>사원번호<span class="essential">*</span></th>
-						<td class="input-group">
+						<td>
 							<input type="text" id="emp_number" name="emp_number" class="form-control" value="${list.get(0).get("EMP_NUMBER")}" required="" readonly>
-							<span class="input-group-btn">
-								<button type="button" id="check" class="btn btn-info">중복확인</button> 
-							</span>
 						</td>
 						<th>사원명<span class="essential">*</span></th>
 						<td><input type="text" name="emp_name" class="form-control" value="${list.get(0).get("EMP_NAME")}" required=""></td>

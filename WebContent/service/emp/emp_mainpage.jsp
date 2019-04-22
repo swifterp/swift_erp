@@ -44,32 +44,6 @@ $(document).ready(function(){
    });
    })
 </script>
-<script>
-function paging(page) {
-    $('#list-body').empty();
-    var startRow = (page - 1) * pageSize; // + 1 list는 0부터 시작하니깐;
-    var endRow = page * pageSize;
-    if (endRow > totalCount) 
-    {
-        endRow = totalCount;
-    }  
-    var startPage = ((page - 1)/visibleBlock) * visibleBlock + 1;
-    var endPage = startPage + visibleBlock - 1;
-    if(endPage > totalPages) {    //
-      endPage = totalPages;
-    }
-    for (var j = startRow; j < endRow; j++) 
-    {   
-        $('#list-body').append(''+ chatLogList[j].fileNo +'<a onclick="getContent(\''+chatLogList[j].fileName+'\')">'
-                + textLengthOverCut(chatLogList[j].fileName, '25', '...') +'</a>'+ chatLogList[j].fileDate +'');
-    }
-    
-    totalPages = totalCount/pageSize;
-    if (totalCount%pageSize > 0) {
-    totalPages++;
-    }
-}
-</script>
 
 <style>
 table tr:hover {background:#fefefe;}
@@ -115,8 +89,6 @@ table tr:hover {background:#fefefe;}
                   <th>부서</th>
                   <th>직급</th>
                   <th>입사일자</th>
-                  <th>Email</th>
-                  <th>인쇄</th>
                   <th>수정</th>
                   <th>삭제</th>
                </tr>
@@ -135,10 +107,8 @@ table tr:hover {background:#fefefe;}
                   <td><%= lst.get(i).get("DNAME") %></td>
                   <td><%= lst.get(i).get("RANK_NAME") %></td>
                   <td><%= lst.get(i).get("EMP_JOIN_DATE") %></td>
-                  <td><a href="#"><img src="../../images/icon_email_0.png" data-alt="../../images/icon_email_1.png" style="width:35px; height:35px;"/></a></td>
-                  <td><a href="#"><img src="../../images/icon_print_0.png" data-alt="../../images/icon_print_1.png" style="width:35px; height:35px;"/></a></td>
-                  <td><a onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" href="#"><img src="../../images/icon_pencil_0.png" data-alt="../../images/icon_pencil_1.png" style="width:35px; height:35px;" /></a></td>
-                  <td><a onclick="javascript:empDel(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" href="#"><img src="../../images/icon_delete_0.png" data-alt="../../images/icon_delete_1.png" style="width:35px; height:35px;"/></a></td>
+                  <td><a onclick="javascript:empView(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" href="#" class="btn btn-default">수정</a></td>
+                  <td><a onclick="javascript:empDel(<%= String.valueOf(lst.get(i).get("EMP_NUMBER")) %>)" href="#" class="btn btn-default">삭제</a></td>
                </tr>
                <%
                      }

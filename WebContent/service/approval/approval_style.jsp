@@ -201,7 +201,7 @@ function add_text(){
 		<input type="hidden" name="style_code" value="<%= style_code %>">
 		<input type="hidden" name="draft_no" value="<%= draft_no %>">
 		<input type="hidden" name="empno" value="<%= String.valueOf(sess.get(0).get("EMPNO")) %>">
-		<input type="submit" value="결재완료" class="btn btn-outline-primary" style="width:80px;">
+		<input type="submit" value="등록" class="btn btn-outline-primary" style="width:80px;">
 		</form>
 
 </section>

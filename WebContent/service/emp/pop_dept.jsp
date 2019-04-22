@@ -19,11 +19,13 @@
 </style>
 </head>
 <body>
+	<form action="../emp/deptUpd">
 	<table class="table" id="mytable">
 		<thead>
 			<tr>
 				<th>부서코드</th>
 				<th>부서명</th>
+				<th>수정</th>
 			</tr>
 		</thead>
 		<%
@@ -35,7 +37,8 @@
 		<tbody>
 				<tr onclick="javascript:deptSelect('<%= Integer.parseInt(String.valueOf(lst.get(i).get("DEPTNO"))) %>','<%= String.valueOf(lst.get(i).get("DNAME")) %>')">
 					<td><%= String.valueOf(lst.get(i).get("DEPTNO")) %></td>
-					<td><%= lst.get(i).get("DNAME") %></td>
+					<td><input type="text" class="form-control" value="<%= lst.get(i).get("DNAME") %>"></td>
+					<td><button class="btn btn-outline-primary" type="submit">수정</button></td>
 				</tr>
 		</tbody>
 		<%
@@ -43,6 +46,7 @@
 			} 
 		%>
 	</table>
+	</form>
 	<div class="pagination-container" style="float:left;">
 		<nav>
 			<div>

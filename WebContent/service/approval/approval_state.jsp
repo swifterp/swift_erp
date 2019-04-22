@@ -38,8 +38,8 @@ function goUpdateAccept(draft_code){
 		%>
 		</div>
 		<div id="update">
-			<input type="button" value="반려" onclick="javascript:goUpdateReturn(<%=draft_code%>) ">
-			<input type="button" value="결재" onclick="javascript:goUpdateAccept(<%=draft_code%>)">
+			<input type="button" value="반려" onclick="javascript:goUpdateReturn(<%=draft_code%>) " class="btn btn-outline-primary"">
+			<input type="button" value="결재" onclick="javascript:goUpdateAccept(<%=draft_code%>)" class="btn btn-outline-primary" style="margin-left:20px;">
 		
 		</div>
 			
