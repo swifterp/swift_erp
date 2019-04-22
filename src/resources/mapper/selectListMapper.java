@@ -26,9 +26,9 @@ public interface selectListMapper {
 		public List<Map<String, String>> getAppointView(Integer emp_appoint_no);
 		public int checkEmpNum(String emp_number);
 		public int checkDeptNum(String deptno);
-		public int checkRankNum(Integer rank_no);
-		public int checkDutyNum(Integer duty_no);
-		public int checkBankNum(Integer bank_no);
+		public int checkRankNum(String rank_no);
+		public int checkDutyNum(String duty_no);
+		public int checkBankNum(String bank_no);
 		public List<Map<String, String>> getEmpData(String empInfo);
 
 		public List<Map<String, String>> getEmpPrintList(HashMap<String, String> empInfo);

@@ -16,12 +16,6 @@
         order by e.emp_number
 	</select>
 	
-	<!-- 사원번호중복 확인 -->
-	<select id="empNumCheck" parameterType="Integer" resultType="Integer">
-	 select emp_number from employee
-	     where emp_number  = #{emp_number, jdbcType=INTEGER}
-	</select>
-	
 	<select id="getEmpView" parameterType="Integer" resultType="hashmap">		
         select e.emp_number, e.emp_name, e.emp_email, e.emp_resident_number, e.emp_email, e.emp_tel, e.emp_mobile, e.emp_addr1, e.emp_addr2, e.emp_join_date, e.emp_retire_date, e.emp_retire_reason, d.deptno, d.dname, r.rank_no, r.rank_name, dt.duty_no, dt.duty_name, b.bank_no, b.bank_name
         ,e.emp_account_num, e.emp_account_holder, e.emp_profile, e.emp_attach_file, e.emp_etc
@@ -77,23 +71,24 @@
         from bank
         order by bank_no
 	</select>
-	<select id="checkEmpNum" parameterType="Integer" resultType="Integer">		
+	<!-- 사원번호중복 확인 -->
+	<select id="checkEmpNum" parameterType="String" resultType="Integer">		
         select COUNT(*) from employee
         where emp_number = #{emp_number}
 	</select>
-	<select id="checkDeptNum" parameterType="Integer" resultType="Integer">		
+	<select id="checkDeptNum" parameterType="String" resultType="Integer">		
         select COUNT(*) from dept
         where deptno = #{dept_no}
 	</select>
-	<select id="checkRankNum" parameterType="Integer" resultType="Integer">		
+	<select id="checkRankNum" parameterType="String" resultType="Integer">		
         select COUNT(*) from rank
         where rank_no = #{rank_no}
 	</select>
-	<select id="checkDutyNum" parameterType="Integer" resultType="Integer">		
+	<select id="checkDutyNum" parameterType="String" resultType="Integer">		
         select COUNT(*) from duty
         where duty_no = #{duty_no}
 	</select>
-	<select id="checkBankNum" parameterType="Integer" resultType="Integer">		
+	<select id="checkBankNum" parameterType="String" resultType="Integer">		
         select COUNT(*) from bank
         where bank_no = #{bank_no}
 	</select>

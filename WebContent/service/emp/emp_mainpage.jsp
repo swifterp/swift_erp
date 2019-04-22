@@ -249,7 +249,6 @@ table tr:hover {background:#fefefe;}
 
       if(item_paging == next){
          var set_paging = $('#paging li').attr('data-page');
-            alert("set_paging : "+set_paging)
          
          $('#paging li').first().trigger('click')
          $('#paging li').removeClass('active')

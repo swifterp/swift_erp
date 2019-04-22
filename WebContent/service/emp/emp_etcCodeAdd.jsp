@@ -180,19 +180,19 @@ function dept(){
 			<h1>기타코드등록</h1>
 			<ul class="etcCode">
 				<li>
-					<span>부서</span>
+					<span>부서등록</span>
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dept" onclick="dept()"><img src="../../images/icon_plus.png" /></button>
 				</li>
 				<li>
-					<span>직급</span>
+					<span>직급등록</span>
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rank" onclick="rank()"><img src="../../images/icon_plus.png" /></button>
 				</li>
 				<li>
-					<span>직책</span>
+					<span>직책등록</span>
 					<button type="button" class="btn btn-primary" href="#" data-toggle="modal" data-target="#duty" onclick="duty()"><img src="../../images/icon_plus.png" /></button>
 				</li>
 				<li>
-					<span>은행명</span>
+					<span>은행등록</span>
 					<button type="button" class="btn btn-primary" href="#" data-toggle="modal" data-target="#bank" onclick="bank()"><img src="../../images/icon_plus.png" /></button>
 				</li>
 			</ul>
@@ -243,7 +243,7 @@ function dept(){
 				      <div class="modal-body">
 				      	<div class="input-group">
 						  <span class="input-group-addon" id="basic-addon1">직급코드</span>
-						  <input type="text" class="form-control" name="rank_no" placeholder="직급코드를 입력하세요" aria-describedby="basic-addon1" required />
+						  <input type="text" class="form-control" id="rank_no" name="rank_no" placeholder="직급코드를 입력하세요" aria-describedby="basic-addon1" required />
 							<span class="input-group-btn">
 								<button type="button" id="check2" class="btn btn-info">중복확인</button> 
 							</span>
@@ -276,7 +276,7 @@ function dept(){
 				      <div class="modal-body">
 				      	<div class="input-group">
 						  <span class="input-group-addon" id="basic-addon1">직책코드</span>
-						  <input type="text" class="form-control" name="duty_no" placeholder="직책코드를 입력하세요" aria-describedby="basic-addon1" required>
+						  <input type="text" class="form-control" id="duty_no" name="duty_no" placeholder="직책코드를 입력하세요" aria-describedby="basic-addon1" required>
 							<span class="input-group-btn">
 								<button type="button" id="check3" class="btn btn-info">중복확인</button> 
 							</span>
@@ -309,7 +309,7 @@ function dept(){
 				      <div class="modal-body">
 				      	<div class="input-group">
 						  <span class="input-group-addon" id="basic-addon1">은행코드</span>
-						  <input type="text" class="form-control" name="bank_no" placeholder="은행코드를 입력하세요" aria-describedby="basic-addon1" required>
+						  <input type="text" class="form-control" id="bank_no" name="bank_no" placeholder="은행코드를 입력하세요" aria-describedby="basic-addon1" required>
 							<span class="input-group-btn">
 								<button type="button" id="check4" class="btn btn-info">중복확인</button> 
 							</span>

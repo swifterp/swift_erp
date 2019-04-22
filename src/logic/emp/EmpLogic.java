@@ -203,10 +203,6 @@ public class EmpLogic {
 	public List<Map<String, String>> retiredempInfoSearch(String empInfo){
 		return ed.selectRetiredEmpData(empInfo);
 	}
-
-	public List<Map<String, Integer>> empNumCheck(Integer emp_number) {
-		return ed.empNumCheck(emp_number);
-	}
 	
 	public List<Map<String, String>> callRankListDao() {		
 		return ed.selectRankList();	
@@ -245,13 +241,13 @@ public class EmpLogic {
 	public int checkDeptNum(String deptno) {
 		return ed.checkDeptNum(deptno);
 	}
-	public int checkRankNum(Integer rank_no) {
+	public int checkRankNum(String rank_no) {
 		return ed.checkRankNum(rank_no);
 	}
-	public int checkDutyNum(Integer duty_no) {
+	public int checkDutyNum(String duty_no) {
 		return ed.checkDutyNum(duty_no);
 	}
-	public int checkBankNum(Integer bank_no) {
+	public int checkBankNum(String bank_no) {
 		return ed.checkBankNum(bank_no);
 	}
 

@@ -118,10 +118,6 @@ public class EmpDao {
 	public List<Map<String, String>> selectRetiredEmpData(String empInfo){
 		return slm.getRetiredEmpData(empInfo);
 	}
-
-	public List<Map<String, Integer>> empNumCheck(Integer emp_number) {
-		return slm.empNumCheck(emp_number);
-	}
 	
 	public List<Map<String, String>> selectRankList() {
 		return slm.getRankList();
@@ -172,15 +168,15 @@ public class EmpDao {
 		return slm.checkDeptNum(deptno);
 	}
 
-	public int checkRankNum(Integer rank_no) {
+	public int checkRankNum(String rank_no) {
 		return slm.checkRankNum(rank_no);
 	}
 
-	public int checkDutyNum(Integer duty_no) {
+	public int checkDutyNum(String duty_no) {
 		return slm.checkDutyNum(duty_no);
 	}
 
-	public int checkBankNum(Integer bank_no) {
+	public int checkBankNum(String bank_no) {
 		return slm.checkBankNum(bank_no);
 	}
 

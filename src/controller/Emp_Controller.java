@@ -209,6 +209,7 @@ public class Emp_Controller {
         int rowcount = el.checkEmpNum(emp_number);
         return String.valueOf(rowcount);
     }
+
 	
     @ResponseBody
     @RequestMapping(value = "/checkDeptNum", method = RequestMethod.POST)
@@ -220,24 +221,24 @@ public class Emp_Controller {
 	
     @ResponseBody
     @RequestMapping(value = "/checkRankNum", method = RequestMethod.POST)
-    public String checkRankNum(HttpServletRequest request, Model model
-    ,@RequestParam(value="rank_no", defaultValue="0") Integer rank_no) {
-        int rowcount = el.checkRankNum(rank_no);
+    public String checkRankNum(HttpServletRequest request, Model model) {
+    	String rank_no = request.getParameter("rank_no");
+    	int rowcount = el.checkRankNum(rank_no);
         return String.valueOf(rowcount);
     }
 	
     @ResponseBody
     @RequestMapping(value = "/checkDutyNum", method = RequestMethod.POST)
-    public String checkDutyNum(HttpServletRequest request, Model model
-    ,@RequestParam(value="duty_no", defaultValue="0") Integer duty_no) {
-        int rowcount = el.checkDutyNum(duty_no);
+    public String checkDutyNum(HttpServletRequest request, Model model){
+    	String duty_no = request.getParameter("duty_no");
+    	int rowcount = el.checkDutyNum(duty_no);
         return String.valueOf(rowcount);
     }
 	
     @ResponseBody
     @RequestMapping(value = "/checkBankNum", method = RequestMethod.POST)
-    public String checkBankNum(HttpServletRequest request, Model model
-    ,@RequestParam(value="bank_no", defaultValue="0") Integer bank_no) {
+    public String checkBankNum(HttpServletRequest request, Model model) {
+    	String bank_no = request.getParameter("bank_no");
         int rowcount = el.checkBankNum(bank_no);
         return String.valueOf(rowcount);
     }
